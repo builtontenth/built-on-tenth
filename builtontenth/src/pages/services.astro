@@ -1,0 +1,140 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Growth Services for HVAC, Roofing & Plumbing | Built on Tenth" description="Revenue Leak Audits, Growth Blueprints, and 90-Day Advisory for home service companies.">
+
+<style>
+.services-intro{padding:4rem 2.5rem;background:var(--cream);text-align:center}
+.services-intro p{font-size:1.05rem;color:var(--text-mid);max-width:600px;margin:0 auto;line-height:1.7}
+.sd{padding:5rem 2.5rem}.sd:nth-child(odd){background:var(--warm-white)}
+.sd-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.sd-inner.reverse{direction:rtl}.sd-inner.reverse>*{direction:ltr}
+.sd-text h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--navy);margin-bottom:0.5rem;line-height:1.15}
+.sd-price{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--amber-dark);margin-bottom:1rem}
+.sd-text p{font-size:0.95rem;color:var(--text-mid);line-height:1.7;margin-bottom:1rem}
+.sd-features{list-style:none;margin:1.5rem 0}
+.sd-features li{display:flex;align-items:flex-start;gap:0.6rem;padding:0.45rem 0;font-size:0.9rem;color:var(--text-dark);line-height:1.5}
+.sd-features li::before{content:'\2713';color:var(--green-accent);font-weight:700;flex-shrink:0}
+.sd-visual{background:var(--navy);border-radius:16px;padding:2.5rem;color:#fff}
+.sd-visual h3{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:1.5rem;color:rgba(255,255,255,0.6)}
+.sd-row{display:flex;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.85rem}
+.sd-row:last-child{border-bottom:none}
+.sd-row span:first-child{color:rgba(255,255,255,0.5)}.sd-row .bad{color:var(--red-accent);font-weight:600}.sd-row .good{color:var(--green-accent);font-weight:600}.sd-row .amber{color:var(--amber);font-weight:600}
+
+.faq-section{padding:5rem 2.5rem;background:var(--cream)}.faq-inner{max-width:700px;margin:0 auto}
+.faq-inner h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:2rem;text-align:center}
+.faq-item{border-bottom:1px solid var(--warm-gray)}
+.faq-q{padding:1.25rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-display);font-weight:700;font-size:0.95rem;color:var(--navy)}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--amber-dark);transition:transform 0.3s}.faq-q.open::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-a-inner{padding:0 0 1.25rem;font-size:0.9rem;color:var(--text-mid);line-height:1.65}
+@media(max-width:768px){.sd-inner,.sd-inner.reverse{grid-template-columns:1fr;direction:ltr}}
+</style>
+
+<section class="page-hero">
+  <h1>Stop guessing. <em>Start knowing.</em></h1>
+  <p>Every engagement starts with data and ends with a system. No contracts. No recurring fees. No calls required.</p>
+</section>
+
+<section class="services-intro reveal"><p>Start with the audit. Upgrade to the blueprint if you want the full system. Add advisory if you want us guiding implementation. Every step builds on the last.</p></section>
+
+<section class="sd" id="audit"><div class="sd-inner reveal">
+  <div class="sd-text">
+    <div class="section-label">Service 01</div>
+    <h2>Revenue Leak Audit</h2>
+    <div class="sd-price">$750</div>
+    <p>A comprehensive analysis of your entire marketing presence — benchmarked against your top competitors, with every finding translated into estimated revenue impact.</p>
+    <ul class="sd-features">
+      <li>Google Business Profile analysis vs. top 5-7 competitors</li>
+      <li>Website conversion audit (mobile, CTAs, trust signals)</li>
+      <li>Google Ads and Local Service Ads assessment</li>
+      <li>Review ecosystem analysis</li>
+      <li>Competitive landscape mapping</li>
+      <li>Revenue impact summary with prioritized fixes</li>
+      <li>15-25 page report delivered in 7 business days</li>
+    </ul>
+    <a href="mailto:hello@builtontenth.com?subject=Revenue Leak Audit" class="btn-primary">Apply for an Audit &rarr;</a>
+  </div>
+  <div class="sd-visual">
+    <h3>Sample audit findings</h3>
+    <div class="sd-row"><span>Google reviews vs. top competitor</span><span class="bad">47 vs. 230</span></div>
+    <div class="sd-row"><span>Estimated calls lost to gap</span><span class="bad">15-25/mo</span></div>
+    <div class="sd-row"><span>Google Ads conversion tracking</span><span class="bad">Not installed</span></div>
+    <div class="sd-row"><span>Monthly spend without tracking</span><span class="bad">$4,200 blind</span></div>
+    <div class="sd-row"><span>Website mobile load time</span><span class="bad">6.2 seconds</span></div>
+    <div class="sd-row"><span>Estimate follow-up system</span><span class="bad">None</span></div>
+    <div class="sd-row"><span>Phone answer rate</span><span class="good">Strong</span></div>
+    <div class="sd-row"><span style="color:#fff;font-weight:600">Total estimated annual leakage</span><span class="bad" style="font-size:1.1rem">$247,000</span></div>
+  </div>
+</div></section>
+
+<section class="sd" id="blueprint"><div class="sd-inner reverse reveal">
+  <div class="sd-text">
+    <div class="section-label">Service 02</div>
+    <h2>Growth System Blueprint</h2>
+    <div class="sd-price">$3,000</div>
+    <p>Everything in the audit plus a custom-designed growth system — demand capture, conversion infrastructure, follow-up engine, and measurement dashboard.</p>
+    <ul class="sd-features">
+      <li>Complete Revenue Leak Audit</li>
+      <li>Custom channel strategy with budget allocation</li>
+      <li>Phone scripts and qualification framework</li>
+      <li>Estimate follow-up sequences</li>
+      <li>Review generation system</li>
+      <li>KPI dashboard with tracking templates</li>
+      <li>90-day implementation calendar</li>
+      <li>5-8 ready-to-use template files</li>
+    </ul>
+    <a href="mailto:hello@builtontenth.com?subject=Growth Blueprint" class="btn-primary">Apply for a Blueprint &rarr;</a>
+  </div>
+  <div class="sd-visual">
+    <h3>What your blueprint includes</h3>
+    <div class="sd-row"><span>Channel strategy</span><span class="amber">Custom mix</span></div>
+    <div class="sd-row"><span>Budget allocation map</span><span class="amber">By channel</span></div>
+    <div class="sd-row"><span>Phone handling scripts</span><span class="amber">2-3 scripts</span></div>
+    <div class="sd-row"><span>CSR qualification framework</span><span class="amber">Step-by-step</span></div>
+    <div class="sd-row"><span>Estimate follow-up sequence</span><span class="amber">5-touch</span></div>
+    <div class="sd-row"><span>Review generation system</span><span class="amber">Automated</span></div>
+    <div class="sd-row"><span>Weekly KPI dashboard</span><span class="amber">Pre-built</span></div>
+    <div class="sd-row"><span>Implementation calendar</span><span class="amber">90 days</span></div>
+  </div>
+</div></section>
+
+<section class="sd" id="advisory"><div class="sd-inner reveal">
+  <div class="sd-text">
+    <div class="section-label">Service 03</div>
+    <h2>90-Day Growth Advisory</h2>
+    <div class="sd-price">$7,500</div>
+    <p>Audit, blueprint, and 12 weeks of strategic guidance as you implement. We design the system and walk you through building it.</p>
+    <ul class="sd-features">
+      <li>Complete audit and blueprint</li>
+      <li>12 weeks of weekly written performance reviews</li>
+      <li>Priority async access (24-48hr response)</li>
+      <li>Monthly competitor re-benchmarking</li>
+      <li>Implementation troubleshooting</li>
+      <li>Exit report with before/after analysis</li>
+      <li>6-month forward roadmap</li>
+    </ul>
+    <a href="mailto:hello@builtontenth.com?subject=90-Day Advisory" class="btn-primary">Apply for Advisory &rarr;</a>
+  </div>
+  <div class="sd-visual">
+    <h3>What 90 days looks like</h3>
+    <div class="sd-row"><span>Weeks 1-2</span><span class="amber">Audit + Blueprint delivery</span></div>
+    <div class="sd-row"><span>Weeks 3-4</span><span class="amber">Quick wins implementation</span></div>
+    <div class="sd-row"><span>Weeks 5-8</span><span class="amber">System build + optimization</span></div>
+    <div class="sd-row"><span>Weeks 9-12</span><span class="amber">Measurement + iteration</span></div>
+    <div class="sd-row"><span>Weekly deliverable</span><span style="color:#fff">Written performance review</span></div>
+    <div class="sd-row"><span>Monthly deliverable</span><span style="color:#fff">Full progress report</span></div>
+    <div class="sd-row"><span>Exit deliverable</span><span style="color:#fff">Before/after + 6-month roadmap</span></div>
+  </div>
+</div></section>
+
+<section class="faq-section"><div class="faq-inner">
+  <h2>Common questions</h2>
+  <div class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.style.maxHeight=this.classList.contains('open')?'200px':'0'">Do I need to get on a phone call?</div><div class="faq-a"><div class="faq-a-inner">No. Everything is delivered in writing. You get documented intelligence you can reference anytime.</div></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.style.maxHeight=this.classList.contains('open')?'200px':'0'">How is this different from a marketing agency?</div><div class="faq-a"><div class="faq-a-inner">Agencies manage campaigns for monthly retainers. We analyze your growth system, design what needs to change, and guide implementation. No incentive to recommend more ad spend.</div></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.style.maxHeight=this.classList.contains('open')?'200px':'0'">What if I already have a marketing agency?</div><div class="faq-a"><div class="faq-a-inner">Even better. The audit will show you whether your agency is performing or underperforming — with specific data points to hold them accountable.</div></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.style.maxHeight=this.classList.contains('open')?'200px':'0'">What size company is this for?</div><div class="faq-a"><div class="faq-a-inner">HVAC, roofing, and plumbing companies doing $1M to $5M with 5-30 employees. If smaller, start with our free tools and research.</div></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.style.maxHeight=this.classList.contains('open')?'200px':'0'">What is the typical ROI?</div><div class="faq-a"><div class="faq-a-inner">The average audit identifies $100K to $400K in annual revenue leakage. Fixing even one finding pays for the audit many times over.</div></div></div>
+</div></section>
+
+</Base>

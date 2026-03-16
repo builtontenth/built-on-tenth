@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="About Built on Tenth — Revenue Intelligence for Home Service Companies" description="We study how the most profitable HVAC, roofing, and plumbing companies grow." solidNav={true}>
+
+<style>
+.about-mission{padding:5rem 2.5rem;background:var(--cream)}.about-inner{max-width:760px;margin:0 auto}
+.about-inner h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--navy);line-height:1.15;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.about-inner p{font-size:1.05rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.25rem}
+.about-inner strong{color:var(--navy)}
+.about-images{padding:0 2.5rem}.about-images-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.about-images-inner div{border-radius:12px;overflow:hidden;height:280px}.about-images-inner img{width:100%;height:100%;object-fit:cover}
+.about-how{padding:5rem 2.5rem;background:var(--warm-white)}.about-how-inner{max-width:900px;margin:0 auto}
+.about-how h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:2.5rem;text-align:center}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.method-card{text-align:center}
+.method-num{font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--amber);margin-bottom:0.5rem}
+.method-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.method-card p{font-size:0.88rem;color:var(--text-mid);line-height:1.55}
+.about-diff{padding:5rem 2.5rem;background:var(--navy)}.about-diff-inner{max-width:900px;margin:0 auto}
+.about-diff h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:2.5rem;text-align:center}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.diff-card{padding:1.75rem;border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.diff-card h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--amber);margin-bottom:0.5rem}
+.diff-card p{font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.6}
+.about-cta{padding:5rem 2.5rem;background:var(--cream);text-align:center}
+.about-cta h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:0.75rem}
+.about-cta p{font-size:1.05rem;color:var(--text-mid);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+@media(max-width:768px){.about-images-inner{grid-template-columns:1fr}.method-grid{grid-template-columns:1fr}.diff-grid{grid-template-columns:1fr}}
+</style>
+
+<section class="page-hero">
+  <h1>We study growth. <em>You keep the playbook.</em></h1>
+  <p>Built on Tenth is a revenue intelligence operation for home service companies. We analyze what works, publish the findings, and help owners build systems that actually grow revenue.</p>
+</section>
+
+<section class="about-images"><div class="about-images-inner">
+  <div><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Trade work"></div>
+  <div><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80" alt="HVAC technician"></div>
+  <div><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Service fleet"></div>
+</div></section>
+
+<section class="about-mission reveal"><div class="about-inner">
+  <h2>Most home service owners are making marketing decisions blind.</h2>
+  <p>They write checks to agencies, lead platforms, and ad networks — <strong>$5,000 to $15,000 every month</strong> — without any clear picture of what's actually generating revenue.</p>
+  <p>We started Built on Tenth because we saw the same pattern across hundreds of companies: <strong>good businesses run by smart operators, hemorrhaging revenue through marketing systems they can't measure.</strong></p>
+  <p>So we decided to study what actually works. We analyze the marketing presence, competitive positioning, and pipeline systems of HVAC, roofing, and plumbing companies across the US. Then we publish everything we find — the data, the patterns, the benchmarks, and the specific practices that separate top performers from everyone else.</p>
+</div></section>
+
+<section class="about-how reveal"><div class="about-how-inner">
+  <h2>How we work</h2>
+  <div class="method-grid">
+    <div class="method-card"><div class="method-num">01</div><h3>Research at Scale</h3><p>We continuously analyze home service companies across the US — their marketing, competitors, and conversion systems.</p></div>
+    <div class="method-card"><div class="method-num">02</div><h3>Publish Everything</h3><p>Benchmarks, teardowns, and growth patterns get published as free research. No gatekeeping.</p></div>
+    <div class="method-card"><div class="method-num">03</div><h3>Build Systems</h3><p>When you want us to apply research to your business, we conduct a deep audit and design a custom growth system.</p></div>
+  </div>
+</div></section>
+
+<section class="about-diff reveal"><div class="about-diff-inner">
+  <h2>What makes us different</h2>
+  <div class="diff-grid">
+    <div class="diff-card"><h3>We don't sell marketing services</h3><p>No ads, no retainers, no incentive to recommend more spend. Our only incentive is better analysis.</p></div>
+    <div class="diff-card"><h3>We show the math</h3><p>Every finding is translated into dollars. Revenue impact, not marketing jargon.</p></div>
+    <div class="diff-card"><h3>We think in systems</h3><p>Not tactics — complete growth systems connecting lead gen, phones, quoting, follow-up, and measurement.</p></div>
+    <div class="diff-card"><h3>Everything is written</h3><p>Every deliverable is documented in detail. Written intelligence you can reference and implement at your pace.</p></div>
+  </div>
+</div></section>
+
+<section class="about-cta reveal">
+  <h2>Ready to see where your revenue is leaking?</h2>
+  <p>Start with a Revenue Leak Audit.</p>
+  <a href="/services#audit" class="btn-primary">Get a Revenue Leak Audit &mdash; $750 &rarr;</a>
+</section>
+
+</Base>

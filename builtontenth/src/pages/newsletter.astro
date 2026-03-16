@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="The Weekly Growth Report — Free Newsletter | Built on Tenth" description="One actionable growth insight every Tuesday for home service business owners.">
+
+<style>
+.nl-main{padding:5rem 2.5rem;background:var(--cream)}.nl-inner{max-width:640px;margin:0 auto;text-align:center}
+.nl-icon{width:64px;height:64px;border-radius:16px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1.5rem}
+.nl-main h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--navy);margin-bottom:1rem}
+.nl-main .nl-inner>p{font-size:1.05rem;color:var(--text-mid);line-height:1.7;margin-bottom:2rem}
+.nl-form{display:flex;gap:0.75rem;max-width:480px;margin:0 auto 1rem}
+.nl-form input{flex:1;padding:1rem 1.25rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:0.95rem;outline:none;background:#fff}
+.nl-form input:focus{border-color:var(--amber)}
+.nl-form button{padding:1rem 1.75rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:0.9rem;cursor:pointer;white-space:nowrap;transition:all 0.3s}
+.nl-form button:hover{background:var(--navy-light)}
+.nl-note{font-size:0.78rem;color:var(--text-light);margin-bottom:3rem}
+.nl-preview{text-align:left;margin-top:3rem}
+.nl-preview h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:1.5rem;text-align:center}
+.preview-card{background:#fff;border:1px solid var(--warm-gray);border-radius:12px;padding:1.75rem;margin-bottom:1rem;transition:all 0.3s}
+.preview-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.preview-date{font-size:0.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem}
+.preview-card h4{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem}
+.preview-card p{font-size:0.88rem;color:var(--text-mid);line-height:1.55}
+@media(max-width:768px){.nl-main{padding:3rem 1.5rem}.nl-form{flex-direction:column}}
+</style>
+
+<section class="page-hero">
+  <h1>The Weekly <em>Growth Report</em></h1>
+  <p>One growth insight every Tuesday. Backed by real data. Written for owners who'd rather know their numbers than guess.</p>
+</section>
+
+<section class="nl-main"><div class="nl-inner">
+  <div class="nl-icon">&#x1F4CA;</div>
+  <h2>Get smarter about growth in 3 minutes a week</h2>
+  <p>Every Tuesday we send one actionable insight backed by data from analyzing hundreds of HVAC, roofing, and plumbing companies.</p>
+  <form class="nl-form" id="nl-form">
+    <input type="email" id="nl-email" placeholder="Enter your email" required>
+    <button type="submit" id="nl-btn">Subscribe Free</button>
+  </form>
+  <p class="nl-note" id="nl-msg">Free. Every Tuesday. Unsubscribe anytime.</p>
+
+  <script>
+    document.getElementById('nl-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('nl-email').value;
+      const btn = document.getElementById('nl-btn');
+      const msg = document.getElementById('nl-msg');
+      btn.textContent = 'Subscribing...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (res.ok || res.status === 204) {
+          btn.textContent = "You're in! ✓";
+          btn.style.background = '#10b981';
+          document.getElementById('nl-email').disabled = true;
+          msg.textContent = 'Check your inbox. First issue lands Tuesday.';
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'newsletter_signup', form_location: 'newsletter_page' });
+        } else {
+          btn.textContent = 'Subscribe Free';
+          btn.disabled = false;
+          msg.textContent = 'Something went wrong. Try again.';
+          msg.style.color = '#ef4444';
+        }
+      } catch(err) {
+        btn.textContent = 'Subscribe Free';
+        btn.disabled = false;
+        msg.textContent = 'Something went wrong. Try again.';
+        msg.style.color = '#ef4444';
+      }
+    });
+  </script>
+  <div class="nl-preview reveal">
+    <h3>Recent issues</h3>
+    <div class="preview-card"><div class="preview-date">Issue #3</div><h4>The $4,200/Month Google Ads Mistake 44% of HVAC Companies Make</h4><p>Nearly half have zero conversion tracking. Here's what that costs and the 15-minute fix.</p></div>
+    <div class="preview-card"><div class="preview-date">Issue #2</div><h4>Your Close Rate Isn't 35%. It's Probably 22%.</h4><p>Most owners overestimate their close rate by 10-15 points. Here's how to find the real number.</p></div>
+    <div class="preview-card"><div class="preview-date">Issue #1</div><h4>The Follow-Up Sequence That Recovered $47K in Lost Quotes</h4><p>68% of estimates never get a second touch. One company changed that with a 3-step text sequence.</p></div>
+  </div>
+</div></section>
+
+</Base>

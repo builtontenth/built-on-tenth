@@ -1,0 +1,104 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  solidNav?: boolean;
+}
+const { title, description, solidNav = false } = Astro.props;
+import '../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NSMGPHL2');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMGPHL2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <nav id="nav" class={solidNav ? 'solid' : ''}>
+    <a href="/" class="nav-logo">BUILT ON <span>TENTH</span></a>
+    <div class="nav-links">
+      <a href="/insights">Insights</a>
+      <a href="/tools">Free Tools</a>
+      <a href="/services">Services</a>
+      <a href="/newsletter">Newsletter</a>
+      <a href="/services" class="nav-cta">Get an Audit</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+  </nav>
+
+  <slot />
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">BUILT ON <span>TENTH</span></a>
+        <p>Revenue intelligence for home service companies. We study how the most profitable HVAC, roofing, and plumbing businesses grow — and share everything we find.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Research</h4>
+        <a href="/insights">All Insights</a>
+        <a href="/insights">HVAC</a>
+        <a href="/insights">Roofing</a>
+        <a href="/insights">Plumbing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Free Tools</h4>
+        <a href="/tools/marketing-calculator">Marketing Cost Calculator</a>
+        <a href="/tools/phone-calculator">Phone Revenue Calculator</a>
+        <a href="/tools/lead-grader">Lead Source Grader</a>
+        <a href="/tools/website-audit">Website Audit</a>
+        <a href="/tools/capacity-planner">Capacity Planner</a>
+      </div>
+      <div class="footer-col">
+        <h4>Work With Us</h4>
+        <a href="/services#audit">Revenue Leak Audit</a>
+        <a href="/services#blueprint">Growth Blueprint</a>
+        <a href="/services#advisory">90-Day Advisory</a>
+        <a href="mailto:hello@builtontenth.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Built on Tenth. All rights reserved.</p>
+      <p>hello@builtontenth.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect (only for non-solid navs)
+    const nav = document.getElementById('nav');
+    if (!nav.classList.contains('solid')) {
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 80);
+      });
+    }
+    // Scroll reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal,.reveal-left').forEach(el => observer.observe(el));
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>

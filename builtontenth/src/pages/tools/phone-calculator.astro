@@ -1,0 +1,185 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Phone Revenue Calculator — Missed Call Costs | Built on Tenth" description="Calculate how much revenue your home service company loses from missed calls every month." solidNav={true}>
+<section class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> / <a href="/tools">Tools</a> / Phone Revenue Calculator</div>
+  <h1>How Much Are <em>Missed Calls</em> Costing You?</h1>
+  <p>Every missed call is a missed job. Enter your numbers to see the annual revenue impact &#8212; and what fixing it is worth.</p>
+</section>
+<style>
+.cs{padding:4rem 2.5rem 5rem;background:var(--cream)}.ci{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.cf{background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--warm-gray)}
+.cf h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.cf>p.desc{font-size:.88rem;color:var(--text-light);margin-bottom:2rem;line-height:1.5}
+.fg{margin-bottom:1.5rem}.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem}
+.fg .ht{font-size:.75rem;color:var(--text-light);margin-bottom:.4rem}
+.fg input,.fg select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:#fff}
+.fg input:focus,.fg select:focus{border-color:var(--amber)}
+.calc-btn{width:100%;padding:1rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s}
+.calc-btn:hover{background:var(--amber-light)}
+.cr{background:var(--navy);border-radius:16px;padding:2.5rem;color:#fff;position:sticky;top:5rem}
+.cr h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:2rem}
+.ri{margin-bottom:1.5rem}.rl{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.rv{font-family:var(--font-display);font-size:2rem;font-weight:800}
+.rv.w{color:#ef4444}.rv.g{color:#10b981}.rv.n{color:#f59e0b}
+.rc{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.4}
+.rd{height:1px;background:rgba(255,255,255,.08);margin:1.5rem 0}
+.bb{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:.5rem}
+.br{height:100%;border-radius:4px;transition:width .8s ease}
+.bl{display:flex;justify-content:space-between;margin-top:.3rem}.bl span{font-size:.68rem;color:rgba(255,255,255,.35)}
+.es{text-align:center;padding:3rem 1rem}.es p{font-size:.9rem;color:rgba(255,255,255,.35)}
+
+/* Email gate styles */
+.email-gate{margin-top:2rem;padding:1.5rem;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:12px}
+.email-gate h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.email-gate p{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:1rem;line-height:1.5}
+.email-gate .gate-row{display:flex;gap:.5rem}
+.email-gate input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);font-size:.88rem;outline:none}
+.email-gate input::placeholder{color:rgba(255,255,255,.3)}
+.email-gate button{padding:.75rem 1.25rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:all .3s}
+.email-gate button:hover{background:var(--amber-light)}
+.report-preview{margin-top:1.25rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px;border:1px dashed rgba(255,255,255,.1)}
+.report-preview h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:.6rem}
+.report-preview ul{list-style:none}
+.report-preview li{font-size:.8rem;color:rgba(255,255,255,.5);padding:.25rem 0;display:flex;align-items:center;gap:.4rem}
+.report-preview li::before{content:'\2713';color:#10b981;font-weight:700;font-size:.7rem}
+
+/* Report modal */
+.report-overlay{display:none;position:fixed;inset:0;background:rgba(15,26,46,.85);z-index:10000;overflow-y:auto;padding:2rem}
+.report-overlay.open{display:flex;justify-content:center;align-items:flex-start}
+.report-container{background:#fff;max-width:800px;width:100%;border-radius:16px;padding:3rem;position:relative;color:var(--text-dark)}
+.report-close{position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)}
+.report-header{text-align:center;padding-bottom:2rem;border-bottom:2px solid var(--amber);margin-bottom:2rem}
+.report-header h1{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:.5rem}
+.report-header p{font-size:.85rem;color:var(--text-light)}
+.report-hero-stat{text-align:center;margin:2rem 0}
+.report-hero-stat .big{font-family:var(--font-display);font-size:3rem;font-weight:800}
+.report-hero-stat .big.red{color:#ef4444}.report-hero-stat .big.green{color:#10b981}.report-hero-stat .big.amber{color:#d97706}
+.report-hero-stat .label{font-size:.85rem;color:var(--text-light);margin-top:.25rem}
+.report-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.report-table th{background:var(--navy);color:#fff;padding:.7rem 1rem;text-align:left;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.report-table td{padding:.65rem 1rem;border-bottom:1px solid var(--warm-gray);font-size:.88rem}
+.report-table tr:last-child td{border-bottom:none}
+.report-section{margin:2rem 0}
+.report-section h2{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--warm-gray)}
+.report-section p{font-size:.9rem;color:var(--text-mid);line-height:1.65;margin-bottom:.75rem}
+.report-section ul{margin:.75rem 0 .75rem 1.5rem}.report-section li{font-size:.88rem;color:var(--text-mid);line-height:1.6;margin-bottom:.4rem}
+.report-actions{display:flex;gap:1rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:2px solid var(--warm-gray)}
+.report-print{padding:.85rem 2rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer}
+.report-cta{padding:.85rem 2rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none}
+.report-footer{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--warm-gray)}
+.report-footer p{font-size:.78rem;color:var(--text-light)}
+@media print{.report-overlay{position:static;background:#fff;padding:0}.report-close,.report-actions{display:none!important}body>*:not(.report-overlay){display:none!important}.report-overlay.open{display:block}}
+@media(max-width:768px){.cs{padding:2rem 1.5rem 3rem}.ci{grid-template-columns:1fr}.cr{position:static}.email-gate .gate-row{flex-direction:column}}
+
+.bn{font-family:var(--font-display);font-size:3rem;font-weight:800;color:#ef4444;text-align:center;margin:1rem 0 .25rem}
+.blab{text-align:center;font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1.5rem}
+.ir{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.85rem}
+.ir:last-child{border-bottom:none}.ir span:first-child{color:rgba(255,255,255,.6)}.ir span:last-child{font-family:var(--font-display);font-weight:700}
+</style>
+
+<section class="cs"><div class="ci">
+  <div class="cf">
+    <h2>Your Phone Numbers</h2><p class="desc">Be honest &#8212; most owners overestimate their answer rate. The industry average is 68%.</p>
+    <div class="fg"><label>Monthly Inbound Calls</label><div class="ht">Total calls from all sources &#8212; ads, Google, referrals, signs</div><input type="number" id="calls" placeholder="e.g., 200" min="0"></div>
+    <div class="fg"><label>Phone Answer Rate (%)</label><div class="ht">Industry average: 68%. Top performers: 90%+</div><input type="number" id="ar" placeholder="e.g., 70" min="0" max="100"></div>
+    <div class="fg"><label>Booking Rate on Answered Calls (%)</label><div class="ht">Of calls you answer, what % become booked jobs? Avg: 30%</div><input type="number" id="br2" placeholder="e.g., 30" min="0" max="100"></div>
+    <div class="fg"><label>Average Job Value ($)</label><div class="ht">Average revenue per completed job</div><input type="number" id="jv" placeholder="e.g., 8500" min="0"></div>
+    <button class="calc-btn" onclick="cp()">Show Me the Impact &#8594;</button>
+  </div>
+  <div class="cr"><h2>Revenue Impact</h2>
+    <div class="es" id="pe"><p>Enter your phone numbers to see how much revenue you are leaving on the table.</p></div>
+    <div id="pr" style="display:none">
+      <div class="bn" id="al">&mdash;</div><div class="blab">Estimated annual revenue lost to phone problems</div><div class="rd"></div>
+      <div class="ir"><span>Calls per month</span><span id="rc" style="color:#fff">&mdash;</span></div>
+      <div class="ir"><span>Calls missed</span><span id="rm" style="color:#ef4444">&mdash;</span></div>
+      <div class="ir"><span>Lost booking opportunities</span><span id="rl" style="color:#ef4444">&mdash;</span></div>
+      <div class="ir"><span>Monthly revenue lost</span><span id="rml" style="color:#ef4444">&mdash;</span></div>
+      <div class="rd"></div>
+      <div class="ri"><div class="rl">If You Improved to 90% Answer Rate</div><div class="rv g" id="rec">&mdash;</div><div class="rc" id="recC"></div></div>
+      <div class="email-gate" id="phoneGate">
+        <h3>Download Your Phone Revenue Leak Report</h3>
+        <p>Get a detailed report with your revenue loss breakdown, a phone handling improvement plan, and CSR scripts that book more jobs.</p>
+        <div class="gate-row">
+          <input type="email" id="phoneEmail" placeholder="Enter your email">
+          <button onclick="unlockPhoneReport()">Get My Report</button>
+        </div>
+        <div class="report-preview"><h4>Your report includes</h4>
+          <ul><li>Revenue loss breakdown (missed calls, poor booking, slow callback)</li><li>Phone answer rate benchmarks by trade</li><li>CSR phone script that books 40% more jobs</li><li>5-step missed call recovery process</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div class="report-overlay" id="reportOverlay">
+  <div class="report-container">
+    <button class="report-close" onclick="closeReport()">&times;</button>
+    <div class="report-header">
+      <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--amber-dark);font-weight:700">Built on Tenth</p>
+      <h1>Phone Revenue Leak Report</h1>
+      <p id="rptMeta2">Generated on <span id="rptDate2"></span></p>
+    </div>
+    <div class="report-hero-stat"><div class="big red" id="rptLoss">&mdash;</div><div class="label">Annual revenue at risk from phone problems</div></div>
+    <div class="report-section"><h2>Your Phone Performance</h2><table class="report-table"><thead><tr><th>Metric</th><th>Your Number</th><th>Industry Avg</th><th>Top Performers</th></tr></thead><tbody id="rptPhoneTable"></tbody></table></div>
+    <div class="report-section"><h2>Where the Revenue Is Leaking</h2><div id="rptPhoneLeaks"></div></div>
+    <div class="report-section"><h2>The Fix: 5-Step Phone Recovery Plan</h2><ol id="rptPhonePlan" style="margin-left:1.5rem"></ol></div>
+    <div class="report-section"><h2>CSR Booking Script</h2><div id="rptScript"></div></div>
+    <div class="report-actions">
+      <button class="report-print" onclick="printReport()">Print / Save as PDF</button>
+      <a href="/services#audit" class="report-cta">Get a Full Revenue Leak Audit &mdash; $750 &#8594;</a>
+    </div>
+    <div class="report-footer"><p>builtontenth.com &mdash; Revenue intelligence for home service companies</p></div>
+  </div>
+</div>
+
+<script is:inline>
+let phoneData={};
+function cp(){
+  const c=+document.getElementById('calls').value,a=+document.getElementById('ar').value/100,b=+document.getElementById('br2').value/100,j=+document.getElementById('jv').value;
+  if(!c||!a||!b||!j)return;
+  const m=Math.round(c*(1-a)),lb=Math.round(m*b),ml=lb*j,al=ml*12;
+  const im=Math.round(c*0.1),ilb=Math.round(im*b),iml=ilb*j,rec=ml-iml,arec=rec*12;
+  phoneData={c,a,b,j,m,lb,ml,al,rec,arec};
+  document.getElementById('pe').style.display='none';document.getElementById('pr').style.display='block';
+  document.getElementById('al').textContent='$'+al.toLocaleString();
+  document.getElementById('rc').textContent=c;document.getElementById('rm').textContent=m+'/month';
+  document.getElementById('rl').textContent=lb+' jobs/month';document.getElementById('rml').textContent='$'+ml.toLocaleString()+'/month';
+  document.getElementById('rec').textContent='+$'+arec.toLocaleString()+'/yr';
+  document.getElementById('recC').textContent='Improving from '+Math.round(a*100)+'% to 90% recovers approximately $'+rec.toLocaleString()+' per month.';
+}
+function unlockPhoneReport(){
+  const email=document.getElementById('phoneEmail').value;
+  if(!email||!email.includes('@'))return alert('Please enter a valid email.');
+  document.querySelector('#phoneGate button').textContent='Report unlocked \u2713';document.querySelector('#phoneGate button').style.background='#10b981';
+  genPhoneReport();showReport();
+}
+function genPhoneReport(){
+  const d=phoneData;
+  document.getElementById('rptDate2').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('rptLoss').textContent='$'+d.al.toLocaleString();
+  document.getElementById('rptPhoneTable').innerHTML=
+    '<tr><td>Monthly inbound calls</td><td>'+d.c+'</td><td colspan="2">Varies by market</td></tr>'+
+    '<tr><td>Answer rate</td><td style="color:'+(d.a<0.75?'#ef4444':'#10b981')+'">'+Math.round(d.a*100)+'%</td><td>68%</td><td>90%+</td></tr>'+
+    '<tr><td>Booking rate</td><td>'+Math.round(d.b*100)+'%</td><td>30%</td><td>45%+</td></tr>'+
+    '<tr><td>Calls missed/month</td><td style="color:#ef4444">'+d.m+'</td><td colspan="2">&mdash;</td></tr>'+
+    '<tr><td>Jobs lost/month</td><td style="color:#ef4444">'+d.lb+'</td><td colspan="2">&mdash;</td></tr>'+
+    '<tr><td style="font-weight:700">Monthly revenue lost</td><td style="font-weight:700;color:#ef4444">$'+d.ml.toLocaleString()+'</td><td colspan="2">&mdash;</td></tr>';
+  document.getElementById('rptPhoneLeaks').innerHTML=
+    '<p><strong>Missed calls:</strong> You are missing approximately '+d.m+' calls per month. At your booking rate and average ticket, each missed call represents $'+Math.round(d.b*d.j).toLocaleString()+' in potential revenue. This is the single largest revenue leak in most home service companies.</p>'+
+    '<p><strong>Recovery potential:</strong> Improving your answer rate to 90% would recover approximately <strong>$'+d.rec.toLocaleString()+' per month</strong> ($'+d.arec.toLocaleString()+'/year) without spending another dollar on marketing.</p>';
+  document.getElementById('rptPhonePlan').innerHTML=
+    '<li><strong>Audit your actual answer rate.</strong> Track every inbound call for one full week. Count total calls vs. answered calls. Most owners are shocked by the real number.</li>'+
+    '<li><strong>Eliminate hold times.</strong> If callers wait more than 30 seconds, many hang up. Route overflow calls to a backup CSR or answering service immediately.</li>'+
+    '<li><strong>Implement a missed call callback system.</strong> Every missed call gets a callback within 15 minutes and a text within 2 minutes: "Sorry we missed your call \u2014 we are with another customer. We will call you back in the next 15 minutes."</li>'+
+    '<li><strong>Train CSRs on booking, not just answering.</strong> The phone is a sales tool. CSRs should qualify the caller, build urgency, and book the appointment \u2014 not just take a message.</li>'+
+    '<li><strong>Track weekly.</strong> Add "phone answer rate" and "booking rate" to your weekly scorecard. What gets measured gets managed.</li>';
+  document.getElementById('rptScript').innerHTML=
+    '<p style="background:var(--warm-white);padding:1.25rem;border-radius:8px;border-left:4px solid var(--amber);font-size:.88rem;line-height:1.7"><strong>Opening:</strong> "Thanks for calling [Company Name], this is [Name]. Are you calling about a repair or looking to schedule a [service]?"<br><br><strong>Qualify:</strong> "I want to make sure we get the right person out to you. Can you tell me a little about what is going on with your [system/roof/plumbing]?"<br><br><strong>Build urgency:</strong> "That sounds like something we should take a look at soon. We have availability [tomorrow/this week]. Would [morning or afternoon] work better for you?"<br><br><strong>Book:</strong> "Great, I have you down for [day] at [time]. We will send you a confirmation text with your technicians name and photo so you know exactly who is coming."</p>';
+}
+function showReport(){document.getElementById('reportOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeReport(){document.getElementById('reportOverlay').classList.remove('open');document.body.style.overflow='';}
+function printReport(){window.print();}
+</script>
+</Base>

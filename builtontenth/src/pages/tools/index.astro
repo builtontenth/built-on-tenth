@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Free Growth Tools for Home Service Companies | Built on Tenth" description="Free calculators and diagnostic tools for HVAC, roofing, and plumbing companies. See where your revenue is leaking." solidNav={true}>
+<section class="page-hero">
+  <h1>Free <em>Growth Tools</em></h1>
+  <p>Plug in your numbers. See where the money is going. No signup required for basic results.</p>
+</section>
+<style>
+.tools-page{padding:4rem 2.5rem;background:var(--cream)}
+.tools-page-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1.25rem}
+.tp-card{display:flex;gap:2rem;background:#fff;border-radius:16px;padding:2rem;border:1px solid var(--warm-gray);transition:all .4s;text-decoration:none;color:inherit;align-items:center;position:relative;overflow:hidden}
+.tp-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--amber);transform:scaleY(0);transition:transform .4s;transform-origin:top}
+.tp-card:hover::before{transform:scaleY(1)}
+.tp-card:hover{border-color:var(--amber);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.tp-icon{width:64px;height:64px;border-radius:16px;background:rgba(245,158,11,.1);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+.tp-text{flex:1}
+.tp-text h2{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:.4rem}
+.tp-text p{font-size:.88rem;color:var(--text-mid);line-height:1.55;margin-bottom:.5rem}
+.tp-tag{font-size:.7rem;font-weight:600;color:var(--amber-dark);text-transform:uppercase;letter-spacing:.08em}
+.tp-new{position:absolute;top:1rem;right:1rem;background:var(--amber);color:var(--navy);padding:.2rem .6rem;border-radius:4px;font-size:.65rem;font-weight:700;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase}
+@media(max-width:768px){.tools-page{padding:3rem 1.5rem}.tp-card{flex-direction:column;gap:1rem;text-align:center}}
+</style>
+<section class="tools-page">
+<div class="tools-page-inner">
+  <a href="/tools/marketing-calculator" class="tp-card reveal">
+    <div class="tp-icon">&#128202;</div>
+    <div class="tp-text"><h2>Marketing Cost Calculator</h2><p>Calculate your true cost per customer and marketing ROI. See how you compare to industry benchmarks for your trade.</p><span class="tp-tag">Revenue Diagnostics</span></div>
+  </a>
+  <a href="/tools/phone-calculator" class="tp-card reveal">
+    <div class="tp-icon">&#128222;</div>
+    <div class="tp-text"><h2>Phone Revenue Calculator</h2><p>See how much revenue you are losing from missed and poorly handled phone calls every month. Get a recovery plan.</p><span class="tp-tag">Phone Performance</span></div>
+  </a>
+  <a href="/tools/lead-grader" class="tp-card reveal">
+    <div class="tp-icon">&#127919;</div>
+    <div class="tp-text"><h2>Lead Source Grader</h2><p>Grade your marketing channels against industry performance data. Find out which to double down on and which to cut.</p><span class="tp-tag">Channel Analysis</span></div>
+  </a>
+  <a href="/tools/website-audit" class="tp-card reveal">
+    <div class="tp-icon">&#128269;</div>
+    <div class="tp-text"><h2>Website Conversion Audit</h2><p>Enter your URL and get an automated audit of your website speed, mobile performance, and conversion elements.</p><span class="tp-tag">Website Performance</span></div>
+    <span class="tp-new">New</span>
+  </a>
+  <a href="/tools/capacity-planner" class="tp-card reveal">
+    <div class="tp-icon">&#128200;</div>
+    <div class="tp-text"><h2>Capacity-to-Demand Planner</h2><p>Calculate how many leads you actually need based on your team size &#8212; and the maximum you should spend before creating waste.</p><span class="tp-tag">Budget Planning</span></div>
+    <span class="tp-new">New</span>
+  </a>
+</div>
+</section>
+</Base>

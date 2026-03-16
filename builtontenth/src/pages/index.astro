@@ -1,0 +1,306 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Built on Tenth — Growth Intelligence for Home Service Companies" description="We study how the most profitable HVAC, roofing, and plumbing companies actually grow — and publish everything we find.">
+
+<style>
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:var(--navy);overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:1}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.2;filter:grayscale(30%)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,26,46,.95) 0%,rgba(15,26,46,.7) 50%,rgba(15,26,46,.9) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:8rem 2.5rem 6rem;display:grid;grid-template-columns:1.2fr .8fr;gap:4rem;align-items:center}
+.hero-text h1{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:800;color:#fff;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.5rem}
+.hero-text h1 em{font-style:normal;color:var(--amber);position:relative}
+.hero-text h1 em::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:3px;background:var(--amber);opacity:.4;border-radius:2px}
+.hero-sub{font-size:1.15rem;color:var(--text-on-dark);line-height:1.65;margin-bottom:2.5rem;max-width:540px}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;backdrop-filter:blur(10px)}
+.hero-card-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--amber);font-weight:600;margin-bottom:1.25rem}
+.hero-stat{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.5rem}
+.hero-stat-num{font-family:var(--font-display);font-size:2.8rem;font-weight:800;color:#fff}
+.hero-stat-unit{font-size:.9rem;color:var(--text-on-dark)}
+.hero-stat-desc{font-size:.85rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;line-height:1.5}
+.hero-card-divider{height:1px;background:rgba(255,255,255,.08);margin:1.25rem 0}
+.hero-finding{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:1rem}
+.hero-finding-icon{width:20px;height:20px;border-radius:50%;background:rgba(239,68,68,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;color:var(--red-accent);font-size:.7rem}
+.hero-finding-icon.green{background:rgba(16,185,129,.15);color:var(--green-accent)}
+.hero-finding p{font-size:.82rem;color:var(--text-on-dark);line-height:1.5}
+.hero-finding strong{color:#fff}
+
+.trust-bar{background:var(--navy-mid);border-top:1px solid rgba(255,255,255,.05);padding:2rem 2.5rem}
+.trust-bar-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.75rem}
+.trust-num{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--amber)}
+.trust-label{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.3;max-width:140px}
+
+.problem{padding:7rem 2.5rem;background:var(--cream)}
+.problem-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.problem-images{position:relative;height:500px}
+.problem-img-1{position:absolute;top:0;left:0;width:65%;height:70%;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.problem-img-1 img,.problem-img-2 img{width:100%;height:100%;object-fit:cover}
+.problem-img-2{position:absolute;bottom:0;right:0;width:55%;height:55%;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12);border:4px solid var(--cream)}
+.problem-badge{position:absolute;bottom:50%;right:42%;background:var(--navy);color:#fff;padding:1rem 1.25rem;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:2}
+.problem-badge-num{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--red-accent)}
+.problem-badge-text{font-size:.72rem;color:rgba(255,255,255,.6);max-width:120px;line-height:1.3;margin-top:.2rem}
+.problem-text h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:var(--navy);line-height:1.12;letter-spacing:-.02em;margin-bottom:1.5rem}
+.problem-text p{font-size:1.05rem;color:var(--text-mid);line-height:1.7;margin-bottom:1.25rem}
+.pain-points{list-style:none;margin-top:1.5rem}
+.pain-point{display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--warm-gray)}
+.pain-point:last-child{border-bottom:none}
+.pain-icon{width:24px;height:24px;border-radius:6px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--red-accent);font-size:.75rem;font-weight:700}
+.pain-point p{font-size:.92rem;color:var(--text-dark);line-height:1.5;margin:0}
+.pain-point strong{color:var(--navy)}
+
+.approach{padding:7rem 2.5rem;background:var(--navy);position:relative;overflow:hidden}
+.approach::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,.06) 0%,transparent 70%);border-radius:50%}
+.approach-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.approach-header{text-align:center;margin-bottom:4rem}
+.approach-header h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.02em;margin-bottom:1rem}
+.approach-header p{font-size:1.05rem;color:var(--text-on-dark);max-width:600px;margin:0 auto;line-height:1.65}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.approach-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;transition:all .4s;text-decoration:none;color:inherit}
+.approach-card:hover{border-color:rgba(245,158,11,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.approach-card-img{height:200px;overflow:hidden;position:relative}
+.approach-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.approach-card:hover .approach-card-img img{transform:scale(1.05)}
+.approach-card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,rgba(15,26,46,.8))}
+.approach-card-body{padding:1.75rem}
+.approach-card-num{font-family:var(--font-display);font-size:.7rem;font-weight:700;color:var(--amber);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+.approach-card h3{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.25}
+.approach-card p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.6}
+
+.tools-section{padding:7rem 2.5rem;background:var(--cream)}
+.tools-inner{max-width:1200px;margin:0 auto}
+.tools-header{text-align:center;margin-bottom:4rem}
+.tools-header h2{font-family:var(--font-display);font-size:clamp(2rem,3vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:.75rem}
+.tools-header p{font-size:1.05rem;color:var(--text-mid);max-width:550px;margin:0 auto;line-height:1.6}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.tool-card{background:#fff;border-radius:16px;padding:2rem;border:1px solid var(--warm-gray);transition:all .4s;text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden}
+.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.tool-card:hover::before{transform:scaleX(1)}
+.tool-card:hover{border-color:var(--amber);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.tool-emoji{width:48px;height:48px;border-radius:12px;background:rgba(245,158,11,.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem}
+.tool-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.6rem}
+.tool-card p{font-size:.88rem;color:var(--text-mid);line-height:1.55;margin-bottom:1.25rem}
+.tool-link{font-size:.85rem;color:var(--amber-dark);font-weight:600}
+
+.services-section{padding:7rem 2.5rem;background:var(--navy)}
+.services-inner{max-width:1200px;margin:0 auto}
+.services-header{text-align:center;margin-bottom:4rem}
+.services-header h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:.75rem}
+.services-header p{color:var(--text-on-dark);font-size:1.05rem;max-width:550px;margin:0 auto;line-height:1.6}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative}
+.service-card:hover{border-color:rgba(245,158,11,.3);background:rgba(255,255,255,.05)}
+.service-card.featured{border-color:var(--amber);background:rgba(245,158,11,.04)}
+.service-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy);padding:.3rem 1rem;border-radius:20px;font-size:.7rem;font-weight:700;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase}
+.service-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+.service-price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--amber);margin-bottom:.5rem}
+.service-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:1.5rem}
+.service-features{list-style:none;margin-bottom:2rem}
+.service-features li{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;font-size:.85rem;color:var(--text-on-dark);line-height:1.45}
+.service-features li::before{content:'✓';color:var(--green-accent);font-weight:700;flex-shrink:0}
+.service-cta{display:block;text-align:center;padding:.9rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s}
+.service-card .service-cta{background:transparent;border:1.5px solid rgba(255,255,255,.2);color:#fff}
+.service-card .service-cta:hover{border-color:var(--amber);color:var(--amber)}
+.service-card.featured .service-cta{background:var(--amber);color:var(--navy);border:none}
+.service-card.featured .service-cta:hover{background:var(--amber-light)}
+
+.newsletter-section{padding:7rem 2.5rem;background:var(--cream)}
+.newsletter-inner{max-width:800px;margin:0 auto;text-align:center}
+.newsletter-section h2{font-family:var(--font-display);font-size:clamp(2rem,3vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:.75rem}
+.newsletter-form{display:flex;gap:.75rem;max-width:480px;margin:2rem auto 1rem}
+.newsletter-form input{flex:1;padding:1rem 1.25rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;background:#fff;outline:none}
+.newsletter-form input:focus{border-color:var(--amber)}
+.newsletter-form button{padding:1rem 1.75rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s;white-space:nowrap}
+.newsletter-form button:hover{background:var(--navy-light)}
+
+@media(max-width:1024px){.hero-content{grid-template-columns:1fr;padding-top:7rem}.hero-card{max-width:400px}.problem-inner{grid-template-columns:1fr;gap:3rem}.approach-grid,.services-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.hero-content{padding:6rem 1.5rem 4rem}.hero-text h1{font-size:2.2rem}.trust-bar-inner{flex-direction:column;align-items:flex-start;gap:1rem}.problem,.approach,.tools-section,.services-section,.newsletter-section{padding:4rem 1.5rem}.problem-images{height:300px}.approach-grid,.services-grid,.tools-grid{grid-template-columns:1fr}.newsletter-form{flex-direction:column}}
+</style>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="Construction and trade work" loading="eager">
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="anim-fade-up">Your Marketing Is <em>Leaking Revenue.</em> We Show You Where.</h1>
+      <p class="hero-sub anim-fade-up anim-delay-1">We study how the most profitable HVAC, roofing, and plumbing companies actually grow — analyzing their marketing spend, lead conversion, and pipeline systems. Then we publish everything we find.</p>
+      <div class="hero-ctas anim-fade-up anim-delay-2">
+        <a href="/services" class="btn-primary">Get a Revenue Leak Audit →</a>
+        <a href="/newsletter" class="btn-secondary">Read the Research</a>
+      </div>
+    </div>
+    <div class="hero-card anim-fade-up anim-delay-3">
+      <div class="hero-card-label">What a Revenue Leak Audit Reveals</div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">$247K</span>
+        <span class="hero-stat-unit">/year</span>
+      </div>
+      <p class="hero-stat-desc">Revenue leakage identified in a $2.3M HVAC company spending $7K/month on marketing</p>
+      <div class="hero-card-divider"></div>
+      <div class="hero-finding"><div class="hero-finding-icon">✕</div><p><strong>34% of calls missed</strong> — no voicemail follow-up system</p></div>
+      <div class="hero-finding"><div class="hero-finding-icon">✕</div><p><strong>Zero conversion tracking</strong> on $4,200/month Google Ads spend</p></div>
+      <div class="hero-finding"><div class="hero-finding-icon">✕</div><p><strong>No estimate follow-up</strong> — 68% of quotes never get a second touch</p></div>
+      <div class="hero-finding"><div class="hero-finding-icon green">✓</div><p><strong>Strong review count</strong> — but zero responses to negative reviews</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-num">3</span><span class="trust-label">Trades covered: HVAC, Roofing, Plumbing</span></div>
+    <div class="trust-item"><span class="trust-num">15+</span><span class="trust-label">US markets researched</span></div>
+    <div class="trust-item"><span class="trust-num">Free</span><span class="trust-label">Research, tools, and benchmarks published weekly</span></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="problem-images reveal-left">
+      <div class="problem-img-1"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="HVAC technician at work" loading="lazy"></div>
+      <div class="problem-img-2"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="Service van fleet" loading="lazy"></div>
+      <div class="problem-badge"><div class="problem-badge-num">67%</div><div class="problem-badge-text">of owners can't connect ad spend to booked jobs</div></div>
+    </div>
+    <div class="problem-text reveal">
+      <div class="section-label">The Problem</div>
+      <h2>You're spending $5K–$15K a month on marketing. Can you prove it's working?</h2>
+      <p>Most home service companies are making marketing decisions blind. Agencies send click reports. Lead platforms charge per call. But nobody shows you the complete picture.</p>
+      <ul class="pain-points">
+        <li class="pain-point"><div class="pain-icon">$</div><p><strong>"I'm spending money but I don't know what's working."</strong> Your agency shows impressions and clicks. You need to see cost per booked job.</p></li>
+        <li class="pain-point"><div class="pain-icon">✕</div><p><strong>"My leads are garbage."</strong> The problem usually isn't lead quality — it's that nobody trained your front desk to qualify and book them.</p></li>
+        <li class="pain-point"><div class="pain-icon">?</div><p><strong>"I tried agencies before and got burned."</strong> Every vendor has a financial incentive to recommend more ad spend. We don't.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach">
+  <div class="approach-inner">
+    <div class="approach-header reveal">
+      <div class="section-label" style="color:var(--amber)">How We Work</div>
+      <h2>We're not an agency. We don't run your ads. We show you the truth.</h2>
+      <p>Built on Tenth is a revenue intelligence operation. We analyze what's actually working across hundreds of home service companies — then give you the playbook.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Data analytics" loading="lazy"></div>
+        <div class="approach-card-body"><div class="approach-card-num">01 — Research</div><h3>We Study What's Working</h3><p>We analyze the Google presence, ad strategy, review ecosystem, and competitive position of hundreds of HVAC, roofing, and plumbing companies.</p></div>
+      </div>
+      <div class="approach-card reveal" style="transition-delay:.15s">
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" alt="Financial analysis" loading="lazy"></div>
+        <div class="approach-card-body"><div class="approach-card-num">02 — Diagnose</div><h3>We Find the Revenue Leaks</h3><p>Every gap gets translated into dollars. Not "your website needs work" — but "this is costing you an estimated $180K per year."</p></div>
+      </div>
+      <div class="approach-card reveal" style="transition-delay:.3s">
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600&q=80" alt="Strategic planning" loading="lazy"></div>
+        <div class="approach-card-body"><div class="approach-card-num">03 — Build the System</div><h3>We Design Growth Systems</h3><p>Phone scripts, follow-up sequences, channel strategy, tracking dashboards — custom-built for your business and your market.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools-section" id="tools">
+  <div class="tools-inner">
+    <div class="tools-header reveal">
+      <h2>Free tools that show you the money</h2>
+      <p>Plug in your numbers. See exactly where your revenue is leaking. Takes less than 2 minutes.</p>
+    </div>
+    <div class="tools-grid">
+      <a href="/tools/marketing-calculator" class="tool-card reveal"><div class="tool-emoji">📊</div><h3>Marketing Cost Calculator</h3><p>Enter your ad spend, lead count, close rate, and average ticket. See your true cost per customer with industry benchmarks.</p><div class="tool-link">Calculate your numbers →</div></a>
+      <a href="/tools/phone-calculator" class="tool-card reveal" style="transition-delay:.15s"><div class="tool-emoji">📞</div><h3>Phone Revenue Calculator</h3><p>How many calls are you missing? Enter your call volume and answer rate to see the monthly revenue impact.</p><div class="tool-link">See your lost revenue →</div></a>
+      <a href="/tools/lead-grader" class="tool-card reveal" style="transition-delay:.3s"><div class="tool-emoji">🎯</div><h3>Lead Source Grader</h3><p>Google Ads, LSAs, Angi, referrals — which deserve more budget and which are draining it? Get a prioritized scorecard.</p><div class="tool-link">Grade your lead sources →</div></a>
+    </div>
+    <div style="text-align:center;margin-top:2rem" class="reveal"><a href="/tools" style="color:var(--amber-dark);font-family:var(--font-display);font-weight:700;font-size:.95rem;text-decoration:none">See all 5 free tools →</a></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div class="section-label" style="color:var(--amber)">Work With Us</div>
+      <h2>Stop guessing. Start knowing.</h2>
+      <p>Every engagement starts with data and ends with a system. No long-term contracts. No recurring fees. Just clarity.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-name">Revenue Leak Audit</div>
+        <div class="service-price">$750</div>
+        <div class="service-desc">Comprehensive marketing analysis benchmarked against your top local competitors, with every finding translated into dollars.</div>
+        <ul class="service-features"><li>Google Business Profile analysis vs. competitors</li><li>Website conversion audit</li><li>Google Ads and LSA assessment</li><li>Review ecosystem analysis</li><li>Competitive landscape mapping</li><li>15-25 page report in 7 days</li></ul>
+        <a href="mailto:hello@builtontenth.com?subject=Revenue Leak Audit" class="service-cta">Apply for an Audit</a>
+      </div>
+      <div class="service-card featured reveal" style="transition-delay:.15s">
+        <div class="service-name">Growth System Blueprint</div>
+        <div class="service-price">$3,000</div>
+        <div class="service-desc">Full audit plus a custom growth system — demand capture, conversion infrastructure, follow-up engine, and measurement dashboard.</div>
+        <ul class="service-features"><li>Everything in the Revenue Leak Audit</li><li>Custom channel strategy + budget allocation</li><li>Phone scripts and qualification framework</li><li>Follow-up sequences and review system</li><li>KPI dashboard with tracking templates</li><li>90-day implementation calendar</li></ul>
+        <a href="mailto:hello@builtontenth.com?subject=Growth Blueprint" class="service-cta">Apply for a Blueprint</a>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.3s">
+        <div class="service-name">90-Day Growth Advisory</div>
+        <div class="service-price">$7,500</div>
+        <div class="service-desc">Audit, blueprint, and 12 weeks of strategic guidance as you implement — adjusting in real-time based on your results.</div>
+        <ul class="service-features"><li>Complete audit and blueprint</li><li>12 weeks of weekly performance reviews</li><li>Priority async access (24-48hr response)</li><li>Monthly competitor re-benchmarking</li><li>Exit report with before/after analysis</li><li>6-month forward roadmap</li></ul>
+        <a href="mailto:hello@builtontenth.com?subject=90-Day Advisory" class="service-cta">Apply for Advisory</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section" id="newsletter">
+  <div class="newsletter-inner">
+    <h2 class="reveal">The Weekly Growth Report</h2>
+    <p class="reveal" style="font-size:1.05rem;color:var(--text-mid);line-height:1.6;margin-bottom:0">One actionable growth insight every Tuesday — backed by data from analyzing hundreds of HVAC, roofing, and plumbing companies. No fluff. No pitches. Just the numbers.</p>
+    <form class="newsletter-form reveal" id="home-newsletter-form">
+      <input type="email" id="home-email" placeholder="Enter your email" required>
+      <button type="submit" id="home-submit-btn">Subscribe Free</button>
+    </form>
+    <p class="reveal" id="home-form-msg" style="font-size:.78rem;color:var(--text-light)">Free. Every Tuesday. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<script>
+  document.getElementById('home-newsletter-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('home-email').value;
+    const btn = document.getElementById('home-submit-btn');
+    const msg = document.getElementById('home-form-msg');
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      if (res.ok || res.status === 204) {
+        btn.textContent = "You're in! ✓";
+        btn.style.background = '#10b981';
+        document.getElementById('home-email').disabled = true;
+        msg.textContent = 'Check your inbox. First issue lands Tuesday.';
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'newsletter_signup', form_location: 'homepage' });
+      } else {
+        btn.textContent = 'Subscribe Free';
+        btn.disabled = false;
+        msg.textContent = 'Something went wrong. Try again.';
+        msg.style.color = '#ef4444';
+      }
+    } catch(err) {
+      btn.textContent = 'Subscribe Free';
+      btn.disabled = false;
+      msg.textContent = 'Something went wrong. Try again.';
+      msg.style.color = '#ef4444';
+    }
+  });
+</script>
+
+</Base>

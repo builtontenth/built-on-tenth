@@ -1,0 +1,205 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Marketing Cost Calculator for HVAC, Roofing & Plumbing | Built on Tenth" description="Calculate your true cost per customer and marketing ROI. See how your numbers compare to industry benchmarks." solidNav={true}>
+<section class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> / <a href="/tools">Tools</a> / Marketing Cost Calculator</div>
+  <h1>Marketing Cost <em>Calculator</em></h1>
+  <p>Enter your numbers. See your true cost per customer. Compare against industry benchmarks for your trade.</p>
+</section>
+<style>
+.cs{padding:4rem 2.5rem 5rem;background:var(--cream)}.ci{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.cf{background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--warm-gray)}
+.cf h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.cf>p.desc{font-size:.88rem;color:var(--text-light);margin-bottom:2rem;line-height:1.5}
+.fg{margin-bottom:1.5rem}.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem}
+.fg .ht{font-size:.75rem;color:var(--text-light);margin-bottom:.4rem}
+.fg input,.fg select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:#fff}
+.fg input:focus,.fg select:focus{border-color:var(--amber)}
+.calc-btn{width:100%;padding:1rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s}
+.calc-btn:hover{background:var(--amber-light)}
+.cr{background:var(--navy);border-radius:16px;padding:2.5rem;color:#fff;position:sticky;top:5rem}
+.cr h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:2rem}
+.ri{margin-bottom:1.5rem}.rl{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.rv{font-family:var(--font-display);font-size:2rem;font-weight:800}
+.rv.w{color:#ef4444}.rv.g{color:#10b981}.rv.n{color:#f59e0b}
+.rc{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.4}
+.rd{height:1px;background:rgba(255,255,255,.08);margin:1.5rem 0}
+.bb{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:.5rem}
+.br{height:100%;border-radius:4px;transition:width .8s ease}
+.bl{display:flex;justify-content:space-between;margin-top:.3rem}.bl span{font-size:.68rem;color:rgba(255,255,255,.35)}
+.es{text-align:center;padding:3rem 1rem}.es p{font-size:.9rem;color:rgba(255,255,255,.35)}
+
+/* Email gate styles */
+.email-gate{margin-top:2rem;padding:1.5rem;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:12px}
+.email-gate h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.email-gate p{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:1rem;line-height:1.5}
+.email-gate .gate-row{display:flex;gap:.5rem}
+.email-gate input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);font-size:.88rem;outline:none}
+.email-gate input::placeholder{color:rgba(255,255,255,.3)}
+.email-gate button{padding:.75rem 1.25rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:all .3s}
+.email-gate button:hover{background:var(--amber-light)}
+.report-preview{margin-top:1.25rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px;border:1px dashed rgba(255,255,255,.1)}
+.report-preview h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:.6rem}
+.report-preview ul{list-style:none}
+.report-preview li{font-size:.8rem;color:rgba(255,255,255,.5);padding:.25rem 0;display:flex;align-items:center;gap:.4rem}
+.report-preview li::before{content:'\2713';color:#10b981;font-weight:700;font-size:.7rem}
+
+/* Report modal */
+.report-overlay{display:none;position:fixed;inset:0;background:rgba(15,26,46,.85);z-index:10000;overflow-y:auto;padding:2rem}
+.report-overlay.open{display:flex;justify-content:center;align-items:flex-start}
+.report-container{background:#fff;max-width:800px;width:100%;border-radius:16px;padding:3rem;position:relative;color:var(--text-dark)}
+.report-close{position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)}
+.report-header{text-align:center;padding-bottom:2rem;border-bottom:2px solid var(--amber);margin-bottom:2rem}
+.report-header h1{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:.5rem}
+.report-header p{font-size:.85rem;color:var(--text-light)}
+.report-hero-stat{text-align:center;margin:2rem 0}
+.report-hero-stat .big{font-family:var(--font-display);font-size:3rem;font-weight:800}
+.report-hero-stat .big.red{color:#ef4444}.report-hero-stat .big.green{color:#10b981}.report-hero-stat .big.amber{color:#d97706}
+.report-hero-stat .label{font-size:.85rem;color:var(--text-light);margin-top:.25rem}
+.report-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.report-table th{background:var(--navy);color:#fff;padding:.7rem 1rem;text-align:left;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.report-table td{padding:.65rem 1rem;border-bottom:1px solid var(--warm-gray);font-size:.88rem}
+.report-table tr:last-child td{border-bottom:none}
+.report-section{margin:2rem 0}
+.report-section h2{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--warm-gray)}
+.report-section p{font-size:.9rem;color:var(--text-mid);line-height:1.65;margin-bottom:.75rem}
+.report-section ul{margin:.75rem 0 .75rem 1.5rem}.report-section li{font-size:.88rem;color:var(--text-mid);line-height:1.6;margin-bottom:.4rem}
+.report-actions{display:flex;gap:1rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:2px solid var(--warm-gray)}
+.report-print{padding:.85rem 2rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer}
+.report-cta{padding:.85rem 2rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none}
+.report-footer{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--warm-gray)}
+.report-footer p{font-size:.78rem;color:var(--text-light)}
+@media print{.report-overlay{position:static;background:#fff;padding:0}.report-close,.report-actions{display:none!important}body>*:not(.report-overlay){display:none!important}.report-overlay.open{display:block}}
+@media(max-width:768px){.cs{padding:2rem 1.5rem 3rem}.ci{grid-template-columns:1fr}.cr{position:static}.email-gate .gate-row{flex-direction:column}}
+</style>
+
+<section class="cs"><div class="ci">
+  <div class="cf">
+    <h2>Your Numbers</h2><p class="desc">Fill in what you know. The calculator handles the rest.</p>
+    <div class="fg"><label>Your Trade</label><select id="trade"><option value="hvac">HVAC</option><option value="roofing">Roofing</option><option value="plumbing">Plumbing</option><option value="electrical">Electrical</option></select></div>
+    <div class="fg"><label>Monthly Marketing Spend ($)</label><div class="ht">Total across all channels — ads, agency fees, lead platforms</div><input type="number" id="spend" placeholder="e.g., 5000" min="0"></div>
+    <div class="fg"><label>Leads Per Month</label><div class="ht">Total inbound calls and form submissions</div><input type="number" id="leads" placeholder="e.g., 80" min="0"></div>
+    <div class="fg"><label>Close Rate (%)</label><div class="ht">Percentage of leads that become booked jobs</div><input type="number" id="cr" placeholder="e.g., 25" min="0" max="100"></div>
+    <div class="fg"><label>Average Ticket ($)</label><div class="ht">Average revenue per completed job</div><input type="number" id="ticket" placeholder="e.g., 8500" min="0"></div>
+    <button class="calc-btn" onclick="calc()">Calculate My Numbers &#8594;</button>
+  </div>
+  <div class="cr"><h2>Your Results</h2>
+    <div class="es" id="emp"><p>Enter your numbers and hit calculate to see results with industry benchmarks.</p></div>
+    <div id="res" style="display:none">
+      <div class="ri"><div class="rl">Cost Per Lead</div><div class="rv" id="cpl">&mdash;</div><div class="rc" id="cplC"></div></div>
+      <div class="ri"><div class="rl">Cost Per Booked Job</div><div class="rv" id="cpj">&mdash;</div><div class="rc" id="cpjC"></div></div>
+      <div class="rd"></div>
+      <div class="ri"><div class="rl">Marketing ROI</div><div class="rv" id="roi">&mdash;</div><div class="rc" id="roiC"></div>
+        <div class="bb"><div class="br" id="roiB" style="width:0%;background:var(--amber)"></div></div>
+        <div class="bl"><span>0%</span><span>Break Even</span><span>500%+</span></div>
+      </div>
+      <div class="rd"></div>
+      <div class="ri"><div class="rl">Revenue Per Marketing Dollar</div><div class="rv n" id="rpd">&mdash;</div><div class="rc" id="rpdC"></div></div>
+      <div class="ri"><div class="rl">Jobs Booked Per Month</div><div class="rv n" id="jobs">&mdash;</div></div>
+      <div class="email-gate" id="emailGate">
+        <h3>Download Your Full ROI Report</h3>
+        <p>Get a detailed PDF-ready report with channel-by-channel benchmarks, a "kill / fix / scale" recommendation for each channel, and what to ask your agency this week.</p>
+        <div class="gate-row">
+          <input type="email" id="gateEmail" placeholder="Enter your email">
+          <button onclick="unlockReport()">Get My Report</button>
+        </div>
+        <div class="report-preview"><h4>Your report includes</h4>
+          <ul><li>Cost per booked job vs. industry top 25%</li><li>ROI breakdown with profit margin analysis</li><li>3 specific actions to reduce waste this month</li><li>Benchmarks for your trade and market size</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- Report overlay -->
+<div class="report-overlay" id="reportOverlay">
+  <div class="report-container">
+    <button class="report-close" onclick="closeReport()">&times;</button>
+    <div class="report-header">
+      <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--amber-dark);font-weight:700">Built on Tenth</p>
+      <h1>Marketing ROI Diagnostic Report</h1>
+      <p id="rptMeta">Generated for an HVAC company</p>
+    </div>
+    <div class="report-hero-stat"><div class="big" id="rptHero">&mdash;</div><div class="label">Marketing ROI</div></div>
+    <div class="report-section"><h2>Your Numbers at a Glance</h2>
+      <table class="report-table"><thead><tr><th>Metric</th><th>Your Number</th><th>Industry Avg</th><th>Top 25%</th></tr></thead>
+        <tbody id="rptTable"></tbody>
+      </table>
+    </div>
+    <div class="report-section"><h2>Channel Recommendations</h2><div id="rptRecs"></div></div>
+    <div class="report-section"><h2>3 Actions to Take This Week</h2>
+      <ol id="rptActions" style="margin-left:1.5rem"></ol>
+    </div>
+    <div class="report-section"><h2>What to Ask Your Agency</h2>
+      <p>If you work with a marketing agency, bring these questions to your next conversation:</p>
+      <ol id="rptAgency" style="margin-left:1.5rem"></ol>
+    </div>
+    <div class="report-actions">
+      <button class="report-print" onclick="printReport()">Print / Save as PDF</button>
+      <a href="/services#audit" class="report-cta">Get a Full Revenue Leak Audit &mdash; $750 &#8594;</a>
+    </div>
+    <div class="report-footer"><p>builtontenth.com &mdash; Revenue intelligence for home service companies</p></div>
+  </div>
+</div>
+
+<script is:inline>
+const bm={hvac:{cpl:[55,90],cpj:[220,360],top_cpl:45,top_cpj:180},roofing:{cpl:[70,140],cpj:[280,560],top_cpl:55,top_cpj:220},plumbing:{cpl:[45,80],cpj:[180,320],top_cpl:35,top_cpj:140},electrical:{cpl:[40,75],cpj:[160,300],top_cpl:30,top_cpj:120}};
+let calcData = {};
+
+function calc(){
+  const t=document.getElementById('trade').value,s=+document.getElementById('spend').value,l=+document.getElementById('leads').value,c=+document.getElementById('cr').value/100,k=+document.getElementById('ticket').value;
+  if(!s||!l||!c||!k)return;
+  const cpl=s/l,j=Math.round(l*c),cpj=j>0?s/j:0,rev=j*k,roi=s>0?((rev-s)/s)*100:0,rpd=s>0?rev/s:0,b=bm[t];
+  calcData={t,s,l,c,k,cpl,j,cpj,rev,roi,rpd,b};
+  document.getElementById('emp').style.display='none';document.getElementById('res').style.display='block';
+  const ce=document.getElementById('cpl');ce.textContent='$'+Math.round(cpl).toLocaleString();ce.className='rv '+(cpl>b.cpl[1]?'w':cpl<b.cpl[0]?'g':'n');
+  document.getElementById('cplC').textContent='Industry: $'+b.cpl[0]+' \u2013 $'+b.cpl[1]+' | Top 25%: $'+b.top_cpl;
+  const je=document.getElementById('cpj');je.textContent='$'+Math.round(cpj).toLocaleString();je.className='rv '+(cpj>b.cpj[1]?'w':cpj<b.cpj[0]?'g':'n');
+  document.getElementById('cpjC').textContent='Industry: $'+b.cpj[0]+' \u2013 $'+b.cpj[1]+' | Top 25%: $'+b.top_cpj;
+  const re=document.getElementById('roi');re.textContent=Math.round(roi)+'%';re.className='rv '+(roi<100?'w':roi>400?'g':'n');
+  document.getElementById('roiC').textContent=roi<100?'Below break-even. Your marketing is losing money.':roi<300?'Positive but below industry average.':'Strong ROI. You are outperforming most competitors.';
+  document.getElementById('roiB').style.width=Math.min(roi/6,100)+'%';document.getElementById('roiB').style.background=roi<100?'#ef4444':roi>400?'#10b981':'#f59e0b';
+  document.getElementById('rpd').textContent='$'+rpd.toFixed(2);document.getElementById('rpdC').textContent='For every $1 spent, you generate $'+rpd.toFixed(2)+' in revenue.';
+  document.getElementById('jobs').textContent=j+' jobs/month';
+}
+
+function unlockReport(){
+  const email=document.getElementById('gateEmail').value;
+  if(!email||!email.includes('@')){alert('Please enter a valid email address.');return;}
+  const btn=document.querySelector('#emailGate button');btn.textContent='Report unlocked \u2713';btn.style.background='#10b981';
+  generateReport();showReport();
+}
+
+function generateReport(){
+  const d=calcData,tn=d.t.toUpperCase(),b=d.b;
+  document.getElementById('rptMeta').textContent='Generated for a '+tn+' company | '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const h=document.getElementById('rptHero');h.textContent=Math.round(d.roi)+'%';h.className='big '+(d.roi<100?'red':d.roi>400?'green':'amber');
+  document.getElementById('rptTable').innerHTML=
+    '<tr><td>Monthly spend</td><td>$'+d.s.toLocaleString()+'</td><td colspan="2">Varies</td></tr>'+
+    '<tr><td>Cost per lead</td><td style="color:'+(d.cpl>b.cpl[1]?'#ef4444':'#10b981')+'">$'+Math.round(d.cpl)+'</td><td>$'+b.cpl[0]+' \u2013 $'+b.cpl[1]+'</td><td>$'+b.top_cpl+'</td></tr>'+
+    '<tr><td>Cost per booked job</td><td style="color:'+(d.cpj>b.cpj[1]?'#ef4444':'#10b981')+'">$'+Math.round(d.cpj)+'</td><td>$'+b.cpj[0]+' \u2013 $'+b.cpj[1]+'</td><td>$'+b.top_cpj+'</td></tr>'+
+    '<tr><td>Close rate</td><td>'+Math.round(d.c*100)+'%</td><td>20 \u2013 30%</td><td>40%+</td></tr>'+
+    '<tr><td>Jobs booked/month</td><td>'+d.j+'</td><td colspan="2">Varies</td></tr>'+
+    '<tr><td>Marketing ROI</td><td style="font-weight:700;color:'+(d.roi<100?'#ef4444':'#10b981')+'">'+Math.round(d.roi)+'%</td><td>200 \u2013 400%</td><td>500%+</td></tr>';
+  let recs='';
+  if(d.cpl>b.cpl[1])recs+='<p><strong style="color:#ef4444">Your cost per lead is above industry average.</strong> This usually means poor keyword targeting, wasted spend on irrelevant searches, or ads running in geographic areas outside your service radius. Review your search terms report and tighten targeting.</p>';
+  if(d.c<0.25)recs+='<p><strong style="color:#ef4444">Your close rate is below 25%.</strong> The leads may not be the problem \u2014 your phone handling, response speed, or quoting process likely needs work. Improving close rate from '+Math.round(d.c*100)+'% to 35% would add approximately '+Math.round((d.l*0.35-d.j)*d.k).toLocaleString()+' in monthly revenue without spending another dollar on marketing.</p>';
+  if(d.roi>400)recs+='<p><strong style="color:#10b981">Your ROI is strong.</strong> Consider increasing spend by 20 \u2013 30% in your best-performing channel to scale revenue. At your current efficiency, an extra $'+Math.round(d.s*0.25).toLocaleString()+'/month should generate approximately $'+Math.round(d.s*0.25*d.rpd).toLocaleString()+' in additional revenue.</p>';
+  if(!recs)recs='<p>Your numbers are in the normal range. The biggest opportunity is improving close rate \u2014 every 5-point improvement in close rate drops your cost per booked job significantly.</p>';
+  document.getElementById('rptRecs').innerHTML=recs;
+  document.getElementById('rptActions').innerHTML=
+    '<li>Check if conversion tracking is installed on your Google Ads. If not, fix it today \u2014 you cannot optimize what you cannot measure.</li>'+
+    '<li>Review your phone answer rate this week. Ask your front desk to log every call for 5 days. Calculate (answered / total). If it is below 80%, that is your biggest revenue leak.</li>'+
+    '<li>Pull your Google Ads search terms report and add negative keywords for anything irrelevant. This typically saves 15 \u2013 25% of ad spend immediately.</li>';
+  document.getElementById('rptAgency').innerHTML=
+    '<li>"What is my cost per booked job by channel \u2014 not cost per lead, cost per job that actually got on the board?"</li>'+
+    '<li>"Which keywords are generating booked jobs vs. just generating clicks?"</li>'+
+    '<li>"What is my conversion tracking setup and when was it last verified?"</li>';
+}
+
+function showReport(){document.getElementById('reportOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeReport(){document.getElementById('reportOverlay').classList.remove('open');document.body.style.overflow='';}
+function printReport(){window.print();}
+</script>
+</Base>

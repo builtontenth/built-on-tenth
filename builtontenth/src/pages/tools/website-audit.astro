@@ -1,0 +1,190 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Free Website Audit for HVAC, Roofing & Plumbing Companies | Built on Tenth" description="Get an automated conversion audit of your contractor website. See what is costing you calls and jobs." solidNav={true}>
+<section class="page-hero">
+  <h1>Free Website <em>Conversion Audit</em></h1>
+  <p>Enter your website URL. We will analyze your site for the conversion leaks that cost contractors the most calls and booked jobs.</p>
+</section>
+<style>
+.audit-section{padding:4rem 2.5rem 5rem;background:var(--cream)}
+.audit-inner{max-width:700px;margin:0 auto}
+.audit-form{background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--warm-gray);margin-bottom:2rem}
+.audit-form h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.audit-form>p{font-size:.88rem;color:var(--text-light);margin-bottom:2rem;line-height:1.5}
+.fg{margin-bottom:1.5rem}.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem}
+.fg .ht{font-size:.75rem;color:var(--text-light);margin-bottom:.4rem}
+.fg input,.fg select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:#fff}
+.fg input:focus{border-color:var(--amber)}
+.calc-btn{width:100%;padding:1rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s}
+.calc-btn:hover{background:var(--amber-light)}
+.calc-btn:disabled{opacity:.6;cursor:not-allowed}
+
+.loading{display:none;text-align:center;padding:3rem 1rem}
+.loading.show{display:block}
+.loading p{font-size:1rem;color:var(--text-mid);margin-bottom:.5rem}
+.spinner{width:40px;height:40px;border:4px solid var(--warm-gray);border-top-color:var(--amber);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-step{font-size:.82rem;color:var(--text-light);transition:all .3s}
+
+.results{display:none}
+.score-card{background:var(--navy);border-radius:16px;padding:2.5rem;color:#fff;text-align:center;margin-bottom:2rem}
+.score-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;position:relative}
+.score-circle::before{content:'';position:absolute;inset:0;border-radius:50%;border:6px solid rgba(255,255,255,.1)}
+.score-num{font-family:var(--font-display);font-size:2.8rem;font-weight:800}
+.score-label{font-size:.85rem;color:rgba(255,255,255,.5)}
+.score-verdict{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-top:.5rem}
+
+.findings{list-style:none}
+.finding{background:#fff;border-radius:12px;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--warm-gray);display:flex;gap:1rem;align-items:flex-start}
+.finding-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;font-weight:700}
+.finding-icon.fail{background:rgba(239,68,68,.1);color:#ef4444}
+.finding-icon.warn{background:rgba(245,158,11,.1);color:#d97706}
+.finding-icon.pass{background:rgba(16,185,129,.1);color:#10b981}
+.finding-text h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
+.finding-text p{font-size:.85rem;color:var(--text-mid);line-height:1.55}
+
+.audit-gate{background:var(--navy);border-radius:16px;padding:2rem;text-align:center;margin-top:2rem}
+.audit-gate h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.audit-gate p{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.gate-row{display:flex;gap:.5rem;max-width:400px;margin:0 auto}
+.gate-row input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);font-size:.88rem;outline:none}
+.gate-row input::placeholder{color:rgba(255,255,255,.3)}
+.gate-row button{padding:.75rem 1.25rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap}
+.cta-bottom{text-align:center;margin-top:2rem}
+
+@media(max-width:768px){.audit-section{padding:2rem 1.5rem 3rem}.gate-row{flex-direction:column}}
+</style>
+
+<section class="audit-section"><div class="audit-inner">
+  <div class="audit-form" id="auditForm">
+    <h2>Enter your website</h2>
+    <p>We will check your site speed, mobile performance, and key conversion elements that determine whether visitors call you or bounce to a competitor.</p>
+    <div class="fg"><label>Your Website URL</label><div class="ht">e.g., www.yourcompany.com</div><input type="text" id="siteUrl" placeholder="www.yourcompany.com"></div>
+    <div class="fg"><label>Your Trade</label><select id="auditTrade"><option value="hvac">HVAC</option><option value="roofing">Roofing</option><option value="plumbing">Plumbing</option><option value="electrical">Electrical</option></select></div>
+    <button class="calc-btn" id="auditBtn" onclick="runAudit()">Analyze My Website &#8594;</button>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Analyzing your website...</p>
+    <div class="loading-step" id="loadStep">Checking page speed and mobile performance...</div>
+  </div>
+
+  <div class="results" id="results">
+    <div class="score-card">
+      <div class="score-circle"><span class="score-num" id="scoreNum">0</span></div>
+      <div class="score-label">Conversion Leak Score (0 = many leaks, 100 = optimized)</div>
+      <div class="score-verdict" id="scoreVerdict"></div>
+    </div>
+    <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:1.5rem">Findings</h2>
+    <div class="findings" id="findings"></div>
+    <div class="audit-gate">
+      <h3>Get Your Full Conversion Audit Report</h3>
+      <p>Detailed PDF with all findings, prioritized fixes, estimated revenue impact, and what to tell your web developer.</p>
+      <div class="gate-row">
+        <input type="email" id="auditEmail" placeholder="Enter your email">
+        <button onclick="this.textContent='Sent! \u2713';this.style.background='#10b981'">Send My Report</button>
+      </div>
+    </div>
+    <div class="cta-bottom"><a href="/services#audit" class="btn-primary">Get a Full Revenue Leak Audit \u2014 $750 &#8594;</a></div>
+  </div>
+</div></section>
+
+<script is:inline>
+async function runAudit() {
+  let url = document.getElementById('siteUrl').value.trim();
+  if (!url) return alert('Please enter a website URL.');
+  if (!url.startsWith('http')) url = 'https://' + url;
+  const trade = document.getElementById('auditTrade').value;
+
+  document.getElementById('auditForm').style.display = 'none';
+  document.getElementById('loading').classList.add('show');
+
+  const steps = ['Checking page speed and mobile performance...', 'Analyzing Core Web Vitals...', 'Evaluating conversion elements...', 'Generating your score...'];
+  let stepI = 0;
+  const stepTimer = setInterval(() => { stepI++; if (stepI < steps.length) document.getElementById('loadStep').textContent = steps[stepI]; }, 2500);
+
+  let psi = null;
+  try {
+    const apiUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + encodeURIComponent(url) + '&strategy=mobile&category=PERFORMANCE&category=ACCESSIBILITY';
+    const resp = await fetch(apiUrl);
+    psi = await resp.json();
+  } catch (e) { console.error('PSI error:', e); }
+
+  clearInterval(stepTimer);
+  document.getElementById('loading').classList.remove('show');
+  document.getElementById('results').style.display = 'block';
+  generateFindings(psi, url, trade);
+}
+
+function generateFindings(psi, url, trade) {
+  const findings = [];
+  let score = 50; // base score
+
+  // PageSpeed performance
+  if (psi && psi.lighthouseResult) {
+    const perfScore = Math.round((psi.lighthouseResult.categories?.performance?.score || 0) * 100);
+    const fcp = psi.lighthouseResult.audits?.['first-contentful-paint']?.numericValue;
+    const lcp = psi.lighthouseResult.audits?.['largest-contentful-paint']?.numericValue;
+    const cls = psi.lighthouseResult.audits?.['cumulative-layout-shift']?.numericValue;
+    const si = psi.lighthouseResult.audits?.['speed-index']?.numericValue;
+
+    if (perfScore < 50) {
+      findings.push({ type: 'fail', title: 'Mobile speed is critically slow (Score: ' + perfScore + '/100)', desc: 'Your site loads too slowly on mobile devices. Over 60% of home service searches happen on phones. A slow site means callers bounce to your competitor before your page even loads. Google also penalizes slow sites in search rankings.' });
+      score -= 20;
+    } else if (perfScore < 75) {
+      findings.push({ type: 'warn', title: 'Mobile speed needs improvement (Score: ' + perfScore + '/100)', desc: 'Your mobile performance is below average. Every second of delay reduces conversions by roughly 7%. Improving speed is one of the highest-ROI website changes you can make.' });
+      score -= 10;
+    } else {
+      findings.push({ type: 'pass', title: 'Mobile speed is solid (Score: ' + perfScore + '/100)', desc: 'Your site loads at an acceptable speed on mobile. This is better than most contractor websites.' });
+      score += 10;
+    }
+
+    if (fcp && fcp > 3000) {
+      findings.push({ type: 'fail', title: 'First content appears too late (' + (fcp/1000).toFixed(1) + 's)', desc: 'Visitors see a blank screen for over 3 seconds. Many will hit the back button and call your competitor. Target: under 1.8 seconds.' });
+      score -= 10;
+    }
+
+    if (lcp && lcp > 4000) {
+      findings.push({ type: 'fail', title: 'Main content loads too slowly (' + (lcp/1000).toFixed(1) + 's)', desc: 'Your largest visible content takes over 4 seconds to load. This is the element visitors are waiting for \u2014 your headline, hero image, or phone number. Target: under 2.5 seconds.' });
+      score -= 10;
+    }
+
+    if (cls && cls > 0.25) {
+      findings.push({ type: 'warn', title: 'Page layout shifts while loading (CLS: ' + cls.toFixed(2) + ')', desc: 'Elements move around as the page loads, which is disorienting on mobile. This often happens when images do not have set dimensions or fonts load late.' });
+      score -= 5;
+    }
+  } else {
+    findings.push({ type: 'warn', title: 'Could not run full speed analysis', desc: 'We were unable to get complete speed data for this URL. This sometimes happens with sites that block automated testing. The conversion checks below still apply.' });
+  }
+
+  // Generic conversion checks (always apply)
+  const tradeNames = { hvac: 'HVAC', roofing: 'roofing', plumbing: 'plumbing', electrical: 'electrical' };
+  const tn = tradeNames[trade] || trade;
+
+  findings.push({ type: 'warn', title: 'Check: Is your phone number in the header on mobile?', desc: 'The #1 conversion element on a contractor website is a clickable phone number visible without scrolling on mobile. If visitors have to hunt for your number, you are losing calls. Make it large, bold, and sticky.' });
+  findings.push({ type: 'warn', title: 'Check: Do you have dedicated service pages?', desc: 'Each major service (' + tn + ' repair, installation, maintenance) should have its own page with unique content. This helps you rank for specific service searches and converts better than a single generic services page.' });
+  findings.push({ type: 'warn', title: 'Check: Are trust signals visible above the fold?', desc: 'Licenses, insurance badges, manufacturer certifications, and your Google review rating should be visible on the homepage without scrolling. Homeowners making a $5K+ decision need reassurance fast.' });
+  findings.push({ type: 'warn', title: 'Check: Is there a clear call-to-action on every page?', desc: 'Every page should have one primary action: call now, schedule online, or request a quote. If a visitor lands on any page and is not sure what to do next, that page is leaking conversions.' });
+
+  score = Math.max(0, Math.min(100, score));
+  const scoreEl = document.getElementById('scoreNum');
+  scoreEl.textContent = score;
+  scoreEl.parentElement.style.border = '6px solid ' + (score < 40 ? '#ef4444' : score < 70 ? '#f59e0b' : '#10b981');
+
+  const verdict = document.getElementById('scoreVerdict');
+  if (score < 40) { verdict.textContent = 'Critical issues found. Your website is likely costing you significant revenue.'; verdict.style.color = '#ef4444'; }
+  else if (score < 70) { verdict.textContent = 'Several improvement opportunities. Fixing these could meaningfully increase calls.'; verdict.style.color = '#f59e0b'; }
+  else { verdict.textContent = 'Solid foundation. Focus on the items below to optimize further.'; verdict.style.color = '#10b981'; }
+
+  const fHtml = findings.map(f =>
+    '<div class="finding reveal"><div class="finding-icon ' + f.type + '">' + (f.type === 'fail' ? '\u2717' : f.type === 'pass' ? '\u2713' : '!') + '</div><div class="finding-text"><h3>' + f.title + '</h3><p>' + f.desc + '</p></div></div>'
+  ).join('');
+  document.getElementById('findings').innerHTML = fHtml;
+
+  // Trigger reveals
+  document.querySelectorAll('.findings .reveal').forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 100));
+}
+</script>
+</Base>
