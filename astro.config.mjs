@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://builtontenth.com',
 
-  output: 'static',
+  output: 'hybrid',
 
   adapter: vercel(),
 
