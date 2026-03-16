@@ -90,14 +90,14 @@ import Base from '../layouts/Base.astro';
 .services-header h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:.75rem}
 .services-header p{color:var(--text-on-dark);font-size:1.05rem;max-width:550px;margin:0 auto;line-height:1.6}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative}
+.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative;display:flex;flex-direction:column}
+.service-features{list-style:none;margin-bottom:2rem;flex:1}
 .service-card:hover{border-color:rgba(245,158,11,.3);background:rgba(255,255,255,.05)}
 .service-card.featured{border-color:var(--amber);background:rgba(245,158,11,.04)}
 .service-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy);padding:.3rem 1rem;border-radius:20px;font-size:.7rem;font-weight:700;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase}
 .service-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
 .service-price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--amber);margin-bottom:.5rem}
 .service-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:1.5rem}
-.service-features{list-style:none;margin-bottom:2rem}
 .service-features li{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;font-size:.85rem;color:var(--text-on-dark);line-height:1.45}
 .service-features li::before{content:'✓';color:var(--green-accent);font-weight:700;flex-shrink:0}
 .service-cta{display:block;text-align:center;padding:.9rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s}
@@ -259,48 +259,12 @@ import Base from '../layouts/Base.astro';
   <div class="newsletter-inner">
     <h2 class="reveal">The Weekly Growth Report</h2>
     <p class="reveal" style="font-size:1.05rem;color:var(--text-mid);line-height:1.6;margin-bottom:0">One actionable growth insight every Tuesday — backed by data from analyzing hundreds of HVAC, roofing, and plumbing companies. No fluff. No pitches. Just the numbers.</p>
-    <form class="newsletter-form reveal" id="home-newsletter-form">
-      <input type="email" id="home-email" placeholder="Enter your email" required>
-      <button type="submit" id="home-submit-btn">Subscribe Free</button>
+    <form class="newsletter-form reveal" onsubmit="event.preventDefault();this.querySelector('button').textContent='You\'re in! ✓';this.querySelector('button').style.background='#10b981';this.querySelector('input').disabled=true;">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe Free</button>
     </form>
-    <p class="reveal" id="home-form-msg" style="font-size:.78rem;color:var(--text-light)">Free. Every Tuesday. Unsubscribe anytime.</p>
+    <p class="reveal" style="font-size:.78rem;color:var(--text-light)">Free. Every Tuesday. Unsubscribe anytime.</p>
   </div>
 </section>
-
-<script>
-  document.getElementById('home-newsletter-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('home-email').value;
-    const btn = document.getElementById('home-submit-btn');
-    const msg = document.getElementById('home-form-msg');
-    btn.textContent = 'Subscribing...';
-    btn.disabled = true;
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      if (res.ok || res.status === 204) {
-        btn.textContent = "You're in! ✓";
-        btn.style.background = '#10b981';
-        document.getElementById('home-email').disabled = true;
-        msg.textContent = 'Check your inbox. First issue lands Tuesday.';
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'newsletter_signup', form_location: 'homepage' });
-      } else {
-        btn.textContent = 'Subscribe Free';
-        btn.disabled = false;
-        msg.textContent = 'Something went wrong. Try again.';
-        msg.style.color = '#ef4444';
-      }
-    } catch(err) {
-      btn.textContent = 'Subscribe Free';
-      btn.disabled = false;
-      msg.textContent = 'Something went wrong. Try again.';
-      msg.style.color = '#ef4444';
-    }
-  });
-</script>
 
 </Base>
