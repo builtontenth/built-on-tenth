@@ -1,19 +1,188 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+
+const posts = await getCollection('blog');
+const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const featured = sorted.filter(p => p.data.featured)[0];
+const rest = sorted.filter(p => p.slug !== featured?.slug);
+
+const categories = ['Revenue Diagnostics', 'Pipeline Systems', 'Channel Teardowns', 'Growth Benchmarks', 'Operator Case Studies'];
 ---
-<Base title="Growth Insights for Home Service Companies | Built on Tenth" description="Research, benchmarks, and teardowns for HVAC, roofing, and plumbing companies." solidNav={true}>
-<section class="page-hero">
-  <h1>Growth <em>Insights</em></h1>
-  <p>Data-backed research on what actually works for HVAC, roofing, and plumbing companies. Updated weekly.</p>
-</section>
+
+<Base title="Insights — Growth Research for HVAC, Roofing & Plumbing | Built on Tenth" description="Data-backed analysis of how the most profitable home service companies grow. HVAC, roofing, and plumbing operators — know your numbers.">
+
 <style>
-.coming{padding:5rem 2.5rem;text-align:center;background:var(--cream)}
-.coming h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:1rem}
-.coming p{font-size:1.05rem;color:var(--text-mid);max-width:500px;margin:0 auto 2rem;line-height:1.6}
+.insights-hero{background:var(--navy);padding:5rem 2.5rem 4rem;text-align:center}
+.insights-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;margin-bottom:1rem}
+.insights-hero h1 em{font-style:normal;color:var(--amber)}
+.insights-hero>p{font-size:1.05rem;color:rgba(255,255,255,0.6);max-width:540px;margin:0 auto 2rem;line-height:1.65}
+.pillar-filters{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.pillar-btn{padding:.45rem 1rem;border-radius:20px;border:1.5px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.55);font-family:var(--font-display);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.pillar-btn:hover,.pillar-btn.active{background:var(--amber);color:var(--navy);border-color:var(--amber)}
+.insights-main{background:var(--cream);padding:4rem 2.5rem}
+.insights-inner{max-width:1080px;margin:0 auto}
+.featured-label{font-family:var(--font-display);font-size:.72rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.featured-card{display:grid;grid-template-columns:1fr 1fr;background:var(--navy);border-radius:16px;overflow:hidden;margin-bottom:4rem;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.featured-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.featured-card-img{min-height:340px}
+.featured-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.featured-card-body{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
+.card-meta{display:flex;gap:.75rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap}
+.card-category{background:rgba(245,158,11,0.15);color:var(--amber);padding:.25rem .75rem;border-radius:20px;font-size:.68rem;font-weight:700;font-family:var(--font-display);letter-spacing:.07em;text-transform:uppercase}
+.card-trade{font-size:.72rem;color:rgba(255,255,255,0.4);font-family:var(--font-display);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.featured-card-body h2{font-family:var(--font-display);font-size:1.55rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:1rem}
+.featured-card-body>p{font-size:.9rem;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:1.5rem}
+.card-read-row{display:flex;align-items:center}
+.card-read-link{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--amber);display:flex;align-items:center;gap:.4rem;transition:gap .2s}
+.featured-card:hover .card-read-link{gap:.7rem}
+.card-readtime{font-size:.75rem;color:rgba(255,255,255,0.3);margin-left:auto}
+.section-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--warm-gray)}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-bottom:3rem}
+.article-card{background:#fff;border:1px solid var(--warm-gray);border-radius:12px;overflow:hidden;text-decoration:none;transition:all .3s;display:flex;flex-direction:column}
+.article-card:hover{border-color:var(--amber);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.07)}
+.article-card-img{height:180px;overflow:hidden}
+.article-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.article-card:hover .article-card-img img{transform:scale(1.04)}
+.article-card-body{padding:1.25rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column}
+.article-card-body h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);line-height:1.35;margin:.5rem 0 .6rem;flex:1}
+.article-card-body>p{font-size:.83rem;color:var(--text-mid);line-height:1.55;margin-bottom:1rem}
+.card-footer{display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--text-light);padding-top:.75rem;border-top:1px solid var(--warm-gray);font-family:var(--font-display);font-weight:600}
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--text-mid)}
+.empty-state h3{font-family:var(--font-display);font-size:1.1rem;color:var(--navy);margin-bottom:.5rem}
+.insights-newsletter{background:var(--navy);padding:3.5rem 2.5rem;text-align:center}
+.insights-newsletter h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:.75rem}
+.insights-newsletter>p{font-size:.95rem;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 1.5rem;line-height:1.65}
+.nl-band-form{display:flex;gap:.75rem;max-width:420px;margin:0 auto}
+.nl-band-form input{flex:1;padding:.9rem 1rem;border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;background:rgba(255,255,255,0.08);color:#fff;font-family:var(--font-body);font-size:.9rem;outline:none}
+.nl-band-form input::placeholder{color:rgba(255,255,255,0.3)}
+.nl-band-form input:focus{border-color:var(--amber)}
+.nl-band-form button{padding:.9rem 1.5rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.88rem;cursor:pointer;white-space:nowrap;transition:all .2s}
+.nl-band-form button:hover{background:var(--amber-light)}
+@media(max-width:900px){.featured-card{grid-template-columns:1fr}.featured-card-img{min-height:220px}.articles-grid{grid-template-columns:1fr 1fr}.insights-hero,.insights-main{padding-left:1.5rem;padding-right:1.5rem}}
+@media(max-width:600px){.articles-grid{grid-template-columns:1fr}.nl-band-form{flex-direction:column}}
 </style>
-<section class="coming">
-  <h2>First research drops soon.</h2>
-  <p>We're finishing our analysis of 50+ HVAC companies' marketing systems. Subscribe to get the findings the moment they publish.</p>
-  <a href="/newsletter" class="btn-primary">Get the Weekly Growth Report →</a>
+
+<section class="insights-hero">
+  <h1>Growth Research for <em>Home Service Companies</em></h1>
+  <p>We study how the most profitable HVAC, roofing, and plumbing companies grow — and publish everything we find.</p>
+  <div class="pillar-filters">
+    <button class="pillar-btn active" data-filter="all">All</button>
+    {categories.map(cat => (
+      <button class="pillar-btn" data-filter={cat}>{cat}</button>
+    ))}
+  </div>
 </section>
+
+<section class="insights-main">
+  <div class="insights-inner">
+    {featured && (
+      <>
+        <p class="featured-label">★ Featured Article</p>
+        <a href={`/insights/${featured.slug}`} class="featured-card" data-category={featured.data.category}>
+          <div class="featured-card-img">
+            <img src={featured.data.heroImage} alt={featured.data.heroImageAlt} loading="lazy" />
+          </div>
+          <div class="featured-card-body">
+            <div class="card-meta">
+              <span class="card-category">{featured.data.category}</span>
+              <span class="card-trade">{featured.data.trade.join(' · ')}</span>
+            </div>
+            <h2>{featured.data.title}</h2>
+            <p>{featured.data.description}</p>
+            <div class="card-read-row">
+              <span class="card-read-link">Read Article →</span>
+              <span class="card-readtime">{featured.data.readTime} min read</span>
+            </div>
+          </div>
+        </a>
+      </>
+    )}
+
+    {rest.length > 0 ? (
+      <>
+        <p class="section-title">All Articles</p>
+        <div class="articles-grid">
+          {rest.map(post => (
+            <a href={`/insights/${post.slug}`} class="article-card" data-category={post.data.category}>
+              <div class="article-card-img">
+                <img src={post.data.heroImage} alt={post.data.heroImageAlt} loading="lazy" />
+              </div>
+              <div class="article-card-body">
+                <div class="card-meta">
+                  <span class="card-category">{post.data.category}</span>
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description.substring(0,110)}...</p>
+                <div class="card-footer">
+                  <span>{post.data.pubDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</span>
+                  <span>{post.data.readTime} min read</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="empty-state">
+        <h3>More articles publishing soon</h3>
+        <p>Subscribe below to get notified when new research drops every Tuesday.</p>
+      </div>
+    )}
+  </div>
+</section>
+
+<section class="insights-newsletter">
+  <h2>Get the research before everyone else</h2>
+  <p>One data-backed insight every Tuesday. Numbers, benchmarks, and fixes — written for owners, not marketers.</p>
+  <form class="nl-band-form" id="insights-nl-form">
+    <input type="email" id="insights-nl-email" placeholder="Enter your email" required />
+    <button type="submit" id="insights-nl-btn">Subscribe Free</button>
+  </form>
+</section>
+
+<script>
+  const btns = document.querySelectorAll('.pillar-btn');
+  const allCards = document.querySelectorAll('[data-category]');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn as HTMLButtonElement).dataset.filter;
+      allCards.forEach(card => {
+        (card as HTMLElement).style.display =
+          (filter === 'all' || (card as HTMLElement).dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  document.getElementById('insights-nl-form')!.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = (document.getElementById('insights-nl-email') as HTMLInputElement).value;
+    const btn = document.getElementById('insights-nl-btn')!;
+    btn.textContent = 'Subscribing...';
+    (btn as HTMLButtonElement).disabled = true;
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email})
+      });
+      if (res.ok) {
+        btn.textContent = "You're in! ✓";
+        (btn as HTMLButtonElement).style.background = '#10b981';
+        (document.getElementById('insights-nl-email') as HTMLInputElement).disabled = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({event: 'newsletter_signup', form_location: 'insights_page'});
+      } else {
+        btn.textContent = 'Subscribe Free';
+        (btn as HTMLButtonElement).disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Subscribe Free';
+      (btn as HTMLButtonElement).disabled = false;
+    }
+  });
+</script>
+
 </Base>
