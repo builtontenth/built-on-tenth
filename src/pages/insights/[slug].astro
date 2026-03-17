@@ -279,51 +279,60 @@ const tradeLabels = trade.join(', ');
 </div>
 
 <script>
-  // FAQ Accordion — auto-converts ## Frequently Asked Questions section
+  // FAQ Accordion
+  // Markdown renders **Question?** as <p><strong>Question?</strong></p>
+  // followed by <p>Answer text</p>
   (function() {
-    const prose = document.querySelector('.prose');
+    var prose = document.querySelector('.prose');
     if (!prose) return;
-    const headings = prose.querySelectorAll('h2');
-    let faqHeading = null;
-    headings.forEach(function(h) {
-      if (h.textContent.toLowerCase().includes('frequently asked')) faqHeading = h;
-    });
+    var headings = prose.querySelectorAll('h2');
+    var faqHeading = null;
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.toLowerCase().indexOf('frequently asked') !== -1) {
+        faqHeading = headings[i];
+        break;
+      }
+    }
     if (!faqHeading) return;
 
-    const container = document.createElement('div');
+    var container = document.createElement('div');
     container.className = 'faq-accordion';
 
-    let el = faqHeading.nextElementSibling;
-    const items = [];
-    let currentQ = null;
-    let currentA = [];
+    var el = faqHeading.nextElementSibling;
+    var items = [];
+    var currentQ = null;
+    var currentA = [];
 
-    while (el && el.tagName !== 'H2') {
-      const next = el.nextElementSibling;
+    while (el && el.tagName !== 'H2' && el.tagName !== 'HR') {
+      var next = el.nextElementSibling;
       if (el.tagName === 'P') {
-        const strong = el.querySelector('strong');
-        if (strong && el.textContent.trim().startsWith(strong.textContent.trim())) {
-          if (currentQ) items.push({ q: currentQ, a: currentA.join('') });
-          currentQ = strong.textContent.trim();
-          const rest = el.innerHTML.replace('<strong>' + strong.textContent + '</strong>', '').trim();
-          currentA = rest ? ['<p>' + rest + '</p>'] : [];
-        } else if (currentQ) {
+        var children = el.childNodes;
+        // A question paragraph: only child is a <strong> tag (markdown **bold**)
+        var isQuestion = (children.length === 1 && el.querySelector('strong') &&
+          el.querySelector('strong').textContent.trim() === el.textContent.trim());
+        if (isQuestion) {
+          if (currentQ !== null) items.push({ q: currentQ, a: currentA.join('') });
+          currentQ = el.querySelector('strong').textContent.trim();
+          currentA = [];
+        } else if (currentQ !== null) {
           currentA.push('<p>' + el.innerHTML + '</p>');
         }
       }
       el.parentNode.removeChild(el);
       el = next;
     }
-    if (currentQ) items.push({ q: currentQ, a: currentA.join('') });
+    if (currentQ !== null) items.push({ q: currentQ, a: currentA.join('') });
+    if (items.length === 0) return;
 
     items.forEach(function(item) {
-      const div = document.createElement('div');
+      var div = document.createElement('div');
       div.className = 'faq-accordion-item';
-      div.innerHTML = '<div class="faq-accordion-q">' + item.q + '</div><div class="faq-accordion-a"><div class="faq-accordion-a-inner">' + item.a + '</div></div>';
-      const q = div.querySelector('.faq-accordion-q');
-      const a = div.querySelector('.faq-accordion-a');
+      div.innerHTML = '<div class="faq-accordion-q">' + item.q + '</div>' +
+        '<div class="faq-accordion-a"><div class="faq-accordion-a-inner">' + item.a + '</div></div>';
+      var q = div.querySelector('.faq-accordion-q');
+      var a = div.querySelector('.faq-accordion-a');
       q.addEventListener('click', function() {
-        const isOpen = q.classList.toggle('open');
+        var isOpen = q.classList.toggle('open');
         a.style.maxHeight = isOpen ? a.scrollHeight + 'px' : '0';
       });
       container.appendChild(div);

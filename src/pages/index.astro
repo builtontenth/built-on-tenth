@@ -97,6 +97,7 @@ import Base from '../layouts/Base.astro';
 .service-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
 .service-price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--amber);margin-bottom:.5rem}
 .service-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:1.5rem}
+.service-outcome{font-size:.88rem;color:var(--amber);font-weight:600;line-height:1.5;margin-bottom:1.25rem;padding:.75rem 1rem;background:rgba(245,158,11,.08);border-radius:8px;border-left:3px solid var(--amber)}
 .service-features{list-style:none;margin-bottom:2rem;flex:1}
 .service-features li{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;font-size:.85rem;color:var(--text-on-dark);line-height:1.45}
 .service-features li::before{content:'✓';color:var(--green-accent);font-weight:700;flex-shrink:0}
@@ -122,16 +123,7 @@ import Base from '../layouts/Base.astro';
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img
-      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75"
-      srcset="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=70 600w,
-              https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=75 1200w,
-              https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=75 1920w"
-      sizes="100vw"
-      alt="Construction and trade work"
-      loading="eager"
-      fetchpriority="high"
-    >
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="Construction and trade work" loading="eager">
   </div>
   <div class="hero-content">
     <div class="hero-text">
@@ -171,8 +163,8 @@ import Base from '../layouts/Base.astro';
 <section class="problem">
   <div class="problem-inner">
     <div class="problem-images reveal-left">
-      <div class="problem-img-1"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=70" alt="HVAC technician at work" loading="lazy" decoding="async"></div>
-      <div class="problem-img-2"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=70" alt="Service van fleet" loading="lazy" decoding="async"></div>
+      <div class="problem-img-1"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="HVAC technician at work" loading="lazy"></div>
+      <div class="problem-img-2"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="Service van fleet" loading="lazy"></div>
       <div class="problem-badge"><div class="problem-badge-num">67%</div><div class="problem-badge-text">of owners can't connect ad spend to booked jobs</div></div>
     </div>
     <div class="problem-text reveal">
@@ -198,15 +190,15 @@ import Base from '../layouts/Base.astro';
     </div>
     <div class="approach-grid">
       <div class="approach-card reveal">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=70" alt="Data analytics" loading="lazy" decoding="async"></div>
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Data analytics" loading="lazy"></div>
         <div class="approach-card-body"><div class="approach-card-num">01 — Research</div><h3>We Study What's Working</h3><p>We analyze the Google presence, ad strategy, review ecosystem, and competitive position of hundreds of HVAC, roofing, and plumbing companies.</p></div>
       </div>
       <div class="approach-card reveal" style="transition-delay:.15s">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500&q=70" alt="Financial analysis" loading="lazy" decoding="async"></div>
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" alt="Financial analysis" loading="lazy"></div>
         <div class="approach-card-body"><div class="approach-card-num">02 — Diagnose</div><h3>We Find the Revenue Leaks</h3><p>Every gap gets translated into dollars. Not "your website needs work" — but "this is costing you an estimated $180K per year."</p></div>
       </div>
       <div class="approach-card reveal" style="transition-delay:.3s">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=500&q=70" alt="Strategic planning" loading="lazy" decoding="async"></div>
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600&q=80" alt="Strategic planning" loading="lazy"></div>
         <div class="approach-card-body"><div class="approach-card-num">03 — Build the System</div><h3>We Design Growth Systems</h3><p>Phone scripts, follow-up sequences, channel strategy, tracking dashboards — custom-built for your business and your market.</p></div>
       </div>
     </div>
@@ -241,22 +233,43 @@ import Base from '../layouts/Base.astro';
       <div class="service-card reveal">
         <div class="service-name">Revenue Leak Audit</div>
         <div class="service-price">$750</div>
-        <div class="service-desc">In 7 days you'll know exactly which of your marketing dollars are producing jobs and which are funding your agency's overhead — with specific dollar figures attached to every finding.</div>
-        <ul class="service-features"><li>Google Business Profile vs. top 5–7 competitors</li><li>Website conversion audit with specific fixes</li><li>Google Ads and LSA performance assessment</li><li>Review ecosystem and reputation analysis</li><li>Every finding translated into annual revenue impact</li><li>15–25 page report in 7 business days</li></ul>
+        <div class="service-outcome">In 7 days you'll know exactly which of your marketing dollars are producing jobs — and which are being wasted. Every finding in dollars.</div>
+        <ul class="service-features">
+          <li>Google Business Profile vs. top 5–7 competitors</li>
+          <li>Website conversion audit with specific fixes</li>
+          <li>Google Ads and LSA performance assessment</li>
+          <li>Review ecosystem and reputation gap analysis</li>
+          <li>Every finding translated into annual revenue impact</li>
+          <li>15–25 page report in 7 business days</li>
+        </ul>
         <a href="mailto:hello@builtontenth.com?subject=Revenue Leak Audit" class="service-cta">Apply for an Audit</a>
       </div>
       <div class="service-card featured reveal" style="transition-delay:.15s">
         <div class="service-name">Growth System Blueprint</div>
         <div class="service-price">$3,000</div>
-        <div class="service-desc">Everything in the audit plus a complete growth system you can hand to your team and implement — no marketing manager required.</div>
-        <ul class="service-features"><li>Everything in the Revenue Leak Audit</li><li>Custom channel strategy + budget allocation</li><li>Phone scripts and CSR qualification framework</li><li>Estimate follow-up sequences (5-touch system)</li><li>Pre-built KPI dashboard with tracking templates</li><li>90-day implementation calendar with weekly actions</li></ul>
+        <div class="service-outcome">You get a complete system your team can implement — phone scripts, follow-up sequences, tracking dashboards. No marketing manager required.</div>
+        <ul class="service-features">
+          <li>Everything in the Revenue Leak Audit</li>
+          <li>Custom channel strategy + budget allocation by source</li>
+          <li>Phone scripts and CSR booking framework (word-for-word)</li>
+          <li>5-touch estimate follow-up sequence with templates</li>
+          <li>Pre-built KPI dashboard and weekly tracking sheets</li>
+          <li>90-day calendar with specific weekly actions</li>
+        </ul>
         <a href="mailto:hello@builtontenth.com?subject=Growth Blueprint" class="service-cta">Apply for a Blueprint</a>
       </div>
       <div class="service-card reveal" style="transition-delay:.3s">
         <div class="service-name">90-Day Growth Advisory</div>
         <div class="service-price">$7,500</div>
-        <div class="service-desc">Audit, blueprint, and 12 weeks of written guidance as you implement — we adjust in real-time based on what your numbers show.</div>
-        <ul class="service-features"><li>Complete audit and blueprint delivery</li><li>12 weeks of weekly written performance reviews</li><li>Priority async access (24–48hr response)</li><li>Monthly competitor re-benchmarking</li><li>Implementation troubleshooting as issues arise</li><li>Exit report with before/after analysis + 6-month roadmap</li></ul>
+        <div class="service-outcome">You're never stuck wondering what to do next. We review your numbers weekly and adjust the plan in real-time based on what's working.</div>
+        <ul class="service-features">
+          <li>Audit + blueprint delivered in week 1</li>
+          <li>12 weeks of weekly written performance reviews</li>
+          <li>Priority async access — 24–48hr written response</li>
+          <li>Monthly competitor re-benchmarking</li>
+          <li>Implementation troubleshooting as issues arise</li>
+          <li>Exit report: before/after analysis + 6-month roadmap</li>
+        </ul>
         <a href="mailto:hello@builtontenth.com?subject=90-Day Advisory" class="service-cta">Apply for Advisory</a>
       </div>
     </div>
