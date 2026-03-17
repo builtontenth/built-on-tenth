@@ -118,6 +118,28 @@ const tradeLabels = trade.join(', ');
     margin-top: -0.25rem; margin-bottom: 1.75rem; font-style: italic;
   }
 
+  /* ── FAQ Accordion — auto-applied to ## Frequently Asked Questions section ── */
+  .faq-accordion { margin: 0; }
+  .faq-accordion-item { border-bottom: 1px solid var(--warm-gray); }
+  .faq-accordion-q {
+    padding: 1.25rem 0; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+    color: var(--navy); list-style: none; gap: 1rem;
+  }
+  .faq-accordion-q::after {
+    content: '+'; font-size: 1.3rem; color: var(--amber);
+    transition: transform 0.3s; flex-shrink: 0; line-height: 1;
+  }
+  .faq-accordion-q.open::after { transform: rotate(45deg); }
+  .faq-accordion-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+  }
+  .faq-accordion-a-inner {
+    padding: 0 0 1.25rem; font-size: 0.92rem;
+    color: var(--text-mid); line-height: 1.7;
+  }
+
   /* ── Sidebar ── */
   .article-sidebar { position: sticky; top: 2rem; }
   .sidebar-card { background: var(--navy); border-radius: 12px; padding: 1.75rem; margin-bottom: 1.5rem; }
@@ -257,7 +279,62 @@ const tradeLabels = trade.join(', ');
 </div>
 
 <script>
-  document.getElementById('article-nl-form')!.addEventListener('submit', async function(e) {
+  // FAQ Accordion — auto-converts ## Frequently Asked Questions section
+  (function() {
+    const prose = document.querySelector('.prose');
+    if (!prose) return;
+    const headings = prose.querySelectorAll('h2');
+    let faqHeading = null;
+    headings.forEach(h => { if (h.textContent.toLowerCase().includes('frequently asked')) faqHeading = h; });
+    if (!faqHeading) return;
+
+    const container = document.createElement('div');
+    container.className = 'faq-accordion';
+
+    // Collect all p elements after the FAQ heading until next h2
+    let el = faqHeading.nextElementSibling;
+    const items = [];
+    let currentQ = null;
+    let currentA = [];
+
+    while (el && el.tagName !== 'H2') {
+      const next = el.nextElementSibling;
+      if (el.tagName === 'P') {
+        const strong = el.querySelector('strong');
+        if (strong && el.textContent.trim().startsWith(strong.textContent.trim())) {
+          // This is a question paragraph
+          if (currentQ) items.push({ q: currentQ, a: currentA.join('') });
+          currentQ = strong.textContent.trim();
+          // Rest of p after strong is part of answer
+          const rest = el.innerHTML.replace(`<strong>${strong.textContent}</strong>`, '').trim();
+          currentA = rest ? [`<p>${rest}</p>`] : [];
+        } else if (currentQ) {
+          currentA.push(`<p>${el.innerHTML}</p>`);
+        }
+      }
+      el.parentNode.removeChild(el);
+      el = next;
+    }
+    if (currentQ) items.push({ q: currentQ, a: currentA.join('') });
+
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'faq-accordion-item';
+      div.innerHTML = `
+        <div class="faq-accordion-q">${item.q}</div>
+        <div class="faq-accordion-a"><div class="faq-accordion-a-inner">${item.a}</div></div>
+      `;
+      const q = div.querySelector('.faq-accordion-q');
+      const a = div.querySelector('.faq-accordion-a') as HTMLElement;
+      q.addEventListener('click', () => {
+        const isOpen = q.classList.toggle('open');
+        a.style.maxHeight = isOpen ? a.scrollHeight + 'px' : '0';
+      });
+      container.appendChild(div);
+    });
+
+    faqHeading.insertAdjacentElement('afterend', container);
+  })();
     e.preventDefault();
     const email = (document.getElementById('article-nl-email') as HTMLInputElement).value;
     const btn = document.getElementById('article-nl-btn')!;

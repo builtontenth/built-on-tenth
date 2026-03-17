@@ -90,17 +90,17 @@ import Base from '../layouts/Base.astro';
 .services-header h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:.75rem}
 .services-header p{color:var(--text-on-dark);font-size:1.05rem;max-width:550px;margin:0 auto;line-height:1.6}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative}
+.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative;display:flex;flex-direction:column}
 .service-card:hover{border-color:rgba(245,158,11,.3);background:rgba(255,255,255,.05)}
 .service-card.featured{border-color:var(--amber);background:rgba(245,158,11,.04)}
 .service-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy);padding:.3rem 1rem;border-radius:20px;font-size:.7rem;font-weight:700;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase}
 .service-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
 .service-price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--amber);margin-bottom:.5rem}
 .service-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:1.5rem}
-.service-features{list-style:none;margin-bottom:2rem}
+.service-features{list-style:none;margin-bottom:2rem;flex:1}
 .service-features li{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;font-size:.85rem;color:var(--text-on-dark);line-height:1.45}
 .service-features li::before{content:'✓';color:var(--green-accent);font-weight:700;flex-shrink:0}
-.service-cta{display:block;text-align:center;padding:.9rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s}
+.service-cta{display:block;text-align:center;padding:.9rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s;margin-top:auto}
 .service-card .service-cta{background:transparent;border:1.5px solid rgba(255,255,255,.2);color:#fff}
 .service-card .service-cta:hover{border-color:var(--amber);color:var(--amber)}
 .service-card.featured .service-cta{background:var(--amber);color:var(--navy);border:none}
@@ -241,22 +241,22 @@ import Base from '../layouts/Base.astro';
       <div class="service-card reveal">
         <div class="service-name">Revenue Leak Audit</div>
         <div class="service-price">$750</div>
-        <div class="service-desc">Comprehensive marketing analysis benchmarked against your top local competitors, with every finding translated into dollars.</div>
-        <ul class="service-features"><li>Google Business Profile analysis vs. competitors</li><li>Website conversion audit</li><li>Google Ads and LSA assessment</li><li>Review ecosystem analysis</li><li>Competitive landscape mapping</li><li>15-25 page report in 7 days</li></ul>
+        <div class="service-desc">In 7 days you'll know exactly which of your marketing dollars are producing jobs and which are funding your agency's overhead — with specific dollar figures attached to every finding.</div>
+        <ul class="service-features"><li>Google Business Profile vs. top 5–7 competitors</li><li>Website conversion audit with specific fixes</li><li>Google Ads and LSA performance assessment</li><li>Review ecosystem and reputation analysis</li><li>Every finding translated into annual revenue impact</li><li>15–25 page report in 7 business days</li></ul>
         <a href="mailto:hello@builtontenth.com?subject=Revenue Leak Audit" class="service-cta">Apply for an Audit</a>
       </div>
       <div class="service-card featured reveal" style="transition-delay:.15s">
         <div class="service-name">Growth System Blueprint</div>
         <div class="service-price">$3,000</div>
-        <div class="service-desc">Full audit plus a custom growth system — demand capture, conversion infrastructure, follow-up engine, and measurement dashboard.</div>
-        <ul class="service-features"><li>Everything in the Revenue Leak Audit</li><li>Custom channel strategy + budget allocation</li><li>Phone scripts and qualification framework</li><li>Follow-up sequences and review system</li><li>KPI dashboard with tracking templates</li><li>90-day implementation calendar</li></ul>
+        <div class="service-desc">Everything in the audit plus a complete growth system you can hand to your team and implement — no marketing manager required.</div>
+        <ul class="service-features"><li>Everything in the Revenue Leak Audit</li><li>Custom channel strategy + budget allocation</li><li>Phone scripts and CSR qualification framework</li><li>Estimate follow-up sequences (5-touch system)</li><li>Pre-built KPI dashboard with tracking templates</li><li>90-day implementation calendar with weekly actions</li></ul>
         <a href="mailto:hello@builtontenth.com?subject=Growth Blueprint" class="service-cta">Apply for a Blueprint</a>
       </div>
       <div class="service-card reveal" style="transition-delay:.3s">
         <div class="service-name">90-Day Growth Advisory</div>
         <div class="service-price">$7,500</div>
-        <div class="service-desc">Audit, blueprint, and 12 weeks of strategic guidance as you implement — adjusting in real-time based on your results.</div>
-        <ul class="service-features"><li>Complete audit and blueprint</li><li>12 weeks of weekly performance reviews</li><li>Priority async access (24-48hr response)</li><li>Monthly competitor re-benchmarking</li><li>Exit report with before/after analysis</li><li>6-month forward roadmap</li></ul>
+        <div class="service-desc">Audit, blueprint, and 12 weeks of written guidance as you implement — we adjust in real-time based on what your numbers show.</div>
+        <ul class="service-features"><li>Complete audit and blueprint delivery</li><li>12 weeks of weekly written performance reviews</li><li>Priority async access (24–48hr response)</li><li>Monthly competitor re-benchmarking</li><li>Implementation troubleshooting as issues arise</li><li>Exit report with before/after analysis + 6-month roadmap</li></ul>
         <a href="mailto:hello@builtontenth.com?subject=90-Day Advisory" class="service-cta">Apply for Advisory</a>
       </div>
     </div>
