@@ -118,22 +118,23 @@ const tradeLabels = trade.join(', ');
     margin-top: -0.25rem; margin-bottom: 1.75rem; font-style: italic;
   }
 
-  /* ── FAQ Accordion — matches services page style ── */
-  .faq-accordion { margin: 0; }
-  .faq-accordion-item { border-bottom: 1px solid var(--warm-gray); }
-  .faq-accordion-q {
+  /* ── FAQ Accordion — global so JS-created elements get styled ── */
+  :global(.faq-accordion) { margin: 0; }
+  :global(.faq-accordion-item) { border-bottom: 1px solid var(--warm-gray); }
+  :global(.faq-accordion-q) {
     padding: 1.25rem 0; cursor: pointer; width: 100%; text-align: left;
     display: flex; justify-content: space-between; align-items: center; gap: 1rem;
     font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
-    color: var(--navy); background: none; border: none;
+    color: var(--navy); background: none; border: none; outline: none;
+    box-shadow: none; -webkit-appearance: none;
   }
-  .faq-accordion-q::after {
+  :global(.faq-accordion-q::after) {
     content: '+'; font-size: 1.2rem; color: var(--amber);
     transition: transform 0.3s; flex-shrink: 0; line-height: 1;
   }
-  .faq-accordion-q.open::after { transform: rotate(45deg); }
-  .faq-accordion-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-  .faq-accordion-a-inner { padding: 0 0 1.25rem; font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
+  :global(.faq-accordion-q.open::after) { transform: rotate(45deg); }
+  :global(.faq-accordion-a) { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  :global(.faq-accordion-a-inner) { padding: 0 0 1.25rem; font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
 
   /* ── Sidebar ── */
   .article-sidebar { position: sticky; top: 2rem; }
