@@ -32,7 +32,7 @@ Now run the same numbers at top-performer benchmarks — 90% answer rate, 65% bo
 - 270 × 65% = **175 booked jobs**
 - 175 × $1,800 = **$315,000/month in revenue**
 
-**Same call volume. Same ad spend. Same market. $160,000/month difference.**
+### Same call volume. Same ad spend. Same market. $160,000/month difference.
 
 That's not a marketing problem. That's a phone system problem. And it's sitting inside your business right now, invisible, because nobody measured it.
 
@@ -52,7 +52,7 @@ But "feels like" isn't a number.
 
 When call tracking data is actually pulled, the gap between perception and reality is almost always shocking. Owners who believe they're answering 85% of calls are frequently running at 62–68%. The missed calls happen in the cracks — the call that came in during a meeting, the afternoon rush when both lines were busy, the Saturday morning when the CSR was handling a tech escalation.
 
-**Each missed call at a $1,800 average ticket represents $1,260 in potential lost revenue** (at a 70% close rate on booked jobs). At 300 calls/month and 32% missed, that's 96 missed calls — **$120,960 in potential revenue gone before your CSR even picks up the phone.**
+### Each missed call at a $1,800 average ticket represents $1,260 in potential lost revenue** (at a 70% close rate on booked jobs). At 300 calls/month and 32% missed, that's 96 missed calls — **$120,960 in potential revenue gone before your CSR even picks up the phone.
 
 According to [ServiceTitan's contractor research](https://www.servicetitan.com/field-service-management/call-center-analytics), tracking answer rate as a daily KPI — visible to both the owner and CSR manager — is one of the highest-ROI operational changes an HVAC company can make. You cannot fix a problem you can't see.
 
@@ -81,7 +81,7 @@ Human psychology is straightforward here: **if you don't ask, most people won't 
 
 [ServiceTitan's analysis of high-performing HVAC call centers](https://www.servicetitan.com/blog/hvac-call-scripts) shows that top-performing CSRs consistently move from answering questions directly to offering a time slot — without asking permission to schedule. Here's what this sounds like in practice:
 
-**Undertrained CSR (loses the booking):**
+### Undertrained CSR (loses the booking):
 > Caller: "What does a diagnostic cost?"
 > CSR: "It's $89 for the diagnostic. If we do the repair, that gets applied to the cost."
 > Caller: "Okay, and how soon can you come out?"
@@ -89,7 +89,7 @@ Human psychology is straightforward here: **if you don't ask, most people won't 
 > Caller: "Okay, let me check with my husband and call you back."
 > CSR: "Sure, sounds good. We're here Monday through Friday 8 to 5."
 
-**Trained CSR (books the job):**
+### Trained CSR (books the job):
 > Caller: "What does a diagnostic cost?"
 > CSR: "It's $89, and that gets applied to any repair we do. Our tech will diagnose the issue and give you a full breakdown before anything gets done — no surprises. Are mornings or afternoons better for you tomorrow?"
 
@@ -116,7 +116,7 @@ At $1,800 average ticket: **$77,400/month sitting in calls you already paid to g
 ![HVAC technician on the job in residential home mechanical room](https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80)
 *Every unbooked call that doesn't get a follow-up is a call your marketing budget already paid for — twice. Once to generate it, once in the revenue it never produced.*
 
-**What a basic follow-up system looks like:**
+### What a basic follow-up system looks like:
 
 1. Every call that doesn't book gets logged with name, number, and reason
 2. A follow-up call goes out within 2 hours — not the next day, not "when we have time"
@@ -148,7 +148,7 @@ The gap between average phone performance and top-performer phone performance �
 
 ## The Three Fixes (In Order of Priority)
 
-**Fix 1: Install call tracking this week**
+### Fix 1: Install call tracking this week
 
 You cannot manage what you don't measure. Call tracking software shows you answer rate by hour, day, and CSR — so you know exactly when calls are being missed and by whom.
 
@@ -156,7 +156,7 @@ Options at different price points: [CallRail](https://callrail.com) ($45/month),
 
 The goal: know your answer rate by Friday. That number alone tells you how much you're losing before the phone conversation even starts.
 
-**Fix 2: Train the booking ask**
+### Fix 2: Train the booking ask
 
 Write your booking transition script — specifically the move from answering questions to asking for the appointment. It should be one sentence. Practice it with your CSR until it sounds natural, not scripted.
 
@@ -164,7 +164,7 @@ The framework: Answer their question → confirm the urgency → ask for the tim
 
 [ServiceTitan recommends](https://www.servicetitan.com/blog/hvac-call-scripts) role-playing calls with good and bad examples as part of onboarding — and maintaining a library of recorded calls your CSRs can learn from.
 
-**Fix 3: Build the 2-touch follow-up sequence**
+### Fix 3: Build the 2-touch follow-up sequence
 
 Create a simple log — a column in a spreadsheet, a field in your CRM, whatever you have. Every call that doesn't book gets an entry. Every entry gets a follow-up call within 2 hours and a text within 4 hours if no answer.
 
@@ -188,22 +188,22 @@ If you answered no to three or more of these, you have a phone system problem. T
 
 ## Frequently Asked Questions
 
-**What is a good booking rate for an HVAC CSR?**
+### What is a good booking rate for an HVAC CSR?
 Top-performing HVAC companies book 62–70% of answered calls according to ServiceTitan contractor benchmarks. Industry average is 38–45%. If your CSR is below 50%, there's a training gap costing you real money. If you don't know your booking rate, that's the first thing to fix.
 
-**How do I calculate how much my HVAC company is losing to missed calls?**
+### How do I calculate how much my HVAC company is losing to missed calls?
 Multiply your monthly missed calls × your average ticket × your close rate. Example: 80 missed calls × $1,800 average ticket × 70% close rate = $100,800/month in potential lost revenue. Use our free Phone Revenue Calculator for a detailed breakdown specific to your numbers.
 
-**Should HVAC CSRs give pricing over the phone?**
+### Should HVAC CSRs give pricing over the phone?
 Giving a range is fine — it qualifies the caller and prevents price shock on arrival. Giving an exact price before diagnosis is risky. The goal of the call isn't to quote, it's to book. Get them on the schedule and let the tech diagnose.
 
-**How quickly should an HVAC company follow up on unbooked calls?**
+### How quickly should an HVAC company follow up on unbooked calls?
 Within 2 hours for a call-back, within 4 hours for a text if no answer. Hatch's research shows that 78% of consumers go with the business that reaches out first — waiting until the next business day means most of those leads are already gone.
 
-**What's the difference between answer rate and booking rate?**
+### What's the difference between answer rate and booking rate?
 Answer rate is the percentage of incoming calls picked up by a live person before going to voicemail. Booking rate is the percentage of answered calls that result in a scheduled appointment. Both matter — a high answer rate with a low booking rate means your CSR is taking calls but not closing them.
 
-**How much does HVAC CSR training cost?**
+### How much does HVAC CSR training cost?
 The training itself can be free — a written script, role-play sessions, and consistent call monitoring. Options like ServiceTitan Academy provide structured CSR training resources. The ROI on basic CSR training is typically 10:1 or better within 90 days. The real investment is management time: someone needs to listen to calls, track booking rates, and coach consistently.
 
 ---

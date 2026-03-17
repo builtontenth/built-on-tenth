@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+const service = Astro.url.searchParams.get('service') || '';
+const serviceLabel = service === 'audit' ? 'Revenue Leak Audit — $750'
+  : service === 'blueprint' ? 'Growth System Blueprint — $3,000'
+  : service === 'advisory' ? '90-Day Growth Advisory — $7,500'
+  : '';
+---
+<Base title="Apply — Built on Tenth" description="Tell us about your company and we'll get back to you within 24 hours." solidNav={true}>
+
+<style>
+.apply-hero{background:var(--navy);padding:5rem 2.5rem 3rem;text-align:center}
+.apply-hero h1{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;color:#fff;margin-bottom:.75rem}
+.apply-hero h1 em{font-style:normal;color:var(--amber)}
+.apply-hero p{font-size:1rem;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto;line-height:1.65}
+
+.apply-body{background:var(--cream);padding:4rem 2.5rem}
+.apply-inner{max-width:620px;margin:0 auto}
+
+.service-badge{display:inline-block;background:rgba(245,158,11,0.12);color:var(--amber);border:1px solid rgba(245,158,11,0.3);padding:.5rem 1.25rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.88rem;margin-bottom:2.5rem}
+
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:1rem 1.25rem;border:1.5px solid var(--warm-gray);border-radius:8px;
+  font-family:var(--font-body);font-size:.95rem;color:var(--text-dark);background:#fff;
+  outline:none;transition:border-color .2s;box-sizing:border-box
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--amber)}
+.form-group textarea{min-height:120px;resize:vertical}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+.submit-btn{
+  width:100%;padding:1.1rem;background:var(--navy);color:#fff;border:none;border-radius:8px;
+  font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;
+  transition:all .3s;margin-top:.5rem
+}
+.submit-btn:hover{background:var(--navy-light)}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed}
+
+.form-note{font-size:.8rem;color:var(--text-light);margin-top:.75rem;text-align:center;line-height:1.5}
+
+.success-state{text-align:center;padding:3rem 2rem;display:none}
+.success-state h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:.75rem}
+.success-state p{color:var(--text-mid);line-height:1.65}
+.success-icon{font-size:3rem;margin-bottom:1rem}
+
+.trust-bar{background:#fff;border:1px solid var(--warm-gray);border-radius:12px;padding:1.5rem 2rem;margin-bottom:2rem}
+.trust-bar p{font-size:.88rem;color:var(--text-mid);line-height:1.6;margin:0}
+.trust-bar strong{color:var(--navy)}
+
+@media(max-width:600px){.form-row{grid-template-columns:1fr}.apply-body{padding:3rem 1.5rem}}
+</style>
+
+<section class="apply-hero">
+  <h1>Let's look at <em>your numbers.</em></h1>
+  <p>Tell us about your company. We'll review it and get back to you within 24 hours — in writing.</p>
+</section>
+
+<section class="apply-body">
+  <div class="apply-inner">
+
+    {serviceLabel && (
+      <div class="service-badge">Applying for: {serviceLabel}</div>
+    )}
+
+    <div class="trust-bar">
+      <p><strong>No calls. No pitch. No obligation.</strong> We review your details, ask any follow-up questions by email, and confirm we're the right fit before you pay anything.</p>
+    </div>
+
+    <form id="apply-form">
+      <input type="hidden" name="service" value={service} />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Mike Johnson" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" id="company" name="company" placeholder="Johnson HVAC" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="location">City, State</label>
+          <input type="text" id="location" name="location" placeholder="Phoenix, AZ" />
+        </div>
+        <div class="form-group">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" placeholder="yoursite.com" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="service-select">Service You're Interested In</label>
+        <select id="service-select" name="service-select">
+          <option value="" disabled selected={!service}>Select a service</option>
+          <option value="audit" selected={service === 'audit'}>Revenue Leak Audit — $750</option>
+          <option value="blueprint" selected={service === 'blueprint'}>Growth System Blueprint — $3,000</option>
+          <option value="advisory" selected={service === 'advisory'}>90-Day Growth Advisory — $7,500</option>
+          <option value="unsure">Not sure yet — want to talk it through</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="spend">Monthly Marketing Spend (approx.)</label>
+        <select id="spend" name="spend">
+          <option value="" disabled selected>Select a range</option>
+          <option value="under-3k">Under $3,000/month</option>
+          <option value="3k-6k">$3,000–$6,000/month</option>
+          <option value="6k-10k">$6,000–$10,000/month</option>
+          <option value="10k-15k">$10,000–$15,000/month</option>
+          <option value="over-15k">Over $15,000/month</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">What's the main thing you're trying to figure out? <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea id="message" name="message" placeholder="e.g. I'm spending $8K/month on Google Ads and I have no idea if it's working. My agency sends reports but I can't connect them to actual booked jobs..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Send My Application →</button>
+      <p class="form-note">We respond within 24 hours. No calls — everything is handled in writing.</p>
+    </form>
+
+    <div class="success-state" id="success-state">
+      <div class="success-icon">✓</div>
+      <h2>Got it — we'll be in touch.</h2>
+      <p>Expect a reply within 24 hours at the email you provided. We'll confirm the details and let you know next steps before anything is paid.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.getElementById('apply-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const formData = {
+      name: document.getElementById('name').value,
+      company: document.getElementById('company').value,
+      location: document.getElementById('location').value,
+      website: document.getElementById('website').value,
+      service: document.getElementById('service-select').value,
+      spend: document.getElementById('spend').value,
+      message: document.getElementById('message').value,
+    };
+
+    try {
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (res.ok) {
+        document.getElementById('apply-form').style.display = 'none';
+        document.getElementById('success-state').style.display = 'block';
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'application_submitted', service: formData.service });
+      } else {
+        btn.textContent = 'Send My Application →';
+        btn.disabled = false;
+        alert('Something went wrong. Please email us directly at hello@builtontenth.com');
+      }
+    } catch(err) {
+      btn.textContent = 'Send My Application →';
+      btn.disabled = false;
+      alert('Something went wrong. Please email us directly at hello@builtontenth.com');
+    }
+  });
+</script>
+
+</Base>

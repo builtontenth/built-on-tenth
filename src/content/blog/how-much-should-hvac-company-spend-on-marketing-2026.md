@@ -18,7 +18,7 @@ He had no idea if it was working.
 
 His Google Ads agency sent him a report every month. Click-through rates. Impressions. Quality scores. Twelve pages of data that answered every question except the one that actually matters:
 
-**How much is this costing me per booked job?**
+### How much is this costing me per booked job?
 
 He didn't know. His agency didn't tell him. And because he didn't know, he had no way to decide if $11,400 was the right number — or if he was $4,000 over budget, or $4,000 under it.
 
@@ -74,23 +74,23 @@ Here's what separates them: top performers track cost per booked job by channel,
 
 Here's the formula to calculate what you should spend:
 
-**Step 1: Find your average ticket**
+### Step 1: Find your average ticket
 What's the average revenue per job — across all job types, all seasons? Get this from your accounting software: total revenue for last 12 months ÷ total jobs completed.
 
-**Step 2: Decide your maximum cost per booked job**
+### Step 2: Decide your maximum cost per booked job
 A healthy benchmark for HVAC: **8–12% of average ticket**. If your average ticket is $1,800, your maximum cost per booked job should be $144–$216.
 
 Replacement-heavy shops with $6,000+ average tickets can afford to spend $480–$720 per booked job. Service-heavy shops at $350 average need to stay under $42. This is why percentage-of-revenue advice fails — ticket size changes everything.
 
-**Step 3: Find your current close rate**
+### Step 3: Find your current close rate
 Of every call that comes in, what percentage turns into a booked, completed job? Most HVAC companies believe this is 35–45%. When actually tracked, it's usually 22–32%.
 
-**Step 4: Calculate the number of calls you need**
+### Step 4: Calculate the number of calls you need
 How many jobs do you want to book per month? Divide by your close rate to find calls needed.
 
 Example: 80 jobs ÷ 28% close rate = 286 calls needed per month.
 
-**Step 5: Calculate your max monthly budget**
+### Step 5: Calculate your max monthly budget
 286 calls × your cost per call threshold = max budget.
 
 If you're paying $35 per call (reasonable for LSA) and need 286 calls: **$10,010/month max budget**.
@@ -175,13 +175,13 @@ If you're below these numbers in any row, that's a revenue leak. Every one of th
 
 Here's the honest answer that most consultants won't give you:
 
-**Spend exactly as much as produces a job at or below your cost-per-job threshold — and not a dollar more.**
+### Spend exactly as much as produces a job at or below your cost-per-job threshold — and not a dollar more.
 
 If your threshold is $300/booked job and you've found channels producing jobs at $220, spend more on those channels. If you're spending $500/booked job on a channel and can't fix it, cut it — no matter what your agency says.
 
 The right budget isn't a percentage. It's not what your competitor spends. It's not what your agency recommends. It's the answer to one question:
 
-**At what point does the next dollar I spend stop producing jobs at a price that makes sense?**
+### At what point does the next dollar I spend stop producing jobs at a price that makes sense?
 
 That's your ceiling. Everything below it is the right budget. Everything above it is overhead you're funding for your agency.
 
@@ -191,19 +191,19 @@ That's your ceiling. Everything below it is the right budget. Everything above i
 
 Run through this quick diagnostic:
 
-**1. Do you know your cost per booked job — by channel — for last month?**
+### 1. Do you know your cost per booked job — by channel — for last month?
 If no: fix the measurement before changing the spend.
 
-**2. Is your phone answer rate above 85%?**
+### 2. Is your phone answer rate above 85%?
 If no: you're losing 15%+ of every marketing dollar before it has a chance to work.
 
-**3. Is your booking rate above 55% of answered calls?**
+### 3. Is your booking rate above 55% of answered calls?
 If no: your CSR process is costing you more than your marketing budget.
 
-**4. Are any channels producing jobs above 15% of your average ticket?**
+### 4. Are any channels producing jobs above 15% of your average ticket?
 If yes: those channels need to be fixed or cut.
 
-**5. Are you getting a monthly report that shows cost per booked job by channel?**
+### 5. Are you getting a monthly report that shows cost per booked job by channel?
 If no: ask for it. If your agency can't provide it, that tells you something.
 
 If you answered no to 3 or more of these, your marketing budget problem isn't how much you're spending. It's that you don't have visibility into where it's going.
@@ -212,22 +212,22 @@ If you answered no to 3 or more of these, your marketing budget problem isn't ho
 
 ## Frequently Asked Questions
 
-**What's the average marketing budget for an HVAC company?**
+### What's the average marketing budget for an HVAC company?
 According to industry benchmarks, HVAC companies typically invest 7–10% of revenue on marketing, with 60–70% going toward digital channels. For a $2M company, that's roughly $11,000–$16,000/month. However, the right number depends on your average ticket, close rate, and cost-per-job threshold — not a fixed percentage.
 
-**Should HVAC companies use a percentage of revenue for marketing budgets?**
+### Should HVAC companies use a percentage of revenue for marketing budgets?
 It's a useful starting point but not precise enough to optimize against. Two companies at $2M revenue can have completely different optimal budgets if one has a $500 average ticket and the other has a $4,000 average ticket. Use cost per booked job as your primary benchmark, not percentage of revenue.
 
-**What's a good cost per booked job for HVAC?**
+### What's a good cost per booked job for HVAC?
 For service and repair work (average ticket $250–$600): aim for $180–$320 per booked job. For replacement work (average ticket $5,000–$12,000): $400–$800 per booked job is reasonable. The target is 8–12% of your average ticket, regardless of job type.
 
-**How do I know if my Google Ads budget is right for my HVAC company?**
+### How do I know if my Google Ads budget is right for my HVAC company?
 You need three numbers: cost per click, conversion rate (calls per click), and booking rate (jobs per call). Multiply through to find cost per booked job. If that number is above 12% of your average ticket, something in the chain needs fixing — the ads, the landing page, or the phone handling. Note that [average HVAC CPCs hit $32.77 in 2025](https://720digitalmarketing.com/2025-hvac-marketing-benchmarks-every-contractor-needs-to-know/), so efficiency matters more than ever.
 
-**Is it worth spending more on marketing to grow my HVAC company?**
+### Is it worth spending more on marketing to grow my HVAC company?
 Only if you have the phone capacity and technician availability to handle the additional call volume. More spend into a broken phone process produces expensive, low-quality results. Fix the conversion system first, then scale spend.
 
-**How much do top HVAC companies spend on Google LSAs?**
+### How much do top HVAC companies spend on Google LSAs?
 LSA spend varies by market, but most HVAC companies find LSAs deliver the best cost per call of any paid channel — typically $25–$55/call in most US markets. Top performers allocate 30–50% of their paid media budget to LSAs before investing heavily in traditional Google Ads.
 
 ---

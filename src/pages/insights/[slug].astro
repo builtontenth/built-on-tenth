@@ -118,27 +118,22 @@ const tradeLabels = trade.join(', ');
     margin-top: -0.25rem; margin-bottom: 1.75rem; font-style: italic;
   }
 
-  /* ── FAQ Accordion — auto-applied to ## Frequently Asked Questions section ── */
+  /* ── FAQ Accordion — matches services page style ── */
   .faq-accordion { margin: 0; }
   .faq-accordion-item { border-bottom: 1px solid var(--warm-gray); }
   .faq-accordion-q {
-    padding: 1.25rem 0; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 0; cursor: pointer; width: 100%; text-align: left;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
     font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
-    color: var(--navy); list-style: none; gap: 1rem;
+    color: var(--navy); background: none; border: none;
   }
   .faq-accordion-q::after {
-    content: '+'; font-size: 1.3rem; color: var(--amber);
+    content: '+'; font-size: 1.2rem; color: var(--amber);
     transition: transform 0.3s; flex-shrink: 0; line-height: 1;
   }
   .faq-accordion-q.open::after { transform: rotate(45deg); }
-  .faq-accordion-a {
-    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-  }
-  .faq-accordion-a-inner {
-    padding: 0 0 1.25rem; font-size: 0.92rem;
-    color: var(--text-mid); line-height: 1.7;
-  }
+  .faq-accordion-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .faq-accordion-a-inner { padding: 0 0 1.25rem; font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
 
   /* ── Sidebar ── */
   .article-sidebar { position: sticky; top: 2rem; }
@@ -279,12 +274,12 @@ const tradeLabels = trade.join(', ');
 </div>
 
 <script>
-  // FAQ Accordion
-  // Markdown renders **Question?** as <p><strong>Question?</strong></p>
-  // followed by <p>Answer text</p>
+  // FAQ Accordion — finds ## Frequently Asked Questions, converts child ### headings to accordion
   (function() {
     var prose = document.querySelector('.prose');
     if (!prose) return;
+
+    // Find the FAQ h2
     var headings = prose.querySelectorAll('h2');
     var faqHeading = null;
     for (var i = 0; i < headings.length; i++) {
@@ -298,25 +293,21 @@ const tradeLabels = trade.join(', ');
     var container = document.createElement('div');
     container.className = 'faq-accordion';
 
+    // Walk siblings from FAQ heading until next h2
     var el = faqHeading.nextElementSibling;
     var items = [];
     var currentQ = null;
     var currentA = [];
 
-    while (el && el.tagName !== 'H2' && el.tagName !== 'HR') {
+    while (el && el.tagName !== 'H2') {
       var next = el.nextElementSibling;
-      if (el.tagName === 'P') {
-        var children = el.childNodes;
-        // A question paragraph: only child is a <strong> tag (markdown **bold**)
-        var isQuestion = (children.length === 1 && el.querySelector('strong') &&
-          el.querySelector('strong').textContent.trim() === el.textContent.trim());
-        if (isQuestion) {
-          if (currentQ !== null) items.push({ q: currentQ, a: currentA.join('') });
-          currentQ = el.querySelector('strong').textContent.trim();
-          currentA = [];
-        } else if (currentQ !== null) {
-          currentA.push('<p>' + el.innerHTML + '</p>');
-        }
+      if (el.tagName === 'H3') {
+        // h3 = question
+        if (currentQ !== null) items.push({ q: currentQ, a: currentA.join('') });
+        currentQ = el.textContent.trim();
+        currentA = [];
+      } else if (currentQ !== null && el.tagName === 'P') {
+        currentA.push('<p>' + el.innerHTML + '</p>');
       }
       el.parentNode.removeChild(el);
       el = next;
@@ -327,7 +318,7 @@ const tradeLabels = trade.join(', ');
     items.forEach(function(item) {
       var div = document.createElement('div');
       div.className = 'faq-accordion-item';
-      div.innerHTML = '<div class="faq-accordion-q">' + item.q + '</div>' +
+      div.innerHTML = '<button class="faq-accordion-q" type="button">' + item.q + '</button>' +
         '<div class="faq-accordion-a"><div class="faq-accordion-a-inner">' + item.a + '</div></div>';
       var q = div.querySelector('.faq-accordion-q');
       var a = div.querySelector('.faq-accordion-a');
