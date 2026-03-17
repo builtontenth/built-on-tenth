@@ -285,13 +285,14 @@ const tradeLabels = trade.join(', ');
     if (!prose) return;
     const headings = prose.querySelectorAll('h2');
     let faqHeading = null;
-    headings.forEach(h => { if (h.textContent.toLowerCase().includes('frequently asked')) faqHeading = h; });
+    headings.forEach(function(h) {
+      if (h.textContent.toLowerCase().includes('frequently asked')) faqHeading = h;
+    });
     if (!faqHeading) return;
 
     const container = document.createElement('div');
     container.className = 'faq-accordion';
 
-    // Collect all p elements after the FAQ heading until next h2
     let el = faqHeading.nextElementSibling;
     const items = [];
     let currentQ = null;
@@ -302,14 +303,12 @@ const tradeLabels = trade.join(', ');
       if (el.tagName === 'P') {
         const strong = el.querySelector('strong');
         if (strong && el.textContent.trim().startsWith(strong.textContent.trim())) {
-          // This is a question paragraph
           if (currentQ) items.push({ q: currentQ, a: currentA.join('') });
           currentQ = strong.textContent.trim();
-          // Rest of p after strong is part of answer
-          const rest = el.innerHTML.replace(`<strong>${strong.textContent}</strong>`, '').trim();
-          currentA = rest ? [`<p>${rest}</p>`] : [];
+          const rest = el.innerHTML.replace('<strong>' + strong.textContent + '</strong>', '').trim();
+          currentA = rest ? ['<p>' + rest + '</p>'] : [];
         } else if (currentQ) {
-          currentA.push(`<p>${el.innerHTML}</p>`);
+          currentA.push('<p>' + el.innerHTML + '</p>');
         }
       }
       el.parentNode.removeChild(el);
@@ -317,16 +316,13 @@ const tradeLabels = trade.join(', ');
     }
     if (currentQ) items.push({ q: currentQ, a: currentA.join('') });
 
-    items.forEach(item => {
+    items.forEach(function(item) {
       const div = document.createElement('div');
       div.className = 'faq-accordion-item';
-      div.innerHTML = `
-        <div class="faq-accordion-q">${item.q}</div>
-        <div class="faq-accordion-a"><div class="faq-accordion-a-inner">${item.a}</div></div>
-      `;
+      div.innerHTML = '<div class="faq-accordion-q">' + item.q + '</div><div class="faq-accordion-a"><div class="faq-accordion-a-inner">' + item.a + '</div></div>';
       const q = div.querySelector('.faq-accordion-q');
-      const a = div.querySelector('.faq-accordion-a') as HTMLElement;
-      q.addEventListener('click', () => {
+      const a = div.querySelector('.faq-accordion-a');
+      q.addEventListener('click', function() {
         const isOpen = q.classList.toggle('open');
         a.style.maxHeight = isOpen ? a.scrollHeight + 'px' : '0';
       });
@@ -335,11 +331,14 @@ const tradeLabels = trade.join(', ');
 
     faqHeading.insertAdjacentElement('afterend', container);
   })();
+
+  // Newsletter form
+  document.getElementById('article-nl-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const email = (document.getElementById('article-nl-email') as HTMLInputElement).value;
-    const btn = document.getElementById('article-nl-btn')!;
+    const email = document.getElementById('article-nl-email').value;
+    const btn = document.getElementById('article-nl-btn');
     btn.textContent = 'Subscribing...';
-    (btn as HTMLButtonElement).disabled = true;
+    btn.disabled = true;
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
@@ -348,18 +347,18 @@ const tradeLabels = trade.join(', ');
       });
       if (res.ok) {
         btn.textContent = "You're in! ✓";
-        (btn as HTMLButtonElement).style.background = '#10b981';
-        (btn as HTMLButtonElement).style.color = '#fff';
-        (document.getElementById('article-nl-email') as HTMLInputElement).disabled = true;
+        btn.style.background = '#10b981';
+        btn.style.color = '#fff';
+        document.getElementById('article-nl-email').disabled = true;
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'newsletter_signup', form_location: 'article_footer' });
       } else {
         btn.textContent = 'Subscribe Free';
-        (btn as HTMLButtonElement).disabled = false;
+        btn.disabled = false;
       }
-    } catch {
+    } catch(err) {
       btn.textContent = 'Subscribe Free';
-      (btn as HTMLButtonElement).disabled = false;
+      btn.disabled = false;
     }
   });
 </script>
