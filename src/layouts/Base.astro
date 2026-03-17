@@ -3,8 +3,10 @@ interface Props {
   title: string;
   description: string;
   solidNav?: boolean;
+  ogImage?: string;
 }
-const { title, description, solidNav = false } = Astro.props;
+const { title, description, solidNav = false, ogImage = 'https://builtontenth.com/og-default.jpg' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, 'https://builtontenth.com');
 import '../styles/global.css';
 ---
 <!DOCTYPE html>
@@ -14,9 +16,22 @@ import '../styles/global.css';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Built on Tenth" />
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -24,12 +39,18 @@ import '../styles/global.css';
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NSMGPHL2');</script>
   <!-- End Google Tag Manager -->
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMGPHL2"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
   <nav id="nav" class={solidNav ? 'solid' : ''}>
     <a href="/" class="nav-logo">BUILT ON <span>TENTH</span></a>
     <div class="nav-links">
@@ -49,13 +70,20 @@ import '../styles/global.css';
       <div class="footer-brand">
         <a href="/" class="nav-logo">BUILT ON <span>TENTH</span></a>
         <p>Revenue intelligence for home service companies. We study how the most profitable HVAC, roofing, and plumbing businesses grow — and share everything we find.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/hello.builtontenth" target="_blank" rel="noopener noreferrer" aria-label="Built on Tenth on Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Research</h4>
         <a href="/insights">All Insights</a>
-        <a href="/insights">HVAC</a>
-        <a href="/insights">Roofing</a>
-        <a href="/insights">Plumbing</a>
+        <a href="/insights?trade=HVAC">HVAC</a>
+        <a href="/insights?trade=Roofing">Roofing</a>
+        <a href="/insights?trade=Plumbing">Plumbing</a>
       </div>
       <div class="footer-col">
         <h4>Free Tools</h4>
@@ -79,8 +107,18 @@ import '../styles/global.css';
     </div>
   </footer>
 
+  <style>
+    .footer-social { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5);
+      transition: all 0.2s; text-decoration: none;
+    }
+    .footer-social a:hover { background: #1877f2; color: #fff; }
+  </style>
+
   <script>
-    // Nav scroll effect (only for non-solid navs)
     const nav = document.getElementById('nav');
     if (!nav.classList.contains('solid')) {
       window.addEventListener('scroll', () => {

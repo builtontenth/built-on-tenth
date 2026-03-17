@@ -144,15 +144,27 @@ const categories = ['Revenue Diagnostics', 'Pipeline Systems', 'Channel Teardown
 <script>
   const btns = document.querySelectorAll('.pillar-btn');
   const allCards = document.querySelectorAll('[data-category]');
+
+  function filterCards(filter: string) {
+    btns.forEach(b => b.classList.remove('active'));
+    const matchBtn = [...btns].find(b => (b as HTMLButtonElement).dataset.filter === filter);
+    if (matchBtn) matchBtn.classList.add('active');
+    else (document.querySelector('[data-filter="all"]') as HTMLButtonElement)?.classList.add('active');
+    allCards.forEach(card => {
+      (card as HTMLElement).style.display =
+        (filter === 'all' || (card as HTMLElement).dataset.category === filter ||
+         (card as HTMLElement).dataset.trade?.includes(filter)) ? '' : 'none';
+    });
+  }
+
+  // Check URL for ?trade= param on load
+  const params = new URLSearchParams(window.location.search);
+  const tradeParam = params.get('trade');
+  if (tradeParam) filterCards(tradeParam);
+
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = (btn as HTMLButtonElement).dataset.filter;
-      allCards.forEach(card => {
-        (card as HTMLElement).style.display =
-          (filter === 'all' || (card as HTMLElement).dataset.category === filter) ? '' : 'none';
-      });
+      filterCards((btn as HTMLButtonElement).dataset.filter || 'all');
     });
   });
 

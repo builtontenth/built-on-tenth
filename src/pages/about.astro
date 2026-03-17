@@ -1,74 +1,308 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="About Built on Tenth — Revenue Intelligence for Home Service Companies" description="We study how the most profitable HVAC, roofing, and plumbing companies grow." solidNav={true}>
+<Base
+  title="About Built on Tenth — Revenue Intelligence for Home Service Companies"
+  description="Built on Tenth studies how the most profitable HVAC, roofing, and plumbing companies grow — and publishes everything we find. No agency incentives. Just data."
+  solidNav={true}
+>
 
 <style>
-.about-mission{padding:5rem 2.5rem;background:var(--cream)}.about-inner{max-width:760px;margin:0 auto}
-.about-inner h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--navy);line-height:1.15;letter-spacing:-0.02em;margin-bottom:1.5rem}
-.about-inner p{font-size:1.05rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.25rem}
-.about-inner strong{color:var(--navy)}
-.about-images{padding:0 2.5rem}.about-images-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
-.about-images-inner div{border-radius:12px;overflow:hidden;height:280px}.about-images-inner img{width:100%;height:100%;object-fit:cover}
-.about-how{padding:5rem 2.5rem;background:var(--warm-white)}.about-how-inner{max-width:900px;margin:0 auto}
-.about-how h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:2.5rem;text-align:center}
-.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.method-card{text-align:center}
-.method-num{font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--amber);margin-bottom:0.5rem}
-.method-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
-.method-card p{font-size:0.88rem;color:var(--text-mid);line-height:1.55}
-.about-diff{padding:5rem 2.5rem;background:var(--navy)}.about-diff-inner{max-width:900px;margin:0 auto}
-.about-diff h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:2.5rem;text-align:center}
-.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.diff-card{padding:1.75rem;border:1px solid rgba(255,255,255,0.08);border-radius:12px}
-.diff-card h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--amber);margin-bottom:0.5rem}
-.diff-card p{font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.6}
-.about-cta{padding:5rem 2.5rem;background:var(--cream);text-align:center}
+/* Hero */
+.about-hero{background:var(--navy);padding:5rem 2.5rem 4rem}
+.about-hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center}
+.about-hero h1{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;line-height:1.18;margin-bottom:1.25rem}
+.about-hero h1 em{font-style:normal;color:var(--amber)}
+.about-hero-text p{font-size:1.05rem;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:1rem}
+.about-hero-img{border-radius:16px;overflow:hidden;height:380px}
+.about-hero-img img{width:100%;height:100%;object-fit:cover}
+
+/* Founder */
+.founder-section{background:var(--cream);padding:5rem 2.5rem}
+.founder-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:3.5rem;align-items:start}
+.founder-photo{border-radius:16px;overflow:hidden;background:var(--navy);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.founder-photo-placeholder{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--navy) 0%,#1a2f50 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem}
+.founder-initial{font-family:var(--font-display);font-size:4rem;font-weight:800;color:var(--amber)}
+.founder-name-small{font-family:var(--font-display);font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase}
+.founder-body h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:0.5rem;line-height:1.25}
+.founder-role{font-family:var(--font-display);font-size:0.8rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.25rem}
+.founder-body p{font-size:1rem;color:var(--text-mid);line-height:1.8;margin-bottom:1rem}
+.founder-body strong{color:var(--navy)}
+.founder-facts{display:flex;gap:2rem;margin-top:1.5rem;flex-wrap:wrap}
+.founder-fact{text-align:center}
+.founder-fact-num{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);line-height:1}
+.founder-fact-label{font-size:0.75rem;color:var(--text-light);margin-top:0.25rem;font-family:var(--font-display);font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
+
+/* Mission */
+.mission-section{background:#fff;padding:5rem 2.5rem}
+.mission-inner{max-width:760px;margin:0 auto}
+.section-eyebrow{font-family:var(--font-display);font-size:0.72rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem}
+.mission-inner h2{font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:1.5rem}
+.mission-inner p{font-size:1.05rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.25rem}
+.mission-inner strong{color:var(--navy)}
+.mission-callout{background:var(--cream);border-left:3px solid var(--amber);padding:1.25rem 1.5rem;border-radius:0 10px 10px 0;margin:2rem 0;font-size:1rem;color:var(--navy);font-weight:600;line-height:1.6}
+
+/* Methodology */
+.method-section{background:var(--cream);padding:5rem 2.5rem}
+.method-inner{max-width:900px;margin:0 auto}
+.method-inner h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:2.5rem}
+.method-steps{display:flex;flex-direction:column;gap:0}
+.method-step{display:grid;grid-template-columns:64px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--warm-gray);align-items:start}
+.method-step:last-child{border-bottom:none}
+.method-step-num{width:48px;height:48px;background:var(--navy);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--amber);flex-shrink:0}
+.method-step h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.method-step p{font-size:0.92rem;color:var(--text-mid);line-height:1.65}
+
+/* What we are NOT */
+.notus-section{background:var(--navy);padding:5rem 2.5rem}
+.notus-inner{max-width:900px;margin:0 auto}
+.notus-inner h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:0.75rem}
+.notus-inner>p{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:2.5rem;line-height:1.65}
+.notus-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.notus-card{padding:1.5rem 1.75rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08)}
+.notus-card.no{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.15)}
+.notus-card.yes{background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15)}
+.notus-label{font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem}
+.notus-card.no .notus-label{color:#ef4444}
+.notus-card.yes .notus-label{color:#10b981}
+.notus-card h3{font-family:var(--font-display);font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.4rem}
+.notus-card p{font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.55}
+
+/* Who we serve */
+.serve-section{background:#fff;padding:5rem 2.5rem}
+.serve-inner{max-width:900px;margin:0 auto}
+.serve-inner h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:0.75rem}
+.serve-inner>p{font-size:1rem;color:var(--text-mid);margin-bottom:2.5rem;line-height:1.65}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
+.serve-card{padding:1.75rem;background:var(--cream);border-radius:12px;border:1px solid var(--warm-gray)}
+.serve-card-icon{font-size:1.5rem;margin-bottom:1rem}
+.serve-card h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.serve-card p{font-size:0.85rem;color:var(--text-mid);line-height:1.55}
+.serve-icp{background:var(--cream);border-radius:12px;padding:1.75rem 2rem;border:1px solid var(--warm-gray)}
+.serve-icp h3{font-family:var(--font-display);font-size:0.85rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem}
+.serve-icp-list{display:flex;flex-wrap:wrap;gap:0.6rem}
+.serve-icp-tag{background:#fff;border:1px solid var(--warm-gray);padding:0.35rem 0.85rem;border-radius:20px;font-size:0.8rem;color:var(--text-mid);font-family:var(--font-display);font-weight:600}
+
+/* CTA */
+.about-cta{background:var(--cream);padding:5rem 2.5rem;text-align:center}
 .about-cta h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:0.75rem}
-.about-cta p{font-size:1.05rem;color:var(--text-mid);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
-@media(max-width:768px){.about-images-inner{grid-template-columns:1fr}.method-grid{grid-template-columns:1fr}.diff-grid{grid-template-columns:1fr}}
+.about-cta p{font-size:1rem;color:var(--text-mid);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.65}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--navy);color:#fff;padding:1rem 2rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:0.92rem;text-decoration:none;transition:all 0.3s}
+.btn-primary:hover{background:var(--navy-light)}
+.btn-secondary{display:inline-block;background:transparent;color:var(--navy);padding:1rem 2rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:0.92rem;text-decoration:none;border:1.5px solid var(--navy);transition:all 0.3s}
+.btn-secondary:hover{background:var(--navy);color:#fff}
+
+@media(max-width:900px){
+  .about-hero-inner{grid-template-columns:1fr}.about-hero-img{display:none}
+  .founder-inner{grid-template-columns:1fr}.founder-photo{width:120px}
+  .notus-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .about-hero,.founder-section,.mission-section,.method-section,.notus-section,.serve-section,.about-cta{padding-left:1.5rem;padding-right:1.5rem}
+  .method-step{grid-template-columns:48px 1fr;gap:1rem}
+}
 </style>
 
-<section class="page-hero">
-  <h1>We study growth. <em>You keep the playbook.</em></h1>
-  <p>Built on Tenth is a revenue intelligence operation for home service companies. We analyze what works, publish the findings, and help owners build systems that actually grow revenue.</p>
+<!-- Hero -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <div class="about-hero-text">
+      <h1>We study how HVAC, roofing, and plumbing companies <em>actually grow.</em></h1>
+      <p>Built on Tenth is a revenue intelligence operation. We analyze the marketing systems, competitive positioning, and conversion performance of home service companies across the US — and publish everything we find.</p>
+      <p>No agency incentives. No retainers. No reason to recommend more ad spend. Just research.</p>
+    </div>
+    <div class="about-hero-img">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="HVAC and home service trade work" loading="eager" />
+    </div>
+  </div>
 </section>
 
-<section class="about-images"><div class="about-images-inner">
-  <div><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Trade work"></div>
-  <div><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80" alt="HVAC technician"></div>
-  <div><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Service fleet"></div>
-</div></section>
-
-<section class="about-mission reveal"><div class="about-inner">
-  <h2>Most home service owners are making marketing decisions blind.</h2>
-  <p>They write checks to agencies, lead platforms, and ad networks — <strong>$5,000 to $15,000 every month</strong> — without any clear picture of what's actually generating revenue.</p>
-  <p>We started Built on Tenth because we saw the same pattern across hundreds of companies: <strong>good businesses run by smart operators, hemorrhaging revenue through marketing systems they can't measure.</strong></p>
-  <p>So we decided to study what actually works. We analyze the marketing presence, competitive positioning, and pipeline systems of HVAC, roofing, and plumbing companies across the US. Then we publish everything we find — the data, the patterns, the benchmarks, and the specific practices that separate top performers from everyone else.</p>
-</div></section>
-
-<section class="about-how reveal"><div class="about-how-inner">
-  <h2>How we work</h2>
-  <div class="method-grid">
-    <div class="method-card"><div class="method-num">01</div><h3>Research at Scale</h3><p>We continuously analyze home service companies across the US — their marketing, competitors, and conversion systems.</p></div>
-    <div class="method-card"><div class="method-num">02</div><h3>Publish Everything</h3><p>Benchmarks, teardowns, and growth patterns get published as free research. No gatekeeping.</p></div>
-    <div class="method-card"><div class="method-num">03</div><h3>Build Systems</h3><p>When you want us to apply research to your business, we conduct a deep audit and design a custom growth system.</p></div>
+<!-- Founder -->
+<section class="founder-section">
+  <div class="founder-inner reveal">
+    <div class="founder-photo">
+      <div class="founder-photo-placeholder">
+        <span class="founder-initial">T</span>
+        <span class="founder-name-small">Tanvir Hossain</span>
+      </div>
+    </div>
+    <div class="founder-body">
+      <h2>Tanvir Hossain</h2>
+      <p class="founder-role">Founder, Built on Tenth</p>
+      <p>I got interested in home service business growth by studying a simple question: <strong>why do two HVAC companies in the same market, spending the same amount on marketing, get completely different results?</strong></p>
+      <p>After analyzing hundreds of companies — their Google presence, ad strategies, phone systems, and competitive positions — the pattern became clear. The top performers weren't spending more. They were <strong>measuring differently, handling calls better, and following up where everyone else gave up.</strong></p>
+      <p>Built on Tenth exists to publish that research. Every benchmark, every finding, every system that works — documented in plain language for operators who'd rather know their numbers than trust a vendor's report.</p>
+      <p>Everything is delivered in writing. No calls required. Because good analysis doesn't need a sales pitch attached to it.</p>
+      <div class="founder-facts">
+        <div class="founder-fact">
+          <div class="founder-fact-num">3</div>
+          <div class="founder-fact-label">Trades Covered</div>
+        </div>
+        <div class="founder-fact">
+          <div class="founder-fact-num">15+</div>
+          <div class="founder-fact-label">US Markets</div>
+        </div>
+        <div class="founder-fact">
+          <div class="founder-fact-num">$0</div>
+          <div class="founder-fact-label">Incentive to Upsell Ads</div>
+        </div>
+        <div class="founder-fact">
+          <div class="founder-fact-num">100%</div>
+          <div class="founder-fact-label">Written Delivery</div>
+        </div>
+      </div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section class="about-diff reveal"><div class="about-diff-inner">
-  <h2>What makes us different</h2>
-  <div class="diff-grid">
-    <div class="diff-card"><h3>We don't sell marketing services</h3><p>No ads, no retainers, no incentive to recommend more spend. Our only incentive is better analysis.</p></div>
-    <div class="diff-card"><h3>We show the math</h3><p>Every finding is translated into dollars. Revenue impact, not marketing jargon.</p></div>
-    <div class="diff-card"><h3>We think in systems</h3><p>Not tactics — complete growth systems connecting lead gen, phones, quoting, follow-up, and measurement.</p></div>
-    <div class="diff-card"><h3>Everything is written</h3><p>Every deliverable is documented in detail. Written intelligence you can reference and implement at your pace.</p></div>
+<!-- Mission -->
+<section class="mission-section">
+  <div class="mission-inner reveal">
+    <p class="section-eyebrow">Why We Exist</p>
+    <h2>Most home service owners are flying blind on marketing spend.</h2>
+    <p>They write checks — <strong>$5,000 to $15,000 every month</strong> — to agencies, lead platforms, and ad networks. In return, they get click reports, impression counts, and quality scores. But nobody tells them their cost per booked job. Nobody shows them which channel is producing and which is burning cash.</p>
+    <p>Agencies have a financial incentive to recommend more spend. Lead platforms charge per call regardless of whether those calls book. And most software vendors define success as more activity — not more revenue.</p>
+    <div class="mission-callout">
+      "The companies losing the most money on marketing aren't being scammed. They just don't have the data to see what's happening. That's the problem we're solving."
+    </div>
+    <p>Built on Tenth sits outside that incentive structure. We don't run ads, don't manage campaigns, and don't take referral fees. Our only product is analysis — which means our only incentive is getting the analysis right.</p>
   </div>
-</div></section>
+</section>
 
+<!-- Methodology -->
+<section class="method-section">
+  <div class="method-inner reveal">
+    <p class="section-eyebrow">How We Work</p>
+    <h2>The research methodology</h2>
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="method-step-num">01</div>
+        <div>
+          <h3>Competitive market analysis</h3>
+          <p>For every company we study, we analyze the full competitive landscape — Google Business Profile performance, review velocity, ad visibility, and organic ranking across their actual service markets. We benchmark against the top performers in that same geography.</p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-step-num">02</div>
+        <div>
+          <h3>Revenue leak identification</h3>
+          <p>We translate every gap into a dollar figure. Not "your phone answer rate is low" — but "at your call volume and average ticket, a 68% answer rate costs you an estimated $4,200/month in lost revenue." Every finding gets a number attached to it.</p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-step-num">03</div>
+        <div>
+          <h3>Pattern recognition across companies</h3>
+          <p>Individual audits feed into broader benchmarks. When we analyze 50 roofing companies' phone systems, we can tell you exactly what the top quartile does differently — and what it's worth in revenue. That's what gets published as free research.</p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-step-num">04</div>
+        <div>
+          <h3>System design, not just diagnosis</h3>
+          <p>For clients who engage for a full audit, findings become blueprints. Phone scripts, follow-up sequences, tracking dashboards, channel allocation — every recommendation comes with an implementation path, not just a problem description.</p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-step-num">05</div>
+        <div>
+          <h3>Written delivery, always</h3>
+          <p>Every piece of work — from free tools to full audits — is delivered in writing. No calls, no presentations, no slide decks that gather dust. Documentation you can reference, share with your team, and act on at your pace.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What we are / are NOT -->
+<section class="notus-section">
+  <div class="notus-inner reveal">
+    <h2>What Built on Tenth is — and isn't</h2>
+    <p>Understanding this distinction matters. It affects whose advice you can trust.</p>
+    <div class="notus-grid">
+      <div class="notus-card no">
+        <p class="notus-label">✕ Not This</p>
+        <h3>A marketing agency</h3>
+        <p>We don't run your ads, manage your campaigns, or take a percentage of spend. Agencies benefit when you spend more. We don't.</p>
+      </div>
+      <div class="notus-card yes">
+        <p class="notus-label">✓ This</p>
+        <h3>An independent research operation</h3>
+        <p>We study what works, publish the findings, and charge only for the analysis itself. Zero incentive to recommend more spend.</p>
+      </div>
+      <div class="notus-card no">
+        <p class="notus-label">✕ Not This</p>
+        <h3>A coaching or consulting program</h3>
+        <p>No monthly retainers, no mastermind groups, no recurring fees. You pay for a specific deliverable and you own it completely.</p>
+      </div>
+      <div class="notus-card yes">
+        <p class="notus-label">✓ This</p>
+        <h3>A data-driven audit service</h3>
+        <p>Fixed-scope engagements with clear deliverables. A 15–25 page report in 7 days. You know exactly what you're getting before you pay.</p>
+      </div>
+      <div class="notus-card no">
+        <p class="notus-label">✕ Not This</p>
+        <h3>A lead generation platform</h3>
+        <p>We don't sell leads, take referral fees, or have financial relationships with the vendors we mention in our research.</p>
+      </div>
+      <div class="notus-card yes">
+        <p class="notus-label">✓ This</p>
+        <h3>A benchmark and intelligence publisher</h3>
+        <p>Free tools, free benchmarks, free research — published weekly. The goal is to raise the baseline for the entire industry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who we serve -->
+<section class="serve-section">
+  <div class="serve-inner reveal">
+    <p class="section-eyebrow">Who This Is For</p>
+    <h2>Built for operators, not marketers</h2>
+    <p>We write and work for home service business owners — people who run real operations with real trucks, real technicians, and real overhead. Not marketing departments.</p>
+    <div class="serve-grid">
+      <div class="serve-card">
+        <div class="serve-card-icon">🔧</div>
+        <h3>HVAC Companies</h3>
+        <p>Residential and commercial HVAC operators dealing with high seasonality, competitive Google Ads markets, and the shift from repair-focused to replacement-focused revenue.</p>
+      </div>
+      <div class="serve-card">
+        <div class="serve-card-icon">🏠</div>
+        <h3>Roofing Companies</h3>
+        <p>Retail and storm roofing operators navigating Angi leads, insurance work, and the challenge of building inbound demand in a category dominated by price shoppers.</p>
+      </div>
+      <div class="serve-card">
+        <div class="serve-card-icon">💧</div>
+        <h3>Plumbing Companies</h3>
+        <p>Plumbing operators at the $1M–$5M revenue level trying to reduce dependency on referrals and build a predictable, trackable marketing system.</p>
+      </div>
+    </div>
+    <div class="serve-icp">
+      <h3>The owner we're most useful to</h3>
+      <div class="serve-icp-list">
+        <span class="serve-icp-tag">$1M–$5M annual revenue</span>
+        <span class="serve-icp-tag">5–30 employees</span>
+        <span class="serve-icp-tag">US market</span>
+        <span class="serve-icp-tag">Spending $5K–$15K/month on marketing</span>
+        <span class="serve-icp-tag">Can't prove what's working</span>
+        <span class="serve-icp-tag">Burned by agencies before</span>
+        <span class="serve-icp-tag">Wants data, not pitches</span>
+        <span class="serve-icp-tag">Prefers written communication</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
 <section class="about-cta reveal">
-  <h2>Ready to see where your revenue is leaking?</h2>
-  <p>Start with a Revenue Leak Audit.</p>
-  <a href="/services#audit" class="btn-primary">Get a Revenue Leak Audit &mdash; $750 &rarr;</a>
+  <h2>See where your revenue is leaking</h2>
+  <p>Start with our free tools — or go straight to a Revenue Leak Audit and get a complete picture of your marketing system in 7 days.</p>
+  <div class="cta-buttons">
+    <a href="/services#audit" class="btn-primary">Get a Revenue Leak Audit — $750 →</a>
+    <a href="/tools" class="btn-secondary">Try the Free Tools First</a>
+  </div>
 </section>
 
 </Base>
