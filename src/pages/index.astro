@@ -90,14 +90,14 @@ import Base from '../layouts/Base.astro';
 .services-header h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:.75rem}
 .services-header p{color:var(--text-on-dark);font-size:1.05rem;max-width:550px;margin:0 auto;line-height:1.6}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative;display:flex;flex-direction:column}
-.service-features{list-style:none;margin-bottom:2rem;flex:1}
+.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative}
 .service-card:hover{border-color:rgba(245,158,11,.3);background:rgba(255,255,255,.05)}
 .service-card.featured{border-color:var(--amber);background:rgba(245,158,11,.04)}
 .service-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy);padding:.3rem 1rem;border-radius:20px;font-size:.7rem;font-weight:700;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase}
 .service-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
 .service-price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--amber);margin-bottom:.5rem}
 .service-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:1.5rem}
+.service-features{list-style:none;margin-bottom:2rem}
 .service-features li{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;font-size:.85rem;color:var(--text-on-dark);line-height:1.45}
 .service-features li::before{content:'✓';color:var(--green-accent);font-weight:700;flex-shrink:0}
 .service-cta{display:block;text-align:center;padding:.9rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s}
@@ -122,7 +122,16 @@ import Base from '../layouts/Base.astro';
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="Construction and trade work" loading="eager">
+    <img
+      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75"
+      srcset="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=70 600w,
+              https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=75 1200w,
+              https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=75 1920w"
+      sizes="100vw"
+      alt="Construction and trade work"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
   <div class="hero-content">
     <div class="hero-text">
@@ -162,8 +171,8 @@ import Base from '../layouts/Base.astro';
 <section class="problem">
   <div class="problem-inner">
     <div class="problem-images reveal-left">
-      <div class="problem-img-1"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="HVAC technician at work" loading="lazy"></div>
-      <div class="problem-img-2"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="Service van fleet" loading="lazy"></div>
+      <div class="problem-img-1"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=70" alt="HVAC technician at work" loading="lazy" decoding="async"></div>
+      <div class="problem-img-2"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=70" alt="Service van fleet" loading="lazy" decoding="async"></div>
       <div class="problem-badge"><div class="problem-badge-num">67%</div><div class="problem-badge-text">of owners can't connect ad spend to booked jobs</div></div>
     </div>
     <div class="problem-text reveal">
@@ -189,15 +198,15 @@ import Base from '../layouts/Base.astro';
     </div>
     <div class="approach-grid">
       <div class="approach-card reveal">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Data analytics" loading="lazy"></div>
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=70" alt="Data analytics" loading="lazy" decoding="async"></div>
         <div class="approach-card-body"><div class="approach-card-num">01 — Research</div><h3>We Study What's Working</h3><p>We analyze the Google presence, ad strategy, review ecosystem, and competitive position of hundreds of HVAC, roofing, and plumbing companies.</p></div>
       </div>
       <div class="approach-card reveal" style="transition-delay:.15s">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" alt="Financial analysis" loading="lazy"></div>
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500&q=70" alt="Financial analysis" loading="lazy" decoding="async"></div>
         <div class="approach-card-body"><div class="approach-card-num">02 — Diagnose</div><h3>We Find the Revenue Leaks</h3><p>Every gap gets translated into dollars. Not "your website needs work" — but "this is costing you an estimated $180K per year."</p></div>
       </div>
       <div class="approach-card reveal" style="transition-delay:.3s">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600&q=80" alt="Strategic planning" loading="lazy"></div>
+        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=500&q=70" alt="Strategic planning" loading="lazy" decoding="async"></div>
         <div class="approach-card-body"><div class="approach-card-num">03 — Build the System</div><h3>We Design Growth Systems</h3><p>Phone scripts, follow-up sequences, channel strategy, tracking dashboards — custom-built for your business and your market.</p></div>
       </div>
     </div>
