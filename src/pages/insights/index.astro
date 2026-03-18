@@ -1,200 +1,163 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-
-const posts = await getCollection('blog');
-const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const featured = sorted.filter(p => p.data.featured)[0];
-const rest = sorted.filter(p => p.slug !== featured?.slug);
-
-const categories = ['Revenue Diagnostics', 'Pipeline Systems', 'Channel Teardowns', 'Growth Benchmarks', 'Operator Case Studies'];
+import Layout from '../../layouts/Layout.astro';
 ---
-
-<Base title="Insights — Growth Research for HVAC, Roofing & Plumbing | Built on Tenth" description="Data-backed analysis of how the most profitable home service companies grow. HVAC, roofing, and plumbing operators — know your numbers.">
+<Layout
+  title="Insights — Growth Research for HVAC, Roofing & Plumbing | Built on Tenth"
+  description="Research, benchmarks, and analysis from studying hundreds of home service companies. What the most profitable HVAC, roofing, and plumbing operators do differently."
+  active="insights"
+>
 
 <style>
-.insights-hero{background:var(--navy);padding:5rem 2.5rem 4rem;text-align:center}
-.insights-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;margin-bottom:1rem}
-.insights-hero h1 em{font-style:normal;color:var(--amber)}
-.insights-hero>p{font-size:1.05rem;color:rgba(255,255,255,0.6);max-width:540px;margin:0 auto 2rem;line-height:1.65}
-.pillar-filters{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
-.pillar-btn{padding:.45rem 1rem;border-radius:20px;border:1.5px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.55);font-family:var(--font-display);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.04em}
-.pillar-btn:hover,.pillar-btn.active{background:var(--amber);color:var(--navy);border-color:var(--amber)}
-.insights-main{background:var(--cream);padding:4rem 2.5rem}
-.insights-inner{max-width:1080px;margin:0 auto}
-.featured-label{font-family:var(--font-display);font-size:.72rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
-.featured-card{display:grid;grid-template-columns:1fr 1fr;background:var(--navy);border-radius:16px;overflow:hidden;margin-bottom:4rem;text-decoration:none;transition:transform .3s,box-shadow .3s}
-.featured-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.15)}
-.featured-card-img{min-height:340px}
-.featured-card-img img{width:100%;height:100%;object-fit:cover;display:block}
-.featured-card-body{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
-.card-meta{display:flex;gap:.75rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap}
-.card-category{background:rgba(245,158,11,0.15);color:var(--amber);padding:.25rem .75rem;border-radius:20px;font-size:.68rem;font-weight:700;font-family:var(--font-display);letter-spacing:.07em;text-transform:uppercase}
-.card-trade{font-size:.72rem;color:rgba(255,255,255,0.4);font-family:var(--font-display);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
-.featured-card-body h2{font-family:var(--font-display);font-size:1.55rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:1rem}
-.featured-card-body>p{font-size:.9rem;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:1.5rem}
-.card-read-row{display:flex;align-items:center}
-.card-read-link{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--amber);display:flex;align-items:center;gap:.4rem;transition:gap .2s}
-.featured-card:hover .card-read-link{gap:.7rem}
-.card-readtime{font-size:.75rem;color:rgba(255,255,255,0.3);margin-left:auto}
-.section-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--warm-gray)}
-.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-bottom:3rem}
-.article-card{background:#fff;border:1px solid var(--warm-gray);border-radius:12px;overflow:hidden;text-decoration:none;transition:all .3s;display:flex;flex-direction:column}
-.article-card:hover{border-color:var(--amber);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.07)}
-.article-card-img{height:180px;overflow:hidden}
-.article-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.article-card:hover .article-card-img img{transform:scale(1.04)}
-.article-card-body{padding:1.25rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column}
-.article-card-body h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);line-height:1.35;margin:.5rem 0 .6rem;flex:1}
-.article-card-body>p{font-size:.83rem;color:var(--text-mid);line-height:1.55;margin-bottom:1rem}
-.card-footer{display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--text-light);padding-top:.75rem;border-top:1px solid var(--warm-gray);font-family:var(--font-display);font-weight:600}
-.empty-state{text-align:center;padding:4rem 2rem;color:var(--text-mid)}
-.empty-state h3{font-family:var(--font-display);font-size:1.1rem;color:var(--navy);margin-bottom:.5rem}
-.insights-newsletter{background:var(--navy);padding:3.5rem 2.5rem;text-align:center}
-.insights-newsletter h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:.75rem}
-.insights-newsletter>p{font-size:.95rem;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 1.5rem;line-height:1.65}
-.nl-band-form{display:flex;gap:.75rem;max-width:420px;margin:0 auto}
-.nl-band-form input{flex:1;padding:.9rem 1rem;border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;background:rgba(255,255,255,0.08);color:#fff;font-family:var(--font-body);font-size:.9rem;outline:none}
-.nl-band-form input::placeholder{color:rgba(255,255,255,0.3)}
-.nl-band-form input:focus{border-color:var(--amber)}
-.nl-band-form button{padding:.9rem 1.5rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.88rem;cursor:pointer;white-space:nowrap;transition:all .2s}
-.nl-band-form button:hover{background:var(--amber-light)}
-@media(max-width:900px){.featured-card{grid-template-columns:1fr}.featured-card-img{min-height:220px}.articles-grid{grid-template-columns:1fr 1fr}.insights-hero,.insights-main{padding-left:1.5rem;padding-right:1.5rem}}
-@media(max-width:600px){.articles-grid{grid-template-columns:1fr}.nl-band-form{flex-direction:column}}
+.insights-hero { padding: 140px 48px 80px; position: relative; overflow: hidden; }
+.insights-hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 20% 50%, rgba(0,196,154,0.05) 0%, transparent 60%); }
+.insights-hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+.insights-hero h1 { font-family: var(--serif); font-size: clamp(38px, 5vw, 60px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 22px; }
+.insights-hero h1 em { font-style: italic; color: var(--teal); }
+
+/* Pillar tabs */
+.pillar-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.pt {
+  font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink3); background: var(--bg3); border: 1px solid var(--rule2);
+  padding: 7px 14px; border-radius: 3px; cursor: pointer; text-decoration: none; transition: all 0.2s;
+}
+.pt:hover, .pt.active { color: var(--teal); border-color: var(--teal4); background: var(--teal3); }
+
+/* Coming soon / placeholder article grid */
+.articles-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  border-radius: 6px; overflow: hidden; margin-top: 48px;
+}
+.article-card { background: var(--bg2); padding: 32px 28px; display: flex; flex-direction: column; transition: background 0.25s; }
+.article-card:hover { background: var(--bg3); }
+.article-card.placeholder { opacity: 0.5; }
+.article-trade { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+.article-title { font-family: var(--serif); font-size: 19px; font-weight: 400; line-height: 1.3; margin-bottom: 12px; flex: 1; }
+.article-preview { font-size: 13.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 18px; }
+.article-meta { display: flex; justify-content: space-between; align-items: center; }
+.article-date { font-family: var(--mono); font-size: 10px; color: var(--ink3); letter-spacing: 0.06em; }
+.article-read { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: flex; align-items: center; gap: 5px; transition: gap 0.2s; }
+.article-card:hover .article-read { gap: 8px; }
+
+/* Coming soon banner */
+.coming-soon-banner {
+  background: var(--bg3); border: 1px solid var(--rule2); border-radius: 6px;
+  padding: 48px; text-align: center; margin-top: 1px;
+}
+.csb-icon { font-size: 32px; margin-bottom: 16px; }
+.csb-h { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 10px; }
+.csb-p { font-size: 14px; color: var(--ink2); line-height: 1.7; font-weight: 300; max-width: 480px; margin: 0 auto 24px; }
+
+/* Newsletter CTA */
+.nl-prompt { background: var(--bg2); border: 1px solid rgba(0,196,154,0.25); border-radius: 6px; padding: 32px 36px; margin-top: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nl-prompt-text h3 { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 6px; }
+.nl-prompt-text p { font-size: 13.5px; color: var(--ink2); font-weight: 300; line-height: 1.6; }
+.nl-prompt-form { display: flex; gap: 10px; flex-shrink: 0; }
+.nl-prompt-input { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 16px; font-family: var(--sans); font-size: 13.5px; color: var(--ink); outline: none; transition: border-color 0.2s; width: 220px; }
+.nl-prompt-input::placeholder { color: var(--ink3); }
+.nl-prompt-input:focus { border-color: rgba(0,196,154,0.5); }
+
+@media (max-width: 960px) {
+  .insights-hero { padding: 120px 20px 72px; }
+  .insights-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .nl-prompt { flex-direction: column; align-items: flex-start; }
+  .nl-prompt-form { flex-direction: column; width: 100%; }
+  .nl-prompt-input { width: 100%; }
+}
 </style>
 
-<section class="insights-hero">
-  <h1>Growth Research for <em>Home Service Companies</em></h1>
-  <p>We study how the most profitable HVAC, roofing, and plumbing companies grow — and publish everything we find.</p>
-  <div class="pillar-filters">
-    <button class="pillar-btn active" data-filter="all">All</button>
-    {categories.map(cat => (
-      <button class="pillar-btn" data-filter={cat}>{cat}</button>
-    ))}
-  </div>
-</section>
-
-<section class="insights-main">
-  <div class="insights-inner">
-    {featured && (
-      <>
-        <p class="featured-label">★ Featured Article</p>
-        <a href={`/insights/${featured.slug}`} class="featured-card" data-category={featured.data.category}>
-          <div class="featured-card-img">
-            <img src={featured.data.heroImage} alt={featured.data.heroImageAlt} loading="lazy" />
-          </div>
-          <div class="featured-card-body">
-            <div class="card-meta">
-              <span class="card-category">{featured.data.category}</span>
-              <span class="card-trade">{featured.data.trade.join(' · ')}</span>
-            </div>
-            <h2>{featured.data.title}</h2>
-            <p>{featured.data.description}</p>
-            <div class="card-read-row">
-              <span class="card-read-link">Read Article →</span>
-              <span class="card-readtime">{featured.data.readTime} min read</span>
-            </div>
-          </div>
-        </a>
-      </>
-    )}
-
-    {rest.length > 0 ? (
-      <>
-        <p class="section-title">All Articles</p>
-        <div class="articles-grid">
-          {rest.map(post => (
-            <a href={`/insights/${post.slug}`} class="article-card" data-category={post.data.category}>
-              <div class="article-card-img">
-                <img src={post.data.heroImage} alt={post.data.heroImageAlt} loading="lazy" />
-              </div>
-              <div class="article-card-body">
-                <div class="card-meta">
-                  <span class="card-category">{post.data.category}</span>
-                </div>
-                <h3>{post.data.title}</h3>
-                <p>{post.data.description.substring(0,110)}...</p>
-                <div class="card-footer">
-                  <span>{post.data.pubDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</span>
-                  <span>{post.data.readTime} min read</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </>
-    ) : (
-      <div class="empty-state">
-        <h3>More articles publishing soon</h3>
-        <p>Subscribe below to get notified when new research drops every Tuesday.</p>
+<div class="insights-hero">
+  <div class="insights-hero-glow"></div>
+  <div class="insights-hero-inner">
+    <div>
+      <div class="dispatch-label">Research &amp; Analysis</div>
+      <h1>What the most profitable companies<br><em>actually do differently.</em></h1>
+      <p class="sec-p">Every article is built on data from analyzing real HVAC, roofing, and plumbing companies — their ad spend, phone systems, close rates, and competitive positioning. No opinion pieces. No generic advice. Just patterns from the data.</p>
+    </div>
+    <div>
+      <p style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px">Filter by trade</p>
+      <div class="pillar-tabs">
+        <a href="/insights" class="pt active">All</a>
+        <a href="/insights?trade=HVAC" class="pt">HVAC</a>
+        <a href="/insights?trade=Roofing" class="pt">Roofing</a>
+        <a href="/insights?trade=Plumbing" class="pt">Plumbing</a>
+        <a href="/insights?topic=phone" class="pt">Phone Systems</a>
+        <a href="/insights?topic=google" class="pt">Google Ads</a>
+        <a href="/insights?topic=gbp" class="pt">Google Business</a>
       </div>
-    )}
+    </div>
   </div>
-</section>
+</div>
 
-<section class="insights-newsletter">
-  <h2>Get the research before everyone else</h2>
-  <p>One data-backed insight every Tuesday. Numbers, benchmarks, and fixes — written for owners, not marketers.</p>
-  <form class="nl-band-form" id="insights-nl-form">
-    <input type="email" id="insights-nl-email" placeholder="Enter your email" required />
-    <button type="submit" id="insights-nl-btn">Subscribe Free</button>
-  </form>
-</section>
+<div class="wrap">
+  <div class="inner">
+    <div class="rule-label"><span class="section-tag">Research</span></div>
+
+    <!-- Published articles will render here — placeholder shows the structure -->
+    <div class="articles-grid">
+      <div class="article-card reveal">
+        <div class="article-trade">HVAC · Google Ads</div>
+        <div class="article-title">What It Actually Costs to Book One HVAC Job From Google Ads in 2025</div>
+        <p class="article-preview">We analyzed 87 HVAC companies' Google Ads accounts and their booking data. The average cost per booked job is $340 — but the top 25% are paying $110. Here's what separates them.</p>
+        <div class="article-meta">
+          <span class="article-date">Coming soon</span>
+          <span class="article-read">Read →</span>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <div class="article-trade">All Trades · Phone Systems</div>
+        <div class="article-title">HVAC Phone Answer Rate Benchmarks — What the Top 25% Do Differently</div>
+        <p class="article-preview">The national average answer rate for home service companies is 66%. The top quartile answers 89% of calls. Here's exactly what systems they have in place and what the gap costs.</p>
+        <div class="article-meta">
+          <span class="article-date">Coming soon</span>
+          <span class="article-read">Read →</span>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <div class="article-trade">Roofing · Lead Sources</div>
+        <div class="article-title">Why Angi Leads Feel Like Garbage (And What Roofing Companies Do Instead)</div>
+        <p class="article-preview">Angi leads have a 12–18% close rate industry-wide — but some roofing companies close 35% of them. The difference isn't the lead quality. It's what happens in the first 4 minutes after the call comes in.</p>
+        <div class="article-meta">
+          <span class="article-date">Coming soon</span>
+          <span class="article-read">Read →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="coming-soon-banner">
+      <div class="csb-icon">📊</div>
+      <div class="csb-h">New research drops every week.</div>
+      <p class="csb-p">We publish 2 articles a week — real data, specific dollar amounts, contractor language. Subscribe to the newsletter and we'll send each one the day it goes live.</p>
+      <a href="/newsletter" class="cta-primary">Get New Research Every Tuesday →</a>
+    </div>
+
+    <!-- Newsletter inline prompt -->
+    <div class="nl-prompt">
+      <div class="nl-prompt-text">
+        <h3>Get every article before it's indexed.</h3>
+        <p>Subscribe to the Weekly Growth Report. One insight every Tuesday. Free.</p>
+      </div>
+      <div class="nl-prompt-form">
+        <input type="email" class="nl-prompt-input" placeholder="your@email.com" id="insights-email" />
+        <button class="cta-filled" style="cursor:pointer" id="insights-submit">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
-  const btns = document.querySelectorAll('.pillar-btn');
-  const allCards = document.querySelectorAll('[data-category]');
-
-  function filterCards(filter: string) {
-    btns.forEach(b => b.classList.remove('active'));
-    const matchBtn = [...btns].find(b => (b as HTMLButtonElement).dataset.filter === filter);
-    if (matchBtn) matchBtn.classList.add('active');
-    else (document.querySelector('[data-filter="all"]') as HTMLButtonElement)?.classList.add('active');
-    allCards.forEach(card => {
-      (card as HTMLElement).style.display =
-        (filter === 'all' || (card as HTMLElement).dataset.category === filter ||
-         (card as HTMLElement).dataset.trade?.includes(filter)) ? '' : 'none';
-    });
-  }
-
-  // Check URL for ?trade= param on load
-  const params = new URLSearchParams(window.location.search);
-  const tradeParam = params.get('trade');
-  if (tradeParam) filterCards(tradeParam);
-
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterCards((btn as HTMLButtonElement).dataset.filter || 'all');
-    });
-  });
-
-  document.getElementById('insights-nl-form')!.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = (document.getElementById('insights-nl-email') as HTMLInputElement).value;
-    const btn = document.getElementById('insights-nl-btn')!;
-    btn.textContent = 'Subscribing...';
-    (btn as HTMLButtonElement).disabled = true;
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email})
-      });
-      if (res.ok) {
-        btn.textContent = "You're in! ✓";
-        (btn as HTMLButtonElement).style.background = '#10b981';
-        (document.getElementById('insights-nl-email') as HTMLInputElement).disabled = true;
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({event: 'newsletter_signup', form_location: 'insights_page'});
-      } else {
-        btn.textContent = 'Subscribe Free';
-        (btn as HTMLButtonElement).disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Subscribe Free';
-      (btn as HTMLButtonElement).disabled = false;
+  document.getElementById('insights-submit').addEventListener('click', () => {
+    const inp = document.getElementById('insights-email');
+    if (inp.value.includes('@')) {
+      document.getElementById('insights-submit').textContent = '✓ Subscribed';
+      document.getElementById('insights-submit').style.background = '#22D37A';
+      inp.disabled = true;
+    } else {
+      inp.style.borderColor = 'rgba(240,64,64,0.55)';
+      inp.focus();
     }
   });
 </script>
-
-</Base>
+</Layout>

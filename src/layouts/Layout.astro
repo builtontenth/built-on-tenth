@@ -1,0 +1,55 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+}
+
+const {
+  title,
+  description = 'Revenue intelligence for HVAC, roofing, and plumbing companies. We study how the most profitable home service companies grow — and publish everything we find.',
+  active = ''
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <!-- Favicon: teal square mark -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <Nav active={active} />
+  <slot />
+  <Footer />
+
+  <!-- Shared reveal observer -->
+  <script>
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('will-animate'));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = [...(entry.target.parentElement?.querySelectorAll('.reveal') || [])];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('on'), idx * 90);
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.04, rootMargin: '0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    // Safety: reveal anything still hidden after 1s
+    setTimeout(() => {
+      document.querySelectorAll('.reveal.will-animate:not(.on)').forEach(el => el.classList.add('on'));
+    }, 1000);
+  </script>
+</body>
+</html>

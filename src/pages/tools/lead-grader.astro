@@ -1,69 +1,289 @@
 ---
-import Base from '../../layouts/Base.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
 ---
-<Base title="Lead Source Grader for Home Service Companies | Built on Tenth" description="Grade your marketing channels against industry data. Find out which to keep, fix, or cut." solidNav={true}>
-<section class="page-hero">
-  <div class="breadcrumb"><a href="/">Home</a> / <a href="/tools">Tools</a> / Lead Source Grader</div>
-  <h1>Grade Your <em>Lead Sources</em></h1>
-  <p>Select your marketing channels. We grade each one against industry performance data and tell you where to put your next dollar.</p>
-</section>
+<ToolLayout
+  toolNumber="03"
+  toolName="Lead Source Grader"
+  slug="lead-grader"
+  headline='Which Channels Are Actually<br><em>Making You Money?</em>'
+  subheadline="Most companies keep spending on channels that don't produce booked jobs. Select what you're running and get a straight A–D grade on each one — with a clear verdict: scale it, fix it, or cut it."
+  metaDescription="Free lead source grader for HVAC, roofing, and plumbing companies. Grade your marketing channels A-D based on real performance data. Know exactly where to put your next dollar."
+>
+
 <style>
-.gs{padding:4rem 2.5rem 5rem;background:var(--cream)}.gi{max-width:800px;margin:0 auto}
-.gf{background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--warm-gray);margin-bottom:2rem}
-.gf h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
-.gf>p{font-size:.88rem;color:var(--text-light);margin-bottom:2rem}
-.sg{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:2rem}
-.so{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border:1.5px solid var(--warm-gray);border-radius:8px;cursor:pointer;transition:all .3s;user-select:none}
-.so:hover{border-color:var(--amber)}.so.a{border-color:var(--amber);background:rgba(245,158,11,.06)}
-.so .ck{width:20px;height:20px;border-radius:5px;border:2px solid var(--warm-gray);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;flex-shrink:0;transition:all .3s}
-.so.a .ck{background:var(--amber);border-color:var(--amber)}
-.so span{font-size:.9rem;color:var(--text-dark);font-weight:500}
-.calc-btn{width:100%;padding:1rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer}
-.gr{display:none}.gc{background:#fff;border-radius:12px;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--warm-gray);display:flex;align-items:flex-start;gap:1.25rem}
-.gb{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:#fff;flex-shrink:0}
-.gA{background:#10b981}.gB{background:#f59e0b}.gC{background:#f97316}.gD{background:#ef4444}
-.ginfo h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
-.ginfo .vd{font-size:.82rem;font-weight:600;margin-bottom:.4rem}
-.vd.keep{color:#10b981}.vd.opt{color:#d97706}.vd.eval{color:#f97316}
-.ginfo p{font-size:.85rem;color:var(--text-mid);line-height:1.55}
-.gcta{background:var(--navy);border-radius:16px;padding:2rem;margin-top:2rem}
-.gcta-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-.gcta h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.3rem}
-.gcta p{color:rgba(255,255,255,.5);font-size:.85rem}
-.gate-email{display:flex;gap:.5rem;margin-top:1.5rem}
-.gate-email input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);font-size:.88rem;outline:none}
-.gate-email input::placeholder{color:rgba(255,255,255,.3)}
-.gate-email button{padding:.75rem 1.25rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap}
-@media(max-width:768px){.gs{padding:2rem 1.5rem 3rem}.sg{grid-template-columns:1fr}.gate-email{flex-direction:column}}
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; padding-bottom: 80px; align-items: start; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+.ip-note { font-size: 13px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 20px; padding: 12px 14px; background: var(--bg3); border-radius: 4px; border-left: 2px solid var(--teal); }
+.channels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 22px; }
+.ch-item { position: relative; }
+.ch-item input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.ch-label {
+  display: flex; align-items: center; gap: 10px; padding: 11px 14px; cursor: pointer;
+  background: var(--bg3); border: 1px solid var(--rule); border-radius: 4px; transition: all 0.2s;
+  font-size: 13px; color: var(--ink2); font-weight: 300; line-height: 1.3;
+}
+.ch-label:hover { border-color: var(--rule2); color: var(--ink); }
+.ch-item input:checked + .ch-label { border-color: var(--teal4); color: var(--teal); background: var(--teal3); }
+.ch-check { width: 16px; height: 16px; border-radius: 3px; border: 1.5px solid var(--rule2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.ch-item input:checked + .ch-label .ch-check { background: var(--teal); border-color: var(--teal); color: var(--bg); font-size: 10px; }
+
+.field { margin-bottom: 18px; }
+.field-label { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; }
+.field-select { width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; transition: border-color 0.2s; }
+.field-select:focus { border-color: rgba(0,196,154,0.55); }
+.calc-btn { width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s; }
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
+
+/* Result */
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.s-wait  { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.s-ready { color: var(--teal); background: var(--teal3); border: 1px solid var(--teal4); }
+.rp-body { padding: 24px; }
+.empty-state { text-align: center; padding: 36px 16px; }
+.empty-icon { font-size: 32px; opacity: 0.25; margin-bottom: 14px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.empty-text strong { color: var(--ink2); font-weight: 500; }
+.result-section { display: none; }
+.result-section.show { display: block; }
+
+.grade-summary { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+.gs-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.gs-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.grade-count { text-align: center; padding: 10px 16px; border-radius: 4px; min-width: 48px; }
+.gc-n { font-family: var(--mono); font-size: 22px; font-weight: 700; line-height: 1; }
+.gc-l { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; margin-top: 3px; }
+.gc-a { background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.25); }
+.gc-a .gc-n, .gc-a .gc-l { color: var(--pos); }
+.gc-b { background: rgba(0,196,154,0.08); border: 1px solid rgba(0,196,154,0.22); }
+.gc-b .gc-n, .gc-b .gc-l { color: var(--teal); }
+.gc-c { background: rgba(201,160,53,0.08); border: 1px solid rgba(201,160,53,0.22); }
+.gc-c .gc-n, .gc-c .gc-l { color: #C9A035; }
+.gc-d { background: rgba(240,64,64,0.08); border: 1px solid rgba(240,64,64,0.22); }
+.gc-d .gc-n, .gc-d .gc-l { color: var(--neg); }
+
+.channel-grades { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.cg-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--bg3); border-radius: 4px; }
+.cg-grade { width: 28px; height: 28px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 14px; font-weight: 700; flex-shrink: 0; }
+.grade-a { background: rgba(34,211,122,0.15); color: var(--pos); }
+.grade-b { background: rgba(0,196,154,0.12); color: var(--teal); }
+.grade-c { background: rgba(201,160,53,0.12); color: #C9A035; }
+.grade-d { background: rgba(240,64,64,0.12); color: var(--neg); }
+.cg-info { flex: 1; }
+.cg-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.cg-verdict { font-size: 11px; color: var(--ink3); font-weight: 300; }
+.cg-action { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; border-radius: 3px; white-space: nowrap; }
+.act-scale  { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.act-keep   { color: var(--teal); background: var(--teal3); border: 1px solid var(--teal4); }
+.act-fix    { color: #C9A035; background: rgba(201,160,53,0.08); border: 1px solid rgba(201,160,53,0.22); }
+.act-cut    { color: var(--neg); background: rgba(240,64,64,0.08); border: 1px solid rgba(240,64,64,0.22); }
+
+.realloc { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 14px 16px; margin-bottom: 18px; }
+.realloc-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+.realloc-text { font-size: 12.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
+
+.audit-cta { display: block; width: 100%; padding: 13px; border-radius: 4px; cursor: pointer; text-align: center; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); text-decoration: none; transition: all 0.2s; }
+.audit-cta:hover { background: #00DFB0; }
+.audit-note { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
+
+@media (max-width: 960px) { .tool-layout { grid-template-columns: 1fr; } .result-panel { position: static; } .channels-grid { grid-template-columns: 1fr; } }
 </style>
 
-<section class="gs"><div class="gi">
-  <div class="gf">
-    <h2>Which lead sources do you currently use?</h2><p>Select all that apply. We will grade each one.</p>
-    <div class="sg">
-      <div class="so" data-s="google_ads" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Google Ads (PPC)</span></div>
-      <div class="so" data-s="lsa" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Local Service Ads</span></div>
-      <div class="so" data-s="seo" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>SEO / Organic Search</span></div>
-      <div class="so" data-s="gbp" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Google Business Profile</span></div>
-      <div class="so" data-s="angi" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Angi / HomeAdvisor</span></div>
-      <div class="so" data-s="thumbtack" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Thumbtack</span></div>
-      <div class="so" data-s="referrals" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Referrals / Word of Mouth</span></div>
-      <div class="so" data-s="social" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Social Media Ads</span></div>
-      <div class="so" data-s="directmail" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Direct Mail</span></div>
-      <div class="so" data-s="doorknock" onclick="this.classList.toggle('a')"><div class="ck">&#10003;</div><span>Door Knocking</span></div>
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">Your Active Channels</span>
+      <span class="ip-micro">Grade based on real HVAC/roofing/plumbing data</span>
     </div>
-    <button class="calc-btn" onclick="grade()">Grade My Lead Sources &#8594;</button>
-  </div>
-  <div class="gr" id="gr"></div>
-</div></section>
+    <div class="ip-body">
+      <p class="ip-note">Most companies overspend on their worst-performing channel. Select every channel you're currently spending money or time on — we grade based on real booking performance patterns, not vanity metrics.</p>
 
-<script is:inline>
-const D={google_ads:{n:'Google Ads (PPC)',g:'B',v:'opt',vt:'Optimize \u2014 high potential but most companies waste 30%+',d:'High-intent channel. Without conversion tracking and negative keywords, most companies waste 25-40% of spend. Fix tracking first, then optimize.'},lsa:{n:'Local Service Ads',g:'A',v:'keep',vt:'Double down \u2014 best cost-per-lead in most markets',d:'Consistently lowest cost per lead. Google Guaranteed badge builds instant trust. Reviews and response speed directly impact your ranking.'},seo:{n:'SEO / Organic Search',g:'A',v:'keep',vt:'Keep investing \u2014 highest long-term ROI',d:'Lowest cost per lead over time since traffic is free once you rank. Takes 6-12 months but compounds indefinitely.'},gbp:{n:'Google Business Profile',g:'A',v:'keep',vt:'Essential \u2014 optimize aggressively',d:'Your single most important marketing asset. Companies with 100+ reviews and weekly activity consistently outperform competitors with bigger ad budgets.'},angi:{n:'Angi / HomeAdvisor',g:'C',v:'eval',vt:'Evaluate \u2014 shared leads with declining ROI',d:'Shared to 3-5 contractors. Close rates typically 10-18%. Cost per booked job often exceeds $500-800. Consider reallocating this budget to channels you own.'},thumbtack:{n:'Thumbtack',g:'C',v:'eval',vt:'Evaluate \u2014 works for small jobs only',d:'Reasonable for low-ticket repairs. For high-ticket installs and replacements, the ROI is typically poor compared to Google channels.'},referrals:{n:'Referrals / Word of Mouth',g:'A',v:'keep',vt:'Best channel \u2014 systematize it',d:'Highest close rate (50-70%) and zero acquisition cost. Most companies leave this to luck. Build a system: post-job referral ask, review requests, past-customer reactivation campaigns.'},social:{n:'Social Media Ads',g:'B',v:'opt',vt:'Optimize \u2014 effective for retargeting only',d:'Facebook and Instagram rarely produce high-intent leads when targeting cold audiences. Where they work well is retargeting people who already visited your website.'},directmail:{n:'Direct Mail',g:'B',v:'opt',vt:'Strong when targeted to the right neighborhoods',d:'Works when sent to neighborhoods with aging homes and systems. Track with unique phone numbers or landing page URLs. Without tracking, you are guessing.'},doorknock:{n:'Door Knocking',g:'B',v:'opt',vt:'Effective post-storm, expensive otherwise',d:'High labor cost per lead. Best after storm events or in specific neighborhoods. Invest in inbound channels that work while your team is on jobs.'}};
-function grade(){const s=document.querySelectorAll('.so.a');if(!s.length)return;const o={A:0,B:1,C:2,D:3},sorted=[...s].sort((a,b)=>o[D[a.dataset.s].g]-o[D[b.dataset.s].g]);
-let h='';sorted.forEach(e=>{const d=D[e.dataset.s];h+='<div class="gc reveal"><div class="gb g'+d.g+'">'+d.g+'</div><div class="ginfo"><h3>'+d.n+'</h3><div class="vd '+d.v+'">'+d.vt+'</div><p>'+d.d+'</p></div></div>';});
-h+='<div class="gcta"><div><h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff">Get your full Lead Source Optimization Report</h3><p style="color:rgba(255,255,255,.5);font-size:.85rem">Detailed analysis for each channel with specific budget reallocation recommendations and ROI projections.</p><div class="gate-email"><input type="email" id="graderEmail" placeholder="Enter your email">
-<button onclick='this.textContent="Sent! ✓"; this.style.background="#16a34a"; this.disabled=true;'>Send My Report</button></div></div></div>';
-h+='<div style="text-align:center;margin-top:1.5rem"><a href="/services#audit" class="btn-primary">Get a Full Revenue Leak Audit \u2014 $750 &#8594;</a></div>';
-const el=document.getElementById('gr');el.innerHTML=h;el.style.display='block';el.scrollIntoView({behavior:'smooth'});el.querySelectorAll('.reveal').forEach((r,i)=>setTimeout(()=>r.classList.add('visible'),i*100));}
+      <div class="field">
+        <div class="field-label">Trade <span class="field-hint">grades are trade-specific</span></div>
+        <select class="field-select" id="trade">
+          <option value="hvac">HVAC</option>
+          <option value="roofing">Roofing</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="general">Other home service</option>
+        </select>
+      </div>
+
+      <div class="field-label" style="margin-bottom:12px">Select your active channels</div>
+      <div class="channels-grid">
+        <div class="ch-item">
+          <input type="checkbox" id="ch-lsa" value="lsa">
+          <label class="ch-label" for="ch-lsa"><span class="ch-check">✓</span>Google LSAs</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-gads" value="gads">
+          <label class="ch-label" for="ch-gads"><span class="ch-check">✓</span>Google Ads (PPC)</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-seo" value="seo">
+          <label class="ch-label" for="ch-seo"><span class="ch-check">✓</span>SEO / Organic</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-gbp" value="gbp">
+          <label class="ch-label" for="ch-gbp"><span class="ch-check">✓</span>Google Business (Map Pack)</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-referral" value="referral">
+          <label class="ch-label" for="ch-referral"><span class="ch-check">✓</span>Referrals / Word of Mouth</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-angi" value="angi">
+          <label class="ch-label" for="ch-angi"><span class="ch-check">✓</span>Angi / HomeAdvisor</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-thumbtack" value="thumbtack">
+          <label class="ch-label" for="ch-thumbtack"><span class="ch-check">✓</span>Thumbtack</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-social" value="social">
+          <label class="ch-label" for="ch-social"><span class="ch-check">✓</span>Facebook / Social Ads</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-directmail" value="directmail">
+          <label class="ch-label" for="ch-directmail"><span class="ch-check">✓</span>Direct Mail</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-door" value="door">
+          <label class="ch-label" for="ch-door"><span class="ch-check">✓</span>Door Knocking / Canvassing</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-yelp" value="yelp">
+          <label class="ch-label" for="ch-yelp"><span class="ch-check">✓</span>Yelp Ads</label>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" id="ch-nextdoor" value="nextdoor">
+          <label class="ch-label" for="ch-nextdoor"><span class="ch-check">✓</span>Nextdoor</label>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn">Grade My Lead Sources →</button>
+    </div>
+  </div>
+
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">Channel Grade Report</span>
+      <span class="rp-status s-wait" id="rp-status">Select your channels</span>
+    </div>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">🎯</div>
+        <p class="empty-text"><strong>Most companies keep spending on channels that don't produce booked jobs.</strong><br><br>Select the channels you're currently running and we'll grade each one based on real booking rate data from HVAC, roofing, and plumbing companies.</p>
+      </div>
+      <div class="result-section" id="results">
+        <div class="grade-summary">
+          <div class="gs-label">Grade distribution</div>
+          <div class="gs-row">
+            <div class="grade-count gc-a"><div class="gc-n" id="count-a">0</div><div class="gc-l">A</div></div>
+            <div class="grade-count gc-b"><div class="gc-n" id="count-b">0</div><div class="gc-l">B</div></div>
+            <div class="grade-count gc-c"><div class="gc-n" id="count-c">0</div><div class="gc-l">C</div></div>
+            <div class="grade-count gc-d"><div class="gc-n" id="count-d">0</div><div class="gc-l">D</div></div>
+          </div>
+        </div>
+        <div class="channel-grades" id="channel-grades"></div>
+        <div class="realloc" id="realloc">
+          <div class="realloc-title">Where your next dollar should go</div>
+          <div class="realloc-text" id="realloc-text">—</div>
+        </div>
+        <a href="/apply?service=audit&source=lead-grader" class="audit-cta">Get Your Channels Mapped to Actual Numbers →</a>
+        <p class="audit-note">The audit maps your real cost per booked job by channel — so you see exactly which ones to scale and which to cut.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const gradeData = {
+  lsa:        { name: 'Google LSAs',                grade: { hvac: 'A', roofing: 'A', plumbing: 'A', general: 'A' }, verdict: 'Highest-intent calls. Directly tied to booked jobs when your GBP is strong.', action: 'scale' },
+  gbp:        { name: 'Google Business (Map Pack)', grade: { hvac: 'A', roofing: 'A', plumbing: 'A', general: 'A' }, verdict: 'Free traffic from high-intent searches. The highest ROI channel most companies underinvest in.', action: 'scale' },
+  seo:        { name: 'SEO / Organic',              grade: { hvac: 'A', roofing: 'B', plumbing: 'A', general: 'B' }, verdict: 'Compounds over time. Slow to start but lowest cost per job at scale.', action: 'keep' },
+  referral:   { name: 'Referrals / Word of Mouth',  grade: { hvac: 'A', roofing: 'A', plumbing: 'A', general: 'A' }, verdict: 'Highest close rate of any channel. Most companies have no system to generate more.', action: 'scale' },
+  gads:       { name: 'Google Ads (PPC)',            grade: { hvac: 'B', roofing: 'B', plumbing: 'B', general: 'B' }, verdict: 'Works when campaigns are structured for booked jobs, not just clicks. Most accounts are misconfigured.', action: 'fix' },
+  social:     { name: 'Facebook / Social Ads',      grade: { hvac: 'C', roofing: 'B', plumbing: 'C', general: 'C' }, verdict: 'Awareness channel. Low direct booking intent. Roofing close rates are better due to neighborhood targeting.', action: 'fix' },
+  directmail: { name: 'Direct Mail',                grade: { hvac: 'C', roofing: 'B', plumbing: 'C', general: 'C' }, verdict: 'Works in specific markets and seasons. High cost, slow feedback loop. Hard to track precisely.', action: 'fix' },
+  door:       { name: 'Door Knocking / Canvassing', grade: { hvac: 'C', roofing: 'A', plumbing: 'D', general: 'C' }, verdict: 'Roofing-specific strong performer, especially after storm events. Weak for HVAC and plumbing.', action: 'fix' },
+  angi:       { name: 'Angi / HomeAdvisor',         grade: { hvac: 'D', roofing: 'D', plumbing: 'C', general: 'D' }, verdict: 'High lead cost, shared leads, low close rates. Most companies overpay significantly relative to booked jobs.', action: 'cut' },
+  thumbtack:  { name: 'Thumbtack',                  grade: { hvac: 'D', roofing: 'D', plumbing: 'C', general: 'D' }, verdict: 'Price-shopper heavy traffic. Low commitment from consumers. Hard to build sustainable volume.', action: 'cut' },
+  yelp:       { name: 'Yelp Ads',                   grade: { hvac: 'D', roofing: 'D', plumbing: 'C', general: 'D' }, verdict: 'Expensive per lead with poor booking rates in most markets. Usually the first channel to cut.', action: 'cut' },
+  nextdoor:   { name: 'Nextdoor',                   grade: { hvac: 'C', roofing: 'C', plumbing: 'C', general: 'C' }, verdict: 'Community awareness value. Very low volume. Better for reputation than direct lead generation.', action: 'keep' },
+};
+
+const gradeOrder = { A: 0, B: 1, C: 2, D: 3 };
+const actionLabel = { scale: 'Scale it', keep: 'Keep it', fix: 'Fix it', cut: 'Cut it' };
+const actionClass = { scale: 'act-scale', keep: 'act-keep', fix: 'act-fix', cut: 'act-cut' };
+const gradeClass  = { A: 'grade-a', B: 'grade-b', C: 'grade-c', D: 'grade-d' };
+
+document.getElementById('calc-btn').addEventListener('click', calculate);
+
+function calculate() {
+  const trade    = document.getElementById('trade').value;
+  const checked  = [...document.querySelectorAll('.ch-item input:checked')].map(el => el.value);
+
+  if (checked.length === 0) {
+    document.getElementById('calc-btn').textContent = 'Select at least one channel →';
+    setTimeout(() => document.getElementById('calc-btn').textContent = 'Grade My Lead Sources →', 2000);
+    return;
+  }
+
+  const graded = checked.map(ch => ({
+    ...gradeData[ch],
+    grade: gradeData[ch].grade[trade],
+  })).sort((a, b) => gradeOrder[a.grade] - gradeOrder[b.grade]);
+
+  // Count grades
+  const counts = { A: 0, B: 0, C: 0, D: 0 };
+  graded.forEach(g => counts[g.grade]++);
+  document.getElementById('count-a').textContent = counts.A;
+  document.getElementById('count-b').textContent = counts.B;
+  document.getElementById('count-c').textContent = counts.C;
+  document.getElementById('count-d').textContent = counts.D;
+
+  // Render channel rows
+  const container = document.getElementById('channel-grades');
+  container.innerHTML = graded.map(g => `
+    <div class="cg-row">
+      <div class="cg-grade ${gradeClass[g.grade]}">${g.grade}</div>
+      <div class="cg-info">
+        <div class="cg-name">${g.name}</div>
+        <div class="cg-verdict">${g.verdict}</div>
+      </div>
+      <span class="cg-action ${actionClass[g.action]}">${actionLabel[g.action]}</span>
+    </div>
+  `).join('');
+
+  // Reallocation recommendation
+  const aChannels = graded.filter(g => g.grade === 'A').map(g => g.name);
+  const dChannels = graded.filter(g => g.grade === 'D').map(g => g.name);
+  let reallocText = '';
+  if (aChannels.length > 0 && dChannels.length > 0) {
+    reallocText = `Move budget away from ${dChannels.join(' and ')} — both are underperforming relative to their cost. Redirect toward ${aChannels.join(' and ')}, which are producing the most efficient booked jobs in your trade.`;
+  } else if (dChannels.length > 0) {
+    reallocText = `${dChannels.join(' and ')} ${dChannels.length > 1 ? 'are' : 'is'} the weakest channel${dChannels.length > 1 ? 's' : ''} in your mix. Reducing or pausing ${dChannels.length > 1 ? 'them' : 'it'} frees budget for higher-performing sources.`;
+  } else if (aChannels.length > 0) {
+    reallocText = `Your best channels are ${aChannels.join(' and ')}. Focus on growing volume from these before adding new channels to the mix.`;
+  } else {
+    reallocText = 'Your channel mix is average across the board. The biggest gain is usually fixing your Google Business Profile — it costs nothing and consistently outperforms paid channels in booked job rates.';
+  }
+  document.getElementById('realloc-text').textContent = reallocText;
+
+  // Status
+  const status = document.getElementById('rp-status');
+  status.textContent = `${checked.length} channels graded`;
+  status.className = 'rp-status s-ready';
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
+}
 </script>
-</Base>
+</ToolLayout>

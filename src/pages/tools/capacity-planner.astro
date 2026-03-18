@@ -1,165 +1,260 @@
 ---
-import Base from '../../layouts/Base.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
 ---
-<Base title="Capacity-to-Demand Planner for Home Service Companies | Built on Tenth" description="Calculate how many leads you actually need and the maximum you should spend on marketing before creating waste." solidNav={true}>
-<section class="page-hero">
-  <h1>Capacity-to-Demand <em>Planner</em></h1>
-  <p>Stop guessing your marketing budget. Start with how many jobs your team can actually handle &#8212; then work backwards to the right spend.</p>
-</section>
+<ToolLayout
+  toolNumber="05"
+  toolName="Capacity-to-Demand Planner"
+  slug="capacity-planner"
+  headline='Are You Buying More Leads<br><em>Than You Can Convert?</em>'
+  subheadline="Most companies scale marketing spend before fixing capacity. That's how money gets burned. Enter your team size and production rate — find out exactly how many calls you need and the maximum spend that makes sense."
+  metaDescription="Free capacity planner for home service companies. Find out how many leads your team can actually handle before spending more on marketing. Avoid overspending on leads you can't convert."
+>
+
 <style>
-.cs{padding:4rem 2.5rem 5rem;background:var(--cream)}.ci{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-.cf{background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--warm-gray)}
-.cf h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
-.cf>p.desc{font-size:.88rem;color:var(--text-light);margin-bottom:2rem;line-height:1.5}
-.fg{margin-bottom:1.5rem}.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem}
-.fg .ht{font-size:.75rem;color:var(--text-light);margin-bottom:.4rem}
-.fg input,.fg select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:#fff}
-.fg input:focus,.fg select:focus{border-color:var(--amber)}
-.calc-btn{width:100%;padding:1rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s}
-.calc-btn:hover{background:var(--amber-light)}
-.cr{background:var(--navy);border-radius:16px;padding:2.5rem;color:#fff;position:sticky;top:5rem}
-.cr h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:2rem}
-.ri{margin-bottom:1.5rem}.rl{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
-.rv{font-family:var(--font-display);font-size:2rem;font-weight:800}
-.rv.w{color:#ef4444}.rv.g{color:#10b981}.rv.n{color:#f59e0b}
-.rc{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.4}
-.rd{height:1px;background:rgba(255,255,255,.08);margin:1.5rem 0}
-.bb{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:.5rem}
-.br{height:100%;border-radius:4px;transition:width .8s ease}
-.bl{display:flex;justify-content:space-between;margin-top:.3rem}.bl span{font-size:.68rem;color:rgba(255,255,255,.35)}
-.es{text-align:center;padding:3rem 1rem}.es p{font-size:.9rem;color:rgba(255,255,255,.35)}
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; padding-bottom: 80px; align-items: start; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+.ip-insight { font-size: 13px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 22px; padding: 12px 14px; background: var(--bg3); border-radius: 4px; border-left: 2px solid var(--teal); }
+.field { margin-bottom: 20px; }
+.field-label { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; }
+.field-input { width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+.field-input::-webkit-inner-spin-button, .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.field-input:focus { border-color: rgba(0,196,154,0.55); }
+.field-input::placeholder { color: var(--ink3); font-size: 13px; }
+.prefix-wrap { position: relative; }
+.prefix { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 14px; color: var(--ink3); pointer-events: none; }
+.prefix + .field-input { padding-left: 26px; }
+.suffix-wrap { position: relative; }
+.suffix { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; color: var(--ink3); pointer-events: none; }
+.bm-hint { margin-top: 6px; font-family: var(--mono); font-size: 9px; color: var(--ink3); padding: 5px 10px; background: var(--bg4); border-radius: 3px; display: flex; justify-content: space-between; }
+.bm-val { color: var(--teal); font-weight: 500; }
+.calc-btn { width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s; }
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
 
-/* Email gate styles */
-.email-gate{margin-top:2rem;padding:1.5rem;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:12px}
-.email-gate h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.4rem}
-.email-gate p{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:1rem;line-height:1.5}
-.email-gate .gate-row{display:flex;gap:.5rem}
-.email-gate input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);font-size:.88rem;outline:none}
-.email-gate input::placeholder{color:rgba(255,255,255,.3)}
-.email-gate button{padding:.75rem 1.25rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:all .3s}
-.email-gate button:hover{background:var(--amber-light)}
-.report-preview{margin-top:1.25rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px;border:1px dashed rgba(255,255,255,.1)}
-.report-preview h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:.6rem}
-.report-preview ul{list-style:none}
-.report-preview li{font-size:.8rem;color:rgba(255,255,255,.5);padding:.25rem 0;display:flex;align-items:center;gap:.4rem}
-.report-preview li::before{content:'\2713';color:#10b981;font-weight:700;font-size:.7rem}
-
-/* Report modal */
-.report-overlay{display:none;position:fixed;inset:0;background:rgba(15,26,46,.85);z-index:10000;overflow-y:auto;padding:2rem}
-.report-overlay.open{display:flex;justify-content:center;align-items:flex-start}
-.report-container{background:#fff;max-width:800px;width:100%;border-radius:16px;padding:3rem;position:relative;color:var(--text-dark)}
-.report-close{position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)}
-.report-header{text-align:center;padding-bottom:2rem;border-bottom:2px solid var(--amber);margin-bottom:2rem}
-.report-header h1{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:.5rem}
-.report-header p{font-size:.85rem;color:var(--text-light)}
-.report-hero-stat{text-align:center;margin:2rem 0}
-.report-hero-stat .big{font-family:var(--font-display);font-size:3rem;font-weight:800}
-.report-hero-stat .big.red{color:#ef4444}.report-hero-stat .big.green{color:#10b981}.report-hero-stat .big.amber{color:#d97706}
-.report-hero-stat .label{font-size:.85rem;color:var(--text-light);margin-top:.25rem}
-.report-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
-.report-table th{background:var(--navy);color:#fff;padding:.7rem 1rem;text-align:left;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
-.report-table td{padding:.65rem 1rem;border-bottom:1px solid var(--warm-gray);font-size:.88rem}
-.report-table tr:last-child td{border-bottom:none}
-.report-section{margin:2rem 0}
-.report-section h2{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--warm-gray)}
-.report-section p{font-size:.9rem;color:var(--text-mid);line-height:1.65;margin-bottom:.75rem}
-.report-section ul{margin:.75rem 0 .75rem 1.5rem}.report-section li{font-size:.88rem;color:var(--text-mid);line-height:1.6;margin-bottom:.4rem}
-.report-actions{display:flex;gap:1rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:2px solid var(--warm-gray)}
-.report-print{padding:.85rem 2rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer}
-.report-cta{padding:.85rem 2rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none}
-.report-footer{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--warm-gray)}
-.report-footer p{font-size:.78rem;color:var(--text-light)}
-@media print{.report-overlay{position:static;background:#fff;padding:0}.report-close,.report-actions{display:none!important}body>*:not(.report-overlay){display:none!important}.report-overlay.open{display:block}}
-@media(max-width:768px){.cs{padding:2rem 1.5rem 3rem}.ci{grid-template-columns:1fr}.cr{position:static}.email-gate .gate-row{flex-direction:column}}
-
-.insight-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:1.25rem;margin-top:1.5rem}
-.insight-box h4{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:#fff;margin-bottom:.4rem}
-.insight-box p{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.5;margin:0}
-.cap-meter{margin:1.5rem 0}
-.cap-bar-bg{height:24px;background:rgba(255,255,255,.1);border-radius:12px;overflow:hidden;position:relative}
-.cap-bar{height:100%;border-radius:12px;transition:width .8s ease;position:relative}
-.cap-bar-label{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:.7rem;font-weight:700;color:var(--navy)}
-.cap-labels{display:flex;justify-content:space-between;margin-top:.4rem}
-.cap-labels span{font-size:.7rem;color:rgba(255,255,255,.35)}
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.s-wait  { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.s-over  { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
+.s-under { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+.s-good  { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.rp-body { padding: 24px; }
+.empty-state { text-align: center; padding: 36px 16px; }
+.empty-icon { font-size: 32px; opacity: 0.25; margin-bottom: 14px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.result-section { display: none; }
+.result-section.show { display: block; }
+.key-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+.km-card { background: var(--bg3); border: 1px solid var(--rule); border-radius: 4px; padding: 14px; }
+.km-label { font-family: var(--mono); font-size: 8.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
+.km-value { font-family: var(--mono); font-size: 26px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+.km-value.teal { color: var(--teal); }
+.km-value.warn { color: #C9A035; }
+.km-value.bad  { color: var(--neg); }
+.km-sub  { font-size: 11px; color: var(--ink3); margin-top: 4px; font-weight: 300; }
+.section-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.row { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
+.rk { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
+.rv { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.rv.good { color: var(--pos); } .rv.warn { color: #C9A035; } .rv.bad { color: var(--neg); }
+.utilization-bar { margin-bottom: 18px; }
+.ub-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; display: flex; justify-content: space-between; }
+.ub-track { height: 8px; background: var(--bg4); border-radius: 4px; overflow: hidden; }
+.ub-fill { height: 100%; border-radius: 4px; transition: width 0.8s var(--ease); }
+.diagnosis { background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 14px 16px; margin-bottom: 18px; }
+.diagnosis.warn { background: rgba(201,160,53,0.06); border-color: rgba(201,160,53,0.22); }
+.diagnosis.good { background: rgba(34,211,122,0.06); border-color: rgba(34,211,122,0.2); }
+.dt { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.db { font-size: 12px; color: var(--ink2); line-height: 1.62; font-weight: 300; }
+.audit-cta { display: block; width: 100%; padding: 13px; border-radius: 4px; cursor: pointer; text-align: center; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); text-decoration: none; transition: all 0.2s; }
+.audit-cta:hover { background: #00DFB0; }
+.audit-note { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
+@media (max-width: 960px) { .tool-layout { grid-template-columns: 1fr; } .result-panel { position: static; } }
 </style>
 
-<section class="cs"><div class="ci">
-  <div class="cf">
-    <h2>Your Team Capacity</h2><p class="desc">Tell us about your team and production. We will calculate exactly how many leads you need &#8212; and the most you should spend.</p>
-    <div class="fg"><label>Number of Techs / Installers</label><div class="ht">Include service techs and install crews</div><input type="number" id="techs" placeholder="e.g., 6" min="1"></div>
-    <div class="fg"><label>Jobs Per Tech Per Day</label><div class="ht">Service: 3-5, Install: 1-2 typically</div><input type="number" id="jpd" placeholder="e.g., 3" min="0" step="0.5"></div>
-    <div class="fg"><label>Working Days Per Month</label><div class="ht">Typically 20-22</div><input type="number" id="days" placeholder="e.g., 22" min="1" max="31"></div>
-    <div class="fg"><label>Average Ticket ($)</label><div class="ht">Average revenue per completed job</div><input type="number" id="capTicket" placeholder="e.g., 8500" min="0"></div>
-    <div class="fg"><label>Close / Booking Rate (%)</label><div class="ht">Percentage of leads that become booked jobs</div><input type="number" id="capCR" placeholder="e.g., 25" min="0" max="100"></div>
-    <div class="fg"><label>Target Utilization (%)</label><div class="ht">How full do you want the board? 80-90% is ideal. 100% means no buffer.</div><input type="number" id="util" placeholder="e.g., 85" min="50" max="100"></div>
-    <button class="calc-btn" onclick="planCap()">Plan My Demand &#8594;</button>
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">Your Team &amp; Production Numbers</span>
+      <span class="ip-micro">Capacity-first marketing math</span>
+    </div>
+    <div class="ip-body">
+      <p class="ip-insight">Scaling spend before fixing capacity is how money gets burned. Get the number of leads your team can actually handle — then decide how much to spend on getting them.</p>
+
+      <div class="field">
+        <div class="field-label">Number of field technicians <span class="field-hint">techs who run jobs</span></div>
+        <input type="number" class="field-input" id="techs" placeholder="e.g. 4" min="1" />
+      </div>
+      <div class="field">
+        <div class="field-label">Jobs per tech per day <span class="field-hint">on a typical busy day</span></div>
+        <input type="number" class="field-input" id="jobs-per-day" placeholder="e.g. 3" min="1" />
+        <div class="bm-hint"><span>Industry typical:</span><span class="bm-val">HVAC: 3–5 · Roofing: 2–3 · Plumbing: 4–6</span></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Working days per month <span class="field-hint">across your whole team</span></div>
+        <input type="number" class="field-input" id="working-days" placeholder="e.g. 22" min="1" max="31" />
+      </div>
+      <div class="field">
+        <div class="field-label">Average job ticket <span class="field-hint">avg revenue per completed job</span></div>
+        <div class="prefix-wrap"><span class="prefix">$</span><input type="number" class="field-input" id="avg-ticket" placeholder="e.g. 1800" min="0" /></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Your close rate <span class="field-hint">% of inbound calls that book</span></div>
+        <div class="suffix-wrap"><span class="suffix">%</span><input type="number" class="field-input" id="close-rate" placeholder="e.g. 38" min="1" max="100" /></div>
+        <div class="bm-hint"><span>Industry average:</span><span class="bm-val">28–38% · Top 25%: 50%+</span></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Target utilization <span class="field-hint">% of capacity you want to run at</span></div>
+        <div class="suffix-wrap"><span class="suffix">%</span><input type="number" class="field-input" id="utilization" placeholder="e.g. 80" min="1" max="100" /></div>
+        <div class="bm-hint"><span>Recommended:</span><span class="bm-val">75–85% (leaves room for emergencies)</span></div>
+      </div>
+      <button class="calc-btn" id="calc-btn">Calculate My Capacity Needs →</button>
+    </div>
   </div>
 
-  <div class="cr"><h2>Your Demand Plan</h2>
-    <div class="es" id="capEmpty"><p>Enter your team numbers to see how many leads you need and the maximum you should spend on marketing.</p></div>
-    <div id="capRes" style="display:none">
-      <div class="ri"><div class="rl">Monthly Job Capacity</div><div class="rv n" id="capJobs">&mdash;</div><div class="rc" id="capJobsC"></div></div>
-      <div class="ri"><div class="rl">Monthly Revenue Capacity</div><div class="rv n" id="capRev">&mdash;</div><div class="rc">Maximum revenue your current team can produce</div></div>
-      <div class="rd"></div>
-      <div class="ri"><div class="rl">Leads Needed Per Month</div><div class="rv" id="capLeads" style="color:#fff">&mdash;</div><div class="rc" id="capLeadsC"></div></div>
-      <div class="cap-meter"><div class="cap-bar-bg"><div class="cap-bar" id="capBar" style="width:0%;background:var(--amber)"><span class="cap-bar-label" id="capBarLabel"></span></div></div><div class="cap-labels"><span>Empty board</span><span>Target</span><span>Overloaded</span></div></div>
-      <div class="rd"></div>
-      <div class="ri"><div class="rl">Maximum Monthly Marketing Spend</div><div class="rv g" id="capSpend">&mdash;</div><div class="rc" id="capSpendC"></div></div>
-      <div class="insight-box" id="capInsight"><h4>What this means</h4><p id="capInsightText"></p></div>
-
-      <div class="email-gate" id="capGate" style="margin-top:2rem;padding:1.5rem;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:12px">
-        <h3>Download Your Capacity Plan Report</h3>
-        <p>Get a PDF with your capacity numbers, weekly KPI tracking sheet, and a seasonal demand planning framework.</p>
-        <div class="gate-row">
-          <input type="email" id="capEmail" placeholder="Enter your email">
-          <button onclick="this.textContent='Sent! \u2713';this.style.background='#10b981'">Get My Plan</button>
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">Capacity Plan</span>
+      <span class="rp-status s-wait" id="rp-status">Waiting for your numbers</span>
+    </div>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📋</div>
+        <p class="empty-text">Most companies scale spend before fixing capacity. That's how money gets burned — you're paying for leads your team can't handle, and calls that came in aren't getting booked. Enter your team numbers to find the right spend ceiling.</p>
+      </div>
+      <div class="result-section" id="results">
+        <div class="key-metrics">
+          <div class="km-card">
+            <div class="km-label">Calls needed/month</div>
+            <div class="km-value teal" id="calls-needed">—</div>
+            <div class="km-sub">to hit target utilization</div>
+          </div>
+          <div class="km-card">
+            <div class="km-label">Max marketing spend</div>
+            <div class="km-value" id="max-spend">—</div>
+            <div class="km-sub">before diminishing returns</div>
+          </div>
+          <div class="km-card">
+            <div class="km-label">Job capacity/month</div>
+            <div class="km-value" id="job-capacity">—</div>
+            <div class="km-sub">at full team utilization</div>
+          </div>
+          <div class="km-card">
+            <div class="km-label">Revenue potential</div>
+            <div class="km-value teal" id="rev-potential">—</div>
+            <div class="km-sub">at target utilization</div>
+          </div>
         </div>
+
+        <div class="section-title">Breakdown</div>
+        <div class="rows">
+          <div class="row"><span class="rk">Total monthly job capacity</span><span class="rv" id="r-capacity">—</span></div>
+          <div class="row"><span class="rk">Target jobs/month (at utilization)</span><span class="rv" id="r-target-jobs">—</span></div>
+          <div class="row"><span class="rk">Calls needed at your close rate</span><span class="rv" id="r-calls-needed">—</span></div>
+          <div class="row"><span class="rk">Max useful ad spend</span><span class="rv" id="r-max-spend">—</span></div>
+          <div class="row"><span class="rk">Cost per job ceiling</span><span class="rv" id="r-cpj-ceiling">—</span></div>
+        </div>
+
+        <div class="utilization-bar">
+          <div class="ub-label">
+            <span>Utilization target</span>
+            <span id="util-label">—</span>
+          </div>
+          <div class="ub-track"><div class="ub-fill" id="util-fill" style="width:0%"></div></div>
+        </div>
+
+        <div class="diagnosis" id="diagnosis">
+          <div class="dt" id="diag-title">—</div>
+          <div class="db" id="diag-body">—</div>
+        </div>
+
+        <a href="/apply?service=audit&source=capacity-planner" class="audit-cta">Get Your Full Revenue Leak Audit →</a>
+        <p class="audit-note">The audit shows whether your current spend is above or below your capacity ceiling — and which channels are filling jobs vs. burning budget.</p>
       </div>
     </div>
   </div>
-</div></section>
+</div>
 
-<script is:inline>
-function planCap() {
-  const t=+document.getElementById('techs').value, jpd=+document.getElementById('jpd').value, days=+document.getElementById('days').value;
-  const ticket=+document.getElementById('capTicket').value, cr=+document.getElementById('capCR').value/100, util=+document.getElementById('util').value/100;
-  if(!t||!jpd||!days||!ticket||!cr||!util) return;
+<script>
+function fmt(n)  { return '$' + Math.round(n).toLocaleString(); }
+function fmtN(n) { return Math.round(n).toLocaleString(); }
 
-  const maxJobs = Math.round(t * jpd * days);
-  const targetJobs = Math.round(maxJobs * util);
-  const targetRev = targetJobs * ticket;
-  const leadsNeeded = Math.round(targetJobs / cr);
-  // Max spend assumes target cost per booked job should be 8-12% of ticket
-  const targetCPJ = ticket * 0.10; // 10% of ticket as target CPJ
-  const maxSpend = Math.round(targetJobs * targetCPJ);
+document.getElementById('calc-btn').addEventListener('click', calculate);
 
-  document.getElementById('capEmpty').style.display = 'none';
-  document.getElementById('capRes').style.display = 'block';
+function calculate() {
+  const techs       = parseFloat(document.getElementById('techs').value)        || 0;
+  const jobsPerDay  = parseFloat(document.getElementById('jobs-per-day').value) || 0;
+  const workDays    = parseFloat(document.getElementById('working-days').value) || 0;
+  const avgTicket   = parseFloat(document.getElementById('avg-ticket').value)   || 0;
+  const closeRate   = parseFloat(document.getElementById('close-rate').value)   || 0;
+  const utilTarget  = parseFloat(document.getElementById('utilization').value)  || 80;
 
-  document.getElementById('capJobs').textContent = targetJobs + ' jobs';
-  document.getElementById('capJobsC').textContent = maxJobs + ' max capacity \u00d7 ' + Math.round(util*100) + '% target = ' + targetJobs + ' target jobs/month';
-  document.getElementById('capRev').textContent = '$' + targetRev.toLocaleString();
-  document.getElementById('capLeads').textContent = leadsNeeded + ' leads/month';
-  document.getElementById('capLeadsC').textContent = 'At ' + Math.round(cr*100) + '% close rate, you need ' + leadsNeeded + ' leads to book ' + targetJobs + ' jobs';
-
-  const barPct = Math.min((util / 1.0) * 100, 100);
-  const bar = document.getElementById('capBar');
-  bar.style.width = barPct + '%';
-  bar.style.background = util > 0.95 ? '#ef4444' : util > 0.85 ? '#f59e0b' : '#10b981';
-  document.getElementById('capBarLabel').textContent = Math.round(util*100) + '%';
-
-  document.getElementById('capSpend').textContent = '$' + maxSpend.toLocaleString();
-  document.getElementById('capSpendC').textContent = 'Based on a target cost per booked job of $' + Math.round(targetCPJ) + ' (10% of your average ticket)';
-
-  let insight = '';
-  if (util > 0.95) {
-    insight = 'At ' + Math.round(util*100) + '% utilization, you have almost no buffer for emergencies, callbacks, or training. Consider hiring before increasing marketing. If you cannot hire yet, raise prices \u2014 higher ticket with the same volume means more revenue without more strain.';
-  } else if (util > 0.85) {
-    insight = 'Your target utilization is healthy. Spend up to $' + maxSpend.toLocaleString() + '/month on marketing to fill your board. Anything above that creates waste \u2014 you will generate leads you cannot serve, which damages your reputation and wastes ad spend.';
-  } else {
-    insight = 'You have significant capacity headroom. Your team can handle more work. Focus marketing spend on your highest-ROI channels first (LSAs and Google Ads typically). You could safely increase spend to $' + maxSpend.toLocaleString() + '/month without overwhelming your team.';
+  if (!techs || !jobsPerDay || !workDays || !avgTicket || !closeRate) {
+    document.getElementById('calc-btn').textContent = 'Please fill in all fields →';
+    setTimeout(() => document.getElementById('calc-btn').textContent = 'Calculate My Capacity Needs →', 2000);
+    return;
   }
-  document.getElementById('capInsightText').textContent = insight;
+
+  const cr           = Math.min(closeRate, 100) / 100;
+  const utilPct      = Math.min(utilTarget, 100) / 100;
+  const totalCap     = techs * jobsPerDay * workDays;
+  const targetJobs   = totalCap * utilPct;
+  const callsNeeded  = targetJobs / cr;
+  const revPotential = targetJobs * avgTicket;
+  // Max spend: industry standard is max 10% of job revenue
+  const maxSpend     = revPotential * 0.10;
+  const cpjCeiling   = maxSpend / targetJobs;
+
+  // Status
+  const status = document.getElementById('rp-status');
+  status.textContent = 'Plan calculated';
+  status.className   = 'rp-status s-good';
+
+  // Key metrics
+  document.getElementById('calls-needed').textContent  = fmtN(callsNeeded) + '/mo';
+  document.getElementById('max-spend').textContent     = fmt(maxSpend) + '/mo';
+  document.getElementById('job-capacity').textContent  = fmtN(totalCap) + '/mo';
+  document.getElementById('rev-potential').textContent = fmt(revPotential) + '/mo';
+
+  // Breakdown
+  document.getElementById('r-capacity').textContent    = fmtN(totalCap) + ' jobs/month';
+  document.getElementById('r-target-jobs').textContent = fmtN(targetJobs) + ' jobs/month';
+  document.getElementById('r-calls-needed').textContent= fmtN(callsNeeded) + ' calls/month';
+  document.getElementById('r-max-spend').textContent   = fmt(maxSpend) + '/month';
+  document.getElementById('r-cpj-ceiling').textContent = fmt(cpjCeiling) + ' per booked job';
+
+  // Utilization bar
+  document.getElementById('util-label').textContent    = utilTarget + '%';
+  const fillEl = document.getElementById('util-fill');
+  fillEl.style.width      = Math.min(utilTarget, 100) + '%';
+  fillEl.style.background = utilTarget > 90 ? 'var(--neg)' : utilTarget > 80 ? '#C9A035' : 'var(--pos)';
+
+  // Diagnosis
+  const diagEl    = document.getElementById('diagnosis');
+  const diagTitle = document.getElementById('diag-title');
+  const diagBody  = document.getElementById('diag-body');
+  if (utilTarget > 90) {
+    diagEl.className    = 'diagnosis warn';
+    diagTitle.textContent = 'Running too hot — no room for surges.';
+    diagBody.textContent  = `At ${utilTarget}% utilization there's no buffer for unexpected demand or emergency calls. Consider targeting 80–85% and using the remaining capacity as your surge reserve.`;
+  } else if (cr < 0.30) {
+    diagEl.className    = 'diagnosis';
+    diagTitle.textContent = 'Low close rate is multiplying your lead costs.';
+    diagBody.textContent  = `At ${closeRate}% close rate, you need ${fmtN(callsNeeded)} calls to fill ${fmtN(targetJobs)} jobs. If you raised your close rate to 45%, you'd need ${fmtN(targetJobs / 0.45).toLocaleString()} calls — ${fmtN(callsNeeded - targetJobs / 0.45)} fewer. Fix the close rate before scaling spend.`;
+  } else {
+    diagEl.className    = 'diagnosis good';
+    diagTitle.textContent = `You need ${fmtN(callsNeeded)} calls/month to hit your targets.`;
+    diagBody.textContent  = `Your maximum efficient marketing spend is ${fmt(maxSpend)}/month — anything beyond that and you're generating more leads than your team can convert at your current capacity. If you want to grow beyond that, hire first.`;
+  }
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
 }
 </script>
-</Base>
+</ToolLayout>

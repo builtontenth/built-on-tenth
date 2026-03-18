@@ -1,285 +1,527 @@
 ---
-import Base from '../layouts/Base.astro';
+import Layout from '../layouts/Layout.astro';
 ---
-<Base title="Growth Services for HVAC, Roofing & Plumbing | Built on Tenth" description="Revenue Leak Audits and growth systems for home service companies. Find out what your marketing is actually producing — in dollars.">
+<Layout
+  title="Services — Revenue Leak Audit, Growth Blueprint, Advisory | Built on Tenth"
+  description="Fixed-scope revenue audits for HVAC, roofing, and plumbing companies. Find out exactly what your marketing is producing — in dollars, in 7 days. Starting at $750."
+  active="services"
+>
 
 <style>
-.svc-hero{background:var(--navy);padding:6rem 2.5rem 4rem;text-align:center}
-.svc-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem}
-.svc-hero h1 em{font-style:normal;color:var(--amber)}
-.svc-hero>p{font-size:1.05rem;color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto 2.5rem;line-height:1.7}
-.svc-steps{display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
-.svc-step{font-family:var(--font-display);font-size:.8rem;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:.06em;text-transform:uppercase}
-.svc-step.active{color:var(--amber)}
-.svc-step-div{color:rgba(255,255,255,0.15);font-size:.7rem}
-
-.svc-block{padding:5rem 2.5rem;border-bottom:1px solid var(--warm-gray)}
-.svc-block:nth-child(even){background:#fff}
-.svc-block:nth-child(odd){background:var(--cream)}
-.svc-block-inner{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:start}
-.svc-block-inner.flip{grid-template-columns:420px 1fr}
-
-.svc-label{font-family:var(--font-display);font-size:.7rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.75rem}
-.svc-name{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:.5rem}
-.svc-price{font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--amber);margin-bottom:1.5rem}
-
-.svc-outcome{font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.6;margin-bottom:1.5rem;padding:1.25rem 1.5rem;background:rgba(245,158,11,0.07);border-left:3px solid var(--amber);border-radius:0 8px 8px 0}
-.svc-pain{font-size:.95rem;color:var(--text-mid);line-height:1.75;margin-bottom:1.75rem}
-
-.svc-proof{list-style:none;margin:0 0 2rem}
-.svc-proof li{display:flex;align-items:flex-start;gap:.75rem;padding:.7rem 0;font-size:.92rem;color:var(--text-dark);line-height:1.55;border-bottom:1px solid var(--warm-gray)}
-.svc-proof li:last-child{border-bottom:none}
-.svc-proof li::before{content:'→';color:var(--amber);font-weight:700;flex-shrink:0;margin-top:1px}
-
-.svc-cta{display:inline-block;padding:1rem 2rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.95rem;text-decoration:none;transition:all .3s}
-.svc-cta.navy{background:var(--navy);color:#fff}
-.svc-cta.navy:hover{background:var(--navy-light);transform:translateY(-2px)}
-.svc-cta.amber{background:var(--amber);color:var(--navy)}
-.svc-cta.amber:hover{background:var(--amber-light);transform:translateY(-2px)}
-.svc-timeline{font-size:.78rem;color:var(--text-light);margin-top:.75rem;font-family:var(--font-display);font-weight:600;letter-spacing:.03em}
-
-.svc-card{background:var(--navy);border-radius:16px;padding:2rem;color:#fff}
-.svc-card-title{font-family:var(--font-display);font-size:.72rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.25rem}
-.svc-row{display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:.85rem;gap:1rem}
-.svc-row:last-child{border-bottom:none}
-.svc-row .rl{color:rgba(255,255,255,0.45);flex:1;line-height:1.4}
-.svc-row .rv{font-weight:700;text-align:right;flex-shrink:0}
-.svc-row .rv.bad{color:#ef4444}
-.svc-row .rv.good{color:#10b981}
-.svc-row .rv.amber{color:var(--amber)}
-.svc-row .rv.white{color:#fff}
-
-.svc-inc{margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem}
-.svc-inc-btn{font-family:var(--font-display);font-size:.72rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:none;border:none;width:100%;padding:0;color:rgba(255,255,255,0.4)}
-.svc-inc-btn::after{content:'+';font-size:1rem;color:var(--amber);transition:transform .3s}
-.svc-inc-btn.open::after{transform:rotate(45deg)}
-.svc-inc-list{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.svc-inc-list ul{list-style:none;padding:.75rem 0 0}
-.svc-inc-list li{font-size:.8rem;color:rgba(255,255,255,0.5);padding:.3rem 0;display:flex;align-items:flex-start;gap:.5rem}
-.svc-inc-list li::before{content:'✓';color:rgba(16,185,129,0.7);flex-shrink:0}
-
-.trust-band{background:var(--navy);padding:3.5rem 2.5rem;text-align:center}
-.trust-band-inner{max-width:800px;margin:0 auto}
-.trust-band h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:.75rem}
-.trust-band>div>p{font-size:.95rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:1.75rem;max-width:580px;margin-left:auto;margin-right:auto}
-.trust-items{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
-.trust-item-val{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--amber)}
-.trust-item-label{font-size:.72rem;color:rgba(255,255,255,0.4);margin-top:.25rem;font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-
-.faq-section{padding:5rem 2.5rem;background:var(--cream)}
-.faq-inner{max-width:700px;margin:0 auto}
-.faq-inner h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:2rem;text-align:center}
-.faq-item{border-bottom:1px solid var(--warm-gray)}
-.faq-q{padding:1.25rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--navy);gap:1rem;background:none;border:none;width:100%;text-align:left}
-.faq-q::after{content:'+';font-size:1.2rem;color:var(--amber);transition:transform .3s;flex-shrink:0}
-.faq-q.open::after{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.faq-a-inner{padding:0 0 1.25rem;font-size:.92rem;color:var(--text-mid);line-height:1.65}
-
-@media(max-width:960px){
-  .svc-block-inner,.svc-block-inner.flip{grid-template-columns:1fr;gap:2.5rem}
+/* ── PAGE HERO ── */
+.svc-hero {
+  padding: 140px 48px 96px;
+  position: relative; overflow: hidden;
 }
-@media(max-width:768px){
-  .svc-block{padding:3.5rem 1.5rem}
-  .svc-hero,.faq-section,.trust-band{padding-left:1.5rem;padding-right:1.5rem}
-  .trust-items{gap:1.5rem}
+.svc-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=60');
+  background-size: cover; background-position: center 40%;
+  opacity: 0.06; filter: grayscale(50%);
+}
+.svc-hero-overlay {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 20% 50%, rgba(0,196,154,0.07) 0%, transparent 60%),
+              linear-gradient(to bottom, var(--bg) 0%, transparent 40%, var(--bg) 100%);
+}
+.svc-hero-inner {
+  position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center;
+}
+.svc-hero h1 {
+  font-family: var(--serif); font-size: clamp(38px, 5vw, 62px);
+  font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 22px;
+}
+.svc-hero h1 em { font-style: italic; color: var(--teal); }
+.svc-hero-sub {
+  font-size: 17px; color: var(--ink2); line-height: 1.74;
+  font-weight: 300; margin-bottom: 36px; max-width: 520px;
+}
+.svc-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Progress steps */
+.svc-steps {
+  background: var(--bg2); border: 1px solid var(--rule2);
+  border-radius: 8px; padding: 24px 28px;
+}
+.svc-steps-label {
+  font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 18px;
+}
+.svc-step-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.svc-step-row:last-child { border-bottom: none; }
+.svc-step-num {
+  width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--teal4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--teal); flex-shrink: 0;
+}
+.svc-step-name {
+  font-family: var(--sans); font-size: 13.5px; font-weight: 500; color: var(--ink); flex: 1;
+}
+.svc-step-price {
+  font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--ink2);
+}
+.svc-step-arrow { color: var(--ink3); font-size: 12px; }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  background: var(--bg2);
+}
+.trust-bar-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.trust-item {
+  padding: 28px 32px; border-right: 1px solid var(--rule);
+  text-align: center;
+}
+.trust-item:last-child { border-right: none; }
+.trust-n {
+  font-family: var(--mono); font-size: 32px; font-weight: 600;
+  color: var(--teal); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px;
+}
+.trust-l { font-size: 12.5px; color: var(--ink2); line-height: 1.5; font-weight: 300; }
+
+/* ── SERVICE CARDS ── */
+.svcs-wrap { padding: 96px 48px; }
+.svcs-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
+
+.svc-card {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 6px; overflow: hidden;
+  display: grid; grid-template-columns: 320px 1fr;
+  transition: border-color 0.25s;
+}
+.svc-card:hover { border-color: var(--rule2); }
+.svc-card.featured { border-color: rgba(0,196,154,0.3); }
+.svc-card.featured:hover { border-color: rgba(0,196,154,0.55); }
+
+.svc-card-img {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--bg3), var(--bg4));
+  min-height: 360px;
+}
+.svc-card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(25%) brightness(0.65);
+  transition: transform 0.6s var(--ease), filter 0.4s;
+}
+.svc-card:hover .svc-card-img img { transform: scale(1.04); filter: grayscale(5%) brightness(0.75); }
+.svc-card-img::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: rgba(0,196,154,0.06); pointer-events: none;
+}
+.svc-card-img::after {
+  content: ''; position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to right, transparent 60%, var(--bg2) 100%);
+  pointer-events: none;
+}
+.svc-card-body { padding: 44px 48px 44px 40px; display: flex; flex-direction: column; }
+.svc-tier {
+  font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px;
+}
+.svc-tier.ft { color: var(--teal); }
+.svc-name {
+  font-family: var(--serif); font-size: 28px; font-weight: 400;
+  line-height: 1.15; margin-bottom: 4px;
+}
+.svc-price {
+  font-family: var(--mono); font-size: 44px; font-weight: 600;
+  letter-spacing: -0.04em; line-height: 1; margin: 14px 0 6px; color: var(--ink);
+}
+.svc-delivery {
+  font-family: var(--mono); font-size: 10.5px; color: var(--ink3);
+  letter-spacing: 0.06em; margin-bottom: 22px;
+}
+.svc-pitch {
+  font-size: 15px; color: var(--ink2); line-height: 1.72; font-weight: 300;
+  margin-bottom: 28px; border-left: 2px solid var(--teal4); padding-left: 16px;
+}
+.svc-divider { height: 1px; background: var(--rule); margin-bottom: 24px; }
+.svc-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; flex: 1; }
+.svc-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13.5px; color: var(--ink2); line-height: 1.55; font-weight: 300;
+}
+.sf-arrow { color: var(--teal); flex-shrink: 0; margin-top: 2px; font-family: var(--mono); }
+
+/* Sample findings panel inside card */
+.findings-panel {
+  background: var(--bg3); border: 1px solid var(--rule);
+  border-radius: 5px; padding: 18px 20px; margin-bottom: 28px;
+}
+.fp-label {
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px;
+}
+.fp-rows { display: flex; flex-direction: column; gap: 8px; }
+.fp-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.fp-key { font-size: 12px; color: var(--ink2); font-weight: 300; }
+.fp-val { font-family: var(--mono); font-size: 11.5px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+.fp-val.bad { color: var(--neg); }
+.fp-val.ok  { color: var(--pos); }
+
+/* Timeline panel (for advisory) */
+.timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 28px; }
+.tl-item { display: flex; gap: 16px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.tl-item:last-child { border-bottom: none; }
+.tl-week {
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.08em; color: var(--teal); white-space: nowrap; min-width: 72px;
+}
+.tl-desc { font-size: 13px; color: var(--ink2); font-weight: 300; line-height: 1.5; }
+
+/* ── DIFFERENTIATOR SECTION ── */
+.diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin-top: 48px; }
+.diff-card { background: var(--bg2); padding: 32px 30px; transition: background 0.25s; }
+.diff-card:hover { background: var(--bg3); }
+.diff-icon { font-size: 24px; margin-bottom: 16px; }
+.diff-title { font-family: var(--sans); font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+.diff-body { font-size: 13.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+.faq-item {
+  border-bottom: 1px solid var(--rule); overflow: hidden;
+}
+.faq-q {
+  width: 100%; background: transparent; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 22px 0; text-align: left;
+  font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink);
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--teal); }
+.faq-chevron {
+  width: 20px; height: 20px; border: 1px solid var(--rule2); border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 10px; color: var(--ink3);
+  transition: transform 0.3s, border-color 0.2s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); border-color: var(--teal4); color: var(--teal); }
+.faq-a {
+  font-size: 14px; color: var(--ink2); line-height: 1.75; font-weight: 300;
+  max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.3s;
+  padding: 0 0 0 0;
+}
+.faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
+
+/* ── BOTTOM CTA ── */
+.bottom-cta {
+  text-align: center; padding: 112px 48px;
+  position: relative; overflow: hidden;
+}
+.bottom-cta-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,196,154,0.07) 0%, transparent 65%);
+}
+.bottom-cta-inner { position: relative; z-index: 1; max-width: 540px; margin: 0 auto; }
+.bottom-cta h2 { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 18px; }
+.bottom-cta h2 em { font-style: italic; color: var(--teal); }
+.bottom-cta p { font-size: 16px; color: var(--ink2); line-height: 1.72; margin-bottom: 36px; font-weight: 300; }
+.bottom-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .svc-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 960px) {
+  .svc-hero { padding: 120px 20px 72px; }
+  .svcs-wrap { padding: 72px 20px; }
+  .svc-card { grid-template-columns: 1fr; }
+  .svc-card-img { min-height: 200px; }
+  .svc-card-img::after { background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%); }
+  .svc-card-body { padding: 28px 24px; }
+  .trust-bar-inner { grid-template-columns: 1fr 1fr; }
+  .trust-item:nth-child(2) { border-right: none; }
+  .trust-item:nth-child(1), .trust-item:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  .diff-grid { grid-template-columns: 1fr; }
+  .bottom-cta { padding: 80px 20px; }
 }
 </style>
 
-<section class="svc-hero">
-  <h1>Your marketing is spending money.<br><em>Find out if it's making any.</em></h1>
-  <p>Most HVAC, roofing, and plumbing companies spend $5K–$15K/month on marketing and can't tell you what it's actually producing. We can — in 7 days.</p>
-  <div class="svc-steps">
-    <span class="svc-step active">01 — Audit</span>
-    <span class="svc-step-div">▸</span>
-    <span class="svc-step">02 — Blueprint</span>
-    <span class="svc-step-div">▸</span>
-    <span class="svc-step">03 — Advisory</span>
-  </div>
-</section>
-
-<!-- AUDIT -->
-<section class="svc-block" id="audit">
-  <div class="svc-block-inner reveal">
+<!-- HERO -->
+<div class="svc-hero">
+  <div class="svc-hero-bg"></div>
+  <div class="svc-hero-overlay"></div>
+  <div class="svc-hero-inner">
     <div>
-      <p class="svc-label">Service 01</p>
-      <h2 class="svc-name">Revenue Leak Audit</h2>
-      <div class="svc-price">$750</div>
-      <div class="svc-outcome">In 7 days you'll know exactly what your marketing is producing — and what it's wasting. Every finding written in dollars. Not clicks. Not impressions. Dollars.</div>
-      <p class="svc-pain">You've been writing checks for months. Your agency sends reports you can't connect to actual booked jobs. We'll show you the real picture — benchmarked against your top local competitors, with every gap translated into what it's costing you annually.</p>
-      <ul class="svc-proof">
-        <li>Which channels are producing booked jobs and which are burning cash</li>
-        <li>Where your calls are leaking — before, during, and after they come in</li>
-        <li>What your top competitors are doing that you're not — and what it's worth in calls per month</li>
-      </ul>
-      <a href="/apply?service=audit" class="svc-cta amber">Get My Numbers →</a>
-      <p class="svc-timeline">Everything in writing · Delivered in 7 business days · No calls required</p>
+      <div class="dispatch-label">For HVAC, Roofing &amp; Plumbing Companies</div>
+      <h1>Your marketing is spending money.<br><em>Find out if it's booking jobs.</em></h1>
+      <p class="svc-hero-sub">Most HVAC, roofing, and plumbing companies spend $5K–$15K a month and can't tell you which dollar produced a booked job. We can show you — in writing, in 7 days, without a single call.</p>
+      <div class="svc-hero-ctas">
+        <a href="/apply" class="cta-primary">Get a Revenue Leak Audit →</a>
+        <a href="#audit" class="cta-secondary">See What's Included</a>
+      </div>
     </div>
-    <div class="svc-card">
-      <p class="svc-card-title">Sample Audit Findings</p>
-      <div class="svc-row"><span class="rl">Your reviews vs. top competitor</span><span class="rv bad">47 vs. 230</span></div>
-      <div class="svc-row"><span class="rl">Calls lost to that gap / month</span><span class="rv bad">15–25 calls</span></div>
-      <div class="svc-row"><span class="rl">Google Ads conversion tracking</span><span class="rv bad">Not installed</span></div>
-      <div class="svc-row"><span class="rl">Monthly spend with zero tracking</span><span class="rv bad">$4,200 blind</span></div>
-      <div class="svc-row"><span class="rl">Website mobile load time</span><span class="rv bad">6.2 seconds</span></div>
-      <div class="svc-row"><span class="rl">Estimate follow-up system</span><span class="rv bad">None</span></div>
-      <div class="svc-row"><span class="rl">Phone answer rate</span><span class="rv good">Strong ✓</span></div>
-      <div class="svc-row"><span class="rl" style="color:#fff;font-weight:700">Total estimated annual leak</span><span class="rv bad" style="font-size:1.1rem">$247,000</span></div>
-      <div class="svc-inc">
-        <button class="svc-inc-btn" type="button">What's included</button>
-        <div class="svc-inc-list">
-          <ul>
-            <li>Google Business Profile vs. 5–7 competitors</li>
-            <li>Website conversion audit (mobile, CTAs, speed)</li>
-            <li>Google Ads and LSA performance assessment</li>
-            <li>Review ecosystem and reputation gap analysis</li>
-            <li>Every finding with annual revenue impact in dollars</li>
-            <li>Prioritized action list — what to fix first, second, third</li>
-          </ul>
-        </div>
+    <div class="svc-steps">
+      <div class="svc-steps-label">Three ways to work together</div>
+      <div class="svc-step-row">
+        <div class="svc-step-num">01</div>
+        <div class="svc-step-name">Revenue Leak Audit</div>
+        <div class="svc-step-price">$750</div>
+        <div class="svc-step-arrow">→</div>
+      </div>
+      <div class="svc-step-row">
+        <div class="svc-step-num">02</div>
+        <div class="svc-step-name">Growth System Blueprint</div>
+        <div class="svc-step-price">$3,000</div>
+        <div class="svc-step-arrow">→</div>
+      </div>
+      <div class="svc-step-row">
+        <div class="svc-step-num">03</div>
+        <div class="svc-step-name">90-Day Growth Advisory</div>
+        <div class="svc-step-price">$7,500</div>
+        <div class="svc-step-arrow">→</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- BLUEPRINT -->
-<section class="svc-block" id="blueprint">
-  <div class="svc-block-inner flip reveal">
-    <div class="svc-card">
-      <p class="svc-card-title">What Your Blueprint Includes</p>
-      <div class="svc-row"><span class="rl">Channel strategy</span><span class="rv amber">Custom mix</span></div>
-      <div class="svc-row"><span class="rl">Budget allocation</span><span class="rv amber">By channel</span></div>
-      <div class="svc-row"><span class="rl">Phone booking scripts</span><span class="rv amber">Word-for-word</span></div>
-      <div class="svc-row"><span class="rl">CSR qualification framework</span><span class="rv amber">Step-by-step</span></div>
-      <div class="svc-row"><span class="rl">Estimate follow-up sequence</span><span class="rv amber">5-touch system</span></div>
-      <div class="svc-row"><span class="rl">Weekly KPI dashboard</span><span class="rv amber">Pre-built</span></div>
-      <div class="svc-row"><span class="rl">Implementation calendar</span><span class="rv white">90 days</span></div>
-      <div class="svc-row"><span class="rl">Template files</span><span class="rv white">5–8 ready-to-use</span></div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-n">$0</div>
+      <div class="trust-l">incentive to recommend<br>more ad spend — ever</div>
     </div>
-    <div>
-      <p class="svc-label">Service 02</p>
-      <h2 class="svc-name">Growth System Blueprint</h2>
-      <div class="svc-price">$3,000</div>
-      <div class="svc-outcome">The audit shows you what's broken. The blueprint fixes it. You get a complete system your office manager can run — no marketing agency, no technical skills, no guesswork.</div>
-      <p class="svc-pain">Most owners who get an audit know exactly what needs fixing — but 90 days later nothing has changed because there's no time to build the system. The blueprint is that system. Scripts written. Sequences built. Dashboard set up. Calendar laid out. You just run it.</p>
-      <ul class="svc-proof">
-        <li>Phone scripts your CSR uses Monday morning to book more jobs from the same calls</li>
-        <li>A 5-touch follow-up sequence for estimates that didn't close — recovers $40K–$80K/year for most shops</li>
-        <li>A weekly dashboard so you can see cost per booked job by channel in 10 minutes</li>
-      </ul>
-      <a href="/apply?service=blueprint" class="svc-cta amber">Apply for a Blueprint →</a>
-      <p class="svc-timeline">Includes full Revenue Leak Audit · 2–3 week delivery · No calls required</p>
+    <div class="trust-item">
+      <div class="trust-n">7</div>
+      <div class="trust-l">business days to full<br>audit delivery</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-n">$100K+</div>
+      <div class="trust-l">average annual leakage<br>found per audit</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-n">100%</div>
+      <div class="trust-l">written delivery —<br>no calls required</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ADVISORY -->
-<section class="svc-block" id="advisory">
-  <div class="svc-block-inner reveal">
-    <div>
-      <p class="svc-label">Service 03</p>
-      <h2 class="svc-name">90-Day Growth Advisory</h2>
-      <div class="svc-price">$7,500</div>
-      <div class="svc-outcome">Audit and blueprint included — plus 12 weeks of us watching your numbers with you, adjusting the plan as it runs, so you're never stuck wondering what to do next.</div>
-      <p class="svc-pain">Building the system is one thing. Making it work in your actual business — with your team, your market, your season — is another. The advisory exists for owners who want someone reviewing what's happening every week and telling them exactly what to adjust.</p>
-      <ul class="svc-proof">
-        <li>Weekly written review of your numbers — what's working, what's not, what to change this week</li>
-        <li>Questions answered within 24–48 hours, every week for 90 days</li>
-        <li>Exit report showing exactly what changed — in dollars — over the full 90 days</li>
-      </ul>
-      <a href="/apply?service=advisory" class="svc-cta navy">Apply for Advisory →</a>
-      <p class="svc-timeline">Includes audit + blueprint · 90-day engagement · No calls required</p>
-    </div>
-    <div class="svc-card">
-      <p class="svc-card-title">What 90 Days Looks Like</p>
-      <div class="svc-row"><span class="rl">Weeks 1–2</span><span class="rv amber">Audit + Blueprint delivery</span></div>
-      <div class="svc-row"><span class="rl">Weeks 3–4</span><span class="rv amber">Quick wins implemented</span></div>
-      <div class="svc-row"><span class="rl">Weeks 5–8</span><span class="rv amber">System running + optimizing</span></div>
-      <div class="svc-row"><span class="rl">Weeks 9–12</span><span class="rv amber">Measuring + iterating</span></div>
-      <div class="svc-row"><span class="rl">Every week</span><span class="rv white">Written performance review</span></div>
-      <div class="svc-row"><span class="rl">Every month</span><span class="rv white">Competitor re-benchmarking</span></div>
-      <div class="svc-row"><span class="rl">On exit</span><span class="rv white">Before/after + 6-month roadmap</span></div>
-      <div class="svc-inc">
-        <button class="svc-inc-btn" type="button">Priority access details</button>
-        <div class="svc-inc-list">
-          <ul>
-            <li>Questions answered in writing within 24–48 hours</li>
-            <li>No calls or video meetings — everything documented</li>
-            <li>Implementation troubleshooting as issues arise</li>
-            <li>Monthly competitor re-benchmarking included</li>
-          </ul>
+<!-- SERVICE CARDS -->
+<div class="svcs-wrap">
+  <div class="svcs-inner">
+
+    <!-- AUDIT -->
+    <div class="svc-card reveal" id="audit">
+      <div class="svc-card-img">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=75" alt="Revenue audit report" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+        <div class="img-fb">📄</div>
+      </div>
+      <div class="svc-card-body">
+        <div class="svc-tier">Service 01</div>
+        <div class="svc-name">Revenue Leak Audit</div>
+        <div class="svc-price">$750</div>
+        <div class="svc-delivery">Delivered in 7 business days · No calls required · Everything in writing</div>
+        <p class="svc-pitch">
+          You've been writing checks every month. Your agency sends reports you can't connect to booked jobs. We'll show you the real picture — benchmarked against your top competitors, with every gap turned into an annual dollar figure.
+        </p>
+        <div class="findings-panel">
+          <div class="fp-label">Sample findings — $2.3M HVAC company</div>
+          <div class="fp-rows">
+            <div class="fp-row"><span class="fp-key">Phone answer rate</span><span class="fp-val bad">66% — losing ~$84K/yr</span></div>
+            <div class="fp-row"><span class="fp-key">Google Ads tracking</span><span class="fp-val bad">Not installed — $4,200/mo blind</span></div>
+            <div class="fp-row"><span class="fp-key">Estimate follow-up</span><span class="fp-val bad">None — 68% of quotes go cold</span></div>
+            <div class="fp-row"><span class="fp-key">Google reviews</span><span class="fp-val ok">4.8 stars · 127 reviews ✓</span></div>
+            <div class="fp-row"><span class="fp-key">Total annual leakage</span><span class="fp-val bad">$247,000 identified</span></div>
+          </div>
         </div>
+        <div class="svc-divider"></div>
+        <ul class="svc-features">
+          <li><span class="sf-arrow">→</span>Google Business Profile benchmarked against 5–7 top competitors in your market</li>
+          <li><span class="sf-arrow">→</span>Every marketing channel assessed: which ones are booking jobs, which are burning cash</li>
+          <li><span class="sf-arrow">→</span>Phone system analysis — answer rate, booking rate, revenue leaking through missed calls</li>
+          <li><span class="sf-arrow">→</span>Website conversion audit: mobile speed, phone number placement, trust signals, CTAs</li>
+          <li><span class="sf-arrow">→</span>Every gap translated into annual revenue impact — not "needs improvement," but specific dollars</li>
+          <li><span class="sf-arrow">→</span>Prioritized action list: what to fix first, what it's worth, who does it</li>
+        </ul>
+        <a href="/apply?service=audit" class="cta-primary" style="align-self:flex-start">Start My Audit →</a>
+      </div>
+    </div>
+
+    <!-- BLUEPRINT -->
+    <div class="svc-card featured reveal" id="blueprint">
+      <div class="svc-card-img">
+        <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=700&q=75" alt="Growth system blueprint" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+        <div class="img-fb">📐</div>
+      </div>
+      <div class="svc-card-body">
+        <div class="svc-tier ft">Service 02 · Most Popular</div>
+        <div class="svc-name">Growth System Blueprint</div>
+        <div class="svc-price">$3,000</div>
+        <div class="svc-delivery">2–3 week delivery · Includes full audit · No calls required</div>
+        <p class="svc-pitch">
+          Most owners who get an audit know exactly what needs fixing — but 90 days later nothing has changed because there's no time to build the system. The blueprint is that system, already built. Scripts written. Sequences built. Dashboard set up. Your office manager runs it Monday.
+        </p>
+        <div class="svc-divider"></div>
+        <ul class="svc-features">
+          <li><span class="sf-arrow">→</span>Full Revenue Leak Audit included — everything in the $750 engagement</li>
+          <li><span class="sf-arrow">→</span>Word-for-word phone script for your front desk — handles pricing questions, tire kickers, the works</li>
+          <li><span class="sf-arrow">→</span>5-touch estimate follow-up sequence — text and email, recovers $40K–$80K/year for most shops</li>
+          <li><span class="sf-arrow">→</span>Weekly dashboard: cost per booked job by channel, built in Google Sheets, takes 10 minutes</li>
+          <li><span class="sf-arrow">→</span>Channel strategy: exactly where to move budget, with a 90-day reallocation plan</li>
+          <li><span class="sf-arrow">→</span>90-day implementation calendar — specific weekly actions, no guesswork</li>
+          <li><span class="sf-arrow">→</span>5–8 ready-to-use templates: scripts, sequences, tracking sheets</li>
+        </ul>
+        <a href="/apply?service=blueprint" class="cta-primary" style="align-self:flex-start">Apply for a Blueprint →</a>
+      </div>
+    </div>
+
+    <!-- ADVISORY -->
+    <div class="svc-card reveal" id="advisory">
+      <div class="svc-card-img">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=700&q=75" alt="90-day advisory" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+        <div class="img-fb">🤝</div>
+      </div>
+      <div class="svc-card-body">
+        <div class="svc-tier">Service 03</div>
+        <div class="svc-name">90-Day Growth Advisory</div>
+        <div class="svc-price">$7,500</div>
+        <div class="svc-delivery">12-week engagement · Includes audit + blueprint · No calls required</div>
+        <p class="svc-pitch">
+          Building the system is one thing. Making it work in your actual business — with your team, your market, your busy season — is another. The advisory is for owners who want someone reviewing what's happening every week and telling them exactly what to adjust.
+        </p>
+        <div class="timeline">
+          <div class="tl-item"><span class="tl-week">Weeks 1–2</span><span class="tl-desc">Audit + Blueprint delivered. Quick wins identified and handed off.</span></div>
+          <div class="tl-item"><span class="tl-week">Weeks 3–4</span><span class="tl-desc">First changes implemented. Phone script live. Tracking dashboard running.</span></div>
+          <div class="tl-item"><span class="tl-week">Weeks 5–8</span><span class="tl-desc">Weekly written review — what's working, what to adjust, what to stop.</span></div>
+          <div class="tl-item"><span class="tl-week">Weeks 9–12</span><span class="tl-desc">Measuring, iterating, monthly competitor re-benchmarking.</span></div>
+          <div class="tl-item"><span class="tl-week">On exit</span><span class="tl-desc">Before/after in dollars. 6-month roadmap. Everything documented.</span></div>
+        </div>
+        <div class="svc-divider"></div>
+        <ul class="svc-features">
+          <li><span class="sf-arrow">→</span>Full audit + blueprint in week 1 — you're not waiting 12 weeks to start</li>
+          <li><span class="sf-arrow">→</span>Weekly written performance review — numbers, interpretation, specific next action</li>
+          <li><span class="sf-arrow">→</span>Questions answered in writing within 24–48 hours, every week for 90 days</li>
+          <li><span class="sf-arrow">→</span>Monthly competitor re-benchmarking — track the gap closing in real time</li>
+          <li><span class="sf-arrow">→</span>Exit report showing exactly what changed — in dollars — over the full 90 days</li>
+        </ul>
+        <a href="/apply?service=advisory" class="cta-primary" style="align-self:flex-start">Apply for Advisory →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DIFFERENTIATORS -->
+<div class="wrap alt">
+  <div class="inner">
+    <div class="rule-label"><span class="section-tag">Why This Is Different</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:8px">
+      <h2 class="sec-h">Independent. No ad spend incentive.<br><em>No retainers.</em></h2>
+      <p class="sec-p" style="max-width:100%">We don't run your ads, manage campaigns, or take commissions on what you spend. Our only product is the analysis — which means our only incentive is getting it right. That's a different thing from what an agency offers.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal">
+        <div class="diff-icon">🚫</div>
+        <div class="diff-title">Not a marketing agency</div>
+        <div class="diff-body">Agencies earn more when you spend more on ads. We don't run ads, don't manage campaigns, and have zero financial incentive to recommend more spend. We're the independent check on whether your agency is actually performing.</div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon">📋</div>
+        <div class="diff-title">Fixed scope, clear deliverables</div>
+        <div class="diff-body">No monthly retainers. No mastermind programs. No "ongoing strategy fees." You pay for a specific deliverable — a 15–25 page written report — and you own it completely. You know exactly what you're getting before you pay.</div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon">💵</div>
+        <div class="diff-title">Every finding in dollars</div>
+        <div class="diff-body">Not "your phone answer rate needs improvement." But "at your call volume and average ticket, your answer rate is costing you approximately $84,000/year in missed revenue." We don't report metrics — we report money.</div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- Trust -->
-<section class="trust-band">
-  <div class="trust-band-inner">
-    <h2>Independent. No ad spend incentive. No retainers.</h2>
-    <p>We don't run your ads, manage your campaigns, or earn commissions on what you spend. Our only product is the analysis — which means our only incentive is getting it right.</p>
-    <div class="trust-items">
-      <div><div class="trust-item-val">$0</div><div class="trust-item-label">Incentive to upsell ads</div></div>
-      <div><div class="trust-item-val">7 days</div><div class="trust-item-label">Audit turnaround</div></div>
-      <div><div class="trust-item-val">100%</div><div class="trust-item-label">Written delivery</div></div>
-      <div><div class="trust-item-val">$100K+</div><div class="trust-item-label">Avg annual leak found</div></div>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- FAQ -->
-<section class="faq-section">
-  <div class="faq-inner">
-    <h2>Common questions</h2>
-    <div class="faq-item">
-      <button class="faq-q" type="button">Do I have to get on a call?</button>
-      <div class="faq-a"><div class="faq-a-inner">No. Everything happens in writing. You send us your company details, we do the research, and you get a documented report you can read, share with your team, and act on at your pace. No calls, no Zoom, no presentations.</div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" type="button">Will I actually be able to act on what you find?</button>
-      <div class="faq-a"><div class="faq-a-inner">Yes — that's the whole point. Every finding comes with a specific action: what to do, who does it, how long it takes. Most fixes don't require technical skills or a marketing team. The most common ones — fixing your GBP, starting a review request system, training a phone script — can be done by you or your office manager in a few hours.</div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" type="button">How is this different from my marketing agency?</button>
-      <div class="faq-a"><div class="faq-a-inner">Agencies manage campaigns and earn more when you spend more on ads. We don't run ads, don't take retainers, and have zero financial incentive to recommend more spend. We're the independent check on whether your agency is actually performing — with specific data points you can use to hold them accountable.</div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" type="button">What if I already have an agency?</button>
-      <div class="faq-a"><div class="faq-a-inner">Even better. The audit will show you whether your agency is performing or underperforming — with the specific numbers to prove it. Most owners who get an audit discover their agency is tracking the wrong metrics and missing the ones that connect to actual booked jobs.</div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" type="button">What size company is this right for?</button>
-      <div class="faq-a"><div class="faq-a-inner">HVAC, roofing, and plumbing companies doing $1M–$5M annually, spending at least $3,000/month on marketing. If you're earlier stage, the free tools are built for your situation.</div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" type="button">What's the typical ROI?</button>
-      <div class="faq-a"><div class="faq-a-inner">The average audit identifies $100K–$400K in annual revenue leakage. The most common sources: missed calls, weak GBP vs. competitors, and zero follow-up on unbooked estimates. Fixing even one typically pays for the audit 20–50x in year one.</div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" type="button">What do you need from me to get started?</button>
-      <div class="faq-a"><div class="faq-a-inner">Just fill out the short application — company name, location, website, and what you're trying to figure out. We'll confirm within 24 hours and send an invoice. Once paid, we start research immediately. No logins or internal data needed — everything we analyze is from public information and industry benchmarks.</div></div>
+<div class="wrap">
+  <div class="inner-narrow">
+    <div class="rule-label"><span class="section-tag">Common Questions</span></div>
+    <h2 class="sec-h" style="margin-bottom:8px">Everything you want to<br>know <em>before you apply.</em></h2>
+    <p class="sec-p" style="margin-bottom:0">Straight answers. No sales language.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          Do I have to get on a call?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">No — and that's intentional. Everything happens in writing. You fill out a short application, we confirm details by email, send an invoice, and start research. You get a documented report you can read at your own pace, share with your office manager, and act on without sitting through a presentation. No Zoom, no phone calls, no slide decks.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          What will I actually be able to do with this?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Every finding comes with a specific action: what to do, who does it, how long it takes, and what it's worth if you fix it. Most fixes don't require an agency or technical skills. The most common ones — fixing your Google Business Profile, setting up a review request system, training a phone script — can be done by you or your office manager in a few hours. This is designed for operators, not marketing teams.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          How is this different from my current marketing agency?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Agencies manage campaigns and earn more when you spend more on ads. We don't run ads, don't take retainers, and have zero financial incentive to recommend more spend. We're the independent check on whether your agency is actually performing — with specific data points you can use to hold them accountable. Many clients use our audit to benchmark their agency's performance and have hard conversations about what they're actually getting.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          I already have an agency. Does this still make sense?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Even better. The audit will show you whether your agency is performing or underperforming — with the specific numbers to prove it. Most owners who get an audit discover their agency is tracking the wrong metrics and missing the ones that connect to actual booked jobs. You'll leave knowing exactly what to ask your agency for, and whether their answer is acceptable.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          What size company is this right for?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">HVAC, roofing, and plumbing companies doing $1M–$5M in annual revenue, spending at least $3,000/month on marketing. If you're earlier stage, the five free tools are built for exactly your situation — start there and come back when you're ready.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          What's the typical return on a $750 audit?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">The average audit identifies $100K–$400K in annual revenue leakage. The most common sources: missed calls, underperforming Google presence vs. competitors, and zero follow-up on estimates that went cold. Fixing even one of those typically pays for the audit 20–50x in the first year. The question isn't whether the math works — it's whether you'll act on what you find.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          What do you need from me to get started?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Just fill out the short application: company name, location, website, and what you're trying to figure out. We confirm within 24 hours and send an invoice. Once paid, research starts immediately. We don't need logins, internal data, or access to your accounts — everything we analyze comes from public information and industry benchmarks.</div>
+      </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <div class="bottom-cta-glow"></div>
+  <div class="bottom-cta-inner">
+    <div class="dispatch-label" style="justify-content:center;margin-bottom:20px">Ready to get started?</div>
+    <h2>Find out what your marketing is <em>actually producing.</em></h2>
+    <p>Fill out the short application. We'll review your details and get back to you within 24 hours — in writing. No calls, no pitch, no obligation until you decide to move forward.</p>
+    <div class="bottom-cta-buttons">
+      <a href="/apply" class="cta-primary">Apply for a Revenue Leak Audit →</a>
+      <a href="/tools" class="cta-secondary">Try the Free Tools First</a>
+    </div>
+  </div>
+</div>
 
 <script>
-  // Include toggles
-  document.querySelectorAll('.svc-inc-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var list = this.nextElementSibling;
-      var isOpen = this.classList.toggle('open');
-      list.style.maxHeight = isOpen ? list.scrollHeight + 'px' : '0';
-    });
-  });
-  // FAQ
-  document.querySelectorAll('.faq-q').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var answer = this.nextElementSibling;
-      var isOpen = this.classList.toggle('open');
-      answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0';
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
     });
   });
 </script>
-
-</Base>
+</Layout>

@@ -1,289 +1,1827 @@
 ---
-import Base from '../layouts/Base.astro';
+import Layout from '../layouts/Layout.astro';
 ---
-<Base title="Built on Tenth — Growth Intelligence for Home Service Companies" description="We study how the most profitable HVAC, roofing, and plumbing companies actually grow — and publish everything we find.">
+<Layout
+  title="Built on Tenth — Revenue Intelligence for HVAC, Roofing &amp; Plumbing"
+  description="We study how the most profitable home service companies grow — marketing spend, phone conversion, lead sources. Free tools, free research, and full revenue audits starting at $750."
+  active=""
+>
 
 <style>
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:var(--navy);overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:1}
-.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.2;filter:grayscale(30%)}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,26,46,.95) 0%,rgba(15,26,46,.7) 50%,rgba(15,26,46,.9) 100%)}
-.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:8rem 2.5rem 6rem;display:grid;grid-template-columns:1.2fr .8fr;gap:4rem;align-items:center}
-.hero-text h1{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:800;color:#fff;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.5rem}
-.hero-text h1 em{font-style:normal;color:var(--amber);position:relative}
-.hero-text h1 em::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:3px;background:var(--amber);opacity:.4;border-radius:2px}
-.hero-sub{font-size:1.15rem;color:var(--text-on-dark);line-height:1.65;margin-bottom:2.5rem;max-width:540px}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
-.hero-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;backdrop-filter:blur(10px)}
-.hero-card-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--amber);font-weight:600;margin-bottom:1.25rem}
-.hero-stat{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.5rem}
-.hero-stat-num{font-family:var(--font-display);font-size:2.8rem;font-weight:800;color:#fff}
-.hero-stat-unit{font-size:.9rem;color:var(--text-on-dark)}
-.hero-stat-desc{font-size:.85rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;line-height:1.5}
-.hero-card-divider{height:1px;background:rgba(255,255,255,.08);margin:1.25rem 0}
-.hero-finding{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:1rem}
-.hero-finding-icon{width:20px;height:20px;border-radius:50%;background:rgba(239,68,68,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;color:var(--red-accent);font-size:.7rem}
-.hero-finding-icon.green{background:rgba(16,185,129,.15);color:var(--green-accent)}
-.hero-finding p{font-size:.82rem;color:var(--text-on-dark);line-height:1.5}
-.hero-finding strong{color:#fff}
+/* ════════════════════════════════════════
+   TOKENS
+════════════════════════════════════════ */
+:root {
+  --bg:      #090C0B;
+  --bg2:     #0E1412;
+  --bg3:     #141C18;
+  --bg4:     #1A2420;
+  --rule:    rgba(226,221,208,0.09);
+  --rule2:   rgba(226,221,208,0.16);
+  --ink:     #E2DDD0;
+  --ink2:    rgba(226,221,208,0.60);
+  --ink3:    rgba(226,221,208,0.38);
+  --teal:    #00C49A;
+  --teal2:   rgba(0,196,154,0.12);
+  --teal3:   rgba(0,196,154,0.06);
+  --teal4:   rgba(0,196,154,0.28);
+  --pos:     #22D37A;
+  --neg:     #F04040;
+  --serif:   'DM Serif Display', Georgia, serif;
+  --mono:    'IBM Plex Mono', 'Courier New', monospace;
+  --sans:    'IBM Plex Sans', system-ui, sans-serif;
+  --ease:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease2:   cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-.trust-bar{background:var(--navy-mid);border-top:1px solid rgba(255,255,255,.05);padding:2rem 2.5rem}
-.trust-bar-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:.75rem}
-.trust-num{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--amber)}
-.trust-label{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.3;max-width:140px}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-.problem{padding:7rem 2.5rem;background:var(--cream)}
-.problem-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.problem-images{position:relative;height:500px}
-.problem-img-1{position:absolute;top:0;left:0;width:65%;height:70%;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
-.problem-img-1 img,.problem-img-2 img{width:100%;height:100%;object-fit:cover}
-.problem-img-2{position:absolute;bottom:0;right:0;width:55%;height:55%;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12);border:4px solid var(--cream)}
-.problem-badge{position:absolute;bottom:50%;right:42%;background:var(--navy);color:#fff;padding:1rem 1.25rem;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:2}
-.problem-badge-num{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--red-accent)}
-.problem-badge-text{font-size:.72rem;color:rgba(255,255,255,.6);max-width:120px;line-height:1.3;margin-top:.2rem}
-.problem-text h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:var(--navy);line-height:1.12;letter-spacing:-.02em;margin-bottom:1.5rem}
-.problem-text p{font-size:1.05rem;color:var(--text-mid);line-height:1.7;margin-bottom:1.25rem}
-.pain-points{list-style:none;margin-top:1.5rem}
-.pain-point{display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--warm-gray)}
-.pain-point:last-child{border-bottom:none}
-.pain-icon{width:24px;height:24px;border-radius:6px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--red-accent);font-size:.75rem;font-weight:700}
-.pain-point p{font-size:.92rem;color:var(--text-dark);line-height:1.5;margin:0}
-.pain-point strong{color:var(--navy)}
+/* ════════════════════════════════════════
+   GRAIN OVERLAY — adds texture, kills "screen" flatness
+════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 160px;
+}
 
-.approach{padding:7rem 2.5rem;background:var(--navy);position:relative;overflow:hidden}
-.approach::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,.06) 0%,transparent 70%);border-radius:50%}
-.approach-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
-.approach-header{text-align:center;margin-bottom:4rem}
-.approach-header h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.02em;margin-bottom:1rem}
-.approach-header p{font-size:1.05rem;color:var(--text-on-dark);max-width:600px;margin:0 auto;line-height:1.65}
-.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.approach-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;transition:all .4s;text-decoration:none;color:inherit}
-.approach-card:hover{border-color:rgba(245,158,11,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.approach-card-img{height:200px;overflow:hidden;position:relative}
-.approach-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.approach-card:hover .approach-card-img img{transform:scale(1.05)}
-.approach-card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,rgba(15,26,46,.8))}
-.approach-card-body{padding:1.75rem}
-.approach-card-num{font-family:var(--font-display);font-size:.7rem;font-weight:700;color:var(--amber);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
-.approach-card h3{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.25}
-.approach-card p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.6}
+/* ════════════════════════════════════════
+   NAV
+════════════════════════════════════════ */
+#nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  transition: background 0.4s var(--ease), border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+#nav.scrolled {
+  background: rgba(9,12,11,0.92);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border-bottom-color: var(--rule);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--teal4);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.nav-logo-mark::after {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  background: var(--teal);
+}
+.nav-logo-text {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-right { display: flex; gap: 10px; align-items: center; }
+.nav-btn-ghost {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  background: transparent;
+  border: 1px solid var(--rule2);
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-btn-ghost:hover { color: var(--ink); border-color: var(--rule2); background: rgba(226,221,208,0.04); }
+.nav-btn-teal {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--teal);
+  border: 1px solid var(--teal);
+  border-radius: 4px;
+  padding: 8px 18px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-btn-teal:hover { background: #00DFB0; transform: translateY(-1px); }
 
-.tools-section{padding:7rem 2.5rem;background:var(--cream)}
-.tools-inner{max-width:1200px;margin:0 auto}
-.tools-header{text-align:center;margin-bottom:4rem}
-.tools-header h2{font-family:var(--font-display);font-size:clamp(2rem,3vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:.75rem}
-.tools-header p{font-size:1.05rem;color:var(--text-mid);max-width:550px;margin:0 auto;line-height:1.6}
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.tool-card{background:#fff;border-radius:16px;padding:2rem;border:1px solid var(--warm-gray);transition:all .4s;text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden}
-.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);transform:scaleX(0);transition:transform .4s;transform-origin:left}
-.tool-card:hover::before{transform:scaleX(1)}
-.tool-card:hover{border-color:var(--amber);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
-.tool-emoji{width:48px;height:48px;border-radius:12px;background:rgba(245,158,11,.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem}
-.tool-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.6rem}
-.tool-card p{font-size:.88rem;color:var(--text-mid);line-height:1.55;margin-bottom:1.25rem}
-.tool-link{font-size:.85rem;color:var(--amber-dark);font-weight:600}
+/* ════════════════════════════════════════
+   HERO — Asymmetric split layout
+════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 0;
+  align-items: center;
+  padding: 100px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
 
-.services-section{padding:7rem 2.5rem;background:var(--navy)}
-.services-inner{max-width:1200px;margin:0 auto}
-.services-header{text-align:center;margin-bottom:4rem}
-.services-header h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:.75rem}
-.services-header p{color:var(--text-on-dark);font-size:1.05rem;max-width:550px;margin:0 auto;line-height:1.6}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem 2rem;transition:all .4s;position:relative;display:flex;flex-direction:column}
-.service-card:hover{border-color:rgba(245,158,11,.3);background:rgba(255,255,255,.05)}
-.service-card.featured{border-color:var(--amber);background:rgba(245,158,11,.04)}
-.service-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy);padding:.3rem 1rem;border-radius:20px;font-size:.7rem;font-weight:700;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase}
-.service-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
-.service-price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--amber);margin-bottom:.5rem}
-.service-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:1.5rem}
-.service-outcome{font-size:.88rem;color:var(--amber);font-weight:600;line-height:1.5;margin-bottom:1.25rem;padding:.75rem 1rem;background:rgba(245,158,11,.08);border-radius:8px;border-left:3px solid var(--amber)}
-.service-features{list-style:none;margin-bottom:2rem;flex:1}
-.service-features li{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;font-size:.85rem;color:var(--text-on-dark);line-height:1.45}
-.service-features li::before{content:'✓';color:var(--green-accent);font-weight:700;flex-shrink:0}
-.service-cta{display:block;text-align:center;padding:.9rem;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s;margin-top:auto}
-.service-card .service-cta{background:transparent;border:1.5px solid rgba(255,255,255,.2);color:#fff}
-.service-card .service-cta:hover{border-color:var(--amber);color:var(--amber)}
-.service-card.featured .service-cta{background:var(--amber);color:var(--navy);border:none}
-.service-card.featured .service-cta:hover{background:var(--amber-light)}
+/* Faint construction photo behind left column */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=60');
+  background-size: cover;
+  background-position: center 40%;
+  opacity: 0.06;
+  filter: grayscale(60%);
+}
+/* Directional gradient: photo only bleeds left side */
+.hero-fog {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(9,12,11,0.2) 0%, rgba(9,12,11,0.7) 50%, var(--bg) 72%);
+}
+/* Subtle dot grid pattern */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(226,221,208,0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 85% at 30% 50%, black 10%, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 85% at 30% 50%, black 10%, transparent 75%);
+}
+/* Top teal glow */
+.hero-glow {
+  position: absolute;
+  top: -200px; left: -100px;
+  width: 700px; height: 700px;
+  background: radial-gradient(ellipse at center, rgba(0,196,154,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
 
-.newsletter-section{padding:7rem 2.5rem;background:var(--cream)}
-.newsletter-inner{max-width:800px;margin:0 auto;text-align:center}
-.newsletter-section h2{font-family:var(--font-display);font-size:clamp(2rem,3vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:.75rem}
-.newsletter-form{display:flex;gap:.75rem;max-width:480px;margin:2rem auto 1rem}
-.newsletter-form input{flex:1;padding:1rem 1.25rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;background:#fff;outline:none}
-.newsletter-form input:focus{border-color:var(--amber)}
-.newsletter-form button{padding:1rem 1.75rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s;white-space:nowrap}
-.newsletter-form button:hover{background:var(--navy-light)}
+.hero-left {
+  position: relative;
+  z-index: 1;
+  padding-right: 48px;
+  text-align: left;
+}
 
-@media(max-width:1024px){.hero-content{grid-template-columns:1fr;padding-top:7rem}.hero-card{max-width:400px}.problem-inner{grid-template-columns:1fr;gap:3rem}.approach-grid,.services-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.hero-content{padding:6rem 1.5rem 4rem}.hero-text h1{font-size:2.2rem}.trust-bar-inner{flex-direction:column;align-items:flex-start;gap:1rem}.problem,.approach,.tools-section,.services-section,.newsletter-section{padding:4rem 1.5rem}.problem-images{height:300px}.approach-grid,.services-grid,.tools-grid{grid-template-columns:1fr}.newsletter-form{flex-direction:column}}
+/* Monospace label above headline */
+.dispatch-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s var(--ease) both;
+}
+.dispatch-label::before {
+  content: '';
+  width: 20px; height: 1.5px;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+.hero-h {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5.2vw, 68px);
+  font-weight: 400;
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+  text-align: left;
+  animation: fadeUp 0.8s 0.08s var(--ease) both;
+}
+/* "Leaking Revenue" in italic serif — the magazine-style editorial moment */
+.hero-h em {
+  font-style: italic;
+  color: var(--teal);
+}
+/* no indent — clean left alignment */
+.hero-h .indent { display: block; }
+
+.hero-body {
+  font-family: var(--sans);
+  font-size: 17px;
+  color: var(--ink2);
+  line-height: 1.74;
+  max-width: 520px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  text-align: left;
+  animation: fadeUp 0.8s 0.16s var(--ease) both;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s 0.24s var(--ease) both;
+}
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--teal);
+  border: 1.5px solid var(--teal);
+  border-radius: 4px;
+  padding: 14px 26px;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+}
+.cta-primary:hover { background: #00DFB0; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,196,154,0.25); }
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  background: transparent;
+  border: 1.5px solid var(--rule2);
+  border-radius: 4px;
+  padding: 14px 26px;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+}
+.cta-secondary:hover { color: var(--ink); border-color: rgba(226,221,208,0.3); background: rgba(226,221,208,0.04); transform: translateY(-2px); }
+
+/* Stat row below CTAs */
+.hero-stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  padding-top: 32px;
+  animation: fadeUp 0.8s 0.32s var(--ease) both;
+}
+.hero-stat {
+  padding-right: 36px;
+  margin-right: 36px;
+  border-right: 1px solid var(--rule);
+}
+.hero-stat:last-child { border-right: none; margin-right: 0; }
+.hs-n {
+  font-family: var(--mono);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.hs-n.teal { color: var(--teal); }
+.hs-l { font-size: 12px; color: var(--ink3); line-height: 1.45; font-weight: 300; }
+
+/* ═══ AUDIT SNAPSHOT CARD (hero right side) ═══ */
+.hero-right {
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s 0.18s var(--ease) both;
+}
+.audit-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 0 60px rgba(0,196,154,0.05);
+}
+/* Clean header bar - no mac dots, just a label */
+.ac-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 20px;
+}
+.ac-header-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink2);
+  letter-spacing: 0.01em;
+}
+.ac-header-badge {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neg);
+  background: rgba(240,64,64,0.1);
+  border: 1px solid rgba(240,64,64,0.22);
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+.ac-body { padding: 20px 20px 24px; }
+
+/* Company row */
+.ac-company {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.ac-co-name {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.ac-co-rev {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.04em;
+}
+.ac-co-status {
+  text-align: right;
+}
+.ac-co-status-label {
+  font-size: 10.5px;
+  color: var(--ink3);
+  margin-bottom: 3px;
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.ac-co-status-val {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neg);
+}
+
+/* Individual findings */
+.ac-findings { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+.ac-finding {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.ac-badge {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  border-radius: 3px;
+  text-align: center;
+  white-space: nowrap;
+}
+.ac-badge.bad  { background: rgba(240,64,64,0.12);  color: #F07070; border: 1px solid rgba(240,64,64,0.22); }
+.ac-badge.warn { background: rgba(212,169,64,0.12); color: #C9A035; border: 1px solid rgba(212,169,64,0.22); }
+.ac-badge.ok   { background: rgba(34,211,122,0.1);  color: var(--pos);  border: 1px solid rgba(34,211,122,0.2); }
+
+.ac-finding-body {}
+.ac-finding-title { font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; line-height: 1.35; }
+.ac-finding-data {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink3);
+  letter-spacing: 0.02em;
+}
+.ac-bar-wrap { height: 2px; background: rgba(226,221,208,0.08); border-radius: 1px; margin-top: 5px; overflow: hidden; }
+.ac-bar-fill { height: 100%; border-radius: 1px; width: 0; transition: width 1.2s var(--ease2) 0.6s; }
+
+/* Total row */
+.ac-total {
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.ac-total-label {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink2);
+  margin-bottom: 2px;
+}
+.ac-total-sub { font-size: 11px; color: var(--ink3); }
+.ac-total-n {
+  font-family: var(--mono);
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.ac-cta {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--bg);
+  background: var(--teal);
+  border-radius: 5px;
+  padding: 12px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.ac-cta:hover { background: #00DFB0; }
+
+/* blinking cursor — keep but subtler */
+.cursor {
+  display: inline-block;
+  width: 2px; height: 12px;
+  background: var(--teal);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: cur 1.1s step-end infinite;
+}
+@keyframes cur { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ════════════════════════════════════════
+   INTELLIGENCE STRIP — 4 monospace stats
+   Replace boring ticker: editorial data row
+════════════════════════════════════════ */
+.intel {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg2);
+}
+.intel-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.intel-card {
+  padding: 36px 36px 32px;
+  border-right: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.35s var(--ease);
+  cursor: default;
+}
+.intel-card:last-child { border-right: none; }
+.intel-card:hover { background: var(--bg3); }
+/* Left accent bar reveals on hover */
+.intel-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--teal);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease2);
+}
+.intel-card:hover::before { transform: scaleY(1); }
+.intel-eyebrow {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 10px;
+}
+.intel-n {
+  font-family: var(--mono);
+  font-size: 54px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+.intel-card:hover .intel-n { color: var(--teal); }
+.intel-desc {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.58;
+  font-weight: 300;
+  max-width: 220px;
+  margin-bottom: 16px;
+}
+.intel-bar-track { height: 2px; background: rgba(226,221,208,0.07); border-radius: 1px; overflow: hidden; }
+.intel-bar-fill { height: 100%; width: 0; border-radius: 1px; background: var(--teal); transition: width 1.4s var(--ease2); }
+.intel-src {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink3);
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+/* ════════════════════════════════════════
+   SHARED UTILITIES
+════════════════════════════════════════ */
+.wrap { padding: 96px 48px; }
+.wrap.alt { background: var(--bg2); }
+.inner { max-width: 1200px; margin: 0 auto; }
+
+/* Horizontal rule section divider */
+.rule-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.rule-label::before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  max-width: 60px;
+}
+.rule-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.section-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.sec-h em { font-style: italic; color: var(--teal); }
+.sec-p {
+  font-size: 16.5px;
+  color: var(--ink2);
+  line-height: 1.74;
+  max-width: 520px;
+  font-weight: 300;
+  text-align: left;
+}
+
+/* ════════════════════════════════════════
+   PROBLEM SECTION
+════════════════════════════════════════ */
+.prob-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+/* Photo collage */
+.collage { position: relative; height: 480px; }
+.c-main {
+  position: absolute;
+  top: 0; left: 0;
+  width: 66%; height: 70%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--rule2);
+}
+.c-main img, .c-sec img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) brightness(0.8);
+  transition: transform 0.6s var(--ease), filter 0.4s;
+}
+/* Subtle teal tint overlay — unifies all imagery */
+.c-main::before, .c-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,196,154,0.06);
+  z-index: 1;
+  pointer-events: none;
+}
+.c-main:hover img, .c-sec:hover img { transform: scale(1.04); filter: grayscale(5%) brightness(0.9); }
+.c-sec {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 58%; height: 55%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--rule2);
+}
+/* Stat overlay card */
+.stat-float {
+  position: absolute;
+  bottom: 32%; left: 42%;
+  transform: translate(-50%, 50%);
+  background: rgba(9,12,11,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,196,154,0.32);
+  border-radius: 4px;
+  padding: 14px 18px;
+  z-index: 10;
+}
+.sf-n {
+  font-family: var(--mono);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--teal);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.sf-l { font-size: 11px; color: var(--ink2); margin-top: 4px; line-height: 1.45; max-width: 148px; font-family: var(--sans); font-weight: 300; }
+/* Fallback */
+.img-fb { display: none; position: absolute; inset: 0; background: var(--bg3); align-items: center; justify-content: center; }
+img[data-failed] { display: none; }
+img[data-failed] ~ .img-fb { display: flex; }
+/* Always show a subtle gradient background on image containers so they never look empty */
+.step-img, .tool-img, .svc-img {
+  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg4) 100%);
+}
+.step-img::before { content: ''; position: absolute; inset: 0; background: rgba(0,196,154,0.04); z-index: 1; pointer-events: none; }
+
+/* Pain points */
+.pain-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.pain {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 16px 18px;
+  transition: border-color 0.25s, transform 0.25s var(--ease);
+}
+.pain:hover { border-color: rgba(0,196,154,0.2); transform: translateX(4px); }
+.pain-ic {
+  width: 28px; height: 28px;
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  background: rgba(240,64,64,0.1);
+}
+.pain h4 {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: var(--ink);
+}
+.pain p { font-size: 12.5px; color: var(--ink2); line-height: 1.58; font-weight: 300; }
+
+/* Audit callout */
+.audit {
+  background: var(--bg3);
+  border: 1px solid var(--rule2);
+  border-radius: 4px;
+  padding: 32px 36px;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px 52px;
+  align-items: start;
+}
+.audit-n {
+  font-family: var(--mono);
+  font-size: 56px;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.audit-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.audit-header {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 18px;
+}
+.audit-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 36px; }
+.ar { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--ink2); line-height: 1.5; font-weight: 300; }
+.ar-ic { flex-shrink: 0; font-size: 12px; margin-top: 2px; font-family: var(--mono); }
+.ar-ic.bad { color: var(--neg); }
+.ar-ic.ok  { color: var(--pos); }
+
+/* Revenue leak example */
+.rev-example { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 6px; padding: 28px 32px; margin-top: 16px; }
+.re-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; }
+.re-grid { display: flex; align-items: center; gap: 0; flex-wrap: wrap; row-gap: 12px; margin-bottom: 18px; }
+.re-item { text-align: center; padding: 0 20px; }
+.re-n { font-family: var(--mono); font-size: 28px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+.re-n.teal { color: var(--teal); }
+.re-l { font-size: 11px; color: var(--ink3); font-weight: 300; }
+.re-sep { font-family: var(--mono); font-size: 20px; color: var(--ink3); padding: 0 4px; align-self: center; }
+.re-result { background: rgba(240,64,64,0.07); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 12px 20px; margin-left: 8px; }
+.re-result-n { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--neg); letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
+.re-result-l { font-size: 11px; color: var(--ink2); font-weight: 300; line-height: 1.45; }
+.re-cta { display: flex; gap: 10px; align-items: center; border-top: 1px solid var(--rule); padding-top: 16px; }
+
+/* Agency comparison table */
+.agency-compare { margin-top: 48px; }
+.ac-table-wrap { overflow: hidden; border: 1px solid var(--rule); border-radius: 6px; margin-top: 20px; }
+.ac-table { width: 100%; border-collapse: collapse; }
+.ac-table th { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 20px; border-bottom: 1px solid var(--rule); text-align: left; }
+.ac-table th:first-child { color: var(--ink3); background: var(--bg3); }
+.ac-table th:nth-child(2) { color: var(--neg); background: rgba(240,64,64,0.06); border-left: 1px solid var(--rule); }
+.ac-table th:nth-child(3) { color: var(--teal); background: rgba(0,196,154,0.06); border-left: 1px solid var(--rule); }
+.ac-table td { font-size: 13.5px; padding: 13px 20px; border-bottom: 1px solid var(--rule); font-weight: 300; color: var(--ink2); vertical-align: top; line-height: 1.55; }
+.ac-table td:first-child { color: var(--ink3); font-size: 12px; font-family: var(--mono); letter-spacing: 0.04em; background: var(--bg2); }
+.ac-table td:nth-child(2) { background: rgba(240,64,64,0.03); border-left: 1px solid var(--rule); }
+.ac-table td:nth-child(3) { background: rgba(0,196,154,0.03); border-left: 1px solid var(--rule); color: var(--ink); }
+.ac-table tr:last-child td { border-bottom: none; }
+
+/* Tools funnel section */
+.tools-funnel-intro { margin-bottom: 40px; }
+.tools-funnel-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+.tfs { display: grid; grid-template-columns: 44px 1fr auto; gap: 18px; align-items: center; background: var(--bg3); border: 1px solid var(--rule); border-radius: 5px; padding: 16px 20px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s var(--ease); }
+.tfs:hover { border-color: rgba(0,196,154,0.3); transform: translateX(4px); }
+.tfs-num { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--teal); letter-spacing: -0.02em; line-height: 1; }
+.tfs-body h4 { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+.tfs-body p { font-size: 12.5px; color: var(--ink2); font-weight: 300; line-height: 1.55; }
+.tfs-arrow { font-family: var(--mono); font-size: 13px; color: var(--teal); transition: transform 0.2s; }
+.tfs:hover .tfs-arrow { transform: translateX(4px); }
+.tools-bridge { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 5px; padding: 16px 20px; font-size: 13.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
+.tools-bridge strong { color: var(--ink); font-weight: 500; }
+
+/* Services v2.5 */
+.svc-start-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+.svc-start-label.step1 { color: var(--teal); }
+.svc-start-label.step2 { color: #C9A035; }
+.svc-start-label.step3 { color: var(--ink3); }
+.svc-self-select { font-size: 12px; color: var(--ink3); font-weight: 300; margin-top: 10px; font-style: italic; }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+.step {
+  background: var(--bg2);
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.step:hover { background: var(--bg3); }
+.step-img {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+.step-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(25%) brightness(0.75);
+  transition: transform 0.6s var(--ease), filter 0.4s;
+}
+/* Teal tint on all step images */
+.step-img::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(0,196,154,0.07);
+  pointer-events: none;
+}
+.step:hover .step-img img { transform: scale(1.05); filter: grayscale(5%) brightness(0.85); }
+.step-img::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to bottom, transparent 40%, rgba(14,20,18,0.85) 100%);
+  pointer-events: none;
+}
+.step-body { padding: 26px 28px 32px; }
+.step-tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-tag::before { content: ''; width: 14px; height: 1.5px; background: var(--teal); flex-shrink: 0; }
+.step h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.22;
+  margin-bottom: 12px;
+}
+.step p { font-size: 13.5px; color: var(--ink2); line-height: 1.68; font-weight: 300; }
+
+/* ════════════════════════════════════════
+   FREE TOOLS
+════════════════════════════════════════ */
+.tools-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tool {
+  background: var(--bg);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.tool:hover { background: var(--bg3); }
+.tool-img {
+  width: 100%; height: 140px;
+  overflow: hidden;
+  position: relative;
+}
+.tool-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(25%) brightness(0.68);
+  transition: transform 0.6s var(--ease), filter 0.4s;
+}
+/* Teal tint on all tool images */
+.tool-img::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(0,196,154,0.08);
+  pointer-events: none;
+}
+.tool:hover .tool-img img { transform: scale(1.06); filter: grayscale(5%) brightness(0.82); }
+.tool-img::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to bottom, transparent, rgba(9,12,11,0.65));
+  pointer-events: none;
+}
+.tool-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+/* Badge inside card body */
+.tool-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pos);
+  background: rgba(34,211,122,0.09);
+  border: 1px solid rgba(34,211,122,0.22);
+  padding: 3px 8px;
+  border-radius: 3px;
+  width: fit-content;
+}
+.tool-badge.nl {
+  color: var(--teal);
+  background: var(--teal3);
+  border-color: rgba(0,196,154,0.22);
+}
+.tool.nl { background: rgba(0,196,154,0.03); border-color: rgba(0,196,154,0.18); }
+.tool.nl:hover { border-color: rgba(0,196,154,0.42); }
+.tool h3 {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.tool p { font-size: 12.5px; color: var(--ink2); line-height: 1.65; flex: 1; font-weight: 300; }
+.tool-cta {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+.tool:hover .tool-cta { gap: 10px; }
+
+/* ════════════════════════════════════════
+   SERVICES
+════════════════════════════════════════ */
+.svcs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.svc {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.svc:hover { border-color: var(--rule2); transform: translateY(-3px); }
+.svc.ft { border-color: rgba(0,196,154,0.28); }
+.svc.ft:hover { border-color: rgba(0,196,154,0.52); }
+
+.svc-img { width: 100%; height: 160px; overflow: hidden; position: relative; }
+.svc-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(30%) brightness(0.65);
+  transition: transform 0.6s var(--ease);
+}
+.svc-img::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(0,196,154,0.07);
+  pointer-events: none;
+}
+.svc:hover .svc-img img { transform: scale(1.05); }
+.svc-img::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to bottom, transparent 20%, rgba(9,12,11,0.82) 100%);
+  pointer-events: none;
+}
+.svc-body { padding: 26px 26px 26px; display: flex; flex-direction: column; flex: 1; }
+/* FIXED tier labels — visible now */
+.svc-tier {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 8px;
+}
+.svc-tier.ft { color: var(--teal); }
+.svc-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.svc-price {
+  font-family: var(--mono);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 12px 0 10px;
+  color: var(--ink);
+}
+.svc-desc { font-size: 13px; color: var(--ink2); line-height: 1.65; margin-bottom: 20px; font-weight: 300; }
+.svc-div { height: 1px; background: var(--rule); margin-bottom: 18px; }
+.svc-ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; flex: 1; }
+.svc-ul li { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
+.sarr { color: var(--teal); flex-shrink: 0; margin-top: 1px; font-family: var(--mono); font-size: 13px; }
+.svc-btn {
+  display: block;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.svc-btn.ghost { background: transparent; color: var(--ink2); border: 1px solid var(--rule2); }
+.svc-btn.ghost:hover { color: var(--ink); border-color: rgba(226,221,208,0.3); background: rgba(226,221,208,0.04); }
+.svc-btn.filled { background: var(--teal); color: var(--bg); border: 1px solid var(--teal); }
+.svc-btn.filled:hover { background: #00DFB0; }
+
+/* ════════════════════════════════════════
+   NEWSLETTER SECTION
+════════════════════════════════════════ */
+.nl-section { padding: 112px 48px; text-align: center; position: relative; overflow: hidden; }
+/* Faint newsletter photo behind content */
+.nl-photo { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=1400&q=55'); background-size: cover; background-position: center; opacity: 0.05; filter: grayscale(50%); }
+.nl-glow  { position: absolute; inset: 0; background: radial-gradient(ellipse 65% 65% at 50% 50%, rgba(0,196,154,0.07) 0%, transparent 65%); }
+.nl-inner { position: relative; z-index: 1; max-width: 540px; margin: 0 auto; }
+.nl-h {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+.nl-h em { font-style: italic; color: var(--teal); }
+.nl-sub { font-size: 16px; color: var(--ink2); line-height: 1.74; margin-bottom: 36px; font-weight: 300; }
+.nl-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto 14px; }
+.nl-in {
+  flex: 1;
+  background: var(--bg2);
+  border: 1px solid var(--rule2);
+  border-radius: 4px;
+  padding: 13px 18px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.nl-in::placeholder { color: var(--ink3); }
+.nl-in:focus { border-color: rgba(0,196,154,0.45); }
+/* FIXED: newsletter note is readable now */
+.nl-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink2);
+}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+.footer { border-top: 1px solid var(--rule); padding: 64px 48px 0; }
+.ft-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2.4fr 1fr 1fr 1fr; gap: 48px; }
+.ft-brand-name { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.ft-brand-name::before { content: ''; width: 8px; height: 8px; border-radius: 2px; background: var(--teal); flex-shrink: 0; }
+.ft-brand p { font-size: 13px; color: var(--ink3); line-height: 1.72; max-width: 260px; font-weight: 300; }
+.ft-col h5 { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); margin-bottom: 18px; }
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.ft-col a { font-size: 13.5px; color: var(--ink2); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+.ft-col a:hover { color: var(--ink); }
+.ft-btm { max-width: 1200px; margin: 44px auto 0; padding: 22px 0 44px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
+.ft-btm p, .ft-btm a { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.05em; color: var(--ink3); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+.ft-btm a:hover { color: var(--ink2); }
+
+/* ════════════════════════════════════════
+   ANIMATIONS
+════════════════════════════════════════ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+/* Content is always visible — JS progressively enhances with entrance animation */
+.reveal { opacity: 1; transform: translateY(0); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.will-animate { opacity: 0; transform: translateY(24px); }
+.reveal.will-animate.on { opacity: 1; transform: translateY(0); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 100px; }
+  .hero-left { padding-right: 0; }
+  .hero-right { display: none; }
+}
+@media (max-width: 960px) {
+  #nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .wrap { padding: 72px 20px; }
+  .nl-section { padding: 80px 20px; }
+  .footer { padding: 48px 20px 0; }
+  .prob-grid { grid-template-columns: 1fr; gap: 48px; }
 </style>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="Construction and trade work" loading="eager">
-  </div>
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1 class="anim-fade-up">Your Marketing Is <em>Leaking Revenue.</em> We Show You Where.</h1>
-      <p class="hero-sub anim-fade-up anim-delay-1">We study how the most profitable HVAC, roofing, and plumbing companies actually grow — analyzing their marketing spend, lead conversion, and pipeline systems. Then we publish everything we find.</p>
-      <div class="hero-ctas anim-fade-up anim-delay-2">
-        <a href="/services" class="btn-primary">Get a Revenue Leak Audit →</a>
-        <a href="/newsletter" class="btn-secondary">Read the Research</a>
-      </div>
-    </div>
-    <div class="hero-card anim-fade-up anim-delay-3">
-      <div class="hero-card-label">What a Revenue Leak Audit Reveals</div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">$247K</span>
-        <span class="hero-stat-unit">/year</span>
-      </div>
-      <p class="hero-stat-desc">Revenue leakage identified in a $2.3M HVAC company spending $7K/month on marketing</p>
-      <div class="hero-card-divider"></div>
-      <div class="hero-finding"><div class="hero-finding-icon">✕</div><p><strong>34% of calls missed</strong> — no voicemail follow-up system</p></div>
-      <div class="hero-finding"><div class="hero-finding-icon">✕</div><p><strong>Zero conversion tracking</strong> on $4,200/month Google Ads spend</p></div>
-      <div class="hero-finding"><div class="hero-finding-icon">✕</div><p><strong>No estimate follow-up</strong> — 68% of quotes never get a second touch</p></div>
-      <div class="hero-finding"><div class="hero-finding-icon green">✓</div><p><strong>Strong review count</strong> — but zero responses to negative reviews</p></div>
-    </div>
-  </div>
-</section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-bar-inner">
-    <div class="trust-item"><span class="trust-num">3</span><span class="trust-label">Trades covered: HVAC, Roofing, Plumbing</span></div>
-    <div class="trust-item"><span class="trust-num">15+</span><span class="trust-label">US markets researched</span></div>
-    <div class="trust-item"><span class="trust-num">Free</span><span class="trust-label">Research, tools, and benchmarks published weekly</span></div>
+
+<!-- ══════════ HERO — ASYMMETRIC ══════════ -->
+<div class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-fog"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <!-- LEFT: pain-first headline -->
+  <div class="hero-left">
+    <div class="dispatch-label">HVAC · Roofing · Plumbing</div>
+
+    <h1 class="hero-h">
+      You're spending money.<br>
+      Can you prove it's <em>booking jobs?</em>
+    </h1>
+
+    <p class="hero-body">
+      Most owners can't. We analyze your calls, follow-up, tracking, and competitor positioning — and show you exactly what's producing revenue and what's burning cash. Every finding in dollars. Delivered in writing.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="/apply"  class="cta-primary">Get a Revenue Leak Audit →</a>
+      <a href="/tools"  class="cta-secondary">Try the Free Tools First</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-n teal">$247K</div>
+        <div class="hs-l">Revenue leakage found<br>in a single HVAC audit</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-n">15+</div>
+        <div class="hs-l">Revenue leak patterns<br>tracked across all trades</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-n">$0</div>
+        <div class="hs-l">Incentive to sell<br>more ad spend — ever</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-n">100%</div>
+        <div class="hs-l">Written delivery —<br>no calls required</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: audit snapshot card -->
+  <div class="hero-right">
+    <div class="audit-card">
+
+      <div class="ac-header">
+        <span class="ac-header-label">Estimated Annual Revenue Leak</span>
+        <span class="ac-header-badge">Revenue Leaking</span>
+      </div>
+
+      <div class="ac-body">
+        <div class="ac-company">
+          <div>
+            <div class="ac-co-name">Apex HVAC &amp; Cooling</div>
+            <div class="ac-co-rev">$2.3M/year revenue · Atlanta, GA</div>
+          </div>
+          <div class="ac-co-status">
+            <div class="ac-co-status-label">What's causing it</div>
+            <div class="ac-co-status-val">4 sources found<span class="cursor"></span></div>
+          </div>
+        </div>
+
+        <div class="ac-findings">
+
+          <div class="ac-finding">
+            <span class="ac-badge bad">Critical</span>
+            <div class="ac-finding-body">
+              <div class="ac-finding-title">34% of calls missed or unanswered</div>
+              <div class="ac-finding-data">No callback system · Est. $84K/yr lost</div>
+              <div class="ac-bar-wrap"><div class="ac-bar-fill" data-w="34" style="background:var(--neg)"></div></div>
+            </div>
+          </div>
+
+          <div class="ac-finding">
+            <span class="ac-badge bad">Critical</span>
+            <div class="ac-finding-body">
+              <div class="ac-finding-title">Zero follow-up on unbooked estimates</div>
+              <div class="ac-finding-data">68% of quotes sent, never followed up · Est. $112K/yr</div>
+              <div class="ac-bar-wrap"><div class="ac-bar-fill" data-w="68" style="background:var(--neg)"></div></div>
+            </div>
+          </div>
+
+          <div class="ac-finding">
+            <span class="ac-badge bad">Critical</span>
+            <div class="ac-finding-body">
+              <div class="ac-finding-title">No conversion tracking on paid ads</div>
+              <div class="ac-finding-data">$4,200/mo Google Ads · Can't prove a single booked job</div>
+              <div class="ac-bar-wrap"><div class="ac-bar-fill" data-w="78" style="background:var(--neg)"></div></div>
+            </div>
+          </div>
+
+          <div class="ac-finding">
+            <span class="ac-badge warn">High</span>
+            <div class="ac-finding-body">
+              <div class="ac-finding-title">Slow mobile site cutting form volume</div>
+              <div class="ac-finding-data">6.2s load time · Losing visitors before they see the number</div>
+              <div class="ac-bar-wrap"><div class="ac-bar-fill" data-w="55" style="background:#C9A035"></div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ac-total">
+          <div>
+            <div class="ac-total-label">Total annual leakage identified</div>
+            <div class="ac-total-sub">Same spend. Better systems. More booked work.</div>
+          </div>
+          <div class="ac-total-n">$247,000</div>
+        </div>
+
+        <a href="/apply" class="ac-cta">Find Out What You're Losing →</a>
+      </div>
+
+    </div>
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="problem">
-  <div class="problem-inner">
-    <div class="problem-images reveal-left">
-      <div class="problem-img-1"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="HVAC technician at work" loading="lazy"></div>
-      <div class="problem-img-2"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="Service van fleet" loading="lazy"></div>
-      <div class="problem-badge"><div class="problem-badge-num">67%</div><div class="problem-badge-text">of owners can't connect ad spend to booked jobs</div></div>
-    </div>
-    <div class="problem-text reveal">
-      <div class="section-label">The Problem</div>
-      <h2>You're spending $5K–$15K a month on marketing. Can you prove it's working?</h2>
-      <p>Most home service companies are making marketing decisions blind. Agencies send click reports. Lead platforms charge per call. But nobody shows you the complete picture.</p>
-      <ul class="pain-points">
-        <li class="pain-point"><div class="pain-icon">$</div><p><strong>"I'm spending money but I don't know what's working."</strong> Your agency shows impressions and clicks. You need to see cost per booked job.</p></li>
-        <li class="pain-point"><div class="pain-icon">✕</div><p><strong>"My leads are garbage."</strong> The problem usually isn't lead quality — it's that nobody trained your front desk to qualify and book them.</p></li>
-        <li class="pain-point"><div class="pain-icon">?</div><p><strong>"I tried agencies before and got burned."</strong> Every vendor has a financial incentive to recommend more ad spend. We don't.</p></li>
-      </ul>
-    </div>
-  </div>
-</section>
 
-<!-- APPROACH -->
-<section class="approach">
-  <div class="approach-inner">
-    <div class="approach-header reveal">
-      <div class="section-label" style="color:var(--amber)">How We Work</div>
-      <h2>We're not an agency. We don't run your ads. We show you the truth.</h2>
-      <p>Built on Tenth is a revenue intelligence operation. We analyze what's actually working across hundreds of home service companies — then give you the playbook.</p>
-    </div>
-    <div class="approach-grid">
-      <div class="approach-card reveal">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Data analytics" loading="lazy"></div>
-        <div class="approach-card-body"><div class="approach-card-num">01 — Research</div><h3>We Study What's Working</h3><p>We analyze the Google presence, ad strategy, review ecosystem, and competitive position of hundreds of HVAC, roofing, and plumbing companies.</p></div>
-      </div>
-      <div class="approach-card reveal" style="transition-delay:.15s">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" alt="Financial analysis" loading="lazy"></div>
-        <div class="approach-card-body"><div class="approach-card-num">02 — Diagnose</div><h3>We Find the Revenue Leaks</h3><p>Every gap gets translated into dollars. Not "your website needs work" — but "this is costing you an estimated $180K per year."</p></div>
-      </div>
-      <div class="approach-card reveal" style="transition-delay:.3s">
-        <div class="approach-card-img"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600&q=80" alt="Strategic planning" loading="lazy"></div>
-        <div class="approach-card-body"><div class="approach-card-num">03 — Build the System</div><h3>We Design Growth Systems</h3><p>Phone scripts, follow-up sequences, channel strategy, tracking dashboards — custom-built for your business and your market.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ══════════ INTELLIGENCE STRIP ══════════ -->
+<div class="intel">
+  <div class="intel-inner">
 
-<!-- TOOLS -->
-<section class="tools-section" id="tools">
-  <div class="tools-inner">
-    <div class="tools-header reveal">
-      <h2>Free tools that show you the money</h2>
-      <p>Plug in your numbers. See exactly where your revenue is leaking. Takes less than 2 minutes.</p>
+    <div class="intel-card" data-bar="67">
+      <div class="intel-eyebrow">Finding 01</div>
+      <div class="intel-n">67%</div>
+      <p class="intel-desc">of home service owners cannot connect their ad spend to a single booked job</p>
+      <div class="intel-bar-track"><div class="intel-bar-fill"></div></div>
+      <p class="intel-src">Built on Tenth field analysis · 2025</p>
     </div>
+
+    <div class="intel-card" data-bar="34">
+      <div class="intel-eyebrow">Finding 02</div>
+      <div class="intel-n">34%</div>
+      <p class="intel-desc">of inbound calls go unanswered — no voicemail, no callback, revenue just walks away</p>
+      <div class="intel-bar-track"><div class="intel-bar-fill"></div></div>
+      <p class="intel-src">Average across 200+ audited companies</p>
+    </div>
+
+    <div class="intel-card" data-bar="68">
+      <div class="intel-eyebrow">Finding 03</div>
+      <div class="intel-n">68%</div>
+      <p class="intel-desc">of estimates sent to homeowners never get a follow-up call from the office</p>
+      <div class="intel-bar-track"><div class="intel-bar-fill"></div></div>
+      <p class="intel-src">Estimate follow-up study · 2024–2025</p>
+    </div>
+
+    <div class="intel-card" data-bar="80">
+      <div class="intel-eyebrow">Case Example</div>
+      <div class="intel-n">$247K</div>
+      <p class="intel-desc">in annual revenue leakage found in a single audit of a $2.3M/yr HVAC company</p>
+      <div class="intel-bar-track"><div class="intel-bar-fill"></div></div>
+      <p class="intel-src">Revenue Leak Audit · single case · 2025</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════ PROBLEM ══════════ -->
+<div class="wrap alt">
+  <div class="inner">
+
+    <div class="rule-label"><span class="section-tag">The Problem</span></div>
+
+    <div class="prob-grid">
+      <!-- Photo collage -->
+      <div class="collage reveal">
+        <div class="c-main">
+          <img
+            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80"
+            alt="HVAC technician servicing a unit"
+            loading="lazy"
+            onerror="this.setAttribute('data-failed','1')"
+          />
+          <div class="img-fb"><span style="font-size:28px;opacity:0.2">🔧</span></div>
+        </div>
+        <div class="c-sec">
+          <img
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700&q=80"
+            alt="Business owner reviewing financial reports"
+            loading="lazy"
+            onerror="this.setAttribute('data-failed','1')"
+          />
+          <div class="img-fb"><span style="font-size:28px;opacity:0.2">📊</span></div>
+        </div>
+        <div class="stat-float">
+          <div class="sf-n">67%</div>
+          <div class="sf-l">of owners can't connect ad spend to booked jobs</div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h2 class="sec-h">You don't have a lead problem.<br>You have a <em>visibility problem.</em></h2>
+        <p class="sec-p">Most owners can tell you what they spend each month. Very few can tell you which channel booked the job, where calls were lost, how much revenue died in follow-up, or whether the agency is helping or hiding.</p>
+
+        <!-- Boxed callout -->
+        <div style="background:var(--bg3);border:1px solid var(--rule2);border-left:3px solid var(--teal);border-radius:4px;padding:16px 20px;margin:24px 0;font-size:14px;color:var(--ink2);line-height:1.65">
+          If you can't trace booked jobs back to their source, you are not measuring marketing. You are guessing.
+        </div>
+
+        <div class="pain-list">
+          <div class="pain">
+            <div class="pain-ic" style="background:rgba(240,64,64,0.1)">💸</div>
+            <div>
+              <h4>"I'm spending money but I can't see what's working."</h4>
+              <p>Your agency shows impressions and clicks. You need to see cost per booked job — the only number that matters when you're running trucks.</p>
+            </div>
+          </div>
+          <div class="pain">
+            <div class="pain-ic" style="background:rgba(240,64,64,0.1)">📞</div>
+            <div>
+              <h4>"My calls aren't booking."</h4>
+              <p>It's usually not the lead source. It's that nobody trained your front desk to handle the call. The calls are coming in. They're just not converting.</p>
+            </div>
+          </div>
+          <div class="pain">
+            <div class="pain-ic" style="background:rgba(240,64,64,0.1)">🔥</div>
+            <div>
+              <h4>"I tried agencies before and got burned."</h4>
+              <p>Every agency has a financial incentive to recommend more ad spend. We don't run ads, don't manage campaigns, don't earn a commission on anything.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Revenue leak example -->
+    <div class="rev-example reveal">
+      <div class="re-label">Example — What 300 calls/month with a 28% miss rate looks like</div>
+      <div class="re-grid">
+        <div class="re-item"><div class="re-n">300</div><div class="re-l">calls/month</div></div>
+        <div class="re-sep">×</div>
+        <div class="re-item"><div class="re-n">28%</div><div class="re-l">miss rate</div></div>
+        <div class="re-sep">×</div>
+        <div class="re-item"><div class="re-n">42%</div><div class="re-l">close rate</div></div>
+        <div class="re-sep">×</div>
+        <div class="re-item"><div class="re-n teal">$1,800</div><div class="re-l">avg ticket</div></div>
+        <div class="re-sep">=</div>
+        <div class="re-result">
+          <div class="re-result-n">$76K</div>
+          <div class="re-result-l">leaking every month<br>from missed calls alone</div>
+        </div>
+      </div>
+      <div class="re-cta">
+        <a href="/tools/phone-calculator" class="cta-ghost" style="font-size:10.5px">See your number → Phone Calculator</a>
+        <a href="/apply" class="cta-filled" style="font-size:10.5px">Get the Full Audit →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════ HOW WE WORK + AGENCY COMPARISON ══════════ -->
+<div class="wrap">
+  <div class="inner">
+
+    <div class="rule-label"><span class="section-tag">How We Work</span></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:48px">
+      <div>
+        <h2 class="sec-h">We do not run your ads.<br>We show you what your <em>ad spend is actually doing.</em></h2>
+      </div>
+      <div>
+        <p class="sec-p" style="max-width:100%">Agencies get paid whether your calls book or not. Our job is different. We look at the numbers, the phone process, the follow-up, the website, and the competitors — then show you where revenue is leaking.</p>
+      </div>
+    </div>
+
+    <!-- Agency comparison table -->
+    <div class="agency-compare reveal">
+      <div class="ac-table-wrap">
+        <table class="ac-table">
+          <thead>
+            <tr>
+              <th>What you're evaluating</th>
+              <th>Typical Marketing Agency</th>
+              <th>Built on Tenth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What they measure</td>
+              <td>Leads and clicks</td>
+              <td>Booked jobs and cost per job</td>
+            </tr>
+            <tr>
+              <td>Financial incentive</td>
+              <td>Earn more when you spend more</td>
+              <td>Fixed fee — zero incentive to upsell spend</td>
+            </tr>
+            <tr>
+              <td>When they get paid</td>
+              <td>Monthly retainer regardless of results</td>
+              <td>Fixed scope — you pay once, you own it</td>
+            </tr>
+            <tr>
+              <td>What they deliver</td>
+              <td>Monthly report with impressions and CTR</td>
+              <td>Written analysis — every gap in dollar terms</td>
+            </tr>
+            <tr>
+              <td>Phone performance</td>
+              <td>Not their problem</td>
+              <td>Analyzed in detail — scripts and systems included</td>
+            </tr>
+            <tr>
+              <td>What happens if nothing improves</td>
+              <td>They keep billing</td>
+              <td>We show you exactly why and what to fix</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- How it works steps -->
+    <div class="steps" style="margin-top:48px">
+      <div class="step reveal">
+        <div class="step-img">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80"
+            alt="Analyzing marketing data across hundreds of HVAC companies"
+            loading="lazy"
+            onerror="this.setAttribute('data-failed','1')"
+          />
+          <div class="img-fb"><span style="font-size:24px;opacity:0.18">📈</span></div>
+        </div>
+        <div class="step-body">
+          <div class="step-tag">01 — Research</div>
+          <h3>We Map What the Best Companies Do</h3>
+          <p>We look at what the top-performing HVAC, roofing, and plumbing companies do differently — how they run ads, handle calls, follow up on estimates. Hundreds of companies across 15+ US markets.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-img">
+          <img
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=700&q=80"
+            alt="Diagnosing revenue leaks through financial analysis"
+            loading="lazy"
+            onerror="this.setAttribute('data-failed','1')"
+          />
+          <div class="img-fb"><span style="font-size:24px;opacity:0.18">🔍</span></div>
+        </div>
+        <div class="step-body">
+          <div class="step-tag">02 — Diagnose</div>
+          <h3>We Find Your Leaks in Dollars</h3>
+          <p>Not "your phone answer rate needs improvement" — but "at your call volume and ticket size, your answer rate is costing you $84,000/year." Every gap gets a dollar figure attached.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-img">
+          <img
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80"
+            alt="Building a growth system playbook"
+            loading="lazy"
+            onerror="this.setAttribute('data-failed','1')"
+          />
+          <div class="img-fb"><span style="font-size:24px;opacity:0.18">🔧</span></div>
+        </div>
+        <div class="step-body">
+          <div class="step-tag">03 — Fix It</div>
+          <h3>We Hand You the Exact Playbook</h3>
+          <p>Phone script for your front desk. Follow-up sequence for cold estimates. Weekly dashboard your office manager runs in 10 minutes. Everything in writing — no calls, no agency needed.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════ FREE TOOLS ══════════ -->
+<div class="wrap alt">
+  <div class="inner">
+
+    <div class="rule-label"><span class="section-tag">Free Tools</span></div>
+
+    <div class="tools-header">
+      <div>
+        <h2 class="sec-h">Start with the leak.<br><em>Then decide what to fix.</em></h2>
+      </div>
+      <div>
+        <p class="sec-p" style="max-width:100%">Most owners use the free tools first. Put in your real numbers — calls per month, ad spend, answer rate, number of techs — and see exactly where money is slipping through. The audit is for when you want the full picture in writing.</p>
+        <!-- Conversion bridge -->
+        <div style="margin-top:20px;padding:14px 16px;background:rgba(0,196,154,0.05);border:1px solid rgba(0,196,154,0.2);border-radius:4px;font-size:13px;color:var(--ink2);line-height:1.6">
+          <strong style="color:var(--ink);font-weight:500">Suggested order:</strong> Start with Phone Revenue (most money, fastest to find) → then Marketing Cost → then Lead Source Grader.
+        </div>
+      </div>
+    </div>
+
     <div class="tools-grid">
-      <a href="/tools/marketing-calculator" class="tool-card reveal"><div class="tool-emoji">📊</div><h3>Marketing Cost Calculator</h3><p>Enter your ad spend, lead count, close rate, and average ticket. See your true cost per customer with industry benchmarks.</p><div class="tool-link">Calculate your numbers →</div></a>
-      <a href="/tools/phone-calculator" class="tool-card reveal" style="transition-delay:.15s"><div class="tool-emoji">📞</div><h3>Phone Revenue Calculator</h3><p>How many calls are you missing? Enter your call volume and answer rate to see the monthly revenue impact.</p><div class="tool-link">See your lost revenue →</div></a>
-      <a href="/tools/lead-grader" class="tool-card reveal" style="transition-delay:.3s"><div class="tool-emoji">🎯</div><h3>Lead Source Grader</h3><p>Google Ads, LSAs, Angi, referrals — which deserve more budget and which are draining it? Get a prioritized scorecard.</p><div class="tool-link">Grade your lead sources →</div></a>
-    </div>
-    <div style="text-align:center;margin-top:2rem" class="reveal"><a href="/tools" style="color:var(--amber-dark);font-family:var(--font-display);font-weight:700;font-size:.95rem;text-decoration:none">See all 5 free tools →</a></div>
-  </div>
-</section>
 
-<!-- SERVICES -->
-<section class="services-section" id="services">
-  <div class="services-inner">
-    <div class="services-header reveal">
-      <div class="section-label" style="color:var(--amber)">Work With Us</div>
-      <h2>Stop guessing. Start knowing.</h2>
-      <p>Every engagement starts with data and ends with a system. No long-term contracts. No recurring fees. Just clarity.</p>
+      <a href="/tools/marketing-calculator" class="tool reveal">
+        <div class="tool-img">
+          <!-- PPC/analytics dashboard — marketing cost calc -->
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75" alt="Marketing spend analytics" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:20px;opacity:0.15">📊</span></div>
+        </div>
+        <div class="tool-body">
+          <span class="tool-badge">Free Tool</span>
+          <h3>Marketing Cost Calculator</h3>
+          <p>Put in your monthly ad spend, how many calls you get, your close rate, and average ticket. See your real cost per booked job — and whether it's in line with the top 25% of companies in your trade.</p>
+          <div class="tool-cta">Calculate your numbers <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="/tools/phone-calculator" class="tool reveal">
+        <div class="tool-img">
+          <!-- CSR answering calls at a service company desk -->
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75" alt="CSR answering inbound service calls" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:20px;opacity:0.15">📞</span></div>
+        </div>
+        <div class="tool-body">
+          <span class="tool-badge">Free Tool</span>
+          <h3>Phone Revenue Calculator</h3>
+          <p>How many calls are you missing every month? Put in your call volume and answer rate. We'll show you the dollar amount walking out the door — and what happens if you get your answer rate to 90%.</p>
+          <div class="tool-cta">See your lost revenue <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="/tools/lead-grader" class="tool reveal">
+        <div class="tool-img">
+          <!-- Multiple ad channel screens / marketing mix -->
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=75" alt="Evaluating multiple lead channels" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:20px;opacity:0.15">🎯</span></div>
+        </div>
+        <div class="tool-body">
+          <span class="tool-badge">Free Tool</span>
+          <h3>Lead Source Grader</h3>
+          <p>Google Ads, LSAs, Angi, Thumbtack, referrals, door knocking — select what you're running and get a straight A–D grade on each one, with a clear verdict: keep it, fix it, or cut it.</p>
+          <div class="tool-cta">Grade your lead sources <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="/tools/website-audit" class="tool reveal">
+        <div class="tool-img">
+          <!-- Contractor website on a laptop screen -->
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=75" alt="Contractor website on laptop screen" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:20px;opacity:0.15">🔍</span></div>
+        </div>
+        <div class="tool-body">
+          <span class="tool-badge">Free Tool</span>
+          <h3>Website Conversion Audit</h3>
+          <p>Enter your website URL. We pull your real PageSpeed score and check whether your phone number is prominent, your CTAs are clear, and your site would actually make a homeowner call. Takes 30 seconds.</p>
+          <div class="tool-cta">Audit your website <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="/tools/capacity-planner" class="tool reveal">
+        <div class="tool-img">
+          <!-- Home service crew beside work vans — capacity context -->
+          <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=75" alt="Home service crew and work vans" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:20px;opacity:0.15">📋</span></div>
+        </div>
+        <div class="tool-body">
+          <span class="tool-badge">Free Tool</span>
+          <h3>Capacity-to-Demand Planner</h3>
+          <p>Most owners ask "how much should I spend on marketing?" That's the wrong question. Enter how many techs you have and how many jobs they can run — and we'll tell you exactly how many calls you actually need.</p>
+          <div class="tool-cta">Plan your capacity <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="/newsletter" class="tool nl reveal">
+        <div class="tool-img">
+          <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=600&q=75" alt="Business owner reading newsletter over coffee" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:20px;opacity:0.15">📬</span></div>
+        </div>
+        <div class="tool-body">
+          <span class="tool-badge nl">Every Tuesday</span>
+          <h3>Get One Useful Number Every Tuesday</h3>
+          <p>Real benchmarks, real mistakes, real fixes from HVAC, roofing, and plumbing companies. Short. Written for owners who'd rather know their numbers than guess.</p>
+          <div class="tool-cta">Subscribe free <span>→</span></div>
+        </div>
+      </a>
+
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-name">Revenue Leak Audit</div>
-        <div class="service-price">$750</div>
-        <div class="service-outcome">In 7 days you'll know exactly what your marketing is producing — and what it's wasting. Every finding in dollars. Not clicks. Not impressions. Dollars.</div>
-        <ul class="service-features">
-          <li>Which channels are producing booked jobs vs. burning cash</li>
-          <li>Where calls are leaking — before, during, and after they come in</li>
-          <li>What your top competitors are doing that you're not — in calls per month</li>
-          <li>Every gap translated into annual revenue impact</li>
-          <li>Prioritized action list: what to fix first, second, third</li>
-        </ul>
-        <a href="/apply?service=audit" class="service-cta">Get My Numbers →</a>
-      </div>
-      <div class="service-card featured reveal" style="transition-delay:.15s">
-        <div class="service-name">Growth System Blueprint</div>
-        <div class="service-price">$3,000</div>
-        <div class="service-outcome">The audit shows you what's broken. The blueprint fixes it. A complete system your office manager can run — no agency, no technical skills, no guesswork.</div>
-        <ul class="service-features">
-          <li>Phone scripts your CSR uses Monday to book more from the same calls</li>
-          <li>5-touch follow-up sequence for estimates that didn't close</li>
-          <li>Weekly dashboard: cost per booked job by channel in 10 minutes</li>
-          <li>90-day calendar with specific weekly actions</li>
-          <li>Includes the full Revenue Leak Audit</li>
-        </ul>
-        <a href="/apply?service=blueprint" class="service-cta">Apply for a Blueprint →</a>
-      </div>
-      <div class="service-card reveal" style="transition-delay:.3s">
-        <div class="service-name">90-Day Growth Advisory</div>
-        <div class="service-price">$7,500</div>
-        <div class="service-outcome">Audit and blueprint included — plus 12 weeks of us watching your numbers with you, adjusting the plan as it runs. You're never stuck wondering what to do next.</div>
-        <ul class="service-features">
-          <li>Weekly written review: what's working, what's not, what to change</li>
-          <li>Questions answered within 24–48 hours, every week for 90 days</li>
-          <li>Monthly competitor re-benchmarking so you see the gap closing</li>
-          <li>Exit report showing exactly what changed — in dollars — over 90 days</li>
-          <li>Includes audit + blueprint delivery in week 1</li>
-        </ul>
-        <a href="/apply?service=advisory" class="service-cta">Apply for Advisory →</a>
-      </div>
+
+    <!-- Conversion bridge under tools -->
+    <div style="margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 24px;background:var(--bg3);border:1px solid var(--rule2);border-radius:4px;flex-wrap:wrap">
+      <p style="font-size:14px;color:var(--ink2);font-weight:300;line-height:1.6">Most owners use the free tools first. The audit is for when you want every leak in one place — with a prioritized fix list.</p>
+      <a href="/apply" class="cta-filled" style="white-space:nowrap;font-size:11px">Get the Full Audit — $750 →</a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- NEWSLETTER -->
-<section class="newsletter-section" id="newsletter">
-  <div class="newsletter-inner">
-    <h2 class="reveal">The Weekly Growth Report</h2>
-    <p class="reveal" style="font-size:1.05rem;color:var(--text-mid);line-height:1.6;margin-bottom:0">One actionable growth insight every Tuesday — backed by data from analyzing hundreds of HVAC, roofing, and plumbing companies. No fluff. No pitches. Just the numbers.</p>
-    <form class="newsletter-form reveal" onsubmit="event.preventDefault();this.querySelector('button').textContent='You\'re in! ✓';this.querySelector('button').style.background='#10b981';this.querySelector('input').disabled=true;">
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit">Subscribe Free</button>
-    </form>
-    <p class="reveal" style="font-size:.78rem;color:var(--text-light)">Free. Every Tuesday. Unsubscribe anytime.</p>
+
+<!-- ══════════ SERVICES ══════════ -->
+<div class="wrap">
+  <div class="inner">
+
+    <div class="rule-label"><span class="section-tag">Work With Us</span></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:48px">
+      <div>
+        <h2 class="sec-h">Start here.<br>Build the system.<br><em>Improve it for 90 days.</em></h2>
+      </div>
+      <p class="sec-p" style="max-width:100%">No long-term contract. No monthly retainer. No calls unless you want one. Every engagement delivers a written report — every finding in dollars, every action prioritized. Most clients see the ROI in the first month.</p>
+    </div>
+
+    <div class="svcs">
+
+      <div class="svc reveal">
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=75" alt="Reviewing a revenue audit report" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:24px;opacity:0.15">📄</span></div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-tier">Start here</div>
+          <div class="svc-name">Revenue Leak Audit</div>
+          <div class="svc-price">$750</div>
+          <p class="svc-desc">In 7 days you'll know exactly what your marketing is producing and what it's wasting. Every finding shown in dollars — not clicks, not impressions. Dollars.</p>
+          <div class="svc-div"></div>
+          <ul class="svc-ul">
+            <li><span class="sarr">→</span>Which channels produce booked jobs vs. burn cash</li>
+            <li><span class="sarr">→</span>Where calls leak before, during, and after they come in</li>
+            <li><span class="sarr">→</span>What your top competitors are doing that you're not</li>
+            <li><span class="sarr">→</span>Every gap translated into annual revenue impact</li>
+            <li><span class="sarr">→</span>Prioritized action list: what to fix first, second, third</li>
+          </ul>
+          <div style="font-size:11px;color:var(--ink3);margin-bottom:14px;font-family:var(--mono)">Best first step if you're not sure where the waste is</div>
+          <a href="/apply?service=audit" class="svc-btn ghost">Get My Numbers →</a>
+        </div>
+      </div>
+
+      <div class="svc ft reveal">
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=700&q=75" alt="Building a growth system blueprint" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:24px;opacity:0.15">📐</span></div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-tier ft">Then build the system</div>
+          <div class="svc-name">Growth System Blueprint</div>
+          <div class="svc-price">$3,000</div>
+          <p class="svc-desc">The audit shows what's broken. The blueprint fixes it. Your front desk gets a word-for-word phone script. Your team gets a follow-up system for dead estimates. Your manager gets a 10-minute weekly dashboard. No agency needed.</p>
+          <div class="svc-div"></div>
+          <ul class="svc-ul">
+            <li><span class="sarr">→</span>Phone scripts your CSR uses Monday to book more jobs</li>
+            <li><span class="sarr">→</span>5-touch follow-up sequence for estimates that didn't close</li>
+            <li><span class="sarr">→</span>Weekly dashboard: cost per booked job by channel</li>
+            <li><span class="sarr">→</span>90-day calendar with specific weekly actions</li>
+            <li><span class="sarr">→</span>Includes the full Revenue Leak Audit</li>
+          </ul>
+          <div style="font-size:11px;color:var(--ink3);margin-bottom:14px;font-family:var(--mono)">Most owners start here after the audit</div>
+          <a href="/apply?service=blueprint" class="svc-btn filled">Apply for a Blueprint →</a>
+        </div>
+      </div>
+
+      <div class="svc reveal">
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=700&q=75" alt="90-day growth advisory session" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <div class="img-fb"><span style="font-size:24px;opacity:0.15">🤝</span></div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-tier">Then improve it with us</div>
+          <div class="svc-name">90-Day Growth Advisory</div>
+          <div class="svc-price">$7,500</div>
+          <p class="svc-desc">Audit and blueprint included. Then for 12 weeks we watch your numbers with you — every week, in writing. If something stops working, we tell you what to change and why. You're never left guessing what to do next.</p>
+          <div class="svc-div"></div>
+          <ul class="svc-ul">
+            <li><span class="sarr">→</span>Weekly written review: what's working, what to change</li>
+            <li><span class="sarr">→</span>Questions answered within 24–48 hours every week</li>
+            <li><span class="sarr">→</span>Monthly competitor re-benchmarking as the gap closes</li>
+            <li><span class="sarr">→</span>Exit report showing exactly what changed — in dollars</li>
+            <li><span class="sarr">→</span>Includes audit + blueprint delivery in week 1</li>
+          </ul>
+          <div style="font-size:11px;color:var(--ink3);margin-bottom:14px;font-family:var(--mono)">Best if you want weekly pressure-testing and accountability</div>
+          <a href="/apply?service=advisory" class="svc-btn ghost">Apply for Advisory →</a>
+        </div>
+      </div>
+
+    </div>
   </div>
-</section>
+</div>
 
-</Base>
+<!-- Conversion bridge: services → next action -->
+<div style="background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:28px 48px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <p style="font-family:var(--mono);font-size:12px;color:var(--ink2);letter-spacing:0.04em">Not sure where to start?</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="/tools" class="cta-ghost" style="font-size:10.5px">Try the Free Tools First</a>
+      <a href="/apply" class="cta-filled" style="font-size:10.5px">Start with the Audit — $750</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ NEWSLETTER — de-emphasized per v2.5 ══════════ -->
+<div class="nl-section">
+  <div class="nl-photo"></div>
+  <div class="nl-glow"></div>
+  <div class="nl-inner">
+    <div class="dispatch-label" style="justify-content:center;margin-bottom:16px">Free · Every Tuesday</div>
+    <h2 class="nl-h" style="font-size:clamp(28px,4vw,42px)">Get one useful number<br><em>every Tuesday.</em></h2>
+    <p class="nl-sub" style="font-size:15px">Real benchmarks, real mistakes, real fixes from HVAC, roofing, and plumbing companies doing $1M–$5M. Short. Written for owners who'd rather know the numbers.</p>
+    <div class="nl-form">
+      <input type="email" class="nl-in" placeholder="your@email.com" />
+      <button class="cta-primary" style="white-space:nowrap;cursor:pointer;font-size:11px;padding:13px 22px" id="nl-btn">Subscribe Free</button>
+    </div>
+    <p class="nl-note">Unsubscribe anytime · We don't share your email</p>
+  </div>
+</div><!-- /nl-section -->
+
+
+<!-- ══════════ FOOTER ══════════ -->
+
+<script>
+  /* Nav scroll handled by Layout */
+
+  /* Intel strip bar animations */
+  const intelObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const bar = entry.target.querySelector('.intel-bar-fill');
+      const pct = entry.target.dataset.bar || '50';
+      setTimeout(() => { if (bar) bar.style.width = pct + '%'; }, 250);
+      intelObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.intel-card').forEach(c => intelObs.observe(c));
+
+  /* Audit card bar animations */
+  const acObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.ac-bar-fill').forEach((bar, i) => {
+        const w = bar.dataset.w || '0';
+        setTimeout(() => { bar.style.width = w + '%'; }, 300 + i * 140);
+      });
+      acObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.audit-card').forEach(t => acObs.observe(t));
+
+  /* Newsletter submit */
+  document.getElementById('nl-btn').addEventListener('click', function () {
+    const inp = document.querySelector('.nl-in');
+    if (inp.value.includes('@')) {
+      this.textContent = '✓ You\'re in';
+      this.style.background = '#22D37A';
+      this.style.borderColor = '#22D37A';
+      inp.disabled = true;
+      this.disabled = true;
+    } else {
+      inp.style.borderColor = 'rgba(240,64,64,0.55)';
+      inp.focus();
+    }
+  });
+</script>
+
+</Layout>

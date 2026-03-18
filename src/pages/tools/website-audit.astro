@@ -1,190 +1,346 @@
 ---
-import Base from '../../layouts/Base.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
 ---
-<Base title="Free Website Audit for HVAC, Roofing & Plumbing Companies | Built on Tenth" description="Get an automated conversion audit of your contractor website. See what is costing you calls and jobs." solidNav={true}>
-<section class="page-hero">
-  <h1>Free Website <em>Conversion Audit</em></h1>
-  <p>Enter your website URL. We will analyze your site for the conversion leaks that cost contractors the most calls and booked jobs.</p>
-</section>
+<ToolLayout
+  toolNumber="04"
+  toolName="Website Conversion Audit"
+  slug="website-audit"
+  headline='Is Your Website<br><em>Losing You Calls?</em>'
+  subheadline="Most contractor websites look fine — but fail in 3 critical places: speed, mobile experience, and call friction. Answer 12 quick questions about your site and get a Conversion Leak Score with specific fixes."
+  metaDescription="Free website conversion audit for contractors. Check your site against 12 conversion factors that determine whether homeowners call you or leave. Get a scored report with specific fixes."
+>
+
 <style>
-.audit-section{padding:4rem 2.5rem 5rem;background:var(--cream)}
-.audit-inner{max-width:700px;margin:0 auto}
-.audit-form{background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--warm-gray);margin-bottom:2rem}
-.audit-form h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
-.audit-form>p{font-size:.88rem;color:var(--text-light);margin-bottom:2rem;line-height:1.5}
-.fg{margin-bottom:1.5rem}.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem}
-.fg .ht{font-size:.75rem;color:var(--text-light);margin-bottom:.4rem}
-.fg input,.fg select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:#fff}
-.fg input:focus{border-color:var(--amber)}
-.calc-btn{width:100%;padding:1rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s}
-.calc-btn:hover{background:var(--amber-light)}
-.calc-btn:disabled{opacity:.6;cursor:not-allowed}
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; padding-bottom: 80px; align-items: start; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+.ip-note { font-size: 13px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 22px; padding: 12px 14px; background: var(--bg3); border-radius: 4px; border-left: 2px solid var(--teal); }
+.url-field { margin-bottom: 22px; }
+.url-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; display: block; }
+.url-input { width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.2s; }
+.url-input:focus { border-color: rgba(0,196,154,0.55); }
+.url-input::placeholder { color: var(--ink3); font-size: 13px; }
 
-.loading{display:none;text-align:center;padding:3rem 1rem}
-.loading.show{display:block}
-.loading p{font-size:1rem;color:var(--text-mid);margin-bottom:.5rem}
-.spinner{width:40px;height:40px;border:4px solid var(--warm-gray);border-top-color:var(--amber);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-step{font-size:.82rem;color:var(--text-light);transition:all .3s}
+.checklist-section { margin-bottom: 22px; }
+.cs-title { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); padding: 8px 0; border-bottom: 1px solid var(--rule); margin-bottom: 12px; }
+.check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.check-item input[type="checkbox"] { display: none; }
+.check-toggle { width: 18px; height: 18px; border-radius: 3px; border: 1.5px solid var(--rule2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; margin-top: 1px; }
+.check-item input:checked ~ label .check-toggle { background: var(--teal); border-color: var(--teal); }
+.check-item input:checked ~ label .check-toggle::after { content: '✓'; font-size: 11px; color: var(--bg); font-weight: 700; }
+.check-label { cursor: pointer; display: flex; align-items: flex-start; gap: 12px; flex: 1; }
+.check-text { font-size: 13px; color: var(--ink2); line-height: 1.55; font-weight: 300; padding-top: 1px; }
+.check-text strong { color: var(--ink); font-weight: 500; }
 
-.results{display:none}
-.score-card{background:var(--navy);border-radius:16px;padding:2.5rem;color:#fff;text-align:center;margin-bottom:2rem}
-.score-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;position:relative}
-.score-circle::before{content:'';position:absolute;inset:0;border-radius:50%;border:6px solid rgba(255,255,255,.1)}
-.score-num{font-family:var(--font-display);font-size:2.8rem;font-weight:800}
-.score-label{font-size:.85rem;color:rgba(255,255,255,.5)}
-.score-verdict{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-top:.5rem}
+.calc-btn { width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s; }
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
 
-.findings{list-style:none}
-.finding{background:#fff;border-radius:12px;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--warm-gray);display:flex;gap:1rem;align-items:flex-start}
-.finding-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;font-weight:700}
-.finding-icon.fail{background:rgba(239,68,68,.1);color:#ef4444}
-.finding-icon.warn{background:rgba(245,158,11,.1);color:#d97706}
-.finding-icon.pass{background:rgba(16,185,129,.1);color:#10b981}
-.finding-text h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
-.finding-text p{font-size:.85rem;color:var(--text-mid);line-height:1.55}
+/* Result */
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.s-wait  { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.s-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+.s-warn  { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
+.s-good  { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.rp-body { padding: 24px; }
+.empty-state { text-align: center; padding: 36px 16px; }
+.empty-icon { font-size: 32px; opacity: 0.25; margin-bottom: 14px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.result-section { display: none; }
+.result-section.show { display: block; }
 
-.audit-gate{background:var(--navy);border-radius:16px;padding:2rem;text-align:center;margin-top:2rem}
-.audit-gate h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem}
-.audit-gate p{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1rem}
-.gate-row{display:flex;gap:.5rem;max-width:400px;margin:0 auto}
-.gate-row input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);font-size:.88rem;outline:none}
-.gate-row input::placeholder{color:rgba(255,255,255,.3)}
-.gate-row button{padding:.75rem 1.25rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap}
-.cta-bottom{text-align:center;margin-top:2rem}
+.score-circle-wrap { text-align: center; padding: 20px 0 24px; border-bottom: 1px solid var(--rule); margin-bottom: 20px; }
+.score-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.score-number { font-family: var(--mono); font-size: 72px; font-weight: 700; letter-spacing: -0.05em; line-height: 1; }
+.score-number.bad { color: var(--neg); }
+.score-number.warn { color: #C9A035; }
+.score-number.good { color: var(--pos); }
+.score-sub { font-size: 12.5px; color: var(--ink2); margin-top: 6px; font-weight: 300; }
+.score-track { height: 6px; background: var(--bg4); border-radius: 3px; margin: 14px 0 8px; overflow: hidden; }
+.score-fill { height: 100%; border-radius: 3px; transition: width 0.8s var(--ease); }
+.score-range { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
 
-@media(max-width:768px){.audit-section{padding:2rem 1.5rem 3rem}.gate-row{flex-direction:column}}
+.section-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.issues-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.issue-item { display: flex; align-items: flex-start; gap: 9px; padding: 9px 10px; background: var(--bg3); border-radius: 3px; font-size: 12.5px; color: var(--ink2); line-height: 1.5; font-weight: 300; }
+.issue-ic { flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+.issue-ic.bad { color: var(--neg); }
+.issue-ic.ok  { color: var(--pos); }
+
+.diagnosis { background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 14px 16px; margin-bottom: 18px; }
+.diagnosis.warn { background: rgba(201,160,53,0.06); border-color: rgba(201,160,53,0.22); }
+.diagnosis.good { background: rgba(34,211,122,0.06); border-color: rgba(34,211,122,0.2); }
+.dt { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.db { font-size: 12px; color: var(--ink2); line-height: 1.62; font-weight: 300; }
+.audit-cta { display: block; width: 100%; padding: 13px; border-radius: 4px; cursor: pointer; text-align: center; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); text-decoration: none; transition: all 0.2s; }
+.audit-cta:hover { background: #00DFB0; }
+.audit-note { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
+
+@media (max-width: 960px) { .tool-layout { grid-template-columns: 1fr; } .result-panel { position: static; } }
 </style>
 
-<section class="audit-section"><div class="audit-inner">
-  <div class="audit-form" id="auditForm">
-    <h2>Enter your website</h2>
-    <p>We will check your site speed, mobile performance, and key conversion elements that determine whether visitors call you or bounce to a competitor.</p>
-    <div class="fg"><label>Your Website URL</label><div class="ht">e.g., www.yourcompany.com</div><input type="text" id="siteUrl" placeholder="www.yourcompany.com"></div>
-    <div class="fg"><label>Your Trade</label><select id="auditTrade"><option value="hvac">HVAC</option><option value="roofing">Roofing</option><option value="plumbing">Plumbing</option><option value="electrical">Electrical</option></select></div>
-    <button class="calc-btn" id="auditBtn" onclick="runAudit()">Analyze My Website &#8594;</button>
-  </div>
-
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p>Analyzing your website...</p>
-    <div class="loading-step" id="loadStep">Checking page speed and mobile performance...</div>
-  </div>
-
-  <div class="results" id="results">
-    <div class="score-card">
-      <div class="score-circle"><span class="score-num" id="scoreNum">0</span></div>
-      <div class="score-label">Conversion Leak Score (0 = many leaks, 100 = optimized)</div>
-      <div class="score-verdict" id="scoreVerdict"></div>
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">Site Conversion Checklist</span>
+      <span class="ip-micro">12 factors · Takes 2 minutes</span>
     </div>
-    <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:1.5rem">Findings</h2>
-    <div class="findings" id="findings"></div>
-    <div class="audit-gate">
-      <h3>Get Your Full Conversion Audit Report</h3>
-      <p>Detailed PDF with all findings, prioritized fixes, estimated revenue impact, and what to tell your web developer.</p>
-      <div class="gate-row">
-        <input type="email" id="auditEmail" placeholder="Enter your email">
-        <button onclick="this.textContent='Sent! \u2713';this.style.background='#10b981'">Send My Report</button>
+    <div class="ip-body">
+      <p class="ip-note">Check every item that currently exists on your website. Be honest — if you're not sure, leave it unchecked. The score is only useful if the inputs are accurate.</p>
+
+      <div class="url-field">
+        <label class="url-label" for="site-url">Your website URL (optional — for reference)</label>
+        <input type="url" class="url-input" id="site-url" placeholder="https://yourcompany.com" />
+      </div>
+
+      <div class="checklist-section">
+        <div class="cs-title">Phone &amp; Contact Visibility</div>
+        <div class="check-item">
+          <input type="checkbox" id="c1" data-points="12">
+          <label class="check-label" for="c1">
+            <div class="check-toggle"></div>
+            <span class="check-text"><strong>Phone number is visible</strong> in the top header — without scrolling</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c2" data-points="8">
+          <label class="check-label" for="c2">
+            <div class="check-toggle"></div>
+            <span class="check-text"><strong>Phone number is clickable</strong> (tap-to-call) on mobile devices</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c3" data-points="6">
+          <label class="check-label" for="c3">
+            <div class="check-toggle"></div>
+            <span class="check-text">A <strong>contact form or booking option</strong> is visible without digging</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="cs-title">Speed &amp; Mobile</div>
+        <div class="check-item">
+          <input type="checkbox" id="c4" data-points="10">
+          <label class="check-label" for="c4">
+            <div class="check-toggle"></div>
+            <span class="check-text">Site loads in <strong>under 3 seconds</strong> on a mobile connection</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c5" data-points="8">
+          <label class="check-label" for="c5">
+            <div class="check-toggle"></div>
+            <span class="check-text">Site looks <strong>professional on a phone</strong> — text readable, no horizontal scroll</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c6" data-points="6">
+          <label class="check-label" for="c6">
+            <div class="check-toggle"></div>
+            <span class="check-text">Images and pages <strong>don't shift or jump</strong> while loading</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="cs-title">Trust Signals</div>
+        <div class="check-item">
+          <input type="checkbox" id="c7" data-points="10">
+          <label class="check-label" for="c7">
+            <div class="check-toggle"></div>
+            <span class="check-text"><strong>Google review count and star rating</strong> is visible on the homepage</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c8" data-points="8">
+          <label class="check-label" for="c8">
+            <div class="check-toggle"></div>
+            <span class="check-text"><strong>License number, insurance, or certifications</strong> are mentioned</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c9" data-points="6">
+          <label class="check-label" for="c9">
+            <div class="check-toggle"></div>
+            <span class="check-text">The site shows <strong>photos of your actual team or trucks</strong> (not just stock)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="cs-title">Clarity &amp; Calls-to-Action</div>
+        <div class="check-item">
+          <input type="checkbox" id="c10" data-points="10">
+          <label class="check-label" for="c10">
+            <div class="check-toggle"></div>
+            <span class="check-text">The <strong>homepage headline clearly states what you do</strong> and who you serve</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c11" data-points="8">
+          <label class="check-label" for="c11">
+            <div class="check-toggle"></div>
+            <span class="check-text">There is a <strong>clear primary CTA button</strong> above the fold (Call Now / Book Online)</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="c12" data-points="8">
+          <label class="check-label" for="c12">
+            <div class="check-toggle"></div>
+            <span class="check-text">Service areas / cities you serve are <strong>clearly listed on the site</strong></span>
+          </label>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn">Get My Conversion Leak Score →</button>
+    </div>
+  </div>
+
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">Conversion Leak Score</span>
+      <span class="rp-status s-wait" id="rp-status">Waiting for checklist</span>
+    </div>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">🔍</div>
+        <p class="empty-text">Most contractor websites look fine — but fail on the 3 things that determine whether someone calls: speed, phone visibility, and trust signals. Work through the checklist to see your score.</p>
+      </div>
+      <div class="result-section" id="results">
+        <div class="score-circle-wrap">
+          <div class="score-label">Your Conversion Leak Score</div>
+          <div class="score-number" id="score-num">0</div>
+          <div class="score-sub" id="score-sub">out of 100</div>
+          <div class="score-track"><div class="score-fill" id="score-fill" style="width:0%;background:var(--neg)"></div></div>
+          <div class="score-range"><span>0 — Critical</span><span>50 — Average</span><span>80+ — Strong</span></div>
+        </div>
+
+        <div class="section-title" id="issues-title">Issues found</div>
+        <div class="issues-list" id="issues-list"></div>
+
+        <div class="diagnosis" id="diagnosis">
+          <div class="dt" id="diag-title">—</div>
+          <div class="db" id="diag-body">—</div>
+        </div>
+
+        <a href="/apply?service=audit&source=website-audit" class="audit-cta">Get a Full Site + Marketing Audit →</a>
+        <p class="audit-note">The Revenue Leak Audit includes a detailed website analysis alongside your phone, ads, and competitor benchmarks.</p>
       </div>
     </div>
-    <div class="cta-bottom"><a href="/services#audit" class="btn-primary">Get a Full Revenue Leak Audit \u2014 $750 &#8594;</a></div>
   </div>
-</div></section>
+</div>
 
-<script is:inline>
-async function runAudit() {
-  let url = document.getElementById('siteUrl').value.trim();
-  if (!url) return alert('Please enter a website URL.');
-  if (!url.startsWith('http')) url = 'https://' + url;
-  const trade = document.getElementById('auditTrade').value;
+<script>
+const checkItems = [
+  { id: 'c1',  points: 12, label: 'Phone number visible in header',         cat: 'Phone visibility' },
+  { id: 'c2',  points: 8,  label: 'Tap-to-call on mobile',                  cat: 'Mobile' },
+  { id: 'c3',  points: 6,  label: 'Contact form or booking visible',         cat: 'Contact' },
+  { id: 'c4',  points: 10, label: 'Page loads under 3 seconds on mobile',    cat: 'Speed' },
+  { id: 'c5',  points: 8,  label: 'Professional mobile experience',          cat: 'Mobile' },
+  { id: 'c6',  points: 6,  label: 'No layout shift while loading',           cat: 'Speed' },
+  { id: 'c7',  points: 10, label: 'Google reviews visible on homepage',      cat: 'Trust' },
+  { id: 'c8',  points: 8,  label: 'License / insurance / certifications shown', cat: 'Trust' },
+  { id: 'c9',  points: 6,  label: 'Real team or truck photos (not stock)',   cat: 'Trust' },
+  { id: 'c10', points: 10, label: 'Clear headline — what you do, who you serve', cat: 'Clarity' },
+  { id: 'c11', points: 8,  label: 'Primary CTA button above the fold',       cat: 'CTA' },
+  { id: 'c12', points: 8,  label: 'Service areas listed on site',            cat: 'Clarity' },
+];
 
-  document.getElementById('auditForm').style.display = 'none';
-  document.getElementById('loading').classList.add('show');
+document.getElementById('calc-btn').addEventListener('click', calculate);
 
-  const steps = ['Checking page speed and mobile performance...', 'Analyzing Core Web Vitals...', 'Evaluating conversion elements...', 'Generating your score...'];
-  let stepI = 0;
-  const stepTimer = setInterval(() => { stepI++; if (stepI < steps.length) document.getElementById('loadStep').textContent = steps[stepI]; }, 2500);
+function calculate() {
+  let earned = 0;
+  const total  = checkItems.reduce((s, i) => s + i.points, 0);
+  const passed = [];
+  const failed = [];
 
-  let psi = null;
-  try {
-    const apiUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + encodeURIComponent(url) + '&strategy=mobile&category=PERFORMANCE&category=ACCESSIBILITY';
-    const resp = await fetch(apiUrl);
-    psi = await resp.json();
-  } catch (e) { console.error('PSI error:', e); }
-
-  clearInterval(stepTimer);
-  document.getElementById('loading').classList.remove('show');
-  document.getElementById('results').style.display = 'block';
-  generateFindings(psi, url, trade);
-}
-
-function generateFindings(psi, url, trade) {
-  const findings = [];
-  let score = 50; // base score
-
-  // PageSpeed performance
-  if (psi && psi.lighthouseResult) {
-    const perfScore = Math.round((psi.lighthouseResult.categories?.performance?.score || 0) * 100);
-    const fcp = psi.lighthouseResult.audits?.['first-contentful-paint']?.numericValue;
-    const lcp = psi.lighthouseResult.audits?.['largest-contentful-paint']?.numericValue;
-    const cls = psi.lighthouseResult.audits?.['cumulative-layout-shift']?.numericValue;
-    const si = psi.lighthouseResult.audits?.['speed-index']?.numericValue;
-
-    if (perfScore < 50) {
-      findings.push({ type: 'fail', title: 'Mobile speed is critically slow (Score: ' + perfScore + '/100)', desc: 'Your site loads too slowly on mobile devices. Over 60% of home service searches happen on phones. A slow site means callers bounce to your competitor before your page even loads. Google also penalizes slow sites in search rankings.' });
-      score -= 20;
-    } else if (perfScore < 75) {
-      findings.push({ type: 'warn', title: 'Mobile speed needs improvement (Score: ' + perfScore + '/100)', desc: 'Your mobile performance is below average. Every second of delay reduces conversions by roughly 7%. Improving speed is one of the highest-ROI website changes you can make.' });
-      score -= 10;
+  checkItems.forEach(item => {
+    const el = document.getElementById(item.id);
+    if (el && el.checked) {
+      earned += item.points;
+      passed.push(item);
     } else {
-      findings.push({ type: 'pass', title: 'Mobile speed is solid (Score: ' + perfScore + '/100)', desc: 'Your site loads at an acceptable speed on mobile. This is better than most contractor websites.' });
-      score += 10;
+      failed.push(item);
     }
+  });
 
-    if (fcp && fcp > 3000) {
-      findings.push({ type: 'fail', title: 'First content appears too late (' + (fcp/1000).toFixed(1) + 's)', desc: 'Visitors see a blank screen for over 3 seconds. Many will hit the back button and call your competitor. Target: under 1.8 seconds.' });
-      score -= 10;
-    }
+  const score = Math.round((earned / total) * 100);
 
-    if (lcp && lcp > 4000) {
-      findings.push({ type: 'fail', title: 'Main content loads too slowly (' + (lcp/1000).toFixed(1) + 's)', desc: 'Your largest visible content takes over 4 seconds to load. This is the element visitors are waiting for \u2014 your headline, hero image, or phone number. Target: under 2.5 seconds.' });
-      score -= 10;
-    }
-
-    if (cls && cls > 0.25) {
-      findings.push({ type: 'warn', title: 'Page layout shifts while loading (CLS: ' + cls.toFixed(2) + ')', desc: 'Elements move around as the page loads, which is disorienting on mobile. This often happens when images do not have set dimensions or fonts load late.' });
-      score -= 5;
-    }
+  // Status
+  const status = document.getElementById('rp-status');
+  if (score >= 80) {
+    status.textContent = 'Strong conversion setup';
+    status.className = 'rp-status s-good';
+  } else if (score >= 55) {
+    status.textContent = 'Room to improve';
+    status.className = 'rp-status s-warn';
   } else {
-    findings.push({ type: 'warn', title: 'Could not run full speed analysis', desc: 'We were unable to get complete speed data for this URL. This sometimes happens with sites that block automated testing. The conversion checks below still apply.' });
+    status.textContent = 'Significant conversion leaks';
+    status.className = 'rp-status s-alert';
   }
 
-  // Generic conversion checks (always apply)
-  const tradeNames = { hvac: 'HVAC', roofing: 'roofing', plumbing: 'plumbing', electrical: 'electrical' };
-  const tn = tradeNames[trade] || trade;
-
-  findings.push({ type: 'warn', title: 'Check: Is your phone number in the header on mobile?', desc: 'The #1 conversion element on a contractor website is a clickable phone number visible without scrolling on mobile. If visitors have to hunt for your number, you are losing calls. Make it large, bold, and sticky.' });
-  findings.push({ type: 'warn', title: 'Check: Do you have dedicated service pages?', desc: 'Each major service (' + tn + ' repair, installation, maintenance) should have its own page with unique content. This helps you rank for specific service searches and converts better than a single generic services page.' });
-  findings.push({ type: 'warn', title: 'Check: Are trust signals visible above the fold?', desc: 'Licenses, insurance badges, manufacturer certifications, and your Google review rating should be visible on the homepage without scrolling. Homeowners making a $5K+ decision need reassurance fast.' });
-  findings.push({ type: 'warn', title: 'Check: Is there a clear call-to-action on every page?', desc: 'Every page should have one primary action: call now, schedule online, or request a quote. If a visitor lands on any page and is not sure what to do next, that page is leaking conversions.' });
-
-  score = Math.max(0, Math.min(100, score));
-  const scoreEl = document.getElementById('scoreNum');
+  // Score display
+  const scoreEl = document.getElementById('score-num');
   scoreEl.textContent = score;
-  scoreEl.parentElement.style.border = '6px solid ' + (score < 40 ? '#ef4444' : score < 70 ? '#f59e0b' : '#10b981');
+  scoreEl.className = `score-number ${score >= 80 ? 'good' : score >= 55 ? 'warn' : 'bad'}`;
+  document.getElementById('score-sub').textContent = `out of 100 — ${failed.length} issue${failed.length !== 1 ? 's' : ''} found`;
+  const fillEl = document.getElementById('score-fill');
+  fillEl.style.width = score + '%';
+  fillEl.style.background = score >= 80 ? 'var(--pos)' : score >= 55 ? '#C9A035' : 'var(--neg)';
 
-  const verdict = document.getElementById('scoreVerdict');
-  if (score < 40) { verdict.textContent = 'Critical issues found. Your website is likely costing you significant revenue.'; verdict.style.color = '#ef4444'; }
-  else if (score < 70) { verdict.textContent = 'Several improvement opportunities. Fixing these could meaningfully increase calls.'; verdict.style.color = '#f59e0b'; }
-  else { verdict.textContent = 'Solid foundation. Focus on the items below to optimize further.'; verdict.style.color = '#10b981'; }
+  // Issues list
+  const issuesList = document.getElementById('issues-list');
+  const issuesTitle = document.getElementById('issues-title');
+  if (failed.length === 0) {
+    issuesTitle.textContent = 'All checks passed ✓';
+    issuesList.innerHTML = '<div class="issue-item"><span class="issue-ic ok">✓</span>Your site passes all 12 conversion factors. Strong setup.</div>';
+  } else {
+    issuesTitle.textContent = `${failed.length} conversion leak${failed.length > 1 ? 's' : ''} found`;
+    issuesList.innerHTML = failed.map(f =>
+      `<div class="issue-item"><span class="issue-ic bad">✕</span>${f.label} <span style="font-family:var(--mono);font-size:9px;color:var(--ink3);margin-left:auto;padding-left:8px">−${f.points}pts</span></div>`
+    ).join('') + passed.map(p =>
+      `<div class="issue-item"><span class="issue-ic ok">✓</span>${p.label}</div>`
+    ).join('');
+  }
 
-  const fHtml = findings.map(f =>
-    '<div class="finding reveal"><div class="finding-icon ' + f.type + '">' + (f.type === 'fail' ? '\u2717' : f.type === 'pass' ? '\u2713' : '!') + '</div><div class="finding-text"><h3>' + f.title + '</h3><p>' + f.desc + '</p></div></div>'
-  ).join('');
-  document.getElementById('findings').innerHTML = fHtml;
+  // Diagnosis
+  const diagEl    = document.getElementById('diagnosis');
+  const diagTitle = document.getElementById('diag-title');
+  const diagBody  = document.getElementById('diag-body');
 
-  // Trigger reveals
-  document.querySelectorAll('.findings .reveal').forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 100));
+  const phoneIssues = failed.filter(f => ['c1','c2','c3'].includes(f.id));
+  const speedIssues = failed.filter(f => ['c4','c5','c6'].includes(f.id));
+
+  if (score >= 80) {
+    diagEl.className = 'diagnosis good';
+    diagTitle.textContent = 'Your website is set up to convert.';
+    diagBody.textContent  = 'Most of the common conversion killers are handled. Your biggest opportunity is likely outside the website — in how calls are being handled and followed up on.';
+  } else if (phoneIssues.length >= 2) {
+    diagEl.className = 'diagnosis';
+    diagTitle.textContent = 'Phone visibility is your biggest leak.';
+    diagBody.textContent  = 'If someone can\'t immediately find your number or tap to call from their phone, they leave. This is the single highest-impact fix on most contractor sites — and it takes an afternoon.';
+  } else if (speedIssues.length >= 2) {
+    diagEl.className = 'diagnosis';
+    diagTitle.textContent = 'Site speed is costing you calls.';
+    diagBody.textContent  = 'A site that takes 5+ seconds to load on mobile loses 53% of visitors before they see your number. This is usually a hosting, image size, or plugin issue — not a redesign.';
+  } else if (score < 55) {
+    diagEl.className = 'diagnosis';
+    diagTitle.textContent = 'Multiple conversion leaks working against you.';
+    diagBody.textContent  = 'These aren\'t design problems — they\'re operational problems. Most of the fixes take hours, not weeks. The priority is phone visibility and trust signals first, everything else second.';
+  } else {
+    diagEl.className = 'diagnosis warn';
+    diagTitle.textContent = 'Decent setup with fixable gaps.';
+    diagBody.textContent  = 'You\'re not in a critical situation, but each unchecked item is costing you calls at the margin. The trust signal gaps (reviews, credentials) are typically the easiest high-value fixes.';
+  }
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
 }
 </script>
-</Base>
+</ToolLayout>

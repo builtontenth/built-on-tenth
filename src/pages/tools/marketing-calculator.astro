@@ -1,205 +1,258 @@
 ---
-import Base from '../../layouts/Base.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
 ---
-<Base title="Marketing Cost Calculator for HVAC, Roofing & Plumbing | Built on Tenth" description="Calculate your true cost per customer and marketing ROI. See how your numbers compare to industry benchmarks." solidNav={true}>
-<section class="page-hero">
-  <div class="breadcrumb"><a href="/">Home</a> / <a href="/tools">Tools</a> / Marketing Cost Calculator</div>
-  <h1>Marketing Cost <em>Calculator</em></h1>
-  <p>Enter your numbers. See your true cost per customer. Compare against industry benchmarks for your trade.</p>
-</section>
+<ToolLayout
+  toolNumber="02"
+  toolName="Marketing Cost Calculator"
+  slug="marketing-calculator"
+  headline='What Is Each Booked Job<br><em>Actually Costing You?</em>'
+  subheadline="Most companies track leads. Very few know what it costs to book a real job. Enter your numbers and see your true cost per booked job — benchmarked against the top 25% in your trade."
+  metaDescription="Free calculator: find your true cost per booked job from your marketing spend. Enter ad spend, lead volume, close rate, and average ticket to see real ROI benchmarks."
+>
+
 <style>
-.cs{padding:4rem 2.5rem 5rem;background:var(--cream)}.ci{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-.cf{background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--warm-gray)}
-.cf h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
-.cf>p.desc{font-size:.88rem;color:var(--text-light);margin-bottom:2rem;line-height:1.5}
-.fg{margin-bottom:1.5rem}.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem}
-.fg .ht{font-size:.75rem;color:var(--text-light);margin-bottom:.4rem}
-.fg input,.fg select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--warm-gray);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:#fff}
-.fg input:focus,.fg select:focus{border-color:var(--amber)}
-.calc-btn{width:100%;padding:1rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s}
-.calc-btn:hover{background:var(--amber-light)}
-.cr{background:var(--navy);border-radius:16px;padding:2.5rem;color:#fff;position:sticky;top:5rem}
-.cr h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:2rem}
-.ri{margin-bottom:1.5rem}.rl{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
-.rv{font-family:var(--font-display);font-size:2rem;font-weight:800}
-.rv.w{color:#ef4444}.rv.g{color:#10b981}.rv.n{color:#f59e0b}
-.rc{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.4}
-.rd{height:1px;background:rgba(255,255,255,.08);margin:1.5rem 0}
-.bb{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:.5rem}
-.br{height:100%;border-radius:4px;transition:width .8s ease}
-.bl{display:flex;justify-content:space-between;margin-top:.3rem}.bl span{font-size:.68rem;color:rgba(255,255,255,.35)}
-.es{text-align:center;padding:3rem 1rem}.es p{font-size:.9rem;color:rgba(255,255,255,.35)}
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; padding-bottom: 80px; align-items: start; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+.field { margin-bottom: 20px; }
+.field-label { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; }
+.field-input { width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+.field-input::-webkit-inner-spin-button, .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.field-input:focus { border-color: rgba(0,196,154,0.55); }
+.field-input::placeholder { color: var(--ink3); font-size: 13px; }
+.prefix-wrap { position: relative; }
+.prefix { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 14px; color: var(--ink3); pointer-events: none; }
+.prefix + .field-input { padding-left: 26px; }
+.suffix-wrap { position: relative; }
+.suffix { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; color: var(--ink3); pointer-events: none; }
+.bm-hint { margin-top: 6px; font-family: var(--mono); font-size: 9px; color: var(--ink3); padding: 5px 10px; background: var(--bg4); border-radius: 3px; display: flex; justify-content: space-between; }
+.bm-val { color: var(--teal); font-weight: 500; }
+.field-select { width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.2s; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+.calc-btn { width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s; }
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
 
-/* Email gate styles */
-.email-gate{margin-top:2rem;padding:1.5rem;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:12px}
-.email-gate h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.4rem}
-.email-gate p{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:1rem;line-height:1.5}
-.email-gate .gate-row{display:flex;gap:.5rem}
-.email-gate input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);font-size:.88rem;outline:none}
-.email-gate input::placeholder{color:rgba(255,255,255,.3)}
-.email-gate button{padding:.75rem 1.25rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:all .3s}
-.email-gate button:hover{background:var(--amber-light)}
-.report-preview{margin-top:1.25rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px;border:1px dashed rgba(255,255,255,.1)}
-.report-preview h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:.6rem}
-.report-preview ul{list-style:none}
-.report-preview li{font-size:.8rem;color:rgba(255,255,255,.5);padding:.25rem 0;display:flex;align-items:center;gap:.4rem}
-.report-preview li::before{content:'\2713';color:#10b981;font-weight:700;font-size:.7rem}
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.s-wait  { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.s-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+.s-warn  { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
+.s-good  { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.rp-body { padding: 24px; }
+.empty-state { text-align: center; padding: 36px 16px; }
+.empty-icon { font-size: 32px; opacity: 0.25; margin-bottom: 14px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.empty-text strong { color: var(--ink2); font-weight: 500; }
+.result-section { display: none; }
+.result-section.show { display: block; }
+.main-metric { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+.mm-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
+.mm-value { font-family: var(--mono); font-size: 54px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--neg); }
+.mm-value.good { color: var(--pos); }
+.mm-value.warn { color: #C9A035; }
+.mm-sub { font-size: 12px; color: var(--ink3); margin-top: 6px; font-weight: 300; }
+.section-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.row { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
+.rk { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
+.rv { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.rv.bad { color: var(--neg); } .rv.ok { color: var(--pos); } .rv.warn { color: #C9A035; }
+.diagnosis { background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 14px 16px; margin-bottom: 18px; }
+.diagnosis.ok   { background: rgba(34,211,122,0.06); border-color: rgba(34,211,122,0.2); }
+.diagnosis.warn { background: rgba(201,160,53,0.06); border-color: rgba(201,160,53,0.22); }
+.dt { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.db { font-size: 12px; color: var(--ink2); line-height: 1.62; font-weight: 300; }
+.bm-section { margin-bottom: 18px; }
+.bm-track { height: 6px; background: var(--bg4); border-radius: 3px; margin: 8px 0; overflow: hidden; }
+.bm-bar { height: 100%; border-radius: 3px; background: var(--neg); transition: width 0.8s var(--ease); }
+.bm-bar.ok { background: var(--pos); } .bm-bar.warn { background: #C9A035; }
+.bm-range { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
+.audit-cta { display: block; width: 100%; padding: 13px; border-radius: 4px; cursor: pointer; text-align: center; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); text-decoration: none; transition: all 0.2s; }
+.audit-cta:hover { background: #00DFB0; }
+.audit-note { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
+.divider { height: 1px; background: var(--rule); margin: 16px 0; }
 
-/* Report modal */
-.report-overlay{display:none;position:fixed;inset:0;background:rgba(15,26,46,.85);z-index:10000;overflow-y:auto;padding:2rem}
-.report-overlay.open{display:flex;justify-content:center;align-items:flex-start}
-.report-container{background:#fff;max-width:800px;width:100%;border-radius:16px;padding:3rem;position:relative;color:var(--text-dark)}
-.report-close{position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)}
-.report-header{text-align:center;padding-bottom:2rem;border-bottom:2px solid var(--amber);margin-bottom:2rem}
-.report-header h1{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:.5rem}
-.report-header p{font-size:.85rem;color:var(--text-light)}
-.report-hero-stat{text-align:center;margin:2rem 0}
-.report-hero-stat .big{font-family:var(--font-display);font-size:3rem;font-weight:800}
-.report-hero-stat .big.red{color:#ef4444}.report-hero-stat .big.green{color:#10b981}.report-hero-stat .big.amber{color:#d97706}
-.report-hero-stat .label{font-size:.85rem;color:var(--text-light);margin-top:.25rem}
-.report-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
-.report-table th{background:var(--navy);color:#fff;padding:.7rem 1rem;text-align:left;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
-.report-table td{padding:.65rem 1rem;border-bottom:1px solid var(--warm-gray);font-size:.88rem}
-.report-table tr:last-child td{border-bottom:none}
-.report-section{margin:2rem 0}
-.report-section h2{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--warm-gray)}
-.report-section p{font-size:.9rem;color:var(--text-mid);line-height:1.65;margin-bottom:.75rem}
-.report-section ul{margin:.75rem 0 .75rem 1.5rem}.report-section li{font-size:.88rem;color:var(--text-mid);line-height:1.6;margin-bottom:.4rem}
-.report-actions{display:flex;gap:1rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:2px solid var(--warm-gray)}
-.report-print{padding:.85rem 2rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer}
-.report-cta{padding:.85rem 2rem;background:var(--amber);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-display);font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none}
-.report-footer{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--warm-gray)}
-.report-footer p{font-size:.78rem;color:var(--text-light)}
-@media print{.report-overlay{position:static;background:#fff;padding:0}.report-close,.report-actions{display:none!important}body>*:not(.report-overlay){display:none!important}.report-overlay.open{display:block}}
-@media(max-width:768px){.cs{padding:2rem 1.5rem 3rem}.ci{grid-template-columns:1fr}.cr{position:static}.email-gate .gate-row{flex-direction:column}}
+@media (max-width: 960px) { .tool-layout { grid-template-columns: 1fr; } .result-panel { position: static; } }
 </style>
 
-<section class="cs"><div class="ci">
-  <div class="cf">
-    <h2>Your Numbers</h2><p class="desc">Fill in what you know. The calculator handles the rest.</p>
-    <div class="fg"><label>Your Trade</label><select id="trade"><option value="hvac">HVAC</option><option value="roofing">Roofing</option><option value="plumbing">Plumbing</option><option value="electrical">Electrical</option></select></div>
-    <div class="fg"><label>Monthly Marketing Spend ($)</label><div class="ht">Total across all channels — ads, agency fees, lead platforms</div><input type="number" id="spend" placeholder="e.g., 5000" min="0"></div>
-    <div class="fg"><label>Leads Per Month</label><div class="ht">Total inbound calls and form submissions</div><input type="number" id="leads" placeholder="e.g., 80" min="0"></div>
-    <div class="fg"><label>Close Rate (%)</label><div class="ht">Percentage of leads that become booked jobs</div><input type="number" id="cr" placeholder="e.g., 25" min="0" max="100"></div>
-    <div class="fg"><label>Average Ticket ($)</label><div class="ht">Average revenue per completed job</div><input type="number" id="ticket" placeholder="e.g., 8500" min="0"></div>
-    <button class="calc-btn" onclick="calc()">Calculate My Numbers &#8594;</button>
-  </div>
-  <div class="cr"><h2>Your Results</h2>
-    <div class="es" id="emp"><p>Enter your numbers and hit calculate to see results with industry benchmarks.</p></div>
-    <div id="res" style="display:none">
-      <div class="ri"><div class="rl">Cost Per Lead</div><div class="rv" id="cpl">&mdash;</div><div class="rc" id="cplC"></div></div>
-      <div class="ri"><div class="rl">Cost Per Booked Job</div><div class="rv" id="cpj">&mdash;</div><div class="rc" id="cpjC"></div></div>
-      <div class="rd"></div>
-      <div class="ri"><div class="rl">Marketing ROI</div><div class="rv" id="roi">&mdash;</div><div class="rc" id="roiC"></div>
-        <div class="bb"><div class="br" id="roiB" style="width:0%;background:var(--amber)"></div></div>
-        <div class="bl"><span>0%</span><span>Break Even</span><span>500%+</span></div>
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">Your Marketing Numbers</span>
+      <span class="ip-micro">Based on HVAC, roofing &amp; plumbing benchmarks</span>
+    </div>
+    <div class="ip-body">
+      <div class="field">
+        <div class="field-label">Trade / Industry</div>
+        <select class="field-select" id="trade">
+          <option value="hvac">HVAC</option>
+          <option value="roofing">Roofing</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="general">Other home service</option>
+        </select>
       </div>
-      <div class="rd"></div>
-      <div class="ri"><div class="rl">Revenue Per Marketing Dollar</div><div class="rv n" id="rpd">&mdash;</div><div class="rc" id="rpdC"></div></div>
-      <div class="ri"><div class="rl">Jobs Booked Per Month</div><div class="rv n" id="jobs">&mdash;</div></div>
-      <div class="email-gate" id="emailGate">
-        <h3>Download Your Full ROI Report</h3>
-        <p>Get a detailed PDF-ready report with channel-by-channel benchmarks, a "kill / fix / scale" recommendation for each channel, and what to ask your agency this week.</p>
-        <div class="gate-row">
-          <input type="email" id="gateEmail" placeholder="Enter your email">
-          <button onclick="unlockReport()">Get My Report</button>
-        </div>
-        <div class="report-preview"><h4>Your report includes</h4>
-          <ul><li>Cost per booked job vs. industry top 25%</li><li>ROI breakdown with profit margin analysis</li><li>3 specific actions to reduce waste this month</li><li>Benchmarks for your trade and market size</li></ul>
-        </div>
+      <div class="field">
+        <div class="field-label">Monthly marketing spend <span class="field-hint">ads + agency fees combined</span></div>
+        <div class="prefix-wrap"><span class="prefix">$</span><input type="number" class="field-input" id="spend" placeholder="e.g. 6500" min="0" /></div>
       </div>
+      <div class="field">
+        <div class="field-label">Inbound calls / leads per month <span class="field-hint">all sources combined</span></div>
+        <input type="number" class="field-input" id="leads" placeholder="e.g. 180" min="0" />
+      </div>
+      <div class="field">
+        <div class="field-label">Close rate <span class="field-hint">% of calls that book a job</span></div>
+        <div class="suffix-wrap"><span class="suffix">%</span><input type="number" class="field-input" id="close-rate" placeholder="e.g. 38" min="0" max="100" /></div>
+        <div class="bm-hint"><span>Industry average:</span><span class="bm-val">28–35% · Top 25%: 50%+</span></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Average job ticket <span class="field-hint">average revenue per booked job</span></div>
+        <div class="prefix-wrap"><span class="prefix">$</span><input type="number" class="field-input" id="ticket" placeholder="e.g. 2200" min="0" /></div>
+      </div>
+      <button class="calc-btn" id="calc-btn">See My True Cost Per Job →</button>
     </div>
   </div>
-</div></section>
 
-<!-- Report overlay -->
-<div class="report-overlay" id="reportOverlay">
-  <div class="report-container">
-    <button class="report-close" onclick="closeReport()">&times;</button>
-    <div class="report-header">
-      <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--amber-dark);font-weight:700">Built on Tenth</p>
-      <h1>Marketing ROI Diagnostic Report</h1>
-      <p id="rptMeta">Generated for an HVAC company</p>
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">Marketing Diagnostic</span>
+      <span class="rp-status s-wait" id="rp-status">Waiting for your numbers</span>
     </div>
-    <div class="report-hero-stat"><div class="big" id="rptHero">&mdash;</div><div class="label">Marketing ROI</div></div>
-    <div class="report-section"><h2>Your Numbers at a Glance</h2>
-      <table class="report-table"><thead><tr><th>Metric</th><th>Your Number</th><th>Industry Avg</th><th>Top 25%</th></tr></thead>
-        <tbody id="rptTable"></tbody>
-      </table>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📊</div>
+        <p class="empty-text"><strong>Most companies underestimate this by 30–60%.</strong><br><br>They count cost-per-lead from the platform dashboard. But platform leads ≠ booked jobs. Your real cost is spend ÷ jobs booked — not spend ÷ leads received.</p>
+      </div>
+      <div class="result-section" id="results">
+        <div class="main-metric">
+          <div class="mm-label">Your true cost per booked job</div>
+          <div class="mm-value" id="cost-per-job">$0</div>
+          <div class="mm-sub" id="mm-sub">Based on your inputs</div>
+        </div>
+        <div class="section-title">Full breakdown</div>
+        <div class="rows">
+          <div class="row"><span class="rk">Monthly spend</span><span class="rv" id="r-spend">—</span></div>
+          <div class="row"><span class="rk">Calls/leads per month</span><span class="rv" id="r-leads">—</span></div>
+          <div class="row"><span class="rk">Close rate</span><span class="rv" id="r-close">—</span></div>
+          <div class="row"><span class="rk">Jobs booked per month</span><span class="rv" id="r-jobs">—</span></div>
+          <div class="row"><span class="rk">Cost per lead</span><span class="rv" id="r-cpl">—</span></div>
+          <div class="row"><span class="rk">Cost per booked job</span><span class="rv bad" id="r-cpj">—</span></div>
+          <div class="row"><span class="rk">Revenue per $1 spent</span><span class="rv" id="r-roi">—</span></div>
+        </div>
+        <div class="bm-section">
+          <div class="section-title">Cost per job vs. benchmark</div>
+          <div class="bm-track"><div class="bm-bar" id="bm-bar" style="width:0%"></div></div>
+          <div class="bm-range"><span>$0</span><span id="bm-mid">Avg: $—</span><span>Top 25%: $—</span><span>Your number →</span></div>
+        </div>
+        <div class="diagnosis" id="diagnosis">
+          <div class="dt" id="diag-title">—</div>
+          <div class="db" id="diag-body">—</div>
+        </div>
+        <div class="divider"></div>
+        <a href="/apply?service=audit&source=marketing-calculator" class="audit-cta">Get a Full Channel Breakdown — Audit →</a>
+        <p class="audit-note">The audit shows cost per job by individual channel — so you know which ones to scale and which to cut.</p>
+      </div>
     </div>
-    <div class="report-section"><h2>Channel Recommendations</h2><div id="rptRecs"></div></div>
-    <div class="report-section"><h2>3 Actions to Take This Week</h2>
-      <ol id="rptActions" style="margin-left:1.5rem"></ol>
-    </div>
-    <div class="report-section"><h2>What to Ask Your Agency</h2>
-      <p>If you work with a marketing agency, bring these questions to your next conversation:</p>
-      <ol id="rptAgency" style="margin-left:1.5rem"></ol>
-    </div>
-    <div class="report-actions">
-      <button class="report-print" onclick="printReport()">Print / Save as PDF</button>
-      <a href="/services#audit" class="report-cta">Get a Full Revenue Leak Audit &mdash; $750 &#8594;</a>
-    </div>
-    <div class="report-footer"><p>builtontenth.com &mdash; Revenue intelligence for home service companies</p></div>
   </div>
 </div>
 
-<script is:inline>
-const bm={hvac:{cpl:[55,90],cpj:[220,360],top_cpl:45,top_cpj:180},roofing:{cpl:[70,140],cpj:[280,560],top_cpl:55,top_cpj:220},plumbing:{cpl:[45,80],cpj:[180,320],top_cpl:35,top_cpj:140},electrical:{cpl:[40,75],cpj:[160,300],top_cpl:30,top_cpj:120}};
-let calcData = {};
+<script>
+const benchmarks = {
+  hvac:     { avgCPJ: 340, topCPJ: 110, avgClose: 0.32, avgROI: 4.2 },
+  roofing:  { avgCPJ: 420, topCPJ: 140, avgClose: 0.28, avgROI: 3.8 },
+  plumbing: { avgCPJ: 280, topCPJ: 90,  avgClose: 0.40, avgROI: 5.1 },
+  general:  { avgCPJ: 350, topCPJ: 120, avgClose: 0.32, avgROI: 4.0 },
+};
+function fmt(n)  { return '$' + Math.round(n).toLocaleString(); }
+function fmtN(n) { return Math.round(n).toLocaleString(); }
 
-function calc(){
-  const t=document.getElementById('trade').value,s=+document.getElementById('spend').value,l=+document.getElementById('leads').value,c=+document.getElementById('cr').value/100,k=+document.getElementById('ticket').value;
-  if(!s||!l||!c||!k)return;
-  const cpl=s/l,j=Math.round(l*c),cpj=j>0?s/j:0,rev=j*k,roi=s>0?((rev-s)/s)*100:0,rpd=s>0?rev/s:0,b=bm[t];
-  calcData={t,s,l,c,k,cpl,j,cpj,rev,roi,rpd,b};
-  document.getElementById('emp').style.display='none';document.getElementById('res').style.display='block';
-  const ce=document.getElementById('cpl');ce.textContent='$'+Math.round(cpl).toLocaleString();ce.className='rv '+(cpl>b.cpl[1]?'w':cpl<b.cpl[0]?'g':'n');
-  document.getElementById('cplC').textContent='Industry: $'+b.cpl[0]+' \u2013 $'+b.cpl[1]+' | Top 25%: $'+b.top_cpl;
-  const je=document.getElementById('cpj');je.textContent='$'+Math.round(cpj).toLocaleString();je.className='rv '+(cpj>b.cpj[1]?'w':cpj<b.cpj[0]?'g':'n');
-  document.getElementById('cpjC').textContent='Industry: $'+b.cpj[0]+' \u2013 $'+b.cpj[1]+' | Top 25%: $'+b.top_cpj;
-  const re=document.getElementById('roi');re.textContent=Math.round(roi)+'%';re.className='rv '+(roi<100?'w':roi>400?'g':'n');
-  document.getElementById('roiC').textContent=roi<100?'Below break-even. Your marketing is losing money.':roi<300?'Positive but below industry average.':'Strong ROI. You are outperforming most competitors.';
-  document.getElementById('roiB').style.width=Math.min(roi/6,100)+'%';document.getElementById('roiB').style.background=roi<100?'#ef4444':roi>400?'#10b981':'#f59e0b';
-  document.getElementById('rpd').textContent='$'+rpd.toFixed(2);document.getElementById('rpdC').textContent='For every $1 spent, you generate $'+rpd.toFixed(2)+' in revenue.';
-  document.getElementById('jobs').textContent=j+' jobs/month';
+document.getElementById('calc-btn').addEventListener('click', calculate);
+
+function calculate() {
+  const trade     = document.getElementById('trade').value;
+  const spend     = parseFloat(document.getElementById('spend').value)      || 0;
+  const leads     = parseFloat(document.getElementById('leads').value)      || 0;
+  const closeRate = parseFloat(document.getElementById('close-rate').value) || 0;
+  const ticket    = parseFloat(document.getElementById('ticket').value)     || 0;
+
+  if (!spend || !leads || !closeRate || !ticket) {
+    document.getElementById('calc-btn').textContent = 'Please fill in all fields →';
+    setTimeout(() => document.getElementById('calc-btn').textContent = 'See My True Cost Per Job →', 2000);
+    return;
+  }
+
+  const bm       = benchmarks[trade];
+  const cr       = Math.min(closeRate, 100) / 100;
+  const jobs     = leads * cr;
+  const cpl      = jobs > 0 ? spend / leads : 0;
+  const cpj      = jobs > 0 ? spend / jobs  : 0;
+  const revenue  = jobs * ticket;
+  const roi      = spend > 0 ? revenue / spend : 0;
+
+  // Status
+  const status = document.getElementById('rp-status');
+  if (cpj > bm.avgCPJ * 1.3) {
+    status.textContent = 'Above average cost — leak found';
+    status.className = 'rp-status s-alert';
+  } else if (cpj > bm.avgCPJ) {
+    status.textContent = 'Room to improve';
+    status.className = 'rp-status s-warn';
+  } else {
+    status.textContent = 'Performing well';
+    status.className = 'rp-status s-good';
+  }
+
+  // Main metric
+  const cpjEl = document.getElementById('cost-per-job');
+  cpjEl.textContent = fmt(cpj);
+  cpjEl.className = cpj <= bm.topCPJ ? 'mm-value good' : cpj <= bm.avgCPJ ? 'mm-value warn' : 'mm-value';
+  document.getElementById('mm-sub').textContent = `For every booked job · ${fmtN(jobs)} jobs/month`;
+
+  // Breakdown rows
+  document.getElementById('r-spend').textContent   = fmt(spend) + '/month';
+  document.getElementById('r-leads').textContent   = fmtN(leads) + '/month';
+  document.getElementById('r-close').textContent   = closeRate + '%';
+  document.getElementById('r-jobs').textContent    = fmtN(jobs) + '/month';
+  document.getElementById('r-cpl').textContent     = fmt(cpl);
+  document.getElementById('r-cpj').textContent     = fmt(cpj);
+  document.getElementById('r-cpj').className       = `rv ${cpj > bm.avgCPJ * 1.3 ? 'bad' : cpj > bm.avgCPJ ? 'warn' : 'ok'}`;
+  document.getElementById('r-roi').textContent     = '$' + roi.toFixed(2) + ' per $1 spent';
+  document.getElementById('r-roi').className       = `rv ${roi >= bm.avgROI ? 'ok' : roi >= bm.avgROI * 0.7 ? 'warn' : 'bad'}`;
+
+  // Benchmark bar (cap at 2x average for display)
+  const maxDisplay = bm.avgCPJ * 2;
+  const fillPct = Math.min((cpj / maxDisplay) * 100, 100);
+  const bmBar = document.getElementById('bm-bar');
+  bmBar.style.width = fillPct + '%';
+  bmBar.className = `bm-bar ${cpj <= bm.topCPJ ? 'ok' : cpj <= bm.avgCPJ ? 'warn' : ''}`;
+
+  const bmRangeEl = document.querySelector('.bm-range');
+  bmRangeEl.innerHTML = `<span>$0</span><span>Avg: ${fmt(bm.avgCPJ)}</span><span>Top 25%: ${fmt(bm.topCPJ)}</span><span>You: ${fmt(cpj)}</span>`;
+
+  // Diagnosis
+  const diagEl    = document.getElementById('diagnosis');
+  const diagTitle = document.getElementById('diag-title');
+  const diagBody  = document.getElementById('diag-body');
+  if (cpj <= bm.topCPJ) {
+    diagEl.className = 'diagnosis ok';
+    diagTitle.textContent = 'You\'re in the top 25%.';
+    diagBody.textContent  = 'Your cost per booked job is strong. The opportunity now is scaling what\'s working and cutting the channels that are dragging your average up. The audit maps that by channel.';
+  } else if (cpj <= bm.avgCPJ) {
+    diagEl.className = 'diagnosis warn';
+    diagTitle.textContent = 'Average — but there\'s room.';
+    diagBody.textContent  = 'You\'re near the industry average. The gap between average and top 25% is typically a close rate issue or channel mix problem. Both are fixable without increasing spend.';
+  } else {
+    diagEl.className = 'diagnosis';
+    diagTitle.textContent = `You're paying ${fmt(cpj - bm.avgCPJ)} more per job than average.`;
+    diagBody.textContent  = 'This is usually caused by: a low close rate losing jobs you\'re already paying for, one weak channel dragging up the blended average, or agency fees that don\'t connect to booked jobs. The audit finds which.';
+  }
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
 }
-
-function unlockReport(){
-  const email=document.getElementById('gateEmail').value;
-  if(!email||!email.includes('@')){alert('Please enter a valid email address.');return;}
-  const btn=document.querySelector('#emailGate button');btn.textContent='Report unlocked \u2713';btn.style.background='#10b981';
-  generateReport();showReport();
-}
-
-function generateReport(){
-  const d=calcData,tn=d.t.toUpperCase(),b=d.b;
-  document.getElementById('rptMeta').textContent='Generated for a '+tn+' company | '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-  const h=document.getElementById('rptHero');h.textContent=Math.round(d.roi)+'%';h.className='big '+(d.roi<100?'red':d.roi>400?'green':'amber');
-  document.getElementById('rptTable').innerHTML=
-    '<tr><td>Monthly spend</td><td>$'+d.s.toLocaleString()+'</td><td colspan="2">Varies</td></tr>'+
-    '<tr><td>Cost per lead</td><td style="color:'+(d.cpl>b.cpl[1]?'#ef4444':'#10b981')+'">$'+Math.round(d.cpl)+'</td><td>$'+b.cpl[0]+' \u2013 $'+b.cpl[1]+'</td><td>$'+b.top_cpl+'</td></tr>'+
-    '<tr><td>Cost per booked job</td><td style="color:'+(d.cpj>b.cpj[1]?'#ef4444':'#10b981')+'">$'+Math.round(d.cpj)+'</td><td>$'+b.cpj[0]+' \u2013 $'+b.cpj[1]+'</td><td>$'+b.top_cpj+'</td></tr>'+
-    '<tr><td>Close rate</td><td>'+Math.round(d.c*100)+'%</td><td>20 \u2013 30%</td><td>40%+</td></tr>'+
-    '<tr><td>Jobs booked/month</td><td>'+d.j+'</td><td colspan="2">Varies</td></tr>'+
-    '<tr><td>Marketing ROI</td><td style="font-weight:700;color:'+(d.roi<100?'#ef4444':'#10b981')+'">'+Math.round(d.roi)+'%</td><td>200 \u2013 400%</td><td>500%+</td></tr>';
-  let recs='';
-  if(d.cpl>b.cpl[1])recs+='<p><strong style="color:#ef4444">Your cost per lead is above industry average.</strong> This usually means poor keyword targeting, wasted spend on irrelevant searches, or ads running in geographic areas outside your service radius. Review your search terms report and tighten targeting.</p>';
-  if(d.c<0.25)recs+='<p><strong style="color:#ef4444">Your close rate is below 25%.</strong> The leads may not be the problem \u2014 your phone handling, response speed, or quoting process likely needs work. Improving close rate from '+Math.round(d.c*100)+'% to 35% would add approximately '+Math.round((d.l*0.35-d.j)*d.k).toLocaleString()+' in monthly revenue without spending another dollar on marketing.</p>';
-  if(d.roi>400)recs+='<p><strong style="color:#10b981">Your ROI is strong.</strong> Consider increasing spend by 20 \u2013 30% in your best-performing channel to scale revenue. At your current efficiency, an extra $'+Math.round(d.s*0.25).toLocaleString()+'/month should generate approximately $'+Math.round(d.s*0.25*d.rpd).toLocaleString()+' in additional revenue.</p>';
-  if(!recs)recs='<p>Your numbers are in the normal range. The biggest opportunity is improving close rate \u2014 every 5-point improvement in close rate drops your cost per booked job significantly.</p>';
-  document.getElementById('rptRecs').innerHTML=recs;
-  document.getElementById('rptActions').innerHTML=
-    '<li>Check if conversion tracking is installed on your Google Ads. If not, fix it today \u2014 you cannot optimize what you cannot measure.</li>'+
-    '<li>Review your phone answer rate this week. Ask your front desk to log every call for 5 days. Calculate (answered / total). If it is below 80%, that is your biggest revenue leak.</li>'+
-    '<li>Pull your Google Ads search terms report and add negative keywords for anything irrelevant. This typically saves 15 \u2013 25% of ad spend immediately.</li>';
-  document.getElementById('rptAgency').innerHTML=
-    '<li>"What is my cost per booked job by channel \u2014 not cost per lead, cost per job that actually got on the board?"</li>'+
-    '<li>"Which keywords are generating booked jobs vs. just generating clicks?"</li>'+
-    '<li>"What is my conversion tracking setup and when was it last verified?"</li>';
-}
-
-function showReport(){document.getElementById('reportOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeReport(){document.getElementById('reportOverlay').classList.remove('open');document.body.style.overflow='';}
-function printReport(){window.print();}
 </script>
-</Base>
+</ToolLayout>

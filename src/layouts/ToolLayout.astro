@@ -1,0 +1,298 @@
+---
+import Layout from '../layouts/Layout.astro';
+interface Props {
+  toolNumber: string;
+  toolName: string;
+  slug: string;
+  headline: string;
+  subheadline: string;
+  metaDescription: string;
+}
+const { toolNumber, toolName, slug, headline, subheadline, metaDescription } = Astro.props;
+
+const allTools = [
+  { num: '01', name: 'Phone Revenue Calculator',   href: '/tools/phone-calculator',       active: slug === 'phone-calculator' },
+  { num: '02', name: 'Marketing Cost Calculator',  href: '/tools/marketing-calculator',   active: slug === 'marketing-calculator' },
+  { num: '03', name: 'Lead Source Grader',         href: '/tools/lead-grader',            active: slug === 'lead-grader' },
+  { num: '04', name: 'Website Conversion Audit',   href: '/tools/website-audit',          active: slug === 'website-audit' },
+  { num: '05', name: 'Capacity-to-Demand Planner', href: '/tools/capacity-planner',       active: slug === 'capacity-planner' },
+];
+---
+<Layout title={`${toolName} — Free Tool | Built on Tenth`} description={metaDescription} active="tools">
+
+<style>
+/* ── TOOL LAYOUT ── */
+.tool-page { padding-top: 60px; }
+
+.tool-top-bar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 48px;
+}
+.tool-top-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 14px 0;
+}
+.tool-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+}
+.tool-breadcrumb a { color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+.tool-breadcrumb a:hover { color: var(--teal); }
+.tool-breadcrumb span { color: var(--ink3); opacity: 0.4; }
+.tool-breadcrumb .current { color: var(--teal); }
+
+.tool-step-nav { display: flex; gap: 6px; }
+.tsn-item {
+  font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 3px; text-decoration: none;
+  border: 1px solid var(--rule); color: var(--ink3); transition: all 0.2s; white-space: nowrap;
+}
+.tsn-item:hover { border-color: var(--rule2); color: var(--ink2); }
+.tsn-item.active { border-color: var(--teal4); color: var(--teal); background: var(--teal3); }
+
+/* ── TOOL HERO ── */
+.tool-hero {
+  padding: 56px 48px 48px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.tool-hero-inner { max-width: 1200px; margin: 0 auto; }
+.tool-num-badge {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;
+  font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--teal);
+}
+.tool-num-badge::before { content: ''; width: 16px; height: 1.5px; background: var(--teal); }
+.tool-hero h1 {
+  font-family: var(--serif); font-size: clamp(30px, 4vw, 48px);
+  font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px;
+}
+.tool-hero h1 em { font-style: italic; color: var(--teal); }
+.tool-hero-sub { font-size: 16px; color: var(--ink2); line-height: 1.7; font-weight: 300; max-width: 580px; }
+
+/* ── TOOL BODY ── */
+.tool-body {
+  max-width: 1200px; margin: 0 auto; padding: 48px 48px 80px;
+  display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start;
+}
+
+/* ── INPUT PANEL ── */
+.input-panel {
+  background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden;
+}
+.ip-header {
+  padding: 20px 24px; border-bottom: 1px solid var(--rule);
+  background: var(--bg3);
+}
+.ip-header-title {
+  font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink3);
+}
+.ip-body { padding: 24px; }
+
+.field { margin-bottom: 20px; }
+.field:last-of-type { margin-bottom: 0; }
+.field-label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 8px;
+}
+.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.7; font-weight: 300; letter-spacing: 0.04em; text-transform: none; }
+.field-input {
+  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
+  padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none;
+  transition: border-color 0.2s; -moz-appearance: textfield;
+}
+.field-input::-webkit-inner-spin-button, .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.field-input:focus { border-color: rgba(0,196,154,0.55); }
+.field-input::placeholder { color: var(--ink3); font-size: 14px; }
+
+.input-prefix-wrap { position: relative; }
+.input-prefix {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 14px; color: var(--ink3); pointer-events: none;
+}
+.input-prefix + .field-input { padding-left: 26px; }
+
+.input-suffix-wrap { position: relative; }
+.input-suffix {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 13px; color: var(--ink3); pointer-events: none;
+}
+.input-suffix ~ .field-input { padding-right: 36px; }
+
+.field-select {
+  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
+  padding: 11px 14px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none;
+  transition: border-color 0.2s; cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.field-select:focus { border-color: rgba(0,196,154,0.55); }
+.field-select option { background: var(--bg3); }
+
+.calc-btn {
+  width: 100%; margin-top: 24px; padding: 14px; border-radius: 4px; cursor: pointer;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
+}
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
+
+/* ── RESULT PANEL ── */
+.result-panel {
+  background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden;
+  position: sticky; top: 80px;
+}
+.rp-header {
+  padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.rp-header-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.rp-status.waiting { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.rp-status.ready   { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.rp-status.alert   { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+
+.rp-body { padding: 24px; }
+
+/* Empty state */
+.rp-empty { text-align: center; padding: 32px 16px; }
+.rp-empty-icon { font-size: 28px; opacity: 0.3; margin-bottom: 14px; }
+.rp-empty-text { font-size: 13px; color: var(--ink3); line-height: 1.6; font-weight: 300; }
+
+/* Main metric */
+.rp-main-metric { margin-bottom: 24px; }
+.rp-metric-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
+.rp-metric-value {
+  font-family: var(--mono); font-size: 52px; font-weight: 600; letter-spacing: -0.04em; line-height: 1;
+  color: var(--neg);
+}
+.rp-metric-value.good { color: var(--pos); }
+.rp-metric-value.neutral { color: var(--teal); }
+.rp-metric-sub { font-size: 12px; color: var(--ink3); margin-top: 6px; font-weight: 300; }
+
+/* Benchmark bar */
+.rp-benchmark { margin-bottom: 20px; }
+.rp-bm-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; display: flex; justify-content: space-between; }
+.rp-bm-track { height: 6px; background: var(--bg4); border-radius: 3px; overflow: visible; position: relative; margin-bottom: 6px; }
+.rp-bm-fill { height: 100%; border-radius: 3px; background: var(--neg); transition: width 0.8s var(--ease); max-width: 100%; }
+.rp-bm-fill.good { background: var(--pos); }
+.rp-bm-fill.warn { background: #C9A035; }
+.rp-bm-marker {
+  position: absolute; top: -3px; width: 2px; height: 12px; background: var(--teal); border-radius: 1px;
+}
+.rp-bm-marker-label { font-family: var(--mono); font-size: 8.5px; color: var(--teal); white-space: nowrap; }
+.rp-bm-range { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
+
+/* Breakdown rows */
+.rp-divider { height: 1px; background: var(--rule); margin: 18px 0; }
+.rp-breakdown-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
+.rp-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.rp-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
+.rp-row-label { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
+.rp-row-value { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.rp-row-value.bad  { color: var(--neg); }
+.rp-row-value.good { color: var(--pos); }
+.rp-row-value.warn { color: #C9A035; }
+
+/* Diagnosis block */
+.rp-diagnosis {
+  background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px;
+  padding: 14px 16px; margin-bottom: 18px;
+}
+.rp-diagnosis.good-diag { background: rgba(34,211,122,0.06); border-color: rgba(34,211,122,0.2); }
+.rp-diag-title { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.rp-diag-body { font-size: 12px; color: var(--ink2); line-height: 1.6; font-weight: 300; }
+
+/* Audit CTA in result */
+.rp-cta {
+  display: block; width: 100%; padding: 13px; border-radius: 4px; cursor: pointer; text-align: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); text-decoration: none; transition: all 0.2s;
+}
+.rp-cta:hover { background: #00DFB0; }
+.rp-cta-sub { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
+
+/* ── CROSS-TOOL FOOTER ── */
+.tool-cross { border-top: 1px solid var(--rule); padding: 48px; background: var(--bg2); }
+.tool-cross-inner { max-width: 1200px; margin: 0 auto; }
+.tc-title { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; }
+.tc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.tc-card {
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 4px; padding: 16px;
+  text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+}
+.tc-card:hover { border-color: var(--teal4); transform: translateY(-2px); }
+.tc-card.current { border-color: var(--teal4); background: var(--teal3); pointer-events: none; }
+.tc-num { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 6px; }
+.tc-name { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.35; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .tool-top-bar { padding: 0 20px; }
+  .tool-step-nav { display: none; }
+  .tool-hero { padding: 40px 20px 36px; }
+  .tool-body { grid-template-columns: 1fr; padding: 32px 20px 60px; }
+  .result-panel { position: static; }
+  .tool-cross { padding: 36px 20px; }
+  .tc-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<div class="tool-page">
+
+  <!-- Top bar with breadcrumb + tool switcher -->
+  <div class="tool-top-bar">
+    <div class="tool-top-inner">
+      <div class="tool-breadcrumb">
+        <a href="/tools">Free Tools</a>
+        <span>/</span>
+        <span class="current">{toolName}</span>
+      </div>
+      <nav class="tool-step-nav">
+        {allTools.map(t => (
+          <a href={t.href} class={`tsn-item${t.active ? ' active' : ''}`}>
+            {t.num} · {t.name.split(' ').slice(0,2).join(' ')}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="tool-hero">
+    <div class="tool-hero-inner">
+      <div class="tool-num-badge">Tool {toolNumber} of 05</div>
+      <h1 set:html={headline}></h1>
+      <p class="tool-hero-sub">{subheadline}</p>
+    </div>
+  </div>
+
+  <!-- Main tool slot -->
+  <div style="max-width:1200px;margin:0 auto;padding:48px 48px 0">
+    <slot name="tool-body" />
+  </div>
+
+  <!-- Cross-tool navigation -->
+  <div class="tool-cross">
+    <div class="tool-cross-inner">
+      <div class="tc-title">Continue your diagnosis — check the other leaks</div>
+      <div class="tc-grid">
+        {allTools.map(t => (
+          <a href={t.href} class={`tc-card${t.active ? ' current' : ''}`}>
+            <div class="tc-num">{t.num}</div>
+            <div class="tc-name">{t.name}</div>
+          </a>
+        ))}
+        <a href="/apply" class="tc-card" style="border-color:rgba(0,196,154,0.28);background:rgba(0,196,154,0.04)">
+          <div class="tc-num" style="color:var(--teal)">Full picture</div>
+          <div class="tc-name">Revenue Leak Audit — $750</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</Layout>
