@@ -1151,20 +1151,103 @@ img[data-failed] ~ .img-fb { display: flex; }
 .reveal.will-animate.on { opacity: 1; transform: translateY(0); }
 
 /* ════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — COMPREHENSIVE MOBILE FIX
 ════════════════════════════════════════ */
+
+/* 1100px: collapse hero to single column */
 @media (max-width: 1100px) {
-  .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 100px; }
+  .hero { grid-template-columns: 1fr; padding-top: 96px; }
   .hero-left { padding-right: 0; }
   .hero-right { display: none; }
 }
+
+/* 960px: main mobile breakpoint */
 @media (max-width: 960px) {
+  /* ── NAV ── */
   #nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .wrap { padding: 72px 20px; }
-  .nl-section { padding: 80px 20px; }
+
+  /* ── HERO ── */
+  .hero { padding: 84px 20px 56px; min-height: auto; }
+  .hero-h { font-size: clamp(30px, 8vw, 48px); line-height: 1.1; }
+  .hero-body { font-size: 15px; }
+  .hero-ctas { flex-direction: column; gap: 10px; }
+  .hero-ctas a { justify-content: center; }
+  /* Stats bar: wrap to 2x2 grid */
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding-top: 24px; margin-top: 24px; }
+  .hero-stat { padding: 14px 12px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 0 !important; }
+  .hero-stat:nth-child(2) { border-right: none; }
+  .hero-stat:nth-child(3) { border-bottom: none; }
+  .hero-stat:nth-child(4) { border-right: none; border-bottom: none; }
+  .hs-n { font-size: 22px; }
+  .hs-l { font-size: 11px; }
+
+  /* ── INTEL STRIP: 4col → 2col ── */
+  .intel-inner { grid-template-columns: 1fr 1fr; }
+  .intel-card { padding: 24px 20px; border-right: 1px solid var(--rule); }
+  .intel-card:nth-child(2) { border-right: none; }
+  .intel-card:nth-child(3) { border-right: 1px solid var(--rule); border-top: 1px solid var(--rule); }
+  .intel-card:nth-child(4) { border-right: none; border-top: 1px solid var(--rule); }
+  .intel-n { font-size: 40px; }
+
+  /* ── WRAPS ── */
+  .wrap { padding: 56px 20px; }
+  .nl-section { padding: 72px 20px; }
   .footer { padding: 48px 20px 0; }
-  .prob-grid { grid-template-columns: 1fr; gap: 48px; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+  /* ── PROBLEM SECTION ── */
+  .prob-grid { grid-template-columns: 1fr; gap: 32px; }
+  .collage { display: none; } /* hide the photo collage on mobile, show text only */
+  .rev-example { padding: 20px; }
+  .re-grid { flex-direction: column; gap: 6px; }
+  .re-sep { display: none; }
+  .re-result { padding-top: 12px; border-top: 1px solid var(--rule); }
+  .re-cta { flex-wrap: wrap; gap: 8px; }
+  .audit { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+  .audit-n { font-size: 52px; }
+  .audit-rows { grid-template-columns: 1fr; }
+
+  /* ── SECTION HEADER GRIDS (inline-styled 2-col divs) ── */
+  /* Override inline grid styles for all 2-col section intro headers */
+  .inner > div[style],
+  .inner > [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* ── AGENCY COMPARE ── */
+  .agency-compare { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ac-table-wrap { min-width: 560px; }
+
+  /* ── HOW WE WORK — STEPS: 3col → 1col ── */
+  .steps { grid-template-columns: 1fr; }
+
+  /* ── FREE TOOLS ── */
+  .tools-header { grid-template-columns: 1fr; gap: 20px; }
+  .tools-grid { grid-template-columns: 1fr 1fr; }
+  .tool-img { height: 160px; }
+
+  /* ── SERVICES: 3col → 1col ── */
+  .svcs { grid-template-columns: 1fr; }
+  .svc { max-width: 100%; }
+  .svc-price { font-size: 36px; }
+
+  /* ── NEWSLETTER ── */
+  .nl-inner { max-width: 100%; }
+  .nl-h { font-size: clamp(28px, 8vw, 40px) !important; }
+}
+
+/* 600px: very small phones */
+@media (max-width: 600px) {
+  .intel-inner { grid-template-columns: 1fr; }
+  .intel-card { border-right: none !important; border-top: none !important; border-bottom: 1px solid var(--rule); }
+  .intel-card:last-child { border-bottom: none; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .ft-grid { grid-template-columns: 1fr; gap: 28px; }
+  .hero-h { font-size: clamp(28px, 9vw, 42px); }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+}
 </style>
 
 
@@ -1724,7 +1807,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <div class="svc reveal">
         <div class="svc-img">
-          <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=700&q=75" alt="90-day growth advisory session" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=75" alt="90-day growth advisory - weekly written review" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
           <div class="img-fb"><span style="font-size:24px;opacity:0.15">🤝</span></div>
         </div>
         <div class="svc-body">
@@ -1808,18 +1891,36 @@ img[data-failed] ~ .img-fb { display: flex; }
   }, { threshold: 0.2 });
   document.querySelectorAll('.audit-card').forEach(t => acObs.observe(t));
 
-  /* Newsletter submit */
-  document.getElementById('nl-btn').addEventListener('click', function () {
+  /* Newsletter submit — calls Brevo API */
+  document.getElementById('nl-btn').addEventListener('click', async function () {
     const inp = document.querySelector('.nl-in');
-    if (inp.value.includes('@')) {
-      this.textContent = '✓ You\'re in';
-      this.style.background = '#22D37A';
-      this.style.borderColor = '#22D37A';
-      inp.disabled = true;
-      this.disabled = true;
-    } else {
+    const btn = this;
+    if (!inp.value.includes('@')) {
       inp.style.borderColor = 'rgba(240,64,64,0.55)';
       inp.focus();
+      return;
+    }
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: inp.value.trim(), source: 'homepage' }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        btn.textContent = "You're in \u2713";
+        btn.style.background = '#22D37A';
+        btn.style.borderColor = '#22D37A';
+        inp.disabled = true;
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
     }
   });
 </script>

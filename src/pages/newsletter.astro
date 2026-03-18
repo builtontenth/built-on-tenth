@@ -65,13 +65,20 @@ import Layout from '../layouts/Layout.astro';
 .nl-bottom p { font-size: 15px; color: var(--ink2); line-height: 1.7; margin-bottom: 30px; font-weight: 300; }
 
 @media (max-width: 960px) {
-  .nl-hero { padding: 120px 20px 72px; }
+  .nl-hero { padding: 100px 20px 60px; }
+  .nl-hero h1 { font-size: clamp(32px, 9vw, 52px); }
   .nl-value-inner { grid-template-columns: 1fr; }
   .nlv-card { border-right: none; border-bottom: 1px solid var(--rule); }
   .nlv-card:last-child { border-bottom: none; }
   .issue-card { grid-template-columns: 1fr; gap: 12px; padding: 24px 20px; }
-  .nl-form-wrap { flex-direction: column; }
-  .nl-bottom { padding: 72px 20px; }
+  .nl-form-wrap { flex-direction: column; max-width: 100% !important; }
+  .nl-input { width: 100%; }
+  .nl-bottom { padding: 64px 20px; }
+  /* Override inline 2-col grid on recent issues header */
+  .inner > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
 }
 </style>
 
@@ -179,24 +186,52 @@ import Layout from '../layouts/Layout.astro';
 </div>
 
 <script>
-  function setupForm(inputId, btnId) {
+  async function submitEmail(email, btn, inp, source) {
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        btn.textContent = "You're in \u2713";
+        btn.style.background = '#22D37A';
+        btn.style.borderColor = '#22D37A';
+        inp.disabled = true;
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+        inp.style.borderColor = 'rgba(240,64,64,0.55)';
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
+  }
+
+  function setupForm(inputId, btnId, source) {
     const btn = document.getElementById(btnId);
     const inp = document.getElementById(inputId);
     if (!btn || !inp) return;
     btn.addEventListener('click', () => {
-      if (inp.value.includes('@')) {
-        btn.textContent = '✓ You\'re in';
-        btn.style.background = '#22D37A';
-        btn.style.borderColor = '#22D37A';
-        inp.disabled = true;
-        btn.disabled = true;
-      } else {
+      if (!inp.value.includes('@')) {
         inp.style.borderColor = 'rgba(240,64,64,0.55)';
         inp.focus();
+        return;
+      }
+      submitEmail(inp.value.trim(), btn, inp, source || 'newsletter-page');
+    });
+    inp.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && inp.value.includes('@')) {
+        submitEmail(inp.value.trim(), btn, inp, source || 'newsletter-page');
       }
     });
   }
-  setupForm('nl-email', 'nl-submit');
-  setupForm('nl-email-2', 'nl-submit-2');
+
+  setupForm('nl-email', 'nl-submit', 'newsletter-hero');
+  setupForm('nl-email-2', 'nl-submit-2', 'newsletter-bottom');
 </script>
 </Layout>

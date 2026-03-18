@@ -230,14 +230,19 @@ const allTools = [
 .tc-name { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.35; }
 
 /* ── RESPONSIVE ── */
+.tool-slot-wrap { max-width: 1200px; margin: 0 auto; padding: 48px 48px 0; }
+
 @media (max-width: 960px) {
   .tool-top-bar { padding: 0 20px; }
   .tool-step-nav { display: none; }
   .tool-hero { padding: 40px 20px 36px; }
-  .tool-body { grid-template-columns: 1fr; padding: 32px 20px 60px; }
-  .result-panel { position: static; }
+  .tool-hero h1 { font-size: clamp(24px, 7vw, 38px); }
+  .tool-slot-wrap { padding: 28px 20px 0; }
   .tool-cross { padding: 36px 20px; }
   .tc-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .tc-grid { grid-template-columns: 1fr; }
 }
 </style>
 
@@ -271,7 +276,7 @@ const allTools = [
   </div>
 
   <!-- Main tool slot -->
-  <div style="max-width:1200px;margin:0 auto;padding:48px 48px 0">
+  <div class="tool-slot-wrap">
     <slot name="tool-body" />
   </div>
 

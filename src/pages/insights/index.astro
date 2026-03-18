@@ -1,5 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const articles = [
+  {
+    slug: 'how-much-should-hvac-company-spend-on-marketing-2026',
+    trade: 'HVAC · Revenue Diagnostics',
+    title: 'How Much Should an HVAC Company Spend on Marketing in 2026?',
+    preview: "Most owners are spending $8K–$15K/month without knowing their cost per booked job. Here's the actual math — benchmarks, a 5-step budget formula, and the three places HVAC companies silently leak marketing budget.",
+    date: 'Mar 16, 2026',
+    readTime: 11,
+    img: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=75',
+    imgAlt: 'HVAC technician servicing rooftop AC unit',
+    pills: ['$340 avg cost/job', '7-10% revenue typical', '3 leak patterns'],
+    featured: true,
+  },
+  {
+    slug: 'why-hvac-csrs-are-losing-you-300k-per-year',
+    trade: 'HVAC · Pipeline Systems',
+    title: 'Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)',
+    preview: "Your phones are answered. Your CSRs are friendly. And you're still losing $300K a year in calls that never became booked jobs. Here's exactly where it's happening and the three fixes that recover most of it.",
+    date: 'Mar 17, 2026',
+    readTime: 12,
+    img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=75',
+    imgAlt: 'CSR on phone handling inbound service calls',
+    pills: ['68% avg answer rate', '$160K/month gap', '3 specific fixes'],
+    featured: false,
+  },
+];
 ---
 <Layout
   title="Insights — Growth Research for HVAC, Roofing & Plumbing | Built on Tenth"
@@ -11,56 +37,60 @@ import Layout from '../../layouts/Layout.astro';
 .insights-hero { padding: 140px 48px 80px; position: relative; overflow: hidden; }
 .insights-hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 20% 50%, rgba(0,196,154,0.05) 0%, transparent 60%); }
 .insights-hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
-.insights-hero h1 { font-family: var(--serif); font-size: clamp(38px, 5vw, 60px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 22px; }
+.insights-hero h1 { font-family: var(--serif); font-size: clamp(34px, 5vw, 58px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
 .insights-hero h1 em { font-style: italic; color: var(--teal); }
-
-/* Pillar tabs */
 .pillar-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-.pt {
-  font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--ink3); background: var(--bg3); border: 1px solid var(--rule2);
-  padding: 7px 14px; border-radius: 3px; cursor: pointer; text-decoration: none; transition: all 0.2s;
-}
+.pt { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); background: var(--bg3); border: 1px solid var(--rule2); padding: 7px 14px; border-radius: 3px; text-decoration: none; transition: all 0.2s; }
 .pt:hover, .pt.active { color: var(--teal); border-color: var(--teal4); background: var(--teal3); }
-
-/* Coming soon / placeholder article grid */
-.articles-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
-  border-radius: 6px; overflow: hidden; margin-top: 48px;
-}
-.article-card { background: var(--bg2); padding: 32px 28px; display: flex; flex-direction: column; transition: background 0.25s; }
+.featured-article { display: grid; grid-template-columns: 1fr 380px; gap: 0; background: var(--bg2); border: 1px solid var(--rule2); border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.25s, transform 0.25s; margin-bottom: 1px; }
+.featured-article:hover { border-color: rgba(0,196,154,0.35); transform: translateY(-2px); }
+.fa-body { padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+.fa-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.fa-trade { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+.fa-date, .fa-read { font-family: var(--mono); font-size: 9.5px; color: var(--ink3); letter-spacing: 0.06em; }
+.fa-title { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); font-weight: 400; line-height: 1.22; margin-bottom: 16px; }
+.fa-preview { font-size: 14.5px; color: var(--ink2); line-height: 1.72; font-weight: 300; margin-bottom: 20px; flex: 1; }
+.fa-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.fa-pill { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.08em; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 4px 10px; border-radius: 3px; }
+.fa-cta { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+.featured-article:hover .fa-cta { gap: 10px; }
+.fa-img { position: relative; overflow: hidden; background: var(--bg3); min-height: 320px; }
+.fa-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.72); transition: transform 0.6s var(--ease); display: block; }
+.featured-article:hover .fa-img img { transform: scale(1.04); }
+.fa-img::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(0,196,154,0.06); pointer-events: none; }
+.fa-img-badge { position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); padding: 4px 10px; border-radius: 3px; }
+.articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.article-card { background: var(--bg2); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: background 0.25s; overflow: hidden; }
 .article-card:hover { background: var(--bg3); }
-.article-card.placeholder { opacity: 0.5; }
-.article-trade { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
-.article-title { font-family: var(--serif); font-size: 19px; font-weight: 400; line-height: 1.3; margin-bottom: 12px; flex: 1; }
-.article-preview { font-size: 13.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 18px; }
-.article-meta { display: flex; justify-content: space-between; align-items: center; }
-.article-date { font-family: var(--mono); font-size: 10px; color: var(--ink3); letter-spacing: 0.06em; }
-.article-read { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: flex; align-items: center; gap: 5px; transition: gap 0.2s; }
-.article-card:hover .article-read { gap: 8px; }
-
-/* Coming soon banner */
-.coming-soon-banner {
-  background: var(--bg3); border: 1px solid var(--rule2); border-radius: 6px;
-  padding: 48px; text-align: center; margin-top: 1px;
-}
-.csb-icon { font-size: 32px; margin-bottom: 16px; }
-.csb-h { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 10px; }
-.csb-p { font-size: 14px; color: var(--ink2); line-height: 1.7; font-weight: 300; max-width: 480px; margin: 0 auto 24px; }
-
-/* Newsletter CTA */
-.nl-prompt { background: var(--bg2); border: 1px solid rgba(0,196,154,0.25); border-radius: 6px; padding: 32px 36px; margin-top: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.nl-prompt-text h3 { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 6px; }
+.ac-img { width: 100%; height: 200px; overflow: hidden; position: relative; background: var(--bg3); }
+.ac-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.72); transition: transform 0.5s var(--ease); display: block; }
+.article-card:hover .ac-img img { transform: scale(1.04); }
+.ac-img::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(0,196,154,0.06); pointer-events: none; }
+.ac-body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+.ac-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.ac-trade { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+.ac-date { font-family: var(--mono); font-size: 9.5px; color: var(--ink3); letter-spacing: 0.06em; }
+.ac-title { font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.28; margin-bottom: 12px; }
+.ac-preview { font-size: 13.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 16px; flex: 1; }
+.ac-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+.ac-pill { font-family: var(--mono); font-size: 9px; font-weight: 500; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 3px 8px; border-radius: 3px; }
+.ac-read { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 5px; transition: gap 0.2s; }
+.article-card:hover .ac-read { gap: 8px; }
+.article-card.soon { opacity: 0.4; pointer-events: none; }
+.ac-coming { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 3px 8px; border-radius: 3px; width: fit-content; margin-top: auto; }
+.nl-prompt { background: rgba(0,196,154,0.04); border: 1px solid rgba(0,196,154,0.22); border-radius: 6px; padding: 28px 32px; margin-top: 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nl-prompt-text h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; margin-bottom: 5px; }
 .nl-prompt-text p { font-size: 13.5px; color: var(--ink2); font-weight: 300; line-height: 1.6; }
 .nl-prompt-form { display: flex; gap: 10px; flex-shrink: 0; }
 .nl-prompt-input { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 16px; font-family: var(--sans); font-size: 13.5px; color: var(--ink); outline: none; transition: border-color 0.2s; width: 220px; }
 .nl-prompt-input::placeholder { color: var(--ink3); }
 .nl-prompt-input:focus { border-color: rgba(0,196,154,0.5); }
-
 @media (max-width: 960px) {
-  .insights-hero { padding: 120px 20px 72px; }
-  .insights-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .insights-hero { padding: 100px 20px 60px; }
+  .insights-hero-inner { grid-template-columns: 1fr; gap: 28px; }
+  .featured-article { grid-template-columns: 1fr; }
+  .fa-img { min-height: 220px; order: -1; }
+  .fa-body { padding: 24px 20px; }
   .articles-grid { grid-template-columns: 1fr; }
   .nl-prompt { flex-direction: column; align-items: flex-start; }
   .nl-prompt-form { flex-direction: column; width: 100%; }
@@ -74,18 +104,15 @@ import Layout from '../../layouts/Layout.astro';
     <div>
       <div class="dispatch-label">Research &amp; Analysis</div>
       <h1>What the most profitable companies<br><em>actually do differently.</em></h1>
-      <p class="sec-p">Every article is built on data from analyzing real HVAC, roofing, and plumbing companies — their ad spend, phone systems, close rates, and competitive positioning. No opinion pieces. No generic advice. Just patterns from the data.</p>
+      <p class="sec-p">Every article is built on data from analyzing real HVAC, roofing, and plumbing companies. No opinion pieces. No generic advice. Just patterns from the numbers.</p>
     </div>
     <div>
       <p style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px">Filter by trade</p>
       <div class="pillar-tabs">
         <a href="/insights" class="pt active">All</a>
-        <a href="/insights?trade=HVAC" class="pt">HVAC</a>
-        <a href="/insights?trade=Roofing" class="pt">Roofing</a>
-        <a href="/insights?trade=Plumbing" class="pt">Plumbing</a>
-        <a href="/insights?topic=phone" class="pt">Phone Systems</a>
-        <a href="/insights?topic=google" class="pt">Google Ads</a>
-        <a href="/insights?topic=gbp" class="pt">Google Business</a>
+        <a href="/insights" class="pt">HVAC</a>
+        <a href="/insights" class="pt">Roofing</a>
+        <a href="/insights" class="pt">Plumbing</a>
       </div>
     </div>
   </div>
@@ -93,70 +120,106 @@ import Layout from '../../layouts/Layout.astro';
 
 <div class="wrap">
   <div class="inner">
-    <div class="rule-label"><span class="section-tag">Research</span></div>
+    <div class="rule-label"><span class="section-tag">Published Research</span></div>
 
-    <!-- Published articles will render here — placeholder shows the structure -->
-    <div class="articles-grid">
-      <div class="article-card reveal">
-        <div class="article-trade">HVAC · Google Ads</div>
-        <div class="article-title">What It Actually Costs to Book One HVAC Job From Google Ads in 2025</div>
-        <p class="article-preview">We analyzed 87 HVAC companies' Google Ads accounts and their booking data. The average cost per booked job is $340 — but the top 25% are paying $110. Here's what separates them.</p>
-        <div class="article-meta">
-          <span class="article-date">Coming soon</span>
-          <span class="article-read">Read →</span>
+    <a href="/insights/how-much-should-hvac-company-spend-on-marketing-2026" class="featured-article reveal">
+      <div class="fa-body">
+        <div>
+          <div class="fa-meta">
+            <span class="fa-trade">HVAC &middot; Revenue Diagnostics</span>
+            <span class="fa-date">Mar 16, 2026</span>
+            <span class="fa-read">11 min read</span>
+          </div>
+          <div class="fa-title">How Much Should an HVAC Company Spend on Marketing in 2026?</div>
+          <p class="fa-preview">Most owners are spending $8K to $15K a month without knowing their cost per booked job. Here is the actual math, benchmarks, a 5-step budget formula, and the three places HVAC companies silently leak marketing budget.</p>
+          <div class="fa-pills">
+            <span class="fa-pill">$340 avg cost/job</span>
+            <span class="fa-pill">7-10% revenue typical</span>
+            <span class="fa-pill">3 leak patterns</span>
+          </div>
         </div>
+        <span class="fa-cta">Read Article &rarr;</span>
       </div>
-      <div class="article-card reveal">
-        <div class="article-trade">All Trades · Phone Systems</div>
-        <div class="article-title">HVAC Phone Answer Rate Benchmarks — What the Top 25% Do Differently</div>
-        <p class="article-preview">The national average answer rate for home service companies is 66%. The top quartile answers 89% of calls. Here's exactly what systems they have in place and what the gap costs.</p>
-        <div class="article-meta">
-          <span class="article-date">Coming soon</span>
-          <span class="article-read">Read →</span>
+      <div class="fa-img">
+        <span class="fa-img-badge">Featured</span>
+        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=75" alt="HVAC technician servicing rooftop AC unit" loading="lazy" />
+      </div>
+    </a>
+
+    <div class="articles-grid" style="margin-top:1px">
+      <a href="/insights/why-hvac-csrs-are-losing-you-300k-per-year" class="article-card reveal">
+        <div class="ac-img">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=75" alt="CSR on phone handling inbound calls" loading="lazy" />
         </div>
-      </div>
-      <div class="article-card reveal">
-        <div class="article-trade">Roofing · Lead Sources</div>
-        <div class="article-title">Why Angi Leads Feel Like Garbage (And What Roofing Companies Do Instead)</div>
-        <p class="article-preview">Angi leads have a 12–18% close rate industry-wide — but some roofing companies close 35% of them. The difference isn't the lead quality. It's what happens in the first 4 minutes after the call comes in.</p>
-        <div class="article-meta">
-          <span class="article-date">Coming soon</span>
-          <span class="article-read">Read →</span>
+        <div class="ac-body">
+          <div class="ac-meta">
+            <span class="ac-trade">HVAC &middot; Pipeline Systems</span>
+            <span class="ac-date">Mar 17, 2026</span>
+          </div>
+          <div class="ac-title">Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)</div>
+          <p class="ac-preview">Your phones are answered. Your CSRs are friendly. And you are still losing $300K a year in calls that never became booked jobs. Here is exactly where it is happening and the three fixes that recover most of it.</p>
+          <div class="ac-pills">
+            <span class="ac-pill">68% avg answer rate</span>
+            <span class="ac-pill">$160K/month gap</span>
+            <span class="ac-pill">3 specific fixes</span>
+          </div>
+          <span class="ac-read">Read Article &rarr;</span>
+        </div>
+      </a>
+
+      <div class="article-card soon">
+        <div class="ac-img" style="background:var(--bg3);min-height:200px"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-trade">Roofing &middot; Lead Sources</span></div>
+          <div class="ac-title">Why Angi Leads Feel Like Garbage (And What Roofing Companies Do Instead)</div>
+          <p class="ac-preview">Angi leads have a 12-18% close rate industry-wide. But some roofing companies close 35% of them. The difference is what happens in the first 4 minutes after the call comes in.</p>
+          <div class="ac-coming">Coming soon</div>
         </div>
       </div>
     </div>
 
-    <div class="coming-soon-banner">
-      <div class="csb-icon">📊</div>
-      <div class="csb-h">New research drops every week.</div>
-      <p class="csb-p">We publish 2 articles a week — real data, specific dollar amounts, contractor language. Subscribe to the newsletter and we'll send each one the day it goes live.</p>
-      <a href="/newsletter" class="cta-primary">Get New Research Every Tuesday →</a>
-    </div>
-
-    <!-- Newsletter inline prompt -->
     <div class="nl-prompt">
       <div class="nl-prompt-text">
-        <h3>Get every article before it's indexed.</h3>
+        <h3>Get every article the day it publishes.</h3>
         <p>Subscribe to the Weekly Growth Report. One insight every Tuesday. Free.</p>
       </div>
       <div class="nl-prompt-form">
         <input type="email" class="nl-prompt-input" placeholder="your@email.com" id="insights-email" />
-        <button class="cta-filled" style="cursor:pointer" id="insights-submit">Subscribe</button>
+        <button class="cta-filled" style="cursor:pointer;white-space:nowrap" id="insights-submit">Subscribe Free</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  document.getElementById('insights-submit').addEventListener('click', () => {
+  document.getElementById('insights-submit').addEventListener('click', async () => {
     const inp = document.getElementById('insights-email');
-    if (inp.value.includes('@')) {
-      document.getElementById('insights-submit').textContent = '✓ Subscribed';
-      document.getElementById('insights-submit').style.background = '#22D37A';
-      inp.disabled = true;
-    } else {
+    const btn = document.getElementById('insights-submit');
+    if (!inp.value.includes('@')) {
       inp.style.borderColor = 'rgba(240,64,64,0.55)';
       inp.focus();
+      return;
+    }
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: inp.value.trim(), source: 'insights-page' }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        btn.textContent = 'Subscribed';
+        btn.style.background = '#22D37A';
+        inp.disabled = true;
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
     }
   });
 </script>

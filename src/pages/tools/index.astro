@@ -136,12 +136,14 @@ const tools = [
 .tools-cta p { font-size: 15px; color: var(--ink2); line-height: 1.7; margin-bottom: 30px; font-weight: 300; }
 
 @media (max-width: 960px) {
-  .tools-hero { padding: 120px 20px 72px; }
+  .tools-hero { padding: 100px 20px 60px; }
+  .tools-hero h1 { font-size: clamp(28px, 8vw, 44px); }
   .tool-item, .tool-item:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
   .tool-img-col { min-height: 180px; }
   .tool-img-col::after, .tool-item:nth-child(even) .tool-img-col::after { background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%); }
   .tool-body { padding: 24px 20px; }
-  .tools-cta { padding: 72px 20px; }
+  .tools-cta { padding: 64px 20px; }
+  .tools-cta h2 { font-size: clamp(24px, 7vw, 36px); }
 }
 </style>
 

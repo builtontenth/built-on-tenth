@@ -231,17 +231,38 @@ import Layout from '../layouts/Layout.astro';
   .svc-hero-inner { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 960px) {
-  .svc-hero { padding: 120px 20px 72px; }
-  .svcs-wrap { padding: 72px 20px; }
+  .svc-hero { padding: 100px 20px 60px; }
+  .svc-hero h1 { font-size: clamp(28px, 8vw, 44px); }
+  .svc-hero-ctas { flex-direction: column; gap: 10px; }
+  .svc-hero-ctas a { justify-content: center; }
+  .svcs-wrap { padding: 56px 20px; }
   .svc-card { grid-template-columns: 1fr; }
-  .svc-card-img { min-height: 200px; }
+  .svc-card-img { min-height: 180px; }
   .svc-card-img::after { background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%); }
-  .svc-card-body { padding: 28px 24px; }
+  .svc-card-body { padding: 24px 20px; }
+  .svc-price { font-size: 40px; }
   .trust-bar-inner { grid-template-columns: 1fr 1fr; }
   .trust-item:nth-child(2) { border-right: none; }
   .trust-item:nth-child(1), .trust-item:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  .trust-n { font-size: 26px; }
   .diff-grid { grid-template-columns: 1fr; }
-  .bottom-cta { padding: 80px 20px; }
+  .faq-list { margin-top: 32px; }
+  .bottom-cta { padding: 72px 20px; }
+  .bottom-cta-buttons { flex-direction: column; gap: 10px; }
+  .bottom-cta-buttons a { justify-content: center; }
+  /* Two-column section divs inline styles */
+  .inner > div[style],
+  .inner > [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 600px) {
+  .trust-bar-inner { grid-template-columns: 1fr; }
+  .trust-item { border-right: none; border-bottom: 1px solid var(--rule); }
+  .trust-item:last-child { border-bottom: none; }
+  .findings-panel { padding: 14px 16px; }
+  .timeline { gap: 0; }
 }
 </style>
 
@@ -377,7 +398,7 @@ import Layout from '../layouts/Layout.astro';
     <!-- ADVISORY -->
     <div class="svc-card reveal" id="advisory">
       <div class="svc-card-img">
-        <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=700&q=75" alt="90-day advisory" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=75" alt="90-day advisory - weekly written number reviews" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
         <div class="img-fb">🤝</div>
       </div>
       <div class="svc-card-body">

@@ -78,9 +78,14 @@ import Layout from '../layouts/Layout.astro';
 .form-success p { font-size: 14px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
 
 @media (max-width: 1100px) {
-  .apply-wrap { grid-template-columns: 1fr; gap: 48px; max-width: 640px; padding: 120px 20px 72px; }
+  .apply-wrap { grid-template-columns: 1fr; gap: 40px; max-width: 640px; padding: 100px 20px 64px; }
   .apply-form-card { position: static; }
   .field-row { grid-template-columns: 1fr; }
+  .apply-h { font-size: clamp(28px, 8vw, 44px); }
+}
+@media (max-width: 600px) {
+  .apply-wrap { padding: 88px 16px 56px; }
+  .apply-form-card { padding: 24px 20px; }
 }
 </style>
 
@@ -204,16 +209,44 @@ import Layout from '../layouts/Layout.astro';
 </div>
 
 <script>
-  document.getElementById('submit-btn').addEventListener('click', () => {
-    const email = document.getElementById('email').value;
-    const name  = document.getElementById('name').value;
-    if (!email.includes('@') || !name.trim()) {
-      if (!name.trim()) document.getElementById('name').style.borderColor = 'rgba(240,64,64,0.55)';
-      if (!email.includes('@')) document.getElementById('email').style.borderColor = 'rgba(240,64,64,0.55)';
-      return;
+  document.getElementById('submit-btn').addEventListener('click', async () => {
+    const email    = document.getElementById('email').value.trim();
+    const name     = document.getElementById('name').value.trim();
+    const company  = document.getElementById('company').value.trim();
+    const location = document.getElementById('location').value.trim();
+    const website  = document.getElementById('website').value.trim();
+    const service  = document.getElementById('service').value;
+    const spend    = document.getElementById('spend').value;
+    const question = document.getElementById('question').value.trim();
+    const btn      = document.getElementById('submit-btn');
+
+    // Validate required fields
+    let valid = true;
+    if (!name) { document.getElementById('name').style.borderColor = 'rgba(240,64,64,0.55)'; valid = false; }
+    if (!email.includes('@')) { document.getElementById('email').style.borderColor = 'rgba(240,64,64,0.55)'; valid = false; }
+    if (!valid) return;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, company, location, website, email, service, spend, question }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
     }
-    document.getElementById('form-content').style.display = 'none';
-    document.getElementById('form-success').classList.add('show');
   });
 </script>
 </Layout>
