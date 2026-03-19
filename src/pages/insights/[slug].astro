@@ -63,6 +63,43 @@ const articleSchema = {
   max-width: 780px;
   margin: 0 auto;
 }
+.ah-media {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 36px auto 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--rule2);
+  background: var(--bg3);
+}
+.ah-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,196,154,0.06);
+  pointer-events: none;
+  z-index: 1;
+}
+.ah-media img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(18%) brightness(0.78);
+}
+.ah-media-caption {
+  position: relative;
+  z-index: 2;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
+  padding: 10px 14px;
+  border-top: 1px solid var(--rule);
+  letter-spacing: 0.04em;
+  background: var(--bg3);
+}
 .ah-meta {
   display: flex;
   align-items: center;
@@ -352,6 +389,12 @@ const articleSchema = {
 }
 @media (max-width: 960px) {
   .article-hero { padding: 100px 20px 48px; }
+  .ah-media {
+    margin-top: 28px;
+  }
+  .ah-media img {
+    height: 240px;
+  }
   .article-body { padding: 40px 20px 72px; }
   :global(.article-content p > img) { height: 220px; }
   :global(.article-content table) {
@@ -416,6 +459,10 @@ const articleSchema = {
       <div><strong>{post.data.author}</strong> · Revenue intelligence for home service companies</div>
     </div>
   </div>
+  <figure class="ah-media">
+    <img src={heroImage} alt={post.data.heroImageAlt} loading="eager" />
+    <figcaption class="ah-media-caption">{post.data.heroImageAlt}</figcaption>
+  </figure>
 </div>
 
 <div class="article-body">

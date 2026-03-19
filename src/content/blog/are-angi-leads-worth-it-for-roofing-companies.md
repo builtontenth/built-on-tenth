@@ -7,15 +7,15 @@ category: "Channel Teardowns"
 trade: ["Roofing"]
 heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80"
 heroImageAlt: "Contractor working on a residential construction project"
-readTime: 9
+readTime: 12
 featured: false
-preview: "Most roofers judge Angi by lead volume. The real number is cost per signed contract. Here's the math, where Angi works, where it breaks, and what to measure before you cut or scale it."
+preview: "Most roofers judge Angi by lead volume. The real number is cost per signed contract. Here's the math, where Angi works, where it breaks, what to measure before you cut or scale it, and how it stacks up against Thumbtack, LSAs, and Google Ads."
 pills: ["$1,625-$1,857/job", "Shared lead math", "5-minute response"]
 primaryCtaLabel: "Grade Your Lead Sources"
 primaryCtaHref: "/tools/lead-grader"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
-seoKeywords: ["angi leads roofing", "are angi leads worth it", "roofing lead generation 2026", "angi pro for roofers", "cost per lead roofing", "homeadvisor roofing leads"]
+seoKeywords: ["angi leads roofing", "are angi leads worth it", "roofing lead generation 2026", "angi pro for roofers", "cost per lead roofing", "homeadvisor roofing leads", "angi vs thumbtack roofing", "when to cancel angi", "how to improve angi roi", "angi leads conversion rate roofing"]
 ---
 
 A roofing company owner I spoke with last month was spending $3,200/month on Angi leads.
@@ -56,6 +56,8 @@ Lead prices vary by market size, competition, and project type. Based on data fr
 
 These are **shared leads**. You are not the only contractor receiving that homeowner's information the moment it comes in.
 
+Note: HomeAdvisor is now Angi. The platform rebranded but the pay-per-lead model is the same. If you see "HomeAdvisor roofing leads" referenced anywhere, it's the same product.
+
 ## The Number That Actually Matters
 
 Lead cost is the wrong number to optimize against. The number that matters is **cost per signed contract**.
@@ -93,6 +95,8 @@ Most roofing companies have no one assigned to call new leads immediately. The l
 
 **What this means for your math:** If your contact rate is 30% instead of 50%, your cost per signed contract goes from $1,625 to $2,700 on the same lead spend. Same market. Same Angi budget. Completely different result.
 
+This is a phone operations problem, not a channel problem. If your office is missing calls or running slow follow-up on every source, Angi is just where the damage shows up fastest because of the shared-lead structure. The [phone performance calculator](/tools/phone-calculator) can show you what your current answer rate and booking rate are actually costing you per month.
+
 ## Where Angi Works for Roofing Companies
 
 Angi tends to produce positive ROI for roofing companies when all of the following are true:
@@ -121,22 +125,69 @@ Angi tends to produce positive ROI for roofing companies when all of the followi
 
 *Pulling your actual Angi numbers takes 30 minutes. Most owners have never done it.*
 
+## How to Actually Improve Your Angi ROI
+
+If your numbers are marginal but not clearly broken, fixing the process usually moves more than switching channels.
+
+**Fix your response time first.** Most roofing companies treat new leads the same way they treat everything else: someone gets to it when they get to it. On Angi, that kills you. Assign one person, whether that's your CSR, an answering service, or an on-call number, to call every new Angi lead within five minutes during business hours. That one change can move your contact rate from 30% to 55%.
+
+**Build a real follow-up sequence.** A homeowner who doesn't answer the first call is not a dead lead. Most signed contracts on shared leads require three to five touches before the homeowner commits to an estimate. Call, text, call again. If your office makes one attempt and marks the lead as unworkable, you're closing out leads your competition is closing. The [follow-up sequence we've documented](/insights/the-follow-up-sequence-that-moved-close-rate-to-40-percent) outlines exactly how top-performing home service companies handle this.
+
+**Work your Angi profile like it matters.** When a homeowner gets three calls from three contractors, they pull up all three profiles before calling back. Fewer than 20 reviews or a 4.2 star rating and you're often the one they skip. Ask every job for a review. Make it easy. That review velocity directly affects your close rate on every shared lead you buy.
+
+**Separate storm work from retail leads.** Insurance replacement jobs have a different close pattern than retail replacements. If you're buying Angi leads and mixing storm work into the same funnel without tracking separately, your numbers look worse than they are. Track each type separately and you'll know which lead type is actually profitable.
+
+**Request lead credits when they're legitimate.** Angi does credit leads that are wrong number, out of service area, or duplicate. Most contractors don't request them. If you're buying 30 leads a month and not auditing for credit-eligible contacts, you're overpaying.
+
+## Angi vs. Thumbtack for Roofing Contractors
+
+Thumbtack is the other pay-per-lead marketplace most roofing contractors consider. The structure is different enough that it's worth a direct comparison.
+
+| | Angi | Thumbtack |
+| --- | --- | --- |
+| Lead model | Shared (up to 3 contractors) | You choose which leads to bid on |
+| Pricing | Flat rate per lead | You set your bid; higher bids get more visibility |
+| Lead volume | Higher, especially in large markets | Lower but more selective |
+| Lead quality | Mixed, varies heavily by market | Generally higher intent, but fewer |
+| Speed requirement | Critical, under 5 minutes | Important but less cutthroat |
+| Best for | High-volume roofing operations with fast phone ops | Smaller shops who want to be selective |
+
+The core difference: Angi sells you leads, Thumbtack lets you decide which leads to buy. That selectivity can improve your conversion rate, but it also limits volume. In most markets, Angi produces significantly more roofing leads per month. Thumbtack works better for contractors who want to compete on fewer, higher-quality opportunities rather than grind through shared contacts at scale.
+
+Neither platform replaces owned channels. Both depend entirely on how fast and how well your phone operation responds.
+
 ## Angi vs. LSAs vs. Google Ads for Roofers
 
-| | Angi Pay-Per-Lead | Google LSAs | Google Ads |
-| --- | --- | --- | --- |
-| Lead type | Shared (up to 3 contractors) | Exclusive | Exclusive |
-| Avg. cost per lead | $100 to $160 | $70 to $130 | $50 to $100 |
-| Lead intent | Medium | High | High |
-| Speed required | Critical (under 5 min) | Important | Important |
-| Review dependency | High | Very high | Low |
-| Best for | High-volume companies with fast phone ops | Verified companies with 50+ strong reviews | Companies with conversion tracking in place |
+| | Angi Pay-Per-Lead | Thumbtack | Google LSAs | Google Ads |
+| --- | --- | --- | --- | --- |
+| Lead type | Shared (up to 3 contractors) | Semi-exclusive (you choose) | Exclusive | Exclusive |
+| Avg. cost per lead | $100 to $160 | $40 to $100 | $70 to $130 | $50 to $100 |
+| Lead intent | Medium | Medium-high | High | High |
+| Speed required | Critical (under 5 min) | Important | Important | Important |
+| Review dependency | High | High | Very high | Low |
+| Best for | High-volume companies with fast phone ops | Selective operators with lower volume tolerance | Verified companies with 50+ strong reviews | Companies with conversion tracking in place |
 
 **LSAs (Local Service Ads)** are generally the better channel for roofing companies that have built up strong Google reviews and have gone through Google's background check and license verification process. Leads are exclusive, intent is higher, and cost per call is usually lower.
 
 The catch: LSAs require patience to build. Google's algorithm rewards companies that maintain high booking rates and positive reviews over time. You can't just turn them on at full spend and expect results in week one.
 
 **Google Ads** work well when you have conversion tracking properly set up, meaning you know what keywords are generating calls, which calls are turning into booked jobs, and what you're paying per signed contract by keyword. Without that tracking, Google Ads is just a more expensive version of the same guessing problem you have with Angi.
+
+## When to Cut Angi Completely
+
+Some numbers tell you the channel is broken. Some tell you your process is broken. Knowing the difference matters before you make a budget call.
+
+**Cut Angi if all of the following are true:**
+
+Your cost per signed contract is over 15% of your average ticket, AND you already have a CSR calling leads within five minutes, AND you've run a real three-touch follow-up sequence, AND you've tested this for at least 90 days.
+
+If all four of those are true and the numbers still don't work, the channel isn't built for your market. Either the lead volume isn't there or the competition is too well-resourced for shared leads to pencil out. Move that budget to LSAs or Google Ads.
+
+**Do not cut Angi if:**
+
+Your process hasn't been fixed. If you're calling leads two hours later and doing one follow-up attempt per contact, that's not an Angi problem. Fixing your phone process will move those numbers before switching channels will. The [CSR performance breakdown](/insights/why-hvac-csrs-are-losing-you-300k-per-year) documents exactly how much slow phone ops cost per month. The math applies to roofing too, not just HVAC.
+
+**The partial cut:** If Angi is marginal, reduce spend by 40% and track whether cost per signed contract improves. Fewer leads with the same phone ops often produces better numbers because your CSR can respond faster to each one. If the numbers improve with lower volume, you've found your ceiling for this channel.
 
 ## The Test Worth Running Before You Change Anything
 
@@ -157,6 +208,8 @@ If it's under 10% of your average job value, Angi is probably worth keeping and 
 If it's 10 to 15%, Angi is marginal. Your phone process and follow-up system need fixing before you add more spend.
 
 If it's over 15%, either the channel doesn't work in your market, or your phone operation isn't built to compete on shared leads.
+
+Use the [Lead Source Grader](/tools/lead-grader) to score Angi alongside every other channel you're running. It puts all your sources on the same cost-per-job basis so you can see where to move budget.
 
 ## What to Do This Week
 
@@ -190,3 +243,19 @@ Google LSAs are generally the next best channel for roofing companies that have 
 ### How do I know if my Angi spend is profitable?
 
 Pull leads, contacts, estimates, and signed contracts for the last 90 days. Divide total Angi spend by signed contracts. That's your cost per signed contract. If it's under 10% of your average job value, you're in a good range. Over 15%, something in the chain, speed, follow-up, or close rate, needs to be fixed before you add more spend.
+
+### Is Angi better than Thumbtack for roofing?
+
+Angi produces more lead volume in most markets. Thumbtack gives you more control because you choose which leads to bid on rather than receiving every lead automatically. If your phone operation can handle volume and respond fast, Angi typically generates more total booked jobs. If you're a smaller operation and want to be selective, Thumbtack's model may reduce waste. Neither beats LSAs or Google Ads on lead intent and exclusivity.
+
+### Why are my Angi leads not converting?
+
+The most common reasons, in order: response time over 15 minutes, fewer than three follow-up attempts per unbooked contact, review profile below 4.3 stars, and average ticket too low for the lead cost to pencil out. Run the 90-day audit described above before assuming the channel is broken.
+
+### Can I get a refund from Angi for bad leads?
+
+Angi does credit leads under specific conditions: wrong phone number, homeowner outside your service area, project type outside your services, and duplicate contacts. Credits are not automatic. You have to request them through your account. Most contractors don't request them and overpay as a result. Audit your leads monthly and submit credit requests on any that qualify.
+
+### What conversion rate should I expect from Angi roofing leads?
+
+Contact rate (leads you actually reach) should be 50 to 65% if you're calling within five minutes. Of those you contact, estimate set rate should be 35 to 50%. Of estimates set, close rate on a full replacement should be 35 to 45%. That chain produces roughly 7 to 10 signed contracts per 100 leads. Most companies are getting 3 to 5 per 100 because one or more steps in that chain is broken.

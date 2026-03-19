@@ -8,14 +8,14 @@ category: "Operator Case Studies"
 trade: ["HVAC"]
 heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80"
 heroImageAlt: "HVAC business owner reviewing online presence and marketing data"
-readTime: 12
+readTime: 15
 featured: false
 pills: ["Case Study", "HVAC", "Teardown"]
 primaryCtaLabel: "Audit Your Website Free"
 primaryCtaHref: "/tools/website-audit"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
-seoKeywords: ["hvac company online presence", "hvac marketing audit", "hvac google presence", "hvac website audit", "hvac competitor analysis", "hvac marketing teardown"]
+seoKeywords: ["hvac company online presence", "hvac marketing audit", "hvac google presence", "hvac website audit", "hvac competitor analysis", "hvac marketing teardown", "hvac gbp optimization", "hvac local seo audit", "how to audit hvac online presence", "hvac map pack ranking"]
 ---
 
 This is a real company. Name and city changed.
@@ -26,7 +26,7 @@ He reached out because he'd been spending $7,800/month on marketing and couldn't
 
 We spent 90 minutes on his online presence using only public data. No access to his accounts, his CRM, or his ad platform. Everything below is visible to any homeowner who searches for HVAC in his market.
 
-Here's what we found — gap by gap, in estimated annual dollars.
+Here's what we found -- gap by gap, in estimated annual dollars.
 
 ---
 
@@ -36,18 +36,18 @@ Before the gaps, here's the baseline:
 
 | Signal | Garrison H&A | Market Average |
 |---|---|---|
-| Google star rating | 4.6 ⭐ | 4.3 |
+| Google star rating | 4.6 | 4.3 |
 | Total Google reviews | 84 | 51 |
 | Reviews this month | 1 | 2.4 |
-| Map pack position | #3 | — |
+| Map pack position | #3 | -- |
 | Website mobile speed | 6.8s load | 5.1s |
 | Running Google Ads | Yes | 58% of competitors |
 | Running LSAs | No | 41% of competitors |
-| Phone above fold (mobile) | No | — |
+| Phone above fold (mobile) | No | -- |
 
 At first glance, Garrison looks solid. Above-average rating, above-average review count, active paid advertising. Better than most.
 
-But the benchmark for comparison isn't "most." It's the top 25% of HVAC companies in his revenue range. Against that group, there are five gaps — and each one has a dollar amount attached.
+But the benchmark for comparison isn't "most." It's the top 25% of HVAC companies in his revenue range. The [HVAC marketing benchmarks analysis](/insights/hvac-marketing-benchmarks-2026-what-top-performers-spend) shows where top-quartile companies sit on each of these signals. Against that group, there are five gaps -- and each one has a dollar amount attached.
 
 ---
 
@@ -57,17 +57,17 @@ But the benchmark for comparison isn't "most." It's the top 25% of HVAC companie
 
 But the last month: one new review. The month before: two. In the six months before that: averaging 1.8 per month.
 
-Garrison got his reviews in a burst — a few years ago, his team went hard on asking customers. Then the asking stopped and the reviews stopped.
+Garrison got his reviews in a burst -- a few years ago, his team went hard on asking customers. Then the asking stopped and the reviews stopped.
 
-**Why this matters:** Google's map pack algorithm weights review velocity — how many new reviews you're getting right now — heavily against recency. A competitor with 40 total reviews adding 9 per month will outrank Garrison's 84 over a 6-month window in most markets.
+**Why this matters:** Google's map pack algorithm weights review velocity -- how many new reviews you're getting right now -- heavily against recency. A competitor with 40 total reviews adding 9 per month will outrank Garrison's 84 over a 6-month window in most markets.
 
 We checked his top competitor. 67 reviews total. But they added 11 in the last 30 days. They were #1 in the map pack.
 
 **The gap in dollars:**
 
-Map pack position #1 vs. #3 in a mid-size metro typically represents a 40–60% difference in inbound call volume from organic search. At Garrison's call volume and ticket size, moving from #3 to #1 is worth an estimated **$8,000–$14,000/month in additional calls** — before accounting for booking rate.
+Map pack position #1 vs. #3 in a mid-size metro typically represents a 40 to 60% difference in inbound call volume from organic search. At Garrison's call volume and ticket size, moving from #3 to #1 is worth an estimated **$8,000 to $14,000/month in additional calls** -- before accounting for booking rate.
 
-Conservative annual estimate: **$96,000–$168,000.**
+Conservative annual estimate: **$96,000 to $168,000.**
 
 **The fix:** Ask every customer for a review at job close. One text from the tech with a direct link. ServiceTitan and Housecall Pro automate this. Manual version: the tech texts from their personal phone immediately after the homeowner signs off. Eight to ten new reviews per month is achievable within 60 days.
 
@@ -77,12 +77,12 @@ Conservative annual estimate: **$96,000–$168,000.**
 
 **What we saw:** We ran Garrison's website through PageSpeed Insights on mobile. Load time: 6.8 seconds.
 
-Industry data is clear on what happens at that load time: 53% of mobile visitors leave before the page loads if it takes more than 3 seconds. At 6.8 seconds, the abandonment rate is closer to 70–75%.
+Industry data is clear on what happens at that load time: 53% of mobile visitors leave before the page loads if it takes more than 3 seconds. At 6.8 seconds, the abandonment rate is closer to 70 to 75%.
 
 His website gets traffic. It just doesn't keep it.
 
 The specific issues PageSpeed flagged:
-- Hero image uncompressed (2.4MB — should be under 200KB)
+- Hero image uncompressed (2.4MB -- should be under 200KB)
 - No lazy loading on below-fold images
 - Render-blocking JavaScript from two third-party scripts
 - No caching headers on static assets
@@ -91,20 +91,20 @@ None of these require a new website. They're configuration and compression fixes
 
 **The phone number problem:** On mobile, Garrison's phone number was not visible above the fold. The nav had a logo and a hamburger menu. The phone number lived in the footer and on the contact page. A homeowner searching for HVAC at 7pm with a broken unit who lands on his site has to scroll or navigate to find the number.
 
-Top-performing HVAC sites have the phone number in the nav bar, clickable, visible on mobile without scrolling. That one change — phone number above fold on mobile — typically increases call volume from organic traffic by 15–22%.
+Top-performing HVAC sites have the phone number in the nav bar, clickable, visible on mobile without scrolling. That one change -- phone number above fold on mobile -- typically increases call volume from organic traffic by 15 to 22%.
 
 ![HVAC company website on mobile phone showing slow load and poor UX](https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80)
 *A 6.8 second mobile load time costs more in lost visitors than most monthly ad budgets.*
 
 **The gap in dollars:**
 
-Garrison's website receives an estimated 1,800–2,400 monthly visits based on his map pack position and keyword rankings. At 70% mobile abandonment (vs. 45% at 2.5s load), he's losing roughly 450–600 additional visitors per month compared to a fast site.
+Garrison's website receives an estimated 1,800 to 2,400 monthly visits based on his map pack position and keyword rankings. At 70% mobile abandonment (vs. 45% at 2.5s load), he's losing roughly 450 to 600 additional visitors per month compared to a fast site.
 
 At a 4% conversion rate on retained visitors, average ticket of $2,400, and 65% close rate on calls:
 
-450 additional retained visitors × 4% call rate × 65% close rate × $2,400 ticket × 12 months = **~$135,000/year.**
+450 additional retained visitors x 4% call rate x 65% close rate x $2,400 ticket x 12 months = **~$135,000/year.**
 
-Annual estimate from site speed alone: **$110,000–$155,000.**
+Annual estimate from site speed alone: **$110,000 to $155,000.**
 
 **The fix:** Compress the hero image. Add lazy loading. Move the phone number to the nav. These three changes get most of the recovery. A developer can do them in an afternoon. A DIY owner can do the image compression and phone number move in an hour.
 
@@ -116,15 +116,15 @@ Annual estimate from site speed alone: **$110,000–$155,000.**
 
 LSAs appear above regular Google Ads in search results. They show the company name, star rating, review count, and a "Google Guaranteed" badge. They charge per lead, not per click. Leads are exclusive.
 
-In his market, we checked Google's LSA interface. His top three competitors were all running LSAs. Garrison wasn't in the LSA section at all — meaning those premium positions above his paid ads go entirely to competitors.
+In his market, we checked Google's LSA interface. His top three competitors were all running LSAs. Garrison wasn't in the LSA section at all -- meaning those premium positions above his paid ads go entirely to competitors.
 
-**Why this matters:** In most HVAC markets, LSA positions 1–3 get 30–45% of clicks on the results page. Garrison's Google Ads are appearing below that section. His ads may be well-configured, but they're competing for attention after the LSA section has already captured the highest-intent searchers.
+**Why this matters:** In most HVAC markets, LSA positions 1 to 3 get 30 to 45% of clicks on the results page. Garrison's Google Ads are appearing below that section. His ads may be well-configured, but they're competing for attention after the LSA section has already captured the highest-intent searchers.
 
 **The gap in dollars:**
 
-LSA leads in his market run $80–$140 per lead at roughly a 35% booking rate (excluding speed-to-call losses). Assuming Garrison captured 15–20 leads/month through LSAs that are currently going to competitors:
+LSA leads in his market run $80 to $140 per lead at roughly a 35% booking rate (excluding speed-to-call losses). Assuming Garrison captured 15 to 20 leads/month through LSAs that are currently going to competitors:
 
-18 leads/month × 35% booking rate × $2,400 ticket × 12 months = **$181,440/year.**
+18 leads/month x 35% booking rate x $2,400 ticket x 12 months = **$181,440/year.**
 
 That math assumes he calls them quickly. Which brings us to Gap 4.
 
@@ -136,9 +136,9 @@ That math assumes he calls them quickly. Which brings us to Gap 4.
 
 First call back: 3 hours 12 minutes.
 
-We then checked his Google Ads transparency data. He's running ads. Ads generate clicks. Clicks generate form fills and calls. The 3+ hour response on a form fill — during business hours, on a weekday — means competitors who respond faster are closing leads he's paying to generate.
+We then checked his Google Ads transparency data. He's running ads. Ads generate clicks. Clicks generate form fills and calls. The 3+ hour response on a form fill -- during business hours, on a weekday -- means competitors who respond faster are closing leads he's paying to generate.
 
-Data on speed-to-call in home services is consistent: response within 5 minutes produces a 70–80% contact rate. Response at 3+ hours produces a 20–30% contact rate. Same lead. Completely different outcome.
+Data on speed-to-call in home services is consistent: response within 5 minutes produces a 70 to 80% contact rate. Response at 3+ hours produces a 20 to 30% contact rate. Same lead. Completely different outcome.
 
 **The gap in dollars:**
 
@@ -147,9 +147,11 @@ If Garrison generates 40 web form inquiries per month (conservative for his ad s
 - Contact rate at 3hrs: ~25% = 10 contacts
 - Contact rate at under 5min: ~75% = 30 contacts
 - Difference: 20 additional contacts/month
-- At 45% booking rate, $2,400 ticket: **20 × 45% × $2,400 × 12 = $259,200/year**
+- At 45% booking rate, $2,400 ticket: **20 x 45% x $2,400 x 12 = $259,200/year**
 
 Even at half that estimate: over $100,000/year in leads he paid for, contacted too late to compete for.
+
+Speed-to-call is a phone operations problem, not a marketing problem. The [CSR performance breakdown](/insights/why-hvac-csrs-are-losing-you-300k-per-year) covers exactly how much slow response time and weak follow-up cost per year in real dollar terms.
 
 ![HVAC CSR at desk responding quickly to inbound leads and inquiries](https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=80)
 *Three hours is the difference between a closed job and a lost lead. Most owners don't know their own response time.*
@@ -160,15 +162,15 @@ Even at half that estimate: over $100,000/year in leads he paid for, contacted t
 
 **What we saw:** 84 Google reviews. 4.6 stars. Owner responses: 11 total.
 
-That's a 13% response rate. 87% of reviews — including several that mentioned specific techs by name and detailed positive experiences — went unanswered.
+That's a 13% response rate. 87% of reviews -- including several that mentioned specific techs by name and detailed positive experiences -- went unanswered.
 
 This matters for two reasons:
 
-**Homeowners read responses.** When someone is comparing two HVAC companies, they read a few reviews and then check if the owner responds. An owner who responds — especially to negative reviews — signals that the company cares about the customer experience after the job. An owner who doesn't respond signals nothing.
+**Homeowners read responses.** When someone is comparing two HVAC companies, they read a few reviews and then check if the owner responds. An owner who responds -- especially to negative reviews -- signals that the company cares about the customer experience after the job. An owner who doesn't respond signals nothing.
 
-**Google rewards it.** Active GBP management — including responding to reviews — is a local ranking signal. It's not the strongest signal, but it's free, it takes 3 minutes per response, and virtually every competitor is also ignoring it. It's a free edge.
+**Google rewards it.** Active GBP management -- including responding to reviews -- is a local ranking signal. It's not the strongest signal, but it's free, it takes 3 minutes per response, and virtually every competitor is also ignoring it. It's a free edge.
 
-**The gap in dollars:** Hard to isolate precisely, but a 30–40% improvement in conversion rate from profile visitors to callers is a reasonable estimate when owner response rate goes from under 15% to 85%+. At Garrison's profile traffic levels: **$20,000–$40,000/year** in additional calls from the same search positions.
+**The gap in dollars:** Hard to isolate precisely, but a 30 to 40% improvement in conversion rate from profile visitors to callers is a reasonable estimate when owner response rate goes from under 15% to 85%+. At Garrison's profile traffic levels: **$20,000 to $40,000/year** in additional calls from the same search positions.
 
 ---
 
@@ -176,16 +178,64 @@ This matters for two reasons:
 
 | Gap | Issue | Est. Annual Impact |
 |---|---|---|
-| Review velocity stalled | 1–2/month vs. 8–10 needed | $96,000–$168,000 |
-| Site speed & phone above fold | 6.8s load, no CTA on mobile | $110,000–$155,000 |
-| No LSAs running | Missing top 3 positions | $140,000–$200,000 |
-| Slow lead response | 3hr+ vs. under 5 min | $100,000–$260,000 |
-| Low review response rate | 13% vs. 85%+ target | $20,000–$40,000 |
-| **Total estimated annual leakage** | | **$466,000–$823,000** |
+| Review velocity stalled | 1 to 2/month vs. 8 to 10 needed | $96,000 to $168,000 |
+| Site speed and phone above fold | 6.8s load, no CTA on mobile | $110,000 to $155,000 |
+| No LSAs running | Missing top 3 positions | $140,000 to $200,000 |
+| Slow lead response | 3hr+ vs. under 5 min | $100,000 to $260,000 |
+| Low review response rate | 13% vs. 85%+ target | $20,000 to $40,000 |
+| **Total estimated annual leakage** | | **$466,000 to $823,000** |
 
-The midpoint of that range — **$640,000** — is sitting in gaps that require no additional ad spend to fix. Every one of them is a system change, a configuration fix, or a habit shift.
+The midpoint of that range -- **$640,000** -- is sitting in gaps that require no additional ad spend to fix. Every one of them is a system change, a configuration fix, or a habit shift.
 
 Garrison is spending $7,800/month on marketing. He's leaving somewhere between $39,000 and $69,000 per month on the table through these five gaps. The math isn't: "spend more." It's: "fix what you already have."
+
+---
+
+## How to Run This Analysis on Your Own Company
+
+Every gap we found on Garrison is findable using public tools. Here's the exact process, in order.
+
+**Step 1: Check your map pack position and competitors.**
+
+Open an incognito browser window. Search your primary keyword plus your city -- "HVAC repair [city]" or "air conditioning company [city]." Screenshot the results. Note your position in the map pack. Then click through to your top two competitors' profiles and check three things: total reviews, reviews in the last 30 days, and owner response rate. That tells you where the velocity gap stands.
+
+**Step 2: Run PageSpeed Insights on mobile.**
+
+Go to pagespeed.web.dev and enter your website URL. Run the mobile test. Anything above 3 seconds is a recoverable leak. The report tells you exactly what's causing the slowdown and estimates how much each issue contributes.
+
+**Step 3: Pull up your own site on your phone.**
+
+Without scrolling or tapping anything: can you see your phone number? Is there a clear call to action? If a homeowner landed on this page at 8pm with no heat, would they know what to do in under 5 seconds? If the answer to any of those is no, that's the fix.
+
+**Step 4: Search for LSAs in your market.**
+
+Google your primary keyword from your service area. Look at what appears above the regular ads -- that's the LSA section. If your company isn't there and your competitors are, you're invisible to the highest-intent searchers on the page.
+
+**Step 5: Submit a test inquiry on your own site.**
+
+Use a personal email or a family member's phone. Submit the contact form at 10am on a weekday. Time how long it takes your team to respond. That number is your real speed-to-call, not the number you think it is.
+
+The [website audit tool](/tools/website-audit) runs the PageSpeed and basic conversion checks automatically. Start there, then layer in the manual steps above.
+
+---
+
+## What the GBP Signals Actually Move
+
+Most HVAC owners think about their Google Business Profile as a listing to keep updated. Top performers treat it as a channel to actively work.
+
+The signals Google weighs for map pack ranking, in rough order of impact:
+
+**Proximity.** How close is the searcher to your business address or service area. You can't change this. But you can make sure your service area is configured accurately in GBP -- many companies set it too narrow and cut themselves out of adjacent zip codes.
+
+**Review velocity and rating.** Covered above. Eight to fifteen new reviews per month with a 4.5+ rating is the target. Rating matters less than most owners think once you're above 4.3 -- the velocity gap between you and a competitor at 4.7 is usually more impactful than the star difference.
+
+**GBP activity.** Posting, adding photos, answering Q&A, and responding to reviews all signal to Google that the listing is actively managed. Most competitors post once and forget it. Posting one update per week and adding two to three photos per month -- photos of your trucks, your techs, completed jobs -- is enough to create a visible activity gap over 90 days.
+
+**Category and keyword relevance.** Your primary GBP category should match your core service exactly. Secondary categories matter too -- if you do both HVAC and plumbing, both should be listed. Make sure your business description uses the service and location language your customers actually search.
+
+**Website signals.** Google looks at your website when ranking GBP. A fast mobile site with clear location signals (city and service area mentioned naturally in page copy) reinforces the GBP listing. A slow, thin site weakens it.
+
+None of these are agency work. All of them are owner-controllable, and most competitors are ignoring at least three of the five.
 
 ---
 
@@ -195,8 +245,8 @@ Garrison's gaps are not unusual. In the 300+ companies we've analyzed, four of t
 
 Check these five things on your own company right now:
 
-1. **Review velocity:** How many Google reviews did you get last month? Open your GBP profile and count. If it's under 5, you don't have a review system — you have luck.
-2. **Mobile load time:** Go to [pagespeed.web.dev](https://pagespeed.web.dev), enter your website URL, run the mobile test. If it's above 3 seconds, that's a recoverable leak.
+1. **Review velocity:** How many Google reviews did you get last month? Open your GBP profile and count. If it's under 5, you don't have a review system -- you have luck.
+2. **Mobile load time:** Go to pagespeed.web.dev, enter your website URL, run the mobile test. If it's above 3 seconds, that's a recoverable leak.
 3. **Phone above fold:** Pull up your website on your phone. Without scrolling or tapping anything, can you see your phone number? If no, fix it today.
 4. **LSAs:** Google "HVAC [your city]" and look at the results. Is your company in the LSA section at the top? If not, you're below the fold before the page even starts.
 5. **Review response rate:** Scroll through your Google reviews. What percentage have an owner response? If it's under 70%, set a calendar reminder to respond to reviews every Monday morning.
@@ -207,26 +257,47 @@ None of these require an agency. None require ad spend. All five are in your con
 
 ## What to Do This Week
 
-1. **Run your own audit** — use the [free Website Conversion Audit tool](/tools/website-audit) to pull your PageSpeed score and check the basics in 30 seconds.
-2. **Check your map pack position** — Google your main service keyword + your city from an incognito window. Where do you appear? Who's above you? How many reviews do they have?
-3. **Submit a test inquiry on your own website** — then time how long it takes your team to respond. That number might be uncomfortable. It's worth knowing.
-4. **Respond to your last 10 unanswered reviews** — right now, before doing anything else. It takes 15 minutes and closes a gap that's visible to every homeowner comparing you to a competitor.
+1. **Run your own audit** -- use the [free Website Conversion Audit tool](/tools/website-audit) to pull your PageSpeed score and check the basics in 30 seconds.
+2. **Check your map pack position** -- Google your main service keyword plus your city from an incognito window. Where do you appear? Who's above you? How many reviews do they have?
+3. **Submit a test inquiry on your own website** -- then time how long it takes your team to respond. That number might be uncomfortable. It's worth knowing.
+4. **Respond to your last 10 unanswered reviews** -- right now, before doing anything else. It takes 15 minutes and closes a gap that's visible to every homeowner comparing you to a competitor.
 
 ---
 
 ## Frequently Asked Questions
 
 ### How do I check my HVAC company's Google map pack position?
-Open an incognito or private browser window (so your own search history doesn't skew the result) and search for your main service keyword plus your city — for example, "HVAC company Atlanta" or "air conditioning repair Dallas." Your position in the three-company map pack that appears is your current ranking. Check from a location inside your service area for the most accurate result.
+
+Open an incognito or private browser window (so your own search history doesn't skew the result) and search for your main service keyword plus your city -- for example, "HVAC company Atlanta" or "air conditioning repair Dallas." Your position in the three-company map pack that appears is your current ranking. Check from a location inside your service area for the most accurate result.
 
 ### What is a good Google review velocity for an HVAC company?
-Eight to fifteen new reviews per month is the target for HVAC companies in competitive markets. Companies adding fewer than five per month typically see their map pack position stagnate or decline as competitors with stronger velocity move up. The fastest way to build velocity is asking every customer at job close with a direct link — not a general ask to "leave us a review."
+
+Eight to fifteen new reviews per month is the target for HVAC companies in competitive markets. Companies adding fewer than five per month typically see their map pack position stagnate or decline as competitors with stronger velocity move up. The fastest way to build velocity is asking every customer at job close with a direct link -- not a general ask to "leave us a review."
 
 ### How fast should an HVAC company respond to website leads?
-Under five minutes during business hours. At five minutes or less, contact rates on web form inquiries run 70–80%. At one hour, contact rates drop to 35–45%. At three hours or more, most leads have already called another company. If your team can't respond within five minutes, an answering service or automated text response with a callback time is better than silence.
+
+Under five minutes during business hours. At five minutes or less, contact rates on web form inquiries run 70 to 80%. At one hour, contact rates drop to 35 to 45%. At three hours or more, most leads have already called another company. If your team can't respond within five minutes, an answering service or automated text response with a callback time is better than silence.
 
 ### Do Google Local Service Ads work for HVAC companies?
-Yes — LSAs typically produce the lowest cost per booked job of any paid channel for HVAC companies that have completed Google's verification process (background check, license verification, insurance). They appear above regular Google Ads and show a "Google Guaranteed" badge. The main barrier is completing the verification, which can take 2–4 weeks but is a one-time process.
+
+Yes -- LSAs typically produce the lowest cost per booked job of any paid channel for HVAC companies that have completed Google's verification process (background check, license verification, insurance). They appear above regular Google Ads and show a "Google Guaranteed" badge. The main barrier is completing the verification, which can take 2 to 4 weeks but is a one-time process.
 
 ### How do I improve my HVAC website's mobile speed?
-The three highest-impact fixes are: compress your hero image to under 200KB (use TinyPNG or Squoosh — it's free), add lazy loading to below-fold images, and remove or defer render-blocking third-party scripts. Together these typically cut 2–4 seconds off mobile load time. A developer can implement all three in an afternoon. PageSpeed Insights at pagespeed.web.dev shows exactly which issues are causing the slowdown and how much each one contributes.
+
+The three highest-impact fixes are: compress your hero image to under 200KB (use TinyPNG or Squoosh -- it's free), add lazy loading to below-fold images, and remove or defer render-blocking third-party scripts. Together these typically cut 2 to 4 seconds off mobile load time. A developer can implement all three in an afternoon. PageSpeed Insights at pagespeed.web.dev shows exactly which issues are causing the slowdown and how much each one contributes.
+
+### What GBP signals matter most for HVAC map pack ranking?
+
+Review velocity and rating are the highest-impact signals you can actively control. After that: GBP activity (posting, photos, Q&A responses, review responses), category accuracy, and website speed. Proximity to the searcher matters but can't be changed. Most HVAC companies ignore posting and photo activity entirely -- that gap is easy to close against competitors who are also ignoring it.
+
+### How do I analyze my HVAC competitors' online presence?
+
+Pull up each competitor's Google Business Profile and note: total reviews, reviews in the last 30 days, star rating, and owner response rate. Search their name and check if they're running LSAs. Visit their website on mobile and time how fast it loads. Submit a test inquiry and track response time. That gives you a side-by-side picture of where you're ahead and where they have an edge. Do this for your top two to three map pack competitors -- not every company in your market.
+
+### My HVAC company has good reviews but I'm still not ranking. Why?
+
+Review count is only one ranking signal. If your velocity has stalled (fewer than five new reviews per month), a competitor adding reviews consistently will overtake you over time regardless of your total. Also check: GBP activity (photos, posts, Q&A), website mobile speed, service area configuration, and primary category accuracy. A 4.8-star company that hasn't posted to GBP in six months and loads in 7 seconds on mobile will lose map pack position to a 4.4-star company that's actively managed.
+
+### Is it worth fixing my website speed if I'm already running Google Ads?
+
+Yes -- mobile site speed affects your Google Ads Quality Score, which directly impacts how much you pay per click and where your ads appear. A slow site costs you more per click and loses the visitors those clicks generate. Fixing site speed improves paid ad efficiency and organic ranking simultaneously. It's one of the few fixes that improves every channel at once.
