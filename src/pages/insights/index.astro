@@ -1,60 +1,45 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-const articles = [
-  {
-    slug: 'how-much-should-hvac-company-spend-on-marketing-2026',
-    tradeKey: 'HVAC',
-    trade: 'HVAC · Revenue Diagnostics',
-    title: 'How Much Should an HVAC Company Spend on Marketing in 2026?',
-    preview: "Most owners are spending $8K–$15K/month without knowing their cost per booked job. Here's the actual math - benchmarks, a 5-step budget formula, and the three places HVAC companies silently leak marketing budget.",
-    date: 'Mar 16, 2026',
-    readTime: 11,
-    img: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=75',
-    imgAlt: 'HVAC technician servicing rooftop AC unit',
-    pills: ['$340 avg cost/job', '7-10% revenue typical', '3 leak patterns'],
-    featured: true,
-  },
-  {
-    slug: 'why-hvac-csrs-are-losing-you-300k-per-year',
-    tradeKey: 'HVAC',
-    trade: 'HVAC · Pipeline Systems',
-    title: 'Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)',
-    preview: "Your phones are answered. Your CSRs are friendly. And you're still losing $300K a year in calls that never became booked jobs. Here's exactly where it's happening and the three fixes that recover most of it.",
-    date: 'Mar 17, 2026',
-    readTime: 12,
-    img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=75',
-    imgAlt: 'CSR on phone handling inbound service calls',
-    pills: ['68% avg answer rate', '$160K/month gap', '3 specific fixes'],
-    featured: false,
-  },
-];
-const trade = Astro.url.searchParams.get('trade');
-const activeTrade = ['HVAC', 'Roofing', 'Plumbing'].includes(trade || '') ? trade : 'All';
-const filteredArticles = activeTrade === 'All'
-  ? articles
-  : articles.filter((article) => article.tradeKey === activeTrade);
-const articleCount = filteredArticles.length;
-const filterSummary = activeTrade === 'All'
-  ? `Showing all published research (${articleCount} article${articleCount === 1 ? '' : 's'})`
-  : `Showing ${activeTrade} research (${articleCount} published article${articleCount === 1 ? '' : 's'})`;
-const featuredArticle = filteredArticles.find((article) => article.featured) || filteredArticles[0] || null;
-const secondaryArticles = featuredArticle
-  ? filteredArticles.filter((article) => article.slug !== featuredArticle.slug)
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const initialFeatured = allPosts.find((post) => post.data.featured) || allPosts[0] || null;
+const initialSecondary = initialFeatured
+  ? allPosts.filter((post) => post.slug !== initialFeatured.slug)
   : [];
-const pageTitle = activeTrade === 'All'
-  ? 'Insights - Growth Research for HVAC, Roofing & Plumbing | Built on Tenth'
-  : `${activeTrade} Insights | Built on Tenth`;
-const pageDescription = activeTrade === 'All'
-  ? 'Research, benchmarks, and analysis from studying hundreds of home service companies. What the most profitable HVAC, roofing, and plumbing operators do differently.'
-  : `${activeTrade} research, benchmarks, and analysis for home service operators. See what the strongest companies do differently.`;
+
+const postsForClient = allPosts.map((post) => ({
+  slug: post.slug,
+  title: post.data.title,
+  description: post.data.preview ?? post.data.description,
+  date: formatDate(post.data.pubDate),
+  pubDate: post.data.pubDate.toISOString(),
+  readTime: post.data.readTime,
+  img: post.data.heroImage,
+  imgAlt: post.data.heroImageAlt,
+  category: post.data.category,
+  trade: post.data.trade,
+  pills: post.data.pills,
+  featured: post.data.featured,
+}));
 ---
 <Layout
-  title={pageTitle}
-  description={pageDescription}
+  title="Insights - Growth Research for HVAC, Roofing & Plumbing | Built on Tenth"
+  description="Research, benchmarks, and analysis from studying hundreds of home service companies. What the most profitable HVAC, roofing, and plumbing operators do differently."
   active="insights"
 >
 
-<style>
+<style is:global>
 .insights-hero { padding: 140px 48px 80px; position: relative; overflow: hidden; }
 .insights-hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 20% 50%, rgba(0,196,154,0.05) 0%, transparent 60%); }
 .insights-hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
@@ -98,8 +83,9 @@ const pageDescription = activeTrade === 'All'
 .ac-pill { font-family: var(--mono); font-size: 9px; font-weight: 500; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 3px 8px; border-radius: 3px; }
 .ac-read { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 5px; transition: gap 0.2s; }
 .article-card:hover .ac-read { gap: 8px; }
-.article-card.soon { opacity: 0.4; pointer-events: none; }
-.ac-coming { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 3px 8px; border-radius: 3px; width: fit-content; margin-top: auto; }
+.empty-state { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 6px; padding: 40px; }
+.empty-state h2 { font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
+.empty-state p { font-size: 14.5px; color: var(--ink2); line-height: 1.72; font-weight: 300; max-width: 620px; }
 .nl-prompt { background: rgba(0,196,154,0.04); border: 1px solid rgba(0,196,154,0.22); border-radius: 6px; padding: 28px 32px; margin-top: 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .nl-prompt-text h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; margin-bottom: 5px; }
 .nl-prompt-text p { font-size: 13.5px; color: var(--ink2); font-weight: 300; line-height: 1.6; }
@@ -114,6 +100,7 @@ const pageDescription = activeTrade === 'All'
   .fa-img { min-height: 220px; order: -1; }
   .fa-body { padding: 24px 20px; }
   .articles-grid { grid-template-columns: 1fr; }
+  .empty-state { padding: 28px 24px; }
   .nl-prompt { flex-direction: column; align-items: flex-start; }
   .nl-prompt-form { flex-direction: column; width: 100%; }
   .nl-prompt-input { width: 100%; }
@@ -131,12 +118,12 @@ const pageDescription = activeTrade === 'All'
     <div>
       <p style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px">Filter by trade</p>
       <div class="pillar-tabs">
-        <a href="/insights#published-research" class={`pt${activeTrade === 'All' ? ' active' : ''}`} aria-current={activeTrade === 'All' ? 'page' : undefined}>All</a>
-        <a href="/insights?trade=HVAC#published-research" class={`pt${activeTrade === 'HVAC' ? ' active' : ''}`} aria-current={activeTrade === 'HVAC' ? 'page' : undefined}>HVAC</a>
-        <a href="/insights?trade=Roofing#published-research" class={`pt${activeTrade === 'Roofing' ? ' active' : ''}`} aria-current={activeTrade === 'Roofing' ? 'page' : undefined}>Roofing</a>
-        <a href="/insights?trade=Plumbing#published-research" class={`pt${activeTrade === 'Plumbing' ? ' active' : ''}`} aria-current={activeTrade === 'Plumbing' ? 'page' : undefined}>Plumbing</a>
+        <a href="/insights#published-research" class="pt active" data-trade="All" aria-current="page">All</a>
+        <a href="/insights?trade=HVAC#published-research" class="pt" data-trade="HVAC">HVAC</a>
+        <a href="/insights?trade=Roofing#published-research" class="pt" data-trade="Roofing">Roofing</a>
+        <a href="/insights?trade=Plumbing#published-research" class="pt" data-trade="Plumbing">Plumbing</a>
       </div>
-      <p class="filter-state">{filterSummary}</p>
+      <p class="filter-state" id="filter-state">Showing all published research ({allPosts.length} articles)</p>
     </div>
   </div>
 </div>
@@ -145,77 +132,58 @@ const pageDescription = activeTrade === 'All'
   <div class="inner">
     <div class="rule-label"><span class="section-tag">Published Research</span></div>
 
-    {featuredArticle ? (
-    <a href={`/insights/${featuredArticle.slug}`} class="featured-article reveal">
-      <div class="fa-body">
-        <div>
-          <div class="fa-meta">
-            <span class="fa-trade">{featuredArticle.trade}</span>
-            <span class="fa-date">{featuredArticle.date}</span>
-            <span class="fa-read">{featuredArticle.readTime} min read</span>
+    <div id="featured-slot">
+      {initialFeatured ? (
+        <a href={`/insights/${initialFeatured.slug}`} class="featured-article reveal">
+          <div class="fa-body">
+            <div>
+              <div class="fa-meta">
+                <span class="fa-trade">{initialFeatured.data.trade.join(' / ')} · {initialFeatured.data.category}</span>
+                <span class="fa-date">{formatDate(initialFeatured.data.pubDate)}</span>
+                <span class="fa-read">{initialFeatured.data.readTime} min read</span>
+              </div>
+              <div class="fa-title">{initialFeatured.data.title}</div>
+              <p class="fa-preview">{initialFeatured.data.preview ?? initialFeatured.data.description}</p>
+              <div class="fa-pills">
+                {initialFeatured.data.pills.map((pill) => <span class="fa-pill">{pill}</span>)}
+              </div>
+            </div>
+            <span class="fa-cta">Read Article</span>
           </div>
-          <div class="fa-title">{featuredArticle.title}</div>
-          <p class="fa-preview">{featuredArticle.preview}</p>
-          <div class="fa-pills">
-            {featuredArticle.pills.map((pill) => <span class="fa-pill">{pill}</span>)}
+          <div class="fa-img">
+            <span class="fa-img-badge">Featured</span>
+            <img src={initialFeatured.data.heroImage} alt={initialFeatured.data.heroImageAlt} loading="lazy" />
           </div>
+        </a>
+      ) : (
+        <div class="empty-state">
+          <h2>No published research yet.</h2>
+          <p>New articles will appear here automatically as soon as they are added to the blog collection.</p>
         </div>
-        <span class="fa-cta">Read Article</span>
-      </div>
-      <div class="fa-img">
-        <span class="fa-img-badge">Featured</span>
-        <img src={featuredArticle.img} alt={featuredArticle.imgAlt} loading="lazy" />
-      </div>
-    </a>
-    ) : (
-    <div class="featured-article" style="grid-template-columns:1fr">
-      <div class="fa-body">
-        <div>
-          <div class="fa-meta">
-            <span class="fa-trade">{activeTrade}</span>
-          </div>
-          <div class="fa-title">No published articles in this trade yet.</div>
-          <p class="fa-preview">We are still building out {activeTrade.toLowerCase()} research. Subscribe below and we will send the next one when it goes live.</p>
-        </div>
-      </div>
-    </div>
-    )}
-
-    {secondaryArticles.length > 0 && (
-    <div class="articles-grid" style="margin-top:1px">
-      {secondaryArticles.map((article) => (
-      <a href={`/insights/${article.slug}`} class="article-card reveal">
-        <div class="ac-img">
-          <img src={article.img} alt={article.imgAlt} loading="lazy" />
-        </div>
-        <div class="ac-body">
-          <div class="ac-meta">
-            <span class="ac-trade">{article.trade}</span>
-            <span class="ac-date">{article.date}</span>
-          </div>
-          <div class="ac-title">{article.title}</div>
-          <p class="ac-preview">{article.preview}</p>
-          <div class="ac-pills">
-            {article.pills.map((pill) => <span class="ac-pill">{pill}</span>)}
-          </div>
-          <span class="ac-read">Read Article</span>
-        </div>
-      </a>
-      ))}
-
-      {activeTrade === 'All' && (
-      <div class="article-card soon">
-        <div class="ac-img" style="background:var(--bg3);min-height:200px"></div>
-        <div class="ac-body">
-          <div class="ac-meta"><span class="ac-trade">Roofing &middot; Lead Sources</span></div>
-          <div class="ac-title">Why Angi Leads Feel Like Garbage (And What Roofing Companies Do Instead)</div>
-          <p class="ac-preview">Angi leads have a 12-18% close rate industry-wide. But some roofing companies close 35% of them. The difference is what happens in the first 4 minutes after the call comes in.</p>
-          <div class="ac-coming">Coming soon</div>
-        </div>
-      </div>
       )}
     </div>
-    )}
+
+    <div class="articles-grid" id="articles-grid" style={initialSecondary.length > 0 ? 'margin-top:1px' : 'display:none'}>
+      {initialSecondary.map((article) => (
+        <a href={`/insights/${article.slug}`} class="article-card reveal">
+          <div class="ac-img">
+            <img src={article.data.heroImage} alt={article.data.heroImageAlt} loading="lazy" />
+          </div>
+          <div class="ac-body">
+            <div class="ac-meta">
+              <span class="ac-trade">{article.data.trade.join(' / ')} · {article.data.category}</span>
+              <span class="ac-date">{formatDate(article.data.pubDate)}</span>
+            </div>
+            <div class="ac-title">{article.data.title}</div>
+            <p class="ac-preview">{article.data.preview ?? article.data.description}</p>
+            <div class="ac-pills">
+              {article.data.pills.map((pill) => <span class="ac-pill">{pill}</span>)}
+            </div>
+            <span class="ac-read">Read Article</span>
+          </div>
+        </a>
+      ))}
+    </div>
 
     <div class="nl-prompt">
       <div class="nl-prompt-text">
@@ -230,7 +198,130 @@ const pageDescription = activeTrade === 'All'
   </div>
 </div>
 
-<script>
+<script is:inline define:vars={{ posts: postsForClient }}>
+  const featuredSlot = document.getElementById('featured-slot');
+  const articlesGrid = document.getElementById('articles-grid');
+  const filterState = document.getElementById('filter-state');
+  const filterLinks = [...document.querySelectorAll('.pt')];
+  const validTrades = ['All', 'HVAC', 'Roofing', 'Plumbing'];
+
+  const escapeHtml = (value) =>
+    String(value)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
+
+  const featuredMarkup = (post) => `
+    <a href="/insights/${post.slug}" class="featured-article reveal on">
+      <div class="fa-body">
+        <div>
+          <div class="fa-meta">
+            <span class="fa-trade">${escapeHtml(post.trade.join(' / '))} · ${escapeHtml(post.category)}</span>
+            <span class="fa-date">${escapeHtml(post.date)}</span>
+            <span class="fa-read">${escapeHtml(post.readTime)} min read</span>
+          </div>
+          <div class="fa-title">${escapeHtml(post.title)}</div>
+          <p class="fa-preview">${escapeHtml(post.description)}</p>
+          <div class="fa-pills">
+            ${post.pills.map((pill) => `<span class="fa-pill">${escapeHtml(pill)}</span>`).join('')}
+          </div>
+        </div>
+        <span class="fa-cta">Read Article</span>
+      </div>
+      <div class="fa-img">
+        ${post.featured ? '<span class="fa-img-badge">Featured</span>' : ''}
+        <img src="${escapeHtml(post.img)}" alt="${escapeHtml(post.imgAlt)}" loading="lazy" />
+      </div>
+    </a>
+  `;
+
+  const cardMarkup = (post) => `
+    <a href="/insights/${post.slug}" class="article-card reveal on">
+      <div class="ac-img">
+        <img src="${escapeHtml(post.img)}" alt="${escapeHtml(post.imgAlt)}" loading="lazy" />
+      </div>
+      <div class="ac-body">
+        <div class="ac-meta">
+          <span class="ac-trade">${escapeHtml(post.trade.join(' / '))} · ${escapeHtml(post.category)}</span>
+          <span class="ac-date">${escapeHtml(post.date)}</span>
+        </div>
+        <div class="ac-title">${escapeHtml(post.title)}</div>
+        <p class="ac-preview">${escapeHtml(post.description)}</p>
+        <div class="ac-pills">
+          ${post.pills.map((pill) => `<span class="ac-pill">${escapeHtml(pill)}</span>`).join('')}
+        </div>
+        <span class="ac-read">Read Article</span>
+      </div>
+    </a>
+  `;
+
+  const emptyMarkup = (trade) => `
+    <div class="empty-state">
+      <h2>No published ${escapeHtml(trade.toLowerCase())} research yet.</h2>
+      <p>We are still building out ${escapeHtml(trade.toLowerCase())} research. Subscribe below and we will send the next one when it goes live.</p>
+    </div>
+  `;
+
+  const getActiveTrade = () => {
+    const currentTrade = new URL(window.location.href).searchParams.get('trade');
+    return validTrades.includes(currentTrade || '') ? currentTrade : 'All';
+  };
+
+  const applyFilter = () => {
+    const activeTrade = getActiveTrade();
+    const filteredPosts = activeTrade === 'All'
+      ? posts
+      : posts.filter((post) => post.trade.includes(activeTrade));
+
+    const featuredPost = filteredPosts.find((post) => post.featured) || filteredPosts[0] || null;
+    const secondaryPosts = featuredPost
+      ? filteredPosts.filter((post) => post.slug !== featuredPost.slug)
+      : [];
+
+    filterLinks.forEach((link) => {
+      const isActive = link.dataset.trade === activeTrade;
+      link.classList.toggle('active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+
+    const count = filteredPosts.length;
+    filterState.textContent = activeTrade === 'All'
+      ? `Showing all published research (${count} article${count === 1 ? '' : 's'})`
+      : `Showing ${activeTrade} research (${count} published article${count === 1 ? '' : 's'})`;
+
+    featuredSlot.innerHTML = featuredPost ? featuredMarkup(featuredPost) : emptyMarkup(activeTrade);
+
+    if (secondaryPosts.length > 0) {
+      articlesGrid.style.display = 'grid';
+      articlesGrid.style.marginTop = '1px';
+      articlesGrid.innerHTML = secondaryPosts.map(cardMarkup).join('');
+    } else {
+      articlesGrid.style.display = 'none';
+      articlesGrid.innerHTML = '';
+    }
+  };
+
+  filterLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const url = new URL(link.href, window.location.origin);
+      window.history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`);
+      applyFilter();
+      if (url.hash) {
+        document.querySelector(url.hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  window.addEventListener('popstate', applyFilter);
+  applyFilter();
+
   document.getElementById('insights-submit').addEventListener('click', async () => {
     const inp = document.getElementById('insights-email');
     const btn = document.getElementById('insights-submit');
