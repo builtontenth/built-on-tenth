@@ -36,7 +36,14 @@ const articleSchema = {
   ...(post.data.seoKeywords ? { keywords: post.data.seoKeywords.join(', ') } : {}),
 };
 ---
-<Layout title={`${title} | Built on Tenth`} description={description} active="insights" ogImage={heroImage}>
+<Layout
+  title={`${title} | Built on Tenth`}
+  description={description}
+  active="insights"
+  ogImage={heroImage}
+  ogType="article"
+  publishedTime={post.data.pubDate.toISOString()}
+>
 
 <style>
 .article-hero {

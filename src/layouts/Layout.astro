@@ -8,14 +8,19 @@ interface Props {
   description?: string;
   active?: string;
   ogImage?: string;
+  ogType?: string;
+  publishedTime?: string;
 }
 
 const {
   title,
   description = 'Revenue intelligence for HVAC, roofing, and plumbing companies. We study how the most profitable home service companies grow, and publish everything we find.',
   active = '',
-  ogImage = 'https://www.builtontenth.com/tanvir.png'
+  ogImage = 'https://www.builtontenth.com/tanvir.png',
+  ogType = 'website',
+  publishedTime,
 } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://www.builtontenth.com');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -26,12 +31,16 @@ const {
   <meta name="description" content={description} />
 
   <!-- Canonical + Open Graph -->
-  <link rel="canonical" href={`https://www.builtontenth.com${Astro.url.pathname}`} />
+  <link rel="canonical" href={canonicalUrl.href} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
   <meta property="og:title"       content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content={`https://www.builtontenth.com${Astro.url.pathname}`} />
+  <meta property="og:type"        content={ogType} />
+  <meta property="og:url"         content={canonicalUrl.href} />
   <meta property="og:image"       content={ogImage} />
+  {ogType === 'article' && publishedTime && (
+    <meta property="article:published_time" content={publishedTime} />
+  )}
   <meta name="twitter:card"       content="summary_large_image" />
   <meta name="twitter:title"      content={title} />
   <meta name="twitter:description" content={description} />
