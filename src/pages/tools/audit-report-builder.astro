@@ -1,0 +1,1296 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Revenue Leak Audit Builder | Built on Tenth"
+  description="Local report builder for generating a polished Revenue Leak Audit PDF from manually collected research."
+  active="tools"
+>
+
+<style id="report-styles">
+.arb-page {
+  padding-top: 60px;
+}
+.arb-hero {
+  padding: 48px 48px 32px;
+  border-bottom: 1px solid var(--rule);
+  background:
+    radial-gradient(ellipse 55% 55% at 18% 35%, rgba(0,196,154,0.08) 0%, transparent 62%),
+    var(--bg);
+}
+.arb-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.arb-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.arb-hero h1 em {
+  color: var(--teal);
+  font-style: italic;
+}
+.arb-hero p {
+  max-width: 680px;
+  color: var(--ink2);
+  font-size: 15.5px;
+  line-height: 1.72;
+  font-weight: 300;
+}
+.arb-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 48px 80px;
+  display: grid;
+  grid-template-columns: 430px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.arb-panel {
+  background: var(--bg2);
+  border: 1px solid var(--rule2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.arb-panel-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg3);
+}
+.arb-panel-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.arb-form {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.arb-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.arb-section-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.arb-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.arb-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.arb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.arb-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.arb-input,
+.arb-select,
+.arb-textarea {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--rule2);
+  border-radius: 4px;
+  padding: 11px 13px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.arb-input:focus,
+.arb-select:focus,
+.arb-textarea:focus {
+  border-color: rgba(0,196,154,0.5);
+}
+.arb-textarea {
+  min-height: 92px;
+  resize: vertical;
+  line-height: 1.6;
+}
+.arb-textarea.short {
+  min-height: 68px;
+}
+.arb-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+.arb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+}
+.arb-btn:hover {
+  transform: translateY(-1px);
+}
+.arb-btn-primary {
+  border: 1.5px solid var(--teal);
+  background: var(--teal);
+  color: var(--bg);
+}
+.arb-btn-secondary {
+  border: 1px solid var(--rule2);
+  background: transparent;
+  color: var(--ink2);
+}
+.arb-note {
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.6;
+}
+.arb-report-wrap {
+  min-width: 0;
+}
+.arb-report {
+  background: #0e1412;
+  border: 1px solid var(--rule2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 28px 80px rgba(0,0,0,0.28);
+}
+.report-cover {
+  padding: 42px 42px 36px;
+  border-bottom: 1px solid var(--rule);
+  background:
+    radial-gradient(ellipse 60% 60% at 100% 0%, rgba(0,196,154,0.09) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(20,28,24,0.95) 0%, rgba(14,20,18,1) 100%);
+}
+.report-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.report-brand::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--teal);
+  box-shadow: 0 0 0 6px rgba(0,196,154,0.08);
+}
+.report-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+.report-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3vw, 46px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  max-width: 820px;
+}
+.report-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.report-meta-card {
+  background: rgba(226,221,208,0.02);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 14px 14px 12px;
+}
+.report-meta-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 6px;
+}
+.report-meta-value {
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.report-body {
+  padding: 34px 42px 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.report-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.report-section-title::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--teal);
+}
+.report-intro {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.78;
+}
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.snapshot-card {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 16px 15px 14px;
+}
+.snapshot-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 10px;
+}
+.snapshot-score {
+  font-family: var(--mono);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.snapshot-bar {
+  height: 6px;
+  background: var(--bg4);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.snapshot-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--teal);
+}
+.summary-box {
+  background: rgba(0,196,154,0.05);
+  border: 1px solid rgba(0,196,154,0.22);
+  border-radius: 6px;
+  padding: 20px 22px;
+}
+.summary-box h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.summary-box p {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.72;
+}
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 18px;
+}
+.impact-card,
+.actions-card,
+.evidence-card,
+.competitor-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 18px 18px 16px;
+}
+.impact-total {
+  font-family: var(--mono);
+  font-size: 44px;
+  line-height: 1;
+  color: var(--neg);
+  margin-bottom: 8px;
+}
+.impact-sub {
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.55;
+}
+.impact-rows,
+.competitor-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.impact-row,
+.competitor-row {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 11px 12px;
+}
+.impact-row-top,
+.competitor-row-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.impact-row-label,
+.competitor-name {
+  font-size: 13px;
+  color: var(--ink2);
+}
+.impact-row-value {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink);
+}
+.impact-mini-bar {
+  height: 5px;
+  background: var(--bg4);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.impact-mini-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(240,64,64,0.82) 0%, rgba(201,160,53,0.9) 100%);
+}
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--rule);
+}
+.report-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  border-bottom: 1px solid var(--rule2);
+  background: var(--bg3);
+}
+.report-table td {
+  padding: 12px 14px;
+  font-size: 13.5px;
+  color: var(--ink2);
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.report-table tr:last-child td {
+  border-bottom: none;
+}
+.actions-list {
+  display: grid;
+  gap: 10px;
+}
+.action-item {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 11px 12px;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+}
+.action-num {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0,196,154,0.12);
+  color: var(--teal);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+.action-copy {
+  font-size: 13.5px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.evidence-slot {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.evidence-img {
+  aspect-ratio: 1.28 / 1;
+  background: linear-gradient(135deg, var(--bg4) 0%, var(--bg3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink3);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.evidence-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.evidence-caption {
+  padding: 10px 12px;
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.55;
+}
+.report-footer {
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+.report-footer-copy {
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.6;
+  max-width: 520px;
+}
+.report-footer-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hidden-file {
+  display: none;
+}
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 4px;
+  border: 1px solid var(--rule2);
+  background: var(--bg3);
+  color: var(--ink2);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.print-shell {
+  background: #f7f4eb;
+  color: #101514;
+  min-height: 100vh;
+}
+.print-shell .report-cover,
+.print-shell .report-body,
+.print-shell .impact-card,
+.print-shell .actions-card,
+.print-shell .evidence-card,
+.print-shell .competitor-card,
+.print-shell .snapshot-card,
+.print-shell .report-meta-card,
+.print-shell .impact-row,
+.print-shell .competitor-row,
+.print-shell .action-item,
+.print-shell .evidence-slot {
+  background: #fff;
+  color: #101514;
+}
+.print-shell .report {
+  border: none;
+  box-shadow: none;
+}
+.print-shell .report-title,
+.print-shell .summary-box h3 {
+  color: #101514;
+}
+.print-shell .report-intro,
+.print-shell .summary-box p,
+.print-shell .report-meta-value,
+.print-shell .impact-sub,
+.print-shell .impact-row-label,
+.print-shell .competitor-name,
+.print-shell .action-copy,
+.print-shell .evidence-caption,
+.print-shell .report-table td,
+.print-shell .report-footer-copy {
+  color: #2a3330;
+}
+.print-shell .report-section-title,
+.print-shell .report-kicker,
+.print-shell .action-num,
+.print-shell .report-brand,
+.print-shell .report-footer-tag {
+  color: #067f67;
+}
+.print-shell .report-table th,
+.print-shell .snapshot-label,
+.print-shell .report-meta-label {
+  color: #596260;
+}
+@media (max-width: 1100px) {
+  .arb-shell {
+    grid-template-columns: 1fr;
+  }
+  .snapshot-grid,
+  .report-meta,
+  .impact-grid,
+  .evidence-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 720px) {
+  .arb-hero,
+  .arb-shell {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .arb-grid-2,
+  .arb-grid-4,
+  .snapshot-grid,
+  .report-meta,
+  .impact-grid,
+  .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+  .report-cover,
+  .report-body {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+@media print {
+  html,
+  body {
+    background: #f7f4eb !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    margin: 0;
+  }
+  nav,
+  footer,
+  .arb-hero,
+  .arb-panel,
+  .arb-form,
+  .arb-note,
+  .arb-actions,
+  .dispatch-label,
+  .arb-shell > section:first-child {
+    display: none !important;
+  }
+  .arb-page,
+  .arb-shell,
+  .arb-report-wrap {
+    display: block !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .arb-report-wrap {
+    width: 100% !important;
+  }
+  .arb-report {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  .report-cover,
+  .report-body,
+  .impact-card,
+  .actions-card,
+  .evidence-card,
+  .competitor-card,
+  .snapshot-card,
+  .report-meta-card,
+  .impact-row,
+  .competitor-row,
+  .action-item,
+  .evidence-slot,
+  .summary-box {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .report-cover {
+    padding: 28px 28px 24px !important;
+  }
+  .report-body {
+    padding: 24px 28px 30px !important;
+  }
+  .report-title {
+    font-size: 34px !important;
+  }
+  .snapshot-grid,
+  .report-meta {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .impact-grid {
+    grid-template-columns: 1.2fr 0.8fr !important;
+  }
+  .evidence-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .report-footer {
+    padding-bottom: 0 !important;
+  }
+}
+</style>
+
+<div class="arb-page">
+  <div class="arb-hero">
+    <div class="arb-hero-inner">
+      <div class="dispatch-label">Local Builder</div>
+      <h1>Generate a polished <em>$750 audit report</em> from your research.</h1>
+      <p>Fill in the findings manually, upload proof screenshots, review the live report, then export a clean PDF. Built for written delivery. No slide deck. No design tool needed.</p>
+    </div>
+  </div>
+
+  <div class="arb-shell">
+    <section class="arb-panel">
+      <div class="arb-panel-header">
+        <div class="arb-panel-kicker">Audit Inputs</div>
+      </div>
+      <form class="arb-form" id="audit-form">
+        <div class="arb-section">
+          <div class="arb-section-title">Company</div>
+          <div class="arb-grid-2">
+            <div class="arb-field">
+              <label class="arb-label" for="companyName">Company name</label>
+              <input class="arb-input" id="companyName" value="Apex Heating & Air" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="trade">Trade</label>
+              <select class="arb-select" id="trade">
+                <option>HVAC</option>
+                <option>Roofing</option>
+                <option>Plumbing</option>
+              </select>
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="location">Market</label>
+              <input class="arb-input" id="location" value="Atlanta, Georgia" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="auditDate">Audit date</label>
+              <input class="arb-input" id="auditDate" type="date" value="2026-03-20" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="annualRevenue">Annual revenue</label>
+              <input class="arb-input" id="annualRevenue" value="$2.3M" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="monthlySpend">Monthly marketing spend</label>
+              <input class="arb-input" id="monthlySpend" value="$11,400" />
+            </div>
+          </div>
+        </div>
+
+        <div class="arb-section">
+          <div class="arb-section-title">Snapshot Scores</div>
+          <div class="arb-grid-4">
+            <div class="arb-field">
+              <label class="arb-label" for="scoreGbp">Google profile</label>
+              <input class="arb-input" id="scoreGbp" type="number" min="0" max="10" value="6" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="scoreWebsite">Website</label>
+              <input class="arb-input" id="scoreWebsite" type="number" min="0" max="10" value="5" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="scorePhone">Phone process</label>
+              <input class="arb-input" id="scorePhone" type="number" min="0" max="10" value="4" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="scoreCompetition">Competitive position</label>
+              <input class="arb-input" id="scoreCompetition" type="number" min="0" max="10" value="5" />
+            </div>
+          </div>
+        </div>
+
+        <div class="arb-section">
+          <div class="arb-section-title">Executive Summary</div>
+          <div class="arb-field">
+            <label class="arb-label" for="summaryHeadline">Summary headline</label>
+            <input class="arb-input" id="summaryHeadline" value="$247,000 in annual leakage identified" />
+          </div>
+          <div class="arb-field">
+            <label class="arb-label" for="summaryBody">Summary body</label>
+            <textarea class="arb-textarea" id="summaryBody">The biggest leaks are missed calls, stalled review velocity, weak above-the-fold phone placement, and no estimate follow-up system. None of these require more ad spend. They require better measurement and tighter office systems.</textarea>
+          </div>
+        </div>
+
+        <div class="arb-section">
+          <div class="arb-section-title">Revenue Impact</div>
+          <div class="arb-grid-2">
+            <div class="arb-field">
+              <label class="arb-label" for="impactTotal">Total annual leakage</label>
+              <input class="arb-input" id="impactTotal" value="$247,000" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="impactNote">Context line</label>
+              <input class="arb-input" id="impactNote" value="Across the four highest-confidence gaps identified in public and manual review." />
+            </div>
+          </div>
+          <div class="arb-grid-2">
+            <div class="arb-field">
+              <label class="arb-label" for="impact1Label">Leak 1</label>
+              <input class="arb-input" id="impact1Label" value="Missed calls" />
+              <input class="arb-input" id="impact1Value" value="$121,000" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="impact2Label">Leak 2</label>
+              <input class="arb-input" id="impact2Label" value="Review velocity gap" />
+              <input class="arb-input" id="impact2Value" value="$64,000" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="impact3Label">Leak 3</label>
+              <input class="arb-input" id="impact3Label" value="Estimate follow-up" />
+              <input class="arb-input" id="impact3Value" value="$42,000" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="impact4Label">Leak 4</label>
+              <input class="arb-input" id="impact4Label" value="Mobile conversion friction" />
+              <input class="arb-input" id="impact4Value" value="$20,000" />
+            </div>
+          </div>
+        </div>
+
+        <div class="arb-section">
+          <div class="arb-section-title">Competitor Snapshot</div>
+          <div class="arb-grid-2">
+            <div class="arb-field">
+              <label class="arb-label" for="competitor1">Competitor 1</label>
+              <input class="arb-input" id="competitor1" value="Northside Comfort" />
+              <input class="arb-input" id="competitor1Note" value="11 reviews in 30 days · stronger map pack visibility" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="competitor2">Competitor 2</label>
+              <input class="arb-input" id="competitor2" value="Comfort First Heating" />
+              <input class="arb-input" id="competitor2Note" value="Phone number above fold · faster mobile experience" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="competitor3">Competitor 3</label>
+              <input class="arb-input" id="competitor3" value="Premier Air Experts" />
+              <input class="arb-input" id="competitor3Note" value="LSAs active · stronger trust stack on homepage" />
+            </div>
+          </div>
+        </div>
+
+        <div class="arb-section">
+          <div class="arb-section-title">Top Actions</div>
+          <div class="arb-field">
+            <label class="arb-label" for="action1">Action 1</label>
+            <textarea class="arb-textarea short" id="action1">Put answer rate on a daily dashboard and assign ownership when it drops below 88%.</textarea>
+          </div>
+          <div class="arb-field">
+            <label class="arb-label" for="action2">Action 2</label>
+            <textarea class="arb-textarea short" id="action2">Launch a job-close review ask process that targets 8 new Google reviews per month.</textarea>
+          </div>
+          <div class="arb-field">
+            <label class="arb-label" for="action3">Action 3</label>
+            <textarea class="arb-textarea short" id="action3">Move the primary phone CTA above the fold on mobile and tighten the hero trust stack.</textarea>
+          </div>
+          <div class="arb-field">
+            <label class="arb-label" for="action4">Action 4</label>
+            <textarea class="arb-textarea short" id="action4">Build a 3-touch estimate follow-up sequence owned by the front desk, not estimators.</textarea>
+          </div>
+          <div class="arb-field">
+            <label class="arb-label" for="action5">Action 5</label>
+            <textarea class="arb-textarea short" id="action5">Reallocate budget only after phone and review systems are fixed so more spend is not wasted.</textarea>
+          </div>
+        </div>
+
+        <div class="arb-section">
+          <div class="arb-section-title">Proof Screenshots</div>
+          <div class="arb-grid-2">
+            <div class="arb-field">
+              <label class="arb-label" for="proof1Caption">Proof 1 caption</label>
+              <input class="arb-input" id="proof1Caption" value="Google Business Profile review velocity vs. top competitor" />
+              <label class="upload-btn" for="proof1File">Upload screenshot</label>
+              <input class="hidden-file" id="proof1File" type="file" accept="image/*" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="proof2Caption">Proof 2 caption</label>
+              <input class="arb-input" id="proof2Caption" value="Homepage mobile hero with weak phone visibility" />
+              <label class="upload-btn" for="proof2File">Upload screenshot</label>
+              <input class="hidden-file" id="proof2File" type="file" accept="image/*" />
+            </div>
+            <div class="arb-field">
+              <label class="arb-label" for="proof3Caption">Proof 3 caption</label>
+              <input class="arb-input" id="proof3Caption" value="Competitor LSA presence and ad coverage" />
+              <label class="upload-btn" for="proof3File">Upload screenshot</label>
+              <input class="hidden-file" id="proof3File" type="file" accept="image/*" />
+            </div>
+          </div>
+        </div>
+
+        <div class="arb-actions">
+          <button class="arb-btn arb-btn-primary" type="button" id="exportPdf">Export PDF</button>
+          <button class="arb-btn arb-btn-secondary" type="button" id="resetBuilder">Reset Demo Data</button>
+        </div>
+        <p class="arb-note">Export uses the browser print-to-PDF flow so it stays stable locally. Click Export PDF, then Save as PDF in the print dialog.</p>
+      </form>
+    </section>
+
+    <section class="arb-report-wrap">
+      <div class="arb-panel" style="margin-bottom:14px">
+        <div class="arb-panel-header">
+          <div class="arb-panel-kicker">Live Report Preview</div>
+        </div>
+      </div>
+
+      <article class="arb-report" id="auditReport">
+        <div class="report-cover">
+          <div class="report-brand">Built on Tenth</div>
+          <div class="report-kicker">Revenue Leak Audit</div>
+          <h1 class="report-title" id="reportTitle">Apex Heating & Air Revenue Leak Audit</h1>
+          <div class="report-meta">
+            <div class="report-meta-card">
+              <div class="report-meta-label">Trade</div>
+              <div class="report-meta-value" id="reportTrade">HVAC</div>
+            </div>
+            <div class="report-meta-card">
+              <div class="report-meta-label">Market</div>
+              <div class="report-meta-value" id="reportLocation">Atlanta, Georgia</div>
+            </div>
+            <div class="report-meta-card">
+              <div class="report-meta-label">Annual Revenue</div>
+              <div class="report-meta-value" id="reportRevenue">$2.3M</div>
+            </div>
+            <div class="report-meta-card">
+              <div class="report-meta-label">Audit Date</div>
+              <div class="report-meta-value" id="reportDate">March 20, 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="report-body">
+          <section class="report-section">
+            <div class="report-section-title">Performance Snapshot</div>
+            <div class="snapshot-grid">
+              <div class="snapshot-card">
+                <div class="snapshot-label">Google Profile</div>
+                <div class="snapshot-score" id="reportScoreGbpValue">6/10</div>
+                <div class="snapshot-bar"><div class="snapshot-bar-fill" id="reportScoreGbpBar"></div></div>
+              </div>
+              <div class="snapshot-card">
+                <div class="snapshot-label">Website</div>
+                <div class="snapshot-score" id="reportScoreWebsiteValue">5/10</div>
+                <div class="snapshot-bar"><div class="snapshot-bar-fill" id="reportScoreWebsiteBar"></div></div>
+              </div>
+              <div class="snapshot-card">
+                <div class="snapshot-label">Phone Process</div>
+                <div class="snapshot-score" id="reportScorePhoneValue">4/10</div>
+                <div class="snapshot-bar"><div class="snapshot-bar-fill" id="reportScorePhoneBar"></div></div>
+              </div>
+              <div class="snapshot-card">
+                <div class="snapshot-label">Competitive Position</div>
+                <div class="snapshot-score" id="reportScoreCompetitionValue">5/10</div>
+                <div class="snapshot-bar"><div class="snapshot-bar-fill" id="reportScoreCompetitionBar"></div></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="report-section">
+            <div class="report-section-title">Executive Summary</div>
+            <div class="summary-box">
+              <h3 id="reportSummaryHeadline">$247,000 in annual leakage identified</h3>
+              <p id="reportSummaryBody">The biggest leaks are missed calls, stalled review velocity, weak above-the-fold phone placement, and no estimate follow-up system. None of these require more ad spend. They require better measurement and tighter office systems.</p>
+            </div>
+          </section>
+
+          <section class="report-section">
+            <div class="report-section-title">Revenue Impact</div>
+            <div class="impact-grid">
+              <div class="impact-card">
+                <div class="impact-total" id="reportImpactTotal">$247,000</div>
+                <div class="impact-sub" id="reportImpactNote">Across the four highest-confidence gaps identified in public and manual review.</div>
+              </div>
+              <div class="competitor-card">
+                <div class="report-section-title" style="margin-bottom:8px">Market Comparison</div>
+                <div class="competitor-rows">
+                  <div class="competitor-row">
+                    <div class="competitor-row-top">
+                      <div class="competitor-name" id="reportCompetitor1">Northside Comfort</div>
+                    </div>
+                    <div class="impact-sub" id="reportCompetitor1Note">11 reviews in 30 days · stronger map pack visibility</div>
+                  </div>
+                  <div class="competitor-row">
+                    <div class="competitor-row-top">
+                      <div class="competitor-name" id="reportCompetitor2">Comfort First Heating</div>
+                    </div>
+                    <div class="impact-sub" id="reportCompetitor2Note">Phone number above fold · faster mobile experience</div>
+                  </div>
+                  <div class="competitor-row">
+                    <div class="competitor-row-top">
+                      <div class="competitor-name" id="reportCompetitor3">Premier Air Experts</div>
+                    </div>
+                    <div class="impact-sub" id="reportCompetitor3Note">LSAs active · stronger trust stack on homepage</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="impact-rows">
+              <div class="impact-row">
+                <div class="impact-row-top">
+                  <div class="impact-row-label" id="reportImpact1Label">Missed calls</div>
+                  <div class="impact-row-value" id="reportImpact1Value">$121,000</div>
+                </div>
+                <div class="impact-mini-bar"><div class="impact-mini-fill" id="reportImpact1Bar"></div></div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-top">
+                  <div class="impact-row-label" id="reportImpact2Label">Review velocity gap</div>
+                  <div class="impact-row-value" id="reportImpact2Value">$64,000</div>
+                </div>
+                <div class="impact-mini-bar"><div class="impact-mini-fill" id="reportImpact2Bar"></div></div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-top">
+                  <div class="impact-row-label" id="reportImpact3Label">Estimate follow-up</div>
+                  <div class="impact-row-value" id="reportImpact3Value">$42,000</div>
+                </div>
+                <div class="impact-mini-bar"><div class="impact-mini-fill" id="reportImpact3Bar"></div></div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-top">
+                  <div class="impact-row-label" id="reportImpact4Label">Mobile conversion friction</div>
+                  <div class="impact-row-value" id="reportImpact4Value">$20,000</div>
+                </div>
+                <div class="impact-mini-bar"><div class="impact-mini-fill" id="reportImpact4Bar"></div></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="report-section">
+            <div class="report-section-title">Action Plan</div>
+            <div class="actions-card">
+              <div class="actions-list">
+                <div class="action-item"><div class="action-num">1</div><div class="action-copy" id="reportAction1">Put answer rate on a daily dashboard and assign ownership when it drops below 88%.</div></div>
+                <div class="action-item"><div class="action-num">2</div><div class="action-copy" id="reportAction2">Launch a job-close review ask process that targets 8 new Google reviews per month.</div></div>
+                <div class="action-item"><div class="action-num">3</div><div class="action-copy" id="reportAction3">Move the primary phone CTA above the fold on mobile and tighten the hero trust stack.</div></div>
+                <div class="action-item"><div class="action-num">4</div><div class="action-copy" id="reportAction4">Build a 3-touch estimate follow-up sequence owned by the front desk, not estimators.</div></div>
+                <div class="action-item"><div class="action-num">5</div><div class="action-copy" id="reportAction5">Reallocate budget only after phone and review systems are fixed so more spend is not wasted.</div></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="report-section">
+            <div class="report-section-title">Proof</div>
+            <div class="evidence-card">
+              <div class="evidence-grid">
+                <figure class="evidence-slot">
+                  <div class="evidence-img" id="reportProof1Image">Screenshot</div>
+                  <figcaption class="evidence-caption" id="reportProof1Caption">Google Business Profile review velocity vs. top competitor</figcaption>
+                </figure>
+                <figure class="evidence-slot">
+                  <div class="evidence-img" id="reportProof2Image">Screenshot</div>
+                  <figcaption class="evidence-caption" id="reportProof2Caption">Homepage mobile hero with weak phone visibility</figcaption>
+                </figure>
+                <figure class="evidence-slot">
+                  <div class="evidence-img" id="reportProof3Image">Screenshot</div>
+                  <figcaption class="evidence-caption" id="reportProof3Caption">Competitor LSA presence and ad coverage</figcaption>
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <section class="report-section">
+            <div class="report-section-title">Delivery Note</div>
+            <table class="report-table">
+              <thead>
+                <tr>
+                  <th>What this is</th>
+                  <th>What to do next</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>This audit shows the highest-confidence revenue leaks visible from public research plus manual review. It is built to help you prioritize what to fix first, second, and third.</td>
+                  <td>Review the 5 action items, assign an owner to each, and move the first two fixes in the next 14 days. The biggest wins are usually office systems, not more spend.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <div class="report-footer">
+            <div class="report-footer-copy">Prepared by Built on Tenth. Revenue intelligence for HVAC, roofing, and plumbing companies. Every finding documented so it can be shared with the team and acted on at your pace.</div>
+            <div class="report-footer-tag" id="reportFooterTag">Monthly spend: $11,400</div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('audit-form');
+  const exportBtn = document.getElementById('exportPdf');
+  const resetBtn = document.getElementById('resetBuilder');
+
+  const binds = [
+    ['companyName', 'reportTitle', (v) => `${v || 'Company'} Revenue Leak Audit`],
+    ['trade', 'reportTrade'],
+    ['location', 'reportLocation'],
+    ['annualRevenue', 'reportRevenue'],
+    ['monthlySpend', 'reportFooterTag', (v) => `Monthly spend: ${v || '$0'}`],
+    ['summaryHeadline', 'reportSummaryHeadline'],
+    ['summaryBody', 'reportSummaryBody'],
+    ['impactTotal', 'reportImpactTotal'],
+    ['impactNote', 'reportImpactNote'],
+    ['impact1Label', 'reportImpact1Label'],
+    ['impact1Value', 'reportImpact1Value'],
+    ['impact2Label', 'reportImpact2Label'],
+    ['impact2Value', 'reportImpact2Value'],
+    ['impact3Label', 'reportImpact3Label'],
+    ['impact3Value', 'reportImpact3Value'],
+    ['impact4Label', 'reportImpact4Label'],
+    ['impact4Value', 'reportImpact4Value'],
+    ['competitor1', 'reportCompetitor1'],
+    ['competitor1Note', 'reportCompetitor1Note'],
+    ['competitor2', 'reportCompetitor2'],
+    ['competitor2Note', 'reportCompetitor2Note'],
+    ['competitor3', 'reportCompetitor3'],
+    ['competitor3Note', 'reportCompetitor3Note'],
+    ['action1', 'reportAction1'],
+    ['action2', 'reportAction2'],
+    ['action3', 'reportAction3'],
+    ['action4', 'reportAction4'],
+    ['action5', 'reportAction5'],
+    ['proof1Caption', 'reportProof1Caption'],
+    ['proof2Caption', 'reportProof2Caption'],
+    ['proof3Caption', 'reportProof3Caption'],
+  ];
+
+  const scoreMap = [
+    ['scoreGbp', 'reportScoreGbpValue', 'reportScoreGbpBar'],
+    ['scoreWebsite', 'reportScoreWebsiteValue', 'reportScoreWebsiteBar'],
+    ['scorePhone', 'reportScorePhoneValue', 'reportScorePhoneBar'],
+    ['scoreCompetition', 'reportScoreCompetitionValue', 'reportScoreCompetitionBar'],
+  ];
+
+  const impactMap = [
+    ['impact1Value', 'reportImpact1Bar'],
+    ['impact2Value', 'reportImpact2Bar'],
+    ['impact3Value', 'reportImpact3Bar'],
+    ['impact4Value', 'reportImpact4Bar'],
+  ];
+
+  function formatDateLabel(value) {
+    if (!value) return '';
+    const date = new Date(`${value}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return value;
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }).format(date);
+  }
+
+  function parseMoney(value) {
+    const clean = String(value || '').replace(/[^0-9.]/g, '');
+    return Number(clean || 0);
+  }
+
+  function setHtmlText(id, value) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = String(value || '').replaceAll('\n', '<br>');
+  }
+
+  function updateBindings() {
+    binds.forEach(([inputId, targetId, formatter]) => {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      const value = formatter ? formatter(input.value) : input.value;
+      setHtmlText(targetId, value);
+    });
+
+    const auditDate = document.getElementById('auditDate');
+    if (auditDate) {
+      setHtmlText('reportDate', formatDateLabel(auditDate.value));
+    }
+
+    scoreMap.forEach(([inputId, valueId, barId]) => {
+      const input = document.getElementById(inputId);
+      const valueEl = document.getElementById(valueId);
+      const barEl = document.getElementById(barId);
+      if (!input || !valueEl || !barEl) return;
+      const score = Math.max(0, Math.min(10, Number(input.value || 0)));
+      valueEl.textContent = `${score}/10`;
+      barEl.style.width = `${score * 10}%`;
+      barEl.style.background = score >= 8 ? 'var(--pos)' : score >= 6 ? 'var(--teal)' : score >= 4 ? '#C9A035' : 'var(--neg)';
+    });
+
+    const impactValues = impactMap.map(([inputId]) => parseMoney(document.getElementById(inputId)?.value));
+    const maxImpact = Math.max(...impactValues, 1);
+    impactMap.forEach(([inputId, barId], index) => {
+      const barEl = document.getElementById(barId);
+      if (!barEl) return;
+      const value = impactValues[index];
+      barEl.style.width = `${(value / maxImpact) * 100}%`;
+    });
+  }
+
+  function attachImageInput(fileInputId, targetId) {
+    const input = document.getElementById(fileInputId);
+    const target = document.getElementById(targetId);
+    if (!input || !target) return;
+    input.addEventListener('change', () => {
+      const file = input.files && input.files[0];
+      if (!file) {
+        target.innerHTML = 'Screenshot';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        target.innerHTML = `<img src="${reader.result}" alt="Audit proof screenshot" />`;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  exportBtn?.addEventListener('click', () => {
+    updateBindings();
+    document.body.classList.add('print-shell');
+    setTimeout(() => {
+      window.print();
+      setTimeout(() => {
+        document.body.classList.remove('print-shell');
+      }, 300);
+    }, 80);
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    form?.reset();
+    document.getElementById('trade').value = 'HVAC';
+    document.getElementById('auditDate').value = '2026-03-20';
+    document.getElementById('companyName').value = 'Apex Heating & Air';
+    document.getElementById('location').value = 'Atlanta, Georgia';
+    document.getElementById('annualRevenue').value = '$2.3M';
+    document.getElementById('monthlySpend').value = '$11,400';
+    document.getElementById('scoreGbp').value = '6';
+    document.getElementById('scoreWebsite').value = '5';
+    document.getElementById('scorePhone').value = '4';
+    document.getElementById('scoreCompetition').value = '5';
+    document.getElementById('summaryHeadline').value = '$247,000 in annual leakage identified';
+    document.getElementById('summaryBody').value = 'The biggest leaks are missed calls, stalled review velocity, weak above-the-fold phone placement, and no estimate follow-up system. None of these require more ad spend. They require better measurement and tighter office systems.';
+    document.getElementById('impactTotal').value = '$247,000';
+    document.getElementById('impactNote').value = 'Across the four highest-confidence gaps identified in public and manual review.';
+    document.getElementById('impact1Label').value = 'Missed calls';
+    document.getElementById('impact1Value').value = '$121,000';
+    document.getElementById('impact2Label').value = 'Review velocity gap';
+    document.getElementById('impact2Value').value = '$64,000';
+    document.getElementById('impact3Label').value = 'Estimate follow-up';
+    document.getElementById('impact3Value').value = '$42,000';
+    document.getElementById('impact4Label').value = 'Mobile conversion friction';
+    document.getElementById('impact4Value').value = '$20,000';
+    document.getElementById('competitor1').value = 'Northside Comfort';
+    document.getElementById('competitor1Note').value = '11 reviews in 30 days · stronger map pack visibility';
+    document.getElementById('competitor2').value = 'Comfort First Heating';
+    document.getElementById('competitor2Note').value = 'Phone number above fold · faster mobile experience';
+    document.getElementById('competitor3').value = 'Premier Air Experts';
+    document.getElementById('competitor3Note').value = 'LSAs active · stronger trust stack on homepage';
+    document.getElementById('action1').value = 'Put answer rate on a daily dashboard and assign ownership when it drops below 88%.';
+    document.getElementById('action2').value = 'Launch a job-close review ask process that targets 8 new Google reviews per month.';
+    document.getElementById('action3').value = 'Move the primary phone CTA above the fold on mobile and tighten the hero trust stack.';
+    document.getElementById('action4').value = 'Build a 3-touch estimate follow-up sequence owned by the front desk, not estimators.';
+    document.getElementById('action5').value = 'Reallocate budget only after phone and review systems are fixed so more spend is not wasted.';
+    document.getElementById('proof1Caption').value = 'Google Business Profile review velocity vs. top competitor';
+    document.getElementById('proof2Caption').value = 'Homepage mobile hero with weak phone visibility';
+    document.getElementById('proof3Caption').value = 'Competitor LSA presence and ad coverage';
+    ['reportProof1Image', 'reportProof2Image', 'reportProof3Image'].forEach((id) => {
+      const target = document.getElementById(id);
+      if (target) target.innerHTML = 'Screenshot';
+    });
+    ['proof1File', 'proof2File', 'proof3File'].forEach((id) => {
+      const input = document.getElementById(id);
+      if (input) input.value = '';
+    });
+    updateBindings();
+  });
+
+  form?.addEventListener('input', updateBindings);
+  form?.addEventListener('change', updateBindings);
+
+  attachImageInput('proof1File', 'reportProof1Image');
+  attachImageInput('proof2File', 'reportProof2Image');
+  attachImageInput('proof3File', 'reportProof3Image');
+
+  updateBindings();
+</script>
+
+</Layout>
