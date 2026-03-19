@@ -4,7 +4,10 @@ const { active = '' } = Astro.props;
 <nav id="nav">
   <a href="/" class="nav-logo">
     <div class="nav-logo-mark"></div>
-    <span class="nav-logo-text">Built on Tenth</span>
+    <span class="nav-logo-copy">
+      <span class="nav-logo-text">Built on Tenth</span>
+      <span class="nav-logo-sub">Revenue Intelligence · HVAC · Roofing · Plumbing</span>
+    </span>
   </a>
   <ul class="nav-links">
     <li><a href="/insights"   class={active === 'insights'   ? 'active' : ''}>Insights</a></li>
@@ -39,6 +42,19 @@ const { active = '' } = Astro.props;
 </div>
 
 <style is:global>
+.nav-logo-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-logo-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(226,221,208,0.62);
+  line-height: 1.2;
+}
 .nav-menu-btn {
   display: none;
   background: transparent;
