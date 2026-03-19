@@ -155,6 +155,27 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"hvac-marketing-benchmarks-2026-what-top-performers-spend.md": {
+	id: "hvac-marketing-benchmarks-2026-what-top-performers-spend.md";
+  slug: "hvac-marketing-benchmarks-2026-what-top-performers-spend";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"i-analyzed-a-3m-hvac-company-online-presence.md": {
+	id: "i-analyzed-a-3m-hvac-company-online-presence.md";
+  slug: "i-analyzed-a-3m-hvac-company-online-presence";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"the-follow-up-sequence-that-moved-close-rate-to-40-percent.md": {
+	id: "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md";
+  slug: "the-follow-up-sequence-that-moved-close-rate-to-40-percent";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "why-hvac-csrs-are-losing-you-300k-per-year.md": {
 	id: "why-hvac-csrs-are-losing-you-300k-per-year.md";
   slug: "why-hvac-csrs-are-losing-you-300k-per-year";
