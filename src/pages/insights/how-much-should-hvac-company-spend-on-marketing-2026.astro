@@ -1,13 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 const title = "How Much Should an HVAC Company Spend on Marketing in 2026?";
-const description = "Most HVAC companies either spend too little and starve for calls, or spend too much and fund their agency's payroll. Here's the actual math — benchmarks, breakdowns, and a budget formula built for $1M–$5M operators.";
+const description = "Most HVAC companies either spend too little and starve for calls, or spend too much and fund their agency's payroll. Here's the actual math - benchmarks, breakdowns, and a budget formula built for $1M–$5M operators.";
 const pubDate = "March 16, 2026";
+const isoDate = "2026-03-16";
 const readTime = 11;
 const category = "Revenue Diagnostics";
 const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80";
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  datePublished: isoDate,
+  author: { "@type": "Organization", name: "Built on Tenth" },
+  publisher: { "@type": "Organization", name: "Built on Tenth" },
+  image: heroImage,
+  mainEntityOfPage: "https://www.builtontenth.com/insights/how-much-should-hvac-company-spend-on-marketing-2026"
+};
 ---
-<Layout title={`${title} | Built on Tenth`} description={description} active="insights">
+<Layout title={`${title} | Built on Tenth`} description={description} active="insights" ogImage={heroImage}>
 
 <style>
 /* ── ARTICLE LAYOUT ── */
@@ -76,7 +88,7 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
   padding: 6px 0 6px 22px; position: relative; border-bottom: 1px solid var(--rule);
 }
 .article-body ul li:last-child, .article-body ol li:last-child { border-bottom: none; }
-.article-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-family: var(--mono); font-size: 12px; }
+.article-body ul li::before { content: ''; position: absolute; left: 0; top: 15px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
 .article-body ol { counter-reset: ol-counter; }
 .article-body ol li::before { content: counter(ol-counter); counter-increment: ol-counter; position: absolute; left: 0; color: var(--teal); font-family: var(--mono); font-size: 12px; font-weight: 600; }
 
@@ -128,6 +140,8 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 .article-cta h3 em { font-style: italic; color: var(--teal); }
 .article-cta p { font-size: 14px; color: var(--ink2); line-height: 1.7; margin-bottom: 24px; font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto; }
 .article-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.article-cta .cta-primary { color: var(--bg); border-bottom: none; }
+.article-cta .cta-secondary { color: var(--ink2); border-bottom: none; }
 
 /* Back link */
 .back-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); text-decoration: none; margin-bottom: 28px; transition: color 0.2s; }
@@ -147,11 +161,12 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 </style>
 
 <!-- HERO -->
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 <div class="article-hero" style={`--hero-img: url('${heroImage}')`}>
   <div class="ah-bg" style={`background-image: url('${heroImage}')`}></div>
   <div class="ah-overlay"></div>
   <div class="ah-inner">
-    <a href="/insights" class="back-link">← All Insights</a>
+    <a href="/insights" class="back-link">All Insights</a>
     <div class="ah-meta">
       <span class="ah-cat">{category}</span>
       <span class="ah-trade">HVAC</span>
@@ -174,7 +189,7 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 
 <h3>How much is this costing me per booked job?</h3>
 
-<p>He didn't know. His agency didn't tell him. And because he didn't know, he had no way to decide if $11,400 was the right number — or if he was $4,000 over budget, or $4,000 under it. This article fixes that. By the end, you'll know:</p>
+<p>He didn't know. His agency didn't tell him. And because he didn't know, he had no way to decide if $11,400 was the right number - or if he was $4,000 over budget, or $4,000 under it. This article fixes that. By the end, you'll know:</p>
 <ul>
   <li>What HVAC companies at different revenue levels actually spend on marketing</li>
   <li>The one number that tells you if your budget is right or wrong</li>
@@ -186,17 +201,17 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 
 <h2>The Number Everyone Gets Wrong</h2>
 <p>Most articles about marketing budgets say something like: "spend 5–12% of revenue on marketing." That advice is almost useless for an HVAC company. Here's why.</p>
-<p>A <strong>replacement company</strong> (focused on system installs) and a <strong>service-and-repair shop</strong> have completely different economics. The replacement company might have a $9,000 average ticket. The repair shop might average $280. The same percentage of revenue produces a wildly different cost per booked job — which changes everything about how much you should spend.</p>
+<p>A <strong>replacement company</strong> (focused on system installs) and a <strong>service-and-repair shop</strong> have completely different economics. The replacement company might have a $9,000 average ticket. The repair shop might average $280. The same percentage of revenue produces a wildly different cost per booked job - which changes everything about how much you should spend.</p>
 <p>The right question isn't "what percentage of revenue should I spend?"</p>
 <div class="pullquote">The right question is: "What am I paying to get a booked job, and is that number good or bad?"</div>
-<p>That one number — cost per booked job — is the only marketing benchmark that actually matters.</p>
+<p>That one number - cost per booked job - is the only marketing benchmark that actually matters.</p>
 
 <h2>What the Data Shows: HVAC Marketing Spend by Revenue</h2>
 <p>HVAC companies typically invest <strong>7–10% of revenue</strong> on marketing, with 60–70% of that going to digital channels. Here's how that breaks down by company size:</p>
 
 <figure class="article-img">
   <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="HVAC technician checking outdoor air conditioning condenser unit" loading="lazy" />
-  <figcaption>Understanding your true cost per booked job — not just total spend — is what separates profitable HVAC operators from ones funding their agency's growth.</figcaption>
+  <figcaption>Understanding your true cost per booked job - not just total spend - is what separates profitable HVAC operators from ones funding their agency's growth.</figcaption>
 </figure>
 
 <div class="data-table-wrap">
@@ -242,7 +257,7 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 
 <h3>Leak #1: Phone Handling</h3>
 <p>The average HVAC company answers roughly <strong>68% of inbound calls</strong>. That means 32 out of every 100 calls they paid to generate go unanswered. At $35 cost per call and 300 calls/month: that's <strong>$3,360/month spent generating calls nobody answers</strong>.</p>
-<p>Even among answered calls, booking rates vary wildly. Top performers book 65–75% of answered calls. Industry average is closer to 40–50%. That gap — on 300 calls/month — is the difference between 90 booked jobs and 150. Same budget. Same ads. Completely different revenue.</p>
+<p>Even among answered calls, booking rates vary wildly. Top performers book 65–75% of answered calls. Industry average is closer to 40–50%. That gap - on 300 calls/month - is the difference between 90 booked jobs and 150. Same budget. Same ads. Completely different revenue.</p>
 
 <div class="callout"><strong>The fix:</strong> Track your answer rate and booking rate separately. Both numbers should live on a dashboard your CSR manager sees every day.</div>
 
@@ -276,7 +291,7 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
   <li>What's my average ticket by channel?</li>
   <li>What's my close rate on calls from Google Ads vs. LSAs vs. Angi?</li>
 </ol>
-<p>If you're relying on your agency to tell you the answers, you're getting the version they want you to see. Track calls by source and jobs by source — separately, in your own system.</p>
+<p>If you're relying on your agency to tell you the answers, you're getting the version they want you to see. Track calls by source and jobs by source - separately, in your own system.</p>
 
 <h2>What "Good" Looks Like at Different Revenue Levels</h2>
 <p>Here's a benchmark table based on top-quartile HVAC companies. These are the numbers you're aiming for:</p>
@@ -302,7 +317,7 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 </div>
 
 <h2>The Real Answer to "How Much Should I Spend?"</h2>
-<p>Spend exactly as much as produces a job at or below your cost-per-job threshold — and not a dollar more. If your threshold is $300/booked job and you've found channels producing jobs at $220, spend more on those channels. If you're spending $500/booked job on a channel and can't fix it, cut it — no matter what your agency says.</p>
+<p>Spend exactly as much as produces a job at or below your cost-per-job threshold - and not a dollar more. If your threshold is $300/booked job and you've found channels producing jobs at $220, spend more on those channels. If you're spending $500/booked job on a channel and can't fix it, cut it - no matter what your agency says.</p>
 
 <div class="callout"><strong>At what point does the next dollar I spend stop producing jobs at a price that makes sense?</strong> That's your ceiling. Everything below it is the right budget. Everything above it is overhead you're funding for your agency.</div>
 
@@ -311,7 +326,7 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
   <li><strong>Pull last month's numbers:</strong> Total marketing spend, total calls received (from all sources), total jobs booked. Calculate cost per booked job.</li>
   <li><strong>Ask your agency for a channel breakdown:</strong> Cost per call by source. If they can't provide it, that tells you something.</li>
   <li><strong>Check your phone answer rate:</strong> Most phone systems or call tracking tools can pull this. If you don't have call tracking, that's the first thing to add.</li>
-  <li><strong>Use the free Marketing Cost Calculator</strong> to benchmark your numbers against HVAC industry data — it takes about 4 minutes.</li>
+  <li><strong>Use the free Marketing Cost Calculator</strong> to benchmark your numbers against HVAC industry data - it takes about 4 minutes.</li>
 </ol>
 
 <!-- FAQ -->
@@ -320,7 +335,7 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 
 <div class="faq-item">
   <div class="faq-q">What's the average marketing budget for an HVAC company?</div>
-  <div class="faq-a">HVAC companies typically invest 7–10% of revenue on marketing, with 60–70% going toward digital channels. For a $2M company, that's roughly $11,000–$16,000/month. However, the right number depends on your average ticket, close rate, and cost-per-job threshold — not a fixed percentage.</div>
+  <div class="faq-a">HVAC companies typically invest 7–10% of revenue on marketing, with 60–70% going toward digital channels. For a $2M company, that's roughly $11,000–$16,000/month. However, the right number depends on your average ticket, close rate, and cost-per-job threshold - not a fixed percentage.</div>
 </div>
 <div class="faq-item">
   <div class="faq-q">Should HVAC companies use a percentage of revenue for marketing budgets?</div>
@@ -332,15 +347,15 @@ const heroImage = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?
 </div>
 <div class="faq-item">
   <div class="faq-q">How much do top HVAC companies spend on Google LSAs?</div>
-  <div class="faq-a">Most HVAC companies find LSAs deliver the best cost per call of any paid channel — typically $25–$55/call in most US markets. Top performers allocate 30–50% of their paid media budget to LSAs before investing heavily in traditional Google Ads.</div>
+  <div class="faq-a">Most HVAC companies find LSAs deliver the best cost per call of any paid channel - typically $25–$55/call in most US markets. Top performers allocate 30–50% of their paid media budget to LSAs before investing heavily in traditional Google Ads.</div>
 </div>
 
 <!-- ARTICLE CTA -->
 <div class="article-cta">
   <h3>Ready to find your <em>real numbers?</em></h3>
-  <p>Use our free Marketing Cost Calculator to see your true cost per booked job — then benchmark it against the top 25% of HVAC companies. Takes 4 minutes.</p>
+  <p>Use our free Marketing Cost Calculator to see your true cost per booked job - then benchmark it against the top 25% of HVAC companies. Takes 4 minutes.</p>
   <div class="article-cta-btns">
-    <a href="/tools/marketing-calculator" class="cta-primary">Try the Marketing Calculator →</a>
+    <a href="/tools/marketing-calculator" class="cta-primary">Try the Marketing Calculator</a>
     <a href="/apply" class="cta-secondary">Get a Revenue Leak Audit</a>
   </div>
 </div>

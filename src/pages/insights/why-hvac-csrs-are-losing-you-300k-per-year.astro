@@ -1,13 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 const title = "Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)";
-const description = "Your phones are answered. Your CSRs are friendly. And you're still losing $300K a year in calls that never became booked jobs. Here's exactly where it's happening — and the three fixes that recover most of it.";
+const description = "Your phones are answered. Your CSRs are friendly. And you're still losing $300K a year in calls that never became booked jobs. Here's exactly where it's happening - and the three fixes that recover most of it.";
 const pubDate = "March 17, 2026";
+const isoDate = "2026-03-17";
 const readTime = 12;
 const category = "Pipeline Systems";
 const heroImage = "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80";
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  datePublished: isoDate,
+  author: { "@type": "Organization", name: "Built on Tenth" },
+  publisher: { "@type": "Organization", name: "Built on Tenth" },
+  image: heroImage,
+  mainEntityOfPage: "https://www.builtontenth.com/insights/why-hvac-csrs-are-losing-you-300k-per-year"
+};
 ---
-<Layout title={`${title} | Built on Tenth`} description={description} active="insights">
+<Layout title={`${title} | Built on Tenth`} description={description} active="insights" ogImage={heroImage}>
 
 <style>
 .article-hero { padding: 120px 48px 64px; position: relative; overflow: hidden; }
@@ -33,7 +45,7 @@ const heroImage = "https://images.unsplash.com/photo-1521791136064-7986c2920216?
 .article-body ul, .article-body ol { padding-left: 0; list-style: none; margin-bottom: 24px; }
 .article-body ul li, .article-body ol li { font-size: 16px; color: var(--ink2); line-height: 1.75; font-weight: 300; padding: 6px 0 6px 22px; position: relative; border-bottom: 1px solid var(--rule); }
 .article-body ul li:last-child, .article-body ol li:last-child { border-bottom: none; }
-.article-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-family: var(--mono); font-size: 12px; }
+.article-body ul li::before { content: ''; position: absolute; left: 0; top: 15px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
 .article-body ol { counter-reset: ol-counter; }
 .article-body ol li::before { content: counter(ol-counter); counter-increment: ol-counter; position: absolute; left: 0; color: var(--teal); font-family: var(--mono); font-size: 12px; font-weight: 600; }
 .article-img { width: 100%; border-radius: 5px; overflow: hidden; margin: 36px 0; position: relative; background: var(--bg3); border: 1px solid var(--rule); }
@@ -65,6 +77,8 @@ const heroImage = "https://images.unsplash.com/photo-1521791136064-7986c2920216?
 .article-cta h3 em { font-style: italic; color: var(--teal); }
 .article-cta p { font-size: 14px; color: var(--ink2); line-height: 1.7; margin: 0 auto 24px; font-weight: 300; max-width: 480px; }
 .article-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.article-cta .cta-primary { color: var(--bg); border-bottom: none; }
+.article-cta .cta-secondary { color: var(--ink2); border-bottom: none; }
 .back-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); text-decoration: none; margin-bottom: 28px; transition: color 0.2s; }
 .back-link:hover { color: var(--teal); }
 @media (max-width: 960px) {
@@ -80,11 +94,12 @@ const heroImage = "https://images.unsplash.com/photo-1521791136064-7986c2920216?
 }
 </style>
 
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 <div class="article-hero">
   <div class="ah-bg" style={`background-image: url('${heroImage}')`}></div>
   <div class="ah-overlay"></div>
   <div class="ah-inner">
-    <a href="/insights" class="back-link">← All Insights</a>
+    <a href="/insights" class="back-link">All Insights</a>
     <div class="ah-meta">
       <span class="ah-cat">{category}</span>
       <span class="ah-trade">HVAC</span>
@@ -102,7 +117,7 @@ const heroImage = "https://images.unsplash.com/photo-1521791136064-7986c2920216?
 <div class="article-body">
 
 <p>Most HVAC owners think their phone problem is a volume problem. They're not getting enough calls. The ads aren't working. The season is slow.</p>
-<p>But when you actually pull the numbers — answer rates, booking rates, follow-up rates — the picture looks completely different. <strong>The calls are coming in. They're just not converting.</strong></p>
+<p>But when you actually pull the numbers - answer rates, booking rates, follow-up rates - the picture looks completely different. <strong>The calls are coming in. They're just not converting.</strong></p>
 <p>The average HVAC company answers roughly <strong>68% of inbound calls</strong> and books around <strong>42% of the calls they answer</strong>. Follow-up on unbooked calls? Less than 20%.</p>
 <p>Run those numbers on a company taking 300 calls a month at an $1,800 average ticket:</p>
 <ul>
@@ -110,7 +125,7 @@ const heroImage = "https://images.unsplash.com/photo-1521791136064-7986c2920216?
   <li>204 × 42% booking rate = <strong>86 booked jobs</strong></li>
   <li>86 × $1,800 = <strong>$154,800/month in revenue</strong></li>
 </ul>
-<p>Now run the same numbers at top-performer benchmarks — 90% answer rate, 65% booking rate:</p>
+<p>Now run the same numbers at top-performer benchmarks - 90% answer rate, 65% booking rate:</p>
 <ul>
   <li>300 calls × 90% = <strong>270 answered calls</strong></li>
   <li>270 × 65% = <strong>175 booked jobs</strong></li>
@@ -128,25 +143,25 @@ const heroImage = "https://images.unsplash.com/photo-1521791136064-7986c2920216?
 
 <h3>Failure #1: Nobody Tracks Answer Rate</h3>
 <p>Most HVAC owners have a general sense of whether their phones are "busy." Their CSR seems to be on the phone a lot. Calls come in. The dispatch board fills up. It feels like things are working. But "feels like" isn't a number.</p>
-<p>When call tracking data is actually pulled, the gap between perception and reality is almost always shocking. Owners who believe they're answering 85% of calls are frequently running at 62–68%. The missed calls happen in the cracks — the call that came in during a meeting, the afternoon rush when both lines were busy, the Saturday morning when the CSR was handling a tech escalation.</p>
-<p><strong>Each missed call at a $1,800 average ticket represents $1,260 in potential lost revenue</strong> (at a 70% close rate). At 300 calls/month and 32% missed, that's 96 missed calls — <strong>$120,960 in potential revenue gone before your CSR even picks up.</strong></p>
+<p>When call tracking data is actually pulled, the gap between perception and reality is almost always shocking. Owners who believe they're answering 85% of calls are frequently running at 62–68%. The missed calls happen in the cracks - the call that came in during a meeting, the afternoon rush when both lines were busy, the Saturday morning when the CSR was handling a tech escalation.</p>
+<p><strong>Each missed call at a $1,800 average ticket represents $1,260 in potential lost revenue</strong> (at a 70% close rate). At 300 calls/month and 32% missed, that's 96 missed calls - <strong>$120,960 in potential revenue gone before your CSR even picks up.</strong></p>
 
 <figure class="article-img">
   <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200&q=80" alt="HVAC dispatcher reviewing scheduling board and call logs" loading="lazy" />
-  <figcaption>Most HVAC companies don't know their answer rate. The ones that track it — and fix it — typically recover tens of thousands in monthly revenue.</figcaption>
+  <figcaption>Most HVAC companies don't know their answer rate. The ones that track it - and fix it - typically recover tens of thousands in monthly revenue.</figcaption>
 </figure>
 
-<div class="callout"><strong>What top performers do:</strong> Answer rate lives on a dashboard. The owner sees it. The CSR manager sees it. When it drops below 88%, there's a conversation the next day — not at the end of the month.</div>
+<div class="callout"><strong>What top performers do:</strong> Answer rate lives on a dashboard. The owner sees it. The CSR manager sees it. When it drops below 88%, there's a conversation the next day - not at the end of the month.</div>
 
 <h3>Failure #2: Your CSRs Are Helping, Not Selling</h3>
-<p>Your CSR is doing their job. They answer professionally. They're friendly. They know the service area. They answer every question the caller has — pricing ranges, availability, what the diagnostic fee covers, how long the appointment takes. And then they wait.</p>
-<p>They give information. They answer questions. They handle objections patiently. And at the end of the call, if the customer says "okay let me think about it" — they say "sure, no problem, give us a call when you're ready."</p>
+<p>Your CSR is doing their job. They answer professionally. They're friendly. They know the service area. They answer every question the caller has - pricing ranges, availability, what the diagnostic fee covers, how long the appointment takes. And then they wait.</p>
+<p>They give information. They answer questions. They handle objections patiently. And at the end of the call, if the customer says "okay let me think about it" - they say "sure, no problem, give us a call when you're ready."</p>
 <p>That's not a bad employee. That's an undertrained one.</p>
 <p><strong>The fundamental mistake:</strong> CSRs are trained to answer questions. Nobody trained them to ask for the appointment. Here's what the difference sounds like in practice:</p>
 
 <div class="script-compare">
   <div class="script-box bad">
-    <div class="script-label bad-l">✕ Undertrained CSR — loses the booking</div>
+    <div class="script-label bad-l">✕ Undertrained CSR - loses the booking</div>
     <div class="script-text">Caller: "What does a diagnostic cost?"
 CSR: "It's $89 for the diagnostic. If we do the repair, that gets applied to the cost."
 Caller: "Okay, and how soon can you come out?"
@@ -155,29 +170,29 @@ Caller: "Okay, let me check with my husband and call you back."
 CSR: "Sure, sounds good."</div>
   </div>
   <div class="script-box good">
-    <div class="script-label good-l">✓ Trained CSR — books the job</div>
+    <div class="script-label good-l">✓ Trained CSR - books the job</div>
     <div class="script-text">Caller: "What does a diagnostic cost?"
-CSR: "It's $89, and that gets applied to any repair we do. Our tech will diagnose the issue and give you a full breakdown before anything gets done — no surprises. Are mornings or afternoons better for you tomorrow?"</div>
+CSR: "It's $89, and that gets applied to any repair we do. Our tech will diagnose the issue and give you a full breakdown before anything gets done - no surprises. Are mornings or afternoons better for you tomorrow?"</div>
   </div>
 </div>
 
-<p>The difference is one sentence. A direct, confident move toward scheduling — not pressure, just direction. <strong>The booking ask is not pushy. It's helpful.</strong> The customer already decided they need service. They're calling you. Your CSR's job is to guide them to a resolution.</p>
+<p>The difference is one sentence. A direct, confident move toward scheduling - not pressure, just direction. <strong>The booking ask is not pushy. It's helpful.</strong> The customer already decided they need service. They're calling you. Your CSR's job is to guide them to a resolution.</p>
 
 <h3>Failure #3: No Follow-Up System</h3>
 <p>A caller doesn't book on the first call. Maybe they're price-comparing. Maybe they need to check their schedule. They say "I'll call back." In most HVAC companies, that's the end of the story.</p>
-<p>Research shows that <strong>78% of consumers go with the business that reaches out first</strong> — and that it takes an average of 8 touches to engage a decision maker. Yet most HVAC companies make zero follow-up attempts after an unbooked call.</p>
-<p>If you're taking 300 calls/month and booking 42% on the first call, that's 126 booked jobs and <strong>174 calls that went nowhere.</strong> If even 25% of follow-up attempts result in a booking — a conservative estimate — that's <strong>43 additional jobs per month.</strong> At $1,800 average ticket: <strong>$77,400/month sitting in calls you already paid for, going unworked.</strong></p>
+<p>Research shows that <strong>78% of consumers go with the business that reaches out first</strong> - and that it takes an average of 8 touches to engage a decision maker. Yet most HVAC companies make zero follow-up attempts after an unbooked call.</p>
+<p>If you're taking 300 calls/month and booking 42% on the first call, that's 126 booked jobs and <strong>174 calls that went nowhere.</strong> If even 25% of follow-up attempts result in a booking - a conservative estimate - that's <strong>43 additional jobs per month.</strong> At $1,800 average ticket: <strong>$77,400/month sitting in calls you already paid for, going unworked.</strong></p>
 
 <figure class="article-img">
   <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80" alt="HVAC technician on the job in residential home" loading="lazy" />
-  <figcaption>Every unbooked call that doesn't get a follow-up is a call your marketing budget already paid for — twice.</figcaption>
+  <figcaption>Every unbooked call that doesn't get a follow-up is a call your marketing budget already paid for - twice.</figcaption>
 </figure>
 
 <p><strong>What a basic follow-up system looks like:</strong></p>
 <ol>
   <li>Every call that doesn't book gets logged with name, number, and reason</li>
-  <li>A follow-up call goes out within 2 hours — not the next day</li>
-  <li>If no answer, a text follows: "Hi [name], this is [company]. You called earlier about your AC — we have openings tomorrow if you still need help."</li>
+  <li>A follow-up call goes out within 2 hours - not the next day</li>
+  <li>If no answer, a text follows: "Hi [name], this is [company]. You called earlier about your AC - we have openings tomorrow if you still need help."</li>
   <li>Second follow-up at 24 hours if still no response. Two touches, done.</li>
 </ol>
 
@@ -194,9 +209,9 @@ CSR: "It's $89, and that gets applied to any repair we do. Our tech will diagnos
       <tr><td>Calls answered</td><td>238</td><td>315</td><td>+77 calls</td></tr>
       <tr><td>Booking rate (answered)</td><td>40%</td><td>65%</td><td>+25%</td></tr>
       <tr><td>Jobs booked</td><td>95</td><td>205</td><td>+110 jobs</td></tr>
-      <tr><td>Average ticket</td><td>$1,600</td><td>$1,600</td><td>—</td></tr>
+      <tr><td>Average ticket</td><td>$1,600</td><td>$1,600</td><td>-</td></tr>
       <tr><td>Monthly revenue</td><td>$152,000</td><td>$328,000</td><td><strong>+$176,000</strong></td></tr>
-      <tr><td>Annual difference</td><td>—</td><td>—</td><td><strong>+$2,112,000</strong></td></tr>
+      <tr><td>Annual difference</td><td>-</td><td>-</td><td><strong>+$2,112,000</strong></td></tr>
     </tbody>
   </table>
 </div>
@@ -204,18 +219,18 @@ CSR: "It's $89, and that gets applied to any repair we do. Our tech will diagnos
 <h2>The Three Fixes (In Order of Priority)</h2>
 
 <h3>Fix 1: Install call tracking this week</h3>
-<p>You cannot manage what you don't measure. Call tracking shows you answer rate by hour, day, and CSR. Options: CallRail ($45/month), WhatConverts ($30/month), or your existing platform — ServiceTitan, Housecall Pro, and Jobber all have call recording built in. <strong>The goal: know your answer rate by Friday.</strong></p>
+<p>You cannot manage what you don't measure. Call tracking shows you answer rate by hour, day, and CSR. Options: CallRail ($45/month), WhatConverts ($30/month), or your existing platform - ServiceTitan, Housecall Pro, and Jobber all have call recording built in. <strong>The goal: know your answer rate by Friday.</strong></p>
 
 <h3>Fix 2: Train the booking ask</h3>
-<p>Write your booking transition script — specifically the move from answering questions to asking for the appointment. It should be one sentence. Practice it until it sounds natural. The framework: Answer their question → confirm the urgency → ask for the time slot. Not "do you want to schedule?" — that's a yes/no. Instead: <strong>"Are mornings or afternoons better for you?"</strong></p>
+<p>Write your booking transition script - specifically the move from answering questions to asking for the appointment. It should be one sentence. Practice it until it sounds natural. The framework: Answer their question confirm the urgency ask for the time slot. Not "do you want to schedule?" - that's a yes/no. Instead: <strong>"Are mornings or afternoons better for you?"</strong></p>
 
 <h3>Fix 3: Build the 2-touch follow-up sequence</h3>
-<p>Create a simple log — a column in a spreadsheet, a field in your CRM. Every call that doesn't book gets an entry. Every entry gets a follow-up call within 2 hours and a text within 4 hours if no answer. This doesn't require software. It requires discipline and 10 minutes of someone's time per unbooked call.</p>
+<p>Create a simple log - a column in a spreadsheet, a field in your CRM. Every call that doesn't book gets an entry. Every entry gets a follow-up call within 2 hours and a text within 4 hours if no answer. This doesn't require software. It requires discipline and 10 minutes of someone's time per unbooked call.</p>
 
 <h2>How to Know If You Have This Problem Right Now</h2>
 <ol>
   <li>Do you know your phone answer rate for last month?</li>
-  <li>Do you know your booking rate — jobs booked per call answered?</li>
+  <li>Do you know your booking rate - jobs booked per call answered?</li>
   <li>Does your CSR ask for the appointment on every call?</li>
   <li>Do unbooked calls get followed up within 2 hours?</li>
   <li>Do you have a written script your CSR uses for the booking transition?</li>
@@ -235,18 +250,18 @@ CSR: "It's $89, and that gets applied to any repair we do. Our tech will diagnos
 </div>
 <div class="faq-item">
   <div class="faq-q">How quickly should an HVAC company follow up on unbooked calls?</div>
-  <div class="faq-a">Within 2 hours for a call-back, within 4 hours for a text if no answer. Research shows 78% of consumers go with the business that reaches out first — waiting until the next business day means most of those leads are already gone.</div>
+  <div class="faq-a">Within 2 hours for a call-back, within 4 hours for a text if no answer. Research shows 78% of consumers go with the business that reaches out first - waiting until the next business day means most of those leads are already gone.</div>
 </div>
 <div class="faq-item">
   <div class="faq-q">What's the difference between answer rate and booking rate?</div>
-  <div class="faq-a">Answer rate is the percentage of incoming calls picked up before voicemail. Booking rate is the percentage of answered calls that result in a scheduled appointment. Both matter — a high answer rate with a low booking rate means your CSR is taking calls but not closing them.</div>
+  <div class="faq-a">Answer rate is the percentage of incoming calls picked up before voicemail. Booking rate is the percentage of answered calls that result in a scheduled appointment. Both matter - a high answer rate with a low booking rate means your CSR is taking calls but not closing them.</div>
 </div>
 
 <div class="article-cta">
   <h3>Find out what your phone system is <em>actually costing you.</em></h3>
-  <p>Enter your call volume, answer rate, and average ticket. See the dollar amount leaking through your phones every month — and the recovery if you hit 89%.</p>
+  <p>Enter your call volume, answer rate, and average ticket. See the dollar amount leaking through your phones every month - and the recovery if you hit 89%.</p>
   <div class="article-cta-btns">
-    <a href="/tools/phone-calculator" class="cta-primary">Try the Phone Revenue Calculator →</a>
+    <a href="/tools/phone-calculator" class="cta-primary">Try the Phone Revenue Calculator</a>
     <a href="/apply" class="cta-secondary">Get a Revenue Leak Audit</a>
   </div>
 </div>

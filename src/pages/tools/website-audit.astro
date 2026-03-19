@@ -6,7 +6,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
   toolName="Website Conversion Audit"
   slug="website-audit"
   headline='Is Your Website<br><em>Losing You Calls?</em>'
-  subheadline="Most contractor websites look fine — but fail in 3 critical places: speed, mobile experience, and call friction. Answer 12 quick questions about your site and get a Conversion Leak Score with specific fixes."
+  subheadline="Most contractor websites look fine - but fail in 3 critical places: speed, mobile experience, and call friction. Answer 12 quick questions about your site and get a Conversion Leak Score with specific fixes."
   metaDescription="Free website conversion audit for contractors. Check your site against 12 conversion factors that determine whether homeowners call you or leave. Get a scored report with specific fixes."
 >
 
@@ -91,10 +91,10 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
       <span class="ip-micro">12 factors · Takes 2 minutes</span>
     </div>
     <div class="ip-body">
-      <p class="ip-note">Check every item that currently exists on your website. Be honest — if you're not sure, leave it unchecked. The score is only useful if the inputs are accurate.</p>
+      <p class="ip-note">Check every item that currently exists on your website. Be honest - if you're not sure, leave it unchecked. The score is only useful if the inputs are accurate.</p>
 
       <div class="url-field">
-        <label class="url-label" for="site-url">Your website URL (optional — for reference)</label>
+        <label class="url-label" for="site-url">Your website URL (optional - for reference)</label>
         <input type="url" class="url-input" id="site-url" placeholder="https://yourcompany.com" />
       </div>
 
@@ -104,7 +104,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
           <input type="checkbox" id="c1" data-points="12">
           <label class="check-label" for="c1">
             <div class="check-toggle"></div>
-            <span class="check-text"><strong>Phone number is visible</strong> in the top header — without scrolling</span>
+            <span class="check-text"><strong>Phone number is visible</strong> in the top header - without scrolling</span>
           </label>
         </div>
         <div class="check-item">
@@ -136,7 +136,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
           <input type="checkbox" id="c5" data-points="8">
           <label class="check-label" for="c5">
             <div class="check-toggle"></div>
-            <span class="check-text">Site looks <strong>professional on a phone</strong> — text readable, no horizontal scroll</span>
+            <span class="check-text">Site looks <strong>professional on a phone</strong> - text readable, no horizontal scroll</span>
           </label>
         </div>
         <div class="check-item">
@@ -198,7 +198,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         </div>
       </div>
 
-      <button class="calc-btn" id="calc-btn">Get My Conversion Leak Score →</button>
+      <button class="calc-btn" id="calc-btn">Get My Conversion Leak Score</button>
     </div>
   </div>
 
@@ -210,7 +210,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
     <div class="rp-body">
       <div class="empty-state" id="empty-state">
         <div class="empty-icon">🔍</div>
-        <p class="empty-text">Most contractor websites look fine — but fail on the 3 things that determine whether someone calls: speed, phone visibility, and trust signals. Work through the checklist to see your score.</p>
+        <p class="empty-text">Most contractor websites look fine - but fail on the 3 things that determine whether someone calls: speed, phone visibility, and trust signals. Work through the checklist to see your score.</p>
       </div>
       <div class="result-section" id="results">
         <div class="score-circle-wrap">
@@ -218,18 +218,18 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
           <div class="score-number" id="score-num">0</div>
           <div class="score-sub" id="score-sub">out of 100</div>
           <div class="score-track"><div class="score-fill" id="score-fill" style="width:0%;background:var(--neg)"></div></div>
-          <div class="score-range"><span>0 — Critical</span><span>50 — Average</span><span>80+ — Strong</span></div>
+          <div class="score-range"><span>0 - Critical</span><span>50 - Average</span><span>80+ - Strong</span></div>
         </div>
 
         <div class="section-title" id="issues-title">Issues found</div>
         <div class="issues-list" id="issues-list"></div>
 
         <div class="diagnosis" id="diagnosis">
-          <div class="dt" id="diag-title">—</div>
-          <div class="db" id="diag-body">—</div>
+          <div class="dt" id="diag-title">-</div>
+          <div class="db" id="diag-body">-</div>
         </div>
 
-        <a href="/apply?service=audit&source=website-audit" class="audit-cta">Get a Full Site + Marketing Audit →</a>
+        <a href="/apply?service=audit&source=website-audit" class="audit-cta">Get a Full Site + Marketing Audit</a>
         <p class="audit-note">The Revenue Leak Audit includes a detailed website analysis alongside your phone, ads, and competitor benchmarks.</p>
       </div>
     </div>
@@ -247,7 +247,7 @@ const checkItems = [
   { id: 'c7',  points: 10, label: 'Google reviews visible on homepage',      cat: 'Trust' },
   { id: 'c8',  points: 8,  label: 'License / insurance / certifications shown', cat: 'Trust' },
   { id: 'c9',  points: 6,  label: 'Real team or truck photos (not stock)',   cat: 'Trust' },
-  { id: 'c10', points: 10, label: 'Clear headline — what you do, who you serve', cat: 'Clarity' },
+  { id: 'c10', points: 10, label: 'Clear headline - what you do, who you serve', cat: 'Clarity' },
   { id: 'c11', points: 8,  label: 'Primary CTA button above the fold',       cat: 'CTA' },
   { id: 'c12', points: 8,  label: 'Service areas listed on site',            cat: 'Clarity' },
 ];
@@ -289,7 +289,7 @@ function calculate() {
   const scoreEl = document.getElementById('score-num');
   scoreEl.textContent = score;
   scoreEl.className = `score-number ${score >= 80 ? 'good' : score >= 55 ? 'warn' : 'bad'}`;
-  document.getElementById('score-sub').textContent = `out of 100 — ${failed.length} issue${failed.length !== 1 ? 's' : ''} found`;
+  document.getElementById('score-sub').textContent = `out of 100 - ${failed.length} issue${failed.length !== 1 ? 's' : ''} found`;
   const fillEl = document.getElementById('score-fill');
   fillEl.style.width = score + '%';
   fillEl.style.background = score >= 80 ? 'var(--pos)' : score >= 55 ? '#C9A035' : 'var(--neg)';
@@ -320,19 +320,19 @@ function calculate() {
   if (score >= 80) {
     diagEl.className = 'diagnosis good';
     diagTitle.textContent = 'Your website is set up to convert.';
-    diagBody.textContent  = 'Most of the common conversion killers are handled. Your biggest opportunity is likely outside the website — in how calls are being handled and followed up on.';
+    diagBody.textContent  = 'Most of the common conversion killers are handled. Your biggest opportunity is likely outside the website - in how calls are being handled and followed up on.';
   } else if (phoneIssues.length >= 2) {
     diagEl.className = 'diagnosis';
     diagTitle.textContent = 'Phone visibility is your biggest leak.';
-    diagBody.textContent  = 'If someone can\'t immediately find your number or tap to call from their phone, they leave. This is the single highest-impact fix on most contractor sites — and it takes an afternoon.';
+    diagBody.textContent  = 'If someone can\'t immediately find your number or tap to call from their phone, they leave. This is the single highest-impact fix on most contractor sites - and it takes an afternoon.';
   } else if (speedIssues.length >= 2) {
     diagEl.className = 'diagnosis';
     diagTitle.textContent = 'Site speed is costing you calls.';
-    diagBody.textContent  = 'A site that takes 5+ seconds to load on mobile loses 53% of visitors before they see your number. This is usually a hosting, image size, or plugin issue — not a redesign.';
+    diagBody.textContent  = 'A site that takes 5+ seconds to load on mobile loses 53% of visitors before they see your number. This is usually a hosting, image size, or plugin issue - not a redesign.';
   } else if (score < 55) {
     diagEl.className = 'diagnosis';
     diagTitle.textContent = 'Multiple conversion leaks working against you.';
-    diagBody.textContent  = 'These aren\'t design problems — they\'re operational problems. Most of the fixes take hours, not weeks. The priority is phone visibility and trust signals first, everything else second.';
+    diagBody.textContent  = 'These aren\'t design problems - they\'re operational problems. Most of the fixes take hours, not weeks. The priority is phone visibility and trust signals first, everything else second.';
   } else {
     diagEl.className = 'diagnosis warn';
     diagTitle.textContent = 'Decent setup with fixable gaps.';

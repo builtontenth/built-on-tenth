@@ -6,7 +6,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
   toolName="Capacity-to-Demand Planner"
   slug="capacity-planner"
   headline='Are You Buying More Leads<br><em>Than You Can Convert?</em>'
-  subheadline="Most companies scale marketing spend before fixing capacity. That's how money gets burned. Enter your team size and production rate — find out exactly how many calls you need and the maximum spend that makes sense."
+  subheadline="Most companies scale marketing spend before fixing capacity. That's how money gets burned. Enter your team size and production rate - find out exactly how many calls you need and the maximum spend that makes sense."
   metaDescription="Free capacity planner for home service companies. Find out how many leads your team can actually handle before spending more on marketing. Avoid overspending on leads you can't convert."
 >
 
@@ -85,7 +85,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
       <span class="ip-micro">Capacity-first marketing math</span>
     </div>
     <div class="ip-body">
-      <p class="ip-insight">Scaling spend before fixing capacity is how money gets burned. Get the number of leads your team can actually handle — then decide how much to spend on getting them.</p>
+      <p class="ip-insight">Scaling spend before fixing capacity is how money gets burned. Get the number of leads your team can actually handle - then decide how much to spend on getting them.</p>
 
       <div class="field">
         <div class="field-label">Number of field technicians <span class="field-hint">techs who run jobs</span></div>
@@ -114,7 +114,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         <div class="suffix-wrap"><span class="suffix">%</span><input type="number" class="field-input" id="utilization" placeholder="e.g. 80" min="1" max="100" /></div>
         <div class="bm-hint"><span>Recommended:</span><span class="bm-val">75–85% (leaves room for emergencies)</span></div>
       </div>
-      <button class="calc-btn" id="calc-btn">Calculate My Capacity Needs →</button>
+      <button class="calc-btn" id="calc-btn">Calculate My Capacity Needs</button>
     </div>
   </div>
 
@@ -126,56 +126,56 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
     <div class="rp-body">
       <div class="empty-state" id="empty-state">
         <div class="empty-icon">📋</div>
-        <p class="empty-text">Most companies scale spend before fixing capacity. That's how money gets burned — you're paying for leads your team can't handle, and calls that came in aren't getting booked. Enter your team numbers to find the right spend ceiling.</p>
+        <p class="empty-text">Most companies scale spend before fixing capacity. That's how money gets burned - you're paying for leads your team can't handle, and calls that came in aren't getting booked. Enter your team numbers to find the right spend ceiling.</p>
       </div>
       <div class="result-section" id="results">
         <div class="key-metrics">
           <div class="km-card">
             <div class="km-label">Calls needed/month</div>
-            <div class="km-value teal" id="calls-needed">—</div>
+            <div class="km-value teal" id="calls-needed">-</div>
             <div class="km-sub">to hit target utilization</div>
           </div>
           <div class="km-card">
             <div class="km-label">Max marketing spend</div>
-            <div class="km-value" id="max-spend">—</div>
+            <div class="km-value" id="max-spend">-</div>
             <div class="km-sub">before diminishing returns</div>
           </div>
           <div class="km-card">
             <div class="km-label">Job capacity/month</div>
-            <div class="km-value" id="job-capacity">—</div>
+            <div class="km-value" id="job-capacity">-</div>
             <div class="km-sub">at full team utilization</div>
           </div>
           <div class="km-card">
             <div class="km-label">Revenue potential</div>
-            <div class="km-value teal" id="rev-potential">—</div>
+            <div class="km-value teal" id="rev-potential">-</div>
             <div class="km-sub">at target utilization</div>
           </div>
         </div>
 
         <div class="section-title">Breakdown</div>
         <div class="rows">
-          <div class="row"><span class="rk">Total monthly job capacity</span><span class="rv" id="r-capacity">—</span></div>
-          <div class="row"><span class="rk">Target jobs/month (at utilization)</span><span class="rv" id="r-target-jobs">—</span></div>
-          <div class="row"><span class="rk">Calls needed at your close rate</span><span class="rv" id="r-calls-needed">—</span></div>
-          <div class="row"><span class="rk">Max useful ad spend</span><span class="rv" id="r-max-spend">—</span></div>
-          <div class="row"><span class="rk">Cost per job ceiling</span><span class="rv" id="r-cpj-ceiling">—</span></div>
+          <div class="row"><span class="rk">Total monthly job capacity</span><span class="rv" id="r-capacity">-</span></div>
+          <div class="row"><span class="rk">Target jobs/month (at utilization)</span><span class="rv" id="r-target-jobs">-</span></div>
+          <div class="row"><span class="rk">Calls needed at your close rate</span><span class="rv" id="r-calls-needed">-</span></div>
+          <div class="row"><span class="rk">Max useful ad spend</span><span class="rv" id="r-max-spend">-</span></div>
+          <div class="row"><span class="rk">Cost per job ceiling</span><span class="rv" id="r-cpj-ceiling">-</span></div>
         </div>
 
         <div class="utilization-bar">
           <div class="ub-label">
             <span>Utilization target</span>
-            <span id="util-label">—</span>
+            <span id="util-label">-</span>
           </div>
           <div class="ub-track"><div class="ub-fill" id="util-fill" style="width:0%"></div></div>
         </div>
 
         <div class="diagnosis" id="diagnosis">
-          <div class="dt" id="diag-title">—</div>
-          <div class="db" id="diag-body">—</div>
+          <div class="dt" id="diag-title">-</div>
+          <div class="db" id="diag-body">-</div>
         </div>
 
-        <a href="/apply?service=audit&source=capacity-planner" class="audit-cta">Get Your Full Revenue Leak Audit →</a>
-        <p class="audit-note">The audit shows whether your current spend is above or below your capacity ceiling — and which channels are filling jobs vs. burning budget.</p>
+        <a href="/apply?service=audit&source=capacity-planner" class="audit-cta">Get Your Full Revenue Leak Audit</a>
+        <p class="audit-note">The audit shows whether your current spend is above or below your capacity ceiling - and which channels are filling jobs vs. burning budget.</p>
       </div>
     </div>
   </div>
@@ -196,8 +196,8 @@ function calculate() {
   const utilTarget  = parseFloat(document.getElementById('utilization').value)  || 80;
 
   if (!techs || !jobsPerDay || !workDays || !avgTicket || !closeRate) {
-    document.getElementById('calc-btn').textContent = 'Please fill in all fields →';
-    setTimeout(() => document.getElementById('calc-btn').textContent = 'Calculate My Capacity Needs →', 2000);
+    document.getElementById('calc-btn').textContent = 'Please fill in all fields';
+    setTimeout(() => document.getElementById('calc-btn').textContent = 'Calculate My Capacity Needs', 2000);
     return;
   }
 
@@ -241,16 +241,16 @@ function calculate() {
   const diagBody  = document.getElementById('diag-body');
   if (utilTarget > 90) {
     diagEl.className    = 'diagnosis warn';
-    diagTitle.textContent = 'Running too hot — no room for surges.';
+    diagTitle.textContent = 'Running too hot - no room for surges.';
     diagBody.textContent  = `At ${utilTarget}% utilization there's no buffer for unexpected demand or emergency calls. Consider targeting 80–85% and using the remaining capacity as your surge reserve.`;
   } else if (cr < 0.30) {
     diagEl.className    = 'diagnosis';
     diagTitle.textContent = 'Low close rate is multiplying your lead costs.';
-    diagBody.textContent  = `At ${closeRate}% close rate, you need ${fmtN(callsNeeded)} calls to fill ${fmtN(targetJobs)} jobs. If you raised your close rate to 45%, you'd need ${fmtN(targetJobs / 0.45).toLocaleString()} calls — ${fmtN(callsNeeded - targetJobs / 0.45)} fewer. Fix the close rate before scaling spend.`;
+    diagBody.textContent  = `At ${closeRate}% close rate, you need ${fmtN(callsNeeded)} calls to fill ${fmtN(targetJobs)} jobs. If you raised your close rate to 45%, you'd need ${fmtN(targetJobs / 0.45).toLocaleString()} calls - ${fmtN(callsNeeded - targetJobs / 0.45)} fewer. Fix the close rate before scaling spend.`;
   } else {
     diagEl.className    = 'diagnosis good';
     diagTitle.textContent = `You need ${fmtN(callsNeeded)} calls/month to hit your targets.`;
-    diagBody.textContent  = `Your maximum efficient marketing spend is ${fmt(maxSpend)}/month — anything beyond that and you're generating more leads than your team can convert at your current capacity. If you want to grow beyond that, hire first.`;
+    diagBody.textContent  = `Your maximum efficient marketing spend is ${fmt(maxSpend)}/month - anything beyond that and you're generating more leads than your team can convert at your current capacity. If you want to grow beyond that, hire first.`;
   }
 
   document.getElementById('empty-state').style.display = 'none';

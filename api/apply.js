@@ -47,7 +47,7 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error('Failed to add contact to Brevo:', err);
-    // Don't block the response — contact add failure shouldn't break the form
+    // Don't block the response - contact add failure shouldn't break the form
   }
 
   // 2. Send notification email to you via Brevo transactional email
@@ -78,7 +78,7 @@ Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }
         sender: { name: 'Built on Tenth Site', email: notifyEmail },
         to: [{ email: notifyEmail, name: 'Tanvir Hossain' }],
         replyTo: { email: email, name: name },
-        subject: `New application: ${name} — ${company || 'No company'} — ${service || 'No service selected'}`,
+        subject: `New application: ${name} - ${company || 'No company'} - ${service || 'No service selected'}`,
         textContent: notifyBody,
       }),
     });

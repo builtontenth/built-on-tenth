@@ -6,7 +6,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
   toolName="Lead Source Grader"
   slug="lead-grader"
   headline='Which Channels Are Actually<br><em>Making You Money?</em>'
-  subheadline="Most companies keep spending on channels that don't produce booked jobs. Select what you're running and get a straight A–D grade on each one — with a clear verdict: scale it, fix it, or cut it."
+  subheadline="Most companies keep spending on channels that don't produce booked jobs. Select what you're running and get a straight A–D grade on each one - with a clear verdict: scale it, fix it, or cut it."
   metaDescription="Free lead source grader for HVAC, roofing, and plumbing companies. Grade your marketing channels A-D based on real performance data. Know exactly where to put your next dollar."
 >
 
@@ -103,7 +103,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
       <span class="ip-micro">Grade based on real HVAC/roofing/plumbing data</span>
     </div>
     <div class="ip-body">
-      <p class="ip-note">Most companies overspend on their worst-performing channel. Select every channel you're currently spending money or time on — we grade based on real booking performance patterns, not vanity metrics.</p>
+      <p class="ip-note">Most companies overspend on their worst-performing channel. Select every channel you're currently spending money or time on - we grade based on real booking performance patterns, not vanity metrics.</p>
 
       <div class="field">
         <div class="field-label">Trade <span class="field-hint">grades are trade-specific</span></div>
@@ -167,7 +167,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         </div>
       </div>
 
-      <button class="calc-btn" id="calc-btn">Grade My Lead Sources →</button>
+      <button class="calc-btn" id="calc-btn">Grade My Lead Sources</button>
     </div>
   </div>
 
@@ -194,10 +194,10 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         <div class="channel-grades" id="channel-grades"></div>
         <div class="realloc" id="realloc">
           <div class="realloc-title">Where your next dollar should go</div>
-          <div class="realloc-text" id="realloc-text">—</div>
+          <div class="realloc-text" id="realloc-text">-</div>
         </div>
-        <a href="/apply?service=audit&source=lead-grader" class="audit-cta">Get Your Channels Mapped to Actual Numbers →</a>
-        <p class="audit-note">The audit maps your real cost per booked job by channel — so you see exactly which ones to scale and which to cut.</p>
+        <a href="/apply?service=audit&source=lead-grader" class="audit-cta">Get Your Channels Mapped to Actual Numbers</a>
+        <p class="audit-note">The audit maps your real cost per booked job by channel - so you see exactly which ones to scale and which to cut.</p>
       </div>
     </div>
   </div>
@@ -231,8 +231,8 @@ function calculate() {
   const checked  = [...document.querySelectorAll('.ch-item input:checked')].map(el => el.value);
 
   if (checked.length === 0) {
-    document.getElementById('calc-btn').textContent = 'Select at least one channel →';
-    setTimeout(() => document.getElementById('calc-btn').textContent = 'Grade My Lead Sources →', 2000);
+    document.getElementById('calc-btn').textContent = 'Select at least one channel';
+    setTimeout(() => document.getElementById('calc-btn').textContent = 'Grade My Lead Sources', 2000);
     return;
   }
 
@@ -267,13 +267,13 @@ function calculate() {
   const dChannels = graded.filter(g => g.grade === 'D').map(g => g.name);
   let reallocText = '';
   if (aChannels.length > 0 && dChannels.length > 0) {
-    reallocText = `Move budget away from ${dChannels.join(' and ')} — both are underperforming relative to their cost. Redirect toward ${aChannels.join(' and ')}, which are producing the most efficient booked jobs in your trade.`;
+    reallocText = `Move budget away from ${dChannels.join(' and ')} - both are underperforming relative to their cost. Redirect toward ${aChannels.join(' and ')}, which are producing the most efficient booked jobs in your trade.`;
   } else if (dChannels.length > 0) {
     reallocText = `${dChannels.join(' and ')} ${dChannels.length > 1 ? 'are' : 'is'} the weakest channel${dChannels.length > 1 ? 's' : ''} in your mix. Reducing or pausing ${dChannels.length > 1 ? 'them' : 'it'} frees budget for higher-performing sources.`;
   } else if (aChannels.length > 0) {
     reallocText = `Your best channels are ${aChannels.join(' and ')}. Focus on growing volume from these before adding new channels to the mix.`;
   } else {
-    reallocText = 'Your channel mix is average across the board. The biggest gain is usually fixing your Google Business Profile — it costs nothing and consistently outperforms paid channels in booked job rates.';
+    reallocText = 'Your channel mix is average across the board. The biggest gain is usually fixing your Google Business Profile - it costs nothing and consistently outperforms paid channels in booked job rates.';
   }
   document.getElementById('realloc-text').textContent = reallocText;
 

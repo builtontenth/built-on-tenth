@@ -1,5 +1,5 @@
 // api/subscribe.js
-// Vercel serverless function — handles newsletter signups via Brevo API
+// Vercel serverless function - handles newsletter signups via Brevo API
 // The BREVO_API_KEY env var is set in Vercel dashboard (never exposed to browser)
 
 export default async function handler(req, res) {
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  // Brevo contact list ID — set this to your actual list ID from Brevo dashboard
+  // Brevo contact list ID - set this to your actual list ID from Brevo dashboard
   // Default: 2 (you can override per-form with the listId param)
   const targetListId = listId || parseInt(process.env.BREVO_LIST_ID || '2');
 

@@ -1,4 +1,4 @@
-# Built on Tenth — v2.0
+# Built on Tenth - v2.0
 
 Revenue intelligence website for HVAC, roofing, and plumbing companies.
 
@@ -21,12 +21,12 @@ Revenue intelligence website for HVAC, roofing, and plumbing companies.
 
 ## Design System
 All CSS variables in `src/styles/global.css`:
-- `--teal: #00C49A` — primary accent
-- `--bg: #090C0B` — background
-- `--ink: #E2DDD0` — primary text
-- `--serif: 'DM Serif Display'` — headlines
-- `--mono: 'IBM Plex Mono'` — numbers/labels
-- `--sans: 'IBM Plex Sans'` — body
+- `--teal: #00C49A` - primary accent
+- `--bg: #090C0B` - background
+- `--ink: #E2DDD0` - primary text
+- `--serif: 'DM Serif Display'` - headlines
+- `--mono: 'IBM Plex Mono'` - numbers/labels
+- `--sans: 'IBM Plex Sans'` - body
 
 ## Local Development
 
@@ -40,8 +40,8 @@ Visit `http://localhost:4321`
 ## Deploy to Vercel
 
 1. Push this repo to GitHub (replace the existing code at builtontenth/built-on-tenth)
-2. Connect to Vercel — it auto-detects Astro
-3. Deploy — build command is `astro build`, output is `dist/`
+2. Connect to Vercel - it auto-detects Astro
+3. Deploy - build command is `astro build`, output is `dist/`
 
 No environment variables needed for the static build.
 

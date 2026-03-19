@@ -128,7 +128,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
       <div class="field">
         <div class="field-label">
           Monthly inbound calls
-          <span class="field-hint">total calls — answered + missed</span>
+          <span class="field-hint">total calls - answered + missed</span>
         </div>
         <input type="number" class="field-input" id="total-calls" placeholder="e.g. 350" min="0" />
         <div class="benchmark-hint">
@@ -178,7 +178,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         </div>
       </div>
 
-      <button class="calc-btn" id="calc-btn">Show Me What I'm Losing →</button>
+      <button class="calc-btn" id="calc-btn">Show Me What I'm Losing</button>
     </div>
   </div>
 
@@ -195,7 +195,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         <div class="empty-icon">📞</div>
         <p class="empty-text">
           <strong>Most owners think they answer 90% of calls.</strong><br><br>
-          The actual industry average is 68%. At 300 calls a month, that's 96 calls going unanswered — each one a job that went to a competitor.
+          The actual industry average is 68%. At 300 calls a month, that's 96 calls going unanswered - each one a job that went to a competitor.
         </p>
       </div>
 
@@ -211,11 +211,11 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         <div class="breakdown">
           <div class="bd-title">Breakdown</div>
           <div class="bd-rows">
-            <div class="bd-row"><span class="bd-key">Total calls/month</span><span class="bd-val" id="r-total-calls">—</span></div>
-            <div class="bd-row"><span class="bd-key">Calls missed/month</span><span class="bd-val red" id="r-missed">—</span></div>
-            <div class="bd-row"><span class="bd-key">Jobs lost to missed calls</span><span class="bd-val red" id="r-lost-jobs">—</span></div>
-            <div class="bd-row"><span class="bd-key">Monthly revenue lost</span><span class="bd-val red" id="r-monthly">—</span></div>
-            <div class="bd-row"><span class="bd-key">Your answer rate</span><span class="bd-val" id="r-answer-rate">—</span></div>
+            <div class="bd-row"><span class="bd-key">Total calls/month</span><span class="bd-val" id="r-total-calls">-</span></div>
+            <div class="bd-row"><span class="bd-key">Calls missed/month</span><span class="bd-val red" id="r-missed">-</span></div>
+            <div class="bd-row"><span class="bd-key">Jobs lost to missed calls</span><span class="bd-val red" id="r-lost-jobs">-</span></div>
+            <div class="bd-row"><span class="bd-key">Monthly revenue lost</span><span class="bd-val red" id="r-monthly">-</span></div>
+            <div class="bd-row"><span class="bd-key">Your answer rate</span><span class="bd-val" id="r-answer-rate">-</span></div>
           </div>
         </div>
 
@@ -233,19 +233,19 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
         </div>
 
         <div class="diagnosis" id="diagnosis">
-          <div class="diag-title" id="diag-title">—</div>
-          <div class="diag-body" id="diag-body">—</div>
+          <div class="diag-title" id="diag-title">-</div>
+          <div class="diag-body" id="diag-body">-</div>
         </div>
 
         <div class="recovery">
           <div class="rec-title">If you reach 89% answer rate</div>
-          <div class="rec-row"><span>Additional jobs booked/month</span><span class="rec-val" id="rec-jobs">—</span></div>
-          <div class="rec-row"><span>Additional monthly revenue</span><span class="rec-val" id="rec-monthly">—</span></div>
-          <div class="rec-row"><span>Additional annual revenue</span><span class="rec-val" id="rec-annual">—</span></div>
+          <div class="rec-row"><span>Additional jobs booked/month</span><span class="rec-val" id="rec-jobs">-</span></div>
+          <div class="rec-row"><span>Additional monthly revenue</span><span class="rec-val" id="rec-monthly">-</span></div>
+          <div class="rec-row"><span>Additional annual revenue</span><span class="rec-val" id="rec-annual">-</span></div>
         </div>
 
         <a href="/apply?service=audit&source=phone-calculator" class="audit-cta">
-          See All Your Revenue Leaks — Get Audit →
+          See All Your Revenue Leaks - Get Audit
         </a>
         <p class="audit-cta-note">Fixing this alone often outperforms increasing ad spend. The audit shows every leak together.</p>
       </div>
@@ -271,8 +271,8 @@ function calculate() {
   const avgTicket   = parseFloat(document.getElementById('avg-ticket').value)    || 0;
 
   if (!totalCalls || !answerRate || !bookingRate || !avgTicket) {
-    document.getElementById('calc-btn').textContent = 'Please fill in all fields →';
-    setTimeout(() => document.getElementById('calc-btn').textContent = 'Show Me What I\'m Losing →', 2000);
+    document.getElementById('calc-btn').textContent = 'Please fill in all fields';
+    setTimeout(() => document.getElementById('calc-btn').textContent = 'Show Me What I\'m Losing', 2000);
     return;
   }
 
@@ -325,15 +325,15 @@ function calculate() {
   if (ar >= 0.89) {
     diagEl.className = 'diagnosis good';
     diagTitle.textContent = 'Your answer rate is strong.';
-    diagBody.textContent  = 'You\'re in the top 25% of home service companies. The leak here is minimal — your biggest opportunity is likely in booking rate, follow-up, or marketing channel mix. Use the other tools to find it.';
+    diagBody.textContent  = 'You\'re in the top 25% of home service companies. The leak here is minimal - your biggest opportunity is likely in booking rate, follow-up, or marketing channel mix. Use the other tools to find it.';
   } else if (ar >= 0.75) {
     diagEl.className = 'diagnosis';
-    diagTitle.textContent = 'Room to improve — and it\'s costing you.';
+    diagTitle.textContent = 'Room to improve - and it\'s costing you.';
     diagBody.textContent  = 'You\'re answering more than average but still missing 1 in 4 calls. A basic voicemail-to-text system and same-day callback protocol typically closes this gap without hiring.';
   } else {
     diagEl.className = 'diagnosis';
     diagTitle.textContent = 'This is your biggest leak.';
-    diagBody.textContent  = 'Below 75% is where the most money gets lost. This isn\'t a marketing problem — it\'s an operations problem. More ad spend before fixing this makes the leak worse, not better.';
+    diagBody.textContent  = 'Below 75% is where the most money gets lost. This isn\'t a marketing problem - it\'s an operations problem. More ad spend before fixing this makes the leak worse, not better.';
   }
 
   // Recovery

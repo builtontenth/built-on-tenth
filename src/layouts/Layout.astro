@@ -7,12 +7,14 @@ interface Props {
   title: string;
   description?: string;
   active?: string;
+  ogImage?: string;
 }
 
 const {
   title,
-  description = 'Revenue intelligence for HVAC, roofing, and plumbing companies. We study how the most profitable home service companies grow — and publish everything we find.',
-  active = ''
+  description = 'Revenue intelligence for HVAC, roofing, and plumbing companies. We study how the most profitable home service companies grow, and publish everything we find.',
+  active = '',
+  ogImage = 'https://www.builtontenth.com/tanvir.png'
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -29,10 +31,11 @@ const {
   <meta property="og:description" content={description} />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content={`https://www.builtontenth.com${Astro.url.pathname}`} />
-  <meta property="og:image"       content="https://www.builtontenth.com/og-image.png" />
+  <meta property="og:image"       content={ogImage} />
   <meta name="twitter:card"       content="summary_large_image" />
   <meta name="twitter:title"      content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"      content={ogImage} />
 
   <!-- Google Tag Manager -->
   <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

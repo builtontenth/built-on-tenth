@@ -8,7 +8,7 @@ const tools = [
     badge: 'Free Tool',
     name: 'Marketing Cost Calculator',
     tagline: 'What does a booked job actually cost you?',
-    desc: "Put in your monthly ad spend, how many calls you get, your close rate, and your average ticket. See your real cost per booked job — and whether it's in line with the top 25% of companies in your trade.",
+    desc: "Put in your monthly ad spend, how many calls you get, your close rate, and your average ticket. See your real cost per booked job - and whether it's in line with the top 25% of companies in your trade.",
     cta: 'Calculate your numbers',
     img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75',
     imgAlt: 'Marketing spend analytics dashboard',
@@ -20,7 +20,7 @@ const tools = [
     badge: 'Free Tool',
     name: 'Phone Revenue Calculator',
     tagline: 'How much is slipping through every time the phone rings?',
-    desc: 'How many calls are you missing every month? Put in your call volume and answer rate. We\'ll show you the dollar amount walking out the door — and what happens if you get your answer rate to 90%.',
+    desc: 'How many calls are you missing every month? Put in your call volume and answer rate. We\'ll show you the dollar amount walking out the door - and what happens if you get your answer rate to 90%.',
     cta: 'See your lost revenue',
     img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75',
     imgAlt: 'CSR answering inbound service calls',
@@ -31,8 +31,8 @@ const tools = [
     icon: '🎯',
     badge: 'Free Tool',
     name: 'Lead Source Grader',
-    tagline: 'Which channels deserve more budget — and which ones are draining it?',
-    desc: 'Google Ads, LSAs, Angi, Thumbtack, referrals, door knocking — select what you\'re running and get a straight A–D grade on each one. Keep it, fix it, or cut it.',
+    tagline: 'Which channels deserve more budget - and which ones are draining it?',
+    desc: 'Google Ads, LSAs, Angi, Thumbtack, referrals, door knocking - select what you\'re running and get a straight A–D grade on each one. Keep it, fix it, or cut it.',
     cta: 'Grade your lead sources',
     img: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=75',
     imgAlt: 'Multiple lead channel screens',
@@ -56,7 +56,7 @@ const tools = [
     badge: 'Free Tool',
     name: 'Capacity-to-Demand Planner',
     tagline: '"How much should I spend on marketing?" is the wrong question.',
-    desc: 'The right question is: how many jobs can my team actually handle? Enter how many techs you have and how many jobs they can run per day — and we\'ll tell you exactly how many calls you actually need.',
+    desc: 'The right question is: how many jobs can my team actually handle? Enter how many techs you have and how many jobs they can run per day - and we\'ll tell you exactly how many calls you actually need.',
     cta: 'Plan your capacity',
     img: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=75',
     imgAlt: 'Home service crew with work vans',
@@ -88,7 +88,7 @@ const tools = [
 }
 .tools-hero-note::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pos); flex-shrink: 0; }
 
-/* Tool list — alternating layout */
+/* Tool list - alternating layout */
 .tool-list { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin-top: 48px; }
 .tool-item {
   background: var(--bg2);
@@ -121,11 +121,30 @@ const tools = [
 .tool-data-points { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
 .tdp { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.08em; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 4px 10px; border-radius: 3px; }
 .tool-cta-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--teal); text-decoration: none; transition: gap 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  width: fit-content;
+  padding: 0 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  border: 1px solid rgba(0,196,154,0.32);
+  background: rgba(0,196,154,0.06);
+  border-radius: 4px;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
 }
-.tool-item:hover .tool-cta-link { gap: 10px; }
+.tool-item:hover .tool-cta-link {
+  background: rgba(0,196,154,0.12);
+  border-color: rgba(0,196,154,0.48);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
 
 /* Bottom CTA */
 .tools-cta { text-align: center; padding: 96px 48px; position: relative; overflow: hidden; }
@@ -142,6 +161,7 @@ const tools = [
   .tool-img-col { min-height: 180px; }
   .tool-img-col::after, .tool-item:nth-child(even) .tool-img-col::after { background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%); }
   .tool-body { padding: 24px 20px; }
+  .tool-cta-link { width: 100%; }
   .tools-cta { padding: 64px 20px; }
   .tools-cta h2 { font-size: clamp(24px, 7vw, 36px); }
 }
@@ -154,7 +174,7 @@ const tools = [
     <div class="dispatch-label">Free Tools</div>
     <h1>See your numbers.<br><em>Find the leaks.</em></h1>
     <p class="tools-hero-sub">Five calculators and audits built specifically for HVAC, roofing, and plumbing companies. Put in your real numbers and see exactly where money is slipping through. Most owners find $50K–$200K in fixable leaks on the first pass.</p>
-    <span class="tools-hero-note">Results show instantly — email required only for the full detailed report</span>
+    <span class="tools-hero-note">Results show instantly - email required only for the full detailed report</span>
   </div>
 </div>
 
@@ -180,7 +200,7 @@ const tools = [
             <div class="tool-data-points">
               {tool.dataPoints.map(d => <span class="tdp">{d}</span>)}
             </div>
-            <a href={`/tools/${tool.id}`} class="tool-cta-link">{tool.cta} →</a>
+            <a href={`/tools/${tool.id}`} class="tool-cta-link">{tool.cta}</a>
           </div>
         </div>
       ))}
@@ -194,8 +214,8 @@ const tools = [
   <div class="tools-cta-inner">
     <div class="dispatch-label" style="justify-content:center;margin-bottom:16px">Want the full picture?</div>
     <h2>See everything in <em>one audit.</em></h2>
-    <p>The free tools show individual leaks. The Revenue Leak Audit covers everything — your full marketing system, competitive benchmarks, phone performance, and website — with every finding shown in annual dollars.</p>
-    <a href="/apply" class="cta-primary">Get a Revenue Leak Audit — $750 →</a>
+    <p>The free tools show individual leaks. The Revenue Leak Audit covers everything - your full marketing system, competitive benchmarks, phone performance, and website - with every finding shown in annual dollars.</p>
+    <a href="/apply" class="cta-primary">Get a Revenue Leak Audit - $750</a>
   </div>
 </div>
 

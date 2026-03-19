@@ -18,7 +18,7 @@ const allTools = [
   { num: '05', name: 'Capacity-to-Demand Planner', href: '/tools/capacity-planner',       active: slug === 'capacity-planner' },
 ];
 ---
-<Layout title={`${toolName} — Free Tool | Built on Tenth`} description={metaDescription} active="tools">
+<Layout title={`${toolName} - Free Tool | Built on Tenth`} description={metaDescription} active="tools">
 
 <style>
 /* ── TOOL LAYOUT ── */
@@ -283,7 +283,7 @@ const allTools = [
   <!-- Cross-tool navigation -->
   <div class="tool-cross">
     <div class="tool-cross-inner">
-      <div class="tc-title">Continue your diagnosis — check the other leaks</div>
+      <div class="tc-title">Continue your diagnosis - check the other leaks</div>
       <div class="tc-grid">
         {allTools.map(t => (
           <a href={t.href} class={`tc-card${t.active ? ' current' : ''}`}>
@@ -293,7 +293,7 @@ const allTools = [
         ))}
         <a href="/apply" class="tc-card" style="border-color:rgba(0,196,154,0.28);background:rgba(0,196,154,0.04)">
           <div class="tc-num" style="color:var(--teal)">Full picture</div>
-          <div class="tc-name">Revenue Leak Audit — $750</div>
+          <div class="tc-name">Revenue Leak Audit - $750</div>
         </a>
       </div>
     </div>

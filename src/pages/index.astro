@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout
-  title="Built on Tenth — Revenue Intelligence for HVAC, Roofing &amp; Plumbing"
-  description="We study how the most profitable home service companies grow — marketing spend, phone conversion, lead sources. Free tools, free research, and full revenue audits starting at $750."
+  title="Built on Tenth - Revenue Intelligence for HVAC, Roofing &amp; Plumbing"
+  description="We study how the most profitable home service companies grow - marketing spend, phone conversion, lead sources. Free tools, free research, and full revenue audits starting at $750."
   active=""
 >
 
@@ -47,7 +47,7 @@ body {
 }
 
 /* ════════════════════════════════════════
-   GRAIN OVERLAY — adds texture, kills "screen" flatness
+   GRAIN OVERLAY - adds texture, kills "screen" flatness
 ════════════════════════════════════════ */
 body::before {
   content: '';
@@ -157,7 +157,7 @@ body::before {
 .nav-btn-teal:hover { background: #00DFB0; transform: translateY(-1px); }
 
 /* ════════════════════════════════════════
-   HERO — Asymmetric split layout
+   HERO - Asymmetric split layout
 ════════════════════════════════════════ */
 .hero {
   min-height: 100vh;
@@ -243,12 +243,12 @@ body::before {
   text-align: left;
   animation: fadeUp 0.8s 0.08s var(--ease) both;
 }
-/* "Leaking Revenue" in italic serif — the magazine-style editorial moment */
+/* "Leaking Revenue" in italic serif - the magazine-style editorial moment */
 .hero-h em {
   font-style: italic;
   color: var(--teal);
 }
-/* no indent — clean left alignment */
+/* no indent - clean left alignment */
 .hero-h .indent { display: block; }
 
 .hero-body {
@@ -270,40 +270,38 @@ body::before {
   margin-bottom: 56px;
   animation: fadeUp 0.8s 0.24s var(--ease) both;
 }
-.cta-primary {
+.cta-primary,
+.cta-secondary,
+.cta-ghost,
+.cta-filled,
+.svc-btn,
+.ac-cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  min-height: 50px;
+  padding: 0 22px;
+  line-height: 1.25;
+  text-align: center;
+  transition: all 0.2s var(--ease);
+}
+.cta-primary {
   color: var(--bg);
   background: var(--teal);
   border: 1.5px solid var(--teal);
-  border-radius: 4px;
-  padding: 14px 26px;
-  text-decoration: none;
-  transition: all 0.2s var(--ease);
 }
 .cta-primary:hover { background: #00DFB0; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,196,154,0.25); }
 .cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--ink2);
   background: transparent;
   border: 1.5px solid var(--rule2);
-  border-radius: 4px;
-  padding: 14px 26px;
-  text-decoration: none;
-  transition: all 0.2s var(--ease);
 }
 .cta-secondary:hover { color: var(--ink); border-color: rgba(226,221,208,0.3); background: rgba(226,221,208,0.04); transform: translateY(-2px); }
 
@@ -475,23 +473,14 @@ body::before {
   line-height: 1;
 }
 .ac-cta {
-  display: block;
   margin-top: 16px;
-  text-align: center;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
   color: var(--bg);
   background: var(--teal);
-  border-radius: 5px;
-  padding: 12px;
-  text-decoration: none;
-  transition: background 0.2s;
+  border: 1px solid var(--teal);
 }
 .ac-cta:hover { background: #00DFB0; }
 
-/* blinking cursor — keep but subtler */
+/* blinking cursor - keep but subtler */
 .cursor {
   display: inline-block;
   width: 2px; height: 12px;
@@ -503,7 +492,7 @@ body::before {
 @keyframes cur { 0%,100%{opacity:1} 50%{opacity:0} }
 
 /* ════════════════════════════════════════
-   INTELLIGENCE STRIP — 4 monospace stats
+   INTELLIGENCE STRIP - 4 monospace stats
    Replace boring ticker: editorial data row
 ════════════════════════════════════════ */
 .intel {
@@ -658,7 +647,7 @@ body::before {
   filter: grayscale(20%) brightness(0.8);
   transition: transform 0.6s var(--ease), filter 0.4s;
 }
-/* Subtle teal tint overlay — unifies all imagery */
+/* Subtle teal tint overlay - unifies all imagery */
 .c-main::before, .c-sec::before {
   content: '';
   position: absolute;
@@ -781,23 +770,44 @@ img[data-failed] ~ .img-fb { display: flex; }
 .ar-ic.ok  { color: var(--pos); }
 
 /* Revenue leak example */
-.rev-example { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 6px; padding: 28px 32px; margin-top: 16px; }
-.re-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; }
-.re-grid { display: flex; align-items: center; gap: 0; flex-wrap: wrap; row-gap: 12px; margin-bottom: 18px; }
-.re-item { text-align: center; padding: 0 20px; }
+.rev-example { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 6px; padding: 28px 32px; margin-top: 16px; text-align: center; }
+.re-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; text-align: center; }
+.re-grid { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; row-gap: 14px; margin-bottom: 18px; }
+.re-item { text-align: center; padding: 0 18px; }
 .re-n { font-family: var(--mono); font-size: 28px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); line-height: 1; margin-bottom: 4px; }
 .re-n.teal { color: var(--teal); }
 .re-l { font-size: 11px; color: var(--ink3); font-weight: 300; }
 .re-sep { font-family: var(--mono); font-size: 20px; color: var(--ink3); padding: 0 4px; align-self: center; }
-.re-result { background: rgba(240,64,64,0.07); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 12px 20px; margin-left: 8px; }
+.re-result { background: rgba(240,64,64,0.07); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 14px 24px; margin-left: 12px; text-align: left; }
 .re-result-n { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--neg); letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
 .re-result-l { font-size: 11px; color: var(--ink2); font-weight: 300; line-height: 1.45; }
-.re-cta { display: flex; gap: 10px; align-items: center; border-top: 1px solid var(--rule); padding-top: 16px; }
+.cta-ghost,
+.svc-btn.ghost {
+  color: var(--ink2);
+  background: transparent;
+  border: 1px solid var(--rule2);
+}
+.cta-ghost:hover,
+.svc-btn.ghost:hover {
+  color: var(--ink);
+  border-color: rgba(226,221,208,0.3);
+  background: rgba(226,221,208,0.04);
+}
+.cta-filled,
+.svc-btn.filled {
+  color: var(--bg);
+  background: var(--teal);
+  border: 1px solid var(--teal);
+}
+.cta-filled:hover,
+.svc-btn.filled:hover { background: #00DFB0; }
+.re-cta { display: flex; gap: 10px; align-items: center; justify-content: center; border-top: 1px solid var(--rule); padding-top: 16px; }
+.re-cta a { flex: 1 1 0; max-width: 320px; }
 
 /* Agency comparison table */
 .agency-compare { margin-top: 48px; }
 
-/* Responsive grid comparison — no table, no horizontal scroll */
+/* Responsive grid comparison - no table, no horizontal scroll */
 .ac-grid {
   border: 1px solid var(--rule);
   border-radius: 6px;
@@ -1036,12 +1046,23 @@ img[data-failed] ~ .img-fb { display: flex; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--teal);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: gap 0.2s;
+  justify-content: center;
+  min-height: 46px;
+  width: fit-content;
+  padding: 0 18px;
+  border: 1px solid rgba(0,196,154,0.32);
+  background: rgba(0,196,154,0.06);
+  border-radius: 4px;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
 }
-.tool:hover .tool-cta { gap: 10px; }
+.tool:hover .tool-cta {
+  background: rgba(0,196,154,0.12);
+  border-color: rgba(0,196,154,0.48);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
 
 /* ════════════════════════════════════════
    SERVICES
@@ -1086,7 +1107,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   pointer-events: none;
 }
 .svc-body { padding: 26px 26px 26px; display: flex; flex-direction: column; flex: 1; }
-/* FIXED tier labels — visible now */
+/* FIXED tier labels - visible now */
 .svc-tier {
   font-family: var(--mono);
   font-size: 9.5px;
@@ -1115,25 +1136,17 @@ img[data-failed] ~ .img-fb { display: flex; }
 .svc-desc { font-size: 13px; color: var(--ink2); line-height: 1.65; margin-bottom: 20px; font-weight: 300; }
 .svc-div { height: 1px; background: var(--rule); margin-bottom: 18px; }
 .svc-ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; flex: 1; }
-.svc-ul li { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
-.sarr { color: var(--teal); flex-shrink: 0; margin-top: 1px; font-family: var(--mono); font-size: 13px; }
-.svc-btn {
-  display: block;
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 12px;
-  border-radius: 3px;
-  text-decoration: none;
-  transition: all 0.2s;
+.svc-ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
+.svc-ul li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+  margin-top: 7px;
+  flex-shrink: 0;
 }
-.svc-btn.ghost { background: transparent; color: var(--ink2); border: 1px solid var(--rule2); }
-.svc-btn.ghost:hover { color: var(--ink); border-color: rgba(226,221,208,0.3); background: rgba(226,221,208,0.04); }
-.svc-btn.filled { background: var(--teal); color: var(--bg); border: 1px solid var(--teal); }
-.svc-btn.filled:hover { background: #00DFB0; }
+.svc-btn { width: 100%; }
 
 /* ════════════════════════════════════════
    NEWSLETTER SECTION
@@ -1179,16 +1192,16 @@ img[data-failed] ~ .img-fb { display: flex; }
 /* ════════════════════════════════════════
    FOOTER
 ════════════════════════════════════════ */
-.footer { border-top: 1px solid var(--rule); padding: 64px 48px 0; }
-.ft-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2.4fr 1fr 1fr 1fr; gap: 48px; }
+.footer { border-top: 1px solid var(--rule); padding: 56px 48px 0; }
+.ft-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; align-items: start; }
 .ft-brand-name { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 .ft-brand-name::before { content: ''; width: 8px; height: 8px; border-radius: 2px; background: var(--teal); flex-shrink: 0; }
-.ft-brand p { font-size: 13px; color: var(--ink3); line-height: 1.72; max-width: 260px; font-weight: 300; }
-.ft-col h5 { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); margin-bottom: 18px; }
-.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-.ft-col a { font-size: 13.5px; color: var(--ink2); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+.ft-brand p { font-size: 13px; color: var(--ink3); line-height: 1.72; max-width: 300px; font-weight: 300; }
+.ft-col h5 { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); margin-bottom: 16px; }
+.ft-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.ft-col a { display: inline-block; font-size: 13px; color: var(--ink2); text-decoration: none; font-weight: 300; transition: color 0.2s; }
 .ft-col a:hover { color: var(--ink); }
-.ft-btm { max-width: 1200px; margin: 44px auto 0; padding: 22px 0 44px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
+.ft-btm { max-width: 1200px; margin: 36px auto 0; padding: 18px 0 36px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
 .ft-btm p, .ft-btm a { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.05em; color: var(--ink3); text-decoration: none; font-weight: 300; transition: color 0.2s; }
 .ft-btm a:hover { color: var(--ink2); }
 
@@ -1196,7 +1209,7 @@ img[data-failed] ~ .img-fb { display: flex; }
    ANIMATIONS
 ════════════════════════════════════════ */
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-/* Content is always visible — JS progressively enhances with entrance animation */
+/* Content is always visible - JS progressively enhances with entrance animation */
 .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.will-animate { opacity: 0; transform: translateY(24px); }
 .reveal.will-animate.on { opacity: 1; transform: translateY(0); }
@@ -1231,7 +1244,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 .svc-bridge-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ════════════════════════════════════════
-   RESPONSIVE — COMPREHENSIVE MOBILE FIX
+   RESPONSIVE - COMPREHENSIVE MOBILE FIX
 ════════════════════════════════════════ */
 
 /* 1100px: collapse hero to single column */
@@ -1258,7 +1271,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   .hs-n { font-size: 22px; }
   .hs-l { font-size: 11px; }
 
-  /* ── INTEL STRIP: 4col → 2col ── */
+  /* ── INTEL STRIP: 4col 2col ── */
   .intel-inner { grid-template-columns: 1fr 1fr; }
   .intel-card { padding: 24px 20px; border-right: 1px solid var(--rule); }
   .intel-card:nth-child(2) { border-right: none; }
@@ -1269,18 +1282,27 @@ img[data-failed] ~ .img-fb { display: flex; }
   /* ── WRAPS ── */
   .wrap { padding: 56px 20px; }
   .nl-section { padding: 72px 20px; }
-  .footer { padding: 48px 20px 0; }
-  .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer { padding: 44px 20px 0; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+  .ft-brand { grid-column: 1 / -1; padding-top: 0; }
+  .ft-brand p { max-width: 100%; }
+  .ft-col h5 { margin-bottom: 12px; }
+  .ft-links { gap: 8px; }
 
   /* ── PROBLEM SECTION ── */
   .prob-grid { grid-template-columns: 1fr; gap: 32px; }
   .collage { display: none; }
-  .rev-example { padding: 20px; }
-  .re-grid { flex-direction: column; gap: 6px; }
+  .rev-example { padding: 20px 16px; }
+  .re-label { margin-bottom: 16px; }
+  .re-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .re-sep { display: none; }
-  .re-result { padding-top: 12px; border-top: 1px solid var(--rule); }
-  .re-cta { flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .re-cta a { flex: 1; min-width: 140px; justify-content: center; text-align: center; }
+  .re-item { padding: 14px 10px 12px; background: var(--bg2); border: 1px solid var(--rule); border-radius: 4px; }
+  .re-n { font-size: 24px; }
+  .re-l { font-size: 10.5px; }
+  .re-result { grid-column: 1 / -1; margin-left: 0; padding: 16px 18px; text-align: center; }
+  .re-result-l { font-size: 12px; }
+  .re-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; justify-content: stretch; }
+  .re-cta a { min-width: 0; width: 100%; min-height: 56px; justify-content: center; align-items: center; text-align: center; padding: 0 12px; line-height: 1.35; }
   .audit { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
   .audit-n { font-size: 52px; }
   .audit-rows { grid-template-columns: 1fr; }
@@ -1294,13 +1316,14 @@ img[data-failed] ~ .img-fb { display: flex; }
   /* ── AGENCY COMPARE: already responsive via its own @media ── */
   .agency-compare { overflow-x: visible; }
 
-  /* ── HOW WE WORK — STEPS: 3col → 1col ── */
+  /* ── HOW WE WORK - STEPS: 3col 1col ── */
   .steps { grid-template-columns: 1fr; }
 
   /* ── FREE TOOLS ── */
   .tools-header { grid-template-columns: 1fr; gap: 20px; }
   .tools-grid { grid-template-columns: 1fr 1fr; }
   .tool-img { height: 160px; }
+  .tool-cta { width: 100%; }
 
   /* ── TOOLS BRIDGE: stack + center ── */
   .tools-bridge-bar {
@@ -1309,7 +1332,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   .tools-bridge-bar p { flex: none; }
   .tools-bridge-bar a { width: 100%; justify-content: center; }
 
-  /* ── SERVICES: 3col → 1col ── */
+  /* ── SERVICES: 3col 1col ── */
   .svcs { grid-template-columns: 1fr; }
   .svc { max-width: 100%; }
   .svc-price { font-size: 36px; }
@@ -1327,7 +1350,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   .nl-in { width: 100%; }
 
   /* ── FOOTER: keep 2-col on tablet ── */
-  .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
   .ft-btm { flex-direction: column; gap: 8px; text-align: center; }
 }
 
@@ -1338,14 +1361,15 @@ img[data-failed] ~ .img-fb { display: flex; }
   .intel-card:last-child { border-bottom: none; }
   .tools-grid { grid-template-columns: 1fr; }
   /* ── FOOTER: single column on small phones ── */
-  .ft-grid { grid-template-columns: 1fr; gap: 28px; }
+  .ft-grid { grid-template-columns: 1fr; gap: 24px; }
+  .ft-links { gap: 8px; }
   .hero-h { font-size: clamp(28px, 9vw, 42px); }
 }
 </style>
 
 
 
-<!-- ══════════ HERO — ASYMMETRIC ══════════ -->
+<!-- ══════════ HERO - ASYMMETRIC ══════════ -->
 <div class="hero">
   <div class="hero-photo"></div>
   <div class="hero-fog"></div>
@@ -1366,7 +1390,7 @@ img[data-failed] ~ .img-fb { display: flex; }
     </p>
 
     <div class="hero-ctas">
-      <a href="/apply"  class="cta-primary">Get a Revenue Leak Audit →</a>
+      <a href="/apply"  class="cta-primary">Get a Revenue Leak Audit</a>
       <a href="/tools"  class="cta-secondary">Try the Free Tools First</a>
     </div>
 
@@ -1385,7 +1409,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       </div>
       <div class="hero-stat">
         <div class="hs-n">100%</div>
-        <div class="hs-l">Written delivery —<br>no calls required</div>
+        <div class="hs-l">Written delivery,<br>no calls required</div>
       </div>
     </div>
   </div>
@@ -1459,7 +1483,7 @@ img[data-failed] ~ .img-fb { display: flex; }
           <div class="ac-total-n">$247,000</div>
         </div>
 
-        <a href="/apply" class="ac-cta">Find Out What You're Losing →</a>
+        <a href="/apply" class="ac-cta">Find Out What You're Losing</a>
       </div>
 
     </div>
@@ -1593,8 +1617,8 @@ img[data-failed] ~ .img-fb { display: flex; }
         </div>
       </div>
       <div class="re-cta">
-        <a href="/tools/phone-calculator" class="cta-ghost" style="font-size:10.5px">See your number → Phone Calculator</a>
-        <a href="/apply" class="cta-filled" style="font-size:10.5px">Get the Full Audit →</a>
+        <a href="/tools/phone-calculator" class="cta-ghost">See Your Number</a>
+        <a href="/apply" class="cta-filled">Get the Full Audit</a>
       </div>
     </div>
 
@@ -1617,7 +1641,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       </div>
     </div>
 
-    <!-- Agency comparison — responsive grid (no table, no horizontal scroll) -->
+    <!-- Agency comparison - responsive grid (no table, no horizontal scroll) -->
     <div class="agency-compare reveal">
       <div class="ac-grid">
         <!-- Header row -->
@@ -1732,7 +1756,7 @@ img[data-failed] ~ .img-fb { display: flex; }
         <p class="sec-p" style="max-width:100%">Most owners use the free tools first. Put in your real numbers: calls per month, ad spend, answer rate, number of techs. See exactly where money is slipping through. The audit is for when you want the full picture in writing.</p>
         <!-- Conversion bridge -->
         <div style="margin-top:20px;padding:14px 16px;background:rgba(0,196,154,0.05);border:1px solid rgba(0,196,154,0.2);border-radius:4px;font-size:13px;color:var(--ink2);line-height:1.6">
-          <strong style="color:var(--ink);font-weight:500">Suggested order:</strong> Start with Phone Revenue (most money, fastest to find) → then Marketing Cost → then Lead Source Grader.
+          <strong style="color:var(--ink);font-weight:500">Suggested order:</strong> Start with Phone Revenue first, then Marketing Cost, then Lead Source Grader.
         </div>
       </div>
     </div>
@@ -1741,7 +1765,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <a href="/tools/marketing-calculator" class="tool reveal">
         <div class="tool-img">
-          <!-- PPC/analytics dashboard — marketing cost calc -->
+          <!-- PPC/analytics dashboard - marketing cost calc -->
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75" alt="Marketing spend analytics" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">📊</span></div>
         </div>
@@ -1749,7 +1773,7 @@ img[data-failed] ~ .img-fb { display: flex; }
           <span class="tool-badge">Free Tool</span>
           <h3>Marketing Cost Calculator</h3>
           <p>Put in your monthly ad spend, how many calls you get, your close rate, and average ticket. See your real cost per booked job. See whether it's in line with the top 25% of companies in your trade.</p>
-          <div class="tool-cta">Calculate your numbers <span>→</span></div>
+          <div class="tool-cta">Calculate your numbers</div>
         </div>
       </a>
 
@@ -1763,7 +1787,7 @@ img[data-failed] ~ .img-fb { display: flex; }
           <span class="tool-badge">Free Tool</span>
           <h3>Phone Revenue Calculator</h3>
           <p>How many calls are you missing every month? Put in your call volume and answer rate. We'll show you the dollar amount walking out the door. See what happens if you get your answer rate to 90%.</p>
-          <div class="tool-cta">See your lost revenue <span>→</span></div>
+          <div class="tool-cta">See your lost revenue</div>
         </div>
       </a>
 
@@ -1777,7 +1801,7 @@ img[data-failed] ~ .img-fb { display: flex; }
           <span class="tool-badge">Free Tool</span>
           <h3>Lead Source Grader</h3>
           <p>Google Ads, LSAs, Angi, Thumbtack, referrals, door knocking. Select what you're running and get a straight A–D grade on each one, with a clear verdict: keep it, fix it, or cut it.</p>
-          <div class="tool-cta">Grade your lead sources <span>→</span></div>
+          <div class="tool-cta">Grade your lead sources</div>
         </div>
       </a>
 
@@ -1791,13 +1815,13 @@ img[data-failed] ~ .img-fb { display: flex; }
           <span class="tool-badge">Free Tool</span>
           <h3>Website Conversion Audit</h3>
           <p>Enter your website URL. We pull your real PageSpeed score and check whether your phone number is prominent, your CTAs are clear, and your site would actually make a homeowner call. Takes 30 seconds.</p>
-          <div class="tool-cta">Audit your website <span>→</span></div>
+          <div class="tool-cta">Audit your website</div>
         </div>
       </a>
 
       <a href="/tools/capacity-planner" class="tool reveal">
         <div class="tool-img">
-          <!-- Home service crew beside work vans — capacity context -->
+          <!-- Home service crew beside work vans - capacity context -->
           <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=75" alt="Home service crew and work vans" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">📋</span></div>
         </div>
@@ -1805,7 +1829,7 @@ img[data-failed] ~ .img-fb { display: flex; }
           <span class="tool-badge">Free Tool</span>
           <h3>Capacity-to-Demand Planner</h3>
           <p>Most owners ask "how much should I spend on marketing?" That's the wrong question. Enter how many techs you have and how many jobs they can run. We'll tell you exactly how many calls you actually need.</p>
-          <div class="tool-cta">Plan your capacity <span>→</span></div>
+          <div class="tool-cta">Plan your capacity</div>
         </div>
       </a>
 
@@ -1818,7 +1842,7 @@ img[data-failed] ~ .img-fb { display: flex; }
           <span class="tool-badge nl">Every Tuesday</span>
           <h3>Get One Useful Number Every Tuesday</h3>
           <p>Real benchmarks, real mistakes, real fixes from HVAC, roofing, and plumbing companies. Short. Written for owners who'd rather know their numbers than guess.</p>
-          <div class="tool-cta">Subscribe free <span>→</span></div>
+          <div class="tool-cta">Subscribe free</div>
         </div>
       </a>
 
@@ -1827,7 +1851,7 @@ img[data-failed] ~ .img-fb { display: flex; }
     <!-- Conversion bridge under tools -->
     <div class="tools-bridge-bar">
       <p>Most owners use the free tools first. The audit is for when you want every leak in one place, with a prioritized fix list.</p>
-      <a href="/apply" class="cta-filled" style="white-space:nowrap;font-size:11px">Get the Full Audit ($750) →</a>
+      <a href="/apply" class="cta-filled" style="white-space:nowrap">Get the Full Audit ($750)</a>
     </div>
   </div>
 </div>
@@ -1860,14 +1884,14 @@ img[data-failed] ~ .img-fb { display: flex; }
           <p class="svc-desc">In 7 days you'll know exactly what your marketing is producing and what it's wasting. Every finding shown in dollars. Not clicks, not impressions. Dollars.</p>
           <div class="svc-div"></div>
           <ul class="svc-ul">
-            <li><span class="sarr">→</span>Which channels produce booked jobs vs. burn cash</li>
-            <li><span class="sarr">→</span>Where calls leak before, during, and after they come in</li>
-            <li><span class="sarr">→</span>What your top competitors are doing that you're not</li>
-            <li><span class="sarr">→</span>Every gap translated into annual revenue impact</li>
-            <li><span class="sarr">→</span>Prioritized action list: what to fix first, second, third</li>
+            <li>Which channels produce booked jobs vs. burn cash</li>
+            <li>Where calls leak before, during, and after they come in</li>
+            <li>What your top competitors are doing that you're not</li>
+            <li>Every gap translated into annual revenue impact</li>
+            <li>Prioritized action list: what to fix first, second, third</li>
           </ul>
           <div style="font-size:11px;color:var(--ink3);margin-bottom:14px;font-family:var(--mono)">Best first step if you're not sure where the waste is</div>
-          <a href="/apply?service=audit" class="svc-btn ghost">Get My Numbers →</a>
+          <a href="/apply?service=audit" class="svc-btn ghost">Get My Numbers</a>
         </div>
       </div>
 
@@ -1883,14 +1907,14 @@ img[data-failed] ~ .img-fb { display: flex; }
           <p class="svc-desc">The audit shows what's broken. The blueprint fixes it. Your front desk gets a word-for-word phone script. Your team gets a follow-up system for dead estimates. Your manager gets a 10-minute weekly dashboard. No agency needed.</p>
           <div class="svc-div"></div>
           <ul class="svc-ul">
-            <li><span class="sarr">→</span>Phone scripts your CSR uses Monday to book more jobs</li>
-            <li><span class="sarr">→</span>5-touch follow-up sequence for estimates that didn't close</li>
-            <li><span class="sarr">→</span>Weekly dashboard: cost per booked job by channel</li>
-            <li><span class="sarr">→</span>90-day calendar with specific weekly actions</li>
-            <li><span class="sarr">→</span>Includes the full Revenue Leak Audit</li>
+            <li>Phone scripts your CSR uses Monday to book more jobs</li>
+            <li>5-touch follow-up sequence for estimates that didn't close</li>
+            <li>Weekly dashboard: cost per booked job by channel</li>
+            <li>90-day calendar with specific weekly actions</li>
+            <li>Includes the full Revenue Leak Audit</li>
           </ul>
           <div style="font-size:11px;color:var(--ink3);margin-bottom:14px;font-family:var(--mono)">Most owners start here after the audit</div>
-          <a href="/apply?service=blueprint" class="svc-btn filled">Apply for a Blueprint →</a>
+          <a href="/apply?service=blueprint" class="svc-btn filled">Apply for a Blueprint</a>
         </div>
       </div>
 
@@ -1906,14 +1930,14 @@ img[data-failed] ~ .img-fb { display: flex; }
           <p class="svc-desc">Audit and blueprint included. Then for 12 weeks we watch your numbers with you, every week, in writing. If something stops working, we tell you what to change and why. You're never left guessing what to do next.</p>
           <div class="svc-div"></div>
           <ul class="svc-ul">
-            <li><span class="sarr">→</span>Weekly written review: what's working, what to change</li>
-            <li><span class="sarr">→</span>Questions answered within 24–48 hours every week</li>
-            <li><span class="sarr">→</span>Monthly competitor re-benchmarking as the gap closes</li>
-            <li><span class="sarr">→</span>Exit report showing exactly what changed, in dollars</li>
-            <li><span class="sarr">→</span>Includes audit + blueprint delivery in week 1</li>
+            <li>Weekly written review: what's working, what to change</li>
+            <li>Questions answered within 24–48 hours every week</li>
+            <li>Monthly competitor re-benchmarking as the gap closes</li>
+            <li>Exit report showing exactly what changed, in dollars</li>
+            <li>Includes audit + blueprint delivery in week 1</li>
           </ul>
           <div style="font-size:11px;color:var(--ink3);margin-bottom:14px;font-family:var(--mono)">Best if you want weekly pressure-testing and accountability</div>
-          <a href="/apply?service=advisory" class="svc-btn ghost">Apply for Advisory →</a>
+          <a href="/apply?service=advisory" class="svc-btn ghost">Apply for Advisory</a>
         </div>
       </div>
 
@@ -1921,7 +1945,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   </div>
 </div>
 
-<!-- Conversion bridge: services → next action -->
+<!-- Conversion bridge: services next action -->
 <div class="svc-bridge">
   <div class="svc-bridge-inner">
     <p class="svc-bridge-text">Not sure where to start?</p>
@@ -1933,7 +1957,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 </div>
 
 
-<!-- ══════════ NEWSLETTER — de-emphasized per v2.5 ══════════ -->
+<!-- ══════════ NEWSLETTER - de-emphasized per v2.5 ══════════ -->
 <div class="nl-section">
   <div class="nl-photo"></div>
   <div class="nl-glow"></div>
@@ -1980,7 +2004,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   }, { threshold: 0.2 });
   document.querySelectorAll('.audit-card').forEach(t => acObs.observe(t));
 
-  /* Newsletter submit — calls Brevo API */
+  /* Newsletter submit - calls Brevo API */
   document.getElementById('nl-btn').addEventListener('click', async function () {
     const inp = document.querySelector('.nl-in');
     const btn = this;

@@ -3,9 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 const articles = [
   {
     slug: 'how-much-should-hvac-company-spend-on-marketing-2026',
+    tradeKey: 'HVAC',
     trade: 'HVAC · Revenue Diagnostics',
     title: 'How Much Should an HVAC Company Spend on Marketing in 2026?',
-    preview: "Most owners are spending $8K–$15K/month without knowing their cost per booked job. Here's the actual math — benchmarks, a 5-step budget formula, and the three places HVAC companies silently leak marketing budget.",
+    preview: "Most owners are spending $8K–$15K/month without knowing their cost per booked job. Here's the actual math - benchmarks, a 5-step budget formula, and the three places HVAC companies silently leak marketing budget.",
     date: 'Mar 16, 2026',
     readTime: 11,
     img: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=75',
@@ -15,6 +16,7 @@ const articles = [
   },
   {
     slug: 'why-hvac-csrs-are-losing-you-300k-per-year',
+    tradeKey: 'HVAC',
     trade: 'HVAC · Pipeline Systems',
     title: 'Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)',
     preview: "Your phones are answered. Your CSRs are friendly. And you're still losing $300K a year in calls that never became booked jobs. Here's exactly where it's happening and the three fixes that recover most of it.",
@@ -26,10 +28,25 @@ const articles = [
     featured: false,
   },
 ];
+const trade = Astro.url.searchParams.get('trade');
+const activeTrade = ['HVAC', 'Roofing', 'Plumbing'].includes(trade || '') ? trade : 'All';
+const filteredArticles = activeTrade === 'All'
+  ? articles
+  : articles.filter((article) => article.tradeKey === activeTrade);
+const featuredArticle = filteredArticles.find((article) => article.featured) || filteredArticles[0] || null;
+const secondaryArticles = featuredArticle
+  ? filteredArticles.filter((article) => article.slug !== featuredArticle.slug)
+  : [];
+const pageTitle = activeTrade === 'All'
+  ? 'Insights - Growth Research for HVAC, Roofing & Plumbing | Built on Tenth'
+  : `${activeTrade} Insights | Built on Tenth`;
+const pageDescription = activeTrade === 'All'
+  ? 'Research, benchmarks, and analysis from studying hundreds of home service companies. What the most profitable HVAC, roofing, and plumbing operators do differently.'
+  : `${activeTrade} research, benchmarks, and analysis for home service operators. See what the strongest companies do differently.`;
 ---
 <Layout
-  title="Insights — Growth Research for HVAC, Roofing & Plumbing | Built on Tenth"
-  description="Research, benchmarks, and analysis from studying hundreds of home service companies. What the most profitable HVAC, roofing, and plumbing operators do differently."
+  title={pageTitle}
+  description={pageDescription}
   active="insights"
 >
 
@@ -109,10 +126,10 @@ const articles = [
     <div>
       <p style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px">Filter by trade</p>
       <div class="pillar-tabs">
-        <a href="/insights" class="pt active">All</a>
-        <a href="/insights" class="pt">HVAC</a>
-        <a href="/insights" class="pt">Roofing</a>
-        <a href="/insights" class="pt">Plumbing</a>
+        <a href="/insights" class={`pt${activeTrade === 'All' ? ' active' : ''}`}>All</a>
+        <a href="/insights?trade=HVAC" class={`pt${activeTrade === 'HVAC' ? ' active' : ''}`}>HVAC</a>
+        <a href="/insights?trade=Roofing" class={`pt${activeTrade === 'Roofing' ? ' active' : ''}`}>Roofing</a>
+        <a href="/insights?trade=Plumbing" class={`pt${activeTrade === 'Plumbing' ? ' active' : ''}`}>Plumbing</a>
       </div>
     </div>
   </div>
@@ -122,51 +139,65 @@ const articles = [
   <div class="inner">
     <div class="rule-label"><span class="section-tag">Published Research</span></div>
 
-    <a href="/insights/how-much-should-hvac-company-spend-on-marketing-2026" class="featured-article reveal">
+    {featuredArticle ? (
+    <a href={`/insights/${featuredArticle.slug}`} class="featured-article reveal">
       <div class="fa-body">
         <div>
           <div class="fa-meta">
-            <span class="fa-trade">HVAC &middot; Revenue Diagnostics</span>
-            <span class="fa-date">Mar 16, 2026</span>
-            <span class="fa-read">11 min read</span>
+            <span class="fa-trade">{featuredArticle.trade}</span>
+            <span class="fa-date">{featuredArticle.date}</span>
+            <span class="fa-read">{featuredArticle.readTime} min read</span>
           </div>
-          <div class="fa-title">How Much Should an HVAC Company Spend on Marketing in 2026?</div>
-          <p class="fa-preview">Most owners are spending $8K to $15K a month without knowing their cost per booked job. Here is the actual math, benchmarks, a 5-step budget formula, and the three places HVAC companies silently leak marketing budget.</p>
+          <div class="fa-title">{featuredArticle.title}</div>
+          <p class="fa-preview">{featuredArticle.preview}</p>
           <div class="fa-pills">
-            <span class="fa-pill">$340 avg cost/job</span>
-            <span class="fa-pill">7-10% revenue typical</span>
-            <span class="fa-pill">3 leak patterns</span>
+            {featuredArticle.pills.map((pill) => <span class="fa-pill">{pill}</span>)}
           </div>
         </div>
-        <span class="fa-cta">Read Article &rarr;</span>
+        <span class="fa-cta">Read Article</span>
       </div>
       <div class="fa-img">
         <span class="fa-img-badge">Featured</span>
-        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=75" alt="HVAC technician servicing rooftop AC unit" loading="lazy" />
+        <img src={featuredArticle.img} alt={featuredArticle.imgAlt} loading="lazy" />
       </div>
     </a>
+    ) : (
+    <div class="featured-article" style="grid-template-columns:1fr">
+      <div class="fa-body">
+        <div>
+          <div class="fa-meta">
+            <span class="fa-trade">{activeTrade}</span>
+          </div>
+          <div class="fa-title">No published articles in this trade yet.</div>
+          <p class="fa-preview">We are still building out {activeTrade.toLowerCase()} research. Subscribe below and we will send the next one when it goes live.</p>
+        </div>
+      </div>
+    </div>
+    )}
 
+    {secondaryArticles.length > 0 && (
     <div class="articles-grid" style="margin-top:1px">
-      <a href="/insights/why-hvac-csrs-are-losing-you-300k-per-year" class="article-card reveal">
+      {secondaryArticles.map((article) => (
+      <a href={`/insights/${article.slug}`} class="article-card reveal">
         <div class="ac-img">
-          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=75" alt="CSR on phone handling inbound calls" loading="lazy" />
+          <img src={article.img} alt={article.imgAlt} loading="lazy" />
         </div>
         <div class="ac-body">
           <div class="ac-meta">
-            <span class="ac-trade">HVAC &middot; Pipeline Systems</span>
-            <span class="ac-date">Mar 17, 2026</span>
+            <span class="ac-trade">{article.trade}</span>
+            <span class="ac-date">{article.date}</span>
           </div>
-          <div class="ac-title">Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)</div>
-          <p class="ac-preview">Your phones are answered. Your CSRs are friendly. And you are still losing $300K a year in calls that never became booked jobs. Here is exactly where it is happening and the three fixes that recover most of it.</p>
+          <div class="ac-title">{article.title}</div>
+          <p class="ac-preview">{article.preview}</p>
           <div class="ac-pills">
-            <span class="ac-pill">68% avg answer rate</span>
-            <span class="ac-pill">$160K/month gap</span>
-            <span class="ac-pill">3 specific fixes</span>
+            {article.pills.map((pill) => <span class="ac-pill">{pill}</span>)}
           </div>
-          <span class="ac-read">Read Article &rarr;</span>
+          <span class="ac-read">Read Article</span>
         </div>
       </a>
+      ))}
 
+      {activeTrade === 'All' && (
       <div class="article-card soon">
         <div class="ac-img" style="background:var(--bg3);min-height:200px"></div>
         <div class="ac-body">
@@ -176,7 +207,9 @@ const articles = [
           <div class="ac-coming">Coming soon</div>
         </div>
       </div>
+      )}
     </div>
+    )}
 
     <div class="nl-prompt">
       <div class="nl-prompt-text">
