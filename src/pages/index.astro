@@ -19,8 +19,8 @@ import Layout from '../layouts/Layout.astro';
   --rule:    rgba(226,221,208,0.09);
   --rule2:   rgba(226,221,208,0.16);
   --ink:     #E2DDD0;
-  --ink2:    rgba(226,221,208,0.60);
-  --ink3:    rgba(226,221,208,0.38);
+  --ink2:    rgba(226,221,208,0.88);
+  --ink3:    rgba(226,221,208,0.62);
   --teal:    #00C49A;
   --teal2:   rgba(0,196,154,0.12);
   --teal3:   rgba(0,196,154,0.06);
@@ -796,17 +796,68 @@ img[data-failed] ~ .img-fb { display: flex; }
 
 /* Agency comparison table */
 .agency-compare { margin-top: 48px; }
-.ac-table-wrap { overflow: hidden; border: 1px solid var(--rule); border-radius: 6px; margin-top: 20px; }
-.ac-table { width: 100%; border-collapse: collapse; }
-.ac-table th { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 20px; border-bottom: 1px solid var(--rule); text-align: left; }
-.ac-table th:first-child { color: var(--ink3); background: var(--bg3); }
-.ac-table th:nth-child(2) { color: var(--neg); background: rgba(240,64,64,0.06); border-left: 1px solid var(--rule); }
-.ac-table th:nth-child(3) { color: var(--teal); background: rgba(0,196,154,0.06); border-left: 1px solid var(--rule); }
-.ac-table td { font-size: 13.5px; padding: 13px 20px; border-bottom: 1px solid var(--rule); font-weight: 300; color: var(--ink2); vertical-align: top; line-height: 1.55; }
-.ac-table td:first-child { color: var(--ink3); font-size: 12px; font-family: var(--mono); letter-spacing: 0.04em; background: var(--bg2); }
-.ac-table td:nth-child(2) { background: rgba(240,64,64,0.03); border-left: 1px solid var(--rule); }
-.ac-table td:nth-child(3) { background: rgba(0,196,154,0.03); border-left: 1px solid var(--rule); color: var(--ink); }
-.ac-table tr:last-child td { border-bottom: none; }
+
+/* Responsive grid comparison — no table, no horizontal scroll */
+.ac-grid {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.ac-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.3fr 1.3fr;
+  border-bottom: 1px solid var(--rule);
+}
+.ac-row-last { border-bottom: none; }
+.ac-header-row { background: var(--bg3); }
+.ac-col-label,
+.ac-col-agency,
+.ac-col-us {
+  padding: 13px 18px;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 300;
+  color: var(--ink2);
+}
+.ac-header-row .ac-col-label,
+.ac-header-row .ac-col-agency,
+.ac-header-row .ac-col-us {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 18px;
+}
+.ac-col-label { background: var(--bg2); color: var(--ink3); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
+.ac-header-row .ac-col-label { color: var(--ink3); background: var(--bg3); }
+.ac-col-agency { background: rgba(240,64,64,0.03); border-left: 1px solid var(--rule); }
+.ac-header-row .ac-col-agency { color: var(--neg); background: rgba(240,64,64,0.06); }
+.ac-col-us { background: rgba(0,196,154,0.03); border-left: 1px solid var(--rule); color: var(--ink); }
+.ac-header-row .ac-col-us { color: var(--teal); background: rgba(0,196,154,0.06); }
+
+/* Mobile: stack into 2-col label/value pairs */
+@media (max-width: 640px) {
+  .ac-header-row { display: none; }
+  .ac-row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0;
+  }
+  .ac-col-label {
+    grid-column: 1 / -1;
+    background: var(--bg3);
+    font-family: var(--mono); font-size: 9px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink3); padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ac-col-agency { border-left: none; padding: 12px 16px; }
+  .ac-col-us { border-left: 1px solid var(--rule); padding: 12px 16px; }
+  .ac-col-agency::before { content: 'Agency'; display: block; font-family: var(--mono); font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neg); margin-bottom: 5px; }
+  .ac-col-us::before { content: 'Built on Tenth'; display: block; font-family: var(--mono); font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 5px; }
+}
 
 /* Tools funnel section */
 .tools-funnel-intro { margin-bottom: 40px; }
@@ -1150,6 +1201,35 @@ img[data-failed] ~ .img-fb { display: flex; }
 .reveal.will-animate { opacity: 0; transform: translateY(24px); }
 .reveal.will-animate.on { opacity: 1; transform: translateY(0); }
 
+/* ── TOOLS BRIDGE BAR ── */
+.tools-bridge-bar {
+  margin-top: 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 20px 24px;
+  background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
+  flex-wrap: wrap;
+}
+.tools-bridge-bar p {
+  font-size: 14px; color: var(--ink2); font-weight: 300; line-height: 1.6; flex: 1;
+}
+
+/* ── SERVICES BRIDGE BAR ── */
+.svc-bridge {
+  background: var(--bg2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 28px 48px;
+}
+.svc-bridge-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.svc-bridge-text {
+  font-family: var(--mono); font-size: 12px; color: var(--ink2); letter-spacing: 0.04em;
+}
+.svc-bridge-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
 /* ════════════════════════════════════════
    RESPONSIVE — COMPREHENSIVE MOBILE FIX
 ════════════════════════════════════════ */
@@ -1163,17 +1243,13 @@ img[data-failed] ~ .img-fb { display: flex; }
 
 /* 960px: main mobile breakpoint */
 @media (max-width: 960px) {
-  /* ── NAV ── */
-  #nav { padding: 0 20px; }
-  .nav-links { display: none; }
-
   /* ── HERO ── */
   .hero { padding: 84px 20px 56px; min-height: auto; }
   .hero-h { font-size: clamp(30px, 8vw, 48px); line-height: 1.1; }
   .hero-body { font-size: 15px; }
-  .hero-ctas { flex-direction: column; gap: 10px; }
-  .hero-ctas a { justify-content: center; }
-  /* Stats bar: wrap to 2x2 grid */
+  .hero-ctas { flex-direction: column; gap: 10px; align-items: stretch; }
+  .hero-ctas a { justify-content: center; text-align: center; }
+  /* Stats bar: 2x2 grid */
   .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding-top: 24px; margin-top: 24px; }
   .hero-stat { padding: 14px 12px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 0 !important; }
   .hero-stat:nth-child(2) { border-right: none; }
@@ -1198,27 +1274,25 @@ img[data-failed] ~ .img-fb { display: flex; }
 
   /* ── PROBLEM SECTION ── */
   .prob-grid { grid-template-columns: 1fr; gap: 32px; }
-  .collage { display: none; } /* hide the photo collage on mobile, show text only */
+  .collage { display: none; }
   .rev-example { padding: 20px; }
   .re-grid { flex-direction: column; gap: 6px; }
   .re-sep { display: none; }
   .re-result { padding-top: 12px; border-top: 1px solid var(--rule); }
-  .re-cta { flex-wrap: wrap; gap: 8px; }
+  .re-cta { flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .re-cta a { flex: 1; min-width: 140px; justify-content: center; text-align: center; }
   .audit { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
   .audit-n { font-size: 52px; }
   .audit-rows { grid-template-columns: 1fr; }
 
   /* ── SECTION HEADER GRIDS (inline-styled 2-col divs) ── */
-  /* Override inline grid styles for all 2-col section intro headers */
-  .inner > div[style],
-  .inner > [style*="grid-template-columns"] {
+  .inner > div[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
 
-  /* ── AGENCY COMPARE ── */
-  .agency-compare { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .ac-table-wrap { min-width: 560px; }
+  /* ── AGENCY COMPARE: already responsive via its own @media ── */
+  .agency-compare { overflow-x: visible; }
 
   /* ── HOW WE WORK — STEPS: 3col → 1col ── */
   .steps { grid-template-columns: 1fr; }
@@ -1228,25 +1302,44 @@ img[data-failed] ~ .img-fb { display: flex; }
   .tools-grid { grid-template-columns: 1fr 1fr; }
   .tool-img { height: 160px; }
 
+  /* ── TOOLS BRIDGE: stack + center ── */
+  .tools-bridge-bar {
+    flex-direction: column; align-items: center; text-align: center; gap: 16px;
+  }
+  .tools-bridge-bar p { flex: none; }
+  .tools-bridge-bar a { width: 100%; justify-content: center; }
+
   /* ── SERVICES: 3col → 1col ── */
   .svcs { grid-template-columns: 1fr; }
   .svc { max-width: 100%; }
   .svc-price { font-size: 36px; }
 
+  /* ── SERVICES BRIDGE: stack + center ── */
+  .svc-bridge { padding: 28px 20px; }
+  .svc-bridge-inner { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+  .svc-bridge-btns { flex-direction: column; width: 100%; }
+  .svc-bridge-btns a { justify-content: center; text-align: center; width: 100%; }
+
   /* ── NEWSLETTER ── */
   .nl-inner { max-width: 100%; }
   .nl-h { font-size: clamp(28px, 8vw, 40px) !important; }
+  .nl-form { flex-direction: column; gap: 10px; align-items: stretch; }
+  .nl-in { width: 100%; }
+
+  /* ── FOOTER: keep 2-col on tablet ── */
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .ft-btm { flex-direction: column; gap: 8px; text-align: center; }
 }
 
-/* 600px: very small phones */
+/* 600px: small phones */
 @media (max-width: 600px) {
   .intel-inner { grid-template-columns: 1fr; }
   .intel-card { border-right: none !important; border-top: none !important; border-bottom: 1px solid var(--rule); }
   .intel-card:last-child { border-bottom: none; }
   .tools-grid { grid-template-columns: 1fr; }
+  /* ── FOOTER: single column on small phones ── */
   .ft-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero-h { font-size: clamp(28px, 9vw, 42px); }
-  .hero-stats { grid-template-columns: 1fr 1fr; }
 }
 </style>
 
@@ -1269,7 +1362,7 @@ img[data-failed] ~ .img-fb { display: flex; }
     </h1>
 
     <p class="hero-body">
-      Most owners can't. We analyze your calls, follow-up, tracking, and competitor positioning — and show you exactly what's producing revenue and what's burning cash. Every finding in dollars. Delivered in writing.
+      Most owners can't. We analyze your calls, follow-up, tracking, and competitor positioning. We show you exactly what's producing revenue and what's burning cash. Every finding in dollars. Delivered in writing.
     </p>
 
     <div class="hero-ctas">
@@ -1288,7 +1381,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       </div>
       <div class="hero-stat">
         <div class="hs-n">$0</div>
-        <div class="hs-l">Incentive to sell<br>more ad spend — ever</div>
+        <div class="hs-l">Incentive to sell<br>more ad spend. Ever.</div>
       </div>
       <div class="hero-stat">
         <div class="hs-n">100%</div>
@@ -1389,7 +1482,7 @@ img[data-failed] ~ .img-fb { display: flex; }
     <div class="intel-card" data-bar="34">
       <div class="intel-eyebrow">Finding 02</div>
       <div class="intel-n">34%</div>
-      <p class="intel-desc">of inbound calls go unanswered — no voicemail, no callback, revenue just walks away</p>
+      <p class="intel-desc">of inbound calls go unanswered. No voicemail, no callback, revenue just walks away</p>
       <div class="intel-bar-track"><div class="intel-bar-fill"></div></div>
       <p class="intel-src">Average across 200+ audited companies</p>
     </div>
@@ -1461,7 +1554,7 @@ img[data-failed] ~ .img-fb { display: flex; }
             <div class="pain-ic" style="background:rgba(240,64,64,0.1)">💸</div>
             <div>
               <h4>"I'm spending money but I can't see what's working."</h4>
-              <p>Your agency shows impressions and clicks. You need to see cost per booked job — the only number that matters when you're running trucks.</p>
+              <p>Your agency shows impressions and clicks. You need to see cost per booked job. That's the only number that matters when you're running trucks.</p>
             </div>
           </div>
           <div class="pain">
@@ -1484,7 +1577,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 
     <!-- Revenue leak example -->
     <div class="rev-example reveal">
-      <div class="re-label">Example — What 300 calls/month with a 28% miss rate looks like</div>
+      <div class="re-label">Example: 300 calls/month with a 28% miss rate</div>
       <div class="re-grid">
         <div class="re-item"><div class="re-n">300</div><div class="re-l">calls/month</div></div>
         <div class="re-sep">×</div>
@@ -1520,54 +1613,50 @@ img[data-failed] ~ .img-fb { display: flex; }
         <h2 class="sec-h">We do not run your ads.<br>We show you what your <em>ad spend is actually doing.</em></h2>
       </div>
       <div>
-        <p class="sec-p" style="max-width:100%">Agencies get paid whether your calls book or not. Our job is different. We look at the numbers, the phone process, the follow-up, the website, and the competitors — then show you where revenue is leaking.</p>
+        <p class="sec-p" style="max-width:100%">Agencies get paid whether your calls book or not. Our job is different. We look at the numbers, the phone process, the follow-up, the website, and the competitors. Then we show you where revenue is leaking.</p>
       </div>
     </div>
 
-    <!-- Agency comparison table -->
+    <!-- Agency comparison — responsive grid (no table, no horizontal scroll) -->
     <div class="agency-compare reveal">
-      <div class="ac-table-wrap">
-        <table class="ac-table">
-          <thead>
-            <tr>
-              <th>What you're evaluating</th>
-              <th>Typical Marketing Agency</th>
-              <th>Built on Tenth</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>What they measure</td>
-              <td>Leads and clicks</td>
-              <td>Booked jobs and cost per job</td>
-            </tr>
-            <tr>
-              <td>Financial incentive</td>
-              <td>Earn more when you spend more</td>
-              <td>Fixed fee — zero incentive to upsell spend</td>
-            </tr>
-            <tr>
-              <td>When they get paid</td>
-              <td>Monthly retainer regardless of results</td>
-              <td>Fixed scope — you pay once, you own it</td>
-            </tr>
-            <tr>
-              <td>What they deliver</td>
-              <td>Monthly report with impressions and CTR</td>
-              <td>Written analysis — every gap in dollar terms</td>
-            </tr>
-            <tr>
-              <td>Phone performance</td>
-              <td>Not their problem</td>
-              <td>Analyzed in detail — scripts and systems included</td>
-            </tr>
-            <tr>
-              <td>What happens if nothing improves</td>
-              <td>They keep billing</td>
-              <td>We show you exactly why and what to fix</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="ac-grid">
+        <!-- Header row -->
+        <div class="ac-row ac-header-row">
+          <div class="ac-col-label">What you're evaluating</div>
+          <div class="ac-col-agency">Typical Agency</div>
+          <div class="ac-col-us">Built on Tenth</div>
+        </div>
+        <!-- Data rows -->
+        <div class="ac-row">
+          <div class="ac-col-label">What they measure</div>
+          <div class="ac-col-agency">Leads and clicks</div>
+          <div class="ac-col-us">Booked jobs and cost per job</div>
+        </div>
+        <div class="ac-row">
+          <div class="ac-col-label">Financial incentive</div>
+          <div class="ac-col-agency">Earn more when you spend more</div>
+          <div class="ac-col-us">Fixed fee. Zero incentive to upsell spend</div>
+        </div>
+        <div class="ac-row">
+          <div class="ac-col-label">When they get paid</div>
+          <div class="ac-col-agency">Monthly retainer regardless of results</div>
+          <div class="ac-col-us">Fixed scope. You pay once, you own it</div>
+        </div>
+        <div class="ac-row">
+          <div class="ac-col-label">What they deliver</div>
+          <div class="ac-col-agency">Monthly report with impressions and CTR</div>
+          <div class="ac-col-us">Written analysis. Every gap in dollar terms</div>
+        </div>
+        <div class="ac-row">
+          <div class="ac-col-label">Phone performance</div>
+          <div class="ac-col-agency">Not their problem</div>
+          <div class="ac-col-us">Analyzed in detail. Scripts and systems included</div>
+        </div>
+        <div class="ac-row ac-row-last">
+          <div class="ac-col-label">If nothing improves</div>
+          <div class="ac-col-agency">They keep billing</div>
+          <div class="ac-col-us">We show you exactly why and what to fix</div>
+        </div>
       </div>
     </div>
 
@@ -1584,9 +1673,9 @@ img[data-failed] ~ .img-fb { display: flex; }
           <div class="img-fb"><span style="font-size:24px;opacity:0.18">📈</span></div>
         </div>
         <div class="step-body">
-          <div class="step-tag">01 — Research</div>
+          <div class="step-tag">01 · Research</div>
           <h3>We Map What the Best Companies Do</h3>
-          <p>We look at what the top-performing HVAC, roofing, and plumbing companies do differently — how they run ads, handle calls, follow up on estimates. Hundreds of companies across 15+ US markets.</p>
+          <p>We look at what the top-performing HVAC, roofing, and plumbing companies do differently: how they run ads, handle calls, follow up on estimates. Hundreds of companies across 15+ US markets.</p>
         </div>
       </div>
 
@@ -1601,9 +1690,9 @@ img[data-failed] ~ .img-fb { display: flex; }
           <div class="img-fb"><span style="font-size:24px;opacity:0.18">🔍</span></div>
         </div>
         <div class="step-body">
-          <div class="step-tag">02 — Diagnose</div>
+          <div class="step-tag">02 · Diagnose</div>
           <h3>We Find Your Leaks in Dollars</h3>
-          <p>Not "your phone answer rate needs improvement" — but "at your call volume and ticket size, your answer rate is costing you $84,000/year." Every gap gets a dollar figure attached.</p>
+          <p>Not "your phone answer rate needs improvement." Instead: "at your call volume and ticket size, your answer rate is costing you $84,000/year." Every gap gets a dollar figure attached.</p>
         </div>
       </div>
 
@@ -1618,9 +1707,9 @@ img[data-failed] ~ .img-fb { display: flex; }
           <div class="img-fb"><span style="font-size:24px;opacity:0.18">🔧</span></div>
         </div>
         <div class="step-body">
-          <div class="step-tag">03 — Fix It</div>
+          <div class="step-tag">03 · Fix It</div>
           <h3>We Hand You the Exact Playbook</h3>
-          <p>Phone script for your front desk. Follow-up sequence for cold estimates. Weekly dashboard your office manager runs in 10 minutes. Everything in writing — no calls, no agency needed.</p>
+          <p>Phone script for your front desk. Follow-up sequence for cold estimates. Weekly dashboard your office manager runs in 10 minutes. Everything in writing. No calls, no agency needed.</p>
         </div>
       </div>
     </div>
@@ -1640,7 +1729,7 @@ img[data-failed] ~ .img-fb { display: flex; }
         <h2 class="sec-h">Start with the leak.<br><em>Then decide what to fix.</em></h2>
       </div>
       <div>
-        <p class="sec-p" style="max-width:100%">Most owners use the free tools first. Put in your real numbers — calls per month, ad spend, answer rate, number of techs — and see exactly where money is slipping through. The audit is for when you want the full picture in writing.</p>
+        <p class="sec-p" style="max-width:100%">Most owners use the free tools first. Put in your real numbers: calls per month, ad spend, answer rate, number of techs. See exactly where money is slipping through. The audit is for when you want the full picture in writing.</p>
         <!-- Conversion bridge -->
         <div style="margin-top:20px;padding:14px 16px;background:rgba(0,196,154,0.05);border:1px solid rgba(0,196,154,0.2);border-radius:4px;font-size:13px;color:var(--ink2);line-height:1.6">
           <strong style="color:var(--ink);font-weight:500">Suggested order:</strong> Start with Phone Revenue (most money, fastest to find) → then Marketing Cost → then Lead Source Grader.
@@ -1659,7 +1748,7 @@ img[data-failed] ~ .img-fb { display: flex; }
         <div class="tool-body">
           <span class="tool-badge">Free Tool</span>
           <h3>Marketing Cost Calculator</h3>
-          <p>Put in your monthly ad spend, how many calls you get, your close rate, and average ticket. See your real cost per booked job — and whether it's in line with the top 25% of companies in your trade.</p>
+          <p>Put in your monthly ad spend, how many calls you get, your close rate, and average ticket. See your real cost per booked job. See whether it's in line with the top 25% of companies in your trade.</p>
           <div class="tool-cta">Calculate your numbers <span>→</span></div>
         </div>
       </a>
@@ -1673,7 +1762,7 @@ img[data-failed] ~ .img-fb { display: flex; }
         <div class="tool-body">
           <span class="tool-badge">Free Tool</span>
           <h3>Phone Revenue Calculator</h3>
-          <p>How many calls are you missing every month? Put in your call volume and answer rate. We'll show you the dollar amount walking out the door — and what happens if you get your answer rate to 90%.</p>
+          <p>How many calls are you missing every month? Put in your call volume and answer rate. We'll show you the dollar amount walking out the door. See what happens if you get your answer rate to 90%.</p>
           <div class="tool-cta">See your lost revenue <span>→</span></div>
         </div>
       </a>
@@ -1687,7 +1776,7 @@ img[data-failed] ~ .img-fb { display: flex; }
         <div class="tool-body">
           <span class="tool-badge">Free Tool</span>
           <h3>Lead Source Grader</h3>
-          <p>Google Ads, LSAs, Angi, Thumbtack, referrals, door knocking — select what you're running and get a straight A–D grade on each one, with a clear verdict: keep it, fix it, or cut it.</p>
+          <p>Google Ads, LSAs, Angi, Thumbtack, referrals, door knocking. Select what you're running and get a straight A–D grade on each one, with a clear verdict: keep it, fix it, or cut it.</p>
           <div class="tool-cta">Grade your lead sources <span>→</span></div>
         </div>
       </a>
@@ -1715,7 +1804,7 @@ img[data-failed] ~ .img-fb { display: flex; }
         <div class="tool-body">
           <span class="tool-badge">Free Tool</span>
           <h3>Capacity-to-Demand Planner</h3>
-          <p>Most owners ask "how much should I spend on marketing?" That's the wrong question. Enter how many techs you have and how many jobs they can run — and we'll tell you exactly how many calls you actually need.</p>
+          <p>Most owners ask "how much should I spend on marketing?" That's the wrong question. Enter how many techs you have and how many jobs they can run. We'll tell you exactly how many calls you actually need.</p>
           <div class="tool-cta">Plan your capacity <span>→</span></div>
         </div>
       </a>
@@ -1736,9 +1825,9 @@ img[data-failed] ~ .img-fb { display: flex; }
     </div>
 
     <!-- Conversion bridge under tools -->
-    <div style="margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 24px;background:var(--bg3);border:1px solid var(--rule2);border-radius:4px;flex-wrap:wrap">
-      <p style="font-size:14px;color:var(--ink2);font-weight:300;line-height:1.6">Most owners use the free tools first. The audit is for when you want every leak in one place — with a prioritized fix list.</p>
-      <a href="/apply" class="cta-filled" style="white-space:nowrap;font-size:11px">Get the Full Audit — $750 →</a>
+    <div class="tools-bridge-bar">
+      <p>Most owners use the free tools first. The audit is for when you want every leak in one place, with a prioritized fix list.</p>
+      <a href="/apply" class="cta-filled" style="white-space:nowrap;font-size:11px">Get the Full Audit ($750) →</a>
     </div>
   </div>
 </div>
@@ -1754,7 +1843,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       <div>
         <h2 class="sec-h">Start here.<br>Build the system.<br><em>Improve it for 90 days.</em></h2>
       </div>
-      <p class="sec-p" style="max-width:100%">No long-term contract. No monthly retainer. No calls unless you want one. Every engagement delivers a written report — every finding in dollars, every action prioritized. Most clients see the ROI in the first month.</p>
+      <p class="sec-p" style="max-width:100%">No long-term contract. No monthly retainer. No calls unless you want one. Every engagement delivers a written report with every finding in dollars and every action prioritized. Most clients see the ROI in the first month.</p>
     </div>
 
     <div class="svcs">
@@ -1768,7 +1857,7 @@ img[data-failed] ~ .img-fb { display: flex; }
           <div class="svc-tier">Start here</div>
           <div class="svc-name">Revenue Leak Audit</div>
           <div class="svc-price">$750</div>
-          <p class="svc-desc">In 7 days you'll know exactly what your marketing is producing and what it's wasting. Every finding shown in dollars — not clicks, not impressions. Dollars.</p>
+          <p class="svc-desc">In 7 days you'll know exactly what your marketing is producing and what it's wasting. Every finding shown in dollars. Not clicks, not impressions. Dollars.</p>
           <div class="svc-div"></div>
           <ul class="svc-ul">
             <li><span class="sarr">→</span>Which channels produce booked jobs vs. burn cash</li>
@@ -1814,13 +1903,13 @@ img[data-failed] ~ .img-fb { display: flex; }
           <div class="svc-tier">Then improve it with us</div>
           <div class="svc-name">90-Day Growth Advisory</div>
           <div class="svc-price">$7,500</div>
-          <p class="svc-desc">Audit and blueprint included. Then for 12 weeks we watch your numbers with you — every week, in writing. If something stops working, we tell you what to change and why. You're never left guessing what to do next.</p>
+          <p class="svc-desc">Audit and blueprint included. Then for 12 weeks we watch your numbers with you, every week, in writing. If something stops working, we tell you what to change and why. You're never left guessing what to do next.</p>
           <div class="svc-div"></div>
           <ul class="svc-ul">
             <li><span class="sarr">→</span>Weekly written review: what's working, what to change</li>
             <li><span class="sarr">→</span>Questions answered within 24–48 hours every week</li>
             <li><span class="sarr">→</span>Monthly competitor re-benchmarking as the gap closes</li>
-            <li><span class="sarr">→</span>Exit report showing exactly what changed — in dollars</li>
+            <li><span class="sarr">→</span>Exit report showing exactly what changed, in dollars</li>
             <li><span class="sarr">→</span>Includes audit + blueprint delivery in week 1</li>
           </ul>
           <div style="font-size:11px;color:var(--ink3);margin-bottom:14px;font-family:var(--mono)">Best if you want weekly pressure-testing and accountability</div>
@@ -1833,12 +1922,12 @@ img[data-failed] ~ .img-fb { display: flex; }
 </div>
 
 <!-- Conversion bridge: services → next action -->
-<div style="background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:28px 48px">
-  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
-    <p style="font-family:var(--mono);font-size:12px;color:var(--ink2);letter-spacing:0.04em">Not sure where to start?</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
+<div class="svc-bridge">
+  <div class="svc-bridge-inner">
+    <p class="svc-bridge-text">Not sure where to start?</p>
+    <div class="svc-bridge-btns">
       <a href="/tools" class="cta-ghost" style="font-size:10.5px">Try the Free Tools First</a>
-      <a href="/apply" class="cta-filled" style="font-size:10.5px">Start with the Audit — $750</a>
+      <a href="/apply" class="cta-filled" style="font-size:10.5px">Start with the Audit ($750)</a>
     </div>
   </div>
 </div>

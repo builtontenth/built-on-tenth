@@ -13,8 +13,8 @@
   --rule:    rgba(226,221,208,0.09);
   --rule2:   rgba(226,221,208,0.16);
   --ink:     #E2DDD0;
-  --ink2:    rgba(226,221,208,0.60);
-  --ink3:    rgba(226,221,208,0.42);
+  --ink2:    rgba(226,221,208,0.88);
+  --ink3:    rgba(226,221,208,0.62);
   --teal:    #00C49A;
   --teal2:   rgba(0,196,154,0.12);
   --teal3:   rgba(0,196,154,0.06);
@@ -247,8 +247,9 @@ img[data-failed] ~ .img-fb { display: flex !important; }
 
 /* ── RESPONSIVE BASE ── */
 @media (max-width: 960px) {
+  /* Nav padding handled by Nav.astro */
   #nav { padding: 0 20px; }
-  .nav-links { display: none; }
+  .nav-links { display: none; } /* Desktop links hidden; sheet menu takes over */
   .wrap { padding: 56px 20px; }
   .wrap.alt { padding: 56px 20px; }
   .footer { padding: 48px 20px 0; }
@@ -260,7 +261,7 @@ img[data-failed] ~ .img-fb { display: flex !important; }
   .page-sub { font-size: 16px; }
   .sec-h { font-size: clamp(26px, 7vw, 40px); }
 
-  /* CTA groups */
+  /* CTAs full-width and centered on mobile */
   .cta-primary, .cta-secondary { justify-content: center; }
 }
 @media (max-width: 600px) {
