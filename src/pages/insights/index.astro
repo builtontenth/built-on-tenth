@@ -33,6 +33,10 @@ const activeTrade = ['HVAC', 'Roofing', 'Plumbing'].includes(trade || '') ? trad
 const filteredArticles = activeTrade === 'All'
   ? articles
   : articles.filter((article) => article.tradeKey === activeTrade);
+const articleCount = filteredArticles.length;
+const filterSummary = activeTrade === 'All'
+  ? `Showing all published research (${articleCount} article${articleCount === 1 ? '' : 's'})`
+  : `Showing ${activeTrade} research (${articleCount} published article${articleCount === 1 ? '' : 's'})`;
 const featuredArticle = filteredArticles.find((article) => article.featured) || filteredArticles[0] || null;
 const secondaryArticles = featuredArticle
   ? filteredArticles.filter((article) => article.slug !== featuredArticle.slug)
@@ -59,6 +63,7 @@ const pageDescription = activeTrade === 'All'
 .pillar-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
 .pt { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); background: var(--bg3); border: 1px solid var(--rule2); padding: 7px 14px; border-radius: 3px; text-decoration: none; transition: all 0.2s; }
 .pt:hover, .pt.active { color: var(--teal); border-color: var(--teal4); background: var(--teal3); }
+.filter-state { margin-top: 14px; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); }
 .featured-article { display: grid; grid-template-columns: 1fr 380px; gap: 0; background: var(--bg2); border: 1px solid var(--rule2); border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.25s, transform 0.25s; margin-bottom: 1px; }
 .featured-article:hover { border-color: rgba(0,196,154,0.35); transform: translateY(-2px); }
 .fa-body { padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -126,16 +131,17 @@ const pageDescription = activeTrade === 'All'
     <div>
       <p style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px">Filter by trade</p>
       <div class="pillar-tabs">
-        <a href="/insights" class={`pt${activeTrade === 'All' ? ' active' : ''}`}>All</a>
-        <a href="/insights?trade=HVAC" class={`pt${activeTrade === 'HVAC' ? ' active' : ''}`}>HVAC</a>
-        <a href="/insights?trade=Roofing" class={`pt${activeTrade === 'Roofing' ? ' active' : ''}`}>Roofing</a>
-        <a href="/insights?trade=Plumbing" class={`pt${activeTrade === 'Plumbing' ? ' active' : ''}`}>Plumbing</a>
+        <a href="/insights#published-research" class={`pt${activeTrade === 'All' ? ' active' : ''}`} aria-current={activeTrade === 'All' ? 'page' : undefined}>All</a>
+        <a href="/insights?trade=HVAC#published-research" class={`pt${activeTrade === 'HVAC' ? ' active' : ''}`} aria-current={activeTrade === 'HVAC' ? 'page' : undefined}>HVAC</a>
+        <a href="/insights?trade=Roofing#published-research" class={`pt${activeTrade === 'Roofing' ? ' active' : ''}`} aria-current={activeTrade === 'Roofing' ? 'page' : undefined}>Roofing</a>
+        <a href="/insights?trade=Plumbing#published-research" class={`pt${activeTrade === 'Plumbing' ? ' active' : ''}`} aria-current={activeTrade === 'Plumbing' ? 'page' : undefined}>Plumbing</a>
       </div>
+      <p class="filter-state">{filterSummary}</p>
     </div>
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" id="published-research">
   <div class="inner">
     <div class="rule-label"><span class="section-tag">Published Research</span></div>
 
