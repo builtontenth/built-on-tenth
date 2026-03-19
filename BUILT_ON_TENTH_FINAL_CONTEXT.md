@@ -541,6 +541,201 @@ Recommended prompt for future chats:
 
 `Use this file as the Built on Tenth source of truth. The current repo is the final website state unless I say otherwise. Keep contractor language, stability, and low-complexity systems intact.`
 
+## SECTION 18 - SEO AND CONTENT STRATEGY
+
+Last reviewed: March 19, 2026
+
+### What Is Working (Do Not Change)
+
+The content is already well-positioned because:
+
+- articles target decision-stage, buying-intent keywords, not informational fluff
+- original numbers and benchmarks are used throughout, not recycled industry averages
+- the positioning as an independent analyst with no ad-spend incentive is a real trust signal for both Google and LLMs
+- content structure is clear: problem, math, breakdown, fix
+- tables and scenario modeling make content extractable by AI systems
+
+Do not change the voice, structure, or writing style in response to generic SEO advice. The current approach is the differentiator. Articles that read like content-mill output (fragment bullets, emoji checkboxes, generic frameworks) would undermine the brand.
+
+Do not add beginner-layer explainers ("what is a close rate") for the ICP. A $2M HVAC owner does not need that. Writing down to them breaks trust.
+
+### What Needs Fixing (Structural Gaps)
+
+Three structural problems have been identified and accepted as real:
+
+**1. No internal linking**
+
+Articles currently behave as standalone pieces. They do not link to each other or to tools. This means authority does not compound across the site.
+
+Fix: every article must link to 2 to 3 related articles and 1 relevant tool. Links should be contextual and in-body, not a tacked-on list at the end.
+
+**2. Narrow keyword coverage per article**
+
+Each article currently targets one primary search intent. Related search queries that a buyer would also use are not captured.
+
+Fix: expand each article with sections that address related queries naturally. Do not stuff keywords. Add content that a reader would actually want, that also happens to capture the adjacent search intent.
+
+**3. No external mentions or citations**
+
+LLMs and Google both weight content that is referenced elsewhere. Right now nothing links to Built on Tenth from outside the site.
+
+Fix: this is a distribution problem, not a content problem. Addressed through Reddit presence and community distribution over time. Do not try to manufacture citations artificially.
+
+### Execution Rules for Article Fixes
+
+- fix one article at a time
+- do not rewrite voice, structure, or narrative
+- only add what is missing: internal links, related sections, extended FAQ coverage
+- every added section must match the existing article's tone exactly
+- start with the Angi article (`are-angi-leads-worth-it-for-roofing-companies.md`)
+
+### Internal Linking Map (Current)
+
+Use this as the reference when adding links. Every article should link to at least 2 of the others where the connection is natural in context.
+
+| Article | Natural link targets |
+|---|---|
+| Angi leads (roofing) | CSR article, follow-up sequence article, benchmarks article |
+| HVAC marketing budget | Benchmarks article, CSR article, phone calculator tool |
+| HVAC marketing benchmarks | Budget article, CSR article, marketing calculator tool |
+| CSR / phone performance | Follow-up sequence article, phone calculator tool, benchmarks article |
+| Follow-up sequence | CSR article, phone calculator tool |
+| HVAC online presence analysis | Benchmarks article, budget article |
+
+### What Was Rejected From the External SEO Audit
+
+An external SEO analysis was reviewed March 19, 2026. The following recommendations were rejected:
+
+- rewriting articles in a fragment-bullet, emoji-checkbox format
+- adding beginner-layer definitions for ICP who already understands the basics
+- the "rewritten Angi article" produced by the audit, which stripped narrative and replaced it with generic structure
+- inflated traffic estimates used to justify urgency
+
+These were rejected because they conflict with brand voice and would make the content worse, not better.
+
+### Keyword Expansion: Angi Article
+
+When expanding the Angi article, these are the adjacent queries to cover naturally within new sections:
+
+- angi vs thumbtack roofing
+- homeadvisor roofing cost per lead
+- angi leads conversion rate roofing
+- how to improve angi ROI
+- when to cancel angi
+- angi vs google lsa roofing
+
+Do not force all of these. Add only the sections that a reader who finished the current article would genuinely want next.
+
+## SECTION 19 - CURRENT CHANGE GUARDRAILS
+
+Do not casually change:
+- tool formulas
+- tool scoring logic
+- analytics setup
+- GTM
+- font imports
+- global CSS
+- infrastructure assumptions
+
+When making decisions:
+- stability beats novelty
+- fewer moving parts beats flexibility
+- one template beats duplicated page systems
+- plain systems beat fancy systems
+
+---
+
+## SECTION 20 - BRAND NAME DECISION (LOCKED)
+
+Last reviewed: March 19, 2026
+
+The name "Built on Tenth" is non-negotiable. Tanvir has confirmed this explicitly.
+
+Do not suggest renaming, rebranding, or adding a DBA. Do not treat external criticism of the name as a signal to revisit it.
+
+Rationale accepted: brand names do not need to describe the business. McKinsey, LinkedIn, Clay, Apollo, and others carry no inherent meaning. The name's job is to be memorable and distinct. The copy's job is to explain what the business does. That separation is intentional.
+
+Future AI cofounder context: if feedback from any source questions the name, acknowledge the tension, then redirect to copy and context delivery as the actual lever.
+
+---
+
+## SECTION 21 - SITE COPY CHANGES IMPLEMENTED (March 19, 2026)
+
+These changes were made via Codex based on a structured copy audit. Do not revert them. Do not duplicate them.
+
+### Change 1 -- Header descriptor added
+
+File: `src/components/Nav.astro` (or equivalent header component)
+
+A one-line descriptor was added directly below the wordmark in the site header, visible on every page:
+
+```
+Revenue Intelligence · HVAC · Roofing · Plumbing
+```
+
+Styling: IBM Plex Mono, --ink3 color, ~10-11px, no bold.
+
+Why: Cold visitors landing on interior pages (services, about, insights articles) had no trade context before reading a headline. The descriptor solves this without changing layout or nav structure.
+
+Do not remove this line. Do not move it. Do not change the trades listed.
+
+---
+
+### Change 2 -- Fourth stat box on homepage reframed
+
+File: `src/pages/index.astro`
+
+The fourth stat box was changed from:
+
+```
+Headline: 100%
+Sub-label: Written delivery, no calls required
+```
+
+To:
+
+```
+Headline: Written only
+Sub-label: Every finding documented. Share it with your team. Act on it at your pace.
+```
+
+Why: The original format read as a disclaimer. The replacement sells the benefit of written delivery rather than naming the absence of calls. "No calls required" was framing the feature as avoidance. The new copy frames it as precision and permanence.
+
+Do not reintroduce "100%" or "no calls required" as a homepage stat.
+
+---
+
+### Change 3 -- Proof line added under the $0 stat box
+
+File: `src/pages/index.astro`
+
+A second sub-label line was added under the existing $0 stat box:
+
+```
+Existing sub-label: Incentive to sell more ad spend. Ever.
+New line added: We don't run ads, manage campaigns, or earn commissions on your spend.
+```
+
+Why: The $0 claim is an assertion. Skeptical owners have heard every agency claim independence. The three concrete specifics (don't run ads, don't manage campaigns, don't earn commissions) convert assertion into proof. This is the difference between a positioning claim and evidence.
+
+Styling of the new line: IBM Plex Mono, --ink3 color, same or slightly smaller than the existing sub-label.
+
+Do not remove this line. Do not merge it with the existing sub-label.
+
+---
+
+### What triggered these changes (context for future AI)
+
+An external roast-style critique of the site was reviewed on March 19, 2026. Three real signals were extracted from the noise:
+
+1. The name does not explain the business on cold page loads (fixed via header descriptor)
+2. "No calls required" reads as avoidance to a fast skeptical reader (fixed via stat box reframe)
+3. The independence claim is an assertion without concrete proof on the homepage (fixed via the $0 proof line)
+
+Everything else in the critique was performance for an audience, not usable signal. The $750 price point, the founder's background, and the business model itself were not changed and should not be reconsidered based on that critique.
+
+---
+
 ## FINAL RULE
 
 Built on Tenth should always feel like this:
