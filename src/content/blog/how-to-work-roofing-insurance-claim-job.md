@@ -1,6 +1,8 @@
 ---
 title: "How to Work an Insurance Claim Job: What Separates the Contractors Who Get Paid From the Ones Who Get Cut"
+seoTitle: "How to Work a Roofing Insurance Claim Job | Built on Tenth"
 description: "Most roofing contractors treat insurance jobs like retail jobs and leave $1,500 to $4,000 per job on the table. Here's the inspection process, why you need to be at the adjuster meeting, what the supplement process is, and how to handle a low estimate without losing the homeowner."
+metaDescription: "Learn the roofing insurance claim workflow, from inspection to supplement, so you stop losing margin and signed jobs on storm work."
 pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Pipeline Systems"

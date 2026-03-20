@@ -1,6 +1,8 @@
 ---
 title: "The Follow-Up Sequence That Moved a 15% Close Rate to 40%"
+seoTitle: "Estimate Follow-Up Sequence for Contractors | Built on Tenth"
 description: "Most HVAC companies send an estimate and wait. We built a 4-touch follow-up sequence for a $2.1M company. Their close rate went from 15% to 41% in 90 days. Here's the exact sequence."
+metaDescription: "Use this contractor estimate follow-up sequence to improve close rate with structured calls, texts, timing, and scripts."
 preview: "Same prices. Same market. Same estimators. The only thing that changed was what happened after the estimate was sent. Here's the 4-touch sequence and the word-for-word scripts."
 pubDate: 2026-03-21
 author: "Tanvir Hossain"

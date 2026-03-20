@@ -1,6 +1,8 @@
 ---
 title: "I Analyzed a $3M HVAC Company's Entire Online Presence. Here's What I Found."
+seoTitle: "$3M HVAC Company Marketing Teardown | Built on Tenth"
 description: "A real teardown of a $3M HVAC company's Google presence, website, ads, and competitor positioning. Every gap translated into an estimated annual dollar amount."
+metaDescription: "See a real HVAC marketing teardown of a $3M company, including Google presence, paid ads, website friction, and estimated revenue leaks."
 preview: "Strong reviews. Decent website. Running Google Ads. And still leaving an estimated $340,000/year on the table. Here's the full teardown, gap by gap."
 pubDate: 2026-03-16
 author: "Tanvir Hossain"

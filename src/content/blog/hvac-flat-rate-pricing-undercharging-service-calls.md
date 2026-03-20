@@ -1,6 +1,8 @@
 ---
 title: "HVAC Flat-Rate Pricing: Why Most Companies Undercharge Service Calls"
+seoTitle: "HVAC Flat-Rate Pricing Guide | Built on Tenth"
 description: "Most HVAC pricing leaks start on the service call. Techs quote from memory, prices vary by person, and average ticket stays lower than it should. Here's how flat-rate pricing fixes it and what to watch when building a price book."
+metaDescription: "Most HVAC companies undercharge service calls. See how flat-rate pricing changes average ticket, quoting consistency, and technician compliance."
 pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"

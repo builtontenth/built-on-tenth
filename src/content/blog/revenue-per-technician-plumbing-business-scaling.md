@@ -1,6 +1,8 @@
 ---
 title: "Revenue Per Technician: The Number That Tells You If Your Plumbing Business Is Actually Scaling"
+seoTitle: "Plumbing Revenue Per Technician Benchmark | Built on Tenth"
 description: "Most plumbing owners track total revenue but not revenue per tech. That gap lets one underperforming technician drag down the entire operation invisibly. Here's the benchmark, the five variables that drive it, and how to find the gap on your own team."
+metaDescription: "Benchmark plumbing revenue per technician and see how drive time, dispatch, job mix, and pricing affect whether your business is actually scaling."
 pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
