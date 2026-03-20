@@ -1,6 +1,8 @@
 ---
 title: "Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)"
+seoTitle: "HVAC CSR Booking Rate Benchmarks | Built on Tenth"
 description: "Your phones are answered. Your CSRs are friendly. And you're still losing $300K a year in calls that never became booked jobs. Here's exactly where it's happening and the three fixes that recover most of it."
+metaDescription: "Benchmark HVAC CSR answer rate and booking rate, then see how weak phone handling drives missed revenue and higher cost per booked job."
 pubDate: 2026-03-17
 author: "Tanvir Hossain"
 category: "Pipeline Systems"

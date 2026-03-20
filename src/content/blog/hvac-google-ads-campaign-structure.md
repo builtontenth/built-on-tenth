@@ -1,6 +1,8 @@
 ---
 title: "Why Your Google Ads Campaign Structure Is Costing You $80 Per Lead More Than It Should"
+seoTitle: "HVAC Google Ads Campaign Structure Guide | Built on Tenth"
 description: "The average HVAC company runs one blended Google Ads campaign and pays $198 per lead. Segmented campaigns average $144. Here's exactly what to change, why it works, and what to demand from your agency every month."
+metaDescription: "Most HVAC Google Ads accounts are structured wrong. See how segmented campaigns cut cost per lead and what to ask your agency to fix."
 pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Channel Teardowns"

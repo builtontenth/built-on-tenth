@@ -1,6 +1,8 @@
 ---
 title: "Why Roofing Companies Miss 60% of Their Inbound Calls During Storm Season"
+seoTitle: "Roofing Storm Season Missed Calls | Built on Tenth"
 description: "Storm season sends call volume through the roof. Most roofing companies aren't staffed for it. Here's what the missed calls cost, how to fix the phone operation before the next storm hits, and how to handle insurance claim calls differently from retail replacement calls."
+metaDescription: "Storm season overwhelms roofing phone teams fast. See what missed calls cost and how to fix staffing, routing, and follow-up before the next surge."
 pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Pipeline Systems"

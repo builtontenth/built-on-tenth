@@ -1,6 +1,8 @@
 ---
 title: "How Offering Financing Closes 30% More Roofing Jobs (And What It Actually Costs You)"
+seoTitle: "Roofing Financing: Does It Close More Jobs? | Built on Tenth"
 description: "The average roofing company closes 27% of estimates. Contractors offering financing close 40-50%. Here's the math on dealer fees, which platforms work, and how to present financing without it feeling like a pressure tactic."
+metaDescription: "See how roofing financing changes close rate, what dealer fees really cost, and which financing platforms are worth evaluating."
 pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"

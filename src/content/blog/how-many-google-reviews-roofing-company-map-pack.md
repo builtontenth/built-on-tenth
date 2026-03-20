@@ -1,6 +1,8 @@
 ---
 title: "How Many Google Reviews Does a Roofing Company Need to Rank in the Map Pack?"
+seoTitle: "How Many Google Reviews Does a Roofing Company Need? | Built on Tenth"
 description: "Most roofers know reviews matter. Few know how many they actually need in a competitive market. Here's the review count, review velocity, and rating benchmark that usually separates map-pack winners from everyone else."
+metaDescription: "Find the review count, review velocity, and rating benchmarks roofing companies need to compete in the Google map pack."
 pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Growth Benchmarks"

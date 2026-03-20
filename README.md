@@ -37,6 +37,22 @@ npm run dev
 
 Visit `http://localhost:4321`
 
+## IndexNow
+
+The repo includes an IndexNow key file and a submission script.
+
+```bash
+npm run indexnow -- --all
+```
+
+Or submit specific URLs:
+
+```bash
+npm run indexnow -- /insights/hvac-cost-per-lead-by-channel-2026 /tools/phone-calculator
+```
+
+If your production host changes, set `INDEXNOW_HOST`, `INDEXNOW_KEY`, and `INDEXNOW_KEY_LOCATION`.
+
 ## Deploy to Vercel
 
 1. Push this repo to GitHub (replace the existing code at builtontenth/built-on-tenth)

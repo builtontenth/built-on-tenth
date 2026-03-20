@@ -1,6 +1,8 @@
 ---
 title: "How to Optimize a Plumbing Google Business Profile for More Emergency Calls"
+seoTitle: "Plumbing Google Business Profile Optimization | Built on Tenth"
 description: "Emergency plumbing calls come from the map pack first. Here's how to set up your Google Business Profile, what to post, how many reviews you need, and what usually keeps plumbers out of the top three."
+metaDescription: "Optimize your plumbing Google Business Profile for more emergency calls with the right categories, reviews, posts, and service-area setup."
 pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Channel Teardowns"

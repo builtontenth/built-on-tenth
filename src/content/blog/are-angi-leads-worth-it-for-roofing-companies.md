@@ -1,6 +1,8 @@
 ---
 title: "Are Angi Leads Worth It for Roofing Companies in 2026?"
+seoTitle: "Are Angi Leads Worth It for Roofing Companies? | Built on Tenth"
 description: "We ran the cost-per-job math on Angi pay-per-lead for roofing. The number that actually matters isn't the lead price. It's what you pay per signed contract."
+metaDescription: "Roofing Angi leads can work, but only if contact rate and close rate hold up. See the real cost per signed job before you scale or cancel."
 pubDate: 2026-03-19
 author: "Tanvir Hossain"
 category: "Channel Teardowns"

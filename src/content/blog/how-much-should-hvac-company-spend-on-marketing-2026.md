@@ -1,6 +1,8 @@
 ---
 title: "How Much Should an HVAC Company Spend on Marketing in 2026?"
+seoTitle: "How Much Should an HVAC Company Spend on Marketing? | Built on Tenth"
 description: "Most HVAC companies either spend too little and starve for calls, or spend too much and fund their agency's payroll. Here's the actual math - benchmarks, breakdowns, and a budget formula built for $1M to $5M operators."
+metaDescription: "Use actual HVAC marketing budget math, cost-per-booked-job targets, and channel benchmarks to decide what your company should spend."
 pubDate: 2026-03-16
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
