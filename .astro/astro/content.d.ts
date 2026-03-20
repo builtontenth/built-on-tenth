@@ -162,6 +162,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-offering-financing-closes-more-roofing-jobs.md": {
+	id: "how-offering-financing-closes-more-roofing-jobs.md";
+  slug: "how-offering-financing-closes-more-roofing-jobs";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-to-set-up-google-local-service-ads-hvac.md": {
 	id: "how-to-set-up-google-local-service-ads-hvac.md";
   slug: "how-to-set-up-google-local-service-ads-hvac";
@@ -169,9 +176,30 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-to-work-roofing-insurance-claim-job.md": {
+	id: "how-to-work-roofing-insurance-claim-job.md";
+  slug: "how-to-work-roofing-insurance-claim-job";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"hvac-google-ads-campaign-structure.md": {
+	id: "hvac-google-ads-campaign-structure.md";
+  slug: "hvac-google-ads-campaign-structure";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hvac-marketing-benchmarks-2026-what-top-performers-spend.md": {
 	id: "hvac-marketing-benchmarks-2026-what-top-performers-spend.md";
   slug: "hvac-marketing-benchmarks-2026-what-top-performers-spend";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"hvac-revenue-per-truck-benchmark.md": {
+	id: "hvac-revenue-per-truck-benchmark.md";
+  slug: "hvac-revenue-per-truck-benchmark";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -186,6 +214,13 @@ declare module 'astro:content' {
 "plumbing-company-marketing-playbook.md": {
 	id: "plumbing-company-marketing-playbook.md";
   slug: "plumbing-company-marketing-playbook";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"revenue-per-technician-plumbing-business-scaling.md": {
+	id: "revenue-per-technician-plumbing-business-scaling.md";
+  slug: "revenue-per-technician-plumbing-business-scaling";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
