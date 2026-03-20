@@ -1,0 +1,233 @@
+---
+title: "How HVAC Service Agreements Add $200K to Your Annual Revenue"
+description: "Service agreements are the highest-margin revenue line most HVAC companies underwork. Here's the math, the pricing structure, the three moments to sell them, and what your CSR should say to close them."
+pubDate: 2026-03-20
+author: "Built on Tenth"
+category: "Revenue Diagnostics"
+trade: ["HVAC"]
+heroImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80"
+heroImageAlt: "HVAC technician performing a maintenance visit at a residential home"
+readTime: 13
+featured: false
+preview: "Most HVAC companies have a service agreement program that produces almost nothing. The ones that run it right add $150K to $300K in recurring revenue and fill their slow season dispatch board without buying a single extra lead."
+pills: ["Recurring revenue", "Slow season floor", "3 selling moments"]
+primaryCtaLabel: "Try the Phone Revenue Calculator"
+primaryCtaHref: "/tools/phone-calculator"
+secondaryCtaLabel: "Get a Revenue Leak Audit"
+secondaryCtaHref: "/apply"
+seoKeywords: ["hvac service agreements", "hvac maintenance agreements", "hvac service plan pricing", "hvac recurring revenue", "hvac maintenance plan", "how to sell hvac service agreements", "hvac service agreement benefits", "hvac service contract pricing 2026", "hvac membership plan", "hvac slow season revenue"]
+---
+
+Most HVAC companies have a service agreement program. Most of them produce almost nothing.
+
+The program exists. There's a price sheet somewhere. The techs know about it. But nobody's really pushing it, the CSR mentions it occasionally, and the total enrolled base is 80 to 120 customers when it should be 400 to 600.
+
+Here's what that gap costs.
+
+A company doing $2.5M in HVAC revenue with 100 service agreements at $180/year is collecting $18,000 in recurring revenue. A company the same size with 500 agreements at $200/year is collecting $100,000. The difference isn't a different product -- it's a different level of intentionality about selling and renewing it.
+
+That $82,000 gap compounds. Agreement customers call you first when something breaks. They book tune-ups that become system evaluations. They refer neighbors. Their average annual spend is 2 to 3 times higher than a one-time service caller. The $82,000 in agreement fees is the front door to a much larger revenue difference.
+
+This article shows you how to build that base -- the pricing structure, the three moments to sell, the CSR scripts, and how to track it.
+
+---
+
+## What a Service Agreement Actually Is
+
+A service agreement -- sometimes called a maintenance plan, service plan, or membership -- is a contract where a homeowner pays a flat annual or monthly fee in exchange for scheduled preventive maintenance visits and a defined set of member benefits.
+
+The core of every agreement is the tune-up visit: one or two scheduled appointments per year where a tech inspects the system, cleans components, checks refrigerant levels, and flags anything that needs attention. That visit is the product the homeowner is buying. The benefits around it -- priority scheduling, discounts on repairs, waived diagnostic fees -- are what make the agreement feel worth holding.
+
+**What it is not:**
+
+A service agreement is not a warranty. It does not cover parts or repairs. It covers preventive maintenance and usually a discount on repairs that come out of that maintenance. Homeowners who confuse the two become unhappy customers and cancel. Set expectations clearly at the point of sale.
+
+It is also not a high-pressure upsell. The best companies sell agreements by explaining what the customer gets and asking a direct question. No urgency manufacturing, no scare tactics about systems failing without maintenance. The value proposition is real. Explain it plainly.
+
+---
+
+## The Math: What Agreements Actually Do to Your Business
+
+Run these numbers on a $2M HVAC company taking 280 calls per month:
+
+**Without a working agreement program:**
+
+- 120 enrolled agreements at $185/year = $22,200 recurring revenue
+- Slow season (January, February, July): 90 to 110 calls/month -- dispatch board half empty
+- Marketing spend during slow season: increased to generate call volume
+- Revenue per customer: $420 average across all customers
+
+**With a working agreement program:**
+
+- 480 enrolled agreements at $200/year = $96,000 recurring revenue
+- Slow season: 140 to 160 calls/month from agreement tune-up scheduling alone
+- Marketing spend during slow season: flat or reduced -- agreement calls fill the board
+- Revenue per customer (agreement holders): $880 to $1,100/year vs. $420 for one-time callers
+
+Three things are happening in that second scenario:
+
+**The slow season floor.** When you have 480 agreements and 240 of them are due for a spring tune-up, your CSR is booking those appointments in February and March. Your tech trucks are moving in your slowest months without a single dollar of extra ad spend. That's the most underappreciated benefit of a working agreement program.
+
+**The replacement pipeline.** A tech doing a tune-up on a 14-year-old system who finds a cracked heat exchanger is not doing a cold sales call -- they're giving the homeowner information about their own equipment. Agreement customers who get that information convert to replacements at 2 to 3 times the rate of one-time service callers because there's an existing trust relationship.
+
+**The call priority.** When a non-agreement customer calls in July and so does an agreement member, agreement members get the earlier slot. That's a stated benefit. It's also a selling point: in your busiest month, your members don't wait.
+
+---
+
+## How to Price a Service Agreement
+
+Most HVAC companies underprice their agreements and then wonder why they feel like charity work.
+
+The pricing framework that works:
+
+**Single-system agreement (one unit):** $150 to $220/year, or $13 to $19/month if you offer monthly billing. This covers one tune-up visit and standard member benefits.
+
+**Dual-system agreement (two units):** $240 to $350/year. Priced below two single agreements to reward the upgrade.
+
+**Premium agreement (two visits per year, faster priority, larger repair discount):** $280 to $400/year for a single system. Two tune-ups, first-in-line dispatch priority, 20 to 25% off repairs.
+
+What the pricing needs to clear:
+
+Your tech's time for the visit runs 45 to 60 minutes at fully-loaded labor cost. Add in the administrative cost of scheduling and the cost of any consumables used. On a $180 agreement with one visit, the margin is thin but positive -- the economics are built on what happens during and after the visit, not the fee itself.
+
+**Where companies lose money on agreements:**
+
+Pricing too low and delivering too much. If your agreement is $99/year and includes two visits, waived diagnostics, and 20% off all parts and labor, you've created a loss leader that attracts price-sensitive customers who will use every benefit and still call you to complain. Price to cover your costs with margin. The homeowners who value their HVAC system will pay $185. The ones who won't aren't your agreement customers.
+
+---
+
+## The Three Moments to Sell an Agreement
+
+Most HVAC companies sell agreements at one moment: when the tech is on-site and thinks to mention it. That's the least leveraged selling moment available. There are three moments that produce the most enrollments, and they require three different approaches.
+
+### Moment 1: At the end of a new installation
+
+A homeowner who just spent $9,000 on a new system is in a completely different mindset than one who just paid $180 for a repair. They're invested in the equipment. They want it to last. They're open to protecting it.
+
+The tech or the office should present the agreement immediately after the installation is complete -- not as an upsell, as a natural next step:
+
+> "We always recommend setting up a maintenance plan on a new system. It keeps your warranty coverage intact, and we'll come out every spring to make sure everything is running the way it should. We can set that up now for $195 for the year -- want me to get you enrolled before I leave?"
+
+Enrollment rate at the point of new installation, with a direct ask, runs 55 to 70% in well-run HVAC companies. That's your highest-conversion selling moment and most companies treat it as optional.
+
+### Moment 2: During a service call on an older system
+
+A tech diagnosing a repair on a 7 to 10-year-old system has a natural conversation to have:
+
+> "I got everything fixed up. I did want to mention -- your system is at the age where annual maintenance makes a real difference in how long it runs well. We have a maintenance plan that includes a tune-up visit every year and priority scheduling if something comes up. It's $185 for the year. Given what you've got, it's worth having someone out every spring."
+
+This is not a scare tactic. It's accurate. Older systems benefit more from maintenance than newer ones. The tech is giving the homeowner useful information and offering a practical solution.
+
+Enrollment rate from this moment is lower -- typically 20 to 30% -- but the volume is high because it's every repair call on a qualifying system.
+
+### Moment 3: Inbound call from a non-agreement customer
+
+When a homeowner calls your office for a service appointment and they're not in your agreement database, your CSR has a selling opportunity before the call ends.
+
+This is where most companies leave the most on the table because the CSR is focused on booking the appointment, not on the agreement.
+
+The script for this moment:
+
+> "I've got you scheduled for [day/time]. I did want to mention -- we have a maintenance plan that a lot of our customers use. It includes this visit and a tune-up every year, plus you'd get priority scheduling and a discount on any parts. It works out to about $16 a month. Would you want me to add that on?"
+
+Three things make this script work: it mentions the current visit (making the agreement feel immediately valuable), it gives a monthly price rather than annual (which is a smaller-feeling number), and it ends with a direct yes/no ask that doesn't require the homeowner to do anything complicated.
+
+---
+
+## What to Do With Customers Who Say No
+
+Most homeowners who decline an agreement at the first ask are not closed permanently. They're undecided or they didn't have time to think about it on that call. A follow-up touchpoint recovers a meaningful percentage.
+
+**After the service visit:**
+
+The tech leaves a one-page leave-behind that explains the agreement and includes a QR code or phone number to enroll. On the drive back, they text the customer: "Great meeting you today -- if you have any questions about the maintenance plan, feel free to reach out. You can also sign up at [link] if you decide you want it."
+
+No pressure. Just presence.
+
+**After the tune-up visit on a non-agreement customer:**
+
+Some companies do standalone tune-up specials to bring in customers. If someone booked a tune-up outside an agreement, the tech has a perfect moment at the end of the visit:
+
+> "Everything looks good. I wanted to ask -- would you want to set up a recurring maintenance plan so we come out automatically every spring? It's $185 and covers this same visit going forward."
+
+**Annual renewal outreach:**
+
+Agreements that are 30 days from expiration should get an outbound call from the CSR, not just an automated email. The call script is simple:
+
+> "Hi [name], this is [CSR] at [company]. Your maintenance plan is coming up for renewal at the end of the month. I wanted to make sure you got that -- would you like to renew for another year?"
+
+Renewal rates for companies that make this call run 75 to 85%. Companies that send only an email see 40 to 55% renewal rates. That 20 to 30-point difference on a base of 400 agreements is 80 to 120 customers per year you keep or lose based on one phone call.
+
+---
+
+## Tracking Agreement Revenue Separately
+
+Most HVAC companies that run agreements fold the revenue into their general service revenue and never see it as a separate line. That's a mistake for two reasons.
+
+First, agreement revenue has different margin characteristics than service revenue. The tune-up visit costs you labor. Everything else -- the diagnostic waiver, the priority scheduling -- costs you almost nothing. If you're not tracking agreement revenue separately, you can't see what the program's actual margin looks like.
+
+Second, the downstream revenue from agreement customers -- the repairs, the replacements, the referrals -- needs to be attributed correctly. Companies that track "revenue from agreement customers" vs. "revenue from one-time customers" see the 2 to 3x difference clearly. That number is what justifies investing in growing the agreement base, because the agreement fee is just the entry point.
+
+**Minimum tracking setup:**
+
+A column in your CRM or scheduling software for "agreement customer: yes/no." That single tag lets you run a report at any point that shows average annual revenue per agreement customer vs. average annual revenue per non-agreement customer. That's the number that convinces a skeptical owner to actually invest in growing the program.
+
+If you're on ServiceTitan, agreement tracking is built in. Housecall Pro and Jobber both support membership tagging with revenue attribution.
+
+---
+
+## Common Mistakes That Kill Renewal Rates
+
+**Forgetting to schedule the visit.** If an agreement customer doesn't hear from you for their annual tune-up, they assume the agreement isn't working and don't renew. Proactive outreach to schedule the included visit is the agreement's most important retention mechanism. Companies that wait for agreement customers to call them to schedule see 20 to 30% lower renewal rates than companies that call out.
+
+**Over-promising on benefits.** If your agreement says "priority scheduling" but an agreement customer calling in July still waits four days, that's a broken promise. Only include benefits you can actually deliver consistently. A simple agreement you deliver perfectly renews better than a premium agreement you deliver inconsistently.
+
+**No renewal process.** An agreement that auto-expires without an outbound call or a clear renewal offer has a 40 to 55% renewal rate. Add the outbound call. Add a renewal incentive if the customer has been enrolled for two or more years -- a small discount or a free tune-up add-on. Long-tenured agreement customers are your most valuable. Treat the renewal accordingly.
+
+**Pricing it below value.** A $99 annual agreement sends a signal about how you value your own time. Most homeowners will pay $185 to $220 for something that protects a $10,000 piece of equipment. Price to the value of the product, not to the lowest number that might get a yes.
+
+---
+
+## What to Do This Week
+
+1. **Count your current enrolled agreements.** How many active agreements does your company have right now? Divide by your total customer count. If it's below 20%, you have a program that exists but isn't being sold.
+2. **Calculate your slow season call volume.** Pull calls received in January and February vs. June and July. If January is less than 60% of June, your agreement base isn't large enough to fill the board in your slowest months.
+3. **Write the new installation selling script.** Customize the language above for your company and your agreement price. Read it to your tech team at the next morning meeting. Ask them to use it on the next three installations.
+4. **Check your renewal rate.** Of agreements that came up for renewal in the last six months, how many renewed? If you don't know, you don't have a renewal tracking system. Build one this week.
+5. **Use the [phone revenue calculator](/tools/phone-calculator)** to see what your current booking rate on inbound calls is costing you -- the CSR moment to sell agreements is the same call where booking rate matters most.
+
+---
+
+## Frequently Asked Questions
+
+### What should an HVAC service agreement include?
+
+At minimum: one annual tune-up visit, priority scheduling for service calls, and a discount on parts and labor (typically 10 to 15%). Premium tiers add a second visit, a larger repair discount (20 to 25%), and waived diagnostic fees. The visit is the core product. Everything else is a benefit that improves retention. Do not include unlimited service calls or parts coverage -- that's a warranty, not a maintenance agreement, and the economics don't work.
+
+### How much should an HVAC service agreement cost?
+
+$150 to $220 per year for a single-system agreement covering one annual tune-up. $240 to $350 for a dual-system agreement. $280 to $400 for a premium single-system agreement with two visits and a larger repair discount. Monthly billing at $13 to $19/month increases enrollment rate because the number feels smaller -- total annual cost is the same. Pricing below $130 typically signals low value and attracts customers who are unlikely to stay enrolled.
+
+### What is a good HVAC service agreement renewal rate?
+
+Top-performing HVAC companies renew 78 to 85% of agreements annually. Industry average is 55 to 65%. The gap is almost entirely explained by whether the company makes an outbound call before renewal vs. sending only an email or relying on auto-renewal. A proactive renewal call to customers who have been enrolled for two or more years typically produces a 90%+ renewal rate.
+
+### How do I get my HVAC techs to sell service agreements?
+
+The most effective method is a small per-enrollment bonus -- $10 to $20 per agreement enrolled during a service call or installation. It's self-funding: a tech who enrolls three customers on a single day generates a fraction of the revenue those agreements will produce. More important than the bonus is a clear script. Most techs don't sell agreements because they don't know what to say, not because they're unwilling. Write the script, practice it at a morning meeting, and track enrollments by tech. The ones who are using the script will show up clearly in the data within 30 days.
+
+### Are HVAC service agreements worth it for homeowners?
+
+Yes, when the company delivers on what they promise. A properly maintained HVAC system runs more efficiently, has fewer emergency breakdowns, and lasts 2 to 4 years longer than an unmaintained one. At $185/year on a system that costs $9,000 to replace, the math is straightforward for a homeowner who plans to stay in their home. The agreements that fail homeowners are the ones where the company enrolls them and then never schedules the included visit or takes weeks to respond to priority calls. The product works. Some companies just don't deliver it.
+
+### How many service agreements should an HVAC company have?
+
+A rough benchmark: 15 to 20% of your active customer base enrolled in an agreement is a functional program. 25 to 35% is a strong program. Top-performing HVAC companies at $2M to $5M revenue typically carry 400 to 800 active agreements. If you're below 150 agreements at $2M revenue, the program is not being actively sold -- it's being offered passively and accepted rarely.
+
+### Can I sell service agreements during the busy season?
+
+Yes, and you should. The busy season selling moment is slightly different: homeowners calling in July with a broken AC are not in a planning mindset, but after the repair is done they're relieved and receptive. The tech's closing line after a summer repair: "Glad we got that sorted out. If you want to make sure we catch anything before it becomes a problem next summer, our maintenance plan covers a spring tune-up and gets you priority scheduling if something comes up again. It's $195 for the year." Enrollment rate after a successful repair is 25 to 35% -- lower than post-installation but meaningful at scale.
+
+### How do service agreements affect HVAC company valuation?
+
+Recurring revenue from service agreements is valued at a higher multiple than one-time service revenue in most business valuations. A company with $100,000 in annual agreement revenue that renews at 80% is demonstrating a predictable revenue base -- a meaningful signal to a buyer or lender. For HVAC owners thinking about an eventual sale, growing the agreement base is one of the few actions that simultaneously improves current-year cash flow and increases business value at exit.

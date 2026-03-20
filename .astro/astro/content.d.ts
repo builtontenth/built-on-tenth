@@ -148,9 +148,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-hvac-service-agreements-add-200k-annual-revenue.md": {
+	id: "how-hvac-service-agreements-add-200k-annual-revenue.md";
+  slug: "how-hvac-service-agreements-add-200k-annual-revenue";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-much-should-hvac-company-spend-on-marketing-2026.md": {
 	id: "how-much-should-hvac-company-spend-on-marketing-2026.md";
   slug: "how-much-should-hvac-company-spend-on-marketing-2026";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-to-set-up-google-local-service-ads-hvac.md": {
+	id: "how-to-set-up-google-local-service-ads-hvac.md";
+  slug: "how-to-set-up-google-local-service-ads-hvac";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -169,6 +183,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"plumbing-company-marketing-playbook.md": {
+	id: "plumbing-company-marketing-playbook.md";
+  slug: "plumbing-company-marketing-playbook";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md": {
 	id: "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md";
   slug: "the-follow-up-sequence-that-moved-close-rate-to-40-percent";
@@ -179,6 +200,13 @@ declare module 'astro:content' {
 "why-hvac-csrs-are-losing-you-300k-per-year.md": {
 	id: "why-hvac-csrs-are-losing-you-300k-per-year.md";
   slug: "why-hvac-csrs-are-losing-you-300k-per-year";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"why-roofing-companies-miss-60-percent-inbound-calls-storm-season.md": {
+	id: "why-roofing-companies-miss-60-percent-inbound-calls-storm-season.md";
+  slug: "why-roofing-companies-miss-60-percent-inbound-calls-storm-season";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
