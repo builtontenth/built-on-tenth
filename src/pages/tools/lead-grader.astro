@@ -241,6 +241,12 @@ function calculate() {
     grade: gradeData[ch].grade[trade],
   })).sort((a, b) => gradeOrder[a.grade] - gradeOrder[b.grade]);
 
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'lead-grader',
+    trade,
+    channel_count: checked.length,
+  });
+
   // Count grades
   const counts = { A: 0, B: 0, C: 0, D: 0 };
   graded.forEach(g => counts[g.grade]++);

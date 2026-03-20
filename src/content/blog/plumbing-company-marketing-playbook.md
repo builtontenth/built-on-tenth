@@ -2,7 +2,7 @@
 title: "The Plumbing Company Marketing Playbook: What Works at $500K, $1M, and $3M"
 description: "Plumbing marketing math is different from HVAC. Lower average ticket, higher urgency, faster decisions. Here's what to spend, where to spend it, and what to measure at each revenue stage."
 pubDate: 2026-03-20
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["Plumbing"]
 heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80"

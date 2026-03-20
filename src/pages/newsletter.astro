@@ -132,6 +132,7 @@ import Layout from '../layouts/Layout.astro';
         btn.style.background = '#22D37A';
         btn.style.borderColor = '#22D37A';
         inp.disabled = true;
+        window.botTrack?.('newsletter_signup', { signup_source: source || 'newsletter-page' });
       } else {
         btn.textContent = 'Try again';
         btn.disabled = false;

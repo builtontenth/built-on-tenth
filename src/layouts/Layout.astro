@@ -21,6 +21,7 @@ const {
   publishedTime,
 } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://www.builtontenth.com');
+const siteName = 'Built on Tenth';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +37,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://www.buil
   <meta property="og:title"       content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type"        content={ogType} />
+  <meta property="og:site_name"   content={siteName} />
   <meta property="og:url"         content={canonicalUrl.href} />
   <meta property="og:image"       content={ogImage} />
   {ogType === 'article' && publishedTime && (
@@ -75,6 +77,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://www.buil
 
   <!-- Shared reveal observer -->
   <script>
+    window.botTrack = (eventName, detail = {}) => {
+      if (!window.dataLayer) return;
+      window.dataLayer.push({ event: eventName, ...detail });
+    };
+
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('will-animate'));
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

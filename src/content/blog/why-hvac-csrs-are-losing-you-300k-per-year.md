@@ -2,7 +2,7 @@
 title: "Why Your HVAC CSRs Are Losing You $300K/Year (Without Anyone Noticing)"
 description: "Your phones are answered. Your CSRs are friendly. And you're still losing $300K a year in calls that never became booked jobs. Here's exactly where it's happening and the three fixes that recover most of it."
 pubDate: 2026-03-17
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Pipeline Systems"
 trade: ["HVAC"]
 heroImage: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80"

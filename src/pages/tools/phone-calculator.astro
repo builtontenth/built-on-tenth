@@ -291,6 +291,11 @@ function calculate() {
   const recMonthly  = recJobsGain * avgTicket;
   const recAnnual   = recMonthly * 12;
 
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'phone-calculator',
+    annual_loss_bucket: annualLoss >= 100000 ? '100k_plus' : annualLoss >= 25000 ? '25k_plus' : 'under_25k',
+  });
+
   // Update status
   const status = document.getElementById('rp-status');
   if (annualLoss > 0) {

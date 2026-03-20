@@ -1,11 +1,119 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const provider = {
+  '@type': 'Organization',
+  name: 'Built on Tenth',
+  url: 'https://www.builtontenth.com',
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'Revenue Leak Audit',
+      description:
+        'Fixed-scope audit for HVAC, roofing, and plumbing companies to identify revenue leaks across marketing, phone conversion, and competitive positioning.',
+      provider,
+      areaServed: 'United States',
+      offers: {
+        '@type': 'Offer',
+        price: '750',
+        priceCurrency: 'USD',
+        url: 'https://www.builtontenth.com/apply?service=audit',
+      },
+    },
+    {
+      '@type': 'Service',
+      name: 'Growth System Blueprint',
+      description:
+        'Written blueprint translating findings into implementation steps for phone handling, follow-up, channel allocation, and conversion systems.',
+      provider,
+      areaServed: 'United States',
+      offers: {
+        '@type': 'Offer',
+        price: '3000',
+        priceCurrency: 'USD',
+        url: 'https://www.builtontenth.com/apply?service=blueprint',
+      },
+    },
+    {
+      '@type': 'Service',
+      name: '90-Day Growth Advisory',
+      description:
+        'Ninety-day advisory support to help home service companies implement growth systems and interpret weekly performance in writing.',
+      provider,
+      areaServed: 'United States',
+      offers: {
+        '@type': 'Offer',
+        price: '7500',
+        priceCurrency: 'USD',
+        url: 'https://www.builtontenth.com/apply?service=advisory',
+      },
+    },
+  ],
+};
+
+const faqItems = [
+  {
+    question: 'Do I have to get on a call?',
+    answer:
+      "No. Everything happens in writing. You fill out a short application, we confirm details by email, send an invoice, and start research.",
+  },
+  {
+    question: 'What will I actually be able to do with this?',
+    answer:
+      'Every finding comes with a specific action, owner, timing, and revenue implication so you can act on it without a presentation.',
+  },
+  {
+    question: 'How is this different from my current marketing agency?',
+    answer:
+      "Agencies earn more when you spend more on ads. Built on Tenth doesn't run ads or take retainers, so the incentive is independent analysis.",
+  },
+  {
+    question: 'I already have an agency. Does this still make sense?',
+    answer:
+      'Yes. The audit is designed to show whether your current agency is performing and what metrics actually connect to booked jobs.',
+  },
+  {
+    question: 'What size company is this right for?',
+    answer:
+      'The core fit is HVAC, roofing, and plumbing companies doing roughly $1M to $5M in annual revenue and spending at least $3,000 per month on marketing.',
+  },
+  {
+    question: "What's the typical return on a $750 audit?",
+    answer:
+      'The site positions the audit around identifying six-figure annual leakage from missed calls, weak Google visibility, and estimate follow-up gaps.',
+  },
+  {
+    question: 'What do you need from me to get started?',
+    answer:
+      'Company name, location, website, and what you are trying to figure out. Research is based on public information and industry benchmarks.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
 ---
 <Layout
   title="Services - Revenue Leak Audit, Growth Blueprint, Advisory | Built on Tenth"
   description="Fixed-scope revenue audits for HVAC, roofing, and plumbing companies. Find out exactly what your marketing is producing - in dollars, in 7 days. Starting at $750."
   active="services"
 >
+
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <style>
 /* ── PAGE HERO ── */

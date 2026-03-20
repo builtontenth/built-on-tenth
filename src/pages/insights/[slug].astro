@@ -12,6 +12,10 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const allPosts = await getCollection('blog');
+const SITE = 'https://www.builtontenth.com';
+const AUTHOR_URL = `${SITE}/about`;
+const modifiedDate = post.data.updatedDate ?? post.data.pubDate;
 
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('en-US', {
@@ -21,23 +25,103 @@ const formatDate = (date: Date) =>
   }).format(date);
 
 const title = post.data.title;
-const description = post.data.description;
+const description = post.data.metaDescription ?? post.data.description;
 const heroImage = post.data.heroImage;
+const canonicalUrl = `${SITE}/insights/${post.slug}`;
+
+const relatedPosts = allPosts
+  .filter((candidate) => candidate.slug !== post.slug)
+  .map((candidate) => {
+    const sharedTrades = candidate.data.trade.filter((trade) => post.data.trade.includes(trade)).length;
+    const sameCategory = candidate.data.category === post.data.category ? 1 : 0;
+    const score = sharedTrades * 3 + sameCategory * 2;
+    return { candidate, score };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return b.candidate.data.pubDate.getTime() - a.candidate.data.pubDate.getTime();
+  })
+  .slice(0, 3)
+  .map(({ candidate }) => candidate);
+
+const toolLibrary = {
+  '/tools/phone-calculator': {
+    href: '/tools/phone-calculator',
+    label: 'Phone Revenue Calculator',
+    description: 'Quantify what missed calls and weak answer rate are costing per month.',
+  },
+  '/tools/marketing-calculator': {
+    href: '/tools/marketing-calculator',
+    label: 'Marketing Cost Calculator',
+    description: 'Benchmark true cost per booked job against stronger operators.',
+  },
+  '/tools/lead-grader': {
+    href: '/tools/lead-grader',
+    label: 'Lead Source Grader',
+    description: 'Compare channels side by side and decide where to scale, fix, or cut.',
+  },
+  '/tools/website-audit': {
+    href: '/tools/website-audit',
+    label: 'Website Conversion Audit',
+    description: 'Check for mobile, speed, trust, and phone-visibility leaks.',
+  },
+  '/tools/capacity-planner': {
+    href: '/tools/capacity-planner',
+    label: 'Capacity-to-Demand Planner',
+    description: 'Model whether more leads make sense before you buy them.',
+  },
+};
+
+const fallbackToolsByTrade = {
+  HVAC: ['/tools/marketing-calculator', '/tools/phone-calculator'],
+  Roofing: ['/tools/lead-grader', '/tools/phone-calculator'],
+  Plumbing: ['/tools/website-audit', '/tools/phone-calculator'],
+};
+
+const toolPaths = [
+  post.data.primaryCtaHref,
+  ...post.data.trade.flatMap((trade) => fallbackToolsByTrade[trade] ?? []),
+].filter((path, index, paths) => path in toolLibrary && paths.indexOf(path) === index);
+
+const recommendedTools = toolPaths
+  .map((path) => toolLibrary[path as keyof typeof toolLibrary])
+  .slice(0, 2);
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: post.data.title,
-  description: post.data.description,
+  description,
   datePublished: post.data.pubDate.toISOString().slice(0, 10),
-  author: { '@type': 'Organization', name: post.data.author },
-  publisher: { '@type': 'Organization', name: 'Built on Tenth' },
+  dateModified: modifiedDate.toISOString().slice(0, 10),
+  author: {
+    '@type': 'Person',
+    name: post.data.author,
+    url: AUTHOR_URL,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Built on Tenth',
+    url: SITE,
+  },
   image: post.data.heroImage,
-  mainEntityOfPage: `https://www.builtontenth.com/insights/${post.slug}`,
+  mainEntityOfPage: canonicalUrl,
   ...(post.data.seoKeywords ? { keywords: post.data.seoKeywords.join(', ') } : {}),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Insights', item: `${SITE}/insights` },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: canonicalUrl },
+  ],
 };
 ---
 <Layout
-  title={`${title} | Built on Tenth`}
+  title={post.data.seoTitle ?? `${title} | Built on Tenth`}
   description={description}
   active="insights"
   ogImage={heroImage}
@@ -444,11 +528,58 @@ const articleSchema = {
   }
   .article-cta { padding: 28px 24px; }
   .article-cta-btns { flex-direction: column; gap: 10px; }
-  .article-cta-btns a { justify-content: center; }
+.article-cta-btns a { justify-content: center; }
+}
+
+.article-related {
+  margin-top: 52px;
+  display: grid;
+  gap: 18px;
+}
+.article-related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.article-related-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg2);
+  padding: 18px 20px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.article-related-card:hover {
+  border-color: var(--teal4);
+  transform: translateY(-1px);
+}
+.article-related-eyebrow {
+  display: inline-flex;
+  margin-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.article-related-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.article-related-body {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.65;
+  font-weight: 300;
 }
 </style>
 
 <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 <div class="article-hero">
   <div class="ah-bg" style={`background-image: url('${heroImage}')`}></div>
   <div class="ah-overlay"></div>
@@ -463,7 +594,12 @@ const articleSchema = {
     <h1 class="article-h1">{title}</h1>
     <p class="article-lede">{description}</p>
     <div class="ah-author">
-      <div><strong>{post.data.author}</strong> · Revenue intelligence for home service companies</div>
+      <div>
+        <strong><a href="/about">{post.data.author}</a></strong> · Revenue intelligence for home service companies
+        {modifiedDate.getTime() !== post.data.pubDate.getTime() && (
+          <span> · Updated {formatDate(modifiedDate)}</span>
+        )}
+      </div>
     </div>
   </div>
   <figure class="ah-media">
@@ -485,6 +621,36 @@ const articleSchema = {
       <a href={post.data.secondaryCtaHref} class="cta-secondary">{post.data.secondaryCtaLabel}</a>
     </div>
   </div>
+
+  {relatedPosts.length > 0 && (
+    <section class="article-related">
+      <div class="rule-label"><span class="section-tag">Related Insights</span></div>
+      <div class="article-related-grid">
+        {relatedPosts.map((related) => (
+          <a href={`/insights/${related.slug}`} class="article-related-card">
+            <div class="article-related-eyebrow">{related.data.category}</div>
+            <div class="article-related-title">{related.data.title}</div>
+            <div class="article-related-body">{related.data.preview ?? related.data.description}</div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {recommendedTools.length > 0 && (
+    <section class="article-related">
+      <div class="rule-label"><span class="section-tag">Recommended Tools</span></div>
+      <div class="article-related-grid">
+        {recommendedTools.map((tool) => (
+          <a href={tool.href} class="article-related-card">
+            <div class="article-related-eyebrow">Free Tool</div>
+            <div class="article-related-title">{tool.label}</div>
+            <div class="article-related-body">{tool.description}</div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
 </div>
 <script is:inline>
   document.querySelectorAll('.article-content table').forEach((table) => {

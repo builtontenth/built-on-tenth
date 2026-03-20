@@ -2,7 +2,7 @@
 title: "How to Optimize a Plumbing Google Business Profile for More Emergency Calls"
 description: "Emergency plumbing calls come from the map pack first. Here's how to set up your Google Business Profile, what to post, how many reviews you need, and what usually keeps plumbers out of the top three."
 pubDate: 2026-03-21
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Channel Teardowns"
 trade: ["Plumbing"]
 heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80"

@@ -2,7 +2,7 @@
 title: "How HVAC Service Agreements Add $200K to Your Annual Revenue"
 description: "Service agreements are the highest-margin revenue line most HVAC companies underwork. Here's the math, the pricing structure, the three moments to sell them, and what your CSR should say to close them."
 pubDate: 2026-03-20
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
 heroImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80"

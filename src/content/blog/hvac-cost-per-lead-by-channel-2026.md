@@ -2,7 +2,7 @@
 title: "HVAC Cost Per Lead by Channel in 2026: Google Ads, LSAs, GBP, Angi, and Facebook"
 description: "Most HVAC owners know what they spend per month. Few know what each channel costs per lead and per booked job. Here's the 2026 breakdown by source, what the numbers mean, and where the cheapest leads actually come from."
 pubDate: 2026-03-21
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["HVAC"]
 heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80"

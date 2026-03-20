@@ -211,6 +211,11 @@ function calculate() {
   const maxSpend     = revPotential * 0.10;
   const cpjCeiling   = maxSpend / targetJobs;
 
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'capacity-planner',
+    calls_needed_bucket: callsNeeded >= 200 ? '200_plus' : callsNeeded >= 100 ? '100_plus' : 'under_100',
+  });
+
   // Status
   const status = document.getElementById('rp-status');
   status.textContent = 'Plan calculated';

@@ -2,7 +2,7 @@
 title: "How Much Revenue Should Each of Your HVAC Trucks Be Generating?"
 description: "Top HVAC companies generate $180K-$280K per technician annually. The bottom quarter generates $80K-$120K. Same hours, same market, 2-3x difference in output. Here's what drives the gap and how to find it on your own fleet."
 pubDate: 2026-03-20
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
 heroImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80"

@@ -193,6 +193,12 @@ function calculate() {
   const revenue  = jobs * ticket;
   const roi      = spend > 0 ? revenue / spend : 0;
 
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'marketing-calculator',
+    trade,
+    cpj_bucket: cpj >= bm.avgCPJ ? 'above_average' : 'below_average',
+  });
+
   // Status
   const status = document.getElementById('rp-status');
   if (cpj > bm.avgCPJ * 1.3) {

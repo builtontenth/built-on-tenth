@@ -4,9 +4,12 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    seoTitle: z.string().optional(),
     description: z.string(),
+    metaDescription: z.string().optional(),
     pubDate: z.coerce.date(),
-    author: z.string().default('Built on Tenth'),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().default('Tanvir Hossain'),
     category: z.string(),
     trade: z.array(z.enum(['HVAC', 'Roofing', 'Plumbing'])),
     heroImage: z.string(),

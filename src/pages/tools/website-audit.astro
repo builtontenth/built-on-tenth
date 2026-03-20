@@ -272,6 +272,11 @@ function calculate() {
 
   const score = Math.round((earned / total) * 100);
 
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'website-audit',
+    score_bucket: score >= 80 ? '80_plus' : score >= 55 ? '55_to_79' : 'under_55',
+  });
+
   // Status
   const status = document.getElementById('rp-status');
   if (score >= 80) {

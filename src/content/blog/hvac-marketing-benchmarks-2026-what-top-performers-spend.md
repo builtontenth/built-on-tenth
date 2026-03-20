@@ -3,7 +3,7 @@ title: "HVAC Marketing Benchmarks 2026: What Top Performers Actually Spend"
 description: "We pulled marketing data from 300+ HVAC companies to find what separates the top 25% from everyone else. The gap isn't budget size. It's where the money goes and what gets measured."
 preview: "Top-performing HVAC companies don't outspend the competition. They outmeasure it. Here's what the data from 300+ companies shows about where the real gap lives."
 pubDate: 2026-03-15
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["HVAC"]
 heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"

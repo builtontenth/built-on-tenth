@@ -2,7 +2,7 @@
 title: "How to Set Up Google Local Service Ads for HVAC Companies (And Actually Get Jobs From Them)"
 description: "LSAs produce the lowest cost per booked job of any paid channel for most HVAC companies. Here's the exact setup process, the ranking factors most companies miss, and how to tell if yours are working."
 pubDate: 2026-03-20
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Channel Teardowns"
 trade: ["HVAC"]
 heroImage: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1400&q=80"

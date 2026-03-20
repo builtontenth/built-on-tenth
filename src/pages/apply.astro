@@ -237,6 +237,10 @@ import Layout from '../layouts/Layout.astro';
       });
       const data = await res.json();
       if (data.success) {
+        window.botTrack?.('audit_application_submit', {
+          service_interest: service || 'unknown',
+          spend_range: spend || 'unknown',
+        });
         document.getElementById('form-content').style.display = 'none';
         document.getElementById('form-success').classList.add('show');
       } else {

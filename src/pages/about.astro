@@ -1,11 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Built on Tenth',
+  url: 'https://www.builtontenth.com',
+  description:
+    'Revenue intelligence for HVAC, roofing, and plumbing companies. Independent research, benchmarks, tools, and revenue leak audits for home service operators.',
+  founder: {
+    '@type': 'Person',
+    name: 'Tanvir Hossain',
+    url: 'https://www.builtontenth.com/about',
+  },
+  areaServed: 'United States',
+  sameAs: ['https://www.linkedin.com/in/fortanvir/'],
+};
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Tanvir Hossain',
+  url: 'https://www.builtontenth.com/about',
+  image: 'https://www.builtontenth.com/tanvir.png',
+  jobTitle: 'Founder',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Built on Tenth',
+    url: 'https://www.builtontenth.com',
+  },
+  sameAs: ['https://www.linkedin.com/in/fortanvir/'],
+};
 ---
 <Layout
   title="About Built on Tenth - Revenue Intelligence for Home Service Companies"
   description="Who we are, why we exist, and how we work. No agency incentives. No retainers. Just independent research for HVAC, roofing, and plumbing operators."
   active="about"
 >
+
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
 <style>
 .about-hero {

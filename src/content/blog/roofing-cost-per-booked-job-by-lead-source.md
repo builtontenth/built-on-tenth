@@ -2,7 +2,7 @@
 title: "Roofing Cost Per Booked Job by Lead Source: Angi, Google Ads, LSAs, Referrals, and Facebook"
 description: "Lead cost is not the number that matters in roofing. Cost per booked job is. Here's what each lead source usually costs once you factor in contact rate, close rate, and ticket size."
 pubDate: 2026-03-21
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["Roofing"]
 heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80"
