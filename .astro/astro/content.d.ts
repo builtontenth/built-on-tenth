@@ -155,6 +155,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-many-google-reviews-roofing-company-map-pack.md": {
+	id: "how-many-google-reviews-roofing-company-map-pack.md";
+  slug: "how-many-google-reviews-roofing-company-map-pack";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-much-should-hvac-company-spend-on-marketing-2026.md": {
 	id: "how-much-should-hvac-company-spend-on-marketing-2026.md";
   slug: "how-much-should-hvac-company-spend-on-marketing-2026";
@@ -179,6 +186,20 @@ declare module 'astro:content' {
 "how-to-work-roofing-insurance-claim-job.md": {
 	id: "how-to-work-roofing-insurance-claim-job.md";
   slug: "how-to-work-roofing-insurance-claim-job";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"hvac-cost-per-lead-by-channel-2026.md": {
+	id: "hvac-cost-per-lead-by-channel-2026.md";
+  slug: "hvac-cost-per-lead-by-channel-2026";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"hvac-flat-rate-pricing-undercharging-service-calls.md": {
+	id: "hvac-flat-rate-pricing-undercharging-service-calls.md";
+  slug: "hvac-flat-rate-pricing-undercharging-service-calls";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -218,9 +239,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"plumbing-google-business-profile-optimization.md": {
+	id: "plumbing-google-business-profile-optimization.md";
+  slug: "plumbing-google-business-profile-optimization";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "revenue-per-technician-plumbing-business-scaling.md": {
 	id: "revenue-per-technician-plumbing-business-scaling.md";
   slug: "revenue-per-technician-plumbing-business-scaling";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"roofing-cost-per-booked-job-by-lead-source.md": {
+	id: "roofing-cost-per-booked-job-by-lead-source.md";
+  slug: "roofing-cost-per-booked-job-by-lead-source";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
