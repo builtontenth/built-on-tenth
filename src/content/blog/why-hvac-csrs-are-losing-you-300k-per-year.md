@@ -136,6 +136,8 @@ Write your booking transition script -- specifically the move from answering que
 
 Create a simple log: a column in a spreadsheet, a field in your CRM. Every call that doesn't book gets an entry. Every entry gets a follow-up call within 2 hours and a text within 4 hours if no answer. This doesn't require software. It requires discipline and 10 minutes of someone's time per unbooked call.
 
+Once that core phone process is stable, the same CSR discipline carries into higher-value operational plays like [selling service agreements consistently](/insights/how-hvac-service-agreements-add-200k-annual-revenue) and protecting [revenue per truck across the fleet](/insights/hvac-revenue-per-truck-benchmark). Bad phone handling usually shows up in both places.
+
 ## How to Track CSR Performance by Individual
 
 Team-level booking rate hides the most important data point in your phone operation: the spread between your best and worst CSR.

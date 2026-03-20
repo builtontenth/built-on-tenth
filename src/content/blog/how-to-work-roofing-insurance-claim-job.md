@@ -186,7 +186,7 @@ Insurance claim jobs require a different follow-up cadence than retail jobs beca
 
 **Throughout the process:** One check-in per week if the process extends beyond three weeks. You're the advocate -- staying present and informed is part of the service.
 
-This follow-up cadence mirrors the storm season follow-up structure covered in the [roofing phone operations article](/insights/why-roofing-companies-miss-60-percent-inbound-calls-storm-season). The channel and timing differ between an inbound storm call and an active insurance claim, but the principle is the same: consistent presence wins the job against competitors who go quiet between touchpoints.
+This follow-up cadence mirrors the storm season follow-up structure covered in the [roofing phone operations article](/insights/why-roofing-companies-miss-60-percent-inbound-calls-storm-season). The channel and timing differ between an inbound storm call and an active insurance claim, but the principle is the same: consistent presence wins the job against competitors who go quiet between touchpoints. If the homeowner's last friction point is cash for the deductible, [roofing financing](/insights/how-offering-financing-closes-more-roofing-jobs) is often what gets the contract signed after scope is approved.
 
 ---
 

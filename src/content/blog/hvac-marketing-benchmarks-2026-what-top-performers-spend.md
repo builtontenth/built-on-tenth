@@ -77,9 +77,9 @@ Where the money goes matters more than how much there is. Here's how channel all
 
 The two biggest differences:
 
-**LSAs over Google Ads.** Top performers put significantly more into Local Service Ads and less into traditional Google Search. LSAs produce exclusive leads at lower cost per call in most markets. The reason most companies underinvest in LSAs is setup friction -- the Google verification process takes time. Top performers did the work upfront.
+**LSAs over Google Ads.** Top performers put significantly more into Local Service Ads and less into traditional Google Search. LSAs produce exclusive leads at lower cost per call in most markets. The reason most companies underinvest in LSAs is setup friction -- the Google verification process takes time. Top performers did the work upfront. The [LSA setup guide](/insights/how-to-set-up-google-local-service-ads-hvac) breaks down that process step by step.
 
-**Less on aggregators.** The bottom half spends 14 to 22% of their budget on Angi, Thumbtack, and similar platforms. Top performers spend 4 to 8% -- or nothing. Shared leads at high cost don't pencil out at scale, and the companies that know their cost per booked job by channel figure this out faster.
+**Less on aggregators.** The bottom half spends 14 to 22% of their budget on Angi, Thumbtack, and similar platforms. Top performers spend 4 to 8% -- or nothing. Shared leads at high cost don't pencil out at scale, and the companies that know their cost per booked job by channel figure this out faster. On the Google Ads side, the [campaign structure analysis](/insights/hvac-google-ads-campaign-structure) shows why top performers also segment search campaigns more aggressively instead of blending everything into one account average.
 
 ![HVAC marketing channel performance data showing cost per lead by source](https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80)
 *Top performers reallocate from aggregators toward owned channels -- LSAs, GBP, and organic -- as they build measurement systems.*

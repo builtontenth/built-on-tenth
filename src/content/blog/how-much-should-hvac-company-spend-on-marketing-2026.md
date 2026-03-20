@@ -117,7 +117,7 @@ Not all call sources are equal, and the most popular channels are often the most
 | Direct mail | $30 to $80 | Works best for maintenance agreements |
 | Referrals | $0 to $25 | Highest close rate of any source |
 
-Most HVAC companies spending $8,000+/month are over-indexed on Google Ads and under-invested in LSAs and their own GBP optimization. Moving $2,000/month from broad Google Ads to LSAs typically reduces cost per call by 30 to 40%.
+Most HVAC companies spending $8,000+/month are over-indexed on Google Ads and under-invested in LSAs and their own GBP optimization. Moving $2,000/month from broad Google Ads to LSAs typically reduces cost per call by 30 to 40%. The [LSA setup guide](/insights/how-to-set-up-google-local-service-ads-hvac) shows how to get that channel live correctly, and the [Google Ads campaign structure breakdown](/insights/hvac-google-ads-campaign-structure) shows why broad search campaigns usually cost more than owners think.
 
 ### Leak 3: No Measurement System
 

@@ -171,7 +171,7 @@ Neither platform replaces owned channels. Both depend entirely on how fast and h
 
 The catch: LSAs require patience to build. Google's algorithm rewards companies that maintain high booking rates and positive reviews over time. You can't just turn them on at full spend and expect results in week one.
 
-**Google Ads** work well when you have conversion tracking properly set up, meaning you know what keywords are generating calls, which calls are turning into booked jobs, and what you're paying per signed contract by keyword. Without that tracking, Google Ads is just a more expensive version of the same guessing problem you have with Angi.
+**Google Ads** work well when you have conversion tracking properly set up, meaning you know what keywords are generating calls, which calls are turning into booked jobs, and what you're paying per signed contract by keyword. Without that tracking, Google Ads is just a more expensive version of the same guessing problem you have with Angi. If you're trying to improve close rate after the lead arrives, [roofing financing](/insights/how-offering-financing-closes-more-roofing-jobs) and a stronger [insurance claim workflow](/insights/how-to-work-roofing-insurance-claim-job) usually move the numbers faster than swapping lead platforms alone.
 
 ## When to Cut Angi Completely
 

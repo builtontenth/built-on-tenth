@@ -182,7 +182,7 @@ On insurance jobs, the financing conversation is simpler:
 
 > "Your out-of-pocket is your deductible -- looks like that's $1,500 on your policy. We can finance that if you'd rather not come out of pocket all at once. It's about $18 a month."
 
-Most homeowners who've just been through the stress of a storm claim will say yes to $18 a month rather than adding a $1,500 bill to everything else they're dealing with. It also removes the last friction point between a signed contract and a started job.
+Most homeowners who've just been through the stress of a storm claim will say yes to $18 a month rather than adding a $1,500 bill to everything else they're dealing with. It also removes the last friction point between a signed contract and a started job. If your team is already handling insurance work, the full process in [the roofing insurance claim workflow](/insights/how-to-work-roofing-insurance-claim-job) shows where deductible financing fits without confusing the homeowner.
 
 ---
 
