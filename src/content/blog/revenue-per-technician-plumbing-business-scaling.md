@@ -58,6 +58,8 @@ Most field service platforms -- ServiceTitan, Housecall Pro, Jobber -- generate 
 
 Compare it to the $200,000 to $300,000 benchmark. If your blended number is below $160,000, something structural is wrong -- job mix, scheduling density, average ticket, or billable utilization. If your blended number is above $250,000 and you have capacity, that's a green light to add a truck. If your blended number is at $180,000 and you're considering adding headcount, adding a technician at the same productivity level makes the problem worse, not better.
 
+One of the fastest ways to raise the number on the emergency-service side is to improve your local visibility before adding more spend. The [plumbing GBP optimization guide](/insights/plumbing-google-business-profile-optimization) covers how stronger map pack presence increases the volume of high-intent calls that usually produce the best same-day technician output.
+
 ---
 
 ## The Five Variables That Drive the Number
@@ -167,6 +169,8 @@ Every marketing dollar's purpose is to put a technician on a job. If that techni
 The [plumbing marketing playbook](/insights/plumbing-company-marketing-playbook) covers cost per booked job by channel and what to spend at each revenue stage. The channel mix only makes sense if the technician side of the equation is healthy. A company with a $150/call LSA cost and a 60% booking rate is generating jobs at $250 each. If those jobs go to technicians averaging $140 per job in revenue, the marketing ROI is negative before you account for labor, parts, or overhead.
 
 Fix revenue per technician before scaling marketing spend. The order matters.
+
+And if planned-work estimates are stalling after the first visit, that drags down technician output just as much as poor dispatch does. The scripts and timing in [the follow-up sequence article](/insights/the-follow-up-sequence-that-moved-close-rate-to-40-percent) are a practical way to recover revenue from jobs your techs already created.
 
 ---
 

@@ -30,7 +30,7 @@ A company doing $2.5M in HVAC revenue with 100 service agreements at $180/year i
 
 That $82,000 gap compounds. Agreement customers call you first when something breaks. They book tune-ups that become system evaluations. They refer neighbors. Their average annual spend is 2 to 3 times higher than a one-time service caller. The $82,000 in agreement fees is the front door to a much larger revenue difference.
 
-This article shows you how to build that base -- the pricing structure, the three moments to sell, the CSR scripts, and how to track it.
+This article shows you how to build that base -- the pricing structure, the three moments to sell, the CSR scripts, and how to track it. If you're trying to decide whether the real bottleneck is the agreement offer or the office team handling inbound calls, the [HVAC CSR performance breakdown](/insights/why-hvac-csrs-are-losing-you-300k-per-year) gives the answer-rate and booking-rate context that sits upstream of every agreement sale.
 
 ---
 
@@ -134,6 +134,8 @@ The script for this moment:
 
 Three things make this script work: it mentions the current visit (making the agreement feel immediately valuable), it gives a monthly price rather than annual (which is a smaller-feeling number), and it ends with a direct yes/no ask that doesn't require the homeowner to do anything complicated.
 
+If the customer doesn't commit on that first call, don't treat it as dead. The same timing discipline in [the 4-touch follow-up sequence](/insights/the-follow-up-sequence-that-moved-close-rate-to-40-percent) works here too: quick first follow-up, clear reminder of the value, and one last touch before the homeowner forgets the conversation entirely.
+
 ---
 
 ## What to Do With Customers Who Say No
@@ -169,6 +171,8 @@ Most HVAC companies that run agreements fold the revenue into their general serv
 First, agreement revenue has different margin characteristics than service revenue. The tune-up visit costs you labor. Everything else -- the diagnostic waiver, the priority scheduling -- costs you almost nothing. If you're not tracking agreement revenue separately, you can't see what the program's actual margin looks like.
 
 Second, the downstream revenue from agreement customers -- the repairs, the replacements, the referrals -- needs to be attributed correctly. Companies that track "revenue from agreement customers" vs. "revenue from one-time customers" see the 2 to 3x difference clearly. That number is what justifies investing in growing the agreement base, because the agreement fee is just the entry point.
+
+It also helps explain why agreement-heavy companies tend to outperform on [revenue per truck](/insights/hvac-revenue-per-truck-benchmark). More recurring tune-up demand, stronger replacement visibility, and fewer slow-season gaps all push the same fleet to higher annual output without needing more lead volume.
 
 **Minimum tracking setup:**
 

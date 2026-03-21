@@ -144,6 +144,8 @@ Even in a conservative scenario where financing only adds 5 percentage points to
 
 The dealer fee is not a cost you're trying to minimize. It's a margin you're paying to unlock a job that otherwise doesn't happen.
 
+That same logic shows up in your channel math too. A lead source that looks expensive at the top of funnel often becomes completely workable once financing lifts close rate at the estimate stage. The [roofing cost per booked job by lead source analysis](/insights/roofing-cost-per-booked-job-by-lead-source) breaks down exactly how that changes what different channels are actually worth.
+
 ---
 
 ## How to Present Financing Without It Feeling Like a Pressure Tactic
@@ -171,6 +173,8 @@ You've given them the full price and the monthly option in the same sentence. Th
 Don't offer financing only to customers who flinch at the price. That makes it feel like a consolation product. Don't ask "would you like to apply for financing?" as a yes/no question -- that requires the homeowner to actively opt into something that feels like admitting they can't afford cash. Don't wait until after they've said no to bring it up. By then the decision is made.
 
 The contractors who get the most out of financing present it to every customer as a standard option -- not as a rescue, not as a fallback, but as one of two normal ways people pay for roofing work.
+
+If your office is still missing calls or taking too long to work storm leads, financing won't rescue the economics by itself. The [storm season phone operations article](/insights/why-roofing-companies-miss-60-percent-inbound-calls-storm-season) shows why the answer-rate problem has to be fixed alongside the close-rate problem.
 
 ---
 
