@@ -20,7 +20,11 @@ const {
   ogType = 'website',
   publishedTime,
 } = Astro.props;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://www.builtontenth.com');
+const pathname = Astro.url.pathname === '/' 
+  ? '/' 
+  : Astro.url.pathname.replace(/\/+$/, '');
+
+const canonicalUrl = new URL(pathname, Astro.site ?? 'https://www.builtontenth.com');
 const siteName = 'Built on Tenth';
 ---
 <!DOCTYPE html>
