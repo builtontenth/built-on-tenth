@@ -1,8 +1,10 @@
 ---
 title: "Plumbing Cost Per Booked Job by Channel: What Each Lead Source Actually Costs"
+seoTitle: "Plumbing Cost Per Booked Job by Channel | Built on Tenth"
 description: "Most plumbing companies compare channels on cost per lead. That number is almost meaningless. Here's what each source costs per booked job once you factor in contact rate, booking rate, and job type -- and where plumbing's economics break from HVAC."
+metaDescription: "Compare plumbing cost per booked job across LSAs, Google Ads, GBP, referrals, Angi, and Facebook using real booking-rate math."
 pubDate: 2026-03-21
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["Plumbing"]
 heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80"

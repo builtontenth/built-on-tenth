@@ -40,6 +40,7 @@ To add a new article:
 3. Run `npm run build`
 
 The insights index, article routes, and sitemap are generated from the content collection automatically.
+The build now also cleans generated folders and fails if any markdown article is missing from built insight routes, the insights index, or the sitemap.
 
 ## Core Routes
 - `/` homepage

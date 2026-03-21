@@ -4,9 +4,9 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    seoTitle: z.string().optional(),
+    seoTitle: z.string(),
     description: z.string(),
-    metaDescription: z.string().optional(),
+    metaDescription: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Tanvir Hossain'),

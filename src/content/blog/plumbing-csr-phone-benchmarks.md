@@ -1,8 +1,10 @@
 ---
 title: "Why Your Plumbing CSRs Are Losing You Revenue on Every Call (And the Benchmarks That Show It)"
+seoTitle: "Plumbing CSR Phone Benchmarks | Built on Tenth"
 description: "Most plumbing companies measure call volume. Few measure booking rate, answer rate, or what each percentage point of those numbers costs per year. Here are the plumbing-specific phone benchmarks and the three fixes that recover the most revenue."
+metaDescription: "Benchmark plumbing CSR answer rate and booking rate, then see how after-hours misses and weak booking asks drain revenue."
 pubDate: 2026-03-21
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Pipeline Systems"
 trade: ["Plumbing"]
 heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80"

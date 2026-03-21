@@ -1,8 +1,10 @@
 ---
 title: "How Much Should a Plumbing Company Spend on Marketing in 2026?"
+seoTitle: "How Much Should a Plumbing Company Spend on Marketing? | Built on Tenth"
 description: "Most plumbing companies either underspend and starve for calls, or scatter budget across channels with no way to measure what's working. Here's the actual math -- benchmarks, a budget formula, and the three places plumbing companies leak marketing spend."
+metaDescription: "Use plumbing-specific budget benchmarks, cost-per-booked-job targets, and channel math to decide what your company should spend on marketing."
 pubDate: 2026-03-21
-author: "Built on Tenth"
+author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["Plumbing"]
 heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80"

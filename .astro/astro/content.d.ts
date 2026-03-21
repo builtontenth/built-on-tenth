@@ -246,6 +246,20 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"plumbing-cost-per-booked-job-by-channel.md": {
+	id: "plumbing-cost-per-booked-job-by-channel.md";
+  slug: "plumbing-cost-per-booked-job-by-channel";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"plumbing-csr-phone-benchmarks.md": {
+	id: "plumbing-csr-phone-benchmarks.md";
+  slug: "plumbing-csr-phone-benchmarks";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "plumbing-google-business-profile-optimization.md": {
 	id: "plumbing-google-business-profile-optimization.md";
   slug: "plumbing-google-business-profile-optimization";
