@@ -3,6 +3,66 @@
     {
       "src": "/thank-you-download/",
       "status": 410
+    },
+    {
+      "src": "/start-business-without-riba/",
+      "status": 410
+    },
+    {
+      "src": "/category/muslim-entrepreneurship/",
+      "status": 410
+    },
+    {
+      "src": "/category/islamic-finance/",
+      "status": 410
+    },
+    {
+      "src": "/category/business-ethics/",
+      "status": 410
+    },
+    {
+      "src": "/category/bangladesh-business/",
+      "status": 410
+    },
+    {
+      "src": "/what-is-riba-complete-guide-for-bangladeshi-muslim-entrepreneurs/",
+      "status": 410
+    },
+    {
+      "src": "/islamic-banks-vs-conventional-banks-bangladesh-2026/",
+      "status": 410
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/tools/",
+      "destination": "/tools",
+      "permanent": true
+    },
+    {
+      "source": "/insights/",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/newsletter/",
+      "destination": "/newsletter",
+      "permanent": true
+    },
+    {
+      "source": "/apply/",
+      "destination": "/apply",
+      "permanent": true
     }
   ]
 }
