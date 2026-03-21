@@ -169,6 +169,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-much-should-plumbing-company-spend-on-marketing-2026.md": {
+	id: "how-much-should-plumbing-company-spend-on-marketing-2026.md";
+  slug: "how-much-should-plumbing-company-spend-on-marketing-2026";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-offering-financing-closes-more-roofing-jobs.md": {
 	id: "how-offering-financing-closes-more-roofing-jobs.md";
   slug: "how-offering-financing-closes-more-roofing-jobs";
