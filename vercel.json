@@ -35,6 +35,17 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "builtontenth.com"
+        }
+      ],
+      "destination": "https://www.builtontenth.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/tools/",
       "destination": "/tools",
       "permanent": true
