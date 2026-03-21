@@ -42,18 +42,38 @@ const { active = '' } = Astro.props;
 </div>
 
 <style is:global>
+.nav-logo {
+  min-width: 0;
+}
+.nav-logo-mark {
+  flex-shrink: 0;
+}
 .nav-logo-copy {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+}
+.nav-logo-text {
+  display: block;
+  line-height: 1;
 }
 .nav-logo-sub {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  display: block;
+  font-size: 9px;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   color: rgba(226,221,208,0.62);
-  line-height: 1.2;
+  line-height: 1;
+  white-space: nowrap;
+}
+@media (max-width: 1200px) {
+  .nav-logo-sub {
+    font-size: 8.5px;
+    letter-spacing: 0.06em;
+  }
 }
 .nav-menu-btn {
   display: none;
@@ -96,6 +116,12 @@ const { active = '' } = Astro.props;
   .nav-desktop-only { display: none !important; }
   .mobile-overlay { display: block; }
   .mobile-sheet { display: block; }
+  .nav-logo-copy {
+    gap: 0;
+  }
+  .nav-logo-sub {
+    display: none;
+  }
 }
 .mobile-overlay.open { opacity: 1; pointer-events: auto; }
 .mobile-sheet.open { transform: translateY(0); }
