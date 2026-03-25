@@ -7,8 +7,8 @@ pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
-heroImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80"
-heroImageAlt: "HVAC technician reviewing flat-rate service pricing on a tablet"
+heroImage: "/images/brand/hvac/blog-hvac-flat-rate-pricing-undercharging-service-calls.png"
+heroImageAlt: "HVAC lead technician comparing a flat-rate sheet against a completed service ticket at the back of a service van"
 readTime: 12
 featured: false
 preview: "When HVAC techs quote from memory, margins drift and average ticket gets crushed. Here's how flat-rate pricing changes revenue per truck, pricing consistency, and close rate -- and what to actually watch when building a price book."
@@ -29,6 +29,9 @@ That spread isn't caused by different parts costs. It's caused by techs quoting 
 HVAC companies using flat-rate pricing typically see **15 to 20% higher revenue per service call** compared to time-and-materials or memory-based pricing, according to data from Build-Folio and Buildfolio's HVAC flat rate analysis. That improvement doesn't come from charging more for the same work -- it comes from charging consistently what the work is actually worth, every time, without variation by technician.
 
 This article covers why pricing inconsistency happens, how flat-rate pricing closes the gap, how to build a price book that holds up in the field, and the connection between pricing discipline and the revenue-per-truck number that determines whether your operation is actually scaling.
+
+![Flat-rate pricing sheets, repair notes, and service-ticket history compared on a real shop workbench](/images/brand/hvac/blog-hvac-flat-rate-pricing-undercharging-service-calls-2.png)
+*Flat-rate HVAC pricing gets more accurate when the book is built from real service-ticket history instead of memory or guesswork.*
 
 ---
 
@@ -145,6 +148,9 @@ A price book built in January 2024 and never touched is quietly losing you money
 HVAC equipment prices have increased significantly since 2019. System replacements that ran $6,000 to $8,000 in 2019 now run $12,000 to $15,000. Parts prices have followed similar trajectories. Manufacturer price increases have been regular -- Carrier announced 6 to 8% increases, Lennox went up 10%, Trane 2 to 5% in 2025. If your flat-rate prices for parts haven't been updated to reflect current wholesale costs, your margins are eroding with every job.
 
 The standard for price book maintenance: review and update at minimum twice per year. Quarterly is better for high-parts-cost jobs like compressors and heat exchangers where wholesale costs are more volatile.
+
+![HVAC technician wrapping up a residential repair while the completed work and paperwork are both visible](/images/brand/hvac/blog-hvac-flat-rate-pricing-undercharging-service-calls-3.png)
+*Underpriced service calls usually become obvious at the end of the job, when labor time and real field complexity are impossible to ignore.*
 
 Build the update process into a standing calendar event. Assign one person -- office manager or service manager -- to pull current parts cost from your distributor, check that loaded labor rates still reflect actual wages, and flag any job types where your recent margin data shows the price is too low. The update shouldn't take more than two hours if the book is organized.
 

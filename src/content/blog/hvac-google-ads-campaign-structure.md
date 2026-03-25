@@ -7,8 +7,8 @@ pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Channel Teardowns"
 trade: ["HVAC"]
-heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80"
-heroImageAlt: "HVAC business owner reviewing Google Ads performance data on laptop"
+heroImage: "/images/brand/hvac/blog-hvac-google-ads-campaign-structure.png"
+heroImageAlt: "HVAC owner reorganizing service-line campaign notes on a wall in a small office"
 readTime: 13
 featured: false
 preview: "General HVAC campaigns average $198 per lead. Heating repair campaigns average $144. The difference isn't the market or the budget -- it's campaign structure. Here's exactly what to change and how to tell if your agency has already done it."
@@ -29,6 +29,9 @@ Based on January 2026 data from SearchLight Digital tracking $14.9M in Google Ad
 That's a $54 per lead difference. On a company generating 60 leads per month, that's **$3,240/month** -- or **$38,880/year** -- being spent on the same lead volume a better campaign structure would produce at lower cost. Before your agency optimizes a single keyword or writes a single new ad.
 
 The gap isn't about spending more. It's about structure. And most HVAC agencies either don't know to fix it or don't have an incentive to tell you about it.
+
+![Campaign structure notes grouped by repair, install, maintenance, branded search, and service area on a real worktable](/images/brand/hvac/blog-hvac-google-ads-campaign-structure-2.png)
+*HVAC Google Ads costs drop when campaigns are segmented by search intent before budget and bidding ever come into play.*
 
 ---
 
@@ -163,6 +166,9 @@ The conversion you actually care about is a call that results in a scheduled app
 Companies that send offline conversion data back to Google through tools like RevSync or direct CRM integration allow Google's bidding algorithm to optimize toward calls that actually become booked jobs rather than calls that ring for 90 seconds and go nowhere. SearchLight's January 2026 data shows this as one of the primary characteristics of contractors with the lowest cost per booked job.
 
 Without this feedback loop, Google's algorithm optimizes toward whatever conversion you've told it to value -- and if that's a 60-second call regardless of outcome, you're paying Google to get you calls, not jobs.
+
+![HVAC owner and office manager tracing booked jobs back to call types and service categories in a dispatch office](/images/brand/hvac/blog-hvac-google-ads-campaign-structure-3.png)
+*Campaign structure only gets sharper when booked jobs are traced back to real call intent instead of blended lead counts.*
 
 **The minimum viable setup:** CallRail ($45/month) with manual outcome tagging. Your CSR marks each call as booked, unbooked, or not qualified. You run a monthly report that shows which campaigns and keywords are producing booked jobs vs. calls that go nowhere. That report tells you more than anything your agency sends.
 

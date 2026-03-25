@@ -8,7 +8,7 @@ author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["HVAC"]
 heroImage: "/images/brand/hvac/blog-hvac-cost-per-lead-by-channel-2026.png"
-heroImageAlt: "HVAC business owner reviewing lead cost data on a laptop"
+heroImageAlt: "HVAC owner comparing lead source notes and booked-job math in a dispatch office"
 readTime: 13
 featured: false
 preview: "HVAC lead costs vary massively by channel. Some sources look cheap and book poorly. Others look expensive and print jobs. Here's the 2026 cost-per-lead and cost-per-booked-job breakdown across every major channel."
