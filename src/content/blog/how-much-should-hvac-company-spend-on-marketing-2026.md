@@ -7,7 +7,7 @@ pubDate: 2026-03-16
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
-heroImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80"
+heroImage: "/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026.png"
 heroImageAlt: "HVAC technician servicing rooftop AC unit"
 readTime: 14
 featured: true
@@ -51,9 +51,8 @@ That one number, cost per booked job, is the only marketing benchmark that actua
 
 HVAC companies typically invest **7 to 10% of revenue** on marketing, with 60 to 70% of that going to digital channels. Here's how that breaks down by company size:
 
-![HVAC technician checking outdoor air conditioning condenser unit](https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80)
-
-*Understanding your true cost per booked job, not just total spend, is what separates profitable HVAC operators from ones funding their agency's growth.*
+![HVAC marketing budget notes, invoices, and calculator spread across a real office desk](/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026-2.png)
+*A usable marketing budget starts with paper-level math: what you spend, what you book, and what your ticket size can actually support.*
 
 | Annual Revenue | Typical Monthly Spend | % of Revenue | Avg Cost/Booked Job |
 | --- | --- | --- | --- |
@@ -89,9 +88,8 @@ How many jobs do you want to book per month? Divide by your close rate. Example:
 
 The [marketing cost calculator](/tools/marketing-calculator) runs this formula for your actual numbers in about four minutes. Worth doing before you adjust any channel spend.
 
-![HVAC business owner reviewing financial data on laptop](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80)
-
-*The formula is simple. The discipline to track it consistently is where most owners fall short.*
+![HVAC owner and office manager discussing budget priorities with operational context nearby](/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026-3.png)
+*The budget conversation gets more useful when marketing numbers sit next to phone performance and dispatch reality.*
 
 ## The 3 Places HVAC Companies Leak Marketing Budget
 

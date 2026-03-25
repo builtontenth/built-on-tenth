@@ -7,7 +7,7 @@ pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Channel Teardowns"
 trade: ["HVAC"]
-heroImage: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1400&q=80"
+heroImage: "/images/brand/hvac/blog-how-to-set-up-google-local-service-ads-hvac.png"
 heroImageAlt: "HVAC technician in uniform ready for a service call"
 readTime: 12
 featured: false
@@ -99,8 +99,8 @@ Set your hours to match when your phones are actually staffed. If Google sends y
 
 Start with a weekly budget that covers 10 to 15 leads at your market's average lead cost. In most HVAC markets that's $800 to $1,500/week. The goal in the first 60 days is to build ranking signals -- review velocity, response rate, low dispute rate -- not to maximize volume. You can scale budget once those signals are healthy.
 
-![HVAC company profile on Google showing Local Service Ad with Google Guaranteed badge and reviews](https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&q=80)
-*Your LSA profile is the first thing high-intent homeowners see. Star rating, review count, and response time are all visible before they click.*
+![HVAC Local Service Ads setup notes, service categories, and verification checklist on a desk](/images/brand/hvac/blog-how-to-set-up-google-local-service-ads-hvac-2.png)
+*Most LSA wins come from getting the setup details right before the budget ever starts spending.*
 
 ---
 
@@ -119,6 +119,9 @@ A company with 45 reviews adding 10 per month will outrank a company with 120 re
 Google tracks how quickly you respond to leads and what percentage you respond to. Responding to a lead within 15 seconds -- by answering the call when it comes in -- is the benchmark. A response rate below 80% signals to Google that you're not reliably available, and your ad frequency drops.
 
 This connects directly to your phone operations. The [phone revenue calculator](/tools/phone-calculator) shows what your current answer rate costs per month in missed revenue -- the same dynamic applies here. Every LSA lead that rings to voicemail is a response-rate penalty paid twice: once in the missed job and once in reduced ad frequency going forward.
+
+![HVAC office manager reviewing inbound lead handling notes beside a real phone system](/images/brand/hvac/blog-how-to-set-up-google-local-service-ads-hvac-3.png)
+*LSAs reward fast response in the real world, not just clean setup inside the dashboard.*
 
 **Dispute rate:**
 

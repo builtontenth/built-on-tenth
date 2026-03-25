@@ -7,7 +7,7 @@ pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
-heroImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80"
+heroImage: "/images/brand/hvac/blog-how-hvac-service-agreements-add-200k-annual-revenue.png"
 heroImageAlt: "HVAC technician performing a maintenance visit at a residential home"
 readTime: 13
 featured: false
@@ -31,6 +31,9 @@ A company doing $2.5M in HVAC revenue with 100 service agreements at $180/year i
 That $82,000 gap compounds. Agreement customers call you first when something breaks. They book tune-ups that become system evaluations. They refer neighbors. Their average annual spend is 2 to 3 times higher than a one-time service caller. The $82,000 in agreement fees is the front door to a much larger revenue difference.
 
 This article shows you how to build that base -- the pricing structure, the three moments to sell, the CSR scripts, and how to track it. If you're trying to decide whether the real bottleneck is the agreement offer or the office team handling inbound calls, the [HVAC CSR performance breakdown](/insights/why-hvac-csrs-are-losing-you-300k-per-year) gives the answer-rate and booking-rate context that sits upstream of every agreement sale.
+
+![HVAC service agreement checklist and renewal schedule reviewed on a work surface](/images/brand/hvac/blog-how-hvac-service-agreements-add-200k-annual-revenue-2.png)
+*Agreement growth is usually a process problem, not a product problem. The paperwork, follow-up cadence, and renewal visibility matter as much as the price.*
 
 ---
 
@@ -179,6 +182,9 @@ It also helps explain why agreement-heavy companies tend to outperform on [reven
 A column in your CRM or scheduling software for "agreement customer: yes/no." That single tag lets you run a report at any point that shows average annual revenue per agreement customer vs. average annual revenue per non-agreement customer. That's the number that convinces a skeptical owner to actually invest in growing the program.
 
 If you're on ServiceTitan, agreement tracking is built in. Housecall Pro and Jobber both support membership tagging with revenue attribution.
+
+![HVAC technician calmly explaining maintenance findings to a homeowner after a visit](/images/brand/hvac/blog-how-hvac-service-agreements-add-200k-annual-revenue-3.png)
+*The strongest agreement sales moments happen inside normal service interactions, not in scripted high-pressure pitches.*
 
 ---
 

@@ -61,16 +61,16 @@ const postsForClient = allPosts.map((post) => ({
 .fa-pill { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.08em; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 4px 10px; border-radius: 3px; }
 .fa-cta { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
 .featured-article:hover .fa-cta { gap: 10px; }
-.fa-img { position: relative; overflow: hidden; background: var(--bg3); min-height: 320px; }
-.fa-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%) brightness(0.92); transition: transform 0.6s var(--ease); display: block; }
+.fa-img { position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(16,22,20,0.92), rgba(11,16,14,0.96)); min-height: 320px; padding: 18px; display: flex; align-items: center; justify-content: center; }
+.fa-img img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(6%) brightness(0.98); transition: transform 0.6s var(--ease); display: block; border-radius: 4px; }
 .featured-article:hover .fa-img img { transform: scale(1.04); }
 .fa-img::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(0,196,154,0.025); pointer-events: none; }
 .fa-img-badge { position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); padding: 4px 10px; border-radius: 3px; }
 .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
 .article-card { background: var(--bg2); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: background 0.25s; overflow: hidden; }
 .article-card:hover { background: var(--bg3); }
-.ac-img { width: 100%; height: 200px; overflow: hidden; position: relative; background: var(--bg3); }
-.ac-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%) brightness(0.92); transition: transform 0.5s var(--ease); display: block; }
+.ac-img { width: 100%; height: 200px; overflow: hidden; position: relative; background: linear-gradient(180deg, rgba(16,22,20,0.94), rgba(11,16,14,0.98)); padding: 14px; display: flex; align-items: center; justify-content: center; }
+.ac-img img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(6%) brightness(0.98); transition: transform 0.5s var(--ease); display: block; border-radius: 4px; }
 .article-card:hover .ac-img img { transform: scale(1.04); }
 .ac-img::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(0,196,154,0.025); pointer-events: none; }
 .ac-body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
@@ -188,7 +188,7 @@ const postsForClient = allPosts.map((post) => ({
     <div class="nl-prompt">
       <div class="nl-prompt-text">
         <h3>Get every article the day it publishes.</h3>
-        <p>Subscribe to the Weekly Growth Report. Real numbers from home service companies, like where close rate, answer rate, and cost per booked job actually land. Free every Tuesday.</p>
+        <p>Subscribe to the Weekly Growth Report. Real numbers from home service companies, like where close rate, answer rate, and cost per booked job actually land. Free every week.</p>
       </div>
       <div class="nl-prompt-form">
         <input type="email" class="nl-prompt-input" placeholder="your@email.com" id="insights-email" />

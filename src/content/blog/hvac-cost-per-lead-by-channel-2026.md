@@ -7,7 +7,7 @@ pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["HVAC"]
-heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80"
+heroImage: "/images/brand/hvac/blog-hvac-cost-per-lead-by-channel-2026.png"
 heroImageAlt: "HVAC business owner reviewing lead cost data on a laptop"
 readTime: 13
 featured: false
@@ -46,6 +46,9 @@ At the industry average answer rate of 68% and booking rate of 42%, a $100 lead 
 
 The [phone revenue calculator](/tools/phone-calculator) runs this for your actual numbers. Before evaluating any channel below, know your answer rate and booking rate. They change the output on every single source.
 
+![HVAC channel notes and handwritten cost ranges compared across a real worktable](/images/brand/hvac/blog-hvac-cost-per-lead-by-channel-2026-2.png)
+*Lead cost gets clearer when channel math is separated on paper instead of blended into one monthly spend number.*
+
 ---
 
 ## Channel 1: Google Business Profile (Organic Map Pack)
@@ -77,6 +80,9 @@ Based on a dataset of 100+ home service clients compiled in 2025, HVAC LSA leads
 LSA ranking isn't controlled by bid alone. Review count, response rate, and dispute rate all affect how often your ad appears. About 6 to 7% of LSA spend typically comes back as lead credits for unqualified contacts. The setup process involves Google's verification (license, insurance, background check) and takes two to four weeks -- but it's a one-time investment.
 
 The full setup process, ranking mechanics, and the one setting most companies miss are covered in the [HVAC LSA setup guide](/insights/how-to-set-up-google-local-service-ads-hvac).
+
+![HVAC owner tracing which lead sources actually turned into booked jobs using paper logs](/images/brand/hvac/blog-hvac-cost-per-lead-by-channel-2026-3.png)
+*The real decision is never cost per lead alone. It is which channels survive contact with your booking process and still produce profitable jobs.*
 
 ---
 
