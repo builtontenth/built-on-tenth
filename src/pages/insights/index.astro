@@ -13,6 +13,13 @@ const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 
+const heroImagePositions: Record<string, string> = {
+  'how-hvac-service-agreements-add-200k-annual-revenue': '72% center',
+  'how-much-should-hvac-company-spend-on-marketing-2026': '72% center',
+  'how-to-set-up-google-local-service-ads-hvac': '62% center',
+  'hvac-cost-per-lead-by-channel-2026': '72% center',
+};
+
 const initialFeatured = allPosts.find((post) => post.data.featured) || allPosts[0] || null;
 const initialSecondary = initialFeatured
   ? allPosts.filter((post) => post.slug !== initialFeatured.slug)
@@ -27,6 +34,7 @@ const postsForClient = allPosts.map((post) => ({
   readTime: post.data.readTime,
   img: post.data.heroImage,
   imgAlt: post.data.heroImageAlt,
+  imgPosition: heroImagePositions[post.slug] ?? 'center',
   category: post.data.category,
   trade: post.data.trade,
   pills: post.data.pills,
@@ -152,7 +160,12 @@ const postsForClient = allPosts.map((post) => ({
           </div>
           <div class="fa-img">
             <span class="fa-img-badge">Featured</span>
-            <img src={initialFeatured.data.heroImage} alt={initialFeatured.data.heroImageAlt} loading="lazy" />
+            <img
+              src={initialFeatured.data.heroImage}
+              alt={initialFeatured.data.heroImageAlt}
+              loading="lazy"
+              style={`object-position:${heroImagePositions[initialFeatured.slug] ?? 'center'}`}
+            />
           </div>
         </a>
       ) : (
@@ -167,7 +180,12 @@ const postsForClient = allPosts.map((post) => ({
       {initialSecondary.map((article) => (
         <a href={`/insights/${article.slug}`} class="article-card reveal">
           <div class="ac-img">
-            <img src={article.data.heroImage} alt={article.data.heroImageAlt} loading="lazy" />
+            <img
+              src={article.data.heroImage}
+              alt={article.data.heroImageAlt}
+              loading="lazy"
+              style={`object-position:${heroImagePositions[article.slug] ?? 'center'}`}
+            />
           </div>
           <div class="ac-body">
             <div class="ac-meta">
@@ -232,7 +250,7 @@ const postsForClient = allPosts.map((post) => ({
       </div>
       <div class="fa-img">
         ${post.featured ? '<span class="fa-img-badge">Featured</span>' : ''}
-        <img src="${escapeHtml(post.img)}" alt="${escapeHtml(post.imgAlt)}" loading="lazy" />
+        <img src="${escapeHtml(post.img)}" alt="${escapeHtml(post.imgAlt)}" loading="lazy" style="object-position:${escapeHtml(post.imgPosition)}" />
       </div>
     </a>
   `;
@@ -240,7 +258,7 @@ const postsForClient = allPosts.map((post) => ({
   const cardMarkup = (post) => `
     <a href="/insights/${post.slug}" class="article-card reveal on">
       <div class="ac-img">
-        <img src="${escapeHtml(post.img)}" alt="${escapeHtml(post.imgAlt)}" loading="lazy" />
+        <img src="${escapeHtml(post.img)}" alt="${escapeHtml(post.imgAlt)}" loading="lazy" style="object-position:${escapeHtml(post.imgPosition)}" />
       </div>
       <div class="ac-body">
         <div class="ac-meta">

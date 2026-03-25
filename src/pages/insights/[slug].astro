@@ -28,6 +28,13 @@ const title = post.data.title;
 const description = post.data.metaDescription ?? post.data.description;
 const heroImage = post.data.heroImage;
 const canonicalUrl = `${SITE}/insights/${post.slug}`;
+const heroImagePositions: Record<string, string> = {
+  'how-hvac-service-agreements-add-200k-annual-revenue': '72% center',
+  'how-much-should-hvac-company-spend-on-marketing-2026': '72% center',
+  'how-to-set-up-google-local-service-ads-hvac': '62% center',
+  'hvac-cost-per-lead-by-channel-2026': '72% center',
+};
+const heroImagePosition = heroImagePositions[post.slug] ?? 'center';
 
 const relatedPosts = allPosts
   .filter((candidate) => candidate.slug !== post.slug)
@@ -591,7 +598,7 @@ const breadcrumbSchema = {
 <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 <div class="article-hero">
-  <div class="ah-bg" style={`background-image: url('${heroImage}')`}></div>
+  <div class="ah-bg" style={`background-image: url('${heroImage}'); background-position: ${heroImagePosition};`}></div>
   <div class="ah-overlay"></div>
   <div class="ah-inner">
     <a href="/insights" class="back-link">All Insights</a>
@@ -613,7 +620,7 @@ const breadcrumbSchema = {
     </div>
   </div>
   <figure class="ah-media">
-    <img src={heroImage} alt={post.data.heroImageAlt} loading="eager" />
+    <img src={heroImage} alt={post.data.heroImageAlt} loading="eager" style={`object-position:${heroImagePosition}`} />
     <figcaption class="ah-media-caption">{post.data.heroImageAlt}</figcaption>
   </figure>
 </div>
