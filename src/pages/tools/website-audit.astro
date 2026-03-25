@@ -262,7 +262,7 @@ const suiteTools = [
         <a href="/apply?service=audit&source=website-audit" class="audit-cta">Get a Full Site + Marketing Audit</a>
         <p class="audit-note">The Revenue Leak Audit includes a detailed website analysis alongside your phone, ads, and competitor benchmarks.</p>
 
-        <ToolShareResult sectionId="share-section" />
+        <ToolShareResult sectionId="share-section" profile="internal" />
 
         <div class="result-rail">
           <div class="rail-title">Continue your diagnosis</div>
@@ -391,8 +391,11 @@ function calculate() {
 
   const shareSection = document.getElementById('share-section');
   const toolUrl = window.location.origin + window.location.pathname;
+  const internalSummary = `Our website scores ${score}/100 on conversion factors. ${toolUrl}`;
   shareSection.dataset.toolUrl = toolUrl;
-  shareSection.dataset.shareText = `My website scores ${score}/100 on conversion factors. Free website audit for HVAC, roofing and plumbing companies: ${toolUrl} via @builtontenth`;
+  shareSection.dataset.internalShareText = internalSummary;
+  shareSection.dataset.emailSubject = `Website audit score: ${score}/100`;
+  shareSection.dataset.emailBody = `${internalSummary}\n\n${diagBody.textContent}`;
   shareSection.style.display = 'block';
 
   document.getElementById('empty-state').style.display = 'none';

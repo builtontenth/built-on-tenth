@@ -238,7 +238,7 @@ const suiteTools = [
         </a>
         <p class="cta-note">This number gets more useful when you can separate whether the gap is coming from booked jobs, average ticket, or follow-up.</p>
 
-        <ToolShareResult sectionId="share-section" />
+        <ToolShareResult sectionId="share-section" profile="mixed" />
 
         <div class="result-rail">
           <div class="rail-title">Continue your diagnosis</div>
@@ -317,8 +317,14 @@ function setStatus(tier) {
 function revealShare(trade, revenuePerTech, top25, totalGap) {
   const shareSection = document.getElementById('share-section');
   const toolUrl = window.location.origin + window.location.pathname;
+  const consequenceLine = document.getElementById('consequence-line').textContent;
+  const internalSummary = `Our ${trade} company is running ${fmtMoney(revenuePerTech)}/tech/year. The gap to the top 25% across the team is ${fmtMoney(totalGap)}. ${toolUrl}`;
+  const publicSummary = `My ${trade} company runs ${fmtMoney(revenuePerTech)}/tech/year. Industry top 25% is ${fmtMoney(top25)}. That gap across my team is ${fmtMoney(totalGap)}. Free benchmarker: ${toolUrl} via @builtontenth`;
   shareSection.dataset.toolUrl = toolUrl;
-  shareSection.dataset.shareText = `My ${trade} company runs ${fmtMoney(revenuePerTech)}/tech/year. Industry top 25% is ${fmtMoney(top25)}. That gap across my team is ${fmtMoney(totalGap)}. Free benchmarker: ${toolUrl} via @builtontenth`;
+  shareSection.dataset.internalShareText = internalSummary;
+  shareSection.dataset.publicShareText = publicSummary;
+  shareSection.dataset.emailSubject = `Revenue per tech benchmark: ${fmtMoney(revenuePerTech)}/year`;
+  shareSection.dataset.emailBody = `${internalSummary}\n\n${consequenceLine}`;
   shareSection.style.display = 'block';
 }
 

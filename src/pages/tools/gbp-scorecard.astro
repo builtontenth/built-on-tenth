@@ -304,7 +304,7 @@ const suiteTools = [
         </a>
         <p class="cta-note">The real value is not a better-looking profile. It is owning more of the free calls your market is already generating.</p>
 
-        <ToolShareResult sectionId="share-section" />
+        <ToolShareResult sectionId="share-section" profile="mixed" />
 
         <div class="result-rail">
           <div class="rail-title">Continue your diagnosis</div>
@@ -371,8 +371,14 @@ function setStatus(grade) {
 function revealShare(score, grade) {
   const shareSection = document.getElementById('share-section');
   const toolUrl = window.location.origin + window.location.pathname;
+  const consequenceLine = document.getElementById('consequence-line').textContent;
+  const internalSummary = `Our Google Business Profile scored ${score}/35 (${grade}) on the Built on Tenth scorecard. ${toolUrl}`;
+  const publicSummary = `Scored my Google Business Profile on a 35-point scorecard. Got ${score}/35 (${grade}). Free GBP scorecard for home service companies: ${toolUrl} via @builtontenth`;
   shareSection.dataset.toolUrl = toolUrl;
-  shareSection.dataset.shareText = `Scored my Google Business Profile on a 35-point scorecard. Got ${score}/35 (${grade}). Free GBP scorecard for home service companies: ${toolUrl} via @builtontenth`;
+  shareSection.dataset.internalShareText = internalSummary;
+  shareSection.dataset.publicShareText = publicSummary;
+  shareSection.dataset.emailSubject = `GBP scorecard: ${score}/35 (${grade})`;
+  shareSection.dataset.emailBody = `${internalSummary}\n\n${consequenceLine}`;
   shareSection.style.display = 'block';
 }
 

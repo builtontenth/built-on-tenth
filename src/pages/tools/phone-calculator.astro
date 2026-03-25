@@ -267,7 +267,7 @@ const suiteTools = [
         </a>
         <p class="audit-cta-note">Fixing this alone often outperforms increasing ad spend. The audit shows every leak together.</p>
 
-        <ToolShareResult sectionId="share-section" />
+        <ToolShareResult sectionId="share-section" profile="mixed" />
 
         <div class="result-rail">
           <div class="rail-title">Continue your diagnosis</div>
@@ -376,8 +376,13 @@ function calculate() {
 
   const shareSection = document.getElementById('share-section');
   const toolUrl = window.location.origin + window.location.pathname;
+  const internalSummary = `We are missing ${fmtN(missedCalls)} calls per month. At our current ticket size, that is ${fmt(monthlyLoss)} per month and ${fmt(annualLoss)} per year in lost revenue. ${toolUrl}`;
+  const publicSummary = `I'm missing ${fmtN(missedCalls)} calls/month. At my ticket size that's ${fmt(monthlyLoss)}/month - ${fmt(annualLoss)}/year walking out the door before I've spent another dollar on ads. ${toolUrl}`;
   shareSection.dataset.toolUrl = toolUrl;
-  shareSection.dataset.shareText = `I'm missing ${fmtN(missedCalls)} calls/month. At my ticket size that's ${fmt(monthlyLoss)}/month - ${fmt(annualLoss)}/year walking out the door before I've spent another dollar on ads. ${toolUrl}`;
+  shareSection.dataset.internalShareText = internalSummary;
+  shareSection.dataset.publicShareText = publicSummary;
+  shareSection.dataset.emailSubject = `Phone revenue leak: ${fmt(annualLoss)} per year`;
+  shareSection.dataset.emailBody = `${internalSummary}\n\n${diagBody.textContent}`;
   shareSection.style.display = 'block';
 
   document.getElementById('empty-state').style.display = 'none';

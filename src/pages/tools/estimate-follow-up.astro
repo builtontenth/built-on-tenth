@@ -287,7 +287,7 @@ const suiteTools = [
         </a>
         <p class="cta-note">The fastest gain here usually comes from fixing the touches after the estimate, not buying more leads.</p>
 
-        <ToolShareResult sectionId="share-section" />
+        <ToolShareResult sectionId="share-section" profile="internal" />
 
         <div class="result-rail">
           <div class="rail-title">Continue your diagnosis</div>
@@ -342,8 +342,12 @@ function setProjectionValue(id, value) {
 function revealShare(annualLoss, jobsLostMonthly) {
   const shareSection = document.getElementById('share-section');
   const toolUrl = window.location.origin + window.location.pathname;
+  const consequenceLine = document.getElementById('consequence-line').textContent;
+  const internalSummary = `We are losing ${fmtMoney(annualLoss)}/year from estimates we never follow up on. ${fmtNumber(jobsLostMonthly)} jobs per month are going dark. ${toolUrl}`;
   shareSection.dataset.toolUrl = toolUrl;
-  shareSection.dataset.shareText = `I'm losing ${fmtMoney(annualLoss)}/year from estimates I never follow up on. ${fmtNumber(jobsLostMonthly)} jobs per month going dark. Calculator: ${toolUrl} via @builtontenth`;
+  shareSection.dataset.internalShareText = internalSummary;
+  shareSection.dataset.emailSubject = `Estimate follow-up gap: ${fmtMoney(annualLoss)}/year`;
+  shareSection.dataset.emailBody = `${internalSummary}\n\n${consequenceLine}`;
   shareSection.style.display = 'block';
 }
 

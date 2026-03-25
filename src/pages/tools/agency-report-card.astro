@@ -232,7 +232,7 @@ const suiteTools = [
         </a>
         <p class="cta-note">The biggest risk here is not a bad month. It is paying for reporting that hides why the bad month happened.</p>
 
-        <ToolShareResult sectionId="share-section" />
+        <ToolShareResult sectionId="share-section" profile="internal" />
 
         <div class="result-rail">
           <div class="rail-title">Continue your diagnosis</div>
@@ -292,8 +292,12 @@ function getGrade(score) {
 function revealShare(score, grade) {
   const shareSection = document.getElementById('share-section');
   const toolUrl = window.location.origin + window.location.pathname;
+  const consequenceLine = document.getElementById('consequence-line').textContent;
+  const internalSummary = `Our agency scored ${score}/10 (${grade}) on the Agency Report Card. ${toolUrl}`;
   shareSection.dataset.toolUrl = toolUrl;
-  shareSection.dataset.shareText = `Graded my marketing agency on 10 questions. They scored ${score}/10 (${grade}). Free tool for HVAC, roofing and plumbing owners: ${toolUrl} via @builtontenth`;
+  shareSection.dataset.internalShareText = internalSummary;
+  shareSection.dataset.emailSubject = `Agency Report Card: ${score}/10 (${grade})`;
+  shareSection.dataset.emailBody = `${internalSummary}\n\n${consequenceLine}`;
   shareSection.style.display = 'block';
 }
 

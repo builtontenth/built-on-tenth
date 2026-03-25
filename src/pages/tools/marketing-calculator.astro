@@ -215,7 +215,7 @@ const suiteTools = [
         <a href="/apply?service=audit&source=marketing-calculator" class="audit-cta">Get a Full Channel Breakdown - Audit</a>
         <p class="audit-note">The audit shows cost per job by individual channel so you know which ones to scale and which to cut.</p>
 
-        <ToolShareResult sectionId="share-section" />
+        <ToolShareResult sectionId="share-section" profile="internal" />
 
         <div class="result-rail">
           <div class="rail-title">Continue your diagnosis</div>
@@ -325,8 +325,11 @@ function updateChannelBenchmarkLine(trade, primaryChannel, cpj) {
 
   const toolUrl = window.location.origin + window.location.pathname;
   const shareSection = document.getElementById('share-section');
+  const internalSummary = `Our real cost per booked job is ${fmt(cpj)}. Top ${tradeLabel} companies on ${channelData.label} run ${fmt(range[0])}-${fmt(range[1])} per booked job on this channel. ${toolUrl}`;
   shareSection.dataset.toolUrl = toolUrl;
-  shareSection.dataset.shareText = `My real cost per booked job is ${fmt(cpj)}. The top 25% of ${tradeLabel} companies on ${channelData.label} run ${fmt(range[0])}-${fmt(range[1])}. Free calculator: ${toolUrl} via @builtontenth`;
+  shareSection.dataset.internalShareText = internalSummary;
+  shareSection.dataset.emailSubject = `Marketing cost per booked job: ${fmt(cpj)}`;
+  shareSection.dataset.emailBody = internalSummary;
   shareSection.style.display = 'block';
 }
 
@@ -414,6 +417,8 @@ function calculate() {
 
   updateChannelBenchmarkLine(trade, primaryChannel, cpj);
   document.getElementById('consequence-line').textContent = `That gap between your current number and the top 25% is ${fmt(Math.max(cpj - bm.topCPJ, 0))} per booked job. The audit identifies which channel is creating most of it.`;
+  const shareSection = document.getElementById('share-section');
+  shareSection.dataset.emailBody = `${shareSection.dataset.internalShareText}\n\n${document.getElementById('consequence-line').textContent}`;
 
   document.getElementById('empty-state').style.display = 'none';
   document.getElementById('results').classList.add('show');
