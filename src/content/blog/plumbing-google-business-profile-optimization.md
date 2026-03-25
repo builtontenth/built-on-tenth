@@ -13,8 +13,8 @@ readTime: 12
 featured: false
 preview: "Emergency plumbing searchers go to the map pack first. If your GBP is weak, you are losing the cheapest calls in your market. Here's the setup and review system that moves rankings."
 pills: ["Map pack setup", "Emergency call intent", "Review system"]
-primaryCtaLabel: "Audit Your Website"
-primaryCtaHref: "/tools/website-audit"
+primaryCtaLabel: "Score Your GBP"
+primaryCtaHref: "/tools/gbp-scorecard"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["plumbing google business profile", "plumbing google business profile optimization", "plumbing map pack ranking", "how to rank plumber on google maps", "plumbing emergency calls google business profile", "plumbing local seo", "plumbing google reviews", "plumbing gbp optimization", "plumber near me ranking", "plumbing map pack seo"]
@@ -220,7 +220,7 @@ The revenue per technician discussion in the [plumbing scaling article](/insight
 2. **Check your review count vs. your top three competitors.** Search "plumber [your city]" from an incognito window. Look at the review count and recency for whoever's in the top three. That's your competitive baseline.
 3. **Set up the review text today.** Generate your direct Google review link. Write the template. Store it in every tech's phone. Send it on the next job completed today.
 4. **Upload five photos this week.** Trucks, techs, recent job before-and-after. Set a recurring reminder to upload two to three per week.
-5. **Use the [website audit tool](/tools/website-audit)** to check the signals that compound with GBP -- mobile site speed, phone number visibility, and whether your website is sending the right location signals to reinforce your GBP's ranking.
+5. **Use the [GBP Scorecard](/tools/gbp-scorecard)** to check the GBP-side signals that compound with rankings, then use the website audit if you need to diagnose the site-side support signals behind them.
 
 ---
 

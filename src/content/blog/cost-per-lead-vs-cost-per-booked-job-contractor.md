@@ -1,0 +1,188 @@
+---
+title: "Cost Per Lead Is a Vanity Metric. Here's the Number That Actually Tells You If Your Marketing Is Working."
+seoTitle: "Cost Per Lead vs Cost Per Booked Job | Built on Tenth"
+description: "Every agency reports cost per lead. Almost none report cost per booked job -- the only number that connects marketing spend to revenue. Here's why the difference matters, how to calculate it, and what it reveals about every channel you're running."
+metaDescription: "Cost per lead hides what your marketing is really producing. Learn how to calculate cost per booked job and benchmark your real marketing efficiency."
+pubDate: 2026-03-25
+author: "Built on Tenth"
+category: "Revenue Diagnostics"
+trade: ["HVAC", "Roofing", "Plumbing"]
+heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80"
+heroImageAlt: "Contractor reviewing marketing data and cost per booked job numbers"
+readTime: 11
+featured: false
+preview: "A $35 lead that books at 20% costs $175 per booked job. A $90 lead that books at 65% costs $138 per booked job. The cheaper lead is more expensive. Cost per lead hides this. Cost per booked job reveals it."
+pills: ["CPL vs cost/booked job", "The formula", "What your report should show"]
+primaryCtaLabel: "Calculate Your Cost Per Booked Job"
+primaryCtaHref: "/tools/marketing-calculator"
+secondaryCtaLabel: "Get a Revenue Leak Audit"
+secondaryCtaHref: "/apply"
+seoKeywords: ["cost per booked job contractor", "cost per lead vs cost per booked job", "how to calculate true marketing ROI contractor", "HVAC marketing ROI calculator", "roofing cost per booked job", "plumbing marketing cost per job", "contractor marketing metrics", "how to measure marketing effectiveness contractor", "marketing cost calculator home services", "cost per acquisition contractor"]
+---
+
+Your agency sends you a report every month showing that your cost per lead came down from $148 to $119. They frame this as good news. Your marketing is getting more efficient.
+
+Except the phone is ringing about the same amount. The dispatch board looks about the same. You can't point to any channel and say with confidence that it's producing profitable jobs at a defensible cost.
+
+The report is measuring the wrong thing. And it's doing so in a way that makes the agency's performance look better than it is while obscuring the information you actually need to make budget decisions.
+
+Cost per lead is not a useless metric. It tells you something about how efficiently a channel generates contacts. But it doesn't tell you what those contacts are worth, what percentage of them become booked jobs, or whether any of that connects to the revenue that pays your employees and your overhead.
+
+Cost per booked job does. It's the one number that connects every marketing dollar spent to every job that actually appears on your dispatch board. And for most contractors running paid channels, calculating it for the first time produces an uncomfortable conversation about where the budget is actually going.
+
+---
+
+## Why Cost Per Lead Misleads
+
+Here is the scenario that illustrates the problem precisely:
+
+You're running Google LSAs at $65 average cost per lead. A competitor is running an aggregator like Angi at $38 average cost per lead. On cost per lead, the competitor looks more efficient. They're generating leads at 42% lower cost.
+
+Now add the conversion chain.
+
+Your LSA leads are exclusive -- they called you directly. Your contact rate is 84% (you answer most calls). Your booking rate on contacted leads is 62%. Your cost per booked job: $65 ÷ (0.84 × 0.62) = **$125 per booked job**.
+
+Their Angi leads are shared -- the same homeowner contact goes to up to three contractors. Their contact rate is 52% (they call back within two hours, not immediately). Their booking rate on contacts is 28% (lower-intent leads, more price shopping). Their cost per booked job: $38 ÷ (0.52 × 0.28) = **$261 per booked job**.
+
+The "cheaper" source is producing booked jobs at twice the cost. Cost per lead said one thing. Cost per booked job said the opposite.
+
+This is not a constructed example. It is the arithmetic outcome of how these channels work, documented across the channel comparison articles built from real contractor data. The HVAC, roofing, and plumbing cost-per-booked-job articles on this site show this pattern repeated across every major lead source. The metric contractors are most commonly given is the metric that most reliably produces the wrong conclusion.
+
+---
+
+## The Formula
+
+Cost per booked job has one formula:
+
+**Cost per booked job = Cost per lead ÷ (Contact rate × Booking rate on contacted leads)**
+
+Three inputs. Each one matters.
+
+**Cost per lead:** Total channel spend divided by total contacts generated from that channel in the period. Contacts means conversations -- phone calls answered and spoken with, form submissions reached and spoken with. Not raw call volume. Answered conversations.
+
+**Contact rate:** Of the contacts generated by the channel, what percentage did you actually reach and speak with? For inbound channels (someone called you), this is your answer rate on calls from that source. For channels with a form-fill or message component, it's the percentage of those you actually had a conversation with.
+
+**Booking rate on contacted leads:** Of the leads you reached and spoke with, what percentage became scheduled, completed jobs? Not estimates sent. Not appointments set. Completed, invoiced jobs that trace back to that channel contact.
+
+Run that formula for each channel, every month. The results by channel rarely resemble the relative CPL rankings. The channel that looks most expensive on CPL is frequently the most efficient on cost per booked job. The one that looks cheapest on CPL is frequently the one producing jobs at three times the cost once the conversion chain is included.
+
+Chris Lollini, owner of Reputation Igniter and a marketing advisor for HVAC contractors, stated it directly in an ACHR News analysis: "Cost per lead is often misleading in HVAC. Cost per booked job tells the real story. Clicks, impressions, and rankings are inputs. Revenue is the outcome contractors should evaluate."
+
+Chris Hunter, principal industry advisor at ServiceTitan, framed the consequence: "A $30 lead that never books is expensive. A $150 lead that turns into a replacement, a membership, and five-star reviews is profitable. The biggest marketing myth in HVAC is that more leads mean more revenue. Quality and booking rate matter far more than volume."
+
+---
+
+## What the Calculation Reveals About Each Channel
+
+The cost-per-booked-job formula produces different outputs for every channel because each channel has a distinct contact rate and booking rate profile. Here is what the calculation typically reveals when run on the major home service channels:
+
+**Google Business Profile (organic map pack):** CPL of $0 to $25 (time investment only). Contact rate of 85 to 92% (homeowner called you specifically). Booking rate of 65 to 80% on contacts (high-intent, already chose you). Cost per booked job: **$0 to $40**. The best channel in home services that most contractors treat as a background feature rather than an active asset.
+
+**Referrals:** CPL of $0 to $40 (if you run a referral incentive). Contact rate of 95%+. Booking rate of 70 to 80%. Cost per booked job: **$0 to $57**. The highest close rate of any source, consistently, because the homeowner arrives with trust already established. Most contractors leave referrals on organic auto-pilot and generate a fraction of what a systematic ask process would produce.
+
+**Google LSAs:** CPL of $40 to $90 depending on trade and market. Contact rate of 75 to 85% (calls arrive direct, no intermediate step). Booking rate of 50 to 65% on contacted leads. Cost per booked job: **$70 to $240** depending on ops performance. The best paid channel for most operations at most stages of growth.
+
+**Google Ads (segmented by job type):** CPL of $80 to $200. Contact rate of 65 to 80%. Booking rate of 40 to 55% on contacts. Cost per booked job: **$182 to $615** depending on campaign structure and job type. Works for high-ticket planned work (system replacement, repipe, reroof). Breaks on low-ticket emergency work where the ticket doesn't support the acquisition cost.
+
+**Angi/HomeAdvisor:** CPL of $55 to $120 (shared leads). Contact rate of 40 to 60% (heavily speed-dependent). Booking rate of 20 to 35% on contacts. Cost per booked job: **$229 to $960** depending on response time and follow-up discipline. The channel most commonly running above the defensible cost threshold for the job types it generates.
+
+**Facebook (cold):** CPL of $30 to $80. Contact rate of 50 to 65%. Booking rate of 25 to 35% on contacts. Cost per booked job: **$131 to $640** depending on offer type. Works for planned replacement work with the right offer framing. Does not work for emergency service leads.
+
+In every case, the CPL ranking and the cost-per-booked-job ranking are different. In several cases, the rank order inverts.
+
+---
+
+## The Phone Performance Multiplier
+
+The cost-per-booked-job formula has a property that makes it simultaneously more powerful and more humbling: phone performance affects the output of every channel simultaneously.
+
+Contact rate -- one of the three formula inputs -- is driven primarily by how well your operation answers calls and follows up on contacts. A 10-point improvement in contact rate (from 65% to 75%) reduces cost per booked job by roughly 13% on every channel you're running.
+
+A 10-point improvement in booking rate on contacted leads does the same.
+
+Combined: moving from average ops (65% contact rate, 40% booking rate on contacts) to strong ops (80% contact rate, 58% booking rate) reduces cost per booked job by approximately 47% across every channel simultaneously. No change to CPL. No change to channel mix. No change to ad spend. Just the internal conversion chain improving.
+
+This is why the phone revenue articles, the CSR benchmark articles, and the marketing budget articles across HVAC, roofing, and plumbing consistently arrive at the same conclusion: improving phone performance produces more revenue improvement per dollar than any channel reallocation. The channel determines the cost and intent level of the lead. The phone operation determines what percentage of those leads become revenue.
+
+Cost per booked job makes this relationship visible because it includes both variables in a single number. CPL hides the phone performance variable entirely.
+
+---
+
+## Why Your Current Report Probably Can't Show You This
+
+Calculating cost per booked job by channel requires connecting three data sources that most marketing setups keep separate:
+
+1. **Ad platform data:** How much was spent and how many leads/contacts were generated, by channel. Usually accessible from Google Ads, LSA dashboard, Angi dashboard, etc.
+
+2. **Call tracking data:** Of the contacts generated, how many became actual conversations? This requires call tracking (CallRail or equivalent) that tags calls by source and records whether they were answered.
+
+3. **CRM or field service platform data:** Of the conversations, how many became booked and completed jobs? This requires source attribution in your scheduling system -- a lead source field on each job that maps back to the channel that generated the contact.
+
+When all three are connected, cost per booked job is calculable in a monthly report. When they're not, you have three islands of data that don't speak to each other. The ad platform shows clicks and leads. The call tracking shows calls and answer rates. The dispatch board shows jobs. Nobody has connected them.
+
+Most agencies manage the ad platform data. Most don't have access to the booking and job completion data. This is the structural reason most agency reports stop at cost per lead -- not because they're hiding something, but because the data connection doesn't exist in their workflow.
+
+Building it requires a one-time setup: call tracking configured to tag calls by source, a lead source field on every job in your CRM or FSP, and a monthly export that matches spend to booked jobs. Once the infrastructure exists, cost per booked job takes 20 minutes to calculate. Without it, you're operating on CPL and hoping the rest of the chain is working.
+
+---
+
+## The 10% Rule
+
+Every channel needs a defensible cost per booked job threshold. Without one, there's no clear basis for deciding when a channel is working and when it isn't.
+
+The rule that holds across all three trades and all major channel types: **cost per booked job should not exceed 10% of your average ticket for the job type that channel generates.**
+
+At $380 average emergency plumbing ticket: maximum defensible cost per booked job is $38.
+At $1,850 average water heater replacement: maximum is $185.
+At $14,000 average roofing replacement: maximum is $1,400.
+At $2,800 average HVAC replacement: maximum is $280.
+
+Every channel gets measured against the threshold for the job type it generates -- not a single blended threshold. A channel producing emergency service calls is held to a different standard than one producing planned replacement leads. This is why the channel comparison articles segment by job type: the same channel can be defensible for one job type and indefensible for another at the same CPL.
+
+Run this calculation for each channel monthly. Any channel above 10% of average ticket on cost per booked job either gets restructured or gets cut. Any channel below 10% gets more budget.
+
+The [Marketing Cost Calculator](/tools/marketing-calculator) runs this calculation for your channels with your actual numbers. It takes your CPL by channel, your contact rate, your booking rate, and your average ticket per channel, and produces cost per booked job alongside the 10% threshold for your specific operation. Most contractors who run it for the first time find at least one channel running above 15% of ticket -- which is where the budget conversation should start, not with the CPL column in an agency report.
+
+---
+
+## What to Do This Week
+
+1. **Pick one channel and run the formula.** Take your largest paid channel. Pull total spend last month, total contacts generated, contacts you actually reached (not raw leads), and completed jobs sourced from that channel. CPL ÷ (contact rate × booking rate) = cost per booked job. Compare that to 10% of your average ticket for that job type.
+
+2. **Check whether you have call tracking.** If you can't separate calls by source and see which ones were answered, you're missing the contact rate input. CallRail is $45/month and solves this. Without it, you're estimating the formula instead of calculating it.
+
+3. **Check whether your jobs have source tags.** Open your last 20 completed jobs in your field service platform. Does each one have a lead source assigned? If not, you can't calculate booking rate by channel. Adding "how did you hear about us" to your CSR's intake script is the manual version while you set up automated tracking.
+
+4. **Run the Marketing Cost Calculator.** Enter your CPL by channel, your contact rate (estimated or tracked), your booking rate on contacted leads, and your average ticket. The tool produces cost per booked job by channel and benchmarks it against the top 25% in your trade. Three minutes. Shows you which channels are working and which ones aren't in the metric that actually connects to revenue.
+
+---
+
+## Frequently Asked Questions
+
+### What is cost per booked job and how is it different from cost per lead?
+
+Cost per lead is what you pay to generate a contact -- someone who called or submitted a form. Cost per booked job is what you pay to produce a completed, invoiced job. The formula: CPL ÷ (contact rate × booking rate on contacted leads). A $65 LSA lead that books at 52% effective rate costs $125 per booked job. A $38 aggregator lead that books at 15% effective rate costs $253 per booked job. The $65 lead is cheaper on cost per booked job despite being 71% more expensive on cost per lead.
+
+### What is a good cost per booked job for HVAC, roofing, or plumbing?
+
+The target is below 10% of your average ticket for the job type the channel generates. At $2,800 average HVAC replacement: below $280. At $14,000 average roofing replacement: below $1,400. At $380 average emergency plumbing call: below $38. The threshold by job type is what determines whether a channel is defensible -- not an industry average or a competitor's number. Channels above 12% of average ticket should be restructured before the budget renews.
+
+### Why doesn't my agency report show cost per booked job?
+
+Most agency reports stop at cost per lead because that's the data the agency controls: ad platform spend and lead volume. Cost per booked job requires connecting ad data to call tracking data to booking and job completion data in your field service platform. Agencies typically don't have access to the last two data sources. Building the connection requires call tracking (CallRail or equivalent) configured to tag calls by channel, plus lead source attribution on jobs in your CRM or FSP. Once the infrastructure exists, cost per booked job is calculable monthly. The [Agency Report Card](/tools/agency-report-card) grades your current agency setup on whether this reporting is in place.
+
+### How do I calculate contact rate and booking rate for my channels?
+
+Contact rate: Of all the contacts generated by a channel (calls plus form submissions), what percentage resulted in an actual conversation with a live person? Requires call tracking to separate answered from unanswered calls by source. Booking rate: Of the conversations you had, what percentage became completed, invoiced jobs? Requires source attribution on jobs in your scheduling system. If you're estimating these rates rather than tracking them, your cost per booked job calculation is approximate. Approximate is still more useful than CPL alone, but tracked data produces the accurate number needed for reliable budget decisions.
+
+### How does phone performance affect cost per booked job?
+
+Significantly and across all channels simultaneously. Contact rate and booking rate are both inputs to the cost-per-booked-job formula. A 10-point improvement in contact rate (from 70% to 80%) reduces cost per booked job by approximately 13% on every channel. A 10-point improvement in booking rate does the same. Combined, moving from average to top-quartile phone performance reduces cost per booked job by 40 to 50% across your entire channel mix -- at zero incremental marketing spend. The [phone revenue calculator](/tools/phone-calculator) quantifies what your current answer rate gap costs annually, which frames the phone improvement investment alongside the marketing channel optimization question.
+
+### Should I use cost per booked job or cost per acquisition?
+
+They refer to the same concept for home service businesses. Cost per acquisition (CPA) in most marketing contexts means cost per customer acquired. For contractors, a booked and completed job is the unit of customer acquisition. Some analyses use cost per signed contract (for replacement work where the estimate and the job are separated in time) or cost per booked appointment. The underlying principle is the same: trace spending back to the outcome that actually generates revenue, not back to the intermediate step (lead, click, impression) that may or may not result in revenue.
+
+### What's the fastest way to know if my marketing is working?
+
+Calculate cost per booked job for each channel you're running and compare it to 10% of your average ticket for the job types that channel generates. Any channel above 10% of ticket needs attention before the next budget cycle. Any channel below 10% deserves more investment. This calculation, done monthly, replaces the CPL column in your agency report as the primary basis for marketing budget decisions. The Marketing Cost Calculator produces this output in three minutes from four inputs per channel.

@@ -13,8 +13,8 @@ heroImageAlt: "HVAC company CSR following up on estimates by phone"
 readTime: 13
 featured: false
 pills: ["Close Rate", "Follow-Up", "Scripts"]
-primaryCtaLabel: "Calculate Your Close Rate Loss"
-primaryCtaHref: "/tools/phone-calculator"
+primaryCtaLabel: "Calculate Your Follow-Up Gap"
+primaryCtaHref: "/tools/estimate-follow-up"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["hvac estimate follow up", "hvac close rate", "how to follow up on hvac estimate", "hvac sales follow up sequence", "hvac estimate closing rate", "home service estimate follow up", "hvac estimate objection handling", "roofing estimate follow up", "how to improve estimate close rate", "hvac csr follow up scripts"]
@@ -82,7 +82,7 @@ Same ad spend. Same number of techs running estimates. The follow-up sequence re
 
 That's the number that matters. Not the close rate percentage -- the dollar amount sitting in estimates that never got a second call.
 
-Use the [phone revenue calculator](/tools/phone-calculator) to run the same math on your own numbers. Plug in your estimate volume, your current close rate, and your average ticket. The gap usually surprises people.
+Use the [Estimate Follow-Up Calculator](/tools/estimate-follow-up) to run the same math on your own numbers. Plug in your estimate volume, your current close rate, and your average ticket. The gap usually surprises people.
 
 ![Business owner reviewing estimate close rate data on laptop](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80)
 *Most owners focus on generating more estimates. The faster ROI is closing more of the ones already sent.*
@@ -284,7 +284,7 @@ Factual, not salesy. And usually true.
 2. **Check your current follow-up.** For the estimates that didn't close -- how many follow-up attempts did each receive? Be honest. If the answer is zero or one, you have the same problem the $2.1M company had.
 3. **Build the tracking sheet today.** Takes 10 minutes. Add every open estimate from the past 30 days.
 4. **Write your Touch 1 script.** Customize the template above with your company name, your tech's name, and the specific system language your customers use. Read it out loud until it doesn't sound like you're reading it.
-5. **Use the [Phone Revenue Calculator](/tools/phone-calculator)** to see what your current close rate is costing you annually -- and what recovering even half the gap is worth in dollars.
+5. **Use the [Estimate Follow-Up Calculator](/tools/estimate-follow-up)** to see what your current close rate is costing you annually -- and what recovering even half the gap is worth in dollars.
 
 ---
 

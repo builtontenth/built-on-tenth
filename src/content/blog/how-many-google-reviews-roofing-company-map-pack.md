@@ -13,8 +13,8 @@ readTime: 12
 featured: false
 preview: "Review count alone does not rank a roofing company. Velocity, rating, and market competition matter more. Here's the benchmark to use before you spend another dollar on leads."
 pills: ["Map pack benchmark", "Review velocity", "Market tier framework"]
-primaryCtaLabel: "Audit Your Website"
-primaryCtaHref: "/tools/website-audit"
+primaryCtaLabel: "Score Your GBP"
+primaryCtaHref: "/tools/gbp-scorecard"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["how many google reviews roofing company", "roofing google reviews to rank", "roofing map pack ranking", "roofing google business profile reviews", "roofing review benchmark", "roofing local seo reviews", "how to rank roofing company google maps", "roofing company review count", "roofing review velocity", "roofing gbp optimization"]
@@ -207,7 +207,7 @@ This is the same insight applied to paid lead channels: the [Angi leads analysis
 2. **Set your velocity target.** Match or exceed the monthly add rate of whoever is in position one or two. That's your operational goal -- not a total count.
 3. **Build the review request text today.** Generate your direct Google review link from your GBP. Store the template in every tech's phone. Test it on the next job this week.
 4. **Start tracking by technician.** Pull last month's review count. Divide by your tech team. That's your current per-tech average. Share it at the next morning meeting.
-5. **Use the [website audit tool](/tools/website-audit)** to check the other GBP signals that compound with reviews -- profile completeness, mobile load time, and phone number visibility. Reviews get you into consideration; the rest of the profile is what closes the click.
+5. **Use the [GBP Scorecard](/tools/gbp-scorecard)** to check the other signals that compound with reviews -- profile completeness, activity, engagement, and the rest of the map pack picture. Reviews get you into consideration; the rest of the profile is what closes the click.
 
 ---
 

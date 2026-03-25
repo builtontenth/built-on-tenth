@@ -148,6 +148,34 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"contractor-estimate-follow-up-gap.md": {
+	id: "contractor-estimate-follow-up-gap.md";
+  slug: "contractor-estimate-follow-up-gap";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"contractor-website-not-converting.md": {
+	id: "contractor-website-not-converting.md";
+  slug: "contractor-website-not-converting";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"cost-per-lead-vs-cost-per-booked-job-contractor.md": {
+	id: "cost-per-lead-vs-cost-per-booked-job-contractor.md";
+  slug: "cost-per-lead-vs-cost-per-booked-job-contractor";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"google-business-profile-audit-contractor.md": {
+	id: "google-business-profile-audit-contractor.md";
+  slug: "google-business-profile-audit-contractor";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-hvac-service-agreements-add-200k-annual-revenue.md": {
 	id: "how-hvac-service-agreements-add-200k-annual-revenue.md";
   slug: "how-hvac-service-agreements-add-200k-annual-revenue";
@@ -218,6 +246,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"hvac-marketing-agency-report-card.md": {
+	id: "hvac-marketing-agency-report-card.md";
+  slug: "hvac-marketing-agency-report-card";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hvac-marketing-benchmarks-2026-what-top-performers-spend.md": {
 	id: "hvac-marketing-benchmarks-2026-what-top-performers-spend.md";
   slug: "hvac-marketing-benchmarks-2026-what-top-performers-spend";
@@ -267,6 +302,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"revenue-per-technician-benchmark-trades.md": {
+	id: "revenue-per-technician-benchmark-trades.md";
+  slug: "revenue-per-technician-benchmark-trades";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "revenue-per-technician-plumbing-business-scaling.md": {
 	id: "revenue-per-technician-plumbing-business-scaling.md";
   slug: "revenue-per-technician-plumbing-business-scaling";
@@ -284,6 +326,13 @@ declare module 'astro:content' {
 "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md": {
 	id: "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md";
   slug: "the-follow-up-sequence-that-moved-close-rate-to-40-percent";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"true-cost-missed-calls-contractor.md": {
+	id: "true-cost-missed-calls-contractor.md";
+  slug: "true-cost-missed-calls-contractor";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

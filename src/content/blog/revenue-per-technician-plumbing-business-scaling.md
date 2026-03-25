@@ -13,8 +13,8 @@ readTime: 13
 featured: false
 preview: "Top-performing plumbing companies generate $200K to $300K per technician annually. Most companies don't track this number. Here's how to calculate it, what drives the gap, and what it tells you about whether adding a truck will actually grow revenue."
 pills: ["$200K-$300K benchmark", "5 gap drivers", "Per-tech math"]
-primaryCtaLabel: "Try the Phone Revenue Calculator"
-primaryCtaHref: "/tools/phone-calculator"
+primaryCtaLabel: "Benchmark Your Team"
+primaryCtaHref: "/tools/revenue-per-tech"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["plumbing revenue per technician", "plumbing technician productivity", "plumbing business scaling", "revenue per tech plumbing", "plumbing kpi benchmarks", "plumbing billable hours", "plumbing technician performance", "how to scale plumbing business", "plumbing dispatch efficiency", "plumbing tech utilization rate"]
@@ -180,7 +180,7 @@ And if planned-work estimates are stalling after the first visit, that drags dow
 2. **Pull it by individual technician.** Same math, filtered by who was assigned the job. Find your spread -- the gap between your highest and lowest producer over the last 90 days.
 3. **Identify which variable is driving the gap.** Use the diagnostic questions above for average ticket, jobs per day, utilization rate, upsell rate, and parts runs. You're looking for the single biggest lever, not a list of 10 things to fix simultaneously.
 4. **Check your billable utilization rate.** If your field service platform tracks hours by category, pull billable vs. total hours for last month. If it doesn't, start tracking it manually -- it's the most important operational metric for a field service business.
-5. **Use the [phone revenue calculator](/tools/phone-calculator)** to see what your current call answer rate and booking rate cost you per month. Phone ops and tech productivity are two sides of the same revenue equation -- fixing one without the other leaves money on both tables.
+5. **Use the [Revenue Per Technician Benchmarker](/tools/revenue-per-tech)** to see where your current team output sits against the benchmark. Then pair it with the phone calculator if you need to isolate the inbound side of the gap.
 
 ---
 
