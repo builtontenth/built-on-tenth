@@ -637,7 +637,7 @@ body::before {
 .c-main {
   position: absolute;
   top: 0; left: 0;
-  width: 66%; height: 70%;
+  width: 58%; height: 55%;
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--rule2);
@@ -661,16 +661,16 @@ body::before {
 .c-sec {
   position: absolute;
   bottom: 0; right: 0;
-  width: 58%; height: 55%;
+  width: 66%; height: 70%;
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--rule2);
 }
 /* Stat overlay card */
 .stat-float {
-  position: relative;
-  align-self: flex-start;
-  margin-left: 20px;
+  position: absolute;
+  left: 42px;
+  bottom: 26px;
   background: rgba(15,22,20,0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -1545,15 +1545,6 @@ img[data-failed] ~ .img-fb { display: flex; }
         <div class="collage">
           <div class="c-main">
             <img
-              src="/images/brand/core/core-home-problem-main.png"
-              alt="Field lead arriving at a residential service call"
-              loading="lazy"
-              onerror="this.setAttribute('data-failed','1')"
-            />
-            <div class="img-fb"><span style="font-size:28px;opacity:0.2">🔧</span></div>
-          </div>
-          <div class="c-sec">
-            <img
               src="/images/brand/core/core-home-problem-secondary.png"
               alt="Office manager handling dispatch pressure"
               loading="lazy"
@@ -1561,10 +1552,19 @@ img[data-failed] ~ .img-fb { display: flex; }
             />
             <div class="img-fb"><span style="font-size:28px;opacity:0.2">📊</span></div>
           </div>
-        </div>
-        <div class="stat-float">
-          <div class="sf-n">67%</div>
-          <div class="sf-l">of owners can't connect ad spend to booked jobs</div>
+          <div class="c-sec">
+            <img
+              src="/images/brand/core/core-home-problem-main.png"
+              alt="Field lead arriving at a residential service call"
+              loading="lazy"
+              onerror="this.setAttribute('data-failed','1')"
+            />
+            <div class="img-fb"><span style="font-size:28px;opacity:0.2">🔧</span></div>
+          </div>
+          <div class="stat-float">
+            <div class="sf-n">67%</div>
+            <div class="sf-l">of owners can't connect ad spend to booked jobs</div>
+          </div>
         </div>
       </div>
 
