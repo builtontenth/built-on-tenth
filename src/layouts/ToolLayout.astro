@@ -42,6 +42,16 @@ const expandedTools = [
 ];
 
 const allTools = suiteVariant === 'expanded' ? expandedTools : legacyTools;
+const toolImageMap = {
+  'phone-calculator': '/images/brand/core/tool-phone-calculator.png',
+  'estimate-follow-up': '/images/brand/core/tool-estimate-follow-up.png',
+  'agency-report-card': '/images/brand/core/tool-agency-report-card.png',
+  'revenue-per-tech': '/images/brand/core/tool-revenue-per-tech.png',
+  'marketing-calculator': '/images/brand/core/tool-marketing-calculator.png',
+  'gbp-scorecard': '/images/brand/core/tool-gbp-scorecard.png',
+  'website-audit': '/images/brand/core/tool-website-audit.png',
+};
+const toolHeroImage = toolImageMap[slug as keyof typeof toolImageMap] ?? null;
 ---
 <Layout title={`${toolName} - Free Tool | Built on Tenth`} description={metaDescription} active="tools">
 
@@ -82,8 +92,25 @@ const allTools = suiteVariant === 'expanded' ? expandedTools : legacyTools;
   padding: 56px 48px 48px;
   background: var(--bg);
   border-bottom: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
 }
-.tool-hero-inner { max-width: 1200px; margin: 0 auto; }
+.tool-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.11;
+  filter: grayscale(18%);
+}
+.tool-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(9,12,11,0.9) 0%, rgba(9,12,11,0.78) 32%, rgba(9,12,11,0.55) 58%, rgba(9,12,11,0.82) 100%),
+    radial-gradient(ellipse 60% 60% at 18% 48%, rgba(0,196,154,0.045) 0%, transparent 62%);
+}
+.tool-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
 .tool-num-badge {
   display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;
   font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
@@ -293,6 +320,8 @@ const allTools = suiteVariant === 'expanded' ? expandedTools : legacyTools;
 
   <!-- Hero -->
   <div class="tool-hero">
+    {toolHeroImage && <div class="tool-hero-bg" style={`background-image:url('${toolHeroImage}')`}></div>}
+    <div class="tool-hero-overlay"></div>
     <div class="tool-hero-inner">
       <div class="tool-num-badge">Tool {toolNumber} of {toolCount}</div>
       <h1 set:html={headline}></h1>
