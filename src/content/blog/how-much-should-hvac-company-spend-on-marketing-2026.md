@@ -8,7 +8,7 @@ author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
 heroImage: "/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026.png"
-heroImageAlt: "HVAC technician servicing rooftop AC unit"
+heroImageAlt: "HVAC owner reviewing marketing budget notes and invoices in a small service office"
 readTime: 14
 featured: true
 preview: "Most owners are spending $8K to $15K/month without knowing their cost per booked job. Here's the actual math, benchmarks, a 5-step budget formula, and the three places HVAC companies silently leak marketing budget."
@@ -163,10 +163,6 @@ The companies that figure this out stop thinking about marketing as a monthly co
 ## What "Good" Looks Like at Different Revenue Levels
 
 Here's a benchmark table based on top-quartile HVAC companies. These are the numbers you're aiming for:
-
-![HVAC service van in residential neighborhood](https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80)
-
-*Top-performing HVAC companies track marketing performance per truck, not just per campaign.*
 
 | Metric | Under $1M | $1M to $3M | $3M to $5M |
 | --- | --- | --- | --- |

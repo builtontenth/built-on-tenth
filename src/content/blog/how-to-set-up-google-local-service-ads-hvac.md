@@ -8,7 +8,7 @@ author: "Tanvir Hossain"
 category: "Channel Teardowns"
 trade: ["HVAC"]
 heroImage: "/images/brand/hvac/blog-how-to-set-up-google-local-service-ads-hvac.png"
-heroImageAlt: "HVAC technician in uniform ready for a service call"
+heroImageAlt: "HVAC owner checking license and insurance paperwork beside a service van before Local Service Ads setup"
 readTime: 12
 featured: false
 preview: "LSAs sit above Google Ads and charge per lead, not per click. Most HVAC companies either haven't set them up or set them up wrong. Here's the full process and what to do once they're live."

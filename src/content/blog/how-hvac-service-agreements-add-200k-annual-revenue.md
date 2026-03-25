@@ -8,7 +8,7 @@ author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
 heroImage: "/images/brand/hvac/blog-how-hvac-service-agreements-add-200k-annual-revenue.png"
-heroImageAlt: "HVAC technician performing a maintenance visit at a residential home"
+heroImageAlt: "HVAC technician documenting maintenance findings during a residential service agreement visit"
 readTime: 13
 featured: false
 preview: "Most HVAC companies have a service agreement program that produces almost nothing. The ones that run it right add $150K to $300K in recurring revenue and fill their slow season dispatch board without buying a single extra lead."
