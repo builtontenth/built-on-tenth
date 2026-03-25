@@ -172,8 +172,7 @@ const breadcrumbSchema = {
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--rule2);
-  background: linear-gradient(180deg, rgba(16,22,20,0.94), rgba(11,16,14,0.98));
-  padding: 18px;
+  background: var(--bg3);
 }
 .ah-media::before {
   content: '';
@@ -186,11 +185,10 @@ const breadcrumbSchema = {
 .ah-media img {
   width: 100%;
   height: 420px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
-  filter: grayscale(6%) brightness(0.99);
-  border-radius: 4px;
+  filter: grayscale(8%) brightness(0.95);
 }
 .ah-media-caption {
   position: relative;
@@ -385,17 +383,15 @@ const breadcrumbSchema = {
   overflow: hidden;
   margin: 36px 0 12px;
   position: relative;
-  background: linear-gradient(180deg, rgba(16,22,20,0.94), rgba(11,16,14,0.98));
+  background: var(--bg3);
   border: 1px solid var(--rule);
-  padding: 16px;
 }
 :global(.article-content p > img) {
   width: 100%;
   height: 380px;
-  object-fit: contain;
-  filter: grayscale(6%) brightness(0.99);
+  object-fit: cover;
+  filter: grayscale(15%) brightness(0.82);
   display: block;
-  border-radius: 4px;
 }
 :global(.article-content p:has(> img) + p:has(> em:only-child)) {
   font-family: var(--mono);
