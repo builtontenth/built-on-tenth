@@ -57,9 +57,14 @@ const toolLibrary = {
     description: 'Benchmark true cost per booked job against stronger operators.',
   },
   '/tools/lead-grader': {
-    href: '/tools/lead-grader',
-    label: 'Lead Source Grader',
-    description: 'Compare channels side by side and decide where to scale, fix, or cut.',
+    href: '/tools/agency-report-card',
+    label: 'Agency Report Card',
+    description: 'Grade whether your agency is measuring booked jobs or hiding behind vanity metrics.',
+  },
+  '/tools/agency-report-card': {
+    href: '/tools/agency-report-card',
+    label: 'Agency Report Card',
+    description: 'Grade whether your agency is measuring booked jobs or hiding behind vanity metrics.',
   },
   '/tools/website-audit': {
     href: '/tools/website-audit',
@@ -67,15 +72,20 @@ const toolLibrary = {
     description: 'Check for mobile, speed, trust, and phone-visibility leaks.',
   },
   '/tools/capacity-planner': {
-    href: '/tools/capacity-planner',
-    label: 'Capacity-to-Demand Planner',
-    description: 'Model whether more leads make sense before you buy them.',
+    href: '/tools/revenue-per-tech',
+    label: 'Revenue Per Technician Benchmarker',
+    description: 'See whether your team output is below benchmark and how big the gap is.',
+  },
+  '/tools/revenue-per-tech': {
+    href: '/tools/revenue-per-tech',
+    label: 'Revenue Per Technician Benchmarker',
+    description: 'See whether your team output is below benchmark and how big the gap is.',
   },
 };
 
 const fallbackToolsByTrade = {
   HVAC: ['/tools/marketing-calculator', '/tools/phone-calculator'],
-  Roofing: ['/tools/lead-grader', '/tools/phone-calculator'],
+  Roofing: ['/tools/agency-report-card', '/tools/phone-calculator'],
   Plumbing: ['/tools/website-audit', '/tools/phone-calculator'],
 };
 

@@ -13,8 +13,8 @@ readTime: 12
 featured: false
 preview: "The average roofing company closes 27% of its estimates. The ones offering financing close 40-50%. The gap isn't pricing or pitch -- it's whether the homeowner can say yes without writing a five-figure check."
 pills: ["27% avg close rate", "Dealer fee math", "Platform comparison"]
-primaryCtaLabel: "Grade Your Lead Sources"
-primaryCtaHref: "/tools/lead-grader"
+primaryCtaLabel: "Calculate Your Marketing Cost"
+primaryCtaHref: "/tools/marketing-calculator"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["roofing contractor financing", "roofing company financing options", "how to offer financing roofing", "roofing dealer fees", "greensky roofing", "hearth roofing financing", "roofing close rate improvement", "roofing estimate close rate", "contractor financing programs roofing", "roofing payment plans 2026"]
@@ -202,7 +202,7 @@ Setting up contractor financing with a single lender takes one to five business 
 2. **Run the close rate math on your own estimates.** Pull last month's estimates sent and jobs closed. Calculate your current close rate. Then run the scenario above with your actual ticket size and estimate volume. That number is what financing is worth to your business specifically.
 3. **Write your presentation script.** Customize the language above for your market and your company name. Practice it before the next estimate so it doesn't sound new.
 4. **Decide how to handle dealer fees in pricing.** Build them in upfront or absorb them on financed jobs -- either works, but make the decision deliberately before the first financed job rather than discovering the fee after the fact.
-5. **Use the [Lead Source Grader](/tools/lead-grader)** to see where your close rate ranks alongside your lead sources. Financing improves close rate across every source simultaneously -- it's one of the few changes that makes every channel more efficient at once.
+5. **Use the [Marketing Cost Calculator](/tools/marketing-calculator)** to see what your current close rate does to cost per booked job. Financing improves close rate across every source simultaneously -- it's one of the few changes that makes every channel more efficient at once.
 
 ---
 

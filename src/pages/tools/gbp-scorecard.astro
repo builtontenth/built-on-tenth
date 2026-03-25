@@ -1,0 +1,456 @@
+---
+import ToolShareResult from '../../components/ToolShareResult.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const suiteTools = [
+  { num: '01', name: 'Phone Revenue', href: '/tools/phone-calculator' },
+  { num: '02', name: 'Estimate Follow-Up', href: '/tools/estimate-follow-up' },
+  { num: '03', name: 'Agency Report Card', href: '/tools/agency-report-card' },
+  { num: '04', name: 'Revenue Per Tech', href: '/tools/revenue-per-tech' },
+  { num: '05', name: 'Marketing Cost', href: '/tools/marketing-calculator' },
+  { num: '07', name: 'Website Conversion', href: '/tools/website-audit' },
+];
+---
+<ToolLayout
+  toolNumber="06"
+  toolCount="07"
+  toolName="Google Business Profile Scorecard"
+  slug="gbp-scorecard"
+  suiteVariant="expanded"
+  showCrossTool={false}
+  headline="How Strong Is Your Google Business Profile?<br><em>Score It in 3 Minutes.</em>"
+  subheadline="The map pack is the best free lead source in home services. Most companies are giving ground to competitors on basic GBP factors they do not even know about. Score yourself on the same rubric we use for competitor teardowns."
+  metaDescription="Free Google Business Profile scorecard for home service companies. Score your GBP on a 35-point rubric and see where you are giving up map pack ground."
+>
+
+<style>
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start; padding-bottom: 80px; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+.ip-note { font-size: 13px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 22px; padding: 12px 14px; background: var(--bg3); border-radius: 4px; border-left: 2px solid var(--teal); }
+
+.section { margin-bottom: 22px; }
+.section-title { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); padding: 8px 0; border-bottom: 1px solid var(--rule); margin-bottom: 12px; }
+.question { margin-bottom: 16px; }
+.question-label { display: block; margin-bottom: 8px; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); }
+.field-select {
+  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px;
+  font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.2s;
+  cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.field-select:focus { border-color: rgba(0,196,154,0.55); }
+
+.calc-btn {
+  width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
+}
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
+
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.status-wait { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.status-good { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.status-warn { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
+.status-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+.rp-body { padding: 24px; }
+
+.empty-state { text-align: center; padding: 38px 16px; }
+.empty-icon { font-size: 30px; opacity: 0.25; margin-bottom: 12px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.empty-text strong { color: var(--ink2); font-weight: 500; }
+.result-section { display: none; }
+.result-section.show { display: block; }
+
+.grade-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); text-align: center; }
+.grade-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.score-line { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--ink2); margin-bottom: 6px; }
+.grade-value { font-family: var(--serif); font-size: 74px; line-height: 0.95; color: var(--ink); margin-bottom: 8px; }
+.verdict { font-size: 12.5px; line-height: 1.55; color: var(--ink2); font-weight: 300; }
+
+.breakdown-title, .context-title, .rail-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.breakdown-rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.breakdown-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
+.breakdown-key { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
+.breakdown-value { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+
+.context-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.context-item { padding: 10px 12px; border-radius: 4px; background: rgba(201,160,53,0.06); border: 1px solid rgba(201,160,53,0.16); }
+.context-item strong { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; color: var(--ink); }
+.context-item span { display: block; font-size: 12px; line-height: 1.58; color: var(--ink2); font-weight: 300; }
+
+.psych-line, .consequence-line, .cta-note {
+  font-size: 12px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+}
+.psych-line { margin-bottom: 16px; }
+.consequence-line { margin: 0 0 14px; }
+
+.tool-cta {
+  display: block; width: 100%; padding: 14px; border-radius: 4px; text-decoration: none; text-align: center;
+  border: 1.5px solid var(--teal); background: var(--teal); color: var(--bg); transition: background 0.2s;
+}
+.tool-cta:hover { background: #00DFB0; }
+.tool-cta-title { display: block; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.tool-cta-copy { display: block; margin-top: 6px; font-size: 12px; line-height: 1.5; color: rgba(9,12,11,0.84); font-weight: 400; }
+.cta-note { text-align: center; margin-top: 10px; color: var(--ink3); }
+
+.result-rail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.rail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.rail-link {
+  display: block; padding: 12px; border-radius: 4px; text-decoration: none; background: var(--bg3); border: 1px solid var(--rule2);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.rail-link:hover { border-color: var(--teal4); transform: translateY(-1px); }
+.rail-num { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 4px; }
+.rail-name { display: block; font-size: 12.5px; color: var(--ink); line-height: 1.35; }
+.full-picture {
+  display: block; padding: 14px; border-radius: 4px; text-decoration: none; background: rgba(0,196,154,0.05);
+  border: 1px solid rgba(0,196,154,0.28);
+}
+.full-picture-label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.full-picture-title { display: block; font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.full-picture-copy { display: block; font-size: 12px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
+
+@media (max-width: 960px) {
+  .tool-layout { grid-template-columns: 1fr; padding-bottom: 56px; }
+  .result-panel { position: static; }
+}
+
+@media (max-width: 600px) {
+  .rail-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">GBP Self-Assessment Rubric</span>
+      <span class="ip-micro">35-point scorecard</span>
+    </div>
+    <div class="ip-body">
+      <p class="ip-note">Score yourself based on what is actually live on your profile right now. The value of this tool is not the grade alone. It is seeing which section is giving away the most map pack ground.</p>
+
+      <div class="section">
+        <div class="section-title">Profile Basics</div>
+        <div class="question">
+          <label class="question-label" for="q1">Primary category</label>
+          <select class="field-select" id="q1">
+            <option value="">Select your current setup</option>
+            <option value="3">HVAC contractor / Roofing contractor / Plumbing service - correct match</option>
+            <option value="1">Close but not exact</option>
+            <option value="0">Wrong or missing</option>
+          </select>
+        </div>
+        <div class="question">
+          <label class="question-label" for="q2">Business hours</label>
+          <select class="field-select" id="q2">
+            <option value="">Select your current setup</option>
+            <option value="2">All 7 days listed</option>
+            <option value="1">5-6 days</option>
+            <option value="0">Missing or incomplete</option>
+          </select>
+        </div>
+        <div class="question">
+          <label class="question-label" for="q3">Services listed on profile</label>
+          <select class="field-select" id="q3">
+            <option value="">Select your current setup</option>
+            <option value="3">Full service list with individual services</option>
+            <option value="2">Partial list</option>
+            <option value="0">None listed</option>
+          </select>
+        </div>
+        <div class="question">
+          <label class="question-label" for="q4">Business description</label>
+          <select class="field-select" id="q4">
+            <option value="">Select your current setup</option>
+            <option value="3">Specific - mentions trade, city, key services, years in business</option>
+            <option value="1">Generic</option>
+            <option value="0">Empty</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Photos and Posts</div>
+        <div class="question">
+          <label class="question-label" for="q5">Photo count</label>
+          <select class="field-select" id="q5">
+            <option value="">Select your current setup</option>
+            <option value="4">20 or more photos</option>
+            <option value="3">10-19</option>
+            <option value="2">5-9</option>
+            <option value="1">Fewer than 5</option>
+          </select>
+        </div>
+        <div class="question">
+          <label class="question-label" for="q6">Most recent Google Post</label>
+          <select class="field-select" id="q6">
+            <option value="">Select your current setup</option>
+            <option value="3">Within last 30 days</option>
+            <option value="2">Within 90 days</option>
+            <option value="1">Within 6 months</option>
+            <option value="0">Older than 6 months or none</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Reviews</div>
+        <div class="question">
+          <label class="question-label" for="q7">Total Google review count</label>
+          <select class="field-select" id="q7">
+            <option value="">Select your current setup</option>
+            <option value="5">500 or more</option>
+            <option value="4">300-499</option>
+            <option value="3">150-299</option>
+            <option value="2">50-149</option>
+            <option value="1">Fewer than 50</option>
+          </select>
+        </div>
+        <div class="question">
+          <label class="question-label" for="q8">Average star rating</label>
+          <select class="field-select" id="q8">
+            <option value="">Select your current setup</option>
+            <option value="3">4.8 or higher</option>
+            <option value="2">4.5-4.7</option>
+            <option value="1">4.0-4.4</option>
+            <option value="0">Below 4.0</option>
+          </select>
+        </div>
+        <div class="question">
+          <label class="question-label" for="q9">Reviews per month (velocity)</label>
+          <select class="field-select" id="q9">
+            <option value="">Select your current setup</option>
+            <option value="4">15 or more</option>
+            <option value="3">10-14</option>
+            <option value="2">5-9</option>
+            <option value="1">2-4</option>
+            <option value="0">Fewer than 2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Engagement</div>
+        <div class="question">
+          <label class="question-label" for="q10">Owner response rate on reviews</label>
+          <select class="field-select" id="q10">
+            <option value="">Select your current setup</option>
+            <option value="4">Responding to 90%+ of reviews</option>
+            <option value="3">70-89%</option>
+            <option value="2">50-69%</option>
+            <option value="1">Below 50%</option>
+            <option value="0">Not responding</option>
+          </select>
+        </div>
+        <div class="question">
+          <label class="question-label" for="q11">Q&amp;A section</label>
+          <select class="field-select" id="q11">
+            <option value="">Select your current setup</option>
+            <option value="2">3 or more questions answered</option>
+            <option value="1">1-2 answered</option>
+            <option value="0">None</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn">Score My GBP</button>
+    </div>
+  </div>
+
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">GBP Scorecard</span>
+      <span class="rp-status status-wait" id="rp-status">Waiting for your answers</span>
+    </div>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">06</div>
+        <p class="empty-text"><strong>Map pack leaders are usually doing the basics better.</strong><br /><br />This 35-point scorecard shows whether your profile is solid, average, or quietly leaking visibility every week.</p>
+      </div>
+
+      <div class="result-section" id="results">
+        <div class="grade-block">
+          <div class="grade-label">Your GBP Score</div>
+          <div class="score-line" id="score-line">0/35</div>
+          <div class="grade-value" id="grade-value">F</div>
+          <div class="verdict" id="grade-verdict">Your Google Business Profile is not set up to compete. Basic work here would move the needle immediately.</div>
+        </div>
+
+        <div class="breakdown-title">Section breakdown</div>
+        <div class="breakdown-rows">
+          <div class="breakdown-row"><span class="breakdown-key">Profile Basics</span><span class="breakdown-value" id="section1-score">0/11</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Photos and Posts</span><span class="breakdown-value" id="section2-score">0/7</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Reviews</span><span class="breakdown-value" id="section3-score">0/12</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Engagement</span><span class="breakdown-value" id="section4-score">0/5</span></div>
+        </div>
+
+        <div class="context-title">Benchmark context</div>
+        <div class="context-list" id="context-list"></div>
+
+        <p class="psych-line">Map pack position is not just about review count. It is the combination of every factor above, run consistently. The companies ahead of you in your market are not doing anything exotic. They are just doing all of this right.</p>
+        <p class="consequence-line" id="consequence-line">The sections below benchmark show where your profile is quietly giving away map pack ground every week.</p>
+
+        <a href="/apply?service=audit&source=gbp-scorecard" class="tool-cta">
+          <span class="tool-cta-title">See How You Stack Up Against Your Competitors</span>
+          <span class="tool-cta-copy">The Revenue Leak Audit includes a full competitor GBP benchmarking, your score against the top 3 companies in your market.</span>
+        </a>
+        <p class="cta-note">The real value is not a better-looking profile. It is owning more of the free calls your market is already generating.</p>
+
+        <ToolShareResult sectionId="share-section" />
+
+        <div class="result-rail">
+          <div class="rail-title">Continue your diagnosis</div>
+          <div class="rail-grid">
+            {suiteTools.map((tool) => (
+              <a href={tool.href} class="rail-link">
+                <span class="rail-num">{tool.num}</span>
+                <span class="rail-name">{tool.name}</span>
+              </a>
+            ))}
+          </div>
+          <a href="/apply?service=audit&source=gbp-scorecard" class="full-picture">
+            <span class="full-picture-label">Full picture</span>
+            <span class="full-picture-title">Revenue Leak Audit - $750</span>
+            <span class="full-picture-copy">Every leak. Every gap. Every fix. In writing.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const verdicts = {
+  A: 'Strong profile. You are competing well in the map pack on the factors you control.',
+  'A-': 'Strong profile. You are competing well in the map pack on the factors you control.',
+  'B+': 'Solid base with clear gaps. A few improvements could meaningfully move your map pack position.',
+  B: 'Solid base with clear gaps. A few improvements could meaningfully move your map pack position.',
+  C: 'Average profile in a market where your competitors are pulling ahead on these factors.',
+  D: 'Your GBP is giving away map pack ground every week. The gaps are fixable but they compound.',
+  F: 'Your Google Business Profile is not set up to compete. Basic work here would move the needle immediately.',
+};
+
+document.getElementById('calc-btn').addEventListener('click', calculate);
+
+const questionIds = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11'];
+
+function getGrade(score) {
+  if (score >= 30) return 'A';
+  if (score >= 26) return 'A-';
+  if (score >= 22) return 'B+';
+  if (score >= 18) return 'B';
+  if (score >= 13) return 'C';
+  if (score >= 8) return 'D';
+  return 'F';
+}
+
+function setStatus(grade) {
+  const status = document.getElementById('rp-status');
+  if (grade === 'A' || grade === 'A-') {
+    status.textContent = 'Strong profile';
+    status.className = 'rp-status status-good';
+    return;
+  }
+  if (grade === 'B+' || grade === 'B' || grade === 'C') {
+    status.textContent = 'Map pack gaps found';
+    status.className = 'rp-status status-warn';
+    return;
+  }
+  status.textContent = 'Serious GBP gaps';
+  status.className = 'rp-status status-alert';
+}
+
+function revealShare(score, grade) {
+  const shareSection = document.getElementById('share-section');
+  const toolUrl = window.location.origin + window.location.pathname;
+  shareSection.dataset.toolUrl = toolUrl;
+  shareSection.dataset.shareText = `Scored my Google Business Profile on a 35-point scorecard. Got ${score}/35 (${grade}). Free GBP scorecard for home service companies: ${toolUrl} via @builtontenth`;
+  shareSection.style.display = 'block';
+}
+
+function calculate() {
+  const hasMissingAnswer = questionIds.some((id) => document.getElementById(id).value === '');
+  if (hasMissingAnswer) {
+    const button = document.getElementById('calc-btn');
+    button.textContent = 'Please answer every question';
+    window.setTimeout(() => {
+      button.textContent = 'Score My GBP';
+    }, 2000);
+    return;
+  }
+
+  const section1 = ['q1', 'q2', 'q3', 'q4'].reduce((sum, id) => sum + parseInt(document.getElementById(id).value, 10), 0);
+  const section2 = ['q5', 'q6'].reduce((sum, id) => sum + parseInt(document.getElementById(id).value, 10), 0);
+  const section3 = ['q7', 'q8', 'q9'].reduce((sum, id) => sum + parseInt(document.getElementById(id).value, 10), 0);
+  const section4 = ['q10', 'q11'].reduce((sum, id) => sum + parseInt(document.getElementById(id).value, 10), 0);
+  const total = section1 + section2 + section3 + section4;
+  const grade = getGrade(total);
+
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'gbp-scorecard',
+    grade: grade.toLowerCase().replace('+', 'plus').replace('-', 'minus'),
+    score_bucket: total >= 26 ? '26_plus' : total >= 18 ? '18_to_25' : 'under_18',
+  });
+
+  setStatus(grade);
+
+  document.getElementById('score-line').textContent = `${total}/35`;
+  document.getElementById('grade-value').textContent = grade;
+  document.getElementById('grade-verdict').textContent = verdicts[grade];
+  document.getElementById('section1-score').textContent = `${section1}/11`;
+  document.getElementById('section2-score').textContent = `${section2}/7`;
+  document.getElementById('section3-score').textContent = `${section3}/12`;
+  document.getElementById('section4-score').textContent = `${section4}/5`;
+
+  const context = [];
+  if (section1 < 8) {
+    context.push({
+      title: 'Profile Basics below 8/11',
+      body: 'Dominant companies in top US markets average 9-10 on this section. Primary category, hours, and services are table stakes.',
+    });
+  }
+  if (section2 < 5) {
+    context.push({
+      title: 'Photos and Posts below 5/7',
+      body: 'Companies owning the map pack in competitive markets post at least every 3 weeks and maintain 20+ photos. This is low-cost and consistently underused by mid-size operators.',
+    });
+  }
+  if (section3 < 9) {
+    context.push({
+      title: 'Reviews below 9/12',
+      body: 'Top map pack positions in most mid-size markets require 200+ reviews at 4.7+ with 8-12 new reviews per month. Velocity matters more than total count once you pass 150.',
+    });
+  }
+  if (section4 < 3) {
+    context.push({
+      title: 'Engagement below 3/5',
+      body: 'Owner response rate above 90% is the single most underrated map pack signal. Most companies respond to less than half their reviews.',
+    });
+  }
+
+  const contextList = document.getElementById('context-list');
+  if (context.length === 0) {
+    contextList.innerHTML = '<div class="context-item"><strong>No section is below benchmark.</strong><span>Your current profile clears the minimum benchmark lines across all four sections. The next step is comparing this against the top 3 profiles in your market.</span></div>';
+  } else {
+    contextList.innerHTML = context.map((item) => `<div class="context-item"><strong>${item.title}</strong><span>${item.body}</span></div>`).join('');
+  }
+
+  document.getElementById('consequence-line').textContent = context.length === 0
+    ? 'You have the basics in place. The next move is comparing your profile against the local competitors taking the most map pack clicks.'
+    : 'The sections below benchmark show where your profile is quietly giving away map pack ground every week.';
+
+  revealShare(total, grade);
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
+}
+</script>
+</ToolLayout>

@@ -13,8 +13,8 @@ readTime: 12
 featured: false
 preview: "Most roofers judge Angi by lead volume. The real number is cost per signed contract. Here's the math, where Angi works, where it breaks, what to measure before you cut or scale it, and how it stacks up against Thumbtack, LSAs, and Google Ads."
 pills: ["$1,625-$1,857/job", "Shared lead math", "5-minute response"]
-primaryCtaLabel: "Grade Your Lead Sources"
-primaryCtaHref: "/tools/lead-grader"
+primaryCtaLabel: "Calculate Your Marketing Cost"
+primaryCtaHref: "/tools/marketing-calculator"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["angi leads roofing", "are angi leads worth it", "roofing lead generation 2026", "angi pro for roofers", "cost per lead roofing", "homeadvisor roofing leads", "angi vs thumbtack roofing", "when to cancel angi", "how to improve angi roi", "angi leads conversion rate roofing"]
@@ -211,14 +211,14 @@ If it's 10 to 15%, Angi is marginal. Your phone process and follow-up system nee
 
 If it's over 15%, either the channel doesn't work in your market, or your phone operation isn't built to compete on shared leads.
 
-Use the [Lead Source Grader](/tools/lead-grader) to score Angi alongside every other channel you're running. It puts all your sources on the same cost-per-job basis so you can see where to move budget.
+Use the [Marketing Cost Calculator](/tools/marketing-calculator) to benchmark your current cost per booked job before you decide whether Angi is worth keeping. It gives you the number you need to compare this channel against the rest of your mix.
 
 ## What to Do This Week
 
 1. **Pull your last 90 days of Angi data.** Leads received, contacts made, estimates set, contracts signed. Calculate cost per signed contract. If you don't have this in your CRM, build the tracking sheet today so you have it in 90 days.
 2. **Check your speed-to-call.** How long from a lead arriving to your first call attempt? If it's more than 15 minutes during business hours, that's the first fix, not the lead source.
 3. **Count your follow-up touches.** On your last 20 Angi leads that didn't book immediately, how many follow-up attempts did each one receive? If the average is under 2, your follow-up system is the constraint, not Angi.
-4. **Use the [Lead Source Grader](/tools/lead-grader)** to score Angi alongside your other channels. Takes 3 minutes. Shows you where Angi ranks relative to what else you're running.
+4. **Use the [Marketing Cost Calculator](/tools/marketing-calculator)** to benchmark what your current cost per booked job looks like before you move budget. Takes 3 minutes. Shows you whether the channel is still inside a workable range.
 
 ## Frequently Asked Questions
 

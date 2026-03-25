@@ -1,10 +1,23 @@
 ---
+import ToolShareResult from '../../components/ToolShareResult.astro';
 import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const suiteTools = [
+  { num: '02', name: 'Estimate Follow-Up', href: '/tools/estimate-follow-up' },
+  { num: '03', name: 'Agency Report Card', href: '/tools/agency-report-card' },
+  { num: '04', name: 'Revenue Per Tech', href: '/tools/revenue-per-tech' },
+  { num: '05', name: 'Marketing Cost', href: '/tools/marketing-calculator' },
+  { num: '06', name: 'GBP Scorecard', href: '/tools/gbp-scorecard' },
+  { num: '07', name: 'Website Conversion', href: '/tools/website-audit' },
+];
 ---
 <ToolLayout
   toolNumber="01"
+  toolCount="07"
   toolName="Phone Revenue Calculator"
   slug="phone-calculator"
+  suiteVariant="expanded"
+  showCrossTool={false}
   headline="Missed Calls = Lost Jobs.<br><em>Here's Exactly What It's Costing You.</em>"
   subheadline="Most owners think they answer 90% of calls. The actual average is 68%. Every unanswered call is a job that went to a competitor. Find out the dollar amount walking out your door every month."
   metaDescription="Free calculator: find out how much revenue you're losing from missed calls. Enter your call volume, answer rate, and average ticket to see the exact monthly and annual cost."
@@ -12,8 +25,6 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 
 <style>
 .tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start; padding-bottom: 80px; }
-
-/* Input panel */
 .input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
 .ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
 .ip-header-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
@@ -21,8 +32,8 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 .ip-body { padding: 24px; }
 
 .field { margin-bottom: 20px; }
-.field-label { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
-.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; }
+.field-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; text-align: right; }
 .field-input {
   width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
   padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none;
@@ -37,8 +48,8 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 .suffix-wrap { position: relative; }
 .suffix { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; color: var(--ink3); pointer-events: none; }
 
-.benchmark-hint { margin-top: 6px; font-family: var(--mono); font-size: 9px; color: var(--ink3); padding: 5px 10px; background: var(--bg4); border-radius: 3px; display: flex; justify-content: space-between; }
-.bh-val { color: var(--teal); font-weight: 500; }
+.benchmark-hint { margin-top: 6px; font-family: var(--mono); font-size: 9px; color: var(--ink3); padding: 5px 10px; background: var(--bg4); border-radius: 3px; display: flex; justify-content: space-between; gap: 10px; }
+.bh-val { color: var(--teal); font-weight: 500; text-align: right; }
 
 .calc-btn {
   width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer;
@@ -47,7 +58,6 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 }
 .calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
 
-/* Result panel */
 .result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
 .rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
 .rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
@@ -57,13 +67,11 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 .status-ok      { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
 .rp-body { padding: 24px; }
 
-/* Empty state */
 .empty-state { text-align: center; padding: 36px 16px; }
 .empty-icon { font-size: 32px; opacity: 0.25; margin-bottom: 14px; }
 .empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
 .empty-text strong { color: var(--ink2); font-weight: 500; }
 
-/* Results */
 .result-section { display: none; }
 .result-section.show { display: block; }
 
@@ -74,34 +82,31 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 .mn-sub { font-size: 12px; color: var(--ink3); margin-top: 6px; font-weight: 300; }
 
 .breakdown { margin-bottom: 18px; }
-.bd-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.bd-title, .rail-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
 .bd-rows { display: flex; flex-direction: column; gap: 6px; }
-.bd-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
+.bd-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
 .bd-key { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
-.bd-val { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.bd-val { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); text-align: right; }
 .bd-val.red { color: var(--neg); }
 .bd-val.grn { color: var(--pos); }
 
-/* Benchmark bar */
 .bm-wrap { margin-bottom: 18px; }
-.bm-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; display: flex; justify-content: space-between; }
+.bm-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; }
 .bm-track { height: 6px; background: var(--bg4); border-radius: 3px; position: relative; margin-bottom: 10px; }
 .bm-fill { height: 100%; border-radius: 3px; background: var(--neg); transition: width 0.8s var(--ease); position: relative; }
 .bm-fill.ok { background: var(--pos); }
 .bm-marker { position: absolute; right: 0; top: -3px; width: 2px; height: 12px; background: var(--teal); }
 .bm-marker-tip { position: absolute; right: 4px; top: -18px; font-family: var(--mono); font-size: 8px; color: var(--teal); white-space: nowrap; }
-.bm-range { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
+.bm-range { display: flex; justify-content: space-between; gap: 8px; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
 
-/* Diagnosis */
 .diagnosis { background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 14px 16px; margin-bottom: 18px; }
 .diagnosis.good { background: rgba(34,211,122,0.06); border-color: rgba(34,211,122,0.2); }
 .diag-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 .diag-body { font-size: 12px; color: var(--ink2); line-height: 1.62; font-weight: 300; }
 
-/* Recovery comparison */
 .recovery { background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 16px; margin-bottom: 18px; }
 .rec-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
-.rec-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 12.5px; color: var(--ink2); }
+.rec-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12.5px; color: var(--ink2); }
 .rec-row:last-child { margin-bottom: 0; }
 .rec-val { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--pos); }
 
@@ -109,31 +114,49 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 .audit-cta:hover { background: #00DFB0; }
 .audit-cta-note { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
 
+.result-rail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.rail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.rail-link {
+  display: block; padding: 12px; border-radius: 4px; text-decoration: none; background: var(--bg3); border: 1px solid var(--rule2);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.rail-link:hover { border-color: var(--teal4); transform: translateY(-1px); }
+.rail-num { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 4px; }
+.rail-name { display: block; font-size: 12.5px; color: var(--ink); line-height: 1.35; }
+.full-picture {
+  display: block; padding: 14px; border-radius: 4px; text-decoration: none; background: rgba(0,196,154,0.05);
+  border: 1px solid rgba(0,196,154,0.28);
+}
+.full-picture-label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.full-picture-title { display: block; font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.full-picture-copy { display: block; font-size: 12px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
+
 @media (max-width: 960px) {
   .tool-layout { grid-template-columns: 1fr; padding-bottom: 56px; }
   .result-panel { position: static; }
 }
+
+@media (max-width: 600px) {
+  .rail-grid { grid-template-columns: 1fr; }
+}
 </style>
 
 <div class="tool-layout" slot="tool-body">
-
-  <!-- INPUT PANEL -->
   <div class="input-panel">
     <div class="ip-header">
       <span class="ip-header-title">Your Numbers</span>
       <span class="ip-micro-proof">Based on patterns from 200+ home service companies</span>
     </div>
     <div class="ip-body">
-
       <div class="field">
         <div class="field-label">
           Monthly inbound calls
-          <span class="field-hint">total calls - answered + missed</span>
+          <span class="field-hint">Total calls - answered + missed</span>
         </div>
         <input type="number" class="field-input" id="total-calls" placeholder="e.g. 350" min="0" />
         <div class="benchmark-hint">
           <span>Industry typical range:</span>
-          <span class="bh-val">150 – 600 calls/month</span>
+          <span class="bh-val">150-600 calls/month</span>
         </div>
       </div>
 
@@ -170,7 +193,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
       <div class="field">
         <div class="field-label">
           Average job value
-          <span class="field-hint">avg ticket for a booked job</span>
+          <span class="field-hint">Avg ticket for a booked job</span>
         </div>
         <div class="prefix-wrap">
           <span class="prefix">$</span>
@@ -182,26 +205,21 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
     </div>
   </div>
 
-  <!-- RESULT PANEL -->
   <div class="result-panel">
     <div class="rp-header">
       <span class="rp-title">Revenue Leak Report</span>
       <span class="rp-status status-waiting" id="rp-status">Waiting for your numbers</span>
     </div>
     <div class="rp-body">
-
-      <!-- Empty state -->
       <div class="empty-state" id="empty-state">
         <div class="empty-icon">📞</div>
         <p class="empty-text">
           <strong>Most owners think they answer 90% of calls.</strong><br><br>
-          The actual industry average is 68%. At 300 calls a month, that's 96 calls going unanswered - each one a job that went to a competitor.
+          The actual industry average is 68%. At 300 calls a month, that is 96 calls going unanswered, each one a job that went to a competitor.
         </p>
       </div>
 
-      <!-- Results (hidden until calculated) -->
       <div class="result-section" id="results">
-
         <div class="main-number">
           <div class="mn-label">Annual revenue leaking from missed calls</div>
           <div class="mn-value" id="annual-loss">$0</div>
@@ -248,11 +266,28 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
           See All Your Revenue Leaks - Get Audit
         </a>
         <p class="audit-cta-note">Fixing this alone often outperforms increasing ad spend. The audit shows every leak together.</p>
-      </div>
 
+        <ToolShareResult sectionId="share-section" />
+
+        <div class="result-rail">
+          <div class="rail-title">Continue your diagnosis</div>
+          <div class="rail-grid">
+            {suiteTools.map((tool) => (
+              <a href={tool.href} class="rail-link">
+                <span class="rail-num">{tool.num}</span>
+                <span class="rail-name">{tool.name}</span>
+              </a>
+            ))}
+          </div>
+          <a href="/apply?service=audit&source=phone-calculator" class="full-picture">
+            <span class="full-picture-label">Full picture</span>
+            <span class="full-picture-title">Revenue Leak Audit - $750</span>
+            <span class="full-picture-copy">Every leak. Every gap. Every fix. In writing.</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
 
 <script>
@@ -283,9 +318,7 @@ function calculate() {
   const monthlyLoss = lostJobs * avgTicket;
   const annualLoss  = monthlyLoss * 12;
 
-  // Recovery to 89%
   const targetAR    = Math.min(0.89, 1);
-  const recCallsAns = totalCalls * targetAR;
   const recMissed   = totalCalls * (1 - targetAR);
   const recJobsGain = (missedCalls - recMissed) * br;
   const recMonthly  = recJobsGain * avgTicket;
@@ -296,7 +329,6 @@ function calculate() {
     annual_loss_bucket: annualLoss >= 100000 ? '100k_plus' : annualLoss >= 25000 ? '25k_plus' : 'under_25k',
   });
 
-  // Update status
   const status = document.getElementById('rp-status');
   if (annualLoss > 0) {
     status.textContent = 'Revenue leak found';
@@ -306,7 +338,6 @@ function calculate() {
     status.className = 'rp-status status-ok';
   }
 
-  // Populate results
   document.getElementById('annual-loss').textContent = fmt(annualLoss);
   document.getElementById('annual-loss').className = `mn-value${annualLoss === 0 ? ' ok' : ''}`;
   document.getElementById('monthly-loss-sub').innerHTML = `Monthly: ${fmt(monthlyLoss)} · <span id="missed-calls-sub">${fmtN(missedCalls)} calls missed/month</span>`;
@@ -317,13 +348,11 @@ function calculate() {
   document.getElementById('r-monthly').textContent = fmt(monthlyLoss);
   document.getElementById('r-answer-rate').textContent = answerRate + '%';
 
-  // Benchmark bar
   const fillPct = Math.min(ar * 100, 100);
   document.getElementById('bm-fill').style.width = fillPct + '%';
   document.getElementById('bm-fill').className = `bm-fill${ar >= 0.89 ? ' ok' : ''}`;
   document.getElementById('bm-tip').textContent = 'You: ' + answerRate + '%';
 
-  // Diagnosis
   const diagEl = document.getElementById('diagnosis');
   const diagTitle = document.getElementById('diag-title');
   const diagBody  = document.getElementById('diag-body');
@@ -341,12 +370,16 @@ function calculate() {
     diagBody.textContent  = 'Below 75% is where the most money gets lost. This isn\'t a marketing problem - it\'s an operations problem. More ad spend before fixing this makes the leak worse, not better.';
   }
 
-  // Recovery
   document.getElementById('rec-jobs').textContent   = fmtN(recJobsGain) + '/month';
   document.getElementById('rec-monthly').textContent = fmt(recMonthly);
   document.getElementById('rec-annual').textContent  = fmt(recAnnual);
 
-  // Show results
+  const shareSection = document.getElementById('share-section');
+  const toolUrl = window.location.origin + window.location.pathname;
+  shareSection.dataset.toolUrl = toolUrl;
+  shareSection.dataset.shareText = `I'm missing ${fmtN(missedCalls)} calls/month. At my ticket size that's ${fmt(monthlyLoss)}/month - ${fmt(annualLoss)}/year walking out the door before I've spent another dollar on ads. ${toolUrl}`;
+  shareSection.style.display = 'block';
+
   document.getElementById('empty-state').style.display = 'none';
   document.getElementById('results').classList.add('show');
 }

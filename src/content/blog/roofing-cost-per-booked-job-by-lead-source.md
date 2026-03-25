@@ -13,8 +13,8 @@ readTime: 13
 featured: false
 preview: "Roofing owners usually compare channels on lead cost. That hides the real winner. Here's the cost-per-booked-job math for Angi, LSAs, Google Ads, referrals, and Facebook across retail and insurance replacement work."
 pills: ["Cost per booked job", "Lead source math", "Roofing channel benchmarks"]
-primaryCtaLabel: "Grade Your Lead Sources"
-primaryCtaHref: "/tools/lead-grader"
+primaryCtaLabel: "Calculate Your Marketing Cost"
+primaryCtaHref: "/tools/marketing-calculator"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["roofing cost per booked job", "roofing lead source comparison", "roofing angi vs google ads", "roofing lsa cost per booked job", "roofing referral lead value", "roofing facebook leads roi", "roofing cost per lead by source", "roofing marketing benchmarks", "roofing lead generation roi", "roofing booked job cost"]
@@ -222,7 +222,7 @@ Divide total spend by signed contracts. That's your cost per booked job for that
 
 If you don't have this data for the last 90 days, build the tracking today so you have it in 90 days. Even rough source attribution -- "how did you hear about us" at the first call -- produces directional insight that blended numbers hide.
 
-The [Lead Source Grader](/tools/lead-grader) runs this comparison for your channels side by side and shows you where each source ranks against the benchmarks above. Use it before making any channel budget decisions.
+The [Marketing Cost Calculator](/tools/marketing-calculator) runs this math against your current numbers and shows you where your cost per booked job sits relative to the benchmarks above. Use it before making any channel budget decisions.
 
 ---
 
@@ -231,7 +231,7 @@ The [Lead Source Grader](/tools/lead-grader) runs this comparison for your chann
 1. **Pull your last 90 days of signed contracts by source.** Rough attribution is fine. How many contracts came from Angi, from LSAs, from referrals, from Google Ads? Divide your spend on each source by the contracts it produced.
 2. **Check your contact rate on the highest-volume paid source.** Of the last 50 leads from that source, how many did you actually speak with? If it's below 60%, your cost per booked job is being driven by phone ops more than channel economics.
 3. **Check whether you're offering financing consistently.** On your last 20 estimates, how many times did the CSR or salesperson present a financing option before the homeowner asked about price? If the answer is fewer than 15, close rate improvement is available without changing a dollar of channel spend.
-4. **Use the [Lead Source Grader](/tools/lead-grader)** to score your current sources against these benchmarks and see which channels are producing and which are costing you more than the job value justifies.
+4. **Use the [Marketing Cost Calculator](/tools/marketing-calculator)** to benchmark your current cost per booked job against these ranges and see which channels are costing you more than the job value justifies.
 
 ---
 

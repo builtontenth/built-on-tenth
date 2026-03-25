@@ -13,8 +13,8 @@ readTime: 14
 featured: false
 preview: "Insurance replacement is the highest-margin work in residential roofing. It also requires a completely different process than retail. Most roofing companies treat it the same and leave thousands per job with the insurance company. Here's the full workflow."
 pills: ["65-75% close rate at adjuster meeting", "Supplement process", "Xactimate basics"]
-primaryCtaLabel: "Grade Your Lead Sources"
-primaryCtaHref: "/tools/lead-grader"
+primaryCtaLabel: "Calculate Your Marketing Cost"
+primaryCtaHref: "/tools/marketing-calculator"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["roofing insurance claim process", "roofing insurance supplement", "roofing adjuster meeting", "how to work insurance roofing jobs", "roofing insurance job workflow", "xactimate roofing", "roofing supplement process", "insurance roofing contractor", "roofing claim documentation", "how to get full insurance payout roofing"]
@@ -214,7 +214,7 @@ Job type (insurance / retail), adjuster visit date, adjuster present (yes/no), i
 2. **Build an inspection report template.** A one-page form with sections for each roof component, a photo log, and a findings summary. Use it on every insurance inspection going forward.
 3. **Check your Xactimate familiarity.** Can you read an adjuster's estimate line by line and identify missing items? If not, that's either a training opportunity (Xactware's Level 2 certification) or a case for outsourcing supplements to a specialist service.
 4. **Start attending adjuster meetings.** On your next three insurance claim jobs, ask the homeowner to request your presence at the adjuster appointment. Track close rate on those jobs vs. your historical average.
-5. **Use the [Lead Source Grader](/tools/lead-grader)** to compare your insurance claim close rate against your retail replacement close rate. If insurance jobs are closing at the same rate as retail, you're almost certainly not working the adjuster meeting and supplement steps.
+5. **Use the [Marketing Cost Calculator](/tools/marketing-calculator)** to see what your current cost per booked job looks like at your present close rate. If insurance jobs are closing at the same rate as retail, you're almost certainly not working the adjuster meeting and supplement steps.
 
 ---
 

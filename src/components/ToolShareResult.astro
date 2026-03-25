@@ -1,0 +1,159 @@
+---
+interface Props {
+  sectionId?: string;
+  toolUrl?: string;
+}
+
+const { sectionId = 'share-section', toolUrl = '' } = Astro.props;
+---
+<div
+  id={sectionId}
+  class="tool-share"
+  data-tool-share
+  data-tool-url={toolUrl}
+  data-share-text=""
+  style="display:none"
+>
+  <div class="tool-share-heading">Share your result</div>
+  <div class="tool-share-actions">
+    <button type="button" class="tool-share-btn" data-share-action="x" aria-label="Share your result on X">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M18.244 2H21.5l-7.113 8.13L22.75 22h-6.547l-5.126-6.7L5.222 22H1.964l7.607-8.694L1.5 2h6.713l4.633 6.112L18.244 2Zm-1.141 18h1.805L7.229 3.895H5.292L17.103 20Z"></path>
+      </svg>
+      <span>X</span>
+    </button>
+    <button type="button" class="tool-share-btn" data-share-action="linkedin" aria-label="Share your result on LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3C4.16 3 3.3 3.87 3.3 4.96c0 1.08.85 1.94 1.93 1.94 1.1 0 1.95-.86 1.95-1.94C7.18 3.87 6.34 3 5.25 3ZM20.7 13.05c0-3.17-1.69-4.64-3.95-4.64-1.82 0-2.63 1-3.08 1.71V8.5h-3.38c.04 1.08 0 11.5 0 11.5h3.38v-6.42c0-.34.03-.68.13-.92.27-.68.88-1.39 1.9-1.39 1.34 0 1.88 1.02 1.88 2.52V20h3.38v-6.95Z"></path>
+      </svg>
+      <span>LinkedIn</span>
+    </button>
+    <button type="button" class="tool-share-btn" data-share-action="copy" aria-label="Copy tool link">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M15 1H6a2 2 0 0 0-2 2v12h2V3h9V1Zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H10V7h8v14Z"></path>
+      </svg>
+      <span data-copy-label>Copy Link</span>
+    </button>
+  </div>
+</div>
+
+<style>
+.tool-share {
+  margin-top: 18px;
+  padding-top: 2px;
+}
+
+.tool-share-heading {
+  margin-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+.tool-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--rule2);
+  background: var(--bg3);
+  color: var(--ink2);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.tool-share-btn:hover {
+  border-color: var(--teal);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.tool-share-btn svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .tool-share-actions {
+    gap: 6px;
+  }
+
+  .tool-share-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+
+<script>
+  function getShareUrl(container) {
+    return container.dataset.toolUrl || window.location.href;
+  }
+
+  function getShareText(container) {
+    return container.dataset.shareText || getShareUrl(container);
+  }
+
+  async function copyLink(container, button) {
+    const label = button.querySelector('[data-copy-label]');
+    const originalLabel = label ? label.textContent : 'Copy Link';
+    const url = getShareUrl(container);
+
+    try {
+      await navigator.clipboard.writeText(url);
+      if (label) {
+        label.textContent = 'Copied';
+        window.setTimeout(() => {
+          label.textContent = originalLabel;
+        }, 2000);
+      }
+    } catch {
+      window.prompt('Copy this link', url);
+    }
+  }
+
+  function openShareWindow(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
+  document.querySelectorAll('[data-tool-share]').forEach(container => {
+    container.querySelectorAll('[data-share-action]').forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.dataset.shareAction;
+        const shareUrl = getShareUrl(container);
+        const shareText = getShareText(container);
+
+        if (action === 'x') {
+          openShareWindow(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`);
+          return;
+        }
+
+        if (action === 'linkedin') {
+          openShareWindow(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`);
+          return;
+        }
+
+        if (action === 'copy') {
+          copyLink(container, button);
+        }
+      });
+    });
+  });
+</script>

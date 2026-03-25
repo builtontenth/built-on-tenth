@@ -1,0 +1,420 @@
+---
+import ToolShareResult from '../../components/ToolShareResult.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const suiteTools = [
+  { num: '01', name: 'Phone Revenue', href: '/tools/phone-calculator' },
+  { num: '02', name: 'Estimate Follow-Up', href: '/tools/estimate-follow-up' },
+  { num: '03', name: 'Agency Report Card', href: '/tools/agency-report-card' },
+  { num: '05', name: 'Marketing Cost', href: '/tools/marketing-calculator' },
+  { num: '06', name: 'GBP Scorecard', href: '/tools/gbp-scorecard' },
+  { num: '07', name: 'Website Conversion', href: '/tools/website-audit' },
+];
+---
+<ToolLayout
+  toolNumber="04"
+  toolCount="07"
+  toolName="Revenue Per Technician Benchmarker"
+  slug="revenue-per-tech"
+  suiteVariant="expanded"
+  showCrossTool={false}
+  headline="How Much Revenue Is Each of Your Techs<br><em>Actually Producing?</em>"
+  subheadline="Most owners track total revenue. Very few track revenue per tech - the number that tells you whether your team is running at capacity or leaving jobs on the table. Enter your numbers and see exactly where you stand."
+  metaDescription="Free revenue per technician benchmarker for HVAC, roofing, plumbing, and other home service companies. Compare your annual revenue per tech against trade benchmarks."
+>
+
+<style>
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start; padding-bottom: 80px; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+
+.field { margin-bottom: 20px; }
+.field-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; text-align: right; }
+.field-input, .field-select {
+  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
+  padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none;
+  transition: border-color 0.2s; -moz-appearance: textfield;
+}
+.field-input::-webkit-inner-spin-button, .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.field-input:focus, .field-select:focus { border-color: rgba(0,196,154,0.55); }
+.field-input::placeholder { color: var(--ink3); font-size: 13px; }
+.field-select {
+  cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.prefix-wrap { position: relative; }
+.prefix { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 14px; color: var(--ink3); pointer-events: none; }
+.prefix + .field-input { padding-left: 26px; }
+.benchmark-hint { margin-top: 6px; font-family: var(--mono); font-size: 9px; color: var(--ink3); padding: 5px 10px; background: var(--bg4); border-radius: 3px; display: flex; justify-content: space-between; gap: 10px; }
+.benchmark-value { color: var(--teal); font-weight: 500; text-align: right; }
+
+.calc-btn {
+  width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
+}
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
+
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.status-wait { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.status-good { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.status-warn { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
+.status-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+.rp-body { padding: 24px; }
+
+.empty-state { text-align: center; padding: 38px 16px; }
+.empty-icon { font-size: 30px; opacity: 0.25; margin-bottom: 12px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.empty-text strong { color: var(--ink2); font-weight: 500; }
+.result-section { display: none; }
+.result-section.show { display: block; }
+
+.main-result { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+.main-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.main-value { font-family: var(--serif); font-size: clamp(50px, 7vw, 72px); font-weight: 400; line-height: 0.95; letter-spacing: -0.03em; color: var(--ink); }
+.main-sub { margin-top: 10px; font-size: 12.5px; color: var(--ink2); line-height: 1.5; font-weight: 300; }
+
+.benchmark-title, .card-title, .rail-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.benchmark-wrap { margin-bottom: 18px; }
+.benchmark-track { position: relative; height: 8px; border-radius: 999px; background: linear-gradient(90deg, rgba(240,64,64,0.24) 0%, rgba(201,160,53,0.24) 45%, rgba(34,211,122,0.24) 100%); margin-bottom: 10px; }
+.benchmark-point {
+  position: absolute; top: -5px; width: 2px; height: 18px; border-radius: 1px;
+}
+.benchmark-point.ref { background: var(--teal); }
+.benchmark-point.user { background: var(--ink); }
+.benchmark-labels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
+.benchmark-labels span:last-child { text-align: right; }
+
+.gap-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+.gap-card { padding: 14px; border-radius: 4px; background: var(--bg3); border: 1px solid var(--rule2); }
+.gap-card-label { font-family: var(--mono); font-size: 8.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
+.gap-card-value { font-family: var(--mono); font-size: 22px; font-weight: 700; line-height: 1; color: var(--ink); }
+.gap-card-value.neg { color: var(--neg); }
+.gap-card-value.pos { color: var(--pos); }
+.gap-card-sub { margin-top: 5px; font-size: 11px; line-height: 1.5; color: var(--ink3); font-weight: 300; }
+
+.note-box, .psych-line, .consequence-line, .cta-note {
+  font-size: 12px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+}
+.note-box { margin-bottom: 18px; padding: 14px 16px; border-radius: 4px; background: rgba(201,160,53,0.06); border: 1px solid rgba(201,160,53,0.18); }
+.psych-line { margin-bottom: 16px; }
+.consequence-line { margin: 0 0 14px; }
+
+.tool-cta {
+  display: block; width: 100%; padding: 14px; border-radius: 4px; text-decoration: none; text-align: center;
+  border: 1.5px solid var(--teal); background: var(--teal); color: var(--bg); transition: background 0.2s;
+}
+.tool-cta:hover { background: #00DFB0; }
+.tool-cta-title { display: block; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.tool-cta-copy { display: block; margin-top: 6px; font-size: 12px; line-height: 1.5; color: rgba(9,12,11,0.84); font-weight: 400; }
+.cta-note { text-align: center; margin-top: 10px; color: var(--ink3); }
+
+.result-rail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.rail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.rail-link {
+  display: block; padding: 12px; border-radius: 4px; text-decoration: none; background: var(--bg3); border: 1px solid var(--rule2);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.rail-link:hover { border-color: var(--teal4); transform: translateY(-1px); }
+.rail-num { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 4px; }
+.rail-name { display: block; font-size: 12.5px; color: var(--ink); line-height: 1.35; }
+.full-picture {
+  display: block; padding: 14px; border-radius: 4px; text-decoration: none; background: rgba(0,196,154,0.05);
+  border: 1px solid rgba(0,196,154,0.28);
+}
+.full-picture-label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.full-picture-title { display: block; font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.full-picture-copy { display: block; font-size: 12px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
+
+@media (max-width: 960px) {
+  .tool-layout { grid-template-columns: 1fr; padding-bottom: 56px; }
+  .result-panel { position: static; }
+}
+
+@media (max-width: 600px) {
+  .gap-cards, .rail-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">Per-Tech Revenue Inputs</span>
+      <span class="ip-micro">Trade-specific benchmarks built in</span>
+    </div>
+    <div class="ip-body">
+      <div class="field">
+        <div class="field-label">
+          <span>Trade</span>
+          <span class="field-hint">HVAC / Roofing / Plumbing / Other</span>
+        </div>
+        <select class="field-select" id="trade">
+          <option value="HVAC">HVAC</option>
+          <option value="Roofing">Roofing</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="field-label">
+          <span>Number of field technicians</span>
+          <span class="field-hint">Techs who run jobs, not office staff</span>
+        </div>
+        <input type="number" class="field-input" id="tech-count" placeholder="e.g. 6" min="1" />
+      </div>
+
+      <div class="field">
+        <div class="field-label">
+          <span>Annual revenue</span>
+          <span class="field-hint">Last full year or trailing 12 months</span>
+        </div>
+        <div class="prefix-wrap">
+          <span class="prefix">$</span>
+          <input type="number" class="field-input" id="annual-revenue" placeholder="e.g. 2400000" min="0" />
+        </div>
+        <div class="benchmark-hint">
+          <span>Benchmark context:</span>
+          <span class="benchmark-value" id="benchmark-hint">HVAC average: $380,000 per tech</span>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn">Benchmark My Team</button>
+    </div>
+  </div>
+
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">Revenue Per Tech Report</span>
+      <span class="rp-status status-wait" id="rp-status">Waiting for your numbers</span>
+    </div>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">04</div>
+        <p class="empty-text"><strong>Total revenue can hide a weak team output number.</strong><br /><br />Per-tech revenue is what tells you whether your field team is producing at benchmark or leaving capacity on the table.</p>
+      </div>
+
+      <div class="result-section" id="results">
+        <div class="main-result">
+          <div class="main-label">Your revenue per technician</div>
+          <div class="main-value" id="revenue-per-tech">$0</div>
+          <div class="main-sub" id="tier-label">Below benchmark</div>
+        </div>
+
+        <div class="benchmark-wrap">
+          <div class="benchmark-title">Benchmark comparison bar</div>
+          <div class="benchmark-track">
+            <div class="benchmark-point ref" id="point-low" style="left:0%"></div>
+            <div class="benchmark-point ref" id="point-average" style="left:33%"></div>
+            <div class="benchmark-point ref" id="point-top25" style="left:66%"></div>
+            <div class="benchmark-point ref" id="point-top10" style="left:100%"></div>
+            <div class="benchmark-point user" id="point-user" style="left:0%"></div>
+          </div>
+          <div class="benchmark-labels" id="benchmark-labels">
+            <span>Low end<br />$0</span>
+            <span>Industry avg<br />$0</span>
+            <span>Top 25%<br />$0</span>
+            <span>Top 10%<br />$0</span>
+          </div>
+        </div>
+
+        <div class="gap-cards" id="gap-cards"></div>
+        <div class="note-box" id="note-box" style="display:none"></div>
+
+        <p class="psych-line">Revenue per tech is the number that tells you whether you have a marketing problem or an operations problem. Most owners never look at it.</p>
+        <p class="consequence-line" id="consequence-line">That gap across your team shows how much room there is between where you are and what your market will support.</p>
+
+        <a href="/apply?service=audit&source=revenue-per-tech" class="tool-cta">
+          <span class="tool-cta-title">Find Out Which Gap Is Biggest</span>
+          <span class="tool-cta-copy">The Revenue Leak Audit identifies exactly what is holding your per-tech revenue below benchmark and what to fix first.</span>
+        </a>
+        <p class="cta-note">This number gets more useful when you can separate whether the gap is coming from booked jobs, average ticket, or follow-up.</p>
+
+        <ToolShareResult sectionId="share-section" />
+
+        <div class="result-rail">
+          <div class="rail-title">Continue your diagnosis</div>
+          <div class="rail-grid">
+            {suiteTools.map((tool) => (
+              <a href={tool.href} class="rail-link">
+                <span class="rail-num">{tool.num}</span>
+                <span class="rail-name">{tool.name}</span>
+              </a>
+            ))}
+          </div>
+          <a href="/apply?service=audit&source=revenue-per-tech" class="full-picture">
+            <span class="full-picture-label">Full picture</span>
+            <span class="full-picture-title">Revenue Leak Audit - $750</span>
+            <span class="full-picture-copy">Every leak. Every gap. Every fix. In writing.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const benchmarks = {
+  HVAC: { low: 250000, average: 380000, top25: 620000, top10: 820000 },
+  Roofing: { low: 280000, average: 420000, top25: 680000, top10: 950000 },
+  Plumbing: { low: 220000, average: 350000, top25: 580000, top10: 780000 },
+  Other: { low: 220000, average: 360000, top25: 600000, top10: 800000 },
+};
+
+document.getElementById('trade').addEventListener('change', updateBenchmarkHint);
+document.getElementById('calc-btn').addEventListener('click', calculate);
+['tech-count', 'annual-revenue'].forEach((id) => {
+  document.getElementById(id).addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') calculate();
+  });
+});
+
+function fmtMoney(value) {
+  return '$' + Math.round(value).toLocaleString();
+}
+
+function fmtNumber(value) {
+  return Math.round(value).toLocaleString();
+}
+
+function updateBenchmarkHint() {
+  const trade = document.getElementById('trade').value;
+  document.getElementById('benchmark-hint').textContent = `${trade} average: ${fmtMoney(benchmarks[trade].average)} per tech`;
+}
+
+function getTier(value, tradeBenchmark) {
+  if (value >= tradeBenchmark.top10) return 'Top 10%';
+  if (value >= tradeBenchmark.top25) return 'Top 25%';
+  if (value >= tradeBenchmark.average) return 'Above Average';
+  if (value >= tradeBenchmark.low) return 'Below Average';
+  return 'Significantly Below Benchmark';
+}
+
+function setStatus(tier) {
+  const status = document.getElementById('rp-status');
+  if (tier === 'Top 10%' || tier === 'Top 25%') {
+    status.textContent = 'Benchmark leader';
+    status.className = 'rp-status status-good';
+    return;
+  }
+  if (tier === 'Above Average' || tier === 'Below Average') {
+    status.textContent = 'Benchmark gap found';
+    status.className = 'rp-status status-warn';
+    return;
+  }
+  status.textContent = 'Large team output gap';
+  status.className = 'rp-status status-alert';
+}
+
+function revealShare(trade, revenuePerTech, top25, totalGap) {
+  const shareSection = document.getElementById('share-section');
+  const toolUrl = window.location.origin + window.location.pathname;
+  shareSection.dataset.toolUrl = toolUrl;
+  shareSection.dataset.shareText = `My ${trade} company runs ${fmtMoney(revenuePerTech)}/tech/year. Industry top 25% is ${fmtMoney(top25)}. That gap across my team is ${fmtMoney(totalGap)}. Free benchmarker: ${toolUrl} via @builtontenth`;
+  shareSection.style.display = 'block';
+}
+
+function calculate() {
+  const trade = document.getElementById('trade').value;
+  const techCount = parseFloat(document.getElementById('tech-count').value) || 0;
+  const annualRevenue = parseFloat(document.getElementById('annual-revenue').value) || 0;
+
+  if (!techCount || !annualRevenue) {
+    const button = document.getElementById('calc-btn');
+    button.textContent = 'Please fill in all fields';
+    window.setTimeout(() => {
+      button.textContent = 'Benchmark My Team';
+    }, 2000);
+    return;
+  }
+
+  const tradeBenchmark = benchmarks[trade];
+  const revenuePerTech = annualRevenue / techCount;
+  const gapToAverage = tradeBenchmark.average - revenuePerTech;
+  const gapToTop25 = tradeBenchmark.top25 - revenuePerTech;
+  const gapToTop10 = tradeBenchmark.top10 - revenuePerTech;
+  const totalGapToAverage = gapToAverage * techCount;
+  const totalGapToTop25 = gapToTop25 * techCount;
+  const totalGapToTop10 = gapToTop10 * techCount;
+  const tier = getTier(revenuePerTech, tradeBenchmark);
+
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'revenue-per-tech',
+    trade: trade.toLowerCase(),
+    tier: tier.toLowerCase().replaceAll(' ', '_'),
+  });
+
+  setStatus(tier);
+
+  document.getElementById('revenue-per-tech').textContent = `${fmtMoney(revenuePerTech)}/year`;
+  document.getElementById('tier-label').textContent = tier;
+
+  const maxScale = tradeBenchmark.top10 * 1.1;
+  const userPercent = Math.min((revenuePerTech / maxScale) * 100, 100);
+  document.getElementById('point-user').style.left = `${userPercent}%`;
+  document.getElementById('benchmark-labels').innerHTML = `
+    <span>Low end<br />${fmtMoney(tradeBenchmark.low)}</span>
+    <span>Industry avg<br />${fmtMoney(tradeBenchmark.average)}</span>
+    <span>Top 25%<br />${fmtMoney(tradeBenchmark.top25)}</span>
+    <span>Top 10%<br />${fmtMoney(tradeBenchmark.top10)}</span>
+  `;
+
+  const gapCards = document.getElementById('gap-cards');
+  const noteBox = document.getElementById('note-box');
+
+  if (revenuePerTech < tradeBenchmark.top25) {
+    gapCards.innerHTML = `
+      <div class="gap-card">
+        <div class="gap-card-label">Gap to industry average</div>
+        <div class="gap-card-value neg">${fmtMoney(Math.max(gapToAverage, 0))}</div>
+        <div class="gap-card-sub">Per tech. Team gap: ${fmtMoney(Math.max(totalGapToAverage, 0))}</div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-card-label">Gap to top 25%</div>
+        <div class="gap-card-value neg">${fmtMoney(Math.max(gapToTop25, 0))}</div>
+        <div class="gap-card-sub">Per tech. Team gap: ${fmtMoney(Math.max(totalGapToTop25, 0))}</div>
+      </div>
+    `;
+    if (revenuePerTech < tradeBenchmark.average) {
+      noteBox.style.display = 'block';
+      noteBox.textContent = 'A gap this size usually comes from one of four places: booking rate on inbound calls, average ticket size, estimate follow-up rate, or how many service agreements you are running. The audit identifies which one is the primary driver for your specific operation.';
+    } else {
+      noteBox.style.display = 'none';
+      noteBox.textContent = '';
+    }
+    document.getElementById('consequence-line').textContent = `That gap to the top 25% is ${fmtMoney(Math.max(totalGapToTop25, 0))} across your team. The audit identifies which one factor is driving most of it.`;
+  } else {
+    gapCards.innerHTML = `
+      <div class="gap-card">
+        <div class="gap-card-label">Outperforming 75%</div>
+        <div class="gap-card-value pos">${fmtMoney(revenuePerTech)}</div>
+        <div class="gap-card-sub">You are outperforming 75% of ${trade} companies on revenue per tech.</div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-card-label">Gap to top 10%</div>
+        <div class="gap-card-value">${fmtMoney(Math.max(gapToTop10, 0))}</div>
+        <div class="gap-card-sub">Per tech. Team gap: ${fmtMoney(Math.max(totalGapToTop10, 0))}</div>
+      </div>
+    `;
+    noteBox.style.display = 'none';
+    noteBox.textContent = '';
+    document.getElementById('consequence-line').textContent = `You are outperforming 75% of ${trade} companies. The next gap is ${fmtMoney(Math.max(totalGapToTop10, 0))} between your team and the top 10%.`;
+  }
+
+  revealShare(trade, revenuePerTech, tradeBenchmark.top25, Math.max(totalGapToTop25, 0));
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
+}
+
+updateBenchmarkHint();
+</script>
+</ToolLayout>

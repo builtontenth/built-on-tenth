@@ -3,40 +3,76 @@ import Layout from '../../layouts/Layout.astro';
 
 const tools = [
   {
-    id: 'marketing-calculator',
-    icon: '📊',
-    badge: 'Free Tool',
-    name: 'Marketing Cost Calculator',
-    tagline: 'What does a booked job actually cost you?',
-    desc: "Put in your monthly ad spend, how many calls you get, your close rate, and your average ticket. See your real cost per booked job - and whether it's in line with the top 25% of companies in your trade.",
-    cta: 'Calculate your numbers',
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75',
-    imgAlt: 'Marketing spend analytics dashboard',
-    dataPoints: ['Cost per booked job', 'Industry benchmarks', 'ROI by channel'],
-  },
-  {
     id: 'phone-calculator',
     icon: '📞',
     badge: 'Free Tool',
     name: 'Phone Revenue Calculator',
-    tagline: 'How much is slipping through every time the phone rings?',
-    desc: 'How many calls are you missing every month? Put in your call volume and answer rate. We\'ll show you the dollar amount walking out the door - and what happens if you get your answer rate to 90%.',
+    tagline: 'Missed Calls = Lost Jobs',
+    desc: "Most owners think they answer 90% of calls. The actual average is 68%. Every unanswered call is a job that went to a competitor. Find out the dollar amount walking out your door every month.",
     cta: 'See your lost revenue',
     img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75',
     imgAlt: 'CSR answering inbound service calls',
     dataPoints: ['Monthly revenue lost', 'Recovery projection', 'Answer rate benchmark'],
   },
   {
-    id: 'lead-grader',
-    icon: '🎯',
+    id: 'estimate-follow-up',
+    icon: '📨',
     badge: 'Free Tool',
-    name: 'Lead Source Grader',
-    tagline: 'Which channels deserve more budget - and which ones are draining it?',
-    desc: 'Google Ads, LSAs, Angi, Thumbtack, referrals, door knocking - select what you\'re running and get a straight A–D grade on each one. Keep it, fix it, or cut it.',
-    cta: 'Grade your lead sources',
-    img: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=75',
-    imgAlt: 'Multiple lead channel screens',
-    dataPoints: ['A–D grade per channel', 'Keep/Fix/Cut verdict', 'Budget reallocation guide'],
+    name: 'Estimate Follow-Up Calculator',
+    tagline: '68% of Estimates Never Get a Follow-Up',
+    desc: 'Most owners blame the homeowner for not calling back. The data says otherwise. Enter your estimate volume and see exactly how much revenue is dying in your outbox every year.',
+    cta: 'See the follow-up gap',
+    img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=75',
+    imgAlt: 'Business owner reviewing estimate and pipeline data',
+    dataPoints: ['Annual lost revenue', 'Follow-up benchmark', '50% and 80% what-if lift'],
+  },
+  {
+    id: 'agency-report-card',
+    icon: '📋',
+    badge: 'Free Tool',
+    name: 'Agency Report Card',
+    tagline: 'Is Your Agency Measuring the Right Numbers?',
+    desc: 'Every agency reports impressions, clicks, and cost per lead. Almost none report the number that actually matters: cost per booked job. Answer 10 questions and get a straight grade.',
+    cta: 'Grade your agency',
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75',
+    imgAlt: 'Marketing reporting dashboards on a laptop screen',
+    dataPoints: ['Agency accountability grade', '10 yes or no checks', 'No-answer consequence lines'],
+  },
+  {
+    id: 'revenue-per-tech',
+    icon: '🛠️',
+    badge: 'Free Tool',
+    name: 'Revenue Per Technician Benchmarker',
+    tagline: 'How Much Revenue Is Each Tech Producing?',
+    desc: 'Most owners track total revenue. Very few track revenue per tech, the number that tells you whether your team is running at capacity or leaving jobs on the table. Enter your numbers and see exactly where you stand.',
+    cta: 'Benchmark your team',
+    img: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=75',
+    imgAlt: 'Home service crew with work vans',
+    dataPoints: ['Revenue per tech', 'Trade benchmarks', 'Whole-team gap'],
+  },
+  {
+    id: 'marketing-calculator',
+    icon: '📊',
+    badge: 'Free Tool',
+    name: 'Marketing Cost Calculator',
+    tagline: 'What Does a Booked Job Actually Cost You?',
+    desc: "Most companies track leads. Very few know what it costs to book a real job. Enter your numbers and see your true cost per booked job, benchmarked against the top 25% in your trade.",
+    cta: 'Calculate your numbers',
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75',
+    imgAlt: 'Marketing spend analytics dashboard',
+    dataPoints: ['Cost per booked job', 'Channel benchmark line', 'ROI by channel'],
+  },
+  {
+    id: 'gbp-scorecard',
+    icon: '📍',
+    badge: 'Free Tool',
+    name: 'GBP Scorecard',
+    tagline: 'How Strong Is Your Google Business Profile?',
+    desc: 'The map pack is the best free lead source in home services. Most companies are giving ground to competitors on basic GBP factors they do not even know about. Score yourself on the same rubric we use for competitor teardowns.',
+    cta: 'Score your GBP',
+    img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=75',
+    imgAlt: 'Local search performance and business profile analysis',
+    dataPoints: ['35-point scorecard', 'Section breakdown', 'Map pack benchmark context'],
   },
   {
     id: 'website-audit',
@@ -44,29 +80,17 @@ const tools = [
     badge: 'Free Tool',
     name: 'Website Conversion Audit',
     tagline: 'Would a homeowner actually call after visiting your site?',
-    desc: 'Enter your website URL. We pull your real PageSpeed score and check whether your phone number is prominent, your CTAs are clear, and your site would make a homeowner call. Takes 30 seconds.',
+    desc: 'Most contractor websites look fine, but fail in 3 critical places: speed, mobile experience, and call friction. Answer 12 quick questions about your site and get a Conversion Leak Score with specific fixes.',
     cta: 'Audit your website',
     img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=75',
     imgAlt: 'Contractor website on laptop screen',
-    dataPoints: ['PageSpeed score', 'Conversion leak score', 'Mobile performance'],
-  },
-  {
-    id: 'capacity-planner',
-    icon: '📋',
-    badge: 'Free Tool',
-    name: 'Capacity-to-Demand Planner',
-    tagline: '"How much should I spend on marketing?" is the wrong question.',
-    desc: 'The right question is: how many jobs can my team actually handle? Enter how many techs you have and how many jobs they can run per day - and we\'ll tell you exactly how many calls you actually need.',
-    cta: 'Plan your capacity',
-    img: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=75',
-    imgAlt: 'Home service crew with work vans',
-    dataPoints: ['Jobs capacity per month', 'Leads needed', 'Max marketing spend'],
+    dataPoints: ['Conversion leak score', 'Issue list', 'Website fix priorities'],
   },
 ];
 ---
 <Layout
   title="Free Tools for HVAC, Roofing & Plumbing Companies | Built on Tenth"
-  description="Five free calculators and audits for home service business owners. See your real cost per booked job, phone revenue loss, lead source grades, and more. No email required."
+  description="Seven free calculators and audits for home service business owners. See your biggest revenue leaks, benchmark your operation, and find the gaps your current reporting misses. No email required."
   active="tools"
 >
 
@@ -173,7 +197,7 @@ const tools = [
   <div class="tools-hero-inner">
     <div class="dispatch-label">Free Tools</div>
     <h1>See your numbers.<br><em>Find the leaks.</em></h1>
-    <p class="tools-hero-sub">Five calculators and audits built specifically for HVAC, roofing, and plumbing companies. Put in your real numbers and see exactly where money is slipping through. Most owners find $50K–$200K in fixable leaks on the first pass.</p>
+    <p class="tools-hero-sub">Seven calculators and audits built specifically for HVAC, roofing, and plumbing companies. Start with the fastest leak, then keep going until you know which gap is costing the most. Most owners find $50K-$200K in recoverable leaks on the first pass.</p>
     <span class="tools-hero-note">Results show instantly - email required only for the full detailed report</span>
   </div>
 </div>
@@ -181,7 +205,8 @@ const tools = [
 <!-- TOOLS LIST -->
 <div class="wrap alt">
   <div class="inner">
-    <div class="rule-label"><span class="section-tag">All 5 Tools</span></div>
+    <div class="rule-label"><span class="section-tag">All 7 Tools</span></div>
+    <p class="tools-hero-sub" style="max-width:760px;margin:20px 0 0;">Start here: Phone Revenue shows you the fastest leak. Estimate Follow-Up shows you the second one. Agency Report Card tells you whether your marketing setup is built to find either.</p>
     <div class="tool-list">
       {tools.map((tool, i) => (
         <div class="tool-item reveal">
@@ -192,7 +217,7 @@ const tools = [
           <div class="tool-body">
             <div class="tool-badge-row">
               <span class="badge-green">{tool.badge}</span>
-              <span class="tool-num">0{i + 1} of 05</span>
+              <span class="tool-num">{String(i + 1).padStart(2, '0')} of 07</span>
             </div>
             <div class="tool-name">{tool.name}</div>
             <div class="tool-tagline">{tool.tagline}</div>
@@ -214,7 +239,7 @@ const tools = [
   <div class="tools-cta-inner">
     <div class="dispatch-label" style="justify-content:center;margin-bottom:16px">Want the full picture?</div>
     <h2>See everything in <em>one audit.</em></h2>
-    <p>The free tools show individual leaks. The Revenue Leak Audit covers everything - your full marketing system, competitive benchmarks, phone performance, and website - with every finding shown in annual dollars.</p>
+    <p>The free tools show individual leaks. The Revenue Leak Audit covers everything - your full marketing system, competitor benchmarks, phone performance, and website - with every finding shown in annual dollars.</p>
     <a href="/apply" class="cta-primary">Get a Revenue Leak Audit ($750)</a>
   </div>
 </div>

@@ -1,0 +1,428 @@
+---
+import ToolShareResult from '../../components/ToolShareResult.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const suiteTools = [
+  { num: '01', name: 'Phone Revenue', href: '/tools/phone-calculator' },
+  { num: '03', name: 'Agency Report Card', href: '/tools/agency-report-card' },
+  { num: '04', name: 'Revenue Per Tech', href: '/tools/revenue-per-tech' },
+  { num: '05', name: 'Marketing Cost', href: '/tools/marketing-calculator' },
+  { num: '06', name: 'GBP Scorecard', href: '/tools/gbp-scorecard' },
+  { num: '07', name: 'Website Conversion', href: '/tools/website-audit' },
+];
+---
+<ToolLayout
+  toolNumber="02"
+  toolCount="07"
+  toolName="Estimate Follow-Up Calculator"
+  slug="estimate-follow-up"
+  suiteVariant="expanded"
+  showCrossTool={false}
+  headline="68% of Estimates Never Get a Follow-Up.<br><em>Here's What That's Costing You.</em>"
+  subheadline="Most owners blame the homeowner for not calling back. The data says otherwise. Enter your estimate volume and see exactly how much revenue is dying in your outbox every year."
+  metaDescription="Free estimate follow-up calculator for home service companies. Enter your estimate volume, follow-up rate, close rate, and average ticket to see how much annual revenue is being lost."
+>
+
+<style>
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start; padding-bottom: 80px; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+
+.field { margin-bottom: 20px; }
+.field-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; text-align: right; }
+.field-input, .field-select {
+  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
+  padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none;
+  transition: border-color 0.2s; -moz-appearance: textfield;
+}
+.field-input::-webkit-inner-spin-button, .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.field-input:focus, .field-select:focus { border-color: rgba(0,196,154,0.55); }
+.field-input::placeholder { color: var(--ink3); font-size: 13px; }
+.prefix-wrap, .suffix-wrap { position: relative; }
+.prefix, .suffix { position: absolute; top: 50%; transform: translateY(-50%); font-family: var(--mono); color: var(--ink3); pointer-events: none; }
+.prefix { left: 13px; font-size: 14px; }
+.suffix { right: 13px; font-size: 12px; }
+.prefix + .field-input { padding-left: 26px; }
+.field-note { margin-top: 8px; padding: 10px 12px; border-radius: 4px; background: var(--bg4); font-size: 12px; line-height: 1.55; color: var(--ink2); font-weight: 300; }
+.benchmark-hint { margin-top: 6px; font-family: var(--mono); font-size: 9px; color: var(--ink3); padding: 5px 10px; background: var(--bg4); border-radius: 3px; display: flex; justify-content: space-between; gap: 10px; }
+.benchmark-value { color: var(--teal); font-weight: 500; text-align: right; }
+
+.calc-btn {
+  width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
+}
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
+
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.status-wait { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.status-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+.status-good { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.rp-body { padding: 24px; }
+
+.empty-state { text-align: center; padding: 38px 16px; }
+.empty-icon { font-size: 30px; opacity: 0.25; margin-bottom: 12px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.empty-text strong { color: var(--ink2); font-weight: 500; }
+.result-section { display: none; }
+.result-section.show { display: block; }
+
+.main-result { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+.main-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.main-value { font-family: var(--serif); font-size: clamp(50px, 7vw, 72px); font-weight: 400; line-height: 0.95; letter-spacing: -0.03em; color: var(--ink); }
+.main-sub { margin-top: 10px; font-size: 12.5px; color: var(--ink2); line-height: 1.5; font-weight: 300; }
+
+.breakdown-title, .projection-title, .rail-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.breakdown-rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.breakdown-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
+.breakdown-key { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
+.breakdown-value { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); text-align: right; }
+.breakdown-value.neg { color: var(--neg); }
+.breakdown-value.pos { color: var(--pos); }
+
+.benchmark-wrap { margin-bottom: 18px; }
+.benchmark-labels { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; font-family: var(--mono); font-size: 9px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.1em; }
+.benchmark-track { position: relative; height: 8px; border-radius: 999px; background: linear-gradient(90deg, rgba(240,64,64,0.22) 0%, rgba(201,160,53,0.22) 35%, rgba(34,211,122,0.24) 100%); }
+.benchmark-marker, .benchmark-reference {
+  position: absolute; top: -5px; width: 2px; height: 18px; border-radius: 1px;
+}
+.benchmark-marker { background: var(--ink); }
+.benchmark-reference { background: var(--teal); }
+.benchmark-caption { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
+.benchmark-caption span { flex: 1; }
+.benchmark-caption .mid { text-align: center; }
+.benchmark-caption .right { text-align: right; }
+
+.projections { margin-bottom: 18px; padding: 16px; border-radius: 4px; border: 1px solid var(--rule2); background: var(--bg3); }
+.projection-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.projection-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.projection-row:first-of-type { padding-top: 0; }
+.projection-copy { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
+.projection-value { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--pos); }
+.projection-value.neg { color: var(--neg); }
+
+.psych-line, .consequence-line, .cta-note {
+  font-size: 12px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+}
+.psych-line { margin-bottom: 16px; }
+.consequence-line { margin: 0 0 14px; }
+
+.tool-cta {
+  display: block; width: 100%; padding: 14px; border-radius: 4px; text-decoration: none; text-align: center;
+  border: 1.5px solid var(--teal); background: var(--teal); color: var(--bg); transition: background 0.2s;
+}
+.tool-cta:hover { background: #00DFB0; }
+.tool-cta-title { display: block; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.tool-cta-copy { display: block; margin-top: 6px; font-size: 12px; line-height: 1.5; color: rgba(9,12,11,0.84); font-weight: 400; }
+.cta-note { text-align: center; margin-top: 10px; color: var(--ink3); }
+
+.result-rail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.rail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.rail-link {
+  display: block; padding: 12px; border-radius: 4px; text-decoration: none; background: var(--bg3); border: 1px solid var(--rule2);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.rail-link:hover { border-color: var(--teal4); transform: translateY(-1px); }
+.rail-num { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 4px; }
+.rail-name { display: block; font-size: 12.5px; color: var(--ink); line-height: 1.35; }
+.full-picture {
+  display: block; padding: 14px; border-radius: 4px; text-decoration: none; background: rgba(0,196,154,0.05);
+  border: 1px solid rgba(0,196,154,0.28);
+}
+.full-picture-label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.full-picture-title { display: block; font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.full-picture-copy { display: block; font-size: 12px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
+
+@media (max-width: 960px) {
+  .tool-layout { grid-template-columns: 1fr; padding-bottom: 56px; }
+  .result-panel { position: static; }
+}
+
+@media (max-width: 600px) {
+  .rail-grid { grid-template-columns: 1fr; }
+  .field-label, .benchmark-hint, .benchmark-labels, .benchmark-caption, .breakdown-row, .projection-row { gap: 8px; }
+}
+</style>
+
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">Estimate Follow-Up Inputs</span>
+      <span class="ip-micro">Built for HVAC, roofing and plumbing teams</span>
+    </div>
+    <div class="ip-body">
+      <div class="field">
+        <div class="field-label">
+          <span>Estimates sent per month</span>
+          <span class="field-hint">Typical: 30-150</span>
+        </div>
+        <input type="number" class="field-input" id="estimates-per-month" placeholder="e.g. 90" min="0" />
+      </div>
+
+      <div class="field">
+        <div class="field-label">
+          <span>Current follow-up rate</span>
+          <span class="field-hint">Industry average: 20%. Most owners: under 30%</span>
+        </div>
+        <div class="suffix-wrap">
+          <span class="suffix">%</span>
+          <input type="number" class="field-input" id="followup-rate" placeholder="e.g. 18" min="0" max="100" />
+        </div>
+        <div class="field-note">
+          Industry average is under 20%. If you follow up on more than 40% of your unbooked estimates, you are already in the top quartile.
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">
+          <span>Close rate on followed-up estimates</span>
+          <span class="field-hint">Industry average: 38%. Top performers: 55%+</span>
+        </div>
+        <div class="suffix-wrap">
+          <span class="suffix">%</span>
+          <input type="number" class="field-input" id="close-rate-followed" placeholder="e.g. 38" min="0" max="100" />
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">
+          <span>Close rate without follow-up</span>
+          <span class="field-hint">Typically 10-18%</span>
+        </div>
+        <div class="suffix-wrap">
+          <span class="suffix">%</span>
+          <input type="number" class="field-input" id="close-rate-cold" placeholder="e.g. 12" min="0" max="100" />
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">
+          <span>Average job value</span>
+          <span class="field-hint">Average ticket in dollars</span>
+        </div>
+        <div class="prefix-wrap">
+          <span class="prefix">$</span>
+          <input type="number" class="field-input" id="avg-ticket" placeholder="e.g. 2800" min="0" />
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn">Show Me the Follow-Up Gap</button>
+    </div>
+  </div>
+
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">Estimate Follow-Up Report</span>
+      <span class="rp-status status-wait" id="rp-status">Waiting for your numbers</span>
+    </div>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">02</div>
+        <p class="empty-text">
+          <strong>Most estimate leaks are not a price problem.</strong><br /><br />
+          They are a follow-up problem. If your estimate goes cold, the lead you already paid to generate turns into dead revenue sitting in an inbox.
+        </p>
+      </div>
+
+      <div class="result-section" id="results">
+        <div class="main-result">
+          <div class="main-label">Annual revenue leaking from dead estimates</div>
+          <div class="main-value" id="annual-loss">$0</div>
+          <div class="main-sub" id="jobs-lost-summary">0 jobs per month never close because nobody followed up</div>
+        </div>
+
+        <div class="breakdown-title">Breakdown</div>
+        <div class="breakdown-rows">
+          <div class="breakdown-row"><span class="breakdown-key">Estimates sent per month</span><span class="breakdown-value" id="r-estimates">-</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Currently followed up on</span><span class="breakdown-value" id="r-followed">-</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Estimates going dark</span><span class="breakdown-value neg" id="r-dark">-</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Jobs you're closing cold</span><span class="breakdown-value" id="r-cold-jobs">-</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Jobs you'd close with follow-up</span><span class="breakdown-value pos" id="r-followed-jobs">-</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Gap</span><span class="breakdown-value neg" id="r-gap">-</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">Annual revenue in that gap</span><span class="breakdown-value neg" id="r-annual-gap">-</span></div>
+        </div>
+
+        <div class="benchmark-wrap">
+          <div class="benchmark-labels">
+            <span>Your follow-up rate</span>
+            <span id="benchmark-user-copy">0%</span>
+          </div>
+          <div class="benchmark-track">
+            <div class="benchmark-reference" id="avg-marker" style="left:20%"></div>
+            <div class="benchmark-reference" id="top-marker" style="left:55%"></div>
+            <div class="benchmark-marker" id="user-marker" style="left:0%"></div>
+          </div>
+          <div class="benchmark-caption">
+            <span>0%</span>
+            <span class="mid">Industry average: 20%</span>
+            <span class="right">Top 25%: 55%+</span>
+          </div>
+        </div>
+
+        <div class="projections">
+          <div class="projection-title">What if you worked more of the estimates already in your pipeline?</div>
+          <div class="projection-row">
+            <span class="projection-copy">If you follow up on 50% of estimates</span>
+            <span class="projection-value" id="projection-50">+$0/year</span>
+          </div>
+          <div class="projection-row">
+            <span class="projection-copy">If you follow up on 80% of estimates</span>
+            <span class="projection-value" id="projection-80">+$0/year</span>
+          </div>
+        </div>
+
+        <p class="psych-line">This is the gap your agency report never shows you. They're measuring leads sent, not jobs that closed.</p>
+        <p class="consequence-line" id="consequence-line">Every estimate that goes dark is revenue you already paid to create and then left untouched.</p>
+
+        <a href="/apply?service=blueprint&source=estimate-follow-up" class="tool-cta">
+          <span class="tool-cta-title">Get the 5-Touch Follow-Up Sequence - Audit</span>
+          <span class="tool-cta-copy">The Growth System Blueprint includes a word-for-word follow-up sequence built for your trade. See what closing your follow-up gap looks like.</span>
+        </a>
+        <p class="cta-note">The fastest gain here usually comes from fixing the touches after the estimate, not buying more leads.</p>
+
+        <ToolShareResult sectionId="share-section" />
+
+        <div class="result-rail">
+          <div class="rail-title">Continue your diagnosis</div>
+          <div class="rail-grid">
+            {suiteTools.map((tool) => (
+              <a href={tool.href} class="rail-link">
+                <span class="rail-num">{tool.num}</span>
+                <span class="rail-name">{tool.name}</span>
+              </a>
+            ))}
+          </div>
+          <a href="/apply?service=audit&source=estimate-follow-up" class="full-picture">
+            <span class="full-picture-label">Full picture</span>
+            <span class="full-picture-title">Revenue Leak Audit - $750</span>
+            <span class="full-picture-copy">Every leak. Every gap. Every fix. In writing.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const inputIds = ['estimates-per-month', 'followup-rate', 'close-rate-followed', 'close-rate-cold', 'avg-ticket'];
+const buttonDefaultText = 'Show Me the Follow-Up Gap';
+
+inputIds.forEach((id) => {
+  document.getElementById(id).addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') calculate();
+  });
+});
+
+document.getElementById('calc-btn').addEventListener('click', calculate);
+
+function fmtMoney(value) {
+  return '$' + Math.round(value).toLocaleString();
+}
+
+function fmtNumber(value) {
+  const rounded = Math.round(value * 10) / 10;
+  return Number.isInteger(rounded) ? rounded.toLocaleString() : rounded.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
+
+function setProjectionValue(id, value) {
+  const node = document.getElementById(id);
+  const rounded = Math.round(value);
+  const prefix = rounded >= 0 ? '+' : '-';
+  node.textContent = `${prefix}${fmtMoney(Math.abs(rounded))}/year`;
+  node.className = `projection-value${rounded >= 0 ? '' : ' neg'}`;
+}
+
+function revealShare(annualLoss, jobsLostMonthly) {
+  const shareSection = document.getElementById('share-section');
+  const toolUrl = window.location.origin + window.location.pathname;
+  shareSection.dataset.toolUrl = toolUrl;
+  shareSection.dataset.shareText = `I'm losing ${fmtMoney(annualLoss)}/year from estimates I never follow up on. ${fmtNumber(jobsLostMonthly)} jobs per month going dark. Calculator: ${toolUrl} via @builtontenth`;
+  shareSection.style.display = 'block';
+}
+
+function calculate() {
+  const estimatesPerMonth = parseFloat(document.getElementById('estimates-per-month').value) || 0;
+  const followupRate = parseFloat(document.getElementById('followup-rate').value) || 0;
+  const closeRateFollowed = parseFloat(document.getElementById('close-rate-followed').value) || 0;
+  const closeRateCold = parseFloat(document.getElementById('close-rate-cold').value) || 0;
+  const avgTicket = parseFloat(document.getElementById('avg-ticket').value) || 0;
+
+  if (!estimatesPerMonth || !followupRate || !closeRateFollowed || !closeRateCold || !avgTicket) {
+    const button = document.getElementById('calc-btn');
+    button.textContent = 'Please fill in all fields';
+    window.setTimeout(() => {
+      button.textContent = buttonDefaultText;
+    }, 2000);
+    return;
+  }
+
+  const safeFollowupRate = Math.min(followupRate, 100);
+  const safeCloseFollowed = Math.min(closeRateFollowed, 100);
+  const safeCloseCold = Math.min(closeRateCold, 100);
+
+  const estimatesNotFollowed = estimatesPerMonth * (1 - safeFollowupRate / 100);
+  const jobsLostMonthly = estimatesNotFollowed * ((safeCloseFollowed - safeCloseCold) / 100);
+  const revenueLostMonthly = jobsLostMonthly * avgTicket;
+  const revenueLostAnnual = revenueLostMonthly * 12;
+
+  const followedUpNow = estimatesPerMonth * safeFollowupRate / 100;
+  const jobsClosingCold = estimatesNotFollowed * (safeCloseCold / 100);
+  const jobsWithFollowUp = estimatesNotFollowed * (safeCloseFollowed / 100);
+
+  const followup50Estimates = estimatesPerMonth * 0.50;
+  const followup50Jobs = followup50Estimates * (safeCloseFollowed / 100);
+  const additionalJobsAt50 = followup50Jobs - (estimatesPerMonth * safeFollowupRate / 100 * safeCloseFollowed / 100);
+  const additionalRevenueAt50 = additionalJobsAt50 * avgTicket * 12;
+
+  const followup80Estimates = estimatesPerMonth * 0.80;
+  const additionalJobsAt80 = (followup80Estimates * safeCloseFollowed / 100) - (estimatesPerMonth * safeFollowupRate / 100 * safeCloseFollowed / 100);
+  const additionalRevenueAt80 = additionalJobsAt80 * avgTicket * 12;
+
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'estimate-follow-up',
+    annual_loss_bucket: revenueLostAnnual >= 250000 ? '250k_plus' : revenueLostAnnual >= 100000 ? '100k_plus' : 'under_100k',
+  });
+
+  const status = document.getElementById('rp-status');
+  if (revenueLostAnnual > 0) {
+    status.textContent = 'Follow-up leak found';
+    status.className = 'rp-status status-alert';
+  } else {
+    status.textContent = 'No follow-up leak found';
+    status.className = 'rp-status status-good';
+  }
+
+  document.getElementById('annual-loss').textContent = fmtMoney(revenueLostAnnual);
+  document.getElementById('jobs-lost-summary').textContent = `${fmtNumber(jobsLostMonthly)} jobs/month never close because nobody followed up`;
+
+  document.getElementById('r-estimates').textContent = fmtNumber(estimatesPerMonth);
+  document.getElementById('r-followed').textContent = `${fmtNumber(followedUpNow)} (${safeFollowupRate}%)`;
+  document.getElementById('r-dark').textContent = `${fmtNumber(estimatesNotFollowed)} per month`;
+  document.getElementById('r-cold-jobs').textContent = `${fmtNumber(jobsClosingCold)} per month`;
+  document.getElementById('r-followed-jobs').textContent = `${fmtNumber(jobsWithFollowUp)} per month`;
+  document.getElementById('r-gap').textContent = `${fmtNumber(jobsLostMonthly)} jobs/month`;
+  document.getElementById('r-annual-gap').textContent = fmtMoney(revenueLostAnnual);
+
+  const markerLeft = Math.min(safeFollowupRate, 100);
+  document.getElementById('user-marker').style.left = `${markerLeft}%`;
+  document.getElementById('benchmark-user-copy').textContent = `${safeFollowupRate}%`;
+
+  setProjectionValue('projection-50', additionalRevenueAt50);
+  setProjectionValue('projection-80', additionalRevenueAt80);
+
+  document.getElementById('consequence-line').textContent = `That gap is ${fmtMoney(revenueLostAnnual)} a year from estimates that were already in your pipeline. The blueprint shows the exact follow-up sequence that closes it.`;
+
+  revealShare(revenueLostAnnual, jobsLostMonthly);
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
+}
+</script>
+</ToolLayout>

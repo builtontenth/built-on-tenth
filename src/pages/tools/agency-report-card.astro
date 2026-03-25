@@ -1,0 +1,355 @@
+---
+import ToolShareResult from '../../components/ToolShareResult.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const suiteTools = [
+  { num: '01', name: 'Phone Revenue', href: '/tools/phone-calculator' },
+  { num: '02', name: 'Estimate Follow-Up', href: '/tools/estimate-follow-up' },
+  { num: '04', name: 'Revenue Per Tech', href: '/tools/revenue-per-tech' },
+  { num: '05', name: 'Marketing Cost', href: '/tools/marketing-calculator' },
+  { num: '06', name: 'GBP Scorecard', href: '/tools/gbp-scorecard' },
+  { num: '07', name: 'Website Conversion', href: '/tools/website-audit' },
+];
+---
+<ToolLayout
+  toolNumber="03"
+  toolCount="07"
+  toolName="Agency Report Card"
+  slug="agency-report-card"
+  suiteVariant="expanded"
+  showCrossTool={false}
+  headline="Is Your Agency Measuring the Right Numbers?<br><em>Grade Them in 2 Minutes.</em>"
+  subheadline="Every agency reports impressions, clicks, and cost per lead. Almost none report the number that actually matters: cost per booked job. Answer 10 questions about what your agency currently shows you and get a straight grade."
+  metaDescription="Free agency report card for HVAC, roofing, and plumbing companies. Answer 10 yes or no questions and see how accountable your marketing agency really is."
+>
+
+<style>
+.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start; padding-bottom: 80px; }
+.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
+.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
+.ip-body { padding: 24px; }
+.ip-note { font-size: 13px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 22px; padding: 12px 14px; background: var(--bg3); border-radius: 4px; border-left: 2px solid var(--teal); }
+
+.section { margin-bottom: 22px; }
+.section-title { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); padding: 8px 0; border-bottom: 1px solid var(--rule); margin-bottom: 12px; }
+.check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.check-item input[type="checkbox"] { display: none; }
+.check-label { cursor: pointer; display: flex; align-items: flex-start; gap: 12px; flex: 1; }
+.check-toggle {
+  width: 18px; height: 18px; border-radius: 3px; border: 1.5px solid var(--rule2); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; transition: all 0.2s; margin-top: 1px;
+}
+.check-item input:checked ~ label .check-toggle { background: var(--teal); border-color: var(--teal); }
+.check-item input:checked ~ label .check-toggle::after { content: '✓'; font-size: 11px; color: var(--bg); font-weight: 700; }
+.check-text { font-size: 13px; color: var(--ink2); line-height: 1.55; font-weight: 300; padding-top: 1px; }
+.check-text strong { color: var(--ink); font-weight: 500; }
+
+.calc-btn {
+  width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
+}
+.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
+
+.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
+.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
+.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.status-wait { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
+.status-good { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
+.status-warn { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
+.status-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
+.rp-body { padding: 24px; }
+
+.empty-state { text-align: center; padding: 38px 16px; }
+.empty-icon { font-size: 30px; opacity: 0.25; margin-bottom: 12px; }
+.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.empty-text strong { color: var(--ink2); font-weight: 500; }
+.result-section { display: none; }
+.result-section.show { display: block; }
+
+.grade-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); text-align: center; }
+.grade-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+.score-line { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--ink2); margin-bottom: 6px; }
+.grade-value { font-family: var(--serif); font-size: 74px; line-height: 0.95; color: var(--ink); margin-bottom: 8px; }
+.verdict { font-size: 12.5px; line-height: 1.55; color: var(--ink2); font-weight: 300; }
+
+.breakdown-title, .consequence-title, .rail-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
+.breakdown-rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.breakdown-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
+.breakdown-key { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
+.breakdown-value { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+
+.consequences { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.consequence-item { padding: 10px 12px; border-radius: 4px; background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.16); }
+.consequence-item strong { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; color: var(--ink); }
+.consequence-item span { display: block; font-size: 12px; line-height: 1.58; color: var(--ink2); font-weight: 300; }
+
+.psych-line, .consequence-line, .cta-note {
+  font-size: 12px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+}
+.psych-line { margin-bottom: 16px; }
+.consequence-line { margin: 0 0 14px; }
+
+.tool-cta {
+  display: block; width: 100%; padding: 14px; border-radius: 4px; text-decoration: none; text-align: center;
+  border: 1.5px solid var(--teal); background: var(--teal); color: var(--bg); transition: background 0.2s;
+}
+.tool-cta:hover { background: #00DFB0; }
+.tool-cta-title { display: block; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.tool-cta-copy { display: block; margin-top: 6px; font-size: 12px; line-height: 1.5; color: rgba(9,12,11,0.84); font-weight: 400; }
+.cta-note { text-align: center; margin-top: 10px; color: var(--ink3); }
+
+.result-rail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.rail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.rail-link {
+  display: block; padding: 12px; border-radius: 4px; text-decoration: none; background: var(--bg3); border: 1px solid var(--rule2);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.rail-link:hover { border-color: var(--teal4); transform: translateY(-1px); }
+.rail-num { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 4px; }
+.rail-name { display: block; font-size: 12.5px; color: var(--ink); line-height: 1.35; }
+.full-picture {
+  display: block; padding: 14px; border-radius: 4px; text-decoration: none; background: rgba(0,196,154,0.05);
+  border: 1px solid rgba(0,196,154,0.28);
+}
+.full-picture-label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.full-picture-title { display: block; font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.full-picture-copy { display: block; font-size: 12px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
+
+@media (max-width: 960px) {
+  .tool-layout { grid-template-columns: 1fr; padding-bottom: 56px; }
+  .result-panel { position: static; }
+}
+
+@media (max-width: 600px) {
+  .rail-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="tool-layout" slot="tool-body">
+  <div class="input-panel">
+    <div class="ip-header">
+      <span class="ip-title">Agency Accountability Checklist</span>
+      <span class="ip-micro">10 questions · Straight grade</span>
+    </div>
+    <div class="ip-body">
+      <p class="ip-note">Answer based on what your agency actually sends you right now. Not what they said they would track when you signed up.</p>
+
+      <div class="section">
+        <div class="section-title">What They Measure</div>
+        <div class="check-item">
+          <input type="checkbox" id="q1" />
+          <label class="check-label" for="q1"><div class="check-toggle"></div><span class="check-text">Their report shows cost per booked job, not just cost per lead or cost per click</span></label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="q2" />
+          <label class="check-label" for="q2"><div class="check-toggle"></div><span class="check-text">They track what happens after the lead comes in - answer rate, booking rate, jobs booked</span></label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="q3" />
+          <label class="check-label" for="q3"><div class="check-toggle"></div><span class="check-text">They report differently for each channel - Google Ads, LSAs, and organic are broken out separately, not blended</span></label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="q4" />
+          <label class="check-label" for="q4"><div class="check-toggle"></div><span class="check-text">They can tell you which channel produced the most booked jobs last month - not just the most leads</span></label>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">How They Operate</div>
+        <div class="check-item">
+          <input type="checkbox" id="q5" />
+          <label class="check-label" for="q5"><div class="check-toggle"></div><span class="check-text">Their fee is fixed - they do not earn more when you increase your ad spend</span></label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="q6" />
+          <label class="check-label" for="q6"><div class="check-toggle"></div><span class="check-text">If results dropped last month, their report explains exactly why and what they are changing</span></label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="q7" />
+          <label class="check-label" for="q7"><div class="check-toggle"></div><span class="check-text">You could tell them to pause all ads today and they would not push back or add conditions</span></label>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">What You Can See</div>
+        <div class="check-item">
+          <input type="checkbox" id="q8" />
+          <label class="check-label" for="q8"><div class="check-toggle"></div><span class="check-text">You have direct access to your own Google Ads and LSA accounts - not just their dashboard</span></label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="q9" />
+          <label class="check-label" for="q9"><div class="check-toggle"></div><span class="check-text">You know your actual cost per booked job for each channel right now without asking them</span></label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="q10" />
+          <label class="check-label" for="q10"><div class="check-toggle"></div><span class="check-text">If you asked them "how many jobs did we book from Google Ads last month" they could answer immediately with a specific number</span></label>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn">Grade My Agency</button>
+    </div>
+  </div>
+
+  <div class="result-panel">
+    <div class="rp-header">
+      <span class="rp-title">Agency Report Card</span>
+      <span class="rp-status status-wait" id="rp-status">Waiting for your answers</span>
+    </div>
+    <div class="rp-body">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">03</div>
+        <p class="empty-text"><strong>Most agencies report activity, not accountability.</strong><br /><br />This checklist shows whether you are paying for real visibility into booked jobs or a dashboard built around easier numbers.</p>
+      </div>
+
+      <div class="result-section" id="results">
+        <div class="grade-block">
+          <div class="grade-label">Your Agency Scores</div>
+          <div class="score-line" id="score-line">0/10</div>
+          <div class="grade-value" id="grade-value">F</div>
+          <div class="verdict" id="grade-verdict">They are not accountable to a single booked job.</div>
+        </div>
+
+        <div class="breakdown-title">Section breakdown</div>
+        <div class="breakdown-rows">
+          <div class="breakdown-row"><span class="breakdown-key">What They Measure</span><span class="breakdown-value" id="section-a-score">0/4</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">How They Operate</span><span class="breakdown-value" id="section-b-score">0/3</span></div>
+          <div class="breakdown-row"><span class="breakdown-key">What You Can See</span><span class="breakdown-value" id="section-c-score">0/3</span></div>
+        </div>
+
+        <div class="consequence-title">What your "No" answers mean</div>
+        <div class="consequences" id="consequences-list"></div>
+
+        <p class="psych-line">A good agency shows you cost per booked job by channel every month without being asked. That is the bar. If yours does not, the Revenue Leak Audit shows you what a proper performance picture looks like and what to demand from whoever you hire next.</p>
+        <p class="consequence-line" id="consequence-line">If they cannot show booked jobs by channel, you are making budget decisions in the dark.</p>
+
+        <a href="/apply?service=audit&source=agency-report-card" class="tool-cta">
+          <span class="tool-cta-title">See What Your Numbers Actually Look Like</span>
+          <span class="tool-cta-copy">The Revenue Leak Audit maps your real cost per booked job by channel. Every gap in dollars. Delivered in writing.</span>
+        </a>
+        <p class="cta-note">The biggest risk here is not a bad month. It is paying for reporting that hides why the bad month happened.</p>
+
+        <ToolShareResult sectionId="share-section" />
+
+        <div class="result-rail">
+          <div class="rail-title">Continue your diagnosis</div>
+          <div class="rail-grid">
+            {suiteTools.map((tool) => (
+              <a href={tool.href} class="rail-link">
+                <span class="rail-num">{tool.num}</span>
+                <span class="rail-name">{tool.name}</span>
+              </a>
+            ))}
+          </div>
+          <a href="/apply?service=audit&source=agency-report-card" class="full-picture">
+            <span class="full-picture-label">Full picture</span>
+            <span class="full-picture-title">Revenue Leak Audit - $750</span>
+            <span class="full-picture-copy">Every leak. Every gap. Every fix. In writing.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const verdicts = {
+  A: 'Strong. Your agency is accountable to revenue, not activity. Most owners cannot say this.',
+  B: 'Decent. A couple gaps. The questions you scored No on are the ones that matter most.',
+  C: 'They are measuring activity, not revenue. You are probably paying for reports that avoid the real number.',
+  D: 'Your agency is not accountable to a single booked job. That is the core problem.',
+  F: 'You are funding a reporting system built to obscure performance, not expose it.',
+};
+
+const consequences = [
+  { id: 'q1', label: 'No on cost per booked job', text: 'Cost per lead is a vanity metric. A $40 lead with a 20% booking rate costs you $200 per job. Most agencies hide this.' },
+  { id: 'q2', label: 'No on post-lead tracking', text: 'If they stop at the lead, they have zero accountability for whether it turned into revenue.' },
+  { id: 'q3', label: 'No on channel breakout', text: 'Blended numbers let bad channels hide behind good ones. Agencies do this on purpose.' },
+  { id: 'q4', label: 'No on top-booking channel', text: 'If they cannot answer this question today, you cannot make a single informed budget decision.' },
+  { id: 'q5', label: 'No on fixed fee', text: 'An agency paid on percentage of spend has a financial incentive to grow your spend, not your revenue.' },
+  { id: 'q6', label: 'No on bad-month explanation', text: 'An agency that does not explain bad months is managing your perception, not your results.' },
+  { id: 'q7', label: 'No on pausing spend', text: 'If pausing spend creates friction, their business model depends on your spend, not your outcomes.' },
+  { id: 'q8', label: 'No on account access', text: 'Not having direct account access means they can leave and take your data with them.' },
+  { id: 'q9', label: 'No on knowing cost per booked job', text: 'If you do not know this number right now, you are not measuring marketing. You are guessing.' },
+  { id: 'q10', label: 'No on booked jobs by Google Ads', text: 'This is the only number that matters. If they cannot answer it, every other metric is noise.' },
+];
+
+const questionIds = consequences.map((item) => item.id);
+
+document.getElementById('calc-btn').addEventListener('click', calculate);
+
+function getGrade(score) {
+  if (score >= 9) return 'A';
+  if (score >= 7) return 'B';
+  if (score >= 5) return 'C';
+  if (score >= 3) return 'D';
+  return 'F';
+}
+
+function revealShare(score, grade) {
+  const shareSection = document.getElementById('share-section');
+  const toolUrl = window.location.origin + window.location.pathname;
+  shareSection.dataset.toolUrl = toolUrl;
+  shareSection.dataset.shareText = `Graded my marketing agency on 10 questions. They scored ${score}/10 (${grade}). Free tool for HVAC, roofing and plumbing owners: ${toolUrl} via @builtontenth`;
+  shareSection.style.display = 'block';
+}
+
+function calculate() {
+  const answers = {};
+  questionIds.forEach((id) => {
+    answers[id] = document.getElementById(id).checked;
+  });
+
+  const score = questionIds.reduce((total, id) => total + (answers[id] ? 1 : 0), 0);
+  const grade = getGrade(score);
+  const sectionA = ['q1', 'q2', 'q3', 'q4'].reduce((total, id) => total + (answers[id] ? 1 : 0), 0);
+  const sectionB = ['q5', 'q6', 'q7'].reduce((total, id) => total + (answers[id] ? 1 : 0), 0);
+  const sectionC = ['q8', 'q9', 'q10'].reduce((total, id) => total + (answers[id] ? 1 : 0), 0);
+
+  window.botTrack?.('tool_calculation', {
+    tool_name: 'agency-report-card',
+    grade,
+    score_bucket: score >= 7 ? '7_plus' : score >= 5 ? '5_to_6' : 'under_5',
+  });
+
+  const status = document.getElementById('rp-status');
+  if (grade === 'A') {
+    status.textContent = 'Strong reporting setup';
+    status.className = 'rp-status status-good';
+  } else if (grade === 'B' || grade === 'C') {
+    status.textContent = 'Reporting gaps found';
+    status.className = 'rp-status status-warn';
+  } else {
+    status.textContent = 'Major accountability gaps';
+    status.className = 'rp-status status-alert';
+  }
+
+  document.getElementById('score-line').textContent = `${score}/10`;
+  document.getElementById('grade-value').textContent = grade;
+  document.getElementById('grade-verdict').textContent = verdicts[grade];
+  document.getElementById('section-a-score').textContent = `${sectionA}/4`;
+  document.getElementById('section-b-score').textContent = `${sectionB}/3`;
+  document.getElementById('section-c-score').textContent = `${sectionC}/3`;
+
+  const missed = consequences.filter((item) => !answers[item.id]);
+  const list = document.getElementById('consequences-list');
+  if (missed.length === 0) {
+    list.innerHTML = '<div class="consequence-item"><strong>No obvious reporting gaps</strong><span>Your agency cleared every accountability check on this rubric. That is rare. The next step is confirming the numbers themselves are strong.</span></div>';
+  } else {
+    list.innerHTML = missed.map((item) => `<div class="consequence-item"><strong>${item.label}</strong><span>${item.text}</span></div>`).join('');
+  }
+
+  document.getElementById('consequence-line').textContent = grade === 'A'
+    ? 'This puts you ahead of most owners. The next question is whether the channels themselves are efficient.'
+    : 'If they cannot give you booked jobs by channel on demand, they are protecting themselves more than they are protecting your budget.';
+
+  revealShare(score, grade);
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results').classList.add('show');
+}
+</script>
+</ToolLayout>

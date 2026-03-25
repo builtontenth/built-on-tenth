@@ -13,8 +13,8 @@ readTime: 13
 featured: false
 preview: "A $55 LSA lead that books at 55% costs $100 per booked job. A $55 Angi lead that books at 25% costs $220. Same price, different output. Here's the cost-per-booked-job math for every major plumbing lead channel."
 pills: ["CPL vs cost/booked job", "Emergency vs planned split", "Channel comparison table"]
-primaryCtaLabel: "Grade Your Lead Sources"
-primaryCtaHref: "/tools/lead-grader"
+primaryCtaLabel: "Calculate Your Marketing Cost"
+primaryCtaHref: "/tools/marketing-calculator"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
 seoKeywords: ["plumbing cost per booked job", "plumbing lead source comparison", "plumbing angi vs google ads", "plumbing lsa cost per booked job", "plumbing google ads cost", "plumbing referral value", "plumbing marketing channel benchmarks", "plumbing lead generation roi", "plumbing cost per lead by channel", "plumbing facebook leads"]
@@ -253,7 +253,7 @@ Divide total spend by signed jobs. That's your cost per booked job for that sour
 
 If you don't have this data for the last 90 days, build the tracking today. CallRail ($45/month) handles call attribution automatically if your CRM isn't doing it. Even rough source attribution -- "how did you hear about us" at the first call -- produces directional insight that the blended number hides completely.
 
-The [Lead Source Grader](/tools/lead-grader) compares your channels side by side using these inputs. Use it before making any reallocation decisions.
+The [Marketing Cost Calculator](/tools/marketing-calculator) runs this math against your current numbers. Use it before making any reallocation decisions.
 
 ---
 
@@ -277,7 +277,7 @@ The full channel allocation logic and budget formulas by revenue stage are in th
 2. **Pull your booked jobs by source for the same period.** Source attribution from your CRM or call tracking. If you don't have it, "how did you hear about us" from the CSR on every call for the next 30 days fills the gap.
 3. **Calculate cost per booked job by channel.** Spend divided by booked jobs. Compare each number against the 10% of average ticket threshold for the job types that source generates.
 4. **Check your contact rate and booking rate.** These numbers determine which scenario column in the table above you're actually in. If you're running average ops on every channel, improving phone performance produces more additional booked jobs than any channel reallocation.
-5. **Use the [Lead Source Grader](/tools/lead-grader)** to run the channel comparison for your operation. Takes three minutes and shows you which sources are producing and which are costing more than the jobs justify.
+5. **Use the [Marketing Cost Calculator](/tools/marketing-calculator)** to benchmark your current cost per booked job before you reallocate budget. Takes three minutes and shows you whether your blended number is inside a workable range.
 
 ---
 

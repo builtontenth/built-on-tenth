@@ -7,16 +7,41 @@ interface Props {
   headline: string;
   subheadline: string;
   metaDescription: string;
+  toolCount?: string;
+  suiteVariant?: 'legacy' | 'expanded';
+  showCrossTool?: boolean;
 }
-const { toolNumber, toolName, slug, headline, subheadline, metaDescription } = Astro.props;
+const {
+  toolNumber,
+  toolName,
+  slug,
+  headline,
+  subheadline,
+  metaDescription,
+  toolCount = '05',
+  suiteVariant = 'legacy',
+  showCrossTool = true,
+} = Astro.props;
 
-const allTools = [
+const legacyTools = [
   { num: '01', name: 'Phone Revenue Calculator',   href: '/tools/phone-calculator',       active: slug === 'phone-calculator' },
   { num: '02', name: 'Marketing Cost Calculator',  href: '/tools/marketing-calculator',   active: slug === 'marketing-calculator' },
   { num: '03', name: 'Lead Source Grader',         href: '/tools/lead-grader',            active: slug === 'lead-grader' },
   { num: '04', name: 'Website Conversion Audit',   href: '/tools/website-audit',          active: slug === 'website-audit' },
   { num: '05', name: 'Capacity-to-Demand Planner', href: '/tools/capacity-planner',       active: slug === 'capacity-planner' },
 ];
+
+const expandedTools = [
+  { num: '01', name: 'Phone Revenue Calculator', href: '/tools/phone-calculator', active: slug === 'phone-calculator', navLabel: 'Phone Revenue' },
+  { num: '02', name: 'Estimate Follow-Up Calculator', href: '/tools/estimate-follow-up', active: slug === 'estimate-follow-up', navLabel: 'Estimate Follow-Up' },
+  { num: '03', name: 'Agency Report Card', href: '/tools/agency-report-card', active: slug === 'agency-report-card', navLabel: 'Agency Report Card' },
+  { num: '04', name: 'Revenue Per Technician Benchmarker', href: '/tools/revenue-per-tech', active: slug === 'revenue-per-tech', navLabel: 'Revenue Per Tech' },
+  { num: '05', name: 'Marketing Cost Calculator', href: '/tools/marketing-calculator', active: slug === 'marketing-calculator', navLabel: 'Marketing Cost' },
+  { num: '06', name: 'GBP Scorecard', href: '/tools/gbp-scorecard', active: slug === 'gbp-scorecard', navLabel: 'GBP Scorecard' },
+  { num: '07', name: 'Website Conversion Audit', href: '/tools/website-audit', active: slug === 'website-audit', navLabel: 'Website Conversion' },
+];
+
+const allTools = suiteVariant === 'expanded' ? expandedTools : legacyTools;
 ---
 <Layout title={`${toolName} - Free Tool | Built on Tenth`} description={metaDescription} active="tools">
 
@@ -259,7 +284,7 @@ const allTools = [
       <nav class="tool-step-nav">
         {allTools.map(t => (
           <a href={t.href} class={`tsn-item${t.active ? ' active' : ''}`}>
-            {t.num} · {t.name.split(' ').slice(0,2).join(' ')}
+            {t.num} · {t.navLabel || t.name.split(' ').slice(0,2).join(' ')}
           </a>
         ))}
       </nav>
@@ -269,7 +294,7 @@ const allTools = [
   <!-- Hero -->
   <div class="tool-hero">
     <div class="tool-hero-inner">
-      <div class="tool-num-badge">Tool {toolNumber} of 05</div>
+      <div class="tool-num-badge">Tool {toolNumber} of {toolCount}</div>
       <h1 set:html={headline}></h1>
       <p class="tool-hero-sub">{subheadline}</p>
     </div>
@@ -281,23 +306,25 @@ const allTools = [
   </div>
 
   <!-- Cross-tool navigation -->
-  <div class="tool-cross">
-    <div class="tool-cross-inner">
-      <div class="tc-title">Continue your diagnosis - check the other leaks</div>
-      <div class="tc-grid">
-        {allTools.map(t => (
-          <a href={t.href} class={`tc-card${t.active ? ' current' : ''}`}>
-            <div class="tc-num">{t.num}</div>
-            <div class="tc-name">{t.name}</div>
+  {showCrossTool && (
+    <div class="tool-cross">
+      <div class="tool-cross-inner">
+        <div class="tc-title">Continue your diagnosis - check the other leaks</div>
+        <div class="tc-grid">
+          {allTools.map(t => (
+            <a href={t.href} class={`tc-card${t.active ? ' current' : ''}`}>
+              <div class="tc-num">{t.num}</div>
+              <div class="tc-name">{t.name}</div>
+            </a>
+          ))}
+          <a href="/apply" class="tc-card" style="border-color:rgba(0,196,154,0.28);background:rgba(0,196,154,0.04)">
+            <div class="tc-num" style="color:var(--teal)">Full picture</div>
+            <div class="tc-name">Revenue Leak Audit - $750</div>
           </a>
-        ))}
-        <a href="/apply" class="tc-card" style="border-color:rgba(0,196,154,0.28);background:rgba(0,196,154,0.04)">
-          <div class="tc-num" style="color:var(--teal)">Full picture</div>
-          <div class="tc-name">Revenue Leak Audit - $750</div>
-        </a>
+        </div>
       </div>
     </div>
-  </div>
+  )}
 
 </div>
 </Layout>
