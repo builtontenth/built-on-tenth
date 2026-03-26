@@ -1,14 +1,14 @@
 ---
 title: "What to Ask an HVAC Marketing Agency Before You Sign Anything"
-seoTitle: "What to Ask an HVAC Marketing Agency Before You Sign"
+seoTitle: "What to Ask an HVAC Marketing Agency Before You Sign a Contract"
 description: "Most HVAC owners sign agency contracts without asking the questions that matter. Here is exactly what to ask before you commit $2,000 to $5,000 a month to someone else's strategy."
-metaDescription: "Before you sign with an HVAC marketing agency, ask these questions. Most agencies cannot answer them. That tells you everything you need to know."
+metaDescription: "Before you sign with an HVAC marketing agency, ask these booked-job, reporting, ownership, and benchmark questions. Weak answers are a red flag."
 pubDate: 2026-03-26
 author: "Tanvir Hossain"
-category: "Marketing"
+category: "Revenue Diagnostics"
 trade: ["HVAC"]
-heroImage: "/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026-3.png"
-heroImageAlt: "HVAC owner and office manager reviewing a marketing agreement and operating notes at a desk"
+heroImage: "/images/brand/hvac/blog-hvac-google-ads-campaign-structure.png"
+heroImageAlt: "HVAC owner reviewing agency notes, booked-job math, and channel questions at a desk"
 readTime: 9
 featured: false
 preview: "Most agencies cannot answer the questions that actually matter. Here is what to ask before you hand over $3,000 a month and hope for the best."
@@ -17,12 +17,12 @@ primaryCtaLabel: "Grade Your Agency"
 primaryCtaHref: "/tools/agency-report-card"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
-seoKeywords: ["hvac marketing agency", "hiring hvac marketing agency", "what to ask marketing agency hvac", "hvac agency red flags", "hvac marketing due diligence", "best hvac marketing agency"]
+seoKeywords: ["hvac marketing agency", "hiring hvac marketing agency", "what to ask marketing agency hvac", "hvac agency red flags", "hvac marketing due diligence", "hvac agency contract questions", "cost per booked job hvac agency"]
 ---
 
 The average HVAC owner who hires a marketing agency spends $2,000 to $5,000 per month and has no clear way to measure whether it is working.
 
-After 6 months they have a folder of reports, a PDF with impressions and clicks, and a vague feeling that something should be better by now. They are not sure if the agency is the problem or if they just need more time. So they give it another 3 months. Then another 3.
+After six months they have a folder of reports, a PDF with impressions and clicks, and a vague feeling that something should be better by now. They are not sure if the agency is the problem or if they just need more time. So they give it another three months. Then another three.
 
 This is how owners end up 18 months in, $54,000 spent, still unable to connect a dollar of agency spend to a booked job.
 
@@ -36,15 +36,17 @@ The questions below are not adversarial. They are what any owner should ask befo
 
 Get clear on one thing first: what problem are you actually trying to solve?
 
-If your phones are not ringing, you need lead volume. If your phones are ringing and jobs are not booking, you need a CSR and a phone process, not an agency. If you are booking jobs but your average ticket is low, you have a technician and pricing problem. No amount of ad spend fixes that.
+If your phones are not ringing, you need lead volume. If your phones are ringing and jobs are not booking, you need a CSR process, not an agency. If you are booking jobs but your average ticket is low, you have a technician and pricing problem. No amount of ad spend fixes that.
 
 Most owners hire agencies for the first problem and ignore the second and third. Agencies take the money either way.
 
 Know which problem is yours before you walk into the conversation. It changes everything about what you should be buying.
 
+If you are not sure which problem is yours, run through the [four numbers every HVAC owner should know](/insights/four-numbers-hvac-owner-marketing) before this meeting. It takes 30 minutes and tells you whether the gap is in your funnel, your phones, or your follow-up.
+
 ---
 
-## The Questions That Separate Real Operators from Order Takers
+## The Questions That Separate Real Operators From Order Takers
 
 ### 1. How do you define a successful campaign for a company like mine?
 
@@ -52,7 +54,7 @@ Listen for specificity. A good answer references booked jobs, cost per booked jo
 
 Impressions do not pay your technicians. Booked jobs do.
 
-If their definition of success is traffic or leads and yours is booked revenue, you will be arguing about what "working" means in month four while they show you a chart that goes up and you show them a bank account that has not moved.
+If their definition of success is traffic or leads and yours is booked revenue, you will be arguing about what "working" means in month four while they show you a chart going up and you show them a bank account that has not moved.
 
 Get the definition agreed on paper before the contract is signed.
 
@@ -60,9 +62,9 @@ Get the definition agreed on paper before the contract is signed.
 
 ### 2. What does your reporting look like and what numbers will you show me every month?
 
-Ask to see a sample report from a current client. Redacted is fine. You want to see the structure.
+Ask to see a sample report from a current client. Redacted is fine. You want the structure.
 
-What you want to see: booked jobs or booked revenue attributed to their channel, cost per booked job, call volume from their traffic, booking rate on those calls.
+What you want to see: booked jobs or revenue attributed to their channel, cost per booked job, call volume from their traffic, booking rate on those calls.
 
 What most agencies show instead: total impressions, total clicks, total leads, cost per lead, quality score, average position. These numbers are not wrong. They are just upstream of the only number that matters, which is how many jobs got on your board.
 
@@ -72,7 +74,7 @@ If the sample report does not show booked jobs or revenue anywhere in it, that i
 
 ### 3. Who will actually be working on my account?
 
-You are meeting a salesperson. Find out who you will actually be talking to in month two.
+You are meeting a salesperson. Find out who you will be talking to in month two.
 
 Ask specifically: who manages my account day to day, how many other accounts are they managing, and how do I reach them when something needs to change fast?
 
@@ -100,9 +102,9 @@ This question separates agencies that actually know your trade from agencies tha
 
 A good HVAC agency should be able to tell you that Google LSA typically delivers booked jobs at $80 to $180 in a mid-size market, that Google Ads search runs $150 to $350 per booked job depending on competition and season, and that Angi and similar aggregators often run $200 to $400 per booked job once you account for leads that never answer the phone.
 
-If they cannot give you a range, they are either new to HVAC or used to working with clients who never ask. Neither is a good sign.
+If they cannot give you a range, they are either new to HVAC or used to clients who never ask. Neither is a good sign.
 
-If you want to run those numbers yourself before the conversation, the [HVAC cost per lead by channel breakdown](/insights/hvac-cost-per-lead-by-channel-2026) has the benchmarks.
+If you want to run those numbers yourself before the conversation, the [HVAC cost per lead by channel breakdown](/insights/hvac-cost-per-lead-by-channel-2026) has the benchmarks, and the [Marketing Cost Calculator](/tools/marketing-calculator) will show what your own booked-job math looks like with your current numbers.
 
 ---
 
@@ -128,7 +130,7 @@ A vague agency talks about onboarding and learning periods and getting a feel fo
 
 You are paying from day one. Know what you are getting from day one.
 
-If you want to pressure-test your current reporting before the meeting, the [Agency Report Card](/tools/agency-report-card) gives you a straight grade in about two minutes. It is the fastest way to see whether the agency is measuring booked jobs or hiding behind lead volume.
+Run the [Agency Report Card](/tools/agency-report-card) before this meeting. It gives you a straight grade on your current or prospective agency's setup in about two minutes. It is the fastest way to see whether they are measuring booked jobs or hiding behind lead volume.
 
 ![HVAC office manager and owner tracing booked jobs back to channels and reports in a dispatch office](/images/brand/hvac/blog-hvac-google-ads-campaign-structure-3.png)
 
@@ -136,15 +138,15 @@ If you want to pressure-test your current reporting before the meeting, the [Age
 
 ## The Red Flags That End the Conversation Early
 
-**They guarantee rankings or a specific number of leads.** Nobody can guarantee rankings. Google controls rankings. An agency that guarantees them is either lying or defining the terms in a way that makes the guarantee meaningless.
+They guarantee rankings or a specific number of leads. Nobody can guarantee rankings. Google controls rankings. An agency that guarantees them is either lying or defining the terms in a way that makes the guarantee meaningless.
 
-**They cannot tell you what your current booking rate is or why it matters.** If they do not ask about your booking rate in the discovery call, they are selling you traffic, not revenue. Traffic that does not book is a cost center.
+They cannot tell you what your current booking rate is or why it matters. If they do not ask about your booking rate in the discovery call, they are selling you traffic, not revenue.
 
-**They want a 12-month contract up front.** Six months is reasonable. Twelve months with no performance clause is a bet that only benefits them. Ask for a 90-day out if core benchmarks are not hit.
+They want a 12-month contract up front. Six months is reasonable. Twelve months with no performance clause is a bet that only benefits them. Ask for a 90-day out if core benchmarks are not hit.
 
-**Every answer involves spending more.** Slow month? Spend more on ads. Booking rate is low? Spend more to get better leads. Average ticket is down? You need more volume. An agency that fixes every problem with more budget is not analyzing your business. They are growing their margin.
+Every answer involves spending more. Slow month? Spend more on ads. Booking rate is low? Spend more to get better leads. Average ticket is down? You need more volume. An agency that fixes every problem with more budget is not analyzing your business. They are growing their margin.
 
-**They cannot name a single thing your current marketing is doing right.** A competent agency reviews what you have before telling you what to change. If the pitch starts with everything being broken and their system being the fix, walk out.
+They cannot name a single thing your current marketing is doing right. A competent agency reviews what you have before telling you what to change. If the pitch starts with everything being broken and their system being the fix, walk out.
 
 ---
 
@@ -160,7 +162,9 @@ If you are about to sign a contract worth $30,000 to $60,000 over the next year,
 
 The [Revenue Leak Audit](/apply) gives you a 7-day written analysis of your phone conversion, marketing spend, estimate follow-up, and local visibility. Every finding is translated into a dollar figure. No calls required.
 
-If you want the benchmark layer before you sign anything, pair this article with the [four numbers every HVAC owner should know](/insights/four-numbers-hvac-owner-marketing) and the [marketing cost calculator](/tools/marketing-calculator). Those two together usually expose whether the agency problem is really a measurement problem, a booking problem, or a channel economics problem.
+If you want the benchmark layer before you sign anything, pair this with the [four numbers every HVAC owner should know before spending on marketing](/insights/four-numbers-hvac-owner-marketing) and the [Marketing Cost Calculator](/tools/marketing-calculator). Those two together usually expose whether the agency problem is really a measurement problem, a booking problem, or a channel economics problem.
+
+If you are also evaluating whether your current software stack is earning its cost, the [ServiceTitan ROI audit](/insights/servicetitan-roi-audit-hvac) applies the same diagnostic logic to that decision.
 
 You walk into the agency negotiation knowing your numbers instead of hoping theirs are right.
 

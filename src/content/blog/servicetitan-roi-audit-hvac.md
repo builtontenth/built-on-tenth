@@ -1,14 +1,14 @@
 ---
 title: "How to Audit Your ServiceTitan ROI Before You Renew"
-seoTitle: "Is ServiceTitan Worth It? How to Audit Your ROI Before You Renew"
+seoTitle: "ServiceTitan ROI Audit for HVAC Companies Before Renewal"
 description: "Most operators renew ServiceTitan without ever checking the numbers. Here is how to run the audit yourself and find out if the software is earning its cost."
-metaDescription: "Before you renew ServiceTitan, run this audit. Three numbers that tell you if the software is paying for itself and what to do if it isn't."
+metaDescription: "Audit your ServiceTitan ROI before renewal using three HVAC numbers: booking rate, average ticket, and estimate follow-up rate."
 pubDate: 2026-03-26
 author: "Tanvir Hossain"
 category: "Operations"
 trade: ["HVAC"]
-heroImage: "/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026-2.png"
-heroImageAlt: "HVAC owner reviewing operational reports and budget notes on a worktable"
+heroImage: "/images/brand/hvac/blog-how-to-set-up-google-local-service-ads-hvac-3.png"
+heroImageAlt: "HVAC office manager reviewing software workflow notes and reporting printouts beside a desk phone"
 readTime: 8
 featured: false
 preview: "Most operators renew ServiceTitan on autopilot. Here is the three-number audit that tells you if it is actually earning its cost."
@@ -17,10 +17,10 @@ primaryCtaLabel: "Calculate Your Follow-Up Gap"
 primaryCtaHref: "/tools/estimate-follow-up"
 secondaryCtaLabel: "Get a Revenue Leak Audit"
 secondaryCtaHref: "/apply"
-seoKeywords: ["servicetitan roi", "is servicetitan worth it", "servicetitan cost hvac", "servicetitan review hvac company", "servicetitan alternative", "hvac software roi audit"]
+seoKeywords: ["servicetitan roi", "is servicetitan worth it", "servicetitan cost hvac", "servicetitan review hvac company", "servicetitan renewal audit", "hvac software roi audit", "servicetitan hvac roi"]
 ---
 
-ServiceTitan costs most HVAC companies between $500 and $1,500 per month depending on seat count and contract tier. Add onboarding fees, training time, and the hours your office manager spent learning the system and you're looking at $15,000 to $25,000 in year-one real cost before you book a single job through it.
+ServiceTitan costs most HVAC companies between $500 and $1,500 per month depending on seat count and contract tier. Add onboarding fees, training time, and the hours your office manager spent learning the system and you are looking at $15,000 to $25,000 in year-one real cost before you book a single job through it.
 
 Most owners never run the math on whether it paid back.
 
@@ -34,13 +34,7 @@ This article gives you the audit. Three numbers. You can pull them yourself. The
 
 Before you audit the software, get clear on what you bought it to do.
 
-ServiceTitan is a field service management platform. At its core it is supposed to help you:
-
-- Answer calls and book jobs faster
-- Dispatch technicians without a whiteboard
-- Track job revenue and average ticket
-- Follow up on estimates that did not close
-- Give you reporting that connects marketing spend to booked revenue
+ServiceTitan is a field service management platform. At its core it is supposed to help you answer calls and book jobs faster, dispatch technicians without a whiteboard, track job revenue and average ticket, follow up on estimates that did not close, and give you reporting that connects marketing spend to booked revenue.
 
 If it is doing all of that well, the cost is easy to justify. If it is doing three of five passably and the other two are still broken, you are paying enterprise software prices for a fancier spreadsheet.
 
@@ -52,45 +46,45 @@ The audit tells you which situation you are in.
 
 ## The Three Numbers That Actually Matter
 
-### 1. Your Booking Rate on Inbound Calls
+### Number 1: Your Booking Rate on Inbound Calls
 
 This is the number ServiceTitan should make easy to see. It usually does not.
 
-Booking rate is simple: how many inbound calls turned into booked jobs? If your CSR answered 100 calls this month and booked 42 of them, your booking rate is 42%.
+Booking rate: how many inbound calls turned into booked jobs? If your CSR answered 100 calls this month and booked 42, your booking rate is 42%.
 
-Across the 300-plus companies in our data set, the average booking rate on answered calls is 42%. Top performers are hitting 62% to 70%.
+Across 300-plus companies in our data set, the average booking rate on answered calls is 42%. Top performers hit 62% to 70%.
 
 Go into ServiceTitan and pull your call log for the last 30 days. Match it against booked jobs. If your booking rate is under 40% and nobody on your team knew that before this article, ServiceTitan has not fixed your phone problem. It has just made it easier to ignore.
 
-**What it tells you:** If your booking rate is low, the software is not the cause. But it should have been surfacing this problem every week. If it wasn't, ask yourself why you are paying for reporting that isn't reporting anything useful.
+What it tells you: if your booking rate is low, the software is not the cause. But it should have been surfacing this problem every week. If it was not, ask yourself why you are paying for reporting that is not reporting anything useful.
 
 ---
 
-### 2. Your Average Ticket vs. Market Benchmark
+### Number 2: Your Average Ticket vs. Market Benchmark
 
 ServiceTitan tracks average ticket natively. Pull it.
 
-For HVAC service work, a healthy average ticket on residential calls is typically $350 to $550 depending on your market. Replacement average tickets should be $6,500 to $10,000-plus depending on system size and your pricing model.
+For HVAC service work, a healthy average ticket on residential calls is $350 to $550 depending on your market. Replacement average tickets should be $6,500 to $10,000-plus depending on system size and your pricing model.
 
 If your average service ticket is sitting under $300 and you have a flat-rate pricebook loaded into ServiceTitan, something is broken. Either your technicians are not presenting options, they are discounting without approval, or the pricebook itself is underpriced.
 
 ServiceTitan's built-in pricebook is supposed to prevent this. Good options presentation, upsell prompts, maintenance agreement attachment at checkout. If your average ticket has not moved since you implemented the software, those features are either not turned on or not being used.
 
-**What it tells you:** A flat or low average ticket after ServiceTitan implementation points to one of two things. Technician behavior that the software is not correcting. Or a pricebook that is priced wrong. Both are fixable. But neither is a software problem. The problem is that ServiceTitan gave you the tools and nobody made sure they were being used.
+What it tells you: a flat or low average ticket after ServiceTitan implementation points to one of two things. Technician behavior that the software is not correcting. Or a pricebook that is priced wrong. Both are fixable. But neither is a software problem. The problem is that ServiceTitan gave you the tools and nobody made sure they were being used.
 
 ---
 
-### 3. Your Follow-Up Rate on Unbooked Estimates
+### Number 3: Your Follow-Up Rate on Unbooked Estimates
 
 This is where most operators find real money sitting uncollected.
 
-Our data shows that 68% of estimates never get followed up. On a $2M to $3M HVAC company running 20 to 30 estimates per week, that is a lot of closed quotes sitting in ServiceTitan with no follow-up activity.
+Our data shows 68% of estimates never get followed up. On a $2M to $3M HVAC company running 20 to 30 estimates per week, that is a lot of closed quotes sitting in ServiceTitan with no follow-up activity.
 
-Pull your estimate report for the last 60 days. Filter for estimates that did not close. How many have follow-up activity logged? A call attempt, a text, a second email? If the answer is fewer than half, you have a follow-up problem that ServiceTitan was supposed to automate and didn't.
+Pull your estimate report for the last 60 days. Filter for estimates that did not close. How many have follow-up activity logged? A call attempt, a text, a second email? If fewer than half do, you have a follow-up problem that ServiceTitan was supposed to automate and did not.
 
 ServiceTitan has built-in follow-up workflows and automated messaging. If they are not configured, nobody set them up. If they are configured and close rate has not moved, the sequences need work.
 
-**What it tells you:** An unconfigured follow-up workflow is not a software failure. It is an implementation failure. But the cost is the same either way. A $3,000 average replacement estimate with a 15% follow-up close rate is real money. If you are sitting on 40 unclosed estimates per month and following up with 8 of them, you are leaving 32 opportunities per month untouched.
+What it tells you: an unconfigured follow-up workflow is not a software failure. It is an implementation failure. But the cost is the same either way. A $3,000 average replacement estimate with a 15% follow-up close rate is real money. If you are sitting on 40 unclosed estimates per month and following up with 8 of them, you are leaving 32 opportunities per month untouched.
 
 If you want to quantify that leak before renewal season, run the [Estimate Follow-Up Calculator](/tools/estimate-follow-up). It gives you the dollar value of the quotes sitting idle in your pipeline. If the bigger issue is still upstream on the phones, the [Phone Revenue Calculator](/tools/phone-calculator) shows what weak answer rate and booking rate are doing to the same operation.
 
@@ -100,7 +94,7 @@ If you want to quantify that leak before renewal season, run the [Estimate Follo
 
 ## The Honest Question: Software Problem or Implementation Problem?
 
-This is the question most operators avoid asking because the answer is uncomfortable either way.
+This is the question most operators avoid because the answer is uncomfortable either way.
 
 If your numbers are bad and ServiceTitan has never surfaced them, that is an implementation failure. Somebody bought the software, got it running well enough to use, and moved on. The deeper configuration work never happened. The dashboards were never set up. The follow-up automations were never turned on. The pricebook was loaded once and never reviewed.
 
@@ -110,7 +104,7 @@ If your numbers are bad and you have configured everything correctly, that is a 
 
 What ServiceTitan should never be blamed for: leads, call volume, market conditions, or technician turnover. Those are outside the software's scope.
 
-What ServiceTitan should absolutely be blamed for: if you have been running it for 12 months and you still cannot answer what your booking rate is, what your average ticket is, or how many estimates you follow up with. That is a reporting failure and you are paying for reporting.
+What ServiceTitan should absolutely be blamed for: if you have been running it for 12 months and still cannot answer what your booking rate is, what your average ticket is, or how many estimates you follow up with, that is a reporting failure. And you are paying for reporting.
 
 ---
 
@@ -122,17 +116,19 @@ Before you renew, decide which one is worth fixing first. Usually it is follow-u
 
 Set up the ServiceTitan follow-up sequences before your next renewal date. If they are already set up and not working, review the timing and the messaging. A sequence that sends one email at day three and then stops is not a follow-up system. It is a checkbox.
 
-If you find that your booking rate and average ticket are actually healthy and your close rate on estimates is reasonable, ServiceTitan is probably earning its cost. Renew without anxiety and focus on lead volume instead.
+If your booking rate and average ticket are actually healthy and your close rate on estimates is reasonable, ServiceTitan is probably earning its cost. Renew without anxiety and focus on lead volume instead.
 
-If you run this audit and the numbers are bad but you cannot tell why, that is what an independent analysis is for.
+If you run this audit and the numbers are bad but you cannot tell why, that is what independent analysis is for.
 
-The same pattern shows up in agency reporting too: dashboards that surface activity but not booked-job economics. The [HVAC marketing agency report card article](/insights/hvac-marketing-agency-report-card) covers that failure from the marketing side and helps you spot whether the reporting stack is showing you useful numbers or just busy numbers.
+The same pattern shows up in agency reporting: dashboards that surface activity but not booked-job economics. The [HVAC marketing agency report card article](/insights/hvac-marketing-agency-report-card) covers that failure from the marketing side. If you are evaluating both the software and the agency at the same time, read [what to ask an HVAC marketing agency before you sign](/insights/what-to-ask-hvac-marketing-agency-before-signing) alongside this.
+
+If you want the broader diagnostic before you touch software or vendor renewals, start with [the four numbers every HVAC owner should know](/insights/four-numbers-hvac-owner-marketing). It gives you the base measurement layer this audit depends on.
 
 ---
 
 ## The Bottom Line Before You Sign Another Year
 
-ServiceTitan is not cheap. At $600 to $1,500 per month plus your real implementation time, you are paying $7,200 to $18,000 per year for a system that should be making your operation measurably tighter.
+ServiceTitan is not cheap. At $600 to $1,500 per month plus real implementation time, you are paying $7,200 to $18,000 per year for a system that should be making your operation measurably tighter.
 
 If you cannot name your booking rate, average ticket, and follow-up rate right now without digging for ten minutes, the software has not done its most important job yet. It should have made those numbers unavoidable.
 
