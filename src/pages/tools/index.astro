@@ -125,16 +125,16 @@ const tools = [
 .tool-item:nth-child(even) { direction: rtl; }
 .tool-item:nth-child(even) > * { direction: ltr; }
 
-.tool-img-col { position: relative; overflow: hidden; background: var(--bg3); min-height: 260px; }
-.tool-img-col img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%) brightness(0.94); transition: transform 0.6s var(--ease), filter 0.4s; display: block; }
+.tool-img-col { position: relative; overflow: hidden; background: var(--bg3); min-height: 280px; }
+.tool-img-col img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(6%) brightness(0.98); transition: transform 0.6s var(--ease), filter 0.4s; display: block; }
 .tool-item:hover .tool-img-col img { transform: scale(1.05); filter: grayscale(0%) brightness(1); }
-.tool-img-col::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(0,196,154,0.025); pointer-events: none; }
+.tool-img-col::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(0,196,154,0.018); pointer-events: none; }
 .tool-img-col::after {
   content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: linear-gradient(to right, transparent 68%, rgba(9,12,11,0.22) 100%);
+  background: linear-gradient(to right, transparent 72%, rgba(9,12,11,0.14) 100%);
 }
 .tool-item:nth-child(even) .tool-img-col::after {
-  background: linear-gradient(to left, transparent 68%, rgba(9,12,11,0.22) 100%);
+  background: linear-gradient(to left, transparent 72%, rgba(9,12,11,0.14) 100%);
 }
 
 .tool-body { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; }
@@ -183,7 +183,7 @@ const tools = [
   .tools-hero { padding: 100px 20px 60px; }
   .tools-hero h1 { font-size: clamp(28px, 8vw, 44px); }
   .tool-item, .tool-item:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
-  .tool-img-col { min-height: 180px; }
+  .tool-img-col { min-height: 220px; }
   .tool-img-col::after, .tool-item:nth-child(even) .tool-img-col::after { background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%); }
   .tool-body { padding: 24px 20px; }
   .tool-cta-link { width: 100%; }
