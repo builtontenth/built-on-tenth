@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
   src: string;
   alt: string;
@@ -16,6 +18,7 @@ interface Props {
 const {
   src,
   alt,
+  widths,
   sizes,
   loading = 'lazy',
   priority = false,
@@ -23,24 +26,50 @@ const {
   style,
   fit = 'cover',
   position = 'center',
+  formats = ['avif', 'webp'],
 } = Astro.props;
 
-const isPublicLocal = src.startsWith('/images/') || src.startsWith('/tanvir');
-const isRemote = /^https?:\/\//.test(src);
+const imageModules = import.meta.glob('../assets/**/*.{png,jpg,jpeg,webp,avif}', {
+  eager: true,
+  import: 'default',
+});
 
-if (!isPublicLocal && !isRemote) {
-  throw new Error(`ResponsiveImage only supports public local or remote assets: ${src}`);
+const isRemote = /^https?:\/\//.test(src);
+const normalizedSrc = src.startsWith('/images/')
+  ? `../assets${src}`
+  : src.startsWith('/tanvir')
+    ? '../assets/tanvir.png'
+    : null;
+
+if (!isRemote && (!normalizedSrc || !(normalizedSrc in imageModules))) {
+  throw new Error(`ResponsiveImage could not resolve asset: ${src}`);
 }
 
-const inlineStyle = `${style ? `${style};` : ''}object-fit:${fit};object-position:${position};`;
+const resolvedImage = !isRemote && normalizedSrc ? imageModules[normalizedSrc] : null;
 ---
-<img
-  src={src}
-  alt={alt}
-  sizes={sizes}
-  loading={priority ? 'eager' : loading}
-  decoding="async"
-  fetchpriority={priority ? 'high' : 'auto'}
-  class={className}
-  style={inlineStyle}
-/>
+{isRemote ? (
+  <img
+    src={src}
+    alt={alt}
+    loading={priority ? 'eager' : loading}
+    decoding="async"
+    fetchpriority={priority ? 'high' : 'auto'}
+    class={className}
+    style={`${style ? `${style};` : ''}object-fit:${fit};object-position:${position};`}
+  />
+) : (
+  <Image
+    src={resolvedImage}
+    alt={alt}
+    widths={widths}
+    sizes={sizes}
+    loading={priority ? 'eager' : loading}
+    decoding="async"
+    fetchpriority={priority ? 'high' : 'auto'}
+    class={className}
+    style={style}
+    fit={fit}
+    position={position}
+    formats={formats}
+  />
+)}
