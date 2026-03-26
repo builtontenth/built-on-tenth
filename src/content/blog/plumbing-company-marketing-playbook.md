@@ -7,7 +7,7 @@ pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80"
+heroImage: "/images/brand/core/core-services-blueprint.png"
 heroImageAlt: "Plumber working on residential pipes under a sink"
 readTime: 13
 featured: false

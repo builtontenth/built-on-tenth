@@ -7,7 +7,7 @@ pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["Roofing"]
-heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80"
+heroImage: "/images/brand/core/core-services-advisory.png"
 heroImageAlt: "Roofing contractor presenting estimate to homeowner at kitchen table"
 readTime: 12
 featured: false

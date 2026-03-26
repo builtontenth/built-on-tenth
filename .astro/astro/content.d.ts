@@ -1,4 +1,14 @@
 declare module 'astro:content' {
+	interface Render {
+		'.mdx': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+		}>;
+	}
+}
+
+declare module 'astro:content' {
 	interface RenderResult {
 		Content: import('astro/runtime/server/index.js').AstroComponentFactory;
 		headings: import('astro').MarkdownHeading[];
@@ -169,13 +179,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"four-numbers-hvac-owner-marketing.md": {
-	id: "four-numbers-hvac-owner-marketing.md";
+"four-numbers-hvac-owner-marketing.mdx": {
+	id: "four-numbers-hvac-owner-marketing.mdx";
   slug: "four-numbers-hvac-owner-marketing";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "google-business-profile-audit-contractor.md": {
 	id: "google-business-profile-audit-contractor.md";
   slug: "google-business-profile-audit-contractor";
@@ -183,13 +193,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"how-hvac-service-agreements-add-200k-annual-revenue.md": {
-	id: "how-hvac-service-agreements-add-200k-annual-revenue.md";
+"how-hvac-service-agreements-add-200k-annual-revenue.mdx": {
+	id: "how-hvac-service-agreements-add-200k-annual-revenue.mdx";
   slug: "how-hvac-service-agreements-add-200k-annual-revenue";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "how-many-google-reviews-roofing-company-map-pack.md": {
 	id: "how-many-google-reviews-roofing-company-map-pack.md";
   slug: "how-many-google-reviews-roofing-company-map-pack";
@@ -197,13 +207,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"how-much-should-hvac-company-spend-on-marketing-2026.md": {
-	id: "how-much-should-hvac-company-spend-on-marketing-2026.md";
+"how-much-should-hvac-company-spend-on-marketing-2026.mdx": {
+	id: "how-much-should-hvac-company-spend-on-marketing-2026.mdx";
   slug: "how-much-should-hvac-company-spend-on-marketing-2026";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "how-much-should-plumbing-company-spend-on-marketing-2026.md": {
 	id: "how-much-should-plumbing-company-spend-on-marketing-2026.md";
   slug: "how-much-should-plumbing-company-spend-on-marketing-2026";
@@ -218,13 +228,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"how-to-set-up-google-local-service-ads-hvac.md": {
-	id: "how-to-set-up-google-local-service-ads-hvac.md";
+"how-to-set-up-google-local-service-ads-hvac.mdx": {
+	id: "how-to-set-up-google-local-service-ads-hvac.mdx";
   slug: "how-to-set-up-google-local-service-ads-hvac";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "how-to-work-roofing-insurance-claim-job.md": {
 	id: "how-to-work-roofing-insurance-claim-job.md";
   slug: "how-to-work-roofing-insurance-claim-job";
@@ -232,27 +242,27 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"hvac-cost-per-lead-by-channel-2026.md": {
-	id: "hvac-cost-per-lead-by-channel-2026.md";
+"hvac-cost-per-lead-by-channel-2026.mdx": {
+	id: "hvac-cost-per-lead-by-channel-2026.mdx";
   slug: "hvac-cost-per-lead-by-channel-2026";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"hvac-flat-rate-pricing-undercharging-service-calls.md": {
-	id: "hvac-flat-rate-pricing-undercharging-service-calls.md";
+} & { render(): Render[".mdx"] };
+"hvac-flat-rate-pricing-undercharging-service-calls.mdx": {
+	id: "hvac-flat-rate-pricing-undercharging-service-calls.mdx";
   slug: "hvac-flat-rate-pricing-undercharging-service-calls";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"hvac-google-ads-campaign-structure.md": {
-	id: "hvac-google-ads-campaign-structure.md";
+} & { render(): Render[".mdx"] };
+"hvac-google-ads-campaign-structure.mdx": {
+	id: "hvac-google-ads-campaign-structure.mdx";
   slug: "hvac-google-ads-campaign-structure";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "hvac-marketing-agency-report-card.md": {
 	id: "hvac-marketing-agency-report-card.md";
   slug: "hvac-marketing-agency-report-card";
@@ -260,13 +270,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"hvac-marketing-benchmarks-2026-what-top-performers-spend.md": {
-	id: "hvac-marketing-benchmarks-2026-what-top-performers-spend.md";
+"hvac-marketing-benchmarks-2026-what-top-performers-spend.mdx": {
+	id: "hvac-marketing-benchmarks-2026-what-top-performers-spend.mdx";
   slug: "hvac-marketing-benchmarks-2026-what-top-performers-spend";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "hvac-revenue-per-truck-benchmark.md": {
 	id: "hvac-revenue-per-truck-benchmark.md";
   slug: "hvac-revenue-per-truck-benchmark";
@@ -274,13 +284,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"i-analyzed-a-3m-hvac-company-online-presence.md": {
-	id: "i-analyzed-a-3m-hvac-company-online-presence.md";
+"i-analyzed-a-3m-hvac-company-online-presence.mdx": {
+	id: "i-analyzed-a-3m-hvac-company-online-presence.mdx";
   slug: "i-analyzed-a-3m-hvac-company-online-presence";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "plumbing-company-marketing-playbook.md": {
 	id: "plumbing-company-marketing-playbook.md";
   slug: "plumbing-company-marketing-playbook";
@@ -330,13 +340,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"servicetitan-roi-audit-hvac.md": {
-	id: "servicetitan-roi-audit-hvac.md";
+"servicetitan-roi-audit-hvac.mdx": {
+	id: "servicetitan-roi-audit-hvac.mdx";
   slug: "servicetitan-roi-audit-hvac";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md": {
 	id: "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md";
   slug: "the-follow-up-sequence-that-moved-close-rate-to-40-percent";
@@ -351,20 +361,20 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"what-to-ask-hvac-marketing-agency-before-signing.md": {
-	id: "what-to-ask-hvac-marketing-agency-before-signing.md";
+"what-to-ask-hvac-marketing-agency-before-signing.mdx": {
+	id: "what-to-ask-hvac-marketing-agency-before-signing.mdx";
   slug: "what-to-ask-hvac-marketing-agency-before-signing";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"why-hvac-csrs-are-losing-you-300k-per-year.md": {
-	id: "why-hvac-csrs-are-losing-you-300k-per-year.md";
+} & { render(): Render[".mdx"] };
+"why-hvac-csrs-are-losing-you-300k-per-year.mdx": {
+	id: "why-hvac-csrs-are-losing-you-300k-per-year.mdx";
   slug: "why-hvac-csrs-are-losing-you-300k-per-year";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "why-roofing-companies-miss-60-percent-inbound-calls-storm-season.md": {
 	id: "why-roofing-companies-miss-60-percent-inbound-calls-storm-season.md";
   slug: "why-roofing-companies-miss-60-percent-inbound-calls-storm-season";

@@ -7,7 +7,7 @@ pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Revenue Diagnostics"
 trade: ["HVAC"]
-heroImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1400&q=80"
+heroImage: "/images/brand/hvac/blog-hvac-revenue-per-truck-benchmark.png"
 heroImageAlt: "HVAC service van parked outside a residential home"
 readTime: 13
 featured: false

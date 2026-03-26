@@ -7,7 +7,7 @@ pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Pipeline Systems"
 trade: ["Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80"
+heroImage: "/images/brand/core/tool-phone-calculator.png"
 heroImageAlt: "Plumbing CSR handling inbound service calls at desk"
 readTime: 13
 featured: false

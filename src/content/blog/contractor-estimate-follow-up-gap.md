@@ -7,7 +7,7 @@ pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Pipeline Systems"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80"
+heroImage: "/images/brand/core/tool-estimate-follow-up.png"
 heroImageAlt: "Contractor reviewing unsent estimate follow-ups on laptop"
 readTime: 11
 featured: false

@@ -7,7 +7,7 @@ pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Revenue Diagnostics"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80"
+heroImage: "/images/brand/core/tool-agency-report-card.png"
 heroImageAlt: "Contractor reviewing marketing agency performance reports on laptop"
 readTime: 12
 featured: false

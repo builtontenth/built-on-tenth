@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import MarkdownImage from '../../components/MarkdownImage.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -108,6 +110,10 @@ const recommendedTools = toolPaths
   .map((path) => toolLibrary[path as keyof typeof toolLibrary])
   .slice(0, 2);
 
+const markdownComponents = {
+  img: MarkdownImage,
+};
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -154,14 +160,6 @@ const breadcrumbSchema = {
   padding: 120px 48px 64px;
   position: relative;
   overflow: hidden;
-}
-.ah-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center 35%;
-  opacity: 0.18;
-  filter: grayscale(18%);
 }
 .ah-overlay {
   position: absolute;
@@ -601,7 +599,6 @@ const breadcrumbSchema = {
 <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 <div class="article-hero">
-  <div class="ah-bg" style={`background-image: url('${heroImage}'); background-position: ${heroImagePosition};`}></div>
   <div class="ah-overlay"></div>
   <div class="ah-inner">
     <a href="/insights" class="back-link">All Insights</a>
@@ -623,14 +620,21 @@ const breadcrumbSchema = {
     </div>
   </div>
   <figure class="ah-media">
-    <img src={heroImage} alt={post.data.heroImageAlt} loading="eager" style={`object-position:${heroImagePosition}`} />
+    <ResponsiveImage
+      src={heroImage}
+      alt={post.data.heroImageAlt}
+      widths={[640, 960, 1280, 1600]}
+      sizes="(max-width: 960px) 100vw, 780px"
+      priority={true}
+      position={heroImagePosition}
+    />
     <figcaption class="ah-media-caption">{post.data.heroImageAlt}</figcaption>
   </figure>
 </div>
 
 <div class="article-body">
   <article class="article-content">
-    <Content />
+    <Content components={markdownComponents} />
   </article>
 
   <div class="article-cta">

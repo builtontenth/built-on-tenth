@@ -11,6 +11,10 @@
     "verify:content": "node scripts/verify-content-pipeline.mjs"
   },
   "dependencies": {
+    "@astrojs/mdx": "^2.3.1",
+    "@fontsource-variable/crimson-pro": "^5.2.8",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
+    "@fontsource/space-mono": "^5.2.9",
     "astro": "^4.16.0"
   }
 }

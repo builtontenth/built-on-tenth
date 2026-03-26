@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
 
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('en-US', {
@@ -163,10 +164,11 @@ const postsForClient = allPosts.map((post) => ({
           </div>
           <div class="fa-img">
             <span class="fa-img-badge">Featured</span>
-            <img
+            <ResponsiveImage
               src={initialFeatured.data.heroImage}
               alt={initialFeatured.data.heroImageAlt}
-              loading="lazy"
+              widths={[640, 960, 1280]}
+              sizes="(max-width: 960px) 100vw, 380px"
               style={`object-position:${heroImagePositions[initialFeatured.slug] ?? 'center'}`}
             />
           </div>
@@ -183,10 +185,11 @@ const postsForClient = allPosts.map((post) => ({
       {initialSecondary.map((article) => (
         <a href={`/insights/${article.slug}`} class="article-card reveal">
           <div class="ac-img">
-            <img
+            <ResponsiveImage
               src={article.data.heroImage}
               alt={article.data.heroImageAlt}
-              loading="lazy"
+              widths={[320, 480, 640, 960]}
+              sizes="(max-width: 960px) 100vw, 50vw"
               style={`object-position:${heroImagePositions[article.slug] ?? 'center'}`}
             />
           </div>

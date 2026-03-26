@@ -7,7 +7,7 @@ pubDate: 2026-03-19
 author: "Tanvir Hossain"
 category: "Channel Teardowns"
 trade: ["Roofing"]
-heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80"
+heroImage: "/images/brand/core/core-services-hero-bg.png"
 heroImageAlt: "Contractor working on a residential construction project"
 readTime: 12
 featured: false
@@ -83,7 +83,7 @@ Running conservative numbers through the chain:
 
 On a $14,000 average replacement, that's roughly **11 to 13% of job revenue** going to lead acquisition before you've touched a shingle.
 
-![Roofing contractor reviewing an estimate with a homeowner outside](https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80)
+![Roofing contractor reviewing an estimate with a homeowner outside](/images/brand/core/core-services-audit.png)
 
 *The math on Angi leads changes significantly based on your contact rate and how quickly your office responds.*
 
@@ -123,7 +123,7 @@ Angi tends to produce positive ROI for roofing companies when all of the followi
 
 **You're running Angi because you've always run Angi.** Inertia is not a marketing strategy. If you've never pulled the actual signed-contract numbers and run the cost-per-job math, you don't know whether Angi is profitable or not.
 
-![Roofing business owner at desk reviewing marketing data on laptop](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80)
+![Roofing business owner at desk reviewing marketing data on laptop](/images/brand/core/tool-agency-report-card.png)
 
 *Pulling your actual Angi numbers takes 30 minutes. Most owners have never done it.*
 

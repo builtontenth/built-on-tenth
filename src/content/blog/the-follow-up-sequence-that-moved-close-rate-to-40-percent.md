@@ -8,7 +8,7 @@ pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Pipeline Systems"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=80"
+heroImage: "/images/brand/core/tool-estimate-follow-up.png"
 heroImageAlt: "HVAC company CSR following up on estimates by phone"
 readTime: 13
 featured: false
@@ -84,7 +84,7 @@ That's the number that matters. Not the close rate percentage -- the dollar amou
 
 Use the [Estimate Follow-Up Calculator](/tools/estimate-follow-up) to run the same math on your own numbers. Plug in your estimate volume, your current close rate, and your average ticket. The gap usually surprises people.
 
-![Business owner reviewing estimate close rate data on laptop](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80)
+![Business owner reviewing estimate close rate data on laptop](/images/brand/core/tool-estimate-follow-up.png)
 *Most owners focus on generating more estimates. The faster ROI is closing more of the ones already sent.*
 
 ---
@@ -155,7 +155,7 @@ Two things this touch does that the first two don't:
 
 If they answer: go straight to booking. If they don't: leave a short voicemail, move to Touch 4.
 
-![HVAC technician on phone following up with homeowner after estimate visit](https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80)
+![HVAC technician on phone following up with homeowner after estimate visit](/images/brand/hvac/blog-how-hvac-service-agreements-add-200k-annual-revenue-3.png)
 *The third touch is where most of the recoveries happen. Most companies never make it.*
 
 ---

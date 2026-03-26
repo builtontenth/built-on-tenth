@@ -7,7 +7,7 @@ pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Revenue Diagnostics"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?w=1400&q=80"
+heroImage: "/images/brand/core/tool-phone-calculator.png"
 heroImageAlt: "Contractor missing a call while working on job site"
 readTime: 10
 featured: false

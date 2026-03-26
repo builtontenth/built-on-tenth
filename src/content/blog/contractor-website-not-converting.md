@@ -7,7 +7,7 @@ pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Revenue Diagnostics"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80"
+heroImage: "/images/brand/core/tool-website-audit.png"
 heroImageAlt: "Contractor checking website performance on phone in the field"
 readTime: 11
 featured: false

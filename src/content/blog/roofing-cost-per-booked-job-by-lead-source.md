@@ -7,7 +7,7 @@ pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["Roofing"]
-heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80"
+heroImage: "/images/brand/core/core-services-audit.png"
 heroImageAlt: "Roofing business owner comparing lead source performance data"
 readTime: 13
 featured: false

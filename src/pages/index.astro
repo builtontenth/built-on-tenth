@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
 ---
 <Layout
   title="Built on Tenth - Revenue Intelligence for HVAC, Roofing &amp; Plumbing"
@@ -20,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
   --rule2:   rgba(226,221,208,0.16);
   --ink:     #E2DDD0;
   --ink2:    rgba(226,221,208,0.88);
-  --ink3:    rgba(226,221,208,0.62);
+  --ink3:    rgba(226,221,208,0.74);
   --teal:    #00C49A;
   --teal2:   rgba(0,196,154,0.12);
   --teal3:   rgba(0,196,154,0.06);
@@ -55,7 +56,7 @@ body::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.028;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 160px;
 }
@@ -174,9 +175,10 @@ body::before {
 .hero-photo {
   position: absolute;
   inset: 0;
-  background-image: url('/images/brand/core/core-home-hero-bg.png');
-  background-size: cover;
-  background-position: center 40%;
+}
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
   opacity: 0.11;
   filter: grayscale(18%);
 }
@@ -720,7 +722,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   flex-shrink: 0;
   background: rgba(240,64,64,0.1);
 }
-.pain h4 {
+.pain h3 {
   font-family: var(--sans);
   font-size: 13.5px;
   font-weight: 600;
@@ -1155,7 +1157,8 @@ img[data-failed] ~ .img-fb { display: flex; }
 ════════════════════════════════════════ */
 .nl-section { padding: 112px 48px; text-align: center; position: relative; overflow: hidden; }
 /* Faint newsletter photo behind content */
-.nl-photo { position: absolute; inset: 0; background-image: url('/images/brand/core/core-newsletter-bg.png'); background-size: cover; background-position: center; opacity: 0.12; filter: grayscale(18%); }
+.nl-photo { position: absolute; inset: 0; }
+.nl-photo-img { width: 100%; height: 100%; opacity: 0.12; filter: grayscale(18%); }
 .nl-glow  { position: absolute; inset: 0; background: radial-gradient(ellipse 65% 65% at 50% 50%, rgba(0,196,154,0.07) 0%, transparent 65%); }
 .nl-inner { position: relative; z-index: 1; max-width: 540px; margin: 0 auto; }
 .nl-h {
@@ -1199,7 +1202,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 .ft-brand-name { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 .ft-brand-name::before { content: ''; width: 8px; height: 8px; border-radius: 2px; background: var(--teal); flex-shrink: 0; }
 .ft-brand p { font-size: 13px; color: var(--ink3); line-height: 1.72; max-width: 300px; font-weight: 300; }
-.ft-col h5 { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); margin-bottom: 16px; }
+.ft-col-title { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); margin-bottom: 16px; }
 .ft-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .ft-col a { display: inline-block; font-size: 13px; color: var(--ink2); text-decoration: none; font-weight: 300; transition: color 0.2s; }
 .ft-col a:hover { color: var(--ink); }
@@ -1254,10 +1257,12 @@ img[data-failed] ~ .img-fb { display: flex; }
   .hero { grid-template-columns: 1fr; padding-top: 96px; }
   .hero-left { padding-right: 0; }
   .hero-right { display: none; }
+  .hero-photo { display: none; }
 }
 
 /* 960px: main mobile breakpoint */
 @media (max-width: 960px) {
+  body::before { display: none; }
   /* ── HERO ── */
   .hero { padding: 84px 20px 56px; min-height: auto; }
   .hero-h { font-size: clamp(30px, 8vw, 48px); line-height: 1.1; }
@@ -1288,7 +1293,7 @@ img[data-failed] ~ .img-fb { display: flex; }
   .ft-grid { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
   .ft-brand { grid-column: 1 / -1; padding-top: 0; }
   .ft-brand p { max-width: 100%; }
-  .ft-col h5 { margin-bottom: 12px; }
+  .ft-col-title { margin-bottom: 12px; }
   .ft-links { gap: 8px; }
 
   /* ── PROBLEM SECTION ── */
@@ -1373,7 +1378,18 @@ img[data-failed] ~ .img-fb { display: flex; }
 
 <!-- ══════════ HERO - ASYMMETRIC ══════════ -->
 <div class="hero">
-  <div class="hero-photo"></div>
+  <div class="hero-photo">
+    <ResponsiveImage
+      src="/images/brand/core/core-home-hero-bg.png"
+      alt=""
+      class="hero-photo-img"
+      widths={[768, 1024, 1440]}
+      sizes="100vw"
+      loading="eager"
+      fit="cover"
+      position="center 40%"
+    />
+  </div>
   <div class="hero-fog"></div>
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
@@ -1544,20 +1560,20 @@ img[data-failed] ~ .img-fb { display: flex; }
       <div class="prob-media reveal">
         <div class="collage">
           <div class="c-main">
-            <img
+            <ResponsiveImage
               src="/images/brand/core/core-home-problem-secondary.png"
               alt="Office manager handling dispatch pressure"
-              loading="lazy"
-              onerror="this.setAttribute('data-failed','1')"
+              widths={[480, 640, 960]}
+              sizes="(max-width: 960px) 100vw, 33vw"
             />
             <div class="img-fb"><span style="font-size:28px;opacity:0.2">📊</span></div>
           </div>
           <div class="c-sec">
-            <img
+            <ResponsiveImage
               src="/images/brand/core/core-home-problem-main.png"
               alt="Field lead arriving at a residential service call"
-              loading="lazy"
-              onerror="this.setAttribute('data-failed','1')"
+              widths={[480, 640, 960]}
+              sizes="(max-width: 960px) 100vw, 40vw"
             />
             <div class="img-fb"><span style="font-size:28px;opacity:0.2">🔧</span></div>
           </div>
@@ -1581,21 +1597,21 @@ img[data-failed] ~ .img-fb { display: flex; }
           <div class="pain">
             <div class="pain-ic" style="background:rgba(240,64,64,0.1)">💸</div>
             <div>
-              <h4>"I'm spending money but I can't see what's working."</h4>
+              <h3>"I'm spending money but I can't see what's working."</h3>
               <p>Your agency shows impressions and clicks. You need to see cost per booked job. That's the only number that matters when you're running trucks.</p>
             </div>
           </div>
           <div class="pain">
             <div class="pain-ic" style="background:rgba(240,64,64,0.1)">📞</div>
             <div>
-              <h4>"My calls aren't booking."</h4>
+              <h3>"My calls aren't booking."</h3>
               <p>It's usually not the lead source. It's that nobody trained your front desk to handle the call. The calls are coming in. They're just not converting.</p>
             </div>
           </div>
           <div class="pain">
             <div class="pain-ic" style="background:rgba(240,64,64,0.1)">🔥</div>
             <div>
-              <h4>"I tried agencies before and got burned."</h4>
+              <h3>"I tried agencies before and got burned."</h3>
               <p>Every agency has a financial incentive to recommend more ad spend. We don't run ads, don't manage campaigns, don't earn a commission on anything.</p>
             </div>
           </div>
@@ -1692,11 +1708,11 @@ img[data-failed] ~ .img-fb { display: flex; }
     <div class="steps" style="margin-top:48px">
       <div class="step reveal">
         <div class="step-img">
-          <img
+          <ResponsiveImage
             src="/images/brand/core/core-home-how-step-1.png"
             alt="Reviewing benchmark sheets and competitor notes"
-            loading="lazy"
-            onerror="this.setAttribute('data-failed','1')"
+            widths={[320, 480, 640, 960]}
+            sizes="(max-width: 960px) 100vw, 33vw"
           />
           <div class="img-fb"><span style="font-size:24px;opacity:0.18">📈</span></div>
         </div>
@@ -1709,11 +1725,11 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <div class="step reveal">
         <div class="step-img">
-          <img
+          <ResponsiveImage
             src="/images/brand/core/core-home-how-step-2.png"
             alt="Marking up a printed audit packet"
-            loading="lazy"
-            onerror="this.setAttribute('data-failed','1')"
+            widths={[320, 480, 640, 960]}
+            sizes="(max-width: 960px) 100vw, 33vw"
           />
           <div class="img-fb"><span style="font-size:24px;opacity:0.18">🔍</span></div>
         </div>
@@ -1726,11 +1742,11 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <div class="step reveal">
         <div class="step-img">
-          <img
+          <ResponsiveImage
             src="/images/brand/core/core-home-how-step-3.png"
             alt="Building scripts and checklists for implementation"
-            loading="lazy"
-            onerror="this.setAttribute('data-failed','1')"
+            widths={[320, 480, 640, 960]}
+            sizes="(max-width: 960px) 100vw, 33vw"
           />
           <div class="img-fb"><span style="font-size:24px;opacity:0.18">🔧</span></div>
         </div>
@@ -1770,7 +1786,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       <a href="/tools/marketing-calculator" class="tool reveal">
         <div class="tool-img">
           <!-- PPC/analytics dashboard - marketing cost calc -->
-          <img src="/images/brand/core/tool-marketing-calculator.png" alt="Comparing marketing spend to booked jobs" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/tool-marketing-calculator.png" alt="Comparing marketing spend to booked jobs" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">📊</span></div>
         </div>
         <div class="tool-body">
@@ -1784,7 +1800,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       <a href="/tools/phone-calculator" class="tool reveal">
         <div class="tool-img">
           <!-- CSR answering calls at a service company desk -->
-          <img src="/images/brand/core/tool-phone-calculator.png" alt="Inbound calls being handled at the front desk" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/tool-phone-calculator.png" alt="Inbound calls being handled at the front desk" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">📞</span></div>
         </div>
         <div class="tool-body">
@@ -1798,7 +1814,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       <a href="/tools/agency-report-card" class="tool reveal">
         <div class="tool-img">
           <!-- Multiple ad channel screens / marketing mix -->
-          <img src="/images/brand/core/tool-agency-report-card.png" alt="Reviewing printed agency reports with skepticism" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/tool-agency-report-card.png" alt="Reviewing printed agency reports with skepticism" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">🎯</span></div>
         </div>
         <div class="tool-body">
@@ -1812,7 +1828,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       <a href="/tools/website-audit" class="tool reveal">
         <div class="tool-img">
           <!-- Contractor website on a laptop screen -->
-          <img src="/images/brand/core/tool-website-audit.png" alt="Reviewing website issues in a real work setting" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/tool-website-audit.png" alt="Reviewing website issues in a real work setting" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">🔍</span></div>
         </div>
         <div class="tool-body">
@@ -1826,7 +1842,7 @@ img[data-failed] ~ .img-fb { display: flex; }
       <a href="/tools/revenue-per-tech" class="tool reveal">
         <div class="tool-img">
           <!-- Home service crew beside work vans - capacity context -->
-          <img src="/images/brand/core/tool-revenue-per-tech.png" alt="Reviewing route sheets and team output near trucks" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/tool-revenue-per-tech.png" alt="Reviewing route sheets and team output near trucks" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">📋</span></div>
         </div>
         <div class="tool-body">
@@ -1839,7 +1855,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <a href="/newsletter" class="tool nl reveal">
         <div class="tool-img">
-          <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=600&q=75" alt="Business owner reading newsletter over coffee" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/core-home-newsletter-card.png" alt="Business owner reviewing growth notes over coffee" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />
           <div class="img-fb"><span style="font-size:20px;opacity:0.15">📬</span></div>
         </div>
         <div class="tool-body">
@@ -1878,7 +1894,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <div class="svc reveal">
         <div class="svc-img">
-          <img src="/images/brand/core/core-services-audit.png" alt="Reviewing a revenue audit in writing" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/core-services-audit.png" alt="Reviewing a revenue audit in writing" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 100vw, 33vw" />
           <div class="img-fb"><span style="font-size:24px;opacity:0.15">📄</span></div>
         </div>
         <div class="svc-body">
@@ -1901,7 +1917,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <div class="svc ft reveal">
         <div class="svc-img">
-          <img src="/images/brand/core/core-services-blueprint.png" alt="Building the system after the audit" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/core-services-blueprint.png" alt="Building the system after the audit" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 100vw, 33vw" />
           <div class="img-fb"><span style="font-size:24px;opacity:0.15">📐</span></div>
         </div>
         <div class="svc-body">
@@ -1924,7 +1940,7 @@ img[data-failed] ~ .img-fb { display: flex; }
 
       <div class="svc reveal">
         <div class="svc-img">
-          <img src="/images/brand/core/core-services-advisory.png" alt="Weekly written review during advisory" loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+          <ResponsiveImage src="/images/brand/core/core-services-advisory.png" alt="Weekly written review during advisory" widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 100vw, (max-width: 960px) 100vw, 33vw" />
           <div class="img-fb"><span style="font-size:24px;opacity:0.15">🤝</span></div>
         </div>
         <div class="svc-body">
@@ -1963,7 +1979,17 @@ img[data-failed] ~ .img-fb { display: flex; }
 
 <!-- ══════════ NEWSLETTER - de-emphasized per v2.5 ══════════ -->
 <div class="nl-section">
-  <div class="nl-photo"></div>
+  <div class="nl-photo">
+    <ResponsiveImage
+      src="/images/brand/core/core-newsletter-bg.png"
+      alt=""
+      class="nl-photo-img"
+      widths={[768, 1024, 1440]}
+      sizes="100vw"
+      fit="cover"
+      position="center"
+    />
+  </div>
   <div class="nl-glow"></div>
   <div class="nl-inner">
     <div class="dispatch-label" style="justify-content:center;margin-bottom:16px">Free · Every Week</div>

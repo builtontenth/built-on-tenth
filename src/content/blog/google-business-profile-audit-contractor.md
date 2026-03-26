@@ -7,7 +7,7 @@ pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Channel Teardowns"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=80"
+heroImage: "/images/brand/core/tool-gbp-scorecard.png"
 heroImageAlt: "Contractor checking Google Business Profile performance on phone"
 readTime: 13
 featured: false

@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  widths?: number[];
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  priority?: boolean;
+  class?: string;
+  style?: string;
+  fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside' | 'none' | 'scale-down';
+  position?: string;
+  formats?: ('avif' | 'webp' | 'png' | 'jpg' | 'jpeg')[];
+}
+
+const {
+  src,
+  alt,
+  widths,
+  sizes,
+  loading = 'lazy',
+  priority = false,
+  class: className,
+  style,
+  fit = 'cover',
+  position = 'center',
+  formats = ['avif', 'webp'],
+} = Astro.props;
+
+const imageModules = import.meta.glob('../assets/**/*.{png,jpg,jpeg,webp,avif}', {
+  eager: true,
+  import: 'default',
+});
+
+const isRemote = /^https?:\/\//.test(src);
+const normalizedSrc = src.startsWith('/images/')
+  ? `../assets${src}`
+  : src.startsWith('/tanvir')
+    ? '../assets/tanvir.png'
+    : null;
+
+if (!isRemote && (!normalizedSrc || !(normalizedSrc in imageModules))) {
+  throw new Error(`ResponsiveImage could not resolve asset: ${src}`);
+}
+
+const resolvedImage = !isRemote && normalizedSrc ? imageModules[normalizedSrc] : null;
+---
+{isRemote ? (
+  <img
+    src={src}
+    alt={alt}
+    loading={priority ? 'eager' : loading}
+    decoding="async"
+    fetchpriority={priority ? 'high' : 'auto'}
+    class={className}
+    style={`${style ? `${style};` : ''}object-fit:${fit};object-position:${position};`}
+  />
+) : (
+  <Image
+    src={resolvedImage}
+    alt={alt}
+    widths={widths}
+    sizes={sizes}
+    loading={priority ? 'eager' : loading}
+    decoding="async"
+    fetchpriority={priority ? 'high' : 'auto'}
+    class={className}
+    style={style}
+    fit={fit}
+    position={position}
+    formats={formats}
+  />
+)}

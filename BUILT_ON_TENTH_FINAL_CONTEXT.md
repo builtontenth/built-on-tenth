@@ -36,7 +36,7 @@ If this file and the repo ever conflict, the repo wins.
 - After code changes, run `npm run build`
 - Fix build errors before finishing
 
-Protected unless Tanvir explicitly asks:
+Protected by default unless Tanvir explicitly asks:
 - GTM snippet
 - font imports
 - `robots.txt`
@@ -44,6 +44,8 @@ Protected unless Tanvir explicitly asks:
 - Brevo API integration
 - tool calculation logic
 - `src/styles/global.css`
+
+If Tanvir explicitly requests a change to one of those areas, that request overrides the default protection for that task.
 
 ## Business Snapshot
 
@@ -247,9 +249,16 @@ Core tokens and direction:
 - accent: teal
 - positive: green
 - negative: red
-- headlines: DM Serif Display
-- body: IBM Plex Sans
-- UI labels and buttons: IBM Plex Mono
+- headlines: Crimson Pro
+- body: Plus Jakarta Sans
+- UI labels and buttons: Space Mono
+
+Current typography implementation notes:
+- Google Fonts are loaded from the shared layout
+- `src/styles/global.css` is the global font token source of truth
+- homepage local font tokens in `src/pages/index.astro` are aligned with the global stack
+- homepage hero headline weight is `500`
+- homepage stat headline mono treatment is `700`
 
 Historical design tokens:
 - `--bg: #090C0B`
@@ -472,6 +481,10 @@ Analytics: GA4 and GTM
 Email capture: Brevo  
 Search: Google Search Console, sitemap submitted  
 Fonts: Google Fonts via site code
+
+Current font loading state:
+- shared Google Fonts link is in `src/layouts/Layout.astro`
+- current font stack is `Crimson Pro`, `Plus Jakarta Sans`, and `Space Mono`
 
 Current `package.json` scripts:
 - `npm run dev`

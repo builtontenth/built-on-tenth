@@ -7,7 +7,7 @@ pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Revenue Diagnostics"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80"
+heroImage: "/images/brand/core/tool-revenue-per-tech.png"
 heroImageAlt: "Trades business owner reviewing technician productivity data on tablet"
 readTime: 12
 featured: false

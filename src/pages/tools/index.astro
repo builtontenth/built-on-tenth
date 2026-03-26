@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
 
 const tools = [
   {
@@ -211,7 +212,7 @@ const tools = [
       {tools.map((tool, i) => (
         <div class="tool-item reveal">
           <div class="tool-img-col">
-            <img src={tool.img} alt={tool.imgAlt} loading="lazy" onerror="this.setAttribute('data-failed','1')" />
+            <ResponsiveImage src={tool.img} alt={tool.imgAlt} widths={[320, 480, 640, 960]} sizes="(max-width: 960px) 100vw, 280px" />
             <div class="img-fb">{tool.icon}</div>
           </div>
           <div class="tool-body">

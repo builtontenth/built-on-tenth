@@ -7,7 +7,7 @@ pubDate: 2026-03-20
 author: "Tanvir Hossain"
 category: "Pipeline Systems"
 trade: ["Roofing"]
-heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80"
+heroImage: "/images/brand/core/core-services-blueprint.png"
 heroImageAlt: "Roofing contractor documenting storm damage on a residential roof"
 readTime: 14
 featured: false

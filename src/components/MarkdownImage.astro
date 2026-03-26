@@ -1,0 +1,24 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro';
+
+interface Props {
+  src?: string;
+  alt?: string;
+  title?: string;
+}
+
+const { src = '', alt = '', title } = Astro.props;
+const isOptimizableLocal = src.startsWith('/images/') || src.startsWith('/tanvir');
+---
+{isOptimizableLocal ? (
+  <ResponsiveImage
+    src={src}
+    alt={alt}
+    widths={[480, 768, 1024, 1280]}
+    sizes="(max-width: 960px) 100vw, 780px"
+    loading="lazy"
+    style="width:100%;height:100%;"
+  />
+) : (
+  <img src={src} alt={alt} title={title} loading="lazy" decoding="async" />
+)}

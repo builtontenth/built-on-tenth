@@ -7,7 +7,7 @@ pubDate: 2026-03-21
 author: "Tanvir Hossain"
 category: "Growth Benchmarks"
 trade: ["Roofing"]
-heroImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1400&q=80"
+heroImage: "/images/brand/core/core-home-problem-secondary.png"
 heroImageAlt: "Homeowner leaving a Google review for a roofing company on their phone"
 readTime: 12
 featured: false

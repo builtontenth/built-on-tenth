@@ -7,7 +7,7 @@ pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Revenue Diagnostics"
 trade: ["HVAC", "Roofing", "Plumbing"]
-heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80"
+heroImage: "/images/brand/core/tool-marketing-calculator.png"
 heroImageAlt: "Contractor reviewing marketing data and cost per booked job numbers"
 readTime: 11
 featured: false

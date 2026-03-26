@@ -1,1 +1,0 @@
-import"./hoisted.CnFvwOUy.js";document.querySelectorAll(".faq-q").forEach(e=>{e.addEventListener("click",()=>{const s=e.closest(".faq-item"),t=s.classList.contains("open");document.querySelectorAll(".faq-item").forEach(c=>c.classList.remove("open")),t||s.classList.add("open")})});
