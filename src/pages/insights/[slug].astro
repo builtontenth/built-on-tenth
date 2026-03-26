@@ -63,11 +63,6 @@ const toolLibrary = {
     label: 'Marketing Cost Calculator',
     description: 'Benchmark true cost per booked job against stronger operators.',
   },
-  '/tools/lead-grader': {
-    href: '/tools/agency-report-card',
-    label: 'Agency Report Card',
-    description: 'Grade whether your agency is measuring booked jobs or hiding behind vanity metrics.',
-  },
   '/tools/agency-report-card': {
     href: '/tools/agency-report-card',
     label: 'Agency Report Card',
@@ -78,22 +73,27 @@ const toolLibrary = {
     label: 'Website Conversion Audit',
     description: 'Check for mobile, speed, trust, and phone-visibility leaks.',
   },
-  '/tools/capacity-planner': {
-    href: '/tools/revenue-per-tech',
-    label: 'Revenue Per Technician Benchmarker',
-    description: 'See whether your team output is below benchmark and how big the gap is.',
-  },
   '/tools/revenue-per-tech': {
     href: '/tools/revenue-per-tech',
     label: 'Revenue Per Technician Benchmarker',
     description: 'See whether your team output is below benchmark and how big the gap is.',
   },
+  '/tools/estimate-follow-up': {
+    href: '/tools/estimate-follow-up',
+    label: 'Estimate Follow-Up Calculator',
+    description: 'Measure how much revenue is leaking from quotes that never get chased.',
+  },
+  '/tools/gbp-scorecard': {
+    href: '/tools/gbp-scorecard',
+    label: 'GBP Scorecard',
+    description: 'Score your Google Business Profile against the local map pack baseline.',
+  },
 };
 
 const fallbackToolsByTrade = {
   HVAC: ['/tools/marketing-calculator', '/tools/phone-calculator'],
-  Roofing: ['/tools/agency-report-card', '/tools/phone-calculator'],
-  Plumbing: ['/tools/website-audit', '/tools/phone-calculator'],
+  Roofing: ['/tools/estimate-follow-up', '/tools/phone-calculator'],
+  Plumbing: ['/tools/gbp-scorecard', '/tools/phone-calculator'],
 };
 
 const toolPaths = [

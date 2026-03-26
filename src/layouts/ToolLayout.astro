@@ -8,7 +8,6 @@ interface Props {
   subheadline: string;
   metaDescription: string;
   toolCount?: string;
-  suiteVariant?: 'legacy' | 'expanded';
   showCrossTool?: boolean;
 }
 const {
@@ -18,20 +17,11 @@ const {
   headline,
   subheadline,
   metaDescription,
-  toolCount = '05',
-  suiteVariant = 'legacy',
+  toolCount = '07',
   showCrossTool = true,
 } = Astro.props;
 
-const legacyTools = [
-  { num: '01', name: 'Phone Revenue Calculator',   href: '/tools/phone-calculator',       active: slug === 'phone-calculator' },
-  { num: '02', name: 'Marketing Cost Calculator',  href: '/tools/marketing-calculator',   active: slug === 'marketing-calculator' },
-  { num: '03', name: 'Lead Source Grader',         href: '/tools/lead-grader',            active: slug === 'lead-grader' },
-  { num: '04', name: 'Website Conversion Audit',   href: '/tools/website-audit',          active: slug === 'website-audit' },
-  { num: '05', name: 'Capacity-to-Demand Planner', href: '/tools/capacity-planner',       active: slug === 'capacity-planner' },
-];
-
-const expandedTools = [
+const allTools = [
   { num: '01', name: 'Phone Revenue Calculator', href: '/tools/phone-calculator', active: slug === 'phone-calculator', navLabel: 'Phone Revenue' },
   { num: '02', name: 'Estimate Follow-Up Calculator', href: '/tools/estimate-follow-up', active: slug === 'estimate-follow-up', navLabel: 'Estimate Follow-Up' },
   { num: '03', name: 'Agency Report Card', href: '/tools/agency-report-card', active: slug === 'agency-report-card', navLabel: 'Agency Report Card' },
@@ -40,8 +30,6 @@ const expandedTools = [
   { num: '06', name: 'GBP Scorecard', href: '/tools/gbp-scorecard', active: slug === 'gbp-scorecard', navLabel: 'GBP Scorecard' },
   { num: '07', name: 'Website Conversion Audit', href: '/tools/website-audit', active: slug === 'website-audit', navLabel: 'Website Conversion' },
 ];
-
-const allTools = suiteVariant === 'expanded' ? expandedTools : legacyTools;
 const toolImageMap = {
   'phone-calculator': '/images/brand/core/tool-phone-calculator.png',
   'estimate-follow-up': '/images/brand/core/tool-estimate-follow-up.png',

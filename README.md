@@ -55,8 +55,8 @@ The build now also cleans generated folders and fails if any markdown article is
 ## Forms
 
 Newsletter and apply flows are wired through server-side endpoints:
-- `src/pages/api/subscribe.ts`
-- `src/pages/api/apply.ts`
+- `api/subscribe.js`
+- `api/apply.js`
 
 ## IndexNow
 
@@ -74,5 +74,4 @@ npm run indexnow -- /insights/hvac-cost-per-lead-by-channel-2026 /tools/phone-ca
 
 ## Notes
 - `src/styles/global.css` is the design system source of truth
-- `src/pages/tools/audit-report-builder.astro` is intentional internal tooling kept in the repo
 - `BUILT_ON_TENTH_FINAL_CONTEXT.md` is intentional operational context kept in the repo

@@ -12,10 +12,12 @@ const staticRoutes = [
   '/insights',
   '/tools',
   '/tools/phone-calculator',
+  '/tools/estimate-follow-up',
+  '/tools/agency-report-card',
+  '/tools/revenue-per-tech',
   '/tools/marketing-calculator',
-  '/tools/lead-grader',
+  '/tools/gbp-scorecard',
   '/tools/website-audit',
-  '/tools/capacity-planner',
 ];
 
 const xmlEscape = (value: string) =>
