@@ -4,10 +4,7 @@ const { active = '' } = Astro.props;
 <nav id="nav">
   <a href="/" class="nav-logo">
     <div class="nav-logo-mark"></div>
-    <span class="nav-logo-copy">
-      <span class="nav-logo-text">Built on Tenth</span>
-      <span class="nav-logo-sub">Revenue Intelligence · HVAC · Roofing · Plumbing</span>
-    </span>
+    <span class="nav-logo-text">Built on Tenth</span>
   </a>
   <ul class="nav-links">
     <li><a href="/insights"   class={active === 'insights'   ? 'active' : ''}>Insights</a></li>
@@ -17,15 +14,15 @@ const { active = '' } = Astro.props;
     <li><a href="/newsletter" class={active === 'newsletter' ? 'active' : ''}>Newsletter</a></li>
   </ul>
   <div class="nav-right">
-    <a href="/insights" class="nav-btn-ghost nav-desktop-only">Read Research</a>
+    <a href="/newsletter" class="nav-btn-ghost nav-desktop-only">Read Research</a>
     <a href="/apply"      class="nav-btn-teal">Get an Audit</a>
-    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu" aria-controls="mobile-sheet" aria-expanded="false" aria-haspopup="dialog">Menu</button>
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu">Menu</button>
   </div>
 </nav>
 
-<div class="mobile-overlay" id="mobile-overlay" tabindex="-1" aria-hidden="true"></div>
+<div class="mobile-overlay" id="mobile-overlay"></div>
 
-<div class="mobile-sheet" id="mobile-sheet" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+<div class="mobile-sheet" id="mobile-sheet">
   <div class="sheet-handle"></div>
   <nav class="sheet-nav">
     <a href="/"           class="sheet-link">Home</a>
@@ -36,45 +33,12 @@ const { active = '' } = Astro.props;
     <a href="/newsletter" class="sheet-link">Newsletter</a>
   </nav>
   <div class="sheet-ctas">
-    <a href="/insights" class="sheet-cta-ghost">Read Research</a>
+    <a href="/newsletter" class="sheet-cta-ghost">Read Research</a>
     <a href="/apply"      class="sheet-cta-teal">Get an Audit</a>
   </div>
 </div>
 
 <style is:global>
-.nav-logo {
-  min-width: 0;
-}
-.nav-logo-mark {
-  flex-shrink: 0;
-}
-.nav-logo-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3px;
-  min-width: 0;
-}
-.nav-logo-text {
-  display: block;
-  line-height: 1;
-}
-.nav-logo-sub {
-  font-family: 'Space Mono', monospace;
-  display: block;
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: rgba(226,221,208,0.62);
-  line-height: 1;
-  white-space: nowrap;
-}
-@media (max-width: 1200px) {
-  .nav-logo-sub {
-    font-size: 8.5px;
-    letter-spacing: 0.06em;
-  }
-}
 .nav-menu-btn {
   display: none;
   background: transparent;
@@ -96,7 +60,7 @@ const { active = '' } = Astro.props;
 .mobile-overlay {
   position: fixed; inset: 0; z-index: 990;
   background: rgba(9,12,11,0.72);
-  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   opacity: 0; pointer-events: none;
   transition: opacity 0.3s ease;
   display: none;
@@ -116,12 +80,6 @@ const { active = '' } = Astro.props;
   .nav-desktop-only { display: none !important; }
   .mobile-overlay { display: block; }
   .mobile-sheet { display: block; }
-  .nav-logo-copy {
-    gap: 0;
-  }
-  .nav-logo-sub {
-    display: none;
-  }
 }
 .mobile-overlay.open { opacity: 1; pointer-events: auto; }
 .mobile-sheet.open { transform: translateY(0); }
@@ -171,54 +129,24 @@ const { active = '' } = Astro.props;
   const menuBtn = document.getElementById('nav-menu-btn');
   const sheet   = document.getElementById('mobile-sheet');
   const overlay = document.getElementById('mobile-overlay');
-  let lastFocused = null;
 
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
   }, { passive: true });
 
-  function trapFocus(event) {
-    if (!sheet.classList.contains('open') || event.key !== 'Tab') return;
-    const focusable = [...sheet.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])')];
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  }
-
   function openMenu() {
-    lastFocused = document.activeElement;
     sheet.classList.add('open');
     overlay.classList.add('open');
-    menuBtn.setAttribute('aria-expanded', 'true');
-    sheet.setAttribute('aria-hidden', 'false');
-    overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    const firstLink = sheet.querySelector('a');
-    firstLink?.focus();
   }
   function closeMenu() {
     sheet.classList.remove('open');
     overlay.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    sheet.setAttribute('aria-hidden', 'true');
-    overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    if (lastFocused instanceof HTMLElement) lastFocused.focus();
   }
 
   menuBtn.addEventListener('click', openMenu);
   overlay.addEventListener('click', closeMenu);
   sheet.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMenu();
-    trapFocus(e);
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 </script>

@@ -23,7 +23,7 @@ interface Props {
 
 const {
   title,
-  description = 'Revenue intelligence for HVAC, roofing, and plumbing companies. We study how the most profitable home service companies grow, and publish everything we find.',
+  description = 'Revenue intelligence for HVAC, roofing, and plumbing companies. We study how the most profitable home service companies grow — and publish everything we find.',
   active = '',
   ogImage = 'https://www.builtontenth.com/tanvir.png',
   ogType = 'website',
@@ -61,6 +61,14 @@ const siteName = 'Built on Tenth';
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image"      content={ogImage} />
 
+  <!-- Google Tag Manager -->
+  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NSMGPHL2');</script>
+  <!-- End Google Tag Manager -->
+
   <link rel="preload" href={crimsonRomanUrl} as="font" type="font/woff2" crossorigin />
   <link rel="preload" href={plusJakartaRomanUrl} as="font" type="font/woff2" crossorigin />
   <link rel="preload" href={spaceMonoRegularUrl} as="font" type="font/woff2" crossorigin />
@@ -81,54 +89,20 @@ const siteName = 'Built on Tenth';
 
   <!-- Shared reveal observer -->
   <script>
-    window.botTrack = (eventName, detail = {}) => {
-      if (!window.dataLayer) return;
-      window.dataLayer.push({ event: eventName, ...detail });
-    };
-
-    window.dataLayer = window.dataLayer || [];
-
-    const loadGtm = () => {
-      if (window.__botGtmLoaded) return;
-      window.__botGtmLoaded = true;
-      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-      const firstScript = document.getElementsByTagName('script')[0];
-      const tag = document.createElement('script');
-      tag.async = true;
-      tag.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-NSMGPHL2';
-      firstScript?.parentNode?.insertBefore(tag, firstScript);
-    };
-
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(loadGtm, { timeout: 2500 });
-    } else {
-      window.addEventListener('load', loadGtm, { once: true });
-      setTimeout(loadGtm, 2500);
-    }
-
-    const revealTargets = [...document.querySelectorAll('.reveal')];
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const disableReveal = reduceMotion || window.innerWidth < 768 || revealTargets.length === 0;
-
-    if (disableReveal) {
-      revealTargets.forEach((el) => el.classList.add('on'));
-    } else {
-      revealTargets.forEach((el) => el.classList.add('will-animate'));
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const siblings = [...(entry.target.parentElement?.querySelectorAll('.reveal') || [])];
-          const idx = siblings.indexOf(entry.target);
-          setTimeout(() => entry.target.classList.add('on'), idx * 90);
-          obs.unobserve(entry.target);
-        });
-      }, { threshold: 0.04, rootMargin: '0px' });
-
-      revealTargets.forEach((el) => obs.observe(el));
-      setTimeout(() => {
-        document.querySelectorAll('.reveal.will-animate:not(.on)').forEach((el) => el.classList.add('on'));
-      }, 1000);
-    }
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('will-animate'));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = [...(entry.target.parentElement?.querySelectorAll('.reveal') || [])];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('on'), idx * 90);
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.04, rootMargin: '0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('.reveal.will-animate:not(.on)').forEach(el => el.classList.add('on'));
+    }, 1000);
   </script>
 </body>
 </html>
