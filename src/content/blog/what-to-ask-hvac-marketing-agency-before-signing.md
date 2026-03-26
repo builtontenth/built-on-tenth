@@ -1,0 +1,181 @@
+---
+title: "What to Ask an HVAC Marketing Agency Before You Sign Anything"
+seoTitle: "What to Ask an HVAC Marketing Agency Before You Sign"
+description: "Most HVAC owners sign agency contracts without asking the questions that matter. Here is exactly what to ask before you commit $2,000 to $5,000 a month to someone else's strategy."
+metaDescription: "Before you sign with an HVAC marketing agency, ask these questions. Most agencies cannot answer them. That tells you everything you need to know."
+pubDate: 2026-03-26
+author: "Tanvir Hossain"
+category: "Marketing"
+trade: ["HVAC"]
+heroImage: "/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026-3.png"
+heroImageAlt: "HVAC owner and office manager reviewing a marketing agreement and operating notes at a desk"
+readTime: 9
+featured: false
+preview: "Most agencies cannot answer the questions that actually matter. Here is what to ask before you hand over $3,000 a month and hope for the best."
+pills: ["Agency Due Diligence", "HVAC Marketing", "Booked-Job Economics"]
+primaryCtaLabel: "Grade Your Agency"
+primaryCtaHref: "/tools/agency-report-card"
+secondaryCtaLabel: "Get a Revenue Leak Audit"
+secondaryCtaHref: "/apply"
+seoKeywords: ["hvac marketing agency", "hiring hvac marketing agency", "what to ask marketing agency hvac", "hvac agency red flags", "hvac marketing due diligence", "best hvac marketing agency"]
+---
+
+The average HVAC owner who hires a marketing agency spends $2,000 to $5,000 per month and has no clear way to measure whether it is working.
+
+After 6 months they have a folder of reports, a PDF with impressions and clicks, and a vague feeling that something should be better by now. They are not sure if the agency is the problem or if they just need more time. So they give it another 3 months. Then another 3.
+
+This is how owners end up 18 months in, $54,000 spent, still unable to connect a dollar of agency spend to a booked job.
+
+The questions below are not adversarial. They are what any owner should ask before writing a monthly check to someone they are trusting with their growth. Most agencies will answer them confidently. A few will stumble. That stumble is information worth having before you sign, not after.
+
+![HVAC owner reviewing budget notes, a marketing agreement, and handwritten performance questions on a real desk](/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026-2.png)
+
+---
+
+## Before You Ask Anything Else
+
+Get clear on one thing first: what problem are you actually trying to solve?
+
+If your phones are not ringing, you need lead volume. If your phones are ringing and jobs are not booking, you need a CSR and a phone process, not an agency. If you are booking jobs but your average ticket is low, you have a technician and pricing problem. No amount of ad spend fixes that.
+
+Most owners hire agencies for the first problem and ignore the second and third. Agencies take the money either way.
+
+Know which problem is yours before you walk into the conversation. It changes everything about what you should be buying.
+
+---
+
+## The Questions That Separate Real Operators from Order Takers
+
+### 1. How do you define a successful campaign for a company like mine?
+
+Listen for specificity. A good answer references booked jobs, cost per booked job, or revenue tied to their channel. A weak answer references impressions, clicks, leads, or rankings without connecting them to money.
+
+Impressions do not pay your technicians. Booked jobs do.
+
+If their definition of success is traffic or leads and yours is booked revenue, you will be arguing about what "working" means in month four while they show you a chart that goes up and you show them a bank account that has not moved.
+
+Get the definition agreed on paper before the contract is signed.
+
+---
+
+### 2. What does your reporting look like and what numbers will you show me every month?
+
+Ask to see a sample report from a current client. Redacted is fine. You want to see the structure.
+
+What you want to see: booked jobs or booked revenue attributed to their channel, cost per booked job, call volume from their traffic, booking rate on those calls.
+
+What most agencies show instead: total impressions, total clicks, total leads, cost per lead, quality score, average position. These numbers are not wrong. They are just upstream of the only number that matters, which is how many jobs got on your board.
+
+If the sample report does not show booked jobs or revenue anywhere in it, that is your answer. The agency is not measuring what pays you.
+
+---
+
+### 3. Who will actually be working on my account?
+
+You are meeting a salesperson. Find out who you will actually be talking to in month two.
+
+Ask specifically: who manages my account day to day, how many other accounts are they managing, and how do I reach them when something needs to change fast?
+
+A competent agency gives you a named account manager with a direct line. A less competent one gives you a ticketing system and a 48-hour response window.
+
+Also ask: have they worked with HVAC companies before? Not the agency. The actual person on your account. An account manager who has never run campaigns for a trades company will spend your first three months learning things you are paying them to already know.
+
+---
+
+### 4. What does your contract say about ad spend?
+
+This is the question most owners skip and almost always regret.
+
+Some agencies bundle their management fee with your ad spend. You write one check, they control both. This creates an incentive for them to spend more of your budget on ads because it makes their management look proportionally cheaper.
+
+Ask to see the breakdown: management fee separate from ad spend, always. Ask whether they earn any margin on ad spend or any referral fees from platforms. Ask what happens to your ad accounts and your data if you leave.
+
+You want to own your Google Ads account, your Meta account, and your call tracking data regardless of who manages them. If the agency owns those assets, you are not a client. You are a hostage.
+
+---
+
+### 5. What is a realistic cost per booked job in my market?
+
+This question separates agencies that actually know your trade from agencies that learned about HVAC from your intake form.
+
+A good HVAC agency should be able to tell you that Google LSA typically delivers booked jobs at $80 to $180 in a mid-size market, that Google Ads search runs $150 to $350 per booked job depending on competition and season, and that Angi and similar aggregators often run $200 to $400 per booked job once you account for leads that never answer the phone.
+
+If they cannot give you a range, they are either new to HVAC or used to working with clients who never ask. Neither is a good sign.
+
+If you want to run those numbers yourself before the conversation, the [HVAC cost per lead by channel breakdown](/insights/hvac-cost-per-lead-by-channel-2026) has the benchmarks.
+
+---
+
+### 6. What will you need from me to make this work?
+
+This is a trust question more than a logistics question. Watch how they answer it.
+
+An honest agency tells you they need Google Business Profile access, call tracking set up on your phones, and someone on your team who can give them feedback on lead quality within 48 hours. They might ask for your current booking rate so they can baseline it.
+
+An agency that says they just need your credit card and website login and they will handle everything is either overconfident or underselling the work. Marketing without operational data is guesswork with a logo on it.
+
+You should be involved at the start. If they do not want you involved, find out why.
+
+---
+
+### 7. What happens in the first 30 days?
+
+Ask for the specific deliverables. Not a general roadmap. What is done by day 30 and who does it?
+
+A structured agency tells you: audit of current accounts in week one, campaign structure built in week two, tracking confirmed and tested in week three, first optimization window by end of month one.
+
+A vague agency talks about onboarding and learning periods and getting a feel for your market. That language often means month one is billable research that should have been done before the pitch.
+
+You are paying from day one. Know what you are getting from day one.
+
+If you want to pressure-test your current reporting before the meeting, the [Agency Report Card](/tools/agency-report-card) gives you a straight grade in about two minutes. It is the fastest way to see whether the agency is measuring booked jobs or hiding behind lead volume.
+
+![HVAC office manager and owner tracing booked jobs back to channels and reports in a dispatch office](/images/brand/hvac/blog-hvac-google-ads-campaign-structure-3.png)
+
+---
+
+## The Red Flags That End the Conversation Early
+
+**They guarantee rankings or a specific number of leads.** Nobody can guarantee rankings. Google controls rankings. An agency that guarantees them is either lying or defining the terms in a way that makes the guarantee meaningless.
+
+**They cannot tell you what your current booking rate is or why it matters.** If they do not ask about your booking rate in the discovery call, they are selling you traffic, not revenue. Traffic that does not book is a cost center.
+
+**They want a 12-month contract up front.** Six months is reasonable. Twelve months with no performance clause is a bet that only benefits them. Ask for a 90-day out if core benchmarks are not hit.
+
+**Every answer involves spending more.** Slow month? Spend more on ads. Booking rate is low? Spend more to get better leads. Average ticket is down? You need more volume. An agency that fixes every problem with more budget is not analyzing your business. They are growing their margin.
+
+**They cannot name a single thing your current marketing is doing right.** A competent agency reviews what you have before telling you what to change. If the pitch starts with everything being broken and their system being the fix, walk out.
+
+---
+
+## What Independent Analysis Gives You That an Agency Cannot
+
+An agency has a financial incentive to run your ads. The more you spend, the more they earn. Even good agencies with honest intentions are shaped by that incentive.
+
+Independent analysis has no stake in what you spend. The job is to look at your numbers, compare them against what stronger operators produce, and tell you where the money is leaking and what to fix first.
+
+Sometimes the answer is that you need more ad spend. Sometimes it is that your booking rate is 31% and fixing your phones would generate more revenue than doubling your budget. Sometimes it is that your estimates are going out and never coming back and the agency cannot touch that problem.
+
+If you are about to sign a contract worth $30,000 to $60,000 over the next year, spending $750 to know exactly what you are buying is not a cost. It is the cheapest due diligence you will ever do.
+
+The [Revenue Leak Audit](/apply) gives you a 7-day written analysis of your phone conversion, marketing spend, estimate follow-up, and local visibility. Every finding is translated into a dollar figure. No calls required.
+
+If you want the benchmark layer before you sign anything, pair this article with the [four numbers every HVAC owner should know](/insights/four-numbers-hvac-owner-marketing) and the [marketing cost calculator](/tools/marketing-calculator). Those two together usually expose whether the agency problem is really a measurement problem, a booking problem, or a channel economics problem.
+
+You walk into the agency negotiation knowing your numbers instead of hoping theirs are right.
+
+---
+
+## The Short Version
+
+Ask about booked jobs, not leads. See the sample report before you sign. Own your ad accounts. Get the cost per booked job benchmark for your market. Know what month one actually delivers.
+
+If they answer all of those questions well, you have probably found a competent agency.
+
+If they stumble on two or more, the stumble is telling you something the contract will hide for six months.
+
+---
+
+*Built on Tenth is not an agency. There is no retainer, no media buying, and no incentive to recommend more ad spend. The work is independent analysis benchmarked against what the most profitable home service companies actually produce.*
+
+*[See what a Revenue Leak Audit covers](/services)*

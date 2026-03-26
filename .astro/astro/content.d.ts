@@ -169,6 +169,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"four-numbers-hvac-owner-marketing.md": {
+	id: "four-numbers-hvac-owner-marketing.md";
+  slug: "four-numbers-hvac-owner-marketing";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "google-business-profile-audit-contractor.md": {
 	id: "google-business-profile-audit-contractor.md";
   slug: "google-business-profile-audit-contractor";
@@ -323,6 +330,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"servicetitan-roi-audit-hvac.md": {
+	id: "servicetitan-roi-audit-hvac.md";
+  slug: "servicetitan-roi-audit-hvac";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md": {
 	id: "the-follow-up-sequence-that-moved-close-rate-to-40-percent.md";
   slug: "the-follow-up-sequence-that-moved-close-rate-to-40-percent";
@@ -333,6 +347,13 @@ declare module 'astro:content' {
 "true-cost-missed-calls-contractor.md": {
 	id: "true-cost-missed-calls-contractor.md";
   slug: "true-cost-missed-calls-contractor";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"what-to-ask-hvac-marketing-agency-before-signing.md": {
+	id: "what-to-ask-hvac-marketing-agency-before-signing.md";
+  slug: "what-to-ask-hvac-marketing-agency-before-signing";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

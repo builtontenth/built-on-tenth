@@ -565,9 +565,11 @@ Current article workflow:
 1. Create one markdown file in `src/content/blog/`
 2. Fill frontmatter from schema
 3. Write the article in markdown
-4. Run `npm run build`
-5. Fix any verification failures before finishing
-6. Push and deploy
+4. Make sure hero image paths actually exist in `public/` or are intentionally remote
+5. Match the established article standard: valid schema frontmatter, on-brand hero image, relevant CTA choice, internal links, and at least some image treatment if the piece is a flagship commercial article
+6. Run `npm run build`
+7. Fix any verification failures before finishing
+8. Push and deploy
 
 Markdown conventions:
 - use `##` and `###` headings
@@ -583,6 +585,7 @@ Current article files in repo:
 - `contractor-estimate-follow-up-gap`
 - `contractor-website-not-converting`
 - `cost-per-lead-vs-cost-per-booked-job-contractor`
+- `four-numbers-hvac-owner-marketing`
 - `google-business-profile-audit-contractor`
 - `how-hvac-service-agreements-add-200k-annual-revenue`
 - `how-many-google-reviews-roofing-company-map-pack`
@@ -605,13 +608,16 @@ Current article files in repo:
 - `revenue-per-technician-benchmark-trades`
 - `revenue-per-technician-plumbing-business-scaling`
 - `roofing-cost-per-booked-job-by-lead-source`
+- `servicetitan-roi-audit-hvac`
 - `the-follow-up-sequence-that-moved-close-rate-to-40-percent`
 - `true-cost-missed-calls-contractor`
+- `what-to-ask-hvac-marketing-agency-before-signing`
 - `why-hvac-csrs-are-losing-you-300k-per-year`
 - `why-roofing-companies-miss-60-percent-inbound-calls-storm-season`
 
 Current content strategy:
 - HVAC is still the deepest cluster
+- HVAC now includes a stronger owner-decision layer around software ROI, agency diligence, and the four-number diagnostic baseline
 - Roofing content is commercially strong and tied closely to local search, storm work, and lead economics
 - Plumbing is now a meaningful commercial cluster, not a thin edge case
 - content should keep connecting phone performance, booked-job economics, GBP visibility, technician productivity, and follow-up systems
