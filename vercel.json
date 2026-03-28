@@ -146,6 +146,16 @@
       "permanent": true
     },
     {
+      "source": "/services",
+      "destination": "/report",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/report",
+      "permanent": true
+    },
+    {
       "source": "/tools/",
       "destination": "/tools",
       "permanent": true
