@@ -15,8 +15,8 @@ featured: false
 pills: ["Close Rate", "Follow-Up", "Scripts"]
 primaryCtaLabel: "Calculate Your Follow-Up Gap"
 primaryCtaHref: "/tools/estimate-follow-up"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["hvac estimate follow up", "hvac close rate", "how to follow up on hvac estimate", "hvac sales follow up sequence", "hvac estimate closing rate", "home service estimate follow up", "hvac estimate objection handling", "roofing estimate follow up", "how to improve estimate close rate", "hvac csr follow up scripts"]
 ---
 

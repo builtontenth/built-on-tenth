@@ -15,8 +15,8 @@ preview: "Review count alone does not rank a roofing company. Velocity, rating, 
 pills: ["Map pack benchmark", "Review velocity", "Market tier framework"]
 primaryCtaLabel: "Score Your GBP"
 primaryCtaHref: "/tools/gbp-scorecard"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["how many google reviews roofing company", "roofing google reviews to rank", "roofing map pack ranking", "roofing google business profile reviews", "roofing review benchmark", "roofing local seo reviews", "how to rank roofing company google maps", "roofing company review count", "roofing review velocity", "roofing gbp optimization"]
 ---
 

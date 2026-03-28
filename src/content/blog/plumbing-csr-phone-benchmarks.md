@@ -15,8 +15,8 @@ preview: "The average plumbing company books 40% of the calls it answers. Top pe
 pills: ["40% avg booking rate", "Urgency call split", "3 specific fixes"]
 primaryCtaLabel: "Try the Phone Revenue Calculator"
 primaryCtaHref: "/tools/phone-calculator"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["plumbing csr booking rate", "plumbing phone benchmarks", "plumbing csr performance", "plumbing missed calls", "plumbing phone conversion", "plumbing csr training", "plumbing answer rate benchmark", "plumbing booking rate", "plumbing office phone performance", "plumbing inbound call handling"]
 ---
 

@@ -15,8 +15,8 @@ preview: "A single hailstorm can send 200 calls into a roofing company in 72 hou
 pills: ["Storm surge math", "Insurance vs retail scripts", "Surge staffing"]
 primaryCtaLabel: "Calculate Your Phone Revenue Gap"
 primaryCtaHref: "/tools/phone-calculator"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["roofing storm season calls", "roofing company missed calls", "storm damage roofing leads", "roofing csr training", "roofing phone answering", "roofing inbound call handling", "how to handle storm roofing calls", "roofing insurance claim calls", "roofing call center storm season", "roofing company phone conversion"]
 ---
 

@@ -15,8 +15,8 @@ preview: "A 10-person HVAC company doing $1.8M and one doing $2.9M are not in di
 pills: ["Benchmarks by trade", "4 gap variables", "The headcount trap"]
 primaryCtaLabel: "Benchmark Your Team"
 primaryCtaHref: "/tools/revenue-per-tech"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["revenue per technician benchmark", "HVAC revenue per technician", "plumbing revenue per technician", "roofing revenue per crew", "home services technician productivity", "revenue per tech trades", "how much revenue should each technician generate", "trades business scaling metric", "HVAC tech productivity", "field service revenue per employee"]
 ---
 
@@ -166,7 +166,7 @@ The [Revenue Per Technician Benchmarker](/tools/revenue-per-tech) takes your cur
 
 It also breaks the gap down by variable -- showing how much of the gap is likely explained by average ticket, job count, or headcount relative to revenue -- so you know which of the four variables to work on first.
 
-Results are immediate. If you want the full picture -- your revenue per tech alongside your phone performance, marketing cost per booked job, and estimate pipeline, with every gap shown in annual dollars -- that's the Revenue Leak Audit.
+Results are immediate. If you want to keep building the full operating picture after that, [browse all HVAC Market Insights](/insights) and follow the linked benchmarks on phone handling, pricing, and booked-job economics.
 
 ---
 

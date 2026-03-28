@@ -15,8 +15,8 @@ preview: "68% of estimates never get a single follow-up. The homeowner who didn'
 pills: ["Follow-up gap math", "1-15% revenue recovery", "3-touch system"]
 primaryCtaLabel: "Calculate Your Follow-Up Gap"
 primaryCtaHref: "/tools/estimate-follow-up"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["contractor estimate follow up", "HVAC estimate follow up", "roofing estimate not closing", "plumbing estimate close rate", "unsold estimate follow up home services", "contractor close rate improvement", "estimate follow up system", "home services estimate conversion", "unsold jobs contractor", "how to follow up on estimates"]
 ---
 
@@ -183,7 +183,7 @@ After three touches with no response, the estimate goes to a 30-day dormant file
 
 The [Estimate Follow-Up Calculator](/tools/estimate-follow-up) takes three inputs -- monthly estimate volume, average ticket, and current close rate -- and produces your specific annual revenue gap from the follow-up problem. It also shows what your revenue would look like at 50% and 80% follow-up rates, so you can see the recovery curve before building the system.
 
-Results are immediate. No email required to see the number. If you want the full breakdown with channel-level analysis and a prioritized fix list, that's what the Revenue Leak Audit covers.
+Results are immediate. No email required to see the number. If you want the broader benchmark layer after that, [browse all HVAC Market Insights](/insights) and keep following the linked follow-up, phone, and marketing pieces from there.
 
 ---
 

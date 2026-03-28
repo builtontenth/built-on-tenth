@@ -15,8 +15,8 @@ preview: "Roofing owners usually compare channels on lead cost. That hides the r
 pills: ["Cost per booked job", "Lead source math", "Roofing channel benchmarks"]
 primaryCtaLabel: "Calculate Your Marketing Cost"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["roofing cost per booked job", "roofing lead source comparison", "roofing angi vs google ads", "roofing lsa cost per booked job", "roofing referral lead value", "roofing facebook leads roi", "roofing cost per lead by source", "roofing marketing benchmarks", "roofing lead generation roi", "roofing booked job cost"]
 ---
 

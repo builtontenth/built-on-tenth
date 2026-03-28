@@ -15,8 +15,8 @@ preview: "The map pack generates the cheapest, highest-intent leads in home serv
 pills: ["Relevance, distance, prominence", "Review velocity vs count", "Behavioral signals"]
 primaryCtaLabel: "Score Your GBP"
 primaryCtaHref: "/tools/gbp-scorecard"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["Google Business Profile audit HVAC", "GBP audit contractor", "how to audit Google Business Profile", "HVAC map pack ranking", "Google Business Profile ranking factors", "roofing Google Business Profile", "plumbing map pack optimization", "GBP scorecard contractor", "home services local SEO audit", "map pack ranking factors 2026"]
 ---
 
@@ -166,7 +166,7 @@ The [GBP Scorecard](/tools/gbp-scorecard) runs you through all 35 factors across
 
 Most contractors who run it for the first time find three to five specific gaps they weren't aware of. Some are simple fixes (category correction, services section expansion). Some take time to build (review velocity). All of them are visible to Google and affecting your ranking right now.
 
-Results are immediate. If you want the full picture -- your GBP score alongside your phone performance, website conversion, and estimate pipeline, with every gap shown as annual dollars -- that's the Revenue Leak Audit.
+Results are immediate. If you want to keep building the same diagnostic from here, move into the rest of the [HVAC Market Insights library](/insights) and compare your GBP score against the phone, website, and booked-job benchmarks that shape the same map-pack outcome.
 
 ---
 

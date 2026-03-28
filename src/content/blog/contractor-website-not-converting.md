@@ -15,8 +15,8 @@ preview: "Your website is getting traffic. The phone isn't ringing. That gap liv
 pills: ["3 friction points", "53% leave after 3 seconds", "Conversion leak score"]
 primaryCtaLabel: "Audit Your Website"
 primaryCtaHref: "/tools/website-audit"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["contractor website not converting", "HVAC website not getting calls", "plumbing website conversion", "roofing website leads", "contractor website conversion rate", "home services website optimization", "contractor website audit", "HVAC website conversion optimization", "why contractor website not getting leads", "contractor site speed mobile conversion"]
 ---
 
@@ -138,7 +138,7 @@ The [Website Conversion Audit](/tools/website-audit) asks 12 yes/no questions ab
 
 Most contractor owners who complete it find at least three "no" answers they weren't aware of. Several of those no answers have fixes that take an afternoon.
 
-Results are immediate. No email required. If you want a full analysis alongside your phone performance, marketing attribution, and estimate pipeline -- with every gap shown in annual revenue terms -- that's the Revenue Leak Audit.
+Results are immediate. No email required. If you want the broader research stack around conversion, phone handling, and booked-job math, browse the rest of the [HVAC Market Insights library](/insights) after you score the site.
 
 ---
 

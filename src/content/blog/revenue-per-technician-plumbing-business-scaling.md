@@ -15,8 +15,8 @@ preview: "Top-performing plumbing companies generate $200K to $300K per technici
 pills: ["$200K-$300K benchmark", "5 gap drivers", "Per-tech math"]
 primaryCtaLabel: "Benchmark Your Team"
 primaryCtaHref: "/tools/revenue-per-tech"
-secondaryCtaLabel: "Request your report"
-secondaryCtaHref: "/report"
+secondaryCtaLabel: "Browse all insights"
+secondaryCtaHref: "/insights"
 seoKeywords: ["plumbing revenue per technician", "plumbing technician productivity", "plumbing business scaling", "revenue per tech plumbing", "plumbing kpi benchmarks", "plumbing billable hours", "plumbing technician performance", "how to scale plumbing business", "plumbing dispatch efficiency", "plumbing tech utilization rate"]
 ---
 
