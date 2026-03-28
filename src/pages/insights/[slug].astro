@@ -40,13 +40,18 @@ const heroImagePositions: Record<string, string> = {
   'servicetitan-roi-audit-hvac': '64% center',
 };
 const heroImagePosition = heroImagePositions[post.slug] ?? 'center';
+const currentIsHvac = post.data.trade.includes('HVAC');
 
 const relatedPosts = allPosts
   .filter((candidate) => candidate.slug !== post.slug)
   .map((candidate) => {
     const sharedTrades = candidate.data.trade.filter((trade) => post.data.trade.includes(trade)).length;
     const sameCategory = candidate.data.category === post.data.category ? 1 : 0;
-    const score = sharedTrades * 3 + sameCategory * 2;
+    const candidateIsHvac = candidate.data.trade.includes('HVAC');
+    const samePrimaryTrade = candidate.data.trade[0] === post.data.trade[0] ? 1 : 0;
+    const hvacPriority = currentIsHvac && candidateIsHvac ? 4 : 0;
+    const crossTradePenalty = currentIsHvac && !candidateIsHvac ? -2 : 0;
+    const score = sharedTrades * 3 + sameCategory * 2 + samePrimaryTrade + hvacPriority + crossTradePenalty;
     return { candidate, score };
   })
   .filter(({ score }) => score > 0)
@@ -54,7 +59,7 @@ const relatedPosts = allPosts
     if (b.score !== a.score) return b.score - a.score;
     return b.candidate.data.pubDate.getTime() - a.candidate.data.pubDate.getTime();
   })
-  .slice(0, 2)
+  .slice(0, currentIsHvac ? 3 : 2)
   .map(({ candidate }) => candidate);
 
 const toolLibrary = {
@@ -111,7 +116,7 @@ const toolLibrary = {
 
 const hvacToolFallbacks = ['/tools/marketing-calculator', '/tools/phone-calculator'];
 
-const toolPaths = post.data.trade.includes('HVAC')
+const toolPaths = currentIsHvac
   ? [post.data.primaryCtaHref, ...hvacToolFallbacks].filter(
       (path, index, paths) => path in toolLibrary && paths.indexOf(path) === index
     )

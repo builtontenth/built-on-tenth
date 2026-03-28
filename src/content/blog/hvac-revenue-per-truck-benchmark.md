@@ -30,6 +30,8 @@ Same labor market. Same customer base. Same equipment brands. A 2 to 3x differen
 
 The gap isn't about working harder. It's about average ticket, jobs per day, what happens on every call, and whether trucks are rolling toward the right jobs in the right order. Most of this is within the owner's control. Most owners have never looked at it by truck.
 
+If you're trying to separate a fleet-efficiency problem from a local-demand problem, the [HVAC Local Market Report](/report) gives you the market-side answer. This article is the operating-side benchmark once those calls are already coming in.
+
 ---
 
 ## The Number and How to Calculate It
@@ -172,6 +174,8 @@ The [marketing cost calculator](/tools/marketing-calculator) can model what addi
 3. **Run the wage-to-revenue ratio for each tech.** Annual salary divided by annual revenue generated. If any technician is above 25%, that's the first gap to diagnose.
 4. **Check your average ticket by technician.** A spread of more than $80 between your highest and lowest average ticket producer indicates a pricing or job mix problem -- not a performance problem.
 5. **Use the [marketing cost calculator](/tools/marketing-calculator)** to see what your current revenue per truck implies about the ROI of additional marketing spend. Adding calls to a low-output fleet costs you more per booked job than fixing the output first.
+
+Once you know your per-truck number, the next question is whether your market is giving you enough qualified demand to work with in the first place. [Request your HVAC Local Market Report](/report) for that view, or [browse all HVAC Market Insights](/insights) to keep building the cluster.
 
 ---
 
