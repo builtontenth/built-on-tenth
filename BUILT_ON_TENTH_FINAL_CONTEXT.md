@@ -31,6 +31,11 @@ Its value comes from independence:
 The main product is:
 - `HVAC Local Market Report`
 
+Important naming distinction:
+- nav / section label: `Local Market Report`
+- product name in copy: `HVAC Local Market Report`
+- primary CTA action: `Request your report`
+
 Non-negotiable product truths:
 - fixed fee: `$200`
 - delivered in `48 hours`
@@ -48,6 +53,7 @@ Use these names consistently:
 - `HVAC Market Insights`
 - `HVAC Calculators`
 - `HVAC Local Market Report`
+- `Local Market Report`
 - `Why Built on Tenth`
 - `Request your report`
 
@@ -136,9 +142,15 @@ Dynamic tool-result widths and positions driven by JavaScript are allowed when n
 Framework: Astro static site  
 Hosting: Vercel  
 Repo: GitHub  
-Analytics: GTM / GA4  
+Analytics: GTM installed sitewide, GA4 expected through GTM rather than hardcoded in the site  
 Forms: Vercel serverless endpoints in `api/`  
-Email capture: Brevo
+Email capture: Brevo  
+Search engine push support: IndexNow is configured  
+Bing tracking: not installed unless UET is added later
+
+Lead-routing truths:
+- newsletter / email-update signups go to Brevo only
+- report requests go to Brevo and also send a notification email to `hello@builtontenth.com` or `NOTIFY_EMAIL`
 
 Important command:
 - `npm run build`
@@ -173,6 +185,11 @@ Important funnel rules:
 - HVAC Market Insights support calculators and the report
 - email updates support repeat attention and trust
 - do not accidentally create a second main offer
+
+Important funnel clarification:
+- `/apply?service=report` is the report intake URL used in the live funnel
+- the canonical / indexable page remains `/apply`
+- the apply flow is not a second product
 
 ### Role of each site section
 
@@ -248,10 +265,37 @@ The page should clearly show:
 Preferred cluster:
 - homepage -> report, calculators, HVAC Market Insights
 - calculators -> report
-- HVAC articles -> matching HVAC calculators and report
+- HVAC articles -> matching HVAC calculators, sibling HVAC articles, and report
 - report -> calculators and HVAC Market Insights only when helpful
 
+Current linking rules:
+- HVAC articles should naturally include a relevant path to `/report`
+- HVAC articles should link laterally to other relevant HVAC articles
+- HVAC articles should surface at least one relevant calculator when it improves the article
+- legacy roofing / plumbing / mixed-trade articles should not force HVAC report links
+- for non-HVAC articles, `/insights` is the safer hub destination when a commercial link would feel misleading
+- the article template now biases HVAC related-content recommendations toward HVAC posts first
+
 Avoid casually sending HVAC-intent users into older roofing/plumbing content from key commercial pages.
+
+### Current status
+
+Completed in the repo:
+- HVAC-first sitewide naming and CTA cleanup
+- centralized global styling
+- HVAC article internal-linking rollout phases 1 to 4
+- sitemap / robots cleanup and more honest `lastmod`
+- stale `/services` cleanup and redirects
+- newsletter messaging updated to publish-triggered email updates
+
+Still manual / external:
+- Google Search Console reindex requests
+- Bing Webmaster Tools submissions and removals
+- optional IndexNow re-submission after deploy
+
+Operational truth:
+- repo truth may be ahead of a stale live deployment if production has not been redeployed yet
+- do not assume a third-party screenshot of the live site is current if it conflicts with the repo
 
 ### Current visual strategy
 
@@ -377,6 +421,97 @@ Copy rules:
 - no arrow symbols in user-facing copy
 - writing-only and no-call positioning is a differentiator
 
+### Article research and writing instructions for Claude
+
+When writing new articles for Built on Tenth, act like:
+- an HVAC market researcher
+- an operator-minded editor
+- a skeptical analyst trying to help an owner make a better decision
+
+Do not write like:
+- a generic SEO content writer
+- a copywriter trying to sound clever
+- an agency blog
+- a startup content marketer
+
+Topic selection rules:
+- prioritize HVAC topics first
+- choose topics that sit close to real owner decisions
+- prefer topics that naturally connect to:
+  - local visibility
+  - missed calls
+  - booking rate
+  - follow-up
+  - cost per booked job
+  - reviews
+  - service agreements
+  - field productivity
+  - software ROI
+  - agency accountability
+- avoid fluffy awareness topics unless they clearly support search intent or internal linking
+
+Research rules:
+- prefer current, high-signal, primary or near-primary sources
+- verify unstable facts before using them
+- do not invent benchmarks, percentages, or rankings
+- if a number is an estimate or directional benchmark, present it honestly
+- use competitor behavior, SERP patterns, and operator realities as research inputs when relevant
+- prioritize decision-useful facts over trivia
+
+Article goals:
+- help the reader understand something important quickly
+- make the economic or operating consequence visible
+- give the owner a clearer next step
+- support the HVAC topical cluster
+- pass relevant authority toward calculators and the report without sounding forced
+
+Article structure defaults:
+- strong headline tied to an operator problem or decision
+- sharp intro that explains why the issue matters now
+- clear section hierarchy with practical subheads
+- direct examples, benchmarks, or scenarios where useful
+- short conclusion that clarifies the next action
+- FAQ section when it genuinely helps search intent and completeness
+
+Writing rules:
+- be specific
+- use plain English
+- favor concrete numbers, examples, and tradeoffs
+- explain why something matters, not just what it is
+- keep paragraphs short and easy to scan
+- avoid filler intros and generic definitions
+- avoid fake urgency and exaggerated certainty
+
+SEO and editorial rules:
+- write for search intent, but never let the article read like SEO bait
+- match the likely query and the real business question behind it
+- keep titles clear, specific, and useful
+- keep meta implications in mind, but prioritize article quality first
+- strengthen the HVAC content cluster with relevant internal links
+- do not force irrelevant internal links just to hit a quota
+
+Internal linking rules for new HVAC articles:
+- include a natural path to `/report` when it genuinely fits the article
+- include at least one relevant calculator link when it helps the reader act
+- include 2 to 4 relevant HVAC article links when useful
+- use `/insights` as the hub link when a hub link makes sense
+- avoid forcing `/report` into legacy non-HVAC topics where it would feel misleading
+
+Commercial intent rules:
+- the article should support conversion, but not read like a sales page
+- use the report when the reader needs local competitive clarity
+- use calculators when the reader needs quick self-diagnosis
+- keep CTA language aligned with the brand:
+  - `HVAC Local Market Report`
+  - `Request your report`
+  - `HVAC Calculators`
+  - `HVAC Market Insights`
+
+Quality bar:
+- every article should feel publishable as a flagship piece
+- every article should be good enough to strengthen trust if a serious HVAC owner lands on it first
+- if a topic does not create insight, clarity, or a useful next step, it is not good enough yet
+
 ### Product and page decision rules
 
 Before changing anything important, ask:
@@ -395,6 +530,13 @@ If no, do not do it.
 - preserve working forms and tracking unless explicitly asked to change them
 - do not casually weaken SEO infrastructure
 - keep route structure stable unless there is a strong reason to change it
+
+Operational defaults:
+- do not assume GA4 is directly installed in the site code; verify GTM/container behavior first
+- do not describe Bing as tracked unless Bing UET is actually added
+- when discussing indexing, distinguish code-side readiness from webmaster-tool actions
+- for article work, prefer HVAC-first internal linking and avoid forcing report CTAs into legacy plumbing / roofing posts
+- treat `/apply?service=report` as a funnel URL, not a separate SEO page
 
 ### Priorities
 
