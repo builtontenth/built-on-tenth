@@ -15,8 +15,8 @@ preview: "A $35 lead that books at 20% costs $175 per booked job. A $90 lead tha
 pills: ["CPL vs cost/booked job", "The formula", "What your report should show"]
 primaryCtaLabel: "Calculate Your Cost Per Booked Job"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["cost per booked job contractor", "cost per lead vs cost per booked job", "how to calculate true marketing ROI contractor", "HVAC marketing ROI calculator", "roofing cost per booked job", "plumbing marketing cost per job", "contractor marketing metrics", "how to measure marketing effectiveness contractor", "marketing cost calculator home services", "cost per acquisition contractor"]
 ---
 

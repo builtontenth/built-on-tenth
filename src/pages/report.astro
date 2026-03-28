@@ -1,0 +1,351 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who is this report for?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'This report is for HVAC owners who want to understand why competitors are winning more map pack visibility and likely capturing more inbound calls in the local market.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What do you need from me?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We need your business name, city, primary service keyword, and Google Business Profile link. The report is built from public search results and visible profile data.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is this a call, pitch, or retainer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. This is a fixed-scope written deliverable. No discovery call, no agency pitch, and no ongoing retainer are required to get the report.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What will I actually receive?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You receive a written PDF with your local map pack position, top competitor comparison, review and profile gaps, likely visibility implications, and three ranked priorities for what to fix first.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How fast is delivery?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The report is delivered in writing within 48 hours after the market and scope are confirmed.',
+      },
+    },
+  ],
+};
+---
+<Layout
+  title="HVAC Local Market Report | Competitor Gap Analysis for Owners | Built on Tenth"
+  description="See how many calls stronger HVAC competitors may be taking from you each month with local visibility analysis, competitor comparison, and clear written priorities delivered in 48 hours."
+  active="report"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  
+
+  <div class="report-page">
+    <section class="hero">
+      <div class="page-wrap hero__grid">
+        <div>
+          <h1>See exactly how many calls your competitors are taking from you <em>every month.</em></h1>
+          <p class="hero__body">
+            This report shows where you rank in your local map pack, who is beating you,
+            and how many calls you are likely losing because of it, in plain numbers you
+            can use before spending another dollar on ads, agencies, or “fixes.”
+          </p>
+
+          <div class="hero__trust">
+            <span>Used by HVAC owners before spending on ads or agencies</span>
+            <span>Delivered in 48 hours</span>
+            <span>No calls. No upsell. Just the report.</span>
+          </div>
+
+          <div class="page-actions">
+            <a href="/apply?service=report&source=report-page" class="btn btn--primary">Request your report</a>
+          </div>
+          <a href="/tools" class="text-link">Explore HVAC calculators</a>
+
+          <div class="hero__microcopy">Most HVAC companies we analyze are losing somewhere between 15 and 40 calls per month to stronger local competitors. This report shows whether you are one of them.</div>
+        </div>
+
+        <aside class="offer-card">
+          <div class="offer-card__top">
+            <div class="section-label">One-time report</div>
+            <div class="offer-card__price">$200</div>
+            <h3>HVAC Local Market Report</h3>
+            <p class="offer-card__sub">Delivered in 48 hours. No calls. No upsell. No retainer. If there is no meaningful visibility gap, the report tells you that too.</p>
+          </div>
+          <ul class="offer-card__body">
+            <li>Where you actually rank when customers search, not where you think you rank</li>
+            <li>The exact companies taking calls before you and why</li>
+            <li>The trust, review, and profile gaps visible in your market</li>
+            <li>A rough estimate of how many calls you may be losing each month</li>
+            <li>The first three fixes most likely to change the outcome</li>
+          </ul>
+          <div class="offer-card__foot">
+            <p>The fastest way to know whether local visibility is actually the bottleneck before you spend another month or another budget cycle fixing the wrong thing.</p>
+            <a href="/apply?service=report&source=report-page" class="btn btn--primary offer-card__cta">Request your report</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-wrap proof__grid">
+        <div>
+          <div class="section-label">Why HVAC owners buy this</div>
+          <h2>They already know something is off. They just cannot see <em>the gap clearly enough to act.</em></h2>
+          <p class="section-intro">
+            Calls feel inconsistent. Competitors keep showing up first. Reviews look thin.
+            The report gives owners a fast answer before another month of calls goes to
+            someone else.
+          </p>
+
+          <div class="proof__stats">
+            <div class="proof-stat">
+              <strong class="proof-stat__title proof-stat__title--blue">You are being compared already</strong>
+              <p>Your market is choosing between you and the first few companies Google shows side by side.</p>
+            </div>
+            <div class="proof-stat">
+              <strong class="proof-stat__title proof-stat__title--green">The cost is usually hidden</strong>
+              <p>Most owners can feel the leak but cannot put a number on what it is costing every month.</p>
+            </div>
+            <div class="proof-stat">
+              <strong class="proof-stat__title proof-stat__title--red">Clarity beats guessing</strong>
+              <p>This helps you decide whether reviews, profile strength, or local rankings are the real problem before you spend more.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof__side">
+          <div class="report-mock">
+            <div class="report-mock__head">
+              <span>What this actually looks like</span>
+              <span>Local market preview</span>
+            </div>
+            <div class="report-mock__body">
+              <span class="report-mock__sample">Sample snapshot</span>
+              <h3>Dallas · AC repair</h3>
+              <p>Apex Comfort Systems compared with the companies Google is showing before them when local buyers search.</p>
+              <div class="report-mock__table">
+                <div class="report-mock__row">
+                  <strong>Cool Breeze HVAC</strong>
+                  <span>4.9</span>
+                  <span>847 rev</span>
+                  <span>#1</span>
+                </div>
+                <div class="report-mock__row">
+                  <strong>Texas Air Experts</strong>
+                  <span>4.8</span>
+                  <span>612 rev</span>
+                  <span>#2</span>
+                </div>
+                <div class="report-mock__row">
+                  <strong>One Hour Heating</strong>
+                  <span>4.7</span>
+                  <span>439 rev</span>
+                  <span>#3</span>
+                </div>
+                <div class="report-mock__row report-mock__row--you">
+                  <strong>Apex Comfort Systems</strong>
+                  <span>4.3</span>
+                  <span>91 rev</span>
+                  <span>#4</span>
+                </div>
+              </div>
+              <div class="report-mock__foot">
+                <span>Estimated monthly calls going to stronger local competitors first</span>
+                <strong>+38 calls/mo</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="page-wrap">
+        <div class="section-label">What is inside</div>
+        <h2>You are not buying a report. You are buying <em>clarity on the loss.</em></h2>
+        <p class="section-intro">
+          The deliverable is intentionally narrow and useful. It is designed to help you
+          see the local problem, quantify it, and decide what to fix first.
+        </p>
+
+        <div class="deliverables__grid">
+          <article class="deliverable-card">
+            <h3>Where you actually rank when customers search</h3>
+            <p>Not where you hope you rank. Not what a vendor told you. Where you are actually showing up in the local pack for the search that matters.</p>
+            <ul class="deliverable-list">
+              <li>The keyword and city snapshot that matters most</li>
+              <li>Visible ranking context against real competitors</li>
+              <li>A plain explanation of what that likely means</li>
+            </ul>
+          </article>
+
+          <article class="deliverable-card">
+            <h3>The exact companies taking calls before you</h3>
+            <p>You see the businesses your market is comparing you against and the visible signals they have stacked better than you right now.</p>
+            <ul class="deliverable-list">
+              <li>Review count and rating context</li>
+              <li>Profile completeness and trust signals</li>
+              <li>The visible reasons they are likely winning first click</li>
+            </ul>
+          </article>
+
+          <article class="deliverable-card">
+            <h3>A rough estimate of the calls you may be losing</h3>
+            <p>The number will never be perfect, but it gives owners the missing piece they usually want most: what the visibility gap is probably costing in inbound demand.</p>
+            <ul class="deliverable-list">
+              <li>Call-loss framing in business terms</li>
+              <li>Three ranked priorities on what to fix first</li>
+              <li>A clearer next step for your team or vendor</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="page-wrap outcome__grid">
+        <article class="fit-card">
+          <div class="section-label">What happens after you get this</div>
+          <h3>Most owners use it to make the next decision with less waste.</h3>
+          <p>Once the local picture is clear, the next move gets much easier to make.</p>
+          <ul class="faq-list">
+            <li>Decide if SEO or GBP work is actually worth fixing first</li>
+            <li>See whether reviews are the main trust gap</li>
+            <li>Understand whether stronger competitors are simply more visible locally</li>
+            <li>Avoid wasting money on the wrong solution next month</li>
+          </ul>
+        </article>
+
+        <figure class="report-media-card report-media-card--context">
+          <img src="/images/brand/hvac/blog-how-much-should-hvac-company-spend-on-marketing-2026.png" alt="HVAC owner reviewing marketing budget notes, invoices, and booked-job numbers at a desk" loading="lazy" />
+          <figcaption>Built for the decisions that happen when an owner is trying to figure out whether the budget, the map pack, or the competition is really the problem.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-wrap fit__grid">
+        <article class="fit-card">
+          <div class="section-label">Best fit</div>
+          <h3>This is best when you need a fast answer before spending more.</h3>
+          <p class="fit-card__lead">It works best when you suspect the local market is the issue, but you do not yet have enough clarity to know what deserves attention first.</p>
+          <ul class="faq-list">
+            <li>You are getting calls, but not enough</li>
+            <li>You suspect competitors are outranking you locally</li>
+            <li>You want clarity before spending more on ads or agencies</li>
+            <li>You want a written answer, not another meeting</li>
+          </ul>
+        </article>
+
+        <article class="fit-card fit-card--alt">
+          <div class="section-label">Not for</div>
+          <h3>If you already know local visibility is not the issue, this is too narrow.</h3>
+          <p class="fit-card__lead">This report is not trying to diagnose every part of the business. It is a local market visibility decision tool first.</p>
+          <ul class="faq-list">
+            <li>You already know your visibility is strong</li>
+            <li>You need sales, CSR, website, and lead-source diagnostics together</li>
+            <li>You are looking for an agency retainer or management service</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-wrap">
+        <div class="section-label">How it works</div>
+        <h2>No calls. No meetings. <em>Three simple steps.</em></h2>
+        <p class="section-intro">The process is intentionally blunt and fast.</p>
+
+        <div class="process__grid">
+          <article class="process-card">
+            <div class="process-card__num">01</div>
+            <h3>Send your business + keyword</h3>
+            <p>Give us your business name, city, main service keyword, and Google Business Profile link.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-card__num">02</div>
+            <h3>We analyze your market</h3>
+            <p>We look at the local map pack, the companies showing before you, and the visible review, trust, and profile gaps.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-card__num">03</div>
+            <h3>You get the report in 48 hours</h3>
+            <p>You receive a written PDF showing the gap, the likely impact, and the first fixes worth making.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-wrap faq__grid">
+        <div class="faq-stack">
+          <article class="faq-card">
+            <div class="section-label">FAQ</div>
+            <h3>What do you need from me?</h3>
+            <p>Your business name, city, main keyword, and GBP link. We are not asking for internal dashboards, ad account access, or a long questionnaire.</p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Is this a call or a pitch?</h3>
+            <p>No. This page is meant to convert without requiring a meeting. The report itself is delivered in writing, and the intake stays written-first too.</p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Will I know exactly what to do after?</h3>
+            <p>You will know the local visibility problem more clearly and get three ranked priorities. That is enough for most owners to decide whether to act internally, with a vendor, or go deeper later.</p>
+          </article>
+        </div>
+
+        <div class="faq-card faq-card--support">
+          <div class="section-label">Why this is easy to say yes to</div>
+          <h3>The scope is tight, the price is simple, and the outcome is obvious.</h3>
+          <p>
+            You finally get a clear answer on whether stronger local competitors are
+            quietly routing calls away from you, without signing up for another call,
+            another retainer, or another vague diagnostic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-card-section">
+      <div class="page-wrap">
+        <div class="cta-card cta-card--report">
+          <div class="cta-card__inner">
+            <div class="cta-card__label">Get started</div>
+            <h2 class="cta-card__title">See the gap before another month of calls goes to <em>someone else.</em></h2>
+            <p class="cta-card__body">
+              If competitors are outranking you, this report will make the gap visible.
+              If local visibility is not the issue, that is useful too. Either way,
+              you leave with a clearer next move than “try more marketing.”
+            </p>
+            <div class="cta-card__actions">
+              <a href="/apply?service=report&source=report-page" class="btn btn--primary">Request your report</a>
+            </div>
+            <div class="cta-card__meta">Delivered in 48 hours. No call required.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

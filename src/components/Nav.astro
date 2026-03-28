@@ -1,152 +1,69 @@
 ---
 const { active = '' } = Astro.props;
 ---
-<nav id="nav">
-  <a href="/" class="nav-logo">
-    <div class="nav-logo-mark"></div>
-    <span class="nav-logo-text">Built on Tenth</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/insights"   class={active === 'insights'   ? 'active' : ''}>Insights</a></li>
-    <li><a href="/tools"      class={active === 'tools'      ? 'active' : ''}>Free Tools</a></li>
-    <li><a href="/services"   class={active === 'services'   ? 'active' : ''}>Services</a></li>
-    <li><a href="/about"      class={active === 'about'      ? 'active' : ''}>About</a></li>
-    <li><a href="/newsletter" class={active === 'newsletter' ? 'active' : ''}>Newsletter</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="/newsletter" class="nav-btn-ghost nav-desktop-only">Read Research</a>
-    <a href="/apply"      class="nav-btn-teal">Get an Audit</a>
-    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu">Menu</button>
+<nav class="site-nav" id="nav">
+  <div class="site-nav__inner">
+    <div class="site-nav__left">
+      <a href="/" class="site-nav__brand" aria-label="Built on Tenth home">
+        <img src="/logo.svg" alt="" class="site-nav__mark-image" aria-hidden="true" />
+        <span class="site-nav__brand-copy">
+          <span class="site-nav__name">Built on Tenth</span>
+        </span>
+      </a>
+
+      <ul class="site-nav__links" aria-label="Primary">
+        <li><a href="/insights" class={active === 'insights' ? 'active' : ''}>HVAC Market Insights</a></li>
+        <li><a href="/tools" class={active === 'tools' ? 'active' : ''}>HVAC Calculators</a></li>
+        <li><a href="/report" class={active === 'report' ? 'active' : ''}>Local Market Report</a></li>
+        <li><a href="/about" class={active === 'about' ? 'active' : ''}>Why Built on Tenth</a></li>
+      </ul>
+    </div>
+
+    <div class="site-nav__actions">
+      <a href="/report" class="site-nav__btn btn btn--primary">Request your report</a>
+      <button class="site-nav__menu" id="nav-menu-btn" aria-label="Open navigation menu">Menu</button>
+    </div>
   </div>
 </nav>
 
-<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="site-nav__overlay" id="mobile-overlay"></div>
 
-<div class="mobile-sheet" id="mobile-sheet">
-  <div class="sheet-handle"></div>
-  <nav class="sheet-nav">
-    <a href="/"           class="sheet-link">Home</a>
-    <a href="/insights"   class="sheet-link">Insights</a>
-    <a href="/tools"      class="sheet-link">Free Tools</a>
-    <a href="/services"   class="sheet-link">Services</a>
-    <a href="/about"      class="sheet-link">About</a>
-    <a href="/newsletter" class="sheet-link">Newsletter</a>
+<div class="site-nav__sheet" id="mobile-sheet">
+  <div class="site-nav__handle"></div>
+  <nav class="site-nav__sheet-nav" aria-label="Mobile">
+    <a href="/" class="site-nav__sheet-link">Home</a>
+    <a href="/insights" class="site-nav__sheet-link">HVAC Market Insights</a>
+    <a href="/tools" class="site-nav__sheet-link">HVAC Calculators</a>
+    <a href="/report" class="site-nav__sheet-link">Local Market Report</a>
+    <a href="/about" class="site-nav__sheet-link">Why Built on Tenth</a>
   </nav>
-  <div class="sheet-ctas">
-    <a href="/newsletter" class="sheet-cta-ghost">Read Research</a>
-    <a href="/apply"      class="sheet-cta-teal">Get an Audit</a>
+  <div class="site-nav__sheet-actions">
+    <a href="/tools" class="site-nav__sheet-btn btn btn--ghost">Explore HVAC calculators</a>
+    <a href="/report" class="site-nav__sheet-btn btn btn--primary">Request your report</a>
   </div>
 </div>
 
-<style is:global>
-.nav-menu-btn {
-  display: none;
-  background: transparent;
-  border: 1px solid rgba(226,221,208,0.16);
-  border-radius: 4px;
-  padding: 8px 14px;
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(226,221,208,0.62);
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
-  align-items: center;
-}
-.nav-menu-btn:hover { color: #E2DDD0; border-color: rgba(226,221,208,0.3); }
-
-.mobile-overlay {
-  position: fixed; inset: 0; z-index: 990;
-  background: rgba(9,12,11,0.72);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease;
-  display: none;
-}
-.mobile-sheet {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 995;
-  background: #0E1412;
-  border-top: 1px solid rgba(0,196,154,0.28);
-  border-radius: 18px 18px 0 0;
-  padding: 0 0 env(safe-area-inset-bottom, 28px);
-  transform: translateY(105%);
-  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-  display: none;
-}
-@media (max-width: 960px) {
-  .nav-menu-btn { display: flex; }
-  .nav-desktop-only { display: none !important; }
-  .mobile-overlay { display: block; }
-  .mobile-sheet { display: block; }
-}
-.mobile-overlay.open { opacity: 1; pointer-events: auto; }
-.mobile-sheet.open { transform: translateY(0); }
-.sheet-handle {
-  width: 36px; height: 4px;
-  background: rgba(226,221,208,0.16);
-  border-radius: 2px; margin: 14px auto 6px;
-}
-.sheet-nav { display: flex; flex-direction: column; }
-.sheet-link {
-  display: block; padding: 17px 28px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 18px; font-weight: 400;
-  color: rgba(226,221,208,0.88);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(226,221,208,0.09);
-  transition: color 0.15s, background 0.15s; letter-spacing: -0.01em;
-}
-.sheet-link:last-child { border-bottom: none; }
-.sheet-link:active { background: rgba(226,221,208,0.04); color: #E2DDD0; }
-.sheet-ctas {
-  padding: 18px 28px 4px; display: flex; flex-direction: column; gap: 10px;
-  border-top: 1px solid rgba(226,221,208,0.09); margin-top: 4px;
-}
-.sheet-cta-ghost {
-  display: block; width: 100%; padding: 13px; text-align: center;
-  font-family: 'Space Mono', monospace; font-size: 11.5px; font-weight: 400;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(226,221,208,0.62); background: transparent;
-  border: 1px solid rgba(226,221,208,0.16); border-radius: 4px;
-  text-decoration: none; transition: all 0.2s;
-}
-.sheet-cta-ghost:hover { color: #E2DDD0; border-color: rgba(226,221,208,0.3); }
-.sheet-cta-teal {
-  display: block; width: 100%; padding: 14px; text-align: center;
-  font-family: 'Space Mono', monospace; font-size: 11.5px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: #090C0B; background: #00C49A;
-  border: 1.5px solid #00C49A; border-radius: 4px;
-  text-decoration: none; transition: background 0.2s;
-}
-.sheet-cta-teal:hover { background: #00DFB0; }
-</style>
-
 <script>
-  const nav     = document.getElementById('nav');
   const menuBtn = document.getElementById('nav-menu-btn');
-  const sheet   = document.getElementById('mobile-sheet');
+  const sheet = document.getElementById('mobile-sheet');
   const overlay = document.getElementById('mobile-overlay');
 
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 10);
-  }, { passive: true });
-
   function openMenu() {
-    sheet.classList.add('open');
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMenu() {
-    sheet.classList.remove('open');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
+    sheet?.classList.add('open');
+    overlay?.classList.add('open');
+    document.body.classList.add('nav-open');
   }
 
-  menuBtn.addEventListener('click', openMenu);
-  overlay.addEventListener('click', closeMenu);
-  sheet.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  function closeMenu() {
+    sheet?.classList.remove('open');
+    overlay?.classList.remove('open');
+    document.body.classList.remove('nav-open');
+  }
+
+  menuBtn?.addEventListener('click', openMenu);
+  overlay?.addEventListener('click', closeMenu);
+  sheet?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
 </script>

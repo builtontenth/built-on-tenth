@@ -15,8 +15,8 @@ preview: "The map pack generates the cheapest, highest-intent leads in home serv
 pills: ["Relevance, distance, prominence", "Review velocity vs count", "Behavioral signals"]
 primaryCtaLabel: "Score Your GBP"
 primaryCtaHref: "/tools/gbp-scorecard"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["Google Business Profile audit HVAC", "GBP audit contractor", "how to audit Google Business Profile", "HVAC map pack ranking", "Google Business Profile ranking factors", "roofing Google Business Profile", "plumbing map pack optimization", "GBP scorecard contractor", "home services local SEO audit", "map pack ranking factors 2026"]
 ---
 

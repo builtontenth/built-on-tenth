@@ -19,114 +19,9 @@ const suiteTools = [
   showCrossTool={false}
   headline="Is Your Agency Measuring the Right Numbers?<br><em>Grade Them in 2 Minutes.</em>"
   subheadline="Every agency reports impressions, clicks, and cost per lead. Almost none report the number that actually matters: cost per booked job. Answer 10 questions about what your agency currently shows you and get a straight grade."
-  metaDescription="Free agency report card for HVAC, roofing, and plumbing companies. Answer 10 yes or no questions and see how accountable your marketing agency really is."
+  metaDescription="HVAC agency report card and accountability checklist. Answer 10 yes or no questions and see whether your marketing agency is reporting what booked jobs actually cost."
 >
 
-<style>
-.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start; padding-bottom: 80px; }
-.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
-.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
-.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
-.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
-.ip-body { padding: 24px; }
-.ip-note { font-size: 13px; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 22px; padding: 12px 14px; background: var(--bg3); border-radius: 4px; border-left: 2px solid var(--teal); }
-
-.section { margin-bottom: 22px; }
-.section-title { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); padding: 8px 0; border-bottom: 1px solid var(--rule); margin-bottom: 12px; }
-.check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
-.check-item input[type="checkbox"] { display: none; }
-.check-label { cursor: pointer; display: flex; align-items: flex-start; gap: 12px; flex: 1; }
-.check-toggle {
-  width: 18px; height: 18px; border-radius: 3px; border: 1.5px solid var(--rule2); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; transition: all 0.2s; margin-top: 1px;
-}
-.check-item input:checked ~ label .check-toggle { background: var(--teal); border-color: var(--teal); }
-.check-item input:checked ~ label .check-toggle::after { content: '✓'; font-size: 11px; color: var(--bg); font-weight: 700; }
-.check-text { font-size: 13px; color: var(--ink2); line-height: 1.55; font-weight: 300; padding-top: 1px; }
-.check-text strong { color: var(--ink); font-weight: 500; }
-
-.calc-btn {
-  width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer;
-  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
-}
-.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
-
-.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
-.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
-.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
-.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
-.status-wait { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
-.status-good { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
-.status-warn { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
-.status-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
-.rp-body { padding: 24px; }
-
-.empty-state { text-align: center; padding: 38px 16px; }
-.empty-icon { font-size: 30px; opacity: 0.25; margin-bottom: 12px; }
-.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
-.empty-text strong { color: var(--ink2); font-weight: 500; }
-.result-section { display: none; }
-.result-section.show { display: block; }
-
-.grade-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); text-align: center; }
-.grade-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
-.score-line { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--ink2); margin-bottom: 6px; }
-.grade-value { font-family: var(--serif); font-size: 74px; line-height: 0.95; color: var(--ink); margin-bottom: 8px; }
-.verdict { font-size: 12.5px; line-height: 1.55; color: var(--ink2); font-weight: 300; }
-
-.breakdown-title, .consequence-title, .rail-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
-.breakdown-rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
-.breakdown-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
-.breakdown-key { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
-.breakdown-value { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); }
-
-.consequences { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-.consequence-item { padding: 10px 12px; border-radius: 4px; background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.16); }
-.consequence-item strong { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; color: var(--ink); }
-.consequence-item span { display: block; font-size: 12px; line-height: 1.58; color: var(--ink2); font-weight: 300; }
-
-.psych-line, .consequence-line, .cta-note {
-  font-size: 12px; line-height: 1.62; color: var(--ink2); font-weight: 300;
-}
-.psych-line { margin-bottom: 16px; }
-.consequence-line { margin: 0 0 14px; }
-
-.tool-cta {
-  display: block; width: 100%; padding: 14px; border-radius: 4px; text-decoration: none; text-align: center;
-  border: 1.5px solid var(--teal); background: var(--teal); color: var(--bg); transition: background 0.2s;
-}
-.tool-cta:hover { background: #00DFB0; }
-.tool-cta-title { display: block; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-.tool-cta-copy { display: block; margin-top: 6px; font-size: 12px; line-height: 1.5; color: rgba(9,12,11,0.84); font-weight: 400; }
-.cta-note { text-align: center; margin-top: 10px; color: var(--ink3); }
-
-.result-rail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
-.rail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-.rail-link {
-  display: block; padding: 12px; border-radius: 4px; text-decoration: none; background: var(--bg3); border: 1px solid var(--rule2);
-  transition: border-color 0.2s, transform 0.2s;
-}
-.rail-link:hover { border-color: var(--teal4); transform: translateY(-1px); }
-.rail-num { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 4px; }
-.rail-name { display: block; font-size: 12.5px; color: var(--ink); line-height: 1.35; }
-.full-picture {
-  display: block; padding: 14px; border-radius: 4px; text-decoration: none; background: rgba(0,196,154,0.05);
-  border: 1px solid rgba(0,196,154,0.28);
-}
-.full-picture-label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
-.full-picture-title { display: block; font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
-.full-picture-copy { display: block; font-size: 12px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
-
-@media (max-width: 960px) {
-  .tool-layout { grid-template-columns: 1fr; padding-bottom: 56px; }
-  .result-panel { position: static; }
-}
-
-@media (max-width: 600px) {
-  .rail-grid { grid-template-columns: 1fr; }
-}
-</style>
 
 <div class="tool-layout" slot="tool-body">
   <div class="input-panel">
@@ -222,14 +117,14 @@ const suiteTools = [
         <div class="consequence-title">What your "No" answers mean</div>
         <div class="consequences" id="consequences-list"></div>
 
-        <p class="psych-line">A good agency shows you cost per booked job by channel every month without being asked. That is the bar. If yours does not, the Revenue Leak Audit shows you what a proper performance picture looks like and what to demand from whoever you hire next.</p>
+        <p class="psych-line">A good HVAC agency shows you cost per booked job by channel every month without being asked. That is the bar. If yours does not, the full report shows what a proper performance picture looks like and what to demand from whoever you hire next.</p>
         <p class="consequence-line" id="consequence-line">If they cannot show booked jobs by channel, you are making budget decisions in the dark.</p>
 
-        <a href="/apply?service=audit&source=agency-report-card" class="tool-cta">
-          <span class="tool-cta-title">See What Your Numbers Actually Look Like</span>
-          <span class="tool-cta-copy">The Revenue Leak Audit maps your real cost per booked job by channel. Every gap in dollars. Delivered in writing.</span>
+        <a href="/report?source=agency-report-card" class="btn btn--primary tool-cta">
+          <span class="tool-cta-title">Request your report</span>
+          <span class="tool-cta-copy">This tool grades one problem. The full report shows where competitors are winning and what that gap is costing you in calls.</span>
         </a>
-        <p class="cta-note">The biggest risk here is not a bad month. It is paying for reporting that hides why the bad month happened.</p>
+        <p class="cta-note">This score tells you reporting quality. The report tells you where revenue is actually leaking in your market.</p>
 
         <ToolShareResult sectionId="share-section" profile="internal" />
 
@@ -243,10 +138,10 @@ const suiteTools = [
               </a>
             ))}
           </div>
-          <a href="/apply?service=audit&source=agency-report-card" class="full-picture">
-            <span class="full-picture-label">Full picture</span>
-            <span class="full-picture-title">Revenue Leak Audit - $750</span>
-            <span class="full-picture-copy">Every leak. Every gap. Every fix. In writing.</span>
+          <a href="/report?source=agency-report-card" class="full-picture">
+            <span class="full-picture-label">Next step</span>
+            <span class="full-picture-title">HVAC Local Market Report</span>
+            <span class="full-picture-copy">See the local competitors, market gaps, and call loss your agency reporting is not showing you.</span>
           </a>
         </div>
       </div>
@@ -297,7 +192,7 @@ function revealShare(score, grade) {
   shareSection.dataset.internalShareText = internalSummary;
   shareSection.dataset.emailSubject = `Agency Report Card: ${score}/10 (${grade})`;
   shareSection.dataset.emailBody = `${internalSummary}\n\n${consequenceLine}`;
-  shareSection.style.display = 'block';
+  shareSection.hidden = false;
 }
 
 function calculate() {
@@ -351,7 +246,7 @@ function calculate() {
 
   revealShare(score, grade);
 
-  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('empty-state').hidden = true;
   document.getElementById('results').classList.add('show');
 }
 </script>

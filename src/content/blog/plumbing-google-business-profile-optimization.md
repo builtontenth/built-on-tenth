@@ -15,8 +15,8 @@ preview: "Emergency plumbing searchers go to the map pack first. If your GBP is 
 pills: ["Map pack setup", "Emergency call intent", "Review system"]
 primaryCtaLabel: "Score Your GBP"
 primaryCtaHref: "/tools/gbp-scorecard"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["plumbing google business profile", "plumbing google business profile optimization", "plumbing map pack ranking", "how to rank plumber on google maps", "plumbing emergency calls google business profile", "plumbing local seo", "plumbing google reviews", "plumbing gbp optimization", "plumber near me ranking", "plumbing map pack seo"]
 ---
 

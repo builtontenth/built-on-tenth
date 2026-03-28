@@ -15,8 +15,8 @@ preview: "A 10-person HVAC company doing $1.8M and one doing $2.9M are not in di
 pills: ["Benchmarks by trade", "4 gap variables", "The headcount trap"]
 primaryCtaLabel: "Benchmark Your Team"
 primaryCtaHref: "/tools/revenue-per-tech"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["revenue per technician benchmark", "HVAC revenue per technician", "plumbing revenue per technician", "roofing revenue per crew", "home services technician productivity", "revenue per tech trades", "how much revenue should each technician generate", "trades business scaling metric", "HVAC tech productivity", "field service revenue per employee"]
 ---
 

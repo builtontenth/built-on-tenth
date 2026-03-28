@@ -2,213 +2,141 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout
-  title="Apply - Get a Revenue Leak Audit | Built on Tenth"
-  description="Fill out a short application. We review it within 24 hours and confirm we're the right fit before you pay anything. No calls, no pitch, no obligation."
+  title="Request Your HVAC Local Market Report | Built on Tenth"
+  description="Order the HVAC Local Market Report by sharing your business, city, and Google Business Profile. Fixed fee: $200. Delivered in 48 hours with no call or sales pitch."
   active=""
 >
 
-<style>
-.apply-wrap {
-  min-height: 100vh; padding: 120px 48px 80px;
-  display: grid; grid-template-columns: 1fr 480px; gap: 80px; align-items: start;
-  max-width: 1200px; margin: 0 auto;
-}
-.apply-left { padding-top: 20px; }
-.apply-h {
-  font-family: var(--serif); font-size: clamp(36px, 5vw, 58px);
-  font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 22px;
-}
-.apply-h em { font-style: italic; color: var(--teal); }
-.apply-sub {
-  font-size: 16.5px; color: var(--ink2); line-height: 1.74;
-  font-weight: 300; max-width: 460px; margin-bottom: 40px;
-}
-.apply-promise { font-size: 14px; color: var(--ink2); font-weight: 300; line-height: 1.65; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 5px; padding: 20px 22px; margin-bottom: 32px; }
-.apply-promise strong { color: var(--ink); font-weight: 500; }
 
-/* What happens next */
-.next-steps { display: flex; flex-direction: column; gap: 0; }
-.ns-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--rule); }
-.ns-item:last-child { border-bottom: none; }
-.ns-num {
-  width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--teal4);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--teal); flex-shrink: 0;
-}
-.ns-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
-.ns-desc { font-size: 12.5px; color: var(--ink2); font-weight: 300; line-height: 1.55; }
+<div class="page-shell apply-page">
+  <div class="page-wrap">
+    <div class="apply-grid">
 
-/* Form */
-.apply-form-card {
-  background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px;
-  padding: 36px 32px; position: sticky; top: 84px;
-}
-.form-h { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.form-sub { font-size: 13px; color: var(--ink2); font-weight: 300; margin-bottom: 28px; }
-
-.field { margin-bottom: 18px; }
-.field label { display: block; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
-.field input, .field select, .field textarea {
-  width: 100%; background: var(--bg3); border: 1px solid var(--rule2);
-  border-radius: 4px; padding: 12px 14px;
-  font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none;
-  transition: border-color 0.2s; appearance: none;
-}
-.field input::placeholder, .field textarea::placeholder { color: var(--ink3); }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(0,196,154,0.5); }
-.field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
-.field select option { background: var(--bg3); color: var(--ink); }
-.field textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-.form-cta {
-  width: 100%; padding: 14px; border-radius: 4px; cursor: pointer;
-  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
-  margin-top: 8px;
-}
-.form-cta:hover { background: #00DFB0; }
-.form-note { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink3); text-align: center; margin-top: 12px; }
-
-/* Success state */
-.form-success { display: none; text-align: center; padding: 32px 0; }
-.form-success.show { display: block; }
-.form-success-icon { font-size: 40px; margin-bottom: 16px; }
-.form-success h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 10px; }
-.form-success p { font-size: 14px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
-
-@media (max-width: 1100px) {
-  .apply-wrap { grid-template-columns: 1fr; gap: 40px; max-width: 640px; padding: 100px 20px 64px; }
-  .apply-form-card { position: static; }
-  .field-row { grid-template-columns: 1fr; }
-  .apply-h { font-size: clamp(28px, 8vw, 44px); }
-}
-@media (max-width: 600px) {
-  .apply-wrap { padding: 88px 16px 56px; }
-  .apply-form-card { padding: 24px 20px; }
-}
-</style>
-
-<div class="apply-wrap">
-
-  <!-- LEFT -->
-  <div class="apply-left">
-    <div class="dispatch-label">Get Started</div>
-    <h1 class="apply-h">Let's look at<br><em>your numbers.</em></h1>
-    <p class="apply-sub">Tell us about your company. We'll review it and get back to you within 24 hours, in writing. No obligation until you decide to move forward.</p>
-
-    <div class="apply-promise">
-      <strong>No calls. No pitch. No commitment yet.</strong><br>
-      We review your application, ask any follow-up questions by email, and confirm we're the right fit before you pay anything. If we don't think we can add value, we'll tell you that too, and point you toward the free tools instead.
-    </div>
-
-    <div class="dispatch-label" style="margin-bottom:16px">What happens after you apply</div>
-    <div class="next-steps">
-      <div class="ns-item">
-        <div class="ns-num">1</div>
+      <div class="apply-copy">
         <div>
-          <div class="ns-title">We review your application</div>
-          <div class="ns-desc">We look at your company, website, and what you're trying to figure out. Within 24 hours, you'll hear back by email with confirmation or questions.</div>
+          <h1 class="section-title">Order your <em>HVAC Local Market Report.</em></h1>
+          <p class="section-copy">This is the intake form for the report. Fixed fee: $200. Submit your market details once, and the written report is delivered within 48 hours. No calls. No pitch deck. No pressure.</p>
         </div>
-      </div>
-      <div class="ns-item">
-        <div class="ns-num">2</div>
-        <div>
-          <div class="ns-title">We confirm and invoice</div>
-          <div class="ns-desc">If we're a good fit, we send a short scope confirmation and an invoice. No logins needed, no internal data required. We work from public information.</div>
-        </div>
-      </div>
-      <div class="ns-item">
-        <div class="ns-num">3</div>
-        <div>
-          <div class="ns-title">Research starts immediately</div>
-          <div class="ns-desc">Once paid, we start the analysis. The Revenue Leak Audit is delivered in 7 business days. Everything in writing. Every finding in dollars.</div>
-        </div>
-      </div>
-      <div class="ns-item">
-        <div class="ns-num">4</div>
-        <div>
-          <div class="ns-title">You get a report you can act on</div>
-          <div class="ns-desc">Not a slide deck. Not a presentation. A written document with every gap identified, every revenue impact quantified, and a prioritized action list.</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- FORM CARD -->
-  <div class="apply-form-card">
-    <div id="form-content">
-      <div class="form-h">Application</div>
-      <p class="form-sub">Takes about 2 minutes. We respond within 24 hours.</p>
+        <div class="apply-promise">
+          <h2>Simple written order</h2>
+          <p>You give us your company, service area, and what you want to understand about your local visibility gap. From there, the work moves straight into delivery.</p>
+        </div>
 
-      <div class="field-row">
-        <div class="field">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" placeholder="Mike Johnson" />
-        </div>
-        <div class="field">
-          <label for="company">Company Name</label>
-          <input type="text" id="company" placeholder="Johnson HVAC & Cooling" />
-        </div>
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label for="location">City, State</label>
-          <input type="text" id="location" placeholder="Atlanta, GA" />
-        </div>
-        <div class="field">
-          <label for="website">Website</label>
-          <input type="url" id="website" placeholder="yourcompany.com" />
+        <div class="surface-card next-steps-card">
+          <div class="section-label">What happens next</div>
+          <div class="next-steps">
+            <div class="ns-item">
+              <div class="ns-num">01</div>
+              <div>
+                <div class="ns-title">We review your market details</div>
+                <div class="ns-desc">We look at your company, service area, and local search context so the report starts with the right scope.</div>
+              </div>
+            </div>
+            <div class="ns-item">
+              <div class="ns-num">02</div>
+              <div>
+                <div class="ns-title">We confirm anything missing by email</div>
+                <div class="ns-desc">If anything is unclear, we keep it in writing and keep it simple so delivery stays on track.</div>
+              </div>
+            </div>
+            <div class="ns-item">
+              <div class="ns-num">03</div>
+              <div>
+                <div class="ns-title">The work starts immediately</div>
+                <div class="ns-desc">No logins, no calls, and no internal data dump. Once submitted, the report moves into production.</div>
+              </div>
+            </div>
+            <div class="ns-item">
+              <div class="ns-num">04</div>
+              <div>
+                <div class="ns-title">You get a written report</div>
+                <div class="ns-desc">A documented local market report with the gap, the likely impact, and what deserves attention first.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="field">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="mike@johnsonhvac.com" />
+      <div class="surface-card surface-card--strong apply-form-card">
+        <div id="form-content">
+          <div class="form-h">Request your report.</div>
+          <p class="form-sub">Fixed fee: $200. Delivered within 48 hours.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" />
+            </div>
+            <div class="field">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="location">City, State</label>
+              <input type="text" id="location" />
+            </div>
+            <div class="field">
+              <label for="website">Website</label>
+              <input type="url" id="website" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" />
+          </div>
+
+          <div class="field">
+            <label for="service">What are you looking for?</label>
+            <select id="service">
+              <option value="report">HVAC Local Market Report</option>
+              <option value="unsure">Not sure yet - want guidance</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="spend">Monthly Marketing Spend (approx.)</label>
+            <select id="spend">
+              <option value="" disabled selected>Select a range</option>
+              <option value="under3k">Under $3,000/month</option>
+              <option value="3-6k">$3,000–$6,000/month</option>
+              <option value="6-10k">$6,000–$10,000/month</option>
+              <option value="10-15k">$10,000–$15,000/month</option>
+              <option value="over15k">Over $15,000/month</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="question">What's the main thing you're trying to figure out? <span class="field-note">(optional)</span></label>
+            <textarea id="question"></textarea>
+          </div>
+
+          <button class="btn btn--primary form-cta" id="submit-btn">Request your report</button>
+          <p class="form-note">Everything handled in writing. Fixed fee: $200. Delivered within 48 hours.</p>
+        </div>
+
+        <div class="form-success" id="form-success" hidden>
+          <div class="form-success-icon">✓</div>
+          <h3>Got it. We’ll be in touch.</h3>
+          <p>Your request is in. We’ll use the details you provided to complete the HVAC Local Market Report and deliver it within 48 hours.</p>
+        </div>
       </div>
-
-      <div class="field">
-        <label for="service">Service You're Interested In</label>
-        <select id="service">
-          <option value="" disabled selected>Select a service</option>
-          <option value="audit">Revenue Leak Audit - $750</option>
-          <option value="blueprint">Growth System Blueprint - $3,000</option>
-          <option value="advisory">90-Day Growth Advisory - $7,500</option>
-          <option value="unsure">Not sure yet - want guidance</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="spend">Monthly Marketing Spend (approx.)</label>
-        <select id="spend">
-          <option value="" disabled selected>Select a range</option>
-          <option value="under3k">Under $3,000/month</option>
-          <option value="3-6k">$3,000–$6,000/month</option>
-          <option value="6-10k">$6,000–$10,000/month</option>
-          <option value="10-15k">$10,000–$15,000/month</option>
-          <option value="over15k">Over $15,000/month</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="question">What's the main thing you're trying to figure out? <span style="color:var(--ink3)">(optional)</span></label>
-        <textarea id="question" placeholder="e.g. I'm spending $8K/month on Google Ads and Angi and can't tell which one is actually booking jobs..."></textarea>
-      </div>
-
-      <button class="form-cta" id="submit-btn">Send My Application</button>
-      <p class="form-note">We respond within 24 hours. Everything handled in writing.</p>
-    </div>
-
-    <div class="form-success" id="form-success">
-      <div class="form-success-icon">✓</div>
-      <h3>Got it - we'll be in touch.</h3>
-      <p>Expect a reply within 24 hours at the email you provided. We'll confirm the details and let you know next steps before anything is paid.</p>
     </div>
   </div>
 </div>
 
 <script>
+  const serviceSelect = document.getElementById('service');
+  const params = new URLSearchParams(window.location.search);
+  const requestedService = params.get('service');
+  if (requestedService && serviceSelect?.querySelector(`option[value="${requestedService}"]`)) {
+    serviceSelect.value = requestedService;
+  }
+
   document.getElementById('submit-btn').addEventListener('click', async () => {
     const email    = document.getElementById('email').value.trim();
     const name     = document.getElementById('name').value.trim();
@@ -222,8 +150,21 @@ import Layout from '../layouts/Layout.astro';
 
     // Validate required fields
     let valid = true;
-    if (!name) { document.getElementById('name').style.borderColor = 'rgba(240,64,64,0.55)'; valid = false; }
-    if (!email.includes('@')) { document.getElementById('email').style.borderColor = 'rgba(240,64,64,0.55)'; valid = false; }
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+
+    [nameInput, emailInput].forEach((field) => field?.classList.remove('field-control--error'));
+
+    if (!name) {
+      nameInput?.classList.add('field-control--error');
+      valid = false;
+    }
+
+    if (!email.includes('@')) {
+      emailInput?.classList.add('field-control--error');
+      valid = false;
+    }
+
     if (!valid) return;
 
     btn.textContent = 'Sending...';
@@ -241,7 +182,8 @@ import Layout from '../layouts/Layout.astro';
           service_interest: service || 'unknown',
           spend_range: spend || 'unknown',
         });
-        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('form-content').hidden = true;
+        document.getElementById('form-success').hidden = false;
         document.getElementById('form-success').classList.add('show');
       } else {
         btn.textContent = 'Try again';

@@ -15,8 +15,8 @@ preview: "Home services businesses miss around 27% of inbound calls. 85% of thos
 pills: ["27% miss rate industry avg", "85% won't call back", "Annual dollar calculation"]
 primaryCtaLabel: "Calculate Your Lost Revenue"
 primaryCtaHref: "/tools/phone-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["missed call cost contractor", "how much do missed calls cost HVAC", "true cost missed calls home services", "contractor missed call revenue loss", "HVAC missed call calculator", "plumbing unanswered calls cost", "phone answer rate revenue", "home services missed call statistics", "contractor call answer rate", "missed call revenue calculator"]
 ---
 

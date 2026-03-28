@@ -15,8 +15,8 @@ preview: "Insurance replacement is the highest-margin work in residential roofin
 pills: ["65-75% close rate at adjuster meeting", "Supplement process", "Xactimate basics"]
 primaryCtaLabel: "Calculate Your Marketing Cost"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["roofing insurance claim process", "roofing insurance supplement", "roofing adjuster meeting", "how to work insurance roofing jobs", "roofing insurance job workflow", "xactimate roofing", "roofing supplement process", "insurance roofing contractor", "roofing claim documentation", "how to get full insurance payout roofing"]
 ---
 

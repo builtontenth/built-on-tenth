@@ -15,8 +15,8 @@ preview: "A top-quartile HVAC truck generates $180K-$280K per year. A bottom-qua
 pills: ["$180K-$280K benchmark", "Wage-to-revenue ratio", "4 gap drivers"]
 primaryCtaLabel: "Try the Marketing Calculator"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["hvac revenue per technician", "hvac revenue per truck", "hvac technician productivity benchmark", "how much should hvac tech generate", "hvac technician revenue benchmark 2026", "hvac tech performance", "hvac dispatch efficiency", "hvac average ticket per tech", "hvac wage to revenue ratio", "hvac technician kpi"]
 ---
 

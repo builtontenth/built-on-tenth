@@ -15,8 +15,8 @@ preview: "Most roofers judge Angi by lead volume. The real number is cost per si
 pills: ["$1,625-$1,857/job", "Shared lead math", "5-minute response"]
 primaryCtaLabel: "Calculate Your Marketing Cost"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["angi leads roofing", "are angi leads worth it", "roofing lead generation 2026", "angi pro for roofers", "cost per lead roofing", "homeadvisor roofing leads", "angi vs thumbtack roofing", "when to cancel angi", "how to improve angi roi", "angi leads conversion rate roofing"]
 ---
 

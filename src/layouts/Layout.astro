@@ -2,6 +2,7 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import '../styles/global-pages.css';
 import '@fontsource-variable/crimson-pro/wght.css';
 import '@fontsource-variable/crimson-pro/wght-italic.css';
 import '@fontsource-variable/plus-jakarta-sans/wght.css';
@@ -23,7 +24,7 @@ interface Props {
 
 const {
   title,
-  description = 'Revenue intelligence for HVAC, roofing, and plumbing companies. We study how the most profitable home service companies grow — and publish everything we find.',
+  description = 'Independent HVAC market insights, local visibility analysis, and diagnostic tools that show where stronger competitors are taking calls first.',
   active = '',
   ogImage = 'https://www.builtontenth.com/tanvir.png',
   ogType = 'website',
@@ -74,13 +75,14 @@ const siteName = 'Built on Tenth';
   <link rel="preload" href={spaceMonoRegularUrl} as="font" type="font/woff2" crossorigin />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="apple-touch-icon" href="/logo.svg" />
 </head>
 <body>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMGPHL2"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  height="0" width="0" class="gtm-noscript-frame"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <Nav active={active} />

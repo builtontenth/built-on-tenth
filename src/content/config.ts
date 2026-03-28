@@ -20,8 +20,8 @@ const blog = defineCollection({
     pills: z.array(z.string()).max(3).default([]),
     primaryCtaLabel: z.string(),
     primaryCtaHref: z.string(),
-    secondaryCtaLabel: z.string().default('Get a Revenue Leak Audit'),
-    secondaryCtaHref: z.string().default('/apply'),
+    secondaryCtaLabel: z.string().default('Request your report'),
+    secondaryCtaHref: z.string().default('/report'),
     seoKeywords: z.array(z.string()).optional(),
   }),
 });

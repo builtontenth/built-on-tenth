@@ -2,119 +2,56 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout
-  title="The Weekly Growth Report - Free Newsletter | Built on Tenth"
-  description="One growth insight every week. Real data from analyzing hundreds of HVAC, roofing, and plumbing companies. Free. Written for owners."
+  title="HVAC Market Insights Email Updates | New Research in Your Inbox | Built on Tenth"
+  description="Get an email whenever a new HVAC Market Insights article is published. No fixed schedule, no filler, and no generic roundup."
   active="newsletter"
 >
 
-<style>
-.nl-hero {
-  padding: 140px 48px 80px; position: relative; overflow: hidden; text-align: center;
-}
-.nl-hero-bg {
-  position: absolute; inset: 0;
-  background-image: url('/images/brand/core/core-newsletter-bg.png');
-  background-size: cover; background-position: center; opacity: 0.05; filter: grayscale(50%);
-}
-.nl-hero-glow {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 65% 65% at 50% 50%, rgba(0,196,154,0.08) 0%, transparent 65%);
-}
-.nl-hero-inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
-.nl-hero h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 68px); font-weight: 400; line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 22px; }
-.nl-hero h1 em { font-style: italic; color: var(--teal); }
-.nl-hero-sub { font-size: 17px; color: var(--ink2); line-height: 1.74; font-weight: 300; margin-bottom: 40px; }
-
-.nl-form-wrap { display: flex; gap: 10px; max-width: 440px; margin: 0 auto 14px; }
-.nl-input {
-  flex: 1; background: var(--bg2); border: 1px solid var(--rule2);
-  border-radius: 4px; padding: 14px 18px;
-  font-family: var(--sans); font-size: 14px; color: var(--ink);
-  outline: none; transition: border-color 0.2s;
-}
-.nl-input::placeholder { color: var(--ink3); }
-.nl-input:focus { border-color: rgba(0,196,154,0.5); }
-.nl-note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink2); }
-
-/* What you get */
-.nl-value { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--bg2); }
-.nl-value-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
-.nlv-card { padding: 36px 32px; border-right: 1px solid var(--rule); }
-.nlv-card:last-child { border-right: none; }
-.nlv-icon { font-size: 22px; margin-bottom: 14px; }
-.nlv-title { font-family: var(--sans); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-.nlv-body { font-size: 13.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
-
-/* Bottom signup */
-.nl-bottom { text-align: center; padding: 96px 48px; position: relative; overflow: hidden; }
-.nl-bottom-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,196,154,0.06) 0%, transparent 65%); }
-.nl-bottom-inner { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
-.nl-bottom h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 16px; }
-.nl-bottom h2 em { font-style: italic; color: var(--teal); }
-.nl-bottom p { font-size: 15px; color: var(--ink2); line-height: 1.7; margin-bottom: 30px; font-weight: 300; }
-
-@media (max-width: 960px) {
-  .nl-hero { padding: 100px 20px 60px; }
-  .nl-hero h1 { font-size: clamp(32px, 9vw, 52px); }
-  .nl-value-inner { grid-template-columns: 1fr; }
-  .nlv-card { border-right: none; border-bottom: 1px solid var(--rule); }
-  .nlv-card:last-child { border-bottom: none; }
-  .nl-form-wrap { flex-direction: column; max-width: 100% !important; }
-  .nl-input { width: 100%; }
-  .nl-bottom { padding: 64px 20px; }
-}
-</style>
 
 <!-- HERO -->
-<div class="nl-hero">
+<div class="page-shell">
+<div class="nl-hero page-hero page-hero--center">
   <div class="nl-hero-bg"></div>
   <div class="nl-hero-glow"></div>
-  <div class="nl-hero-inner">
-    <div class="dispatch-label" style="justify-content:center;margin-bottom:20px">Free · Every Week</div>
-    <h1>The Weekly<br><em>Growth Report</em></h1>
-    <p class="nl-hero-sub">One hard number every week from real HVAC, roofing, and plumbing operators. Think "40% close rate instead of 27%" or "an 85% answer rate instead of 62%." Short, concrete, and written for owners who want numbers they can use the same week.</p>
-    <div class="nl-form-wrap">
-      <input type="email" class="nl-input" placeholder="your@email.com" id="nl-email" />
-      <button class="cta-primary" style="cursor:pointer;white-space:nowrap" id="nl-submit">Subscribe Free</button>
+  <div class="page-wrap page-hero__inner">
+    <div class="nl-hero-inner page-hero__inner--narrow cta-card cta-card--capture">
+    <div class="cta-card__inner">
+      <h1 class="cta-card__title">Get every new HVAC Market Insights article <em>in your inbox.</em></h1>
+      <p class="nl-hero-sub cta-card__body">There is no weekly schedule and no content calendar to fill. When a new HVAC Market Insights article is published, subscribers get it. Benchmarks, operator lessons, and market breakdowns only when there is something worth sending.</p>
+      <div class="nl-form-wrap cta-card__actions">
+        <div class="capture-form capture-form--centered">
+          <input type="email" class="capture-input" id="nl-email" />
+          <button class="btn btn--primary capture-button capture-button--pointer" id="nl-submit">Get email updates</button>
+        </div>
+      </div>
+      <p class="nl-note cta-card__meta">No fixed schedule. Unsubscribe anytime. We do not share your email.</p>
     </div>
-    <p class="nl-note">Unsubscribe anytime. We don't share your email.</p>
+  </div>
   </div>
 </div>
 
 <!-- WHAT YOU GET -->
 <div class="nl-value">
-  <div class="nl-value-inner">
+  <div class="page-wrap nl-value-inner">
     <div class="nlv-card">
-      <div class="nlv-icon">📊</div>
-      <div class="nlv-title">Real benchmarks from real companies</div>
-      <div class="nlv-body">Not industry surveys or guesswork. Actual data from analyzing hundreds of HVAC, roofing, and plumbing companies: answer rates, cost per booked job, close rates, Google Ad spend, by trade and market size.</div>
+      <div class="nlv-kicker">Immediate delivery</div>
+      <div class="nlv-title">Every new article lands in your inbox automatically.</div>
+      <div class="nlv-body">You do not need to remember to check the site. When a new HVAC Market Insights piece goes live, subscribers get it right away.</div>
     </div>
     <div class="nlv-card">
-      <div class="nlv-icon">🔧</div>
-      <div class="nlv-title">One specific thing you can use this week</div>
-      <div class="nlv-body">Each issue is built around one tactic, finding, or system. Not a 20-minute read. Not a vague strategy framework. Something you can hand to your front desk, show to your agency, or implement yourself in a few hours.</div>
+      <div class="nlv-kicker">Useful by design</div>
+      <div class="nlv-title">Built for owners who care about calls, booked jobs, and what to fix next.</div>
+      <div class="nlv-body">Expect market gaps, answer rates, booked-job cost, review velocity, service agreements, and the numbers that actually change decisions.</div>
     </div>
     <div class="nlv-card">
-      <div class="nlv-icon">📋</div>
-      <div class="nlv-title">Contractor-first language</div>
-      <div class="nlv-body">We write like a contractor who figured out growth systems, not a marketer. You'll see "calls" not "leads," "book jobs" not "convert," "average ticket" not "AOV." If it won't pass the 6am truck test, we don't publish it.</div>
+      <div class="nlv-kicker">No filler</div>
+      <div class="nlv-title">No schedule to feed. No generic roundup to ignore.</div>
+      <div class="nlv-body">This is not a weekly newsletter. If there is nothing new worth your time, nothing gets sent. That keeps the signal clean and the inbox friction low.</div>
     </div>
   </div>
 </div>
 
-<!-- BOTTOM SIGNUP -->
-<div class="nl-bottom">
-  <div class="nl-bottom-glow"></div>
-  <div class="nl-bottom-inner">
-    <h2>Get the next issue<br><em>every week.</em></h2>
-    <p>Join owners who want the benchmark, the gap, and what to do next. One useful number every week. Unsubscribe anytime.</p>
-    <div class="nl-form-wrap" style="max-width:400px;margin:0 auto 14px">
-      <input type="email" class="nl-input" placeholder="your@email.com" id="nl-email-2" />
-      <button class="cta-primary" style="cursor:pointer;white-space:nowrap" id="nl-submit-2">Subscribe Free</button>
-    </div>
-    <p class="nl-note">We don't share your email. No spam.</p>
-  </div>
-</div>
+ </div>
 
 <script>
   async function submitEmail(email, btn, inp, source) {
@@ -129,18 +66,20 @@ import Layout from '../layouts/Layout.astro';
       const data = await res.json();
       if (data.success) {
         btn.textContent = "You're in \u2713";
-        btn.style.background = '#22D37A';
-        btn.style.borderColor = '#22D37A';
+        btn.classList.add('capture-button--success');
         inp.disabled = true;
+        inp.classList.remove('capture-input--error');
         window.botTrack?.('newsletter_signup', { signup_source: source || 'newsletter-page' });
       } else {
         btn.textContent = 'Try again';
         btn.disabled = false;
-        inp.style.borderColor = 'rgba(240,64,64,0.55)';
+        btn.classList.remove('capture-button--success');
+        inp.classList.add('capture-input--error');
       }
     } catch {
       btn.textContent = 'Try again';
       btn.disabled = false;
+      btn.classList.remove('capture-button--success');
     }
   }
 
@@ -150,10 +89,11 @@ import Layout from '../layouts/Layout.astro';
     if (!btn || !inp) return;
     btn.addEventListener('click', () => {
       if (!inp.value.includes('@')) {
-        inp.style.borderColor = 'rgba(240,64,64,0.55)';
+        inp.classList.add('capture-input--error');
         inp.focus();
         return;
       }
+      inp.classList.remove('capture-input--error');
       submitEmail(inp.value.trim(), btn, inp, source || 'newsletter-page');
     });
     inp.addEventListener('keydown', (e) => {
@@ -164,6 +104,5 @@ import Layout from '../layouts/Layout.astro';
   }
 
   setupForm('nl-email', 'nl-submit', 'newsletter-hero');
-  setupForm('nl-email-2', 'nl-submit-2', 'newsletter-bottom');
 </script>
 </Layout>

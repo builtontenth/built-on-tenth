@@ -6,7 +6,7 @@ const tools = [
   {
     id: 'phone-calculator',
     icon: '📞',
-    badge: 'Free Tool',
+    badge: 'HVAC Calculator',
     name: 'Phone Revenue Calculator',
     tagline: 'Missed Calls = Lost Jobs',
     desc: "Most owners think they answer 90% of calls. The actual average is 68%. Every unanswered call is a job that went to a competitor. Find out the dollar amount walking out your door every month.",
@@ -18,7 +18,7 @@ const tools = [
   {
     id: 'estimate-follow-up',
     icon: '📨',
-    badge: 'Free Tool',
+    badge: 'HVAC Calculator',
     name: 'Estimate Follow-Up Calculator',
     tagline: '68% of Estimates Never Get a Follow-Up',
     desc: 'Most owners blame the homeowner for not calling back. The data says otherwise. Enter your estimate volume and see exactly how much revenue is dying in your outbox every year.',
@@ -30,7 +30,7 @@ const tools = [
   {
     id: 'agency-report-card',
     icon: '📋',
-    badge: 'Free Tool',
+    badge: 'HVAC Calculator',
     name: 'Agency Report Card',
     tagline: 'Is Your Agency Measuring the Right Numbers?',
     desc: 'Every agency reports impressions, clicks, and cost per lead. Almost none report the number that actually matters: cost per booked job. Answer 10 questions and get a straight grade.',
@@ -42,7 +42,7 @@ const tools = [
   {
     id: 'revenue-per-tech',
     icon: '🛠️',
-    badge: 'Free Tool',
+    badge: 'HVAC Calculator',
     name: 'Revenue Per Technician Benchmarker',
     tagline: 'How Much Revenue Is Each Tech Producing?',
     desc: 'Most owners track total revenue. Very few track revenue per tech, the number that tells you whether your team is running at capacity or leaving jobs on the table. Enter your numbers and see exactly where you stand.',
@@ -54,10 +54,10 @@ const tools = [
   {
     id: 'marketing-calculator',
     icon: '📊',
-    badge: 'Free Tool',
+    badge: 'HVAC Calculator',
     name: 'Marketing Cost Calculator',
     tagline: 'What Does a Booked Job Actually Cost You?',
-    desc: "Most companies track leads. Very few know what it costs to book a real job. Enter your numbers and see your true cost per booked job, benchmarked against the top 25% in your trade.",
+    desc: "Most HVAC companies track leads. Very few know what it costs to book a real job. Enter your numbers and see your true cost per booked job against stronger HVAC benchmarks.",
     cta: 'Calculate your numbers',
     img: '/images/brand/core/tool-marketing-calculator.png',
     imgAlt: 'Comparing marketing spend to booked jobs',
@@ -66,10 +66,10 @@ const tools = [
   {
     id: 'gbp-scorecard',
     icon: '📍',
-    badge: 'Free Tool',
+    badge: 'HVAC Calculator',
     name: 'GBP Scorecard',
     tagline: 'How Strong Is Your Google Business Profile?',
-    desc: 'The map pack is the best free lead source in home services. Most companies are giving ground to competitors on basic GBP factors they do not even know about. Score yourself on the same rubric we use for competitor teardowns.',
+    desc: 'The map pack is one of the best free lead sources in HVAC. Most companies are giving ground to competitors on basic GBP factors they do not even know about. Score yourself on the same rubric we use for HVAC competitor teardowns.',
     cta: 'Score your GBP',
     img: '/images/brand/core/tool-gbp-scorecard.png',
     imgAlt: 'Reviewing local reputation and competitor notes',
@@ -78,10 +78,10 @@ const tools = [
   {
     id: 'website-audit',
     icon: '🔍',
-    badge: 'Free Tool',
-    name: 'Website Conversion Audit',
+    badge: 'HVAC Calculator',
+    name: 'Website Conversion Scorecard',
     tagline: 'Would a homeowner actually call after visiting your site?',
-    desc: 'Most contractor websites look fine, but fail in 3 critical places: speed, mobile experience, and call friction. Answer 12 quick questions about your site and get a Conversion Leak Score with specific fixes.',
+    desc: 'Most HVAC websites look fine, but fail in 3 critical places: speed, mobile experience, and call friction. Answer 12 quick questions about your site and get a Conversion Leak Score with specific fixes.',
     cta: 'Audit your website',
     img: '/images/brand/core/tool-website-audit.png',
     imgAlt: 'Reviewing website issues in a real work setting',
@@ -90,159 +90,60 @@ const tools = [
 ];
 ---
 <Layout
-  title="Free Tools for HVAC, Roofing & Plumbing Companies | Built on Tenth"
-  description="Seven free calculators and audits for home service business owners. See your biggest revenue leaks, benchmark your operation, and find the gaps your current reporting misses. No email required."
+  title="HVAC Calculators | Missed Calls, GBP, Marketing Cost & Website Conversion | Built on Tenth"
+  description="HVAC calculators and scorecards for missed calls, booked-job cost, estimate follow-up, Google Business Profile strength, and website conversion leaks."
   active="tools"
 >
+  <div class="insights-page tools-page">
+    <div class="insights-shell">
+      <section class="insights-hero">
+        <div class="insights-hero__copy">
+          <h1>HVAC calculators for owners who want <em>the number first.</em></h1>
+          <p>
+            Fast calculators and scorecards built to show where calls, revenue, and visibility are leaking before you buy the full report.
+          </p>
+        </div>
+      </section>
 
-<style>
-.tools-hero { padding: 140px 48px 80px; position: relative; overflow: hidden; }
-.tools-hero-glow {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 20% 50%, rgba(0,196,154,0.06) 0%, transparent 60%);
-}
-.tools-hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
-.tools-hero h1 { font-family: var(--serif); font-size: clamp(38px, 5vw, 62px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 22px; }
-.tools-hero h1 em { font-style: italic; color: var(--teal); }
-.tools-hero-sub { font-size: 17px; color: var(--ink2); line-height: 1.74; font-weight: 300; max-width: 580px; margin-bottom: 36px; }
-.tools-hero-note {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.06em;
-  color: var(--ink3); background: var(--bg3); border: 1px solid var(--rule2);
-  padding: 8px 16px; border-radius: 3px;
-}
-.tools-hero-note::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pos); flex-shrink: 0; }
-
-/* Tool list - alternating layout */
-.tool-list { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin-top: 48px; }
-.tool-item {
-  background: var(--bg2);
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  transition: background 0.25s;
-}
-.tool-item:hover { background: var(--bg3); }
-.tool-item:nth-child(even) { direction: rtl; }
-.tool-item:nth-child(even) > * { direction: ltr; }
-
-.tool-img-col { position: relative; overflow: hidden; background: var(--bg3); min-height: 280px; }
-.tool-img-col img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(6%) brightness(0.98); transition: transform 0.6s var(--ease), filter 0.4s; display: block; }
-.tool-item:hover .tool-img-col img { transform: scale(1.05); filter: grayscale(0%) brightness(1); }
-.tool-img-col::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(0,196,154,0.018); pointer-events: none; }
-.tool-img-col::after {
-  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: linear-gradient(to right, transparent 72%, rgba(9,12,11,0.14) 100%);
-}
-.tool-item:nth-child(even) .tool-img-col::after {
-  background: linear-gradient(to left, transparent 72%, rgba(9,12,11,0.14) 100%);
-}
-
-.tool-body { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; }
-.tool-badge-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.tool-num { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; color: var(--ink3); }
-.tool-name { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; margin-bottom: 8px; }
-.tool-tagline { font-family: var(--sans); font-size: 14.5px; font-weight: 500; color: var(--teal); margin-bottom: 12px; }
-.tool-desc { font-size: 14px; color: var(--ink2); line-height: 1.7; font-weight: 300; margin-bottom: 18px; max-width: 480px; }
-.tool-data-points { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-.tdp { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.08em; color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); padding: 4px 10px; border-radius: 3px; }
-.tool-cta-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  width: fit-content;
-  padding: 0 18px;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--teal);
-  text-decoration: none;
-  border: 1px solid rgba(0,196,154,0.32);
-  background: rgba(0,196,154,0.06);
-  border-radius: 4px;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
-}
-.tool-item:hover .tool-cta-link {
-  background: rgba(0,196,154,0.12);
-  border-color: rgba(0,196,154,0.48);
-  color: var(--ink);
-  transform: translateY(-1px);
-}
-
-/* Bottom CTA */
-.tools-cta { text-align: center; padding: 96px 48px; position: relative; overflow: hidden; }
-.tools-cta-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(0,196,154,0.06) 0%, transparent 65%); }
-.tools-cta-inner { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; }
-.tools-cta h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 16px; }
-.tools-cta h2 em { font-style: italic; color: var(--teal); }
-.tools-cta p { font-size: 15px; color: var(--ink2); line-height: 1.7; margin-bottom: 30px; font-weight: 300; }
-
-@media (max-width: 960px) {
-  .tools-hero { padding: 100px 20px 60px; }
-  .tools-hero h1 { font-size: clamp(28px, 8vw, 44px); }
-  .tool-item, .tool-item:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
-  .tool-img-col { min-height: 220px; }
-  .tool-img-col::after, .tool-item:nth-child(even) .tool-img-col::after { background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%); }
-  .tool-body { padding: 24px 20px; }
-  .tool-cta-link { width: 100%; }
-  .tools-cta { padding: 64px 20px; }
-  .tools-cta h2 { font-size: clamp(24px, 7vw, 36px); }
-}
-</style>
-
-<!-- HERO -->
-<div class="tools-hero">
-  <div class="tools-hero-glow"></div>
-  <div class="tools-hero-inner">
-    <div class="dispatch-label">Free Tools</div>
-    <h1>See your numbers.<br><em>Find the leaks.</em></h1>
-    <p class="tools-hero-sub">Seven calculators and audits built specifically for HVAC, roofing, and plumbing companies. Start with the fastest leak, then keep going until you know which gap is costing the most. Most owners find $50K-$200K in recoverable leaks on the first pass.</p>
-    <span class="tools-hero-note">Results show instantly - email required only for the full detailed report</span>
-  </div>
-</div>
-
-<!-- TOOLS LIST -->
-<div class="wrap alt">
-  <div class="inner">
-    <div class="rule-label"><span class="section-tag">All 7 Tools</span></div>
-    <p class="tools-hero-sub" style="max-width:760px;margin:20px 0 0;">Start here: Phone Revenue shows you the fastest leak. Estimate Follow-Up shows you the second one. Agency Report Card tells you whether your marketing setup is built to find either.</p>
-    <div class="tool-list">
-      {tools.map((tool, i) => (
-        <div class="tool-item reveal">
-          <div class="tool-img-col">
-            <ResponsiveImage src={tool.img} alt={tool.imgAlt} widths={[320, 480, 640, 960]} sizes="(max-width: 960px) 100vw, 280px" />
-            <div class="img-fb">{tool.icon}</div>
-          </div>
-          <div class="tool-body">
-            <div class="tool-badge-row">
-              <span class="badge-green">{tool.badge}</span>
-              <span class="tool-num">{String(i + 1).padStart(2, '0')} of 07</span>
+      <div class="stories-grid stories-grid--tools">
+        {tools.map((tool, index) => (
+          <a
+            href={`/tools/${tool.id}`}
+            class={`editorial-card story-card${index === 0 ? ' story-card--lead' : ''}`}
+          >
+            <div class={`editorial-media ${index === 0 ? 'editorial-media--landscape' : 'editorial-media--compact'}`}>
+              <ResponsiveImage
+                src={tool.img}
+                alt={tool.imgAlt}
+                widths={index === 0 ? [720, 960, 1280] : [480, 720, 960]}
+                sizes={index === 0 ? '(max-width: 1040px) 100vw, 38vw' : '(max-width: 820px) 100vw, 33vw'}
+              />
             </div>
-            <div class="tool-name">{tool.name}</div>
-            <div class="tool-tagline">{tool.tagline}</div>
-            <p class="tool-desc">{tool.desc}</p>
-            <div class="tool-data-points">
-              {tool.dataPoints.map(d => <span class="tdp">{d}</span>)}
+            <div class="editorial-body story-card__body tool-story-card__body">
+              <div class="editorial-meta">
+                <span>{tool.badge}</span>
+              </div>
+              <h3 class={`editorial-title ${index === 0 ? 'editorial-title--lg' : 'editorial-title--md'}`}>
+                {tool.name}
+              </h3>
+              <p class="editorial-copy">{tool.desc}</p>
+              <div class="story-card__footer">
+                <span class="editorial-cta">{tool.cta}</span>
+              </div>
             </div>
-            <a href={`/tools/${tool.id}`} class="tool-cta-link">{tool.cta}</a>
+          </a>
+        ))}
+      </div>
+
+      <div class="cta-card cta-card--report">
+        <div class="cta-card__inner">
+          <h2 class="cta-card__title">Want the full market gap in one report?</h2>
+          <p class="cta-card__body">The HVAC Local Market Report shows who is outranking you, what they are doing differently, and what that gap is likely costing you in missed calls.</p>
+          <div class="cta-card__actions">
+            <a href="/report" class="btn btn--primary">Request your report</a>
           </div>
         </div>
-      ))}
+      </div>
     </div>
   </div>
-</div>
-
-<!-- BOTTOM CTA -->
-<div class="tools-cta">
-  <div class="tools-cta-glow"></div>
-  <div class="tools-cta-inner">
-    <div class="dispatch-label" style="justify-content:center;margin-bottom:16px">Want the full picture?</div>
-    <h2>See everything in <em>one audit.</em></h2>
-    <p>The free tools show individual leaks. The Revenue Leak Audit covers everything - your full marketing system, competitor benchmarks, phone performance, and website - with every finding shown in annual dollars.</p>
-    <a href="/apply" class="cta-primary">Get a Revenue Leak Audit ($750)</a>
-  </div>
-</div>
-
 </Layout>

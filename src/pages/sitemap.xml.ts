@@ -5,7 +5,7 @@ const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 const staticRoutes = [
   '/',
-  '/services',
+  '/report',
   '/about',
   '/apply',
   '/newsletter',

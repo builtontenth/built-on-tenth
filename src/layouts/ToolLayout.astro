@@ -11,25 +11,13 @@ interface Props {
   showCrossTool?: boolean;
 }
 const {
-  toolNumber,
   toolName,
   slug,
   headline,
   subheadline,
   metaDescription,
-  toolCount = '07',
-  showCrossTool = true,
+  showCrossTool = false,
 } = Astro.props;
-
-const allTools = [
-  { num: '01', name: 'Phone Revenue Calculator', href: '/tools/phone-calculator', active: slug === 'phone-calculator', navLabel: 'Phone Revenue' },
-  { num: '02', name: 'Estimate Follow-Up Calculator', href: '/tools/estimate-follow-up', active: slug === 'estimate-follow-up', navLabel: 'Estimate Follow-Up' },
-  { num: '03', name: 'Agency Report Card', href: '/tools/agency-report-card', active: slug === 'agency-report-card', navLabel: 'Agency Report Card' },
-  { num: '04', name: 'Revenue Per Technician Benchmarker', href: '/tools/revenue-per-tech', active: slug === 'revenue-per-tech', navLabel: 'Revenue Per Tech' },
-  { num: '05', name: 'Marketing Cost Calculator', href: '/tools/marketing-calculator', active: slug === 'marketing-calculator', navLabel: 'Marketing Cost' },
-  { num: '06', name: 'GBP Scorecard', href: '/tools/gbp-scorecard', active: slug === 'gbp-scorecard', navLabel: 'GBP Scorecard' },
-  { num: '07', name: 'Website Conversion Audit', href: '/tools/website-audit', active: slug === 'website-audit', navLabel: 'Website Conversion' },
-];
 const toolImageMap = {
   'phone-calculator': '/images/brand/core/tool-phone-calculator.png',
   'estimate-follow-up': '/images/brand/core/tool-estimate-follow-up.png',
@@ -40,278 +28,94 @@ const toolImageMap = {
   'website-audit': '/images/brand/core/tool-website-audit.png',
 };
 const toolHeroImage = toolImageMap[slug as keyof typeof toolImageMap] ?? null;
+const toolSeoTopicMap = {
+  'phone-calculator': 'Missed Calls and Lost Revenue',
+  'estimate-follow-up': 'Estimate Follow-Up and Unbooked Revenue',
+  'agency-report-card': 'Agency Accountability and Booked-Job Reporting',
+  'revenue-per-tech': 'Revenue Per Technician Benchmarks',
+  'marketing-calculator': 'Marketing Cost Per Booked Job',
+  'gbp-scorecard': 'Google Business Profile Map Pack Strength',
+  'website-audit': 'Website Conversion and Call Friction',
+} as const;
+const toolContextMap = {
+  'phone-calculator': {
+    title: 'Missed calls create a revenue gap before better marketing can help.',
+    body: 'Use this to turn answer rate and booking rate into a hard dollar number so you can see whether the leak is operational, not lead volume.',
+    bullets: [
+      'How much revenue missed calls are costing each month',
+      'Whether answer rate is the real bottleneck',
+      'What closing the response gap could recover',
+    ],
+  },
+  'estimate-follow-up': {
+    title: 'Quoted work often dies because nobody keeps the conversation alive.',
+    body: 'This tool shows how much booked revenue disappears after the estimate goes out, so you can see whether follow-up is a bigger leak than lead generation.',
+    bullets: [
+      'How much estimate value is going cold',
+      'What stronger follow-up could recover',
+      'Whether this gap is large enough to prioritize now',
+    ],
+  },
+  'agency-report-card': {
+    title: 'Bad reporting hides the real cost of weak marketing decisions.',
+    body: 'Use this scorecard to see whether your HVAC marketing reporting is showing numbers that help you make decisions or just numbers that keep you calm.',
+    bullets: [
+      'Whether your reporting matches booked-job reality',
+      'Where accountability is missing',
+      'How much blind spend risk may be hiding underneath',
+    ],
+  },
+  'revenue-per-tech': {
+    title: 'Revenue per tech shows whether your capacity is producing enough output.',
+    body: 'This HVAC benchmark helps you see if the gap is likely coming from weak demand flow, weak booking, or underperforming operational throughput.',
+    bullets: [
+      'How your revenue per tech compares to benchmark',
+      'What the annual team gap looks like',
+      'Whether utilization is weaker than it should be',
+    ],
+  },
+  'marketing-calculator': {
+    title: 'Lead counts are noisy. Cost per booked job is what tells the truth.',
+    body: 'Use this to translate HVAC spend into booked-job economics so you can see whether your current channel mix is efficient or quietly expensive.',
+    bullets: [
+      'Your true cost per booked job',
+      'How far you are from top benchmark ranges',
+      'Whether spend or conversion is the bigger issue',
+    ],
+  },
+  'gbp-scorecard': {
+    title: 'Local visibility is often lost through small profile gaps that compound.',
+    body: 'This scorecard shows whether your HVAC Google Business Profile is strong enough to compete in the map pack or quietly giving away calls.',
+    bullets: [
+      'How strong your profile is vs common benchmark factors',
+      'Which profile sections are weakening visibility',
+      'Why stronger competitors are easier to trust at a glance',
+    ],
+  },
+  'website-audit': {
+    title: 'A website can look fine and still leak trust, speed, and calls.',
+    body: 'Use this quick review to spot whether your HVAC site is creating friction before the homeowner ever picks up the phone.',
+    bullets: [
+      'Where your site is leaking conversion',
+      'Whether trust and speed issues are visible',
+      'How much stronger the next layer of analysis should be',
+    ],
+  },
+} as const;
+const toolContext = toolContextMap[slug as keyof typeof toolContextMap];
+const toolSeoTopic = toolSeoTopicMap[slug as keyof typeof toolSeoTopicMap];
 ---
-<Layout title={`${toolName} - Free Tool | Built on Tenth`} description={metaDescription} active="tools">
+<Layout title={`${toolName} | HVAC Calculator for ${toolSeoTopic} | Built on Tenth`} description={metaDescription} active="tools">
 
-<style>
-/* ── TOOL LAYOUT ── */
-.tool-page { padding-top: 60px; }
 
-.tool-top-bar {
-  background: var(--bg2);
-  border-bottom: 1px solid var(--rule);
-  padding: 0 48px;
-}
-.tool-top-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  padding: 14px 0;
-}
-.tool-breadcrumb {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
-}
-.tool-breadcrumb a { color: var(--ink3); text-decoration: none; transition: color 0.2s; }
-.tool-breadcrumb a:hover { color: var(--teal); }
-.tool-breadcrumb span { color: var(--ink3); opacity: 0.4; }
-.tool-breadcrumb .current { color: var(--teal); }
-
-.tool-step-nav { display: flex; gap: 6px; }
-.tsn-item {
-  font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 3px; text-decoration: none;
-  border: 1px solid var(--rule); color: var(--ink3); transition: all 0.2s; white-space: nowrap;
-}
-.tsn-item:hover { border-color: var(--rule2); color: var(--ink2); }
-.tsn-item.active { border-color: var(--teal4); color: var(--teal); background: var(--teal3); }
-
-/* ── TOOL HERO ── */
-.tool-hero {
-  padding: 56px 48px 48px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--rule);
-  position: relative;
-  overflow: hidden;
-}
-.tool-hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.11;
-  filter: grayscale(18%);
-}
-.tool-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, rgba(9,12,11,0.9) 0%, rgba(9,12,11,0.78) 32%, rgba(9,12,11,0.55) 58%, rgba(9,12,11,0.82) 100%),
-    radial-gradient(ellipse 60% 60% at 18% 48%, rgba(0,196,154,0.045) 0%, transparent 62%);
-}
-.tool-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-.tool-num-badge {
-  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;
-  font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--teal);
-}
-.tool-num-badge::before { content: ''; width: 16px; height: 1.5px; background: var(--teal); }
-.tool-hero h1 {
-  font-family: var(--serif); font-size: clamp(30px, 4vw, 48px);
-  font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px;
-}
-.tool-hero h1 em { font-style: italic; color: var(--teal); }
-.tool-hero-sub { font-size: 16px; color: var(--ink2); line-height: 1.7; font-weight: 300; max-width: 580px; }
-
-/* ── TOOL BODY ── */
-.tool-body {
-  max-width: 1200px; margin: 0 auto; padding: 48px 48px 80px;
-  display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: start;
-}
-
-/* ── INPUT PANEL ── */
-.input-panel {
-  background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden;
-}
-.ip-header {
-  padding: 20px 24px; border-bottom: 1px solid var(--rule);
-  background: var(--bg3);
-}
-.ip-header-title {
-  font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ink3);
-}
-.ip-body { padding: 24px; }
-
-.field { margin-bottom: 20px; }
-.field:last-of-type { margin-bottom: 0; }
-.field-label {
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--ink3); margin-bottom: 8px;
-}
-.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.7; font-weight: 300; letter-spacing: 0.04em; text-transform: none; }
-.field-input {
-  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
-  padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none;
-  transition: border-color 0.2s; -moz-appearance: textfield;
-}
-.field-input::-webkit-inner-spin-button, .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
-.field-input:focus { border-color: rgba(0,196,154,0.55); }
-.field-input::placeholder { color: var(--ink3); font-size: 14px; }
-
-.input-prefix-wrap { position: relative; }
-.input-prefix {
-  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-  font-family: var(--mono); font-size: 14px; color: var(--ink3); pointer-events: none;
-}
-.input-prefix + .field-input { padding-left: 26px; }
-
-.input-suffix-wrap { position: relative; }
-.input-suffix {
-  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-  font-family: var(--mono); font-size: 13px; color: var(--ink3); pointer-events: none;
-}
-.input-suffix ~ .field-input { padding-right: 36px; }
-
-.field-select {
-  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px;
-  padding: 11px 14px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none;
-  transition: border-color 0.2s; cursor: pointer; appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 14px center;
-}
-.field-select:focus { border-color: rgba(0,196,154,0.55); }
-.field-select option { background: var(--bg3); }
-
-.calc-btn {
-  width: 100%; margin-top: 24px; padding: 14px; border-radius: 4px; cursor: pointer;
-  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s;
-}
-.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
-
-/* ── RESULT PANEL ── */
-.result-panel {
-  background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden;
-  position: sticky; top: 80px;
-}
-.rp-header {
-  padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.rp-header-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
-.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
-.rp-status.waiting { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
-.rp-status.ready   { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
-.rp-status.alert   { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
-
-.rp-body { padding: 24px; }
-
-/* Empty state */
-.rp-empty { text-align: center; padding: 32px 16px; }
-.rp-empty-icon { font-size: 28px; opacity: 0.3; margin-bottom: 14px; }
-.rp-empty-text { font-size: 13px; color: var(--ink3); line-height: 1.6; font-weight: 300; }
-
-/* Main metric */
-.rp-main-metric { margin-bottom: 24px; }
-.rp-metric-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
-.rp-metric-value {
-  font-family: var(--mono); font-size: 52px; font-weight: 600; letter-spacing: -0.04em; line-height: 1;
-  color: var(--neg);
-}
-.rp-metric-value.good { color: var(--pos); }
-.rp-metric-value.neutral { color: var(--teal); }
-.rp-metric-sub { font-size: 12px; color: var(--ink3); margin-top: 6px; font-weight: 300; }
-
-/* Benchmark bar */
-.rp-benchmark { margin-bottom: 20px; }
-.rp-bm-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; display: flex; justify-content: space-between; }
-.rp-bm-track { height: 6px; background: var(--bg4); border-radius: 3px; overflow: visible; position: relative; margin-bottom: 6px; }
-.rp-bm-fill { height: 100%; border-radius: 3px; background: var(--neg); transition: width 0.8s var(--ease); max-width: 100%; }
-.rp-bm-fill.good { background: var(--pos); }
-.rp-bm-fill.warn { background: #C9A035; }
-.rp-bm-marker {
-  position: absolute; top: -3px; width: 2px; height: 12px; background: var(--teal); border-radius: 1px;
-}
-.rp-bm-marker-label { font-family: var(--mono); font-size: 8.5px; color: var(--teal); white-space: nowrap; }
-.rp-bm-range { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); }
-
-/* Breakdown rows */
-.rp-divider { height: 1px; background: var(--rule); margin: 18px 0; }
-.rp-breakdown-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
-.rp-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-.rp-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
-.rp-row-label { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
-.rp-row-value { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); white-space: nowrap; }
-.rp-row-value.bad  { color: var(--neg); }
-.rp-row-value.good { color: var(--pos); }
-.rp-row-value.warn { color: #C9A035; }
-
-/* Diagnosis block */
-.rp-diagnosis {
-  background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px;
-  padding: 14px 16px; margin-bottom: 18px;
-}
-.rp-diagnosis.good-diag { background: rgba(34,211,122,0.06); border-color: rgba(34,211,122,0.2); }
-.rp-diag-title { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
-.rp-diag-body { font-size: 12px; color: var(--ink2); line-height: 1.6; font-weight: 300; }
-
-/* Audit CTA in result */
-.rp-cta {
-  display: block; width: 100%; padding: 13px; border-radius: 4px; cursor: pointer; text-align: center;
-  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); text-decoration: none; transition: all 0.2s;
-}
-.rp-cta:hover { background: #00DFB0; }
-.rp-cta-sub { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
-
-/* ── CROSS-TOOL FOOTER ── */
-.tool-cross { border-top: 1px solid var(--rule); padding: 48px; background: var(--bg2); }
-.tool-cross-inner { max-width: 1200px; margin: 0 auto; }
-.tc-title { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; }
-.tc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.tc-card {
-  background: var(--bg); border: 1px solid var(--rule); border-radius: 4px; padding: 16px;
-  text-decoration: none; transition: border-color 0.2s, transform 0.2s;
-}
-.tc-card:hover { border-color: var(--teal4); transform: translateY(-2px); }
-.tc-card.current { border-color: var(--teal4); background: var(--teal3); pointer-events: none; }
-.tc-num { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 6px; }
-.tc-name { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.35; }
-
-/* ── RESPONSIVE ── */
-.tool-slot-wrap { max-width: 1200px; margin: 0 auto; padding: 48px 48px 0; }
-
-@media (max-width: 960px) {
-  .tool-top-bar { padding: 0 20px; }
-  .tool-step-nav { display: none; }
-  .tool-hero { padding: 40px 20px 36px; }
-  .tool-hero h1 { font-size: clamp(24px, 7vw, 38px); }
-  .tool-slot-wrap { padding: 28px 20px 0; }
-  .tool-cross { padding: 36px 20px; }
-  .tc-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .tc-grid { grid-template-columns: 1fr; }
-}
-</style>
-
-<div class="tool-page">
-
-  <!-- Top bar with breadcrumb + tool switcher -->
-  <div class="tool-top-bar">
-    <div class="tool-top-inner">
-      <div class="tool-breadcrumb">
-        <a href="/tools">Free Tools</a>
-        <span>/</span>
-        <span class="current">{toolName}</span>
-      </div>
-      <nav class="tool-step-nav">
-        {allTools.map(t => (
-          <a href={t.href} class={`tsn-item${t.active ? ' active' : ''}`}>
-            {t.num} · {t.navLabel || t.name.split(' ').slice(0,2).join(' ')}
-          </a>
-        ))}
-      </nav>
-    </div>
-  </div>
+<div class={`tool-page tool-page--${slug}`}>
 
   <!-- Hero -->
   <div class="tool-hero">
-    {toolHeroImage && <div class="tool-hero-bg" style={`background-image:url('${toolHeroImage}')`}></div>}
+    {toolHeroImage && <img src={toolHeroImage} alt="" class="tool-hero-bg" loading="eager" decoding="async" aria-hidden="true" />}
     <div class="tool-hero-overlay"></div>
     <div class="tool-hero-inner">
-      <div class="tool-num-badge">Tool {toolNumber} of {toolCount}</div>
+      <a href="/tools" class="tool-back-link">Back to HVAC calculators</a>
       <h1 set:html={headline}></h1>
       <p class="tool-hero-sub">{subheadline}</p>
     </div>
@@ -319,29 +123,56 @@ const toolHeroImage = toolImageMap[slug as keyof typeof toolImageMap] ?? null;
 
   <!-- Main tool slot -->
   <div class="tool-slot-wrap">
-    <slot name="tool-body" />
+    <div class="tool-stage">
+      <section class="tool-context-block">
+        <h2>{toolContext?.title}</h2>
+        <p>{toolContext?.body}</p>
+        <ul class="tool-context-list">
+          {toolContext?.bullets.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+      <div class="tool-workspace">
+        <slot name="tool-body" />
+      </div>
+    </div>
   </div>
 
-  <!-- Cross-tool navigation -->
-  {showCrossTool && (
-    <div class="tool-cross">
-      <div class="tool-cross-inner">
-        <div class="tc-title">Continue your diagnosis - check the other leaks</div>
-        <div class="tc-grid">
-          {allTools.map(t => (
-            <a href={t.href} class={`tc-card${t.active ? ' current' : ''}`}>
-              <div class="tc-num">{t.num}</div>
-              <div class="tc-name">{t.name}</div>
-            </a>
-          ))}
-          <a href="/apply" class="tc-card" style="border-color:rgba(0,196,154,0.28);background:rgba(0,196,154,0.04)">
-            <div class="tc-num" style="color:var(--teal)">Full picture</div>
-            <div class="tc-name">Revenue Leak Audit - $750</div>
-          </a>
+  <div class="tool-upgrade-wrap">
+    <div class="cta-card cta-card--report cta-card--tool-upgrade">
+      <div class="cta-card__inner">
+        <h2 class="cta-card__title">This tool shows one leak. The report shows the <em>full local market picture.</em></h2>
+        <p class="cta-card__body">The HVAC Local Market Report shows who is outranking you locally, what they are doing differently, and what that gap is likely costing you in missed calls.</p>
+        <div class="cta-card__actions">
+          <a href={`/report?source=${slug}`} class="btn btn--primary">Request your report</a>
         </div>
       </div>
     </div>
-  )}
+  </div>
 
 </div>
 </Layout>
+
+<script is:inline>
+  const initToolReveal = () => {
+    document.querySelectorAll('.tool-layout').forEach((layout) => {
+      const resultPanel = layout.querySelector('.result-panel');
+      const resultSection = layout.querySelector('.result-section');
+      if (!resultPanel || !resultSection) return;
+
+      const syncReadyState = () => {
+        const hasResults = resultSection.classList.contains('show');
+        resultPanel.classList.toggle('is-ready', hasResults);
+      };
+
+      syncReadyState();
+      const observer = new MutationObserver(syncReadyState);
+      observer.observe(resultSection, { attributes: true, attributeFilter: ['class'] });
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initToolReveal, { once: true });
+  } else {
+    initToolReveal();
+  }
+</script>

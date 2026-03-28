@@ -54,7 +54,7 @@ const relatedPosts = allPosts
     if (b.score !== a.score) return b.score - a.score;
     return b.candidate.data.pubDate.getTime() - a.candidate.data.pubDate.getTime();
   })
-  .slice(0, 3)
+  .slice(0, 2)
   .map(({ candidate }) => candidate);
 
 const toolLibrary = {
@@ -62,53 +62,62 @@ const toolLibrary = {
     href: '/tools/phone-calculator',
     label: 'Phone Revenue Calculator',
     description: 'Quantify what missed calls and weak answer rate are costing per month.',
+    img: '/images/brand/core/tool-phone-calculator.png',
+    imgAlt: 'Inbound calls being handled at the front desk',
   },
   '/tools/marketing-calculator': {
     href: '/tools/marketing-calculator',
     label: 'Marketing Cost Calculator',
     description: 'Benchmark true cost per booked job against stronger operators.',
+    img: '/images/brand/core/tool-marketing-calculator.png',
+    imgAlt: 'Comparing marketing spend to booked jobs',
   },
   '/tools/agency-report-card': {
     href: '/tools/agency-report-card',
     label: 'Agency Report Card',
     description: 'Grade whether your agency is measuring booked jobs or hiding behind vanity metrics.',
+    img: '/images/brand/core/tool-agency-report-card.png',
+    imgAlt: 'Reviewing printed agency reports with skepticism',
   },
   '/tools/website-audit': {
     href: '/tools/website-audit',
-    label: 'Website Conversion Audit',
+    label: 'Website Conversion Scorecard',
     description: 'Check for mobile, speed, trust, and phone-visibility leaks.',
+    img: '/images/brand/core/tool-website-audit.png',
+    imgAlt: 'Reviewing website issues in a real work setting',
   },
   '/tools/revenue-per-tech': {
     href: '/tools/revenue-per-tech',
     label: 'Revenue Per Technician Benchmarker',
     description: 'See whether your team output is below benchmark and how big the gap is.',
+    img: '/images/brand/core/tool-revenue-per-tech.png',
+    imgAlt: 'Reviewing route sheets and team output near trucks',
   },
   '/tools/estimate-follow-up': {
     href: '/tools/estimate-follow-up',
     label: 'Estimate Follow-Up Calculator',
     description: 'Measure how much revenue is leaking from quotes that never get chased.',
+    img: '/images/brand/core/tool-estimate-follow-up.png',
+    imgAlt: 'Sorting stale estimates and follow-up notes',
   },
   '/tools/gbp-scorecard': {
     href: '/tools/gbp-scorecard',
     label: 'GBP Scorecard',
     description: 'Score your Google Business Profile against the local map pack baseline.',
+    img: '/images/brand/core/tool-gbp-scorecard.png',
+    imgAlt: 'Reviewing local reputation and competitor notes',
   },
 };
 
-const fallbackToolsByTrade = {
-  HVAC: ['/tools/marketing-calculator', '/tools/phone-calculator'],
-  Roofing: ['/tools/estimate-follow-up', '/tools/phone-calculator'],
-  Plumbing: ['/tools/gbp-scorecard', '/tools/phone-calculator'],
-};
+const hvacToolFallbacks = ['/tools/marketing-calculator', '/tools/phone-calculator'];
 
-const toolPaths = [
-  post.data.primaryCtaHref,
-  ...post.data.trade.flatMap((trade) => fallbackToolsByTrade[trade] ?? []),
-].filter((path, index, paths) => path in toolLibrary && paths.indexOf(path) === index);
+const toolPaths = post.data.trade.includes('HVAC')
+  ? [post.data.primaryCtaHref, ...hvacToolFallbacks].filter(
+      (path, index, paths) => path in toolLibrary && paths.indexOf(path) === index
+    )
+  : [];
 
-const recommendedTools = toolPaths
-  .map((path) => toolLibrary[path as keyof typeof toolLibrary])
-  .slice(0, 2);
+const recommendedTools = toolPaths.map((path) => toolLibrary[path as keyof typeof toolLibrary]).slice(0, 2);
 
 const markdownComponents = {
   img: MarkdownImage,
@@ -141,7 +150,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Insights', item: `${SITE}/insights` },
+    { '@type': 'ListItem', position: 2, name: 'HVAC Market Insights', item: `${SITE}/insights` },
     { '@type': 'ListItem', position: 3, name: post.data.title, item: canonicalUrl },
   ],
 };
@@ -154,539 +163,162 @@ const breadcrumbSchema = {
   ogType="article"
   publishedTime={post.data.pubDate.toISOString()}
 >
+  
 
-<style>
-.article-hero {
-  padding: 120px 48px 64px;
-  position: relative;
-  overflow: hidden;
-}
-.ah-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(9,12,11,0.3) 0%, var(--bg) 90%);
-}
-.ah-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 780px;
-  margin: 0 auto;
-}
-.ah-media {
-  position: relative;
-  z-index: 1;
-  max-width: 780px;
-  margin: 36px auto 0;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid var(--rule2);
-  background: var(--bg3);
-}
-.ah-media::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,196,154,0.025);
-  pointer-events: none;
-  z-index: 1;
-}
-.ah-media img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  filter: grayscale(8%) brightness(0.95);
-}
-.ah-media-caption {
-  position: relative;
-  z-index: 2;
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink3);
-  padding: 10px 14px;
-  border-top: 1px solid var(--rule);
-  letter-spacing: 0.04em;
-  background: var(--bg3);
-}
-.ah-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-.ah-cat {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--teal);
-  background: var(--teal3);
-  border: 1px solid var(--teal4);
-  padding: 4px 10px;
-  border-radius: 3px;
-}
-.ah-trade {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  background: var(--bg3);
-  border: 1px solid var(--rule);
-  padding: 4px 10px;
-  border-radius: 3px;
-}
-.ah-date,
-.ah-read {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink3);
-}
-.article-h1 {
-  font-family: var(--serif);
-  font-size: clamp(30px, 5vw, 52px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-.article-lede {
-  font-size: 18px;
-  color: var(--ink2);
-  line-height: 1.7;
-  font-weight: 300;
-  margin-bottom: 32px;
-}
-.ah-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-top: 20px;
-  border-top: 1px solid var(--rule);
-  font-size: 13px;
-  color: var(--ink2);
-  font-weight: 300;
-}
-.ah-author strong {
-  color: var(--ink);
-  font-weight: 500;
-}
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  text-decoration: none;
-  margin-bottom: 28px;
-  transition: color 0.2s;
-}
-.back-link:hover { color: var(--teal); }
-.article-body {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 56px 48px 96px;
-}
-:global(.article-content h2) {
-  font-family: var(--serif);
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 400;
-  line-height: 1.2;
-  margin: 52px 0 16px;
-  color: var(--ink);
-}
-:global(.article-content h3) {
-  font-family: var(--serif);
-  font-size: clamp(18px, 2.5vw, 22px);
-  font-weight: 400;
-  line-height: 1.25;
-  margin: 36px 0 12px;
-  color: var(--ink);
-}
-:global(.article-content p) {
-  font-size: 16px;
-  color: var(--ink2);
-  line-height: 1.82;
-  margin-bottom: 22px;
-  font-weight: 300;
-}
-:global(.article-content strong) {
-  color: var(--ink);
-  font-weight: 600;
-}
-:global(.article-content a) {
-  color: var(--teal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--teal4);
-  transition: border-color 0.2s;
-}
-:global(.article-content a:hover) { border-bottom-color: var(--teal); }
-:global(.article-content ul),
-:global(.article-content ol) {
-  padding-left: 0;
-  list-style: none;
-  margin-bottom: 24px;
-}
-:global(.article-content ul li),
-:global(.article-content ol li) {
-  font-size: 16px;
-  color: var(--ink2);
-  line-height: 1.75;
-  font-weight: 300;
-  padding: 6px 0 6px 22px;
-  position: relative;
-  border-bottom: 1px solid var(--rule);
-}
-:global(.article-content ul li:last-child),
-:global(.article-content ol li:last-child) {
-  border-bottom: none;
-}
-:global(.article-content ul li::before) {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 15px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--teal);
-}
-:global(.article-content ol) { counter-reset: ol-counter; }
-:global(.article-content ol li::before) {
-  content: counter(ol-counter);
-  counter-increment: ol-counter;
-  position: absolute;
-  left: 0;
-  color: var(--teal);
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 600;
-}
-:global(.article-content hr) {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 52px 0 36px;
-}
-:global(.article-content blockquote) {
-  margin: 32px 0;
-  padding: 18px 24px;
-  border-left: 3px solid var(--teal);
-  background: rgba(0,196,154,0.05);
-  border-radius: 4px;
-}
-:global(.article-content blockquote p:last-child) {
-  margin-bottom: 0;
-}
-:global(.article-content p:has(> img)) {
-  width: 100%;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 36px 0 12px;
-  position: relative;
-  background: var(--bg3);
-  border: 1px solid var(--rule);
-}
-:global(.article-content p > img) {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  filter: grayscale(15%) brightness(0.82);
-  display: block;
-}
-:global(.article-content p:has(> img) + p:has(> em:only-child)) {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink3);
-  padding: 10px 14px;
-  border: 1px solid var(--rule);
-  border-top: none;
-  border-radius: 0 0 5px 5px;
-  margin-top: -12px;
-  margin-bottom: 28px;
-  letter-spacing: 0.04em;
-  background: var(--bg3);
-}
-:global(.article-content p:has(> img) + p:has(> em:only-child) em) {
-  font-style: normal;
-}
-:global(.article-content table) {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13.5px;
-  margin: 32px 0;
-  border: 1px solid var(--rule);
-  border-radius: 5px;
-  table-layout: fixed;
-}
-:global(.article-content thead) {
-  background: var(--bg3);
-}
-:global(.article-content th) {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 1px solid var(--rule2);
-  white-space: nowrap;
-}
-:global(.article-content td) {
-  padding: 11px 16px;
-  color: var(--ink2);
-  border-bottom: 1px solid var(--rule);
-  font-weight: 300;
-  line-height: 1.5;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-:global(.article-content tr:last-child td) {
-  border-bottom: none;
-}
-:global(.article-content tr:nth-child(even) td) {
-  background: rgba(226,221,208,0.02);
-}
-.article-cta {
-  margin-top: 64px;
-  background: var(--bg2);
-  border: 1px solid rgba(0,196,154,0.25);
-  border-radius: 6px;
-  padding: 36px 40px;
-  text-align: center;
-}
-.article-cta h3 {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 400;
-  margin-bottom: 12px;
-}
-.article-cta h3 em {
-  font-style: italic;
-  color: var(--teal);
-}
-.article-cta p {
-  font-size: 14px;
-  color: var(--ink2);
-  line-height: 1.7;
-  margin: 0 auto 24px;
-  font-weight: 300;
-  max-width: 480px;
-}
-.article-cta-btns {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.article-cta .cta-primary {
-  color: var(--bg);
-  border-bottom: none;
-}
-.article-cta .cta-secondary {
-  color: var(--ink2);
-  border-bottom: none;
-}
-@media (max-width: 960px) {
-  .article-hero { padding: 100px 20px 48px; }
-  .ah-media {
-    margin-top: 28px;
-  }
-  .ah-media img {
-    height: 240px;
-  }
-  .article-body { padding: 40px 20px 72px; }
-  :global(.article-content p > img) { height: 220px; }
-  :global(.article-content table) {
-    display: block;
-    border: none;
-    margin: 28px 0;
-  }
-  :global(.article-content thead) {
-    display: none;
-  }
-  :global(.article-content tbody) {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  :global(.article-content tr) {
-    display: grid;
-    gap: 0;
-    border: 1px solid var(--rule);
-    border-radius: 5px;
-    overflow: hidden;
-    background: var(--bg2);
-  }
-  :global(.article-content td) {
-    display: grid;
-    grid-template-columns: minmax(0, 110px) minmax(0, 1fr);
-    gap: 12px;
-    align-items: start;
-    padding: 10px 12px;
-    white-space: normal;
-  }
-  :global(.article-content td::before) {
-    content: attr(data-label);
-    font-family: var(--mono);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink3);
-  }
-  .article-cta { padding: 28px 24px; }
-  .article-cta-btns { flex-direction: column; gap: 10px; }
-.article-cta-btns a { justify-content: center; }
-}
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
-.article-related {
-  margin-top: 52px;
-  display: grid;
-  gap: 18px;
-}
-.article-related-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-.article-related-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  background: var(--bg2);
-  padding: 18px 20px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.article-related-card:hover {
-  border-color: var(--teal4);
-  transform: translateY(-1px);
-}
-.article-related-eyebrow {
-  display: inline-flex;
-  margin-bottom: 10px;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink3);
-}
-.article-related-title {
-  font-family: var(--serif);
-  font-size: 22px;
-  line-height: 1.2;
-  margin-bottom: 8px;
-}
-.article-related-body {
-  font-size: 14px;
-  color: var(--ink2);
-  line-height: 1.65;
-  font-weight: 300;
-}
-</style>
+  <div class="article-page">
+    <div class="article-shell">
+      <section class="article-hero">
+        <div class="article-hero__inner">
+          <a href="/insights" class="back-link">All HVAC Market Insights</a>
 
-<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-<div class="article-hero">
-  <div class="ah-overlay"></div>
-  <div class="ah-inner">
-    <a href="/insights" class="back-link">All Insights</a>
-    <div class="ah-meta">
-      <span class="ah-cat">{post.data.category}</span>
-      {post.data.trade.map((trade) => <span class="ah-trade">{trade}</span>)}
-      <span class="ah-date">{formatDate(post.data.pubDate)}</span>
-      <span class="ah-read">{post.data.readTime} min read</span>
-    </div>
-    <h1 class="article-h1">{title}</h1>
-    <p class="article-lede">{description}</p>
-    <div class="ah-author">
-      <div>
-        <strong><a href="/about">{post.data.author}</a></strong> · Revenue intelligence for home service companies
-        {modifiedDate.getTime() !== post.data.pubDate.getTime() && (
-          <span> · Updated {formatDate(modifiedDate)}</span>
-        )}
+          <div class="article-meta">
+            <span class="article-pill">{post.data.category}</span>
+            {post.data.trade.map((trade) => <span class="article-pill article-pill--muted">{trade}</span>)}
+            <span class="article-pill article-pill--muted">{formatDate(post.data.pubDate)}</span>
+            <span class="article-pill article-pill--muted">{post.data.readTime} min read</span>
+          </div>
+
+          <h1 class="article-title">{title}</h1>
+          <p class="article-lede">{description}</p>
+
+          <div class="article-author">
+            <strong><a href="/about">{post.data.author}</a></strong>
+            <span>Independent HVAC market insights and local visibility analysis</span>
+            {modifiedDate.getTime() !== post.data.pubDate.getTime() && (
+              <span>Updated {formatDate(modifiedDate)}</span>
+            )}
+          </div>
+        </div>
+
+        <figure class="article-hero__media">
+          <div class="article-hero__media-frame">
+            <ResponsiveImage
+              src={heroImage}
+              alt={post.data.heroImageAlt}
+              widths={[640, 960, 1280, 1600]}
+              sizes="(max-width: 960px) 100vw, 960px"
+              priority={true}
+              position={heroImagePosition}
+            />
+          </div>
+          <figcaption class="article-hero__caption">{post.data.heroImageAlt}</figcaption>
+        </figure>
+      </section>
+
+      <div class="article-layout">
+        <aside class="article-rail">
+          <div class="rail-card">
+            <span class="rail-label">Why read this</span>
+            <h3>Built for operators who want a useful answer fast.</h3>
+            <ul class="rail-list">
+              <li>Real numbers and practical benchmarks</li>
+              <li>Clear language instead of consultant filler</li>
+              <li>A direct next step if the article exposes a leak</li>
+            </ul>
+          </div>
+
+          <div class="rail-card">
+            <span class="rail-label">Next action</span>
+            <h3>Turn the insight into a number.</h3>
+            <p>If this article surfaced a leak, use the matching tool or go straight to the full report for a market-level answer.</p>
+            <div class="rail-card__action">
+              <a href={post.data.primaryCtaHref} class="rail-btn">{post.data.primaryCtaLabel}</a>
+            </div>
+          </div>
+        </aside>
+
+        <main class="article-main">
+          <article class="article-content">
+            <Content components={markdownComponents} />
+          </article>
+
+          <div class="article-cta">
+            <h3>Take the next step while the gap is still clear.</h3>
+            <p>Use the matching free tool to benchmark your numbers, or go straight to a full written report if you want the market picture instead of one isolated metric.</p>
+            <div class="article-cta-btns">
+              <a href={post.data.primaryCtaHref} class="btn btn--primary">{post.data.primaryCtaLabel}</a>
+              <a href={post.data.secondaryCtaHref} class="btn btn--ghost">{post.data.secondaryCtaLabel}</a>
+            </div>
+          </div>
+
+          {relatedPosts.length > 0 && (
+            <section class="article-related">
+              <div class="article-related-head">
+                <div>
+                  <span>Related insights</span>
+                  <h3>Keep reading without losing the thread.</h3>
+                </div>
+              </div>
+              <div class="article-related-grid">
+                {relatedPosts.map((related) => (
+                  <a href={`/insights/${related.slug}`} class="editorial-card article-related-card">
+                    <div class="editorial-media editorial-media--landscape">
+                      <ResponsiveImage
+                        src={related.data.heroImage}
+                        alt={related.data.heroImageAlt}
+                        widths={[480, 720, 960]}
+                        sizes="(max-width: 1100px) 100vw, 33vw"
+                        position={heroImagePositions[related.slug] ?? 'center'}
+                        fit="cover"
+                      />
+                    </div>
+                    <div class="editorial-body">
+                      <div class="editorial-title editorial-title--md">{related.data.title}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {recommendedTools.length > 0 && (
+            <section class="article-related">
+              <div class="article-related-head">
+                <div>
+                  <span>Recommended tools</span>
+                  <h3>Useful next clicks if you want a faster benchmark.</h3>
+                </div>
+              </div>
+              <div class="article-related-grid">
+                {recommendedTools.map((tool) => (
+                  <a href={tool.href} class="editorial-card article-related-card article-related-card--tool">
+                    <div class="editorial-media editorial-media--landscape">
+                      <ResponsiveImage
+                        src={tool.img}
+                        alt={tool.imgAlt}
+                        widths={[480, 720, 960]}
+                        sizes="(max-width: 1100px) 100vw, 33vw"
+                        fit="cover"
+                      />
+                    </div>
+                    <div class="editorial-body">
+                      <div class="editorial-title editorial-title--md">{tool.label}</div>
+                      <p class="editorial-copy">{tool.description}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+        </main>
       </div>
     </div>
   </div>
-  <figure class="ah-media">
-    <ResponsiveImage
-      src={heroImage}
-      alt={post.data.heroImageAlt}
-      widths={[640, 960, 1280, 1600]}
-      sizes="(max-width: 960px) 100vw, 780px"
-      priority={true}
-      position={heroImagePosition}
-    />
-    <figcaption class="ah-media-caption">{post.data.heroImageAlt}</figcaption>
-  </figure>
-</div>
 
-<div class="article-body">
-  <article class="article-content">
-    <Content components={markdownComponents} />
-  </article>
-
-  <div class="article-cta">
-    <h3>Take the next step with the <em>right tool.</em></h3>
-    <p>Use the matching free tool to benchmark your numbers, or go straight to a full audit if you want the full picture in writing.</p>
-    <div class="article-cta-btns">
-      <a href={post.data.primaryCtaHref} class="cta-primary">{post.data.primaryCtaLabel}</a>
-      <a href={post.data.secondaryCtaHref} class="cta-secondary">{post.data.secondaryCtaLabel}</a>
-    </div>
-  </div>
-
-  {relatedPosts.length > 0 && (
-    <section class="article-related">
-      <div class="rule-label"><span class="section-tag">Related Insights</span></div>
-      <div class="article-related-grid">
-        {relatedPosts.map((related) => (
-          <a href={`/insights/${related.slug}`} class="article-related-card">
-            <div class="article-related-eyebrow">{related.data.category}</div>
-            <div class="article-related-title">{related.data.title}</div>
-            <div class="article-related-body">{related.data.preview ?? related.data.description}</div>
-          </a>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {recommendedTools.length > 0 && (
-    <section class="article-related">
-      <div class="rule-label"><span class="section-tag">Recommended Tools</span></div>
-      <div class="article-related-grid">
-        {recommendedTools.map((tool) => (
-          <a href={tool.href} class="article-related-card">
-            <div class="article-related-eyebrow">Free Tool</div>
-            <div class="article-related-title">{tool.label}</div>
-            <div class="article-related-body">{tool.description}</div>
-          </a>
-        ))}
-      </div>
-    </section>
-  )}
-</div>
-<script is:inline>
-  document.querySelectorAll('.article-content table').forEach((table) => {
-    const headers = [...table.querySelectorAll('thead th')].map((th) => th.textContent?.trim() || '');
-    if (!headers.length) return;
-    table.querySelectorAll('tbody tr').forEach((row) => {
-      [...row.children].forEach((cell, index) => {
-        if (cell instanceof HTMLElement) {
-          cell.dataset.label = headers[index] || '';
-        }
+  <script is:inline>
+    document.querySelectorAll('.article-content table').forEach((table) => {
+      const headers = [...table.querySelectorAll('thead th')].map((th) => th.textContent?.trim() || '');
+      if (!headers.length) return;
+      table.querySelectorAll('tbody tr').forEach((row) => {
+        [...row.children].forEach((cell, index) => {
+          if (cell instanceof HTMLElement) {
+            cell.dataset.label = headers[index] || '';
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
 </Layout>

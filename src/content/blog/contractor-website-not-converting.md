@@ -15,8 +15,8 @@ preview: "Your website is getting traffic. The phone isn't ringing. That gap liv
 pills: ["3 friction points", "53% leave after 3 seconds", "Conversion leak score"]
 primaryCtaLabel: "Audit Your Website"
 primaryCtaHref: "/tools/website-audit"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["contractor website not converting", "HVAC website not getting calls", "plumbing website conversion", "roofing website leads", "contractor website conversion rate", "home services website optimization", "contractor website audit", "HVAC website conversion optimization", "why contractor website not getting leads", "contractor site speed mobile conversion"]
 ---
 

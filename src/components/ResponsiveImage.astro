@@ -9,7 +9,6 @@ interface Props {
   loading?: 'lazy' | 'eager';
   priority?: boolean;
   class?: string;
-  style?: string;
   fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside' | 'none' | 'scale-down';
   position?: string;
   formats?: ('avif' | 'webp' | 'png' | 'jpg' | 'jpeg')[];
@@ -23,7 +22,6 @@ const {
   loading = 'lazy',
   priority = false,
   class: className,
-  style,
   fit = 'cover',
   position = 'center',
   formats = ['avif', 'webp'],
@@ -54,8 +52,7 @@ const resolvedImage = !isRemote && normalizedSrc ? imageModules[normalizedSrc] :
     loading={priority ? 'eager' : loading}
     decoding="async"
     fetchpriority={priority ? 'high' : 'auto'}
-    class={className}
-    style={`${style ? `${style};` : ''}object-fit:${fit};object-position:${position};`}
+    class:list={[className, 'responsive-image', `responsive-image--fit-${fit}`]}
   />
 ) : (
   <Image
@@ -67,7 +64,6 @@ const resolvedImage = !isRemote && normalizedSrc ? imageModules[normalizedSrc] :
     decoding="async"
     fetchpriority={priority ? 'high' : 'auto'}
     class={className}
-    style={style}
     fit={fit}
     position={position}
     formats={formats}

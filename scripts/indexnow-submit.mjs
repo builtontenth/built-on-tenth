@@ -14,10 +14,11 @@ const urls = args
 if (args.includes('--all')) {
   urls.push(
     `https://${host}/`,
-    `https://${host}/services`,
+    `https://${host}/report`,
     `https://${host}/about`,
     `https://${host}/tools`,
     `https://${host}/insights`,
+    `https://${host}/newsletter`,
   );
 }
 

@@ -15,8 +15,8 @@ preview: "Most plumbing owners know what they spend on marketing. Few know what 
 pills: ["5-10% revenue benchmark", "Cost per booked job", "3 leak patterns"]
 primaryCtaLabel: "Try the Marketing Calculator"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["plumbing company marketing budget", "how much should plumber spend on marketing", "plumbing marketing spend 2026", "plumbing marketing cost", "plumbing cost per booked job", "plumbing marketing benchmarks", "plumbing google ads budget", "plumbing lsa budget", "plumbing marketing roi", "plumbing advertising budget"]
 ---
 

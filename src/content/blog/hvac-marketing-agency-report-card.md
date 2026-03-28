@@ -6,7 +6,7 @@ metaDescription: "See what an HVAC marketing agency should actually report, how 
 pubDate: 2026-03-25
 author: "Built on Tenth"
 category: "Revenue Diagnostics"
-trade: ["HVAC", "Roofing", "Plumbing"]
+trade: ["HVAC"]
 heroImage: "/images/brand/core/tool-agency-report-card.png"
 heroImageAlt: "Contractor reviewing marketing agency performance reports on laptop"
 readTime: 12
@@ -15,8 +15,8 @@ preview: "Your agency sends a report every month. It shows impressions, clicks, 
 pills: ["Cost per lead vs cost per booked job", "10-question grade", "Built-in conflict of interest"]
 primaryCtaLabel: "Grade Your Agency"
 primaryCtaHref: "/tools/agency-report-card"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["how to evaluate HVAC marketing agency", "HVAC marketing agency not working", "HVAC agency reporting metrics", "cost per booked job HVAC", "signs marketing agency underperforming contractor", "HVAC marketing accountability", "how to tell if marketing agency is working", "contractor marketing agency red flags", "HVAC marketing ROI", "evaluate roofing marketing agency"]
 ---
 
@@ -28,13 +28,13 @@ But you can't tell whether the agency is the reason for that, a partial reason, 
 
 That uncertainty is not a knowledge problem. It is a reporting problem. And in most cases, it is a reporting problem the agency has no structural incentive to fix.
 
-This article covers what legitimate marketing accountability looks like for HVAC, roofing, and plumbing companies, why the metrics most agencies report are the wrong ones, and the 10 questions that determine in about five minutes whether your agency is measuring what actually matters.
+This article covers what legitimate marketing accountability looks like for HVAC companies, why the metrics most agencies report are the wrong ones, and the 10 questions that determine in about five minutes whether your agency is measuring what actually matters.
 
 ---
 
 ## The Metric That Changes Everything
 
-Cost per lead is the number almost every home service marketing agency reports. It is also, according to people who run marketing for HVAC companies at scale, the most misleading number in the relationship.
+Cost per lead is the number almost every HVAC marketing agency reports. It is also, according to people who run marketing for HVAC companies at scale, the most misleading number in the relationship.
 
 Chris Lollini, owner of Reputation Igniter and an industry advisor cited by ACHR News, is direct about it: "Cost per lead is often misleading in HVAC. Cost per booked job tells the real story. Clicks, impressions, and rankings are inputs. Revenue is the outcome contractors should evaluate."
 
@@ -64,7 +64,7 @@ The result is that roughly 70% of HVAC companies report dissatisfaction with the
 
 ## What Legitimate Reporting Looks Like
 
-Legitimate marketing accountability for a home service company connects every dollar spent to every job booked. Not approximately. Not directionally. Specifically, by channel, monthly.
+Legitimate marketing accountability for an HVAC company connects every dollar spent to every job booked. Not approximately. Not directionally. Specifically, by channel, monthly.
 
 The report you should be receiving every month includes:
 
@@ -128,7 +128,7 @@ Built on Tenth does not run ads. Built on Tenth has no financial relationship wi
 
 That independence matters because it removes the structural conflict. An independent analysis of your marketing system has no incentive to tell you your agency is doing well when it isn't, recommend higher spend when lower would serve you better, or obscure the gap between what your agency reports and what your marketing actually produces.
 
-The Revenue Leak Audit covers your full marketing system -- cost per booked job by channel, booking rate on your paid leads, GBP performance, website conversion, phone operations -- with every finding shown in annual dollars. It is not a pitch for replacing one agency with another. It is an honest measurement of what is working and what isn't, done by someone who doesn't profit from either answer.
+The HVAC Local Market Report covers the visibility and revenue gaps most HVAC owners cannot see clearly on their own -- where they rank, which competitors are winning first, and what those gaps are likely costing in calls. It is not a pitch for replacing one agency with another. It is an honest measurement of what is working and what isn't, done by someone who doesn't profit from either answer.
 
 That's a different kind of analysis than anything your current agency can provide about itself. Not because they're dishonest, but because nobody evaluates their own work impartially.
 
@@ -140,7 +140,7 @@ The [Agency Report Card](/tools/agency-report-card) runs 10 yes/no questions tha
 
 The output is a letter grade with the consequence of each "no" answer shown in plain language. Most owners find two to four answers that produce uncomfortable clarity about what they don't know about their current agency relationship.
 
-No email required to see your grade. If you want the full picture -- what each gap means in recoverable revenue and a prioritized fix list -- that's the Revenue Leak Audit.
+No email required to see your grade. If you want the full picture -- what those gaps mean in lost calls and what to fix first -- that's where the HVAC Local Market Report helps.
 
 ---
 
@@ -178,9 +178,9 @@ Not without running the numbers first. The question isn't whether your agency is
 
 Three reasons, in order of frequency. First, the measurement infrastructure to connect ad data to booked jobs isn't set up -- call tracking isn't flowing into the CRM or field service platform, so the agency genuinely can't calculate the number without your help. Second, the agency reports what the standard industry report template produces, which is activity metrics rather than revenue metrics, because that's what most clients accept. Third, the cost per booked job would reveal underperformance that cost per lead obscures. The fix for the first two is technical and takes a few days. The fix for the third is a different agency or a different relationship structure.
 
-### How is a Revenue Leak Audit different from asking my agency to evaluate my marketing?
+### How is the HVAC Local Market Report different from asking my agency to evaluate my marketing?
 
-Your agency evaluating your own marketing is structurally similar to asking a contractor to inspect their own work. They have financial interest in the outcome, they control the data, and they have no incentive to find problems they'd have to fix without additional compensation. A Revenue Leak Audit is independent -- no ad spend relationship, no platform commissions, no incentive in either direction. It covers cost per booked job by channel, phone performance, GBP position, website conversion, and estimate pipeline, with every finding shown as an annual dollar amount. The goal is an honest measurement of what's working and what isn't. That's a different analysis than any agency can provide about itself.
+Your agency evaluating your own marketing is structurally similar to asking a contractor to inspect their own work. They have financial interest in the outcome, they control the data, and they have no incentive to find problems they'd have to fix without additional compensation. The HVAC Local Market Report is independent -- no ad spend relationship, no platform commissions, no incentive in either direction. It focuses on local visibility, competitor strength, and the call gap that follows from that position. The goal is an honest measurement of what's working and what isn't. That's a different analysis than any agency can provide about itself.
 
 ### What does the Agency Report Card tool actually grade?
 

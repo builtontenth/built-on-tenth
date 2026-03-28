@@ -15,8 +15,8 @@ preview: "The average roofing company closes 27% of its estimates. The ones offe
 pills: ["27% avg close rate", "Dealer fee math", "Platform comparison"]
 primaryCtaLabel: "Calculate Your Marketing Cost"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["roofing contractor financing", "roofing company financing options", "how to offer financing roofing", "roofing dealer fees", "greensky roofing", "hearth roofing financing", "roofing close rate improvement", "roofing estimate close rate", "contractor financing programs roofing", "roofing payment plans 2026"]
 ---
 

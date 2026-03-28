@@ -18,125 +18,18 @@ const suiteTools = [
   slug="marketing-calculator"
   showCrossTool={false}
   headline='What Is Each Booked Job<br><em>Actually Costing You?</em>'
-  subheadline="Most companies track leads. Very few know what it costs to book a real job. Enter your numbers and see your true cost per booked job, benchmarked against the top 25% in your trade."
-  metaDescription="Free calculator: find your true cost per booked job from your marketing spend. Enter ad spend, lead volume, close rate, and average ticket to see real ROI benchmarks."
+  subheadline="Most HVAC companies track leads. Very few know what it costs to book a real job. Enter your numbers and see your true cost per booked job against stronger HVAC benchmarks."
+  metaDescription="HVAC marketing cost calculator. Enter ad spend, lead volume, close rate, and average ticket to see true cost per booked job and benchmark your channel economics."
 >
 
-<style>
-.tool-layout { display: grid; grid-template-columns: 1fr 480px; gap: 48px; padding-bottom: 80px; align-items: start; }
-.input-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; }
-.ip-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
-.ip-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
-.ip-micro { font-family: var(--mono); font-size: 9px; color: var(--ink3); opacity: 0.7; }
-.ip-body { padding: 24px; }
-.field { margin-bottom: 20px; }
-.field-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
-.field-hint { font-size: 9px; color: var(--ink3); opacity: 0.65; font-weight: 300; letter-spacing: 0.03em; text-transform: none; text-align: right; }
-.field-input { width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px; font-family: var(--sans); font-size: 15px; color: var(--ink); outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
-.field-input::-webkit-inner-spin-button, .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
-.field-input:focus { border-color: rgba(0,196,154,0.55); }
-.field-input::placeholder { color: var(--ink3); font-size: 13px; }
-.prefix-wrap { position: relative; }
-.prefix { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 14px; color: var(--ink3); pointer-events: none; }
-.prefix + .field-input { padding-left: 26px; }
-.suffix-wrap { position: relative; }
-.suffix { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; color: var(--ink3); pointer-events: none; }
-.bm-hint { margin-top: 6px; font-family: var(--mono); font-size: 9px; color: var(--ink3); padding: 5px 10px; background: var(--bg4); border-radius: 3px; display: flex; justify-content: space-between; gap: 10px; }
-.bm-val { color: var(--teal); font-weight: 500; text-align: right; }
-.field-select {
-  width: 100%; background: var(--bg3); border: 1px solid var(--rule2); border-radius: 4px; padding: 11px 14px;
-  font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.2s;
-  cursor: pointer; appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(226,221,208,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 14px center;
-}
-.field-select:focus { border-color: rgba(0,196,154,0.55); }
-.calc-btn { width: 100%; margin-top: 4px; padding: 14px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); transition: all 0.2s; }
-.calc-btn:hover { background: #00DFB0; transform: translateY(-1px); }
-
-.result-panel { background: var(--bg2); border: 1px solid var(--rule2); border-radius: 8px; overflow: hidden; position: sticky; top: 80px; }
-.rp-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); background: var(--bg3); display: flex; align-items: center; justify-content: space-between; }
-.rp-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
-.rp-status { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
-.s-wait  { color: var(--ink3); background: var(--bg4); border: 1px solid var(--rule); }
-.s-alert { color: var(--neg); background: rgba(240,64,64,0.1); border: 1px solid rgba(240,64,64,0.22); }
-.s-warn  { color: #C9A035; background: rgba(201,160,53,0.1); border: 1px solid rgba(201,160,53,0.22); }
-.s-good  { color: var(--pos); background: rgba(34,211,122,0.1); border: 1px solid rgba(34,211,122,0.22); }
-.rp-body { padding: 24px; }
-.empty-state { text-align: center; padding: 36px 16px; }
-.empty-icon { font-size: 32px; opacity: 0.25; margin-bottom: 14px; }
-.empty-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
-.empty-text strong { color: var(--ink2); font-weight: 500; }
-.result-section { display: none; }
-.result-section.show { display: block; }
-.main-metric { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
-.mm-label { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
-.mm-value { font-family: var(--mono); font-size: 54px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--neg); }
-.mm-value.good { color: var(--pos); }
-.mm-value.warn { color: #C9A035; }
-.mm-sub { font-size: 12px; color: var(--ink3); margin-top: 6px; font-weight: 300; }
-.section-title, .rail-title { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
-.rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
-.row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg3); border-radius: 3px; }
-.rk { font-size: 12.5px; color: var(--ink2); font-weight: 300; }
-.rv { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); text-align: right; }
-.rv.bad { color: var(--neg); } .rv.ok { color: var(--pos); } .rv.warn { color: #C9A035; }
-.diagnosis { background: rgba(240,64,64,0.06); border: 1px solid rgba(240,64,64,0.2); border-radius: 4px; padding: 14px 16px; margin-bottom: 18px; }
-.diagnosis.ok   { background: rgba(34,211,122,0.06); border-color: rgba(34,211,122,0.2); }
-.diagnosis.warn { background: rgba(201,160,53,0.06); border-color: rgba(201,160,53,0.22); }
-.dt { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
-.db { font-size: 12px; color: var(--ink2); line-height: 1.62; font-weight: 300; }
-.bm-section { margin-bottom: 18px; }
-.bm-track { height: 6px; background: var(--bg4); border-radius: 3px; margin: 8px 0; overflow: hidden; }
-.bm-bar { height: 100%; border-radius: 3px; background: var(--neg); transition: width 0.8s var(--ease); }
-.bm-bar.ok { background: var(--pos); } .bm-bar.warn { background: #C9A035; }
-.bm-range { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 8.5px; color: var(--ink3); gap: 8px; }
-.channel-benchmark {
-  margin-bottom: 18px; padding: 12px 14px; border-radius: 4px; background: var(--bg3); border: 1px solid var(--rule2);
-  font-size: 12px; line-height: 1.58; color: var(--ink2); font-weight: 300;
-}
-.consequence-line, .audit-note, .cta-note { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-weight: 300; }
-.consequence-line { margin: 0 0 14px; text-align: left; font-size: 12px; line-height: 1.62; color: var(--ink2); }
-.audit-cta { display: block; width: 100%; padding: 13px; border-radius: 4px; cursor: pointer; text-align: center; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--teal); border: 1.5px solid var(--teal); text-decoration: none; transition: all 0.2s; }
-.audit-cta:hover { background: #00DFB0; }
-.divider { height: 1px; background: var(--rule); margin: 16px 0; }
-.result-rail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
-.rail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-.rail-link {
-  display: block; padding: 12px; border-radius: 4px; text-decoration: none; background: var(--bg3); border: 1px solid var(--rule2);
-  transition: border-color 0.2s, transform 0.2s;
-}
-.rail-link:hover { border-color: var(--teal4); transform: translateY(-1px); }
-.rail-num { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 4px; }
-.rail-name { display: block; font-size: 12.5px; color: var(--ink); line-height: 1.35; }
-.full-picture {
-  display: block; padding: 14px; border-radius: 4px; text-decoration: none; background: rgba(0,196,154,0.05);
-  border: 1px solid rgba(0,196,154,0.28);
-}
-.full-picture-label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
-.full-picture-title { display: block; font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
-.full-picture-copy { display: block; font-size: 12px; color: var(--ink2); line-height: 1.55; font-weight: 300; }
-
-@media (max-width: 960px) { .tool-layout { grid-template-columns: 1fr; } .result-panel { position: static; } }
-@media (max-width: 600px) { .rail-grid { grid-template-columns: 1fr; } }
-</style>
 
 <div class="tool-layout" slot="tool-body">
   <div class="input-panel">
     <div class="ip-header">
       <span class="ip-title">Your Marketing Numbers</span>
-      <span class="ip-micro">Based on HVAC, roofing and plumbing benchmarks</span>
+      <span class="ip-micro">Benchmarked against stronger HVAC booked-job ranges</span>
     </div>
     <div class="ip-body">
-      <div class="field">
-        <div class="field-label">Trade / Industry</div>
-        <select class="field-select" id="trade">
-          <option value="hvac">HVAC</option>
-          <option value="roofing">Roofing</option>
-          <option value="plumbing">Plumbing</option>
-          <option value="general">Other home service</option>
-        </select>
-      </div>
       <div class="field">
         <div class="field-label">
           <span>Primary channel</span>
@@ -154,20 +47,20 @@ const suiteTools = [
       </div>
       <div class="field">
         <div class="field-label">Monthly marketing spend <span class="field-hint">ads + agency fees combined</span></div>
-        <div class="prefix-wrap"><span class="prefix">$</span><input type="number" class="field-input" id="spend" placeholder="e.g. 6500" min="0" /></div>
+        <div class="prefix-wrap"><span class="prefix">$</span><input type="number" class="field-input" id="spend" min="0" /></div>
       </div>
       <div class="field">
         <div class="field-label">Inbound calls / leads per month <span class="field-hint">all sources combined</span></div>
-        <input type="number" class="field-input" id="leads" placeholder="e.g. 180" min="0" />
+        <input type="number" class="field-input" id="leads" min="0" />
       </div>
       <div class="field">
-        <div class="field-label">Close rate <span class="field-hint">% of calls that book a job</span></div>
-        <div class="suffix-wrap"><span class="suffix">%</span><input type="number" class="field-input" id="close-rate" placeholder="e.g. 38" min="0" max="100" /></div>
-        <div class="bm-hint"><span>Industry average:</span><span class="bm-val">28-35% · Top 25%: 50%+</span></div>
+        <div class="field-label">Booking rate <span class="field-hint">% of leads that become booked jobs</span></div>
+        <div class="suffix-wrap"><span class="suffix">%</span><input type="number" class="field-input" id="close-rate" min="0" max="100" /></div>
+        <div class="bm-hint"><span>HVAC benchmark:</span><span class="bm-val">28-35% average · 50%+ strong</span></div>
       </div>
       <div class="field">
         <div class="field-label">Average job ticket <span class="field-hint">Average revenue per booked job</span></div>
-        <div class="prefix-wrap"><span class="prefix">$</span><input type="number" class="field-input" id="ticket" placeholder="e.g. 2200" min="0" /></div>
+        <div class="prefix-wrap"><span class="prefix">$</span><input type="number" class="field-input" id="ticket" min="0" /></div>
       </div>
       <button class="calc-btn" id="calc-btn">See My True Cost Per Job</button>
     </div>
@@ -181,7 +74,7 @@ const suiteTools = [
     <div class="rp-body">
       <div class="empty-state" id="empty-state">
         <div class="empty-icon">📊</div>
-        <p class="empty-text"><strong>Most companies underestimate this by 30-60%.</strong><br><br>They count cost per lead from the platform dashboard. But platform leads do not equal booked jobs. Your real cost is spend divided by jobs booked, not spend divided by leads received.</p>
+        <p class="empty-text"><strong>Most HVAC owners underestimate this by 30-60%.</strong><br><br>Platform dashboards show cost per lead. They do not show what each booked job actually costs once weak booking rates and mixed lead quality are factored in.</p>
       </div>
       <div class="result-section" id="results">
         <div class="main-metric">
@@ -200,19 +93,19 @@ const suiteTools = [
           <div class="row"><span class="rk">Revenue per $1 spent</span><span class="rv" id="r-roi">-</span></div>
         </div>
         <div class="bm-section">
-          <div class="section-title">Cost per job vs. benchmark</div>
-          <div class="bm-track"><div class="bm-bar" id="bm-bar" style="width:0%"></div></div>
+          <div class="section-title">HVAC cost per job vs. benchmark</div>
+          <div class="bm-track"><div class="bm-bar" id="bm-bar"></div></div>
           <div class="bm-range"><span>$0</span><span id="bm-mid">Avg: $-</span><span>Top 25%: $-</span><span>Your number</span></div>
         </div>
-        <div class="channel-benchmark" id="channel-benchmark" style="display:none"></div>
+        <div class="channel-benchmark" id="channel-benchmark" hidden></div>
         <div class="diagnosis" id="diagnosis">
           <div class="dt" id="diag-title">-</div>
           <div class="db" id="diag-body">-</div>
         </div>
-        <p class="consequence-line" id="consequence-line">The gap between your current number and the top 25% tells you how much waste is sitting in your channel mix and close rate.</p>
+        <p class="consequence-line" id="consequence-line">The gap between your number and the stronger HVAC range shows how much waste may be sitting in channel mix, booking rate, and lead quality.</p>
         <div class="divider"></div>
-        <a href="/apply?service=audit&source=marketing-calculator" class="audit-cta">Get a Full Channel Breakdown - Audit</a>
-        <p class="audit-note">The audit shows cost per job by individual channel so you know which ones to scale and which to cut.</p>
+        <a href="/report?source=marketing-calculator" class="btn btn--primary audit-cta">Request your report</a>
+        <p class="audit-note">This tool gives one cost view. The full report shows whether local competitors, review strength, and map pack position are making the cost problem worse.</p>
 
         <ToolShareResult sectionId="share-section" profile="internal" />
 
@@ -226,10 +119,10 @@ const suiteTools = [
               </a>
             ))}
           </div>
-          <a href="/apply?service=audit&source=marketing-calculator" class="full-picture">
-            <span class="full-picture-label">Full picture</span>
-            <span class="full-picture-title">Revenue Leak Audit - $750</span>
-            <span class="full-picture-copy">Every leak. Every gap. Every fix. In writing.</span>
+          <a href="/report?source=marketing-calculator" class="full-picture">
+            <span class="full-picture-label">Next step</span>
+            <span class="full-picture-title">HVAC Local Market Report</span>
+            <span class="full-picture-copy">See where local visibility and competitor strength are making this cost problem worse.</span>
           </a>
         </div>
       </div>
@@ -239,61 +132,37 @@ const suiteTools = [
 
 <script>
 const benchmarks = {
-  hvac:     { avgCPJ: 340, topCPJ: 110, avgROI: 4.2, tradeLabel: 'HVAC' },
-  roofing:  { avgCPJ: 420, topCPJ: 140, avgROI: 3.8, tradeLabel: 'roofing' },
-  plumbing: { avgCPJ: 280, topCPJ: 90,  avgROI: 5.1, tradeLabel: 'plumbing' },
-  general:  { avgCPJ: 350, topCPJ: 120, avgROI: 4.0, tradeLabel: 'home service' },
+  hvac: { avgCPJ: 340, topCPJ: 110, avgROI: 4.2, tradeLabel: 'HVAC' },
 };
 
 const channelBenchmarks = {
   google_ads: {
     label: 'Google Ads',
     hvac: [180, 320],
-    roofing: [220, 400],
-    plumbing: [160, 280],
-    general: [180, 320],
   },
   lsas: {
     label: 'LSAs',
     hvac: [90, 160],
-    roofing: [110, 200],
-    plumbing: [80, 140],
-    general: [90, 160],
   },
   angi_homeadvisor: {
     label: 'Angi or HomeAdvisor',
     hvac: [280, 520],
-    roofing: [320, 600],
-    plumbing: [260, 480],
-    general: [280, 520],
   },
   referrals: {
     label: 'Referrals',
     hvac: [0, 40],
-    roofing: [0, 40],
-    plumbing: [0, 40],
-    general: [0, 40],
   },
   direct_mail: {
     label: 'Direct Mail',
     hvac: [200, 380],
-    roofing: [240, 440],
-    plumbing: [180, 340],
-    general: [200, 380],
   },
   seo_organic: {
     label: 'SEO/Organic',
     hvac: [60, 140],
-    roofing: [60, 140],
-    plumbing: [60, 140],
-    general: [60, 140],
   },
   mixed: {
     label: 'Mixed channel',
     hvac: [110, 340],
-    roofing: [140, 420],
-    plumbing: [90, 280],
-    general: [120, 350],
   },
 };
 
@@ -313,27 +182,26 @@ function updateChannelBenchmarkLine(trade, primaryChannel, cpj) {
   const range = channelData?.[trade];
 
   if (!channelData || !range) {
-    benchmarkEl.style.display = 'none';
+    benchmarkEl.hidden = true;
     benchmarkEl.textContent = '';
     return;
   }
 
-  const tradeLabel = benchmarks[trade].tradeLabel;
-  benchmarkEl.style.display = 'block';
-  benchmarkEl.textContent = `${channelData.label} benchmark: top ${tradeLabel} companies run ${fmt(range[0])}-${fmt(range[1])} per booked job on this channel.`;
+  benchmarkEl.hidden = false;
+  benchmarkEl.textContent = `${channelData.label} benchmark: stronger HVAC operators typically run ${fmt(range[0])}-${fmt(range[1])} per booked job on this channel.`;
 
   const toolUrl = window.location.origin + window.location.pathname;
   const shareSection = document.getElementById('share-section');
-  const internalSummary = `Our real cost per booked job is ${fmt(cpj)}. Top ${tradeLabel} companies on ${channelData.label} run ${fmt(range[0])}-${fmt(range[1])} per booked job on this channel. ${toolUrl}`;
+  const internalSummary = `Our real cost per booked job is ${fmt(cpj)}. Stronger HVAC operators on ${channelData.label} run ${fmt(range[0])}-${fmt(range[1])} per booked job on this channel. ${toolUrl}`;
   shareSection.dataset.toolUrl = toolUrl;
   shareSection.dataset.internalShareText = internalSummary;
   shareSection.dataset.emailSubject = `Marketing cost per booked job: ${fmt(cpj)}`;
   shareSection.dataset.emailBody = internalSummary;
-  shareSection.style.display = 'block';
+  shareSection.hidden = false;
 }
 
 function calculate() {
-  const trade          = document.getElementById('trade').value;
+  const trade          = 'hvac';
   const primaryChannel = document.getElementById('primary-channel').value;
   const spend          = parseFloat(document.getElementById('spend').value)      || 0;
   const leads          = parseFloat(document.getElementById('leads').value)      || 0;
@@ -376,7 +244,7 @@ function calculate() {
   const cpjEl = document.getElementById('cost-per-job');
   cpjEl.textContent = fmt(cpj);
   cpjEl.className = cpj <= bm.topCPJ ? 'mm-value good' : cpj <= bm.avgCPJ ? 'mm-value warn' : 'mm-value';
-  document.getElementById('mm-sub').textContent = `For every booked job · ${fmtN(jobs)} jobs/month`;
+  document.getElementById('mm-sub').textContent = `At your current inputs · ${fmtN(jobs)} booked jobs/month`;
 
   document.getElementById('r-spend').textContent   = fmt(spend) + '/month';
   document.getElementById('r-leads').textContent   = fmtN(leads) + '/month';
@@ -403,7 +271,7 @@ function calculate() {
   if (cpj <= bm.topCPJ) {
     diagEl.className = 'diagnosis ok';
     diagTitle.textContent = 'You are in the top 25%.';
-    diagBody.textContent  = 'Your cost per booked job is strong. The opportunity now is scaling what is working and cutting the channels that are dragging your average up. The audit maps that by channel.';
+    diagBody.textContent  = 'Your cost per booked job is strong. The opportunity now is scaling what is working and cutting the channels that are dragging your average up.';
   } else if (cpj <= bm.avgCPJ) {
     diagEl.className = 'diagnosis warn';
     diagTitle.textContent = 'Average, but there is room.';
@@ -411,15 +279,15 @@ function calculate() {
   } else {
     diagEl.className = 'diagnosis';
     diagTitle.textContent = `You are paying ${fmt(cpj - bm.avgCPJ)} more per job than average.`;
-    diagBody.textContent  = 'This is usually caused by a low close rate losing jobs you are already paying for, one weak channel dragging up the blended average, or agency fees that do not connect to booked jobs. The audit finds which.';
+    diagBody.textContent  = 'This is usually caused by a low close rate losing jobs you are already paying for, one weak channel dragging up the blended average, or agency fees that do not connect to booked jobs.';
   }
 
   updateChannelBenchmarkLine(trade, primaryChannel, cpj);
-  document.getElementById('consequence-line').textContent = `That gap between your current number and the top 25% is ${fmt(Math.max(cpj - bm.topCPJ, 0))} per booked job. The audit identifies which channel is creating most of it.`;
+  document.getElementById('consequence-line').textContent = `That gap between your current number and the top 25% is ${fmt(Math.max(cpj - bm.topCPJ, 0))} per booked job. The report helps you see whether local visibility is making the paid channel math even worse.`;
   const shareSection = document.getElementById('share-section');
   shareSection.dataset.emailBody = `${shareSection.dataset.internalShareText}\n\n${document.getElementById('consequence-line').textContent}`;
 
-  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('empty-state').hidden = true;
   document.getElementById('results').classList.add('show');
 }
 </script>

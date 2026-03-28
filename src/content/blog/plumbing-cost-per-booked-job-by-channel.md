@@ -15,8 +15,8 @@ preview: "A $55 LSA lead that books at 55% costs $100 per booked job. A $55 Angi
 pills: ["CPL vs cost/booked job", "Emergency vs planned split", "Channel comparison table"]
 primaryCtaLabel: "Calculate Your Marketing Cost"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["plumbing cost per booked job", "plumbing lead source comparison", "plumbing angi vs google ads", "plumbing lsa cost per booked job", "plumbing google ads cost", "plumbing referral value", "plumbing marketing channel benchmarks", "plumbing lead generation roi", "plumbing cost per lead by channel", "plumbing facebook leads"]
 ---
 

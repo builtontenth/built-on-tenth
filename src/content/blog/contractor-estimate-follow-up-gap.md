@@ -15,8 +15,8 @@ preview: "68% of estimates never get a single follow-up. The homeowner who didn'
 pills: ["Follow-up gap math", "1-15% revenue recovery", "3-touch system"]
 primaryCtaLabel: "Calculate Your Follow-Up Gap"
 primaryCtaHref: "/tools/estimate-follow-up"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["contractor estimate follow up", "HVAC estimate follow up", "roofing estimate not closing", "plumbing estimate close rate", "unsold estimate follow up home services", "contractor close rate improvement", "estimate follow up system", "home services estimate conversion", "unsold jobs contractor", "how to follow up on estimates"]
 ---
 

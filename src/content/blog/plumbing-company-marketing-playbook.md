@@ -15,8 +15,8 @@ preview: "Plumbing has shorter decision windows, lower average tickets, and high
 pills: ["3 revenue stages", "Urgency call math", "Channel breakdown"]
 primaryCtaLabel: "Calculate Your Marketing Cost"
 primaryCtaHref: "/tools/marketing-calculator"
-secondaryCtaLabel: "Get a Revenue Leak Audit"
-secondaryCtaHref: "/apply"
+secondaryCtaLabel: "Request your report"
+secondaryCtaHref: "/report"
 seoKeywords: ["plumbing company marketing", "plumbing marketing budget", "how to market a plumbing company", "plumbing marketing strategy 2026", "plumbing google ads", "plumbing lsa setup", "plumbing company growth", "plumbing marketing spend", "plumbing cost per lead", "plumbing company revenue"]
 ---
 
